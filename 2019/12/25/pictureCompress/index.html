@@ -46,18 +46,18 @@
   };
 </script>
 
-  <meta name="description" content="首先在HTML建立一個File Upload與一個顯示結果的div 1&amp;lt;input type&#x3D;&quot;file&quot; &#x2F;&amp;gt;23&amp;lt;div id&#x3D;&quot;result&quot;&amp;gt;&amp;lt;&#x2F;div&amp;gt;  接下來為File Upload綁定事件 1document.querySelector(&amp;apos;input&amp;apos;).addEventListener(&amp;apos;change&amp;apos;, function () &amp;#123;2">
+  <meta name="description" content="首先在HTML建立一個File Upload與一個canvas 1&amp;lt;input type&#x3D;&quot;file&quot; &#x2F;&amp;gt;2&amp;lt;canvas id&#x3D;&quot;canvas&quot;  width&#x3D;&quot;800&quot; height&#x3D;&quot;600&quot;&amp;gt;&amp;lt;&#x2F;canvas&amp;gt;  接下來為File Upload綁定事件 1document.querySelector(&amp;apos;input&amp;apos;).addEventListener(">
 <meta name="keywords" content="base64">
 <meta property="og:type" content="article">
-<meta property="og:title" content="如何將檔案轉成base64編碼">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;09&#x2F;fileToBase64&#x2F;index.html">
+<meta property="og:title" content="如何將檔案壓縮並轉成base64編碼">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;25&#x2F;pictureCompress&#x2F;index.html">
 <meta property="og:site_name" content="Stephen&#39;s Note">
-<meta property="og:description" content="首先在HTML建立一個File Upload與一個顯示結果的div 1&amp;lt;input type&#x3D;&quot;file&quot; &#x2F;&amp;gt;23&amp;lt;div id&#x3D;&quot;result&quot;&amp;gt;&amp;lt;&#x2F;div&amp;gt;  接下來為File Upload綁定事件 1document.querySelector(&amp;apos;input&amp;apos;).addEventListener(&amp;apos;change&amp;apos;, function () &amp;#123;2">
+<meta property="og:description" content="首先在HTML建立一個File Upload與一個canvas 1&amp;lt;input type&#x3D;&quot;file&quot; &#x2F;&amp;gt;2&amp;lt;canvas id&#x3D;&quot;canvas&quot;  width&#x3D;&quot;800&quot; height&#x3D;&quot;600&quot;&amp;gt;&amp;lt;&#x2F;canvas&amp;gt;  接下來為File Upload綁定事件 1document.querySelector(&amp;apos;input&amp;apos;).addEventListener(">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:updated_time" content="2019-12-13T17:11:47.820Z">
+<meta property="og:updated_time" content="2019-12-25T13:45:28.182Z">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://yoursite.com/2019/12/09/fileToBase64/">
+<link rel="canonical" href="http://yoursite.com/2019/12/25/pictureCompress/">
 
 
 <script id="page-configurations">
@@ -69,7 +69,7 @@
   };
 </script>
 
-  <title>如何將檔案轉成base64編碼 | Stephen's Note</title>
+  <title>如何將檔案壓縮並轉成base64編碼 | Stephen's Note</title>
   
 
 
@@ -178,7 +178,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/09/fileToBase64/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/25/pictureCompress/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -191,7 +191,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          如何將檔案轉成base64編碼
+          如何將檔案壓縮並轉成base64編碼
         </h1>
 
         <div class="post-meta">
@@ -200,16 +200,10 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
+              
 
-              <time title="Created: 2019-12-09 20:34:09" itemprop="dateCreated datePublished" datetime="2019-12-09T20:34:09+08:00">2019-12-09</time>
+              <time title="Created: 2019-12-25 20:52:20 / Modified: 21:45:28" itemprop="dateCreated datePublished" datetime="2019-12-25T20:52:20+08:00">2019-12-25</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-12-14 01:11:47" itemprop="dateModified" datetime="2019-12-14T01:11:47+08:00">2019-12-14</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -233,11 +227,11 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>首先在HTML建立一個File Upload與一個顯示結果的div</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"file"</span> /&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"result"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></pre></td></tr></table></figure>
+        <p>首先在HTML建立一個File Upload與一個canvas</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"file"</span> /&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">"canvas"</span>  <span class="attr">width</span>=<span class="string">"800"</span> <span class="attr">height</span>=<span class="string">"600"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span></pre></td></tr></table></figure>
 
 <p>接下來為File Upload綁定事件</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.querySelector(<span class="string">'input'</span>).addEventListener(<span class="string">'change'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">       <span class="comment">//建立FileReader去讀取File Upload的內容</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">       <span class="keyword">let</span> reader = <span class="keyword">new</span> FileReader();</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">       <span class="comment">//設定初始化事件</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">       reader.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">           <span class="keyword">let</span> arrayBuffer = <span class="keyword">this</span>.result;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">           <span class="keyword">let</span> base64 = btoa(</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">               <span class="keyword">new</span> <span class="built_in">Uint8Array</span>(arrayBuffer)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">                   .reduce(<span class="function">(<span class="params">data, byte</span>) =&gt;</span> data + <span class="built_in">String</span>.fromCharCode(byte), <span class="string">''</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">           );</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line">       </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line">         <span class="built_in">document</span>.querySelector(<span class="string">'#result'</span>).innerHTML = arrayBuffer + <span class="string">'  '</span> + arrayBuffer.byteLength;    </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">19</span></pre></td><td class="code"><pre><span class="line">       &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">20</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">21</span></pre></td><td class="code"><pre><span class="line">      <span class="comment">//開始讀取</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">22</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">23</span></pre></td><td class="code"><pre><span class="line">      reader.readAsArrayBuffer(<span class="keyword">this</span>.files[<span class="number">0</span>]);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">24</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">25</span></pre></td><td class="code"><pre><span class="line">   &#125;, <span class="literal">false</span>);</span></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.querySelector(<span class="string">'input'</span>).addEventListener(<span class="string">'change'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">        <span class="comment">//取得第一個檔案</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">const</span> file= <span class="keyword">this</span>.files[<span class="number">0</span>];</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">        </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">        <span class="comment">//取得canvas</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">const</span> canvas = <span class="built_in">document</span>.getElementById(<span class="string">'canvas'</span>);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">        </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">        <span class="comment">//宣告Image物件</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">let</span> img = <span class="keyword">new</span> Image ;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">        <span class="comment">//建立Image載入事件</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">        img.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">            <span class="comment">//在canvas載入圖片</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">            canvas.getContext(<span class="string">'2d'</span>).drawImage(img, <span class="number">0</span>, <span class="number">0</span>, <span class="number">800</span>, <span class="number">600</span>);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">            <span class="comment">//回收圖片物件</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">            URL.revokeObjectURL(img.src);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line">           <span class="comment">//把canvas圖片轉成Blob格式</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line">            canvas.toBlob(<span class="function">(<span class="params">blob</span>) =&gt;</span> &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">19</span></pre></td><td class="code"><pre><span class="line">                <span class="comment">//宣告FileReader物件</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">20</span></pre></td><td class="code"><pre><span class="line">                <span class="keyword">var</span> reader = <span class="keyword">new</span> FileReader();</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">21</span></pre></td><td class="code"><pre><span class="line">                </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">22</span></pre></td><td class="code"><pre><span class="line">                <span class="comment">//建立FileReader載入完成事件</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">23</span></pre></td><td class="code"><pre><span class="line">                reader.onloadend = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">24</span></pre></td><td class="code"><pre><span class="line">                    <span class="built_in">console</span>.log(reader.result.split(<span class="string">","</span>)[<span class="number">1</span>]);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">25</span></pre></td><td class="code"><pre><span class="line">                &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">26</span></pre></td><td class="code"><pre><span class="line">                <span class="comment">//讀取Blob格式物件</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">27</span></pre></td><td class="code"><pre><span class="line">                reader.readAsDataURL(blob);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">28</span></pre></td><td class="code"><pre><span class="line">            &#125;, <span class="string">"image/jpeg"</span>, <span class="number">0.8</span>);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">29</span></pre></td><td class="code"><pre><span class="line">        &#125;;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">30</span></pre></td><td class="code"><pre><span class="line">        <span class="comment">//圖片物件載入檔案</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">31</span></pre></td><td class="code"><pre><span class="line">        img.src = URL.createObjectURL(file);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">32</span></pre></td><td class="code"><pre><span class="line">&#125;, <span class="literal">false</span>);</span></pre></td></tr></table></figure>
 
     </div>
 
@@ -255,10 +249,13 @@
 
         
     <div class="post-nav">
-      <div class="post-nav-item"></div>
       <div class="post-nav-item">
-    <a href="/2019/12/09/base64ToFile/" rel="next" title="如何將base64編碼轉成檔案">
-      如何將base64編碼轉成檔案 <i class="fa fa-chevron-right"></i>
+    <a href="/2019/12/09/base64ToFile/" rel="prev" title="如何將base64編碼轉成檔案">
+      <i class="fa fa-chevron-left"></i> 如何將base64編碼轉成檔案
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/12/25/protractorOnPi/" rel="next" title="如何在pi 3b+上執行Angular Protractor">
+      如何在pi 3b+上執行Angular Protractor <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>

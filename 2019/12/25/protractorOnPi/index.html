@@ -46,14 +46,18 @@
   };
 </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Stephen&#39;s Note">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;tags&#x2F;base64&#x2F;index.html">
+  <meta name="description" content="首先依照硬體架構從launchpad.net 下載 Chromium 瀏覽器專用的 WebDriver 1wget http:&#x2F;&#x2F;launchpadlibrarian.net&#x2F;361669488&#x2F;chromium-chromedriver_65.0.3325.181-0ubuntu0.14.04.1_armhf.deb  接下來進行安裝 1sudo dpkg -i2chromium-chromed">
+<meta name="keywords" content="Angular,Protractor,Pi">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何在pi 3b+上執行Angular Protractor">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;25&#x2F;protractorOnPi&#x2F;index.html">
 <meta property="og:site_name" content="Stephen&#39;s Note">
+<meta property="og:description" content="首先依照硬體架構從launchpad.net 下載 Chromium 瀏覽器專用的 WebDriver 1wget http:&#x2F;&#x2F;launchpadlibrarian.net&#x2F;361669488&#x2F;chromium-chromedriver_65.0.3325.181-0ubuntu0.14.04.1_armhf.deb  接下來進行安裝 1sudo dpkg -i2chromium-chromed">
 <meta property="og:locale" content="zh-tw">
+<meta property="og:updated_time" content="2019-12-25T13:26:17.952Z">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://yoursite.com/tags/base64/">
+<link rel="canonical" href="http://yoursite.com/2019/12/25/protractorOnPi/">
 
 
 <script id="page-configurations">
@@ -61,11 +65,11 @@
   CONFIG.page = {
     sidebar: "",
     isHome: false,
-    isPost: false
+    isPost: true
   };
 </script>
 
-  <title>Tag: base64 | Stephen's Note</title>
+  <title>如何在pi 3b+上執行Angular Protractor | Stephen's Note</title>
   
 
 
@@ -169,90 +173,111 @@
           <div class="content">
             
 
+  <div class="posts-expand">
+      
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <h1 class="collection-header">base64
-          <small>Tag</small>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/25/protractorOnPi/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Stephen">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Stephen's Note">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          如何在pi 3b+上執行Angular Protractor
         </h1>
-      </div>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2019-12-25 20:59:57 / Modified: 21:26:17" itemprop="dateCreated datePublished" datetime="2019-12-25T20:59:57+08:00">2019-12-25</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">Javascript</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <h1 class="collection-header">2019</h1>
-    </div>
+        <p>首先依照硬體架構<br>從<br><a href="https://launchpad.net/ubuntu/trusty/+package/chromium-chromedriver" target="_blank" rel="noopener">launchpad.net</a></p>
+<p>下載 Chromium 瀏覽器專用的 WebDriver</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">wget http://launchpadlibrarian.net/361669488/chromium-chromedriver_65.0.3325.181-0ubuntu0.14.04.1_armhf.deb</span></pre></td></tr></table></figure>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+<p>接下來進行安裝</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">sudo dpkg -i</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">chromium-chromedriver_65.0.3325.181-0ubuntu0.14.04.1_armhf.deb</span></pre></td></tr></table></figure>
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2019-12-25T20:52:20+08:00"
-              content="2019-12-25">
-          12-25
-        </time>
-      </div>
+<p>預設會放置在</p>
+<figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">/usr/<span class="class"><span class="keyword">lib</span>/<span class="title">chromium</span>-<span class="title">browser</span>/<span class="title">chromedriver</span></span></span></pre></td></tr></table></figure>
 
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2019/12/25/pictureCompress/" itemprop="url">
-            <span itemprop="name">如何將檔案壓縮並轉成base64編碼</span>
-          </a>
-      </h2>
+<p>接下來更改protractor.conf.js的設定，加入下方設定</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="string">chromeDriver:</span> <span class="string">'/usr/lib/chromium-browser/chromedriver'</span></span></pre></td></tr></table></figure>
 
-    </header>
-  </article>
+<p>運行Protractor時使用–no-webdriver-update選項</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">ng e2e --no-webdriver-update</span></pre></td></tr></table></figure>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2019-12-09T20:34:09+08:00"
-              content="2019-12-09">
-          12-09
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2019/12/09/base64ToFile/" itemprop="url">
-            <span itemprop="name">如何將base64編碼轉成檔案</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2019-12-09T20:34:09+08:00"
-              content="2019-12-09">
-          12-09
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2019/12/09/fileToBase64/" itemprop="url">
-            <span itemprop="name">如何將檔案轉成base64編碼</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
+<h1 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h1><p><a href="https://blog.gtwang.org/iot/raspberry-pi/raspberry-pi-install-chromium-chrome-driver/" target="_blank" rel="noopener">樹莓派 Raspberry Pi 使用 Python + Selenium 控制 Chromium 瀏覽器</a></p>
+<p><a href="https://github.com/angular/protractor/blob/master/lib/config.ts" target="_blank" rel="noopener">Protractor config設定參考</a></p>
 
     </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Angular/" rel="tag"># Angular</a>
+              <a href="/tags/Protractor/" rel="tag"># Protractor</a>
+              <a href="/tags/Pi/" rel="tag"># Pi</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/12/25/pictureCompress/" rel="prev" title="如何將檔案壓縮並轉成base64編碼">
+      <i class="fa fa-chevron-left"></i> 如何將檔案壓縮並轉成base64編碼
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
   </div>
-  
-  
-  
-
-  
-
 
 
           </div>
@@ -303,6 +328,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#參考資料"><span class="nav-number">1.</span> <span class="nav-text">參考資料</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
