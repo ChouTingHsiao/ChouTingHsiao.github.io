@@ -46,18 +46,17 @@
   };
 </script>
 
-  <meta name="description" content="首先在HTML建立一個File Upload與一個顯示結果的div 1&amp;lt;input type&#x3D;&quot;file&quot; &#x2F;&amp;gt;23&amp;lt;div id&#x3D;&quot;result&quot;&amp;gt;&amp;lt;&#x2F;div&amp;gt;  接下來為File Upload綁定事件 1document.querySelector(&amp;apos;input&amp;apos;).addEventListener(&amp;apos;change&amp;apos;, function () &amp;#123;2">
-<meta name="keywords" content="base64">
+  <meta name="description" content="首先在HTML建立一個iframe 1&amp;lt;iframe id&#x3D;&quot;test&quot;&amp;gt;&amp;lt;&#x2F;iframe&amp;gt;  用Javascript搜尋iframe的DOM物件 1let iframe &#x3D; document.getElementById(&amp;apos;test&amp;apos;).contentDocument;  字串寫入iframe 1iframe.open();23iframe.write(&amp;apos;&amp;lt;a&amp;gt">
 <meta property="og:type" content="article">
-<meta property="og:title" content="如何將檔案轉成base64編碼">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;09&#x2F;fileToBase64&#x2F;index.html">
+<meta property="og:title" content="如何在iframe讀取或寫入字串">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;28&#x2F;iframe&#x2F;index.html">
 <meta property="og:site_name" content="Stephen&#39;s Note">
-<meta property="og:description" content="首先在HTML建立一個File Upload與一個顯示結果的div 1&amp;lt;input type&#x3D;&quot;file&quot; &#x2F;&amp;gt;23&amp;lt;div id&#x3D;&quot;result&quot;&amp;gt;&amp;lt;&#x2F;div&amp;gt;  接下來為File Upload綁定事件 1document.querySelector(&amp;apos;input&amp;apos;).addEventListener(&amp;apos;change&amp;apos;, function () &amp;#123;2">
+<meta property="og:description" content="首先在HTML建立一個iframe 1&amp;lt;iframe id&#x3D;&quot;test&quot;&amp;gt;&amp;lt;&#x2F;iframe&amp;gt;  用Javascript搜尋iframe的DOM物件 1let iframe &#x3D; document.getElementById(&amp;apos;test&amp;apos;).contentDocument;  字串寫入iframe 1iframe.open();23iframe.write(&amp;apos;&amp;lt;a&amp;gt">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:updated_time" content="2019-12-13T17:11:47.820Z">
+<meta property="og:updated_time" content="2019-12-27T16:28:35.484Z">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://yoursite.com/2019/12/09/fileToBase64/">
+<link rel="canonical" href="http://yoursite.com/2019/12/28/iframe/">
 
 
 <script id="page-configurations">
@@ -69,7 +68,7 @@
   };
 </script>
 
-  <title>如何將檔案轉成base64編碼 | Stephen's Note</title>
+  <title>如何在iframe讀取或寫入字串 | Stephen's Note</title>
   
 
 
@@ -178,7 +177,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/09/fileToBase64/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/28/iframe/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -191,7 +190,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          如何將檔案轉成base64編碼
+          如何在iframe讀取或寫入字串
         </h1>
 
         <div class="post-meta">
@@ -200,16 +199,10 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
+              
 
-              <time title="Created: 2019-12-09 20:34:09" itemprop="dateCreated datePublished" datetime="2019-12-09T20:34:09+08:00">2019-12-09</time>
+              <time title="Created: 2019-12-28 00:22:05 / Modified: 00:28:35" itemprop="dateCreated datePublished" datetime="2019-12-28T00:22:05+08:00">2019-12-28</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-12-14 01:11:47" itemprop="dateModified" datetime="2019-12-14T01:11:47+08:00">2019-12-14</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -233,12 +226,17 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>首先在HTML建立一個File Upload與一個顯示結果的div</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"file"</span> /&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"result"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></pre></td></tr></table></figure>
+        <p>首先在HTML建立一個iframe</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">id</span>=<span class="string">"test"</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span></pre></td></tr></table></figure>
 
-<p>接下來為File Upload綁定事件</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.querySelector(<span class="string">'input'</span>).addEventListener(<span class="string">'change'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">       <span class="comment">//建立FileReader去讀取File Upload的內容</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">       <span class="keyword">let</span> reader = <span class="keyword">new</span> FileReader();</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">       <span class="comment">//設定初始化事件</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">       reader.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">           <span class="keyword">let</span> arrayBuffer = <span class="keyword">this</span>.result;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">           <span class="keyword">let</span> base64 = btoa(</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">               <span class="keyword">new</span> <span class="built_in">Uint8Array</span>(arrayBuffer)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">                   .reduce(<span class="function">(<span class="params">data, byte</span>) =&gt;</span> data + <span class="built_in">String</span>.fromCharCode(byte), <span class="string">''</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">           );</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line">       </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line">         <span class="built_in">document</span>.querySelector(<span class="string">'#result'</span>).innerHTML = arrayBuffer + <span class="string">'  '</span> + arrayBuffer.byteLength;    </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">19</span></pre></td><td class="code"><pre><span class="line">       &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">20</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">21</span></pre></td><td class="code"><pre><span class="line">      <span class="comment">//開始讀取</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">22</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">23</span></pre></td><td class="code"><pre><span class="line">      reader.readAsArrayBuffer(<span class="keyword">this</span>.files[<span class="number">0</span>]);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">24</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">25</span></pre></td><td class="code"><pre><span class="line">   &#125;, <span class="literal">false</span>);</span></pre></td></tr></table></figure>
+<p>用Javascript搜尋iframe的DOM物件</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> iframe = <span class="built_in">document</span>.getElementById(<span class="string">'test'</span>).contentDocument;</span></pre></td></tr></table></figure>
 
+<p>字串寫入iframe</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">iframe.open();</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">iframe.write(<span class="string">'&lt;a&gt;test&lt;/a&gt;'</span>);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">iframe.close();</span></pre></td></tr></table></figure>
+
+<p>取得iframe字串</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">iframe.body.innerText</span></pre></td></tr></table></figure>
     </div>
 
     
@@ -246,20 +244,17 @@
     
 
       <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/tags/base64/" rel="tag"># base64</a>
-          </div>
 
         
 
 
         
     <div class="post-nav">
-      <div class="post-nav-item"></div>
       <div class="post-nav-item">
-    <a href="/2019/12/09/base64ToFile/" rel="next" title="如何將base64編碼轉成檔案">
-      如何將base64編碼轉成檔案 <i class="fa fa-chevron-right"></i>
+    <a href="/2019/12/28/function/" rel="prev" title="如何判斷function是否存在">
+      <i class="fa fa-chevron-left"></i> 如何判斷function是否存在
     </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     

@@ -46,18 +46,17 @@
   };
 </script>
 
-  <meta name="description" content="首先在HTML建立一個File Upload與一個顯示結果的div 1&amp;lt;input type&#x3D;&quot;file&quot; &#x2F;&amp;gt;23&amp;lt;div id&#x3D;&quot;result&quot;&amp;gt;&amp;lt;&#x2F;div&amp;gt;  接下來為File Upload綁定事件 1document.querySelector(&amp;apos;input&amp;apos;).addEventListener(&amp;apos;change&amp;apos;, function () &amp;#123;2">
-<meta name="keywords" content="base64">
+  <meta name="description" content="建立一個名稱為TEST的function 1function TEST() &amp;#123;23    console.log(&amp;apos;call function TEST&amp;apos;);4    5&amp;#125; 判斷function是否存在方法，並執行 1let funcName &#x3D; &amp;apos;TEST&amp;apos;;23if (typeof (window[FuncName]) &#x3D;&#x3D; &quot;function&quot;) &amp;#123;4    5">
 <meta property="og:type" content="article">
-<meta property="og:title" content="如何將檔案轉成base64編碼">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;09&#x2F;fileToBase64&#x2F;index.html">
+<meta property="og:title" content="如何判斷function是否存在">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;28&#x2F;function&#x2F;index.html">
 <meta property="og:site_name" content="Stephen&#39;s Note">
-<meta property="og:description" content="首先在HTML建立一個File Upload與一個顯示結果的div 1&amp;lt;input type&#x3D;&quot;file&quot; &#x2F;&amp;gt;23&amp;lt;div id&#x3D;&quot;result&quot;&amp;gt;&amp;lt;&#x2F;div&amp;gt;  接下來為File Upload綁定事件 1document.querySelector(&amp;apos;input&amp;apos;).addEventListener(&amp;apos;change&amp;apos;, function () &amp;#123;2">
+<meta property="og:description" content="建立一個名稱為TEST的function 1function TEST() &amp;#123;23    console.log(&amp;apos;call function TEST&amp;apos;);4    5&amp;#125; 判斷function是否存在方法，並執行 1let funcName &#x3D; &amp;apos;TEST&amp;apos;;23if (typeof (window[FuncName]) &#x3D;&#x3D; &quot;function&quot;) &amp;#123;4    5">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:updated_time" content="2019-12-13T17:11:47.820Z">
+<meta property="og:updated_time" content="2019-12-27T16:21:13.179Z">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://yoursite.com/2019/12/09/fileToBase64/">
+<link rel="canonical" href="http://yoursite.com/2019/12/28/function/">
 
 
 <script id="page-configurations">
@@ -69,7 +68,7 @@
   };
 </script>
 
-  <title>如何將檔案轉成base64編碼 | Stephen's Note</title>
+  <title>如何判斷function是否存在 | Stephen's Note</title>
   
 
 
@@ -178,7 +177,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/09/fileToBase64/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/28/function/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -191,7 +190,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          如何將檔案轉成base64編碼
+          如何判斷function是否存在
         </h1>
 
         <div class="post-meta">
@@ -200,16 +199,10 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
+              
 
-              <time title="Created: 2019-12-09 20:34:09" itemprop="dateCreated datePublished" datetime="2019-12-09T20:34:09+08:00">2019-12-09</time>
+              <time title="Created: 2019-12-28 00:11:51 / Modified: 00:21:13" itemprop="dateCreated datePublished" datetime="2019-12-28T00:11:51+08:00">2019-12-28</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-12-14 01:11:47" itemprop="dateModified" datetime="2019-12-14T01:11:47+08:00">2019-12-14</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -233,11 +226,11 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>首先在HTML建立一個File Upload與一個顯示結果的div</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"file"</span> /&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"result"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></pre></td></tr></table></figure>
+        <p>建立一個名稱為TEST的function</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">TEST</span>(<span class="params"></span>) </span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">    <span class="built_in">console</span>.log(<span class="string">'call function TEST'</span>);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">    </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
+<p>判斷function是否存在方法，並執行</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> funcName = <span class="string">'TEST'</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="keyword">typeof</span> (<span class="built_in">window</span>[FuncName]) == <span class="string">"function"</span>) &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">    </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">        <span class="comment">//執行方法</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">        <span class="built_in">window</span>[FuncName]();</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">    </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">&#125; </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">else</span> &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">        <span class="built_in">console</span>.log(<span class="string">'此方法不存在'</span>);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">        </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
 
-<p>接下來為File Upload綁定事件</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.querySelector(<span class="string">'input'</span>).addEventListener(<span class="string">'change'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">       <span class="comment">//建立FileReader去讀取File Upload的內容</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">       <span class="keyword">let</span> reader = <span class="keyword">new</span> FileReader();</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">       <span class="comment">//設定初始化事件</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">       reader.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">           <span class="keyword">let</span> arrayBuffer = <span class="keyword">this</span>.result;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">           <span class="keyword">let</span> base64 = btoa(</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">               <span class="keyword">new</span> <span class="built_in">Uint8Array</span>(arrayBuffer)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">                   .reduce(<span class="function">(<span class="params">data, byte</span>) =&gt;</span> data + <span class="built_in">String</span>.fromCharCode(byte), <span class="string">''</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">           );</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line">       </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line">         <span class="built_in">document</span>.querySelector(<span class="string">'#result'</span>).innerHTML = arrayBuffer + <span class="string">'  '</span> + arrayBuffer.byteLength;    </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">19</span></pre></td><td class="code"><pre><span class="line">       &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">20</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">21</span></pre></td><td class="code"><pre><span class="line">      <span class="comment">//開始讀取</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">22</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">23</span></pre></td><td class="code"><pre><span class="line">      reader.readAsArrayBuffer(<span class="keyword">this</span>.files[<span class="number">0</span>]);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">24</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">25</span></pre></td><td class="code"><pre><span class="line">   &#125;, <span class="literal">false</span>);</span></pre></td></tr></table></figure>
 
     </div>
 
@@ -246,19 +239,19 @@
     
 
       <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/tags/base64/" rel="tag"># base64</a>
-          </div>
 
         
 
 
         
     <div class="post-nav">
-      <div class="post-nav-item"></div>
       <div class="post-nav-item">
-    <a href="/2019/12/09/base64ToFile/" rel="next" title="如何將base64編碼轉成檔案">
-      如何將base64編碼轉成檔案 <i class="fa fa-chevron-right"></i>
+    <a href="/2019/12/25/protractorOnPi/" rel="prev" title="如何在pi 3b+上執行Angular Protractor">
+      <i class="fa fa-chevron-left"></i> 如何在pi 3b+上執行Angular Protractor
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/12/28/iframe/" rel="next" title="如何在iframe讀取或寫入字串">
+      如何在iframe讀取或寫入字串 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
