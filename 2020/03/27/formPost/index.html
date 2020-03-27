@@ -46,18 +46,17 @@
   };
 </script>
 
-  <meta name="description" content="首先在HTML建立一個隱藏的連結 1&amp;lt;a style&#x3D;&quot;visibility:hidden;&quot; id&#x3D;&quot;download_link&quot;&amp;gt;test&amp;lt;&#x2F;a&amp;gt;  接下來建立轉換方法 1 function (base64Str) &amp;#123;23     &#x2F;&#x2F;解碼base6445    const byteCharacters &#x3D; atob(base64Str);67    &#x2F;&#x2F;建立">
-<meta name="keywords" content="base64">
+  <meta name="description" content="下方是json格式資料 1&amp;#123;2   &quot;item&quot;: &quot;1&quot;,3   &quot;items&quot;: [&quot;1&quot;,&quot;2&quot;],4&amp;#125; 基本物件型別的拆解如下 1&quot;item&quot;: &quot;1&quot;2可拆解成:3&amp;lt;input type&#x3D;&quot;text&quot; name&#x3D;&quot;item&quot; value&#x3D;&quot;1&quot;&amp;gt;&amp;lt;br&amp;gt;  陣列部分需依造陣列結構做拆解 1&quot;items&quot;: [&quot;1&quot;,&quot;2&quot;]2可拆解成:3&amp;lt">
 <meta property="og:type" content="article">
-<meta property="og:title" content="如何將base64編碼轉成檔案">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;09&#x2F;base64ToFile&#x2F;index.html">
+<meta property="og:title" content="json格式資料如何拆解成form的輸入項">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;03&#x2F;27&#x2F;formPost&#x2F;index.html">
 <meta property="og:site_name" content="Stephen&#39;s Note">
-<meta property="og:description" content="首先在HTML建立一個隱藏的連結 1&amp;lt;a style&#x3D;&quot;visibility:hidden;&quot; id&#x3D;&quot;download_link&quot;&amp;gt;test&amp;lt;&#x2F;a&amp;gt;  接下來建立轉換方法 1 function (base64Str) &amp;#123;23     &#x2F;&#x2F;解碼base6445    const byteCharacters &#x3D; atob(base64Str);67    &#x2F;&#x2F;建立">
+<meta property="og:description" content="下方是json格式資料 1&amp;#123;2   &quot;item&quot;: &quot;1&quot;,3   &quot;items&quot;: [&quot;1&quot;,&quot;2&quot;],4&amp;#125; 基本物件型別的拆解如下 1&quot;item&quot;: &quot;1&quot;2可拆解成:3&amp;lt;input type&#x3D;&quot;text&quot; name&#x3D;&quot;item&quot; value&#x3D;&quot;1&quot;&amp;gt;&amp;lt;br&amp;gt;  陣列部分需依造陣列結構做拆解 1&quot;items&quot;: [&quot;1&quot;,&quot;2&quot;]2可拆解成:3&amp;lt">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:updated_time" content="2019-12-13T17:07:50.877Z">
+<meta property="og:updated_time" content="2020-03-27T12:50:22.005Z">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://yoursite.com/2019/12/09/base64ToFile/">
+<link rel="canonical" href="http://yoursite.com/2020/03/27/formPost/">
 
 
 <script id="page-configurations">
@@ -69,7 +68,7 @@
   };
 </script>
 
-  <title>如何將base64編碼轉成檔案 | Stephen's Note</title>
+  <title>json格式資料如何拆解成form的輸入項 | Stephen's Note</title>
   
 
 
@@ -178,7 +177,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/09/base64ToFile/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/27/formPost/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -191,7 +190,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          如何將base64編碼轉成檔案
+          json格式資料如何拆解成form的輸入項
         </h1>
 
         <div class="post-meta">
@@ -200,24 +199,18 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
+              
 
-              <time title="Created: 2019-12-09 20:34:09" itemprop="dateCreated datePublished" datetime="2019-12-09T20:34:09+08:00">2019-12-09</time>
+              <time title="Created: 2020-03-27 20:43:06 / Modified: 20:50:22" itemprop="dateCreated datePublished" datetime="2020-03-27T20:43:06+08:00">2020-03-27</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-12-14 01:07:50" itemprop="dateModified" datetime="2019-12-14T01:07:50+08:00">2019-12-14</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">Javascript</span>
+                  <a href="/categories/Html/" itemprop="url" rel="index">
+                    <span itemprop="name">Html</span>
                   </a>
                 </span>
             </span>
@@ -233,11 +226,16 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>首先在HTML建立一個隱藏的連結</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">style</span>=<span class="string">"visibility:hidden;"</span> <span class="attr">id</span>=<span class="string">"download_link"</span>&gt;</span>test<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></pre></td></tr></table></figure>
+        <p>下方是json格式資料</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">   <span class="attr">"item"</span>: <span class="string">"1"</span>,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">   <span class="attr">"items"</span>: [<span class="string">"1"</span>,<span class="string">"2"</span>],</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
+<p>基本物件型別的拆解如下</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">"item": "1"</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">可拆解成:</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"item"</span> <span class="attr">value</span>=<span class="string">"1"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span></pre></td></tr></table></figure>
 
-<p>接下來建立轉換方法</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"> <span class="function"><span class="keyword">function</span> (<span class="params">base64Str</span>) </span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">     <span class="comment">//解碼base64</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">const</span> byteCharacters = atob(base64Str);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">    <span class="comment">//建立Byte Array</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">const</span> byteNumbers = <span class="keyword">new</span> <span class="built_in">Array</span>(byteCharacters.length);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; byteCharacters.length; i++) &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">	  byteNumbers[i] = byteCharacters.charCodeAt(i);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">    &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">const</span> byteArray = <span class="keyword">new</span> <span class="built_in">Uint8Array</span>(byteNumbers);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">19</span></pre></td><td class="code"><pre><span class="line">    <span class="comment">//建立二進制檔和聲明MIME Type</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">20</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">21</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">const</span> blob = <span class="keyword">new</span> Blob([byteArray], &#123;<span class="attr">type</span>: <span class="string">'image/jpg'</span>&#125;);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">22</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">23</span></pre></td><td class="code"><pre><span class="line">    <span class="comment">//建立檔案物件連結</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">24</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">25</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">const</span> blobUrl = URL.createObjectURL(blob);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">26</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">27</span></pre></td><td class="code"><pre><span class="line">    <span class="comment">//下載連結</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">28</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">29</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">let</span> DomObj=<span class="built_in">document</span>.getElementById(<span class="string">'download_link'</span>);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">30</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">31</span></pre></td><td class="code"><pre><span class="line">    DomObj.setAttribute(<span class="string">'href'</span>, blobUrl);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">32</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">33</span></pre></td><td class="code"><pre><span class="line">    DomObj.setAttribute(<span class="string">'download'</span>, <span class="string">'test.pdf'</span>);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">34</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">35</span></pre></td><td class="code"><pre><span class="line">    DomObj.click();</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">36</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">37</span></pre></td><td class="code"><pre><span class="line">&#125;;</span></pre></td></tr></table></figure>
+<p>陣列部分需依造陣列結構做拆解</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">"items": ["1","2"]</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">可拆解成:</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"items[0]"</span> <span class="attr">value</span>=<span class="string">"1"</span>&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"items[1]"</span> <span class="attr">value</span>=<span class="string">"2"</span>&gt;</span></span></pre></td></tr></table></figure>
+
+<p>最後是完整的 HTML form 設定</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"/api/Test/Post"</span> <span class="attr">method</span>=<span class="string">"post"</span>&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"item"</span> <span class="attr">value</span>=<span class="string">"1"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"items[0]"</span> <span class="attr">value</span>=<span class="string">"1"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"items[1]"</span> <span class="attr">value</span>=<span class="string">"2"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">　<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"送出表單"</span>&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span></pre></td></tr></table></figure>
 
     </div>
 
@@ -246,9 +244,6 @@
     
 
       <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/tags/base64/" rel="tag"># base64</a>
-          </div>
 
         
 
@@ -256,13 +251,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2019/12/09/fileToBase64/" rel="prev" title="如何將檔案轉成base64編碼">
-      <i class="fa fa-chevron-left"></i> 如何將檔案轉成base64編碼
+    <a href="/2020/03/27/iteratorObject/" rel="prev" title="如何迭代JS物件">
+      <i class="fa fa-chevron-left"></i> 如何迭代JS物件
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2019/12/25/pictureCompress/" rel="next" title="如何將檔案壓縮並轉成base64編碼">
-      如何將檔案壓縮並轉成base64編碼 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
