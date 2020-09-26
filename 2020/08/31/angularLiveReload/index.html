@@ -28,7 +28,7 @@
 <meta property="og:site_name" content="Stephen&#39;s Note">
 <meta property="og:description" content="實作在Linux上，默認情況下，Listen使用inotify監視目錄中的更改 Ubuntu 的inotify預設限制為8192 您可以通過執行以下操作獲取目前的inotify文件監視限制： 1cat &#x2F;proc&#x2F;sys&#x2F;fs&#x2F;inotify&#x2F;max_user_watches  如果此限制不足以監視目錄中的所有文件，則必須增加該限制以使其正常工作 1sudo sysctl fs.inotify.m">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:updated_time" content="2020-09-06T06:06:43.690Z">
+<meta property="og:updated_time" content="2020-09-06T06:09:00.469Z">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="http://yoursite.com/2020/08/31/angularLiveReload/">
@@ -179,7 +179,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-09-06 14:06:43" itemprop="dateModified" datetime="2020-09-06T14:06:43+08:00">2020-09-06</time>
+                <time title="Modified: 2020-09-06 14:09:00" itemprop="dateModified" datetime="2020-09-06T14:09:00+08:00">2020-09-06</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -202,7 +202,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="實作"><a href="#實作" class="headerlink" title="實作"></a>實作</h2><p>在Linux上，默認情況下，Listen使用inotify監視目錄中的更改</p>
+        <h1 id="實作"><a href="#實作" class="headerlink" title="實作"></a>實作</h1><p>在Linux上，默認情況下，Listen使用inotify監視目錄中的更改</p>
 <p>Ubuntu 的inotify預設限制為8192</p>
 <p>您可以通過執行以下操作獲取目前的inotify文件監視限制：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">cat /proc/sys/fs/inotify/max_user_watches</span></pre></td></tr></table></figure>
@@ -213,7 +213,7 @@
 <p>如果想讓自己的限制永久化，請輸入以下命令:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">sudo sysctl -p</span></pre></td></tr></table></figure>
 
-<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p><a href="https://askubuntu.com/questions/770374/user-limit-of-inotify-watches-reached-on-ubuntu-16-04" target="_blank" rel="noopener">User limit of inotify watches reached on Ubuntu 16.04</a></p>
+<h1 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h1><p><a href="https://askubuntu.com/questions/770374/user-limit-of-inotify-watches-reached-on-ubuntu-16-04" target="_blank" rel="noopener">User limit of inotify watches reached on Ubuntu 16.04</a></p>
 
     </div>
 
@@ -294,7 +294,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#實作"><span class="nav-number">1.</span> <span class="nav-text">實作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#參考資料"><span class="nav-number">2.</span> <span class="nav-text">參考資料</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#實作"><span class="nav-number">1.</span> <span class="nav-text">實作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#參考資料"><span class="nav-number">2.</span> <span class="nav-text">參考資料</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
