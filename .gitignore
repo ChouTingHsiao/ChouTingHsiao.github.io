@@ -1,0 +1,15 @@
+# Created by https://www.toptal.com/developers/gitignore/api/hexo
+# Edit at https://www.toptal.com/developers/gitignore?templates=hexo
+
+### Hexo ###
+
+.DS_Store
+Thumbs.db
+db.json
+*.log
+node_modules/
+public/
+.deploy*/
+.deploy_git/
+
+# End of https://www.toptal.com/developers/gitignore/api/hexo
