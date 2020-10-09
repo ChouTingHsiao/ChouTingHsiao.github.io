@@ -11,7 +11,7 @@ tags: [Protractor]
  npx  webdriver-manager clean
 ```
  
-以chrome為例從[chromedriver.chromium.org](httchromedriverps://chromedriver.chromium.org/downloads)
+以chrome為例從[chromedriver.chromium.org](http://chromedriver.chromium.org/)
  
 查詢所需的版本號
  
