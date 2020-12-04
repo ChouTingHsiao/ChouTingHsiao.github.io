@@ -30,7 +30,7 @@ jobs:
       id: deploy
       uses: sma11black/hexo-action@v1.0.3
       with:
-        deploy_key: ${{ secrets.ACCESS_TOKEN }}
+        deploy_key: ${{ secrets.DEPLOY_KEY }}
         user_name: ${{ secrets.USER_NAME }}
         user_email: ${{ secrets.USER_EMAIL }}
         commit_msg: ${{ github.event.head_commit.message }}  # (or delete this input setting to use hexo default settings)
