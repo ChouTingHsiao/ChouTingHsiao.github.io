@@ -7,17 +7,13 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Build 🔧
-        uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
-        with:
-          node-version: '10.x'
-      - run: |
-          npm install -g hexo-cli
-          npm install
-          npm run build
-      - name: Deploy 🚀
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.ACCESS_TOKEN }}
-          publish_dir: ./public
+    - name: Checkout
+      uses: actions/checkout@master
+
+    - name: Build and Deploy
+      uses: renzhaosy/hexo-deploy-action@master
+      env:
+        PERSONAL_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        PUBLISH_REPOSITORY: ChouTingHsiao/ChouTingHsiao.github.io.git
+        BRANCH: master  # The branch the action should deploy to.
+        PUBLISH_DIR: ./public # The folder the action should deploy.
