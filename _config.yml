@@ -92,21 +92,6 @@ ignore:
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
 theme: next #landscape next
-theme_config:
-  # Dark Mode
-  darkmode: true
-  codeblock:
-    # Code Highlight theme
-    # Available values: normal | night | night eighties | night blue | night bright | solarized | solarized dark | galactic
-    # See: https://github.com/chriskempson/tomorrow-theme
-    highlight_theme: normal
-    # Add copy button on codeblock
-    copy_button:
-      enable: false
-      # Show text copy result.
-      show_result: false
-      # Available values: default | flat | mac
-      style:
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
