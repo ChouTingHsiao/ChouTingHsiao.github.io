@@ -1,15 +1,17 @@
 ---
 title: '使用Linux檔案列表建立Jenkins下拉選單'
-date: 2021-10-04 14:31:27
+date: 2021-10-05 22:00:00
 categories: Jenkins
 tags:
 ---
 >### 取得檔案列表方法
+
 使用以下Linxu指令，將預設目錄每個檔案使用一列的方式逐一列出
 ```bash
 ls -1 /home/ubuntu
 ```
 >### 建立Jenkins Pipeline
+
 在Pipeline執行Linxu指令，把結果存入變數
 ```groovy
 def fileInFolder = sh(script: "ls -1 /home/ubuntu", returnStdout: true).trim();
