@@ -32,3 +32,4 @@ confirmDialog.action
 取得點擊確認的用戶，使用變數 confirmDialog -> submitterParameter的定義
 ```groovy
 confirmDialog.releaseApprover
+```
