@@ -1,6 +1,6 @@
 ---
 title: 'Linux IBM i Access Odbc手動安裝'
-date: 2021-10-23 16:00:00
+date: 2021-10-05 22:00:00
 categories: IBM i Access
 tags: [Ubuntu]
 ---

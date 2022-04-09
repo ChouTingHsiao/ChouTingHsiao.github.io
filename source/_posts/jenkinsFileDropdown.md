@@ -1,6 +1,6 @@
 ---
 title: '使用Linux檔案列表建立Jenkins下拉選單'
-date: 2021-10-05 22:00:00
+date: 2021-10-23 16:00:00
 categories: Jenkins
 tags:
 ---
