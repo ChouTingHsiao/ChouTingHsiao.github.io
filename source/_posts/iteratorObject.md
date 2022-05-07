@@ -4,6 +4,7 @@ date: 2020-03-27 20:42:46
 categories: Javascript
 tags:
 ---
+
 # 實作
 使用for...in語法
 ```javascript

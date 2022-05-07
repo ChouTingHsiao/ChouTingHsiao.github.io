@@ -5,6 +5,7 @@ categories: Javascript
 tags:
   - 
 ---
+
 # 實作
 首先在HTML建立一個File Upload與一個canvas
 

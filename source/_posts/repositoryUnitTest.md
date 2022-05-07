@@ -4,6 +4,7 @@ date: 2022-05-01 12:00:00
 categories: .Net
 tags: [UnitTest, SQLite]
 ---
+
 # 實作
 安裝Nuget的Sqlite套件
 
@@ -72,4 +73,4 @@ connection.Open();
 
 [Microsoft文件](https://docs.microsoft.com/en-us/dotnet/api/microsoft.data.sqlite.sqliteconnection.createfunction?view=msdata-sqlite-6.0.0)
 
-[例子](https://csharp.hotexamples.com/examples/-/SQLiteConnection/CreateFunction/php-sqliteconnection-createfunction-method-examples.html)
+[SQLite Examples](https://csharp.hotexamples.com/examples/-/SQLiteConnection/CreateFunction/php-sqliteconnection-createfunction-method-examples.html)

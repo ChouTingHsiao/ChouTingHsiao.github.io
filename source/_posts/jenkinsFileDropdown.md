@@ -4,8 +4,9 @@ date: 2021-10-23 16:00:00
 categories: Jenkins
 tags:
 ---
+
 # 實作
-### 取得檔案列表方法
+## 取得檔案列表方法
 
 使用以下Linxu指令，將預設目錄每個檔案使用一列的方式逐一列出
 ```bash
@@ -14,7 +15,7 @@ ls -1 /home/ubuntu
 
 <!--more-->
 
-### 建立Jenkins Pipeline
+## 建立Jenkins Pipeline
 
 在Pipeline執行Linxu指令，把結果存入變數
 ```groovy

@@ -5,6 +5,7 @@ categories: Javascript
 tags:
   - base64
 ---
+
 # 實作
 首先在HTML建立一個File Upload與一個顯示結果的div
 

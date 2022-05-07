@@ -6,7 +6,7 @@ tags:
   - base64
 ---
 # 實作
-下方是把base64轉換成檔案的方法
+下方是使用JavaScript把base64轉換成檔案的方法
 
 <!--more-->
 
@@ -43,6 +43,7 @@ tags:
     URL.revokeObjectURL(blobUrl);
 }
 ```
+
 如果瀏覽器使用IE 10以上版本，可使用 window.navigator.msSaveBlob 作為替代方法
 ```javascript
 function downloadFile(base64Str) {

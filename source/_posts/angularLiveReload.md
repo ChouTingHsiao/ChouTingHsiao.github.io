@@ -4,6 +4,7 @@ date: 2020-08-31 22:41:57
 categories: Angular
 tags: [Ubuntu]
 ---
+
 # 實作
 在Linux上，默認情況下，Listen使用inotify監視目錄中的更改
  
