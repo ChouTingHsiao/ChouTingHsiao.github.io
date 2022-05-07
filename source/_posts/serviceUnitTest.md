@@ -6,9 +6,12 @@ tags: [UnitTest, Moq]
 ---
 # 實作
 安裝Nuget的Moq套件
+
 ```
 Install-Package Moq
 ```
+
+<!--more-->
 
 建立Repository的模擬物件
 ```C#
@@ -34,7 +37,24 @@ Table result = service.RunLogic();
 Assert.That(result.Name, Is.EqualTo("張三"));
 ```
 
-如果有呼叫模擬物件多次且須回傳不同的內容的需求可用SetupSequence做設定
+依傳入參數做回傳
+```C#
+mockRepository
+.Setup(x=> x.GetData("張三"))
+.Returns(new Table {
+    Id = 1,
+    Name = "張三"
+});
+
+mockRepository
+.Setup(x=> x.GetData("李四"))
+.Returns(new Table {
+    Id = 2,
+    Name = "李四"
+});
+```
+
+模擬呼叫方法多次依序回傳不同內容，可用SetupSequence做設定
 ```C#
 mockRepository
 .SetupSequence(x=> x.GetData(It.IsAny<string>()))

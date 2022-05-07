@@ -1,5 +1,5 @@
 ---
-title: '如何將檔案轉成base64編碼'
+title: 如何將檔案轉成base64編碼
 date: 2019-12-09 20:34:09
 categories: Javascript
 tags:
@@ -13,6 +13,8 @@ tags:
 
 <div id="result"></div>
 ```
+
+<!--more-->
 
 接下來為File Upload綁定事件
 

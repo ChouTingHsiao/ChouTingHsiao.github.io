@@ -1,17 +1,21 @@
 ---
-title: 'Linux Mssql Odbc手動安裝'
+title: Linux Mssql Odbc手動安裝
 date: 2021-10-05 22:00:00
 categories: Mssql
 tags: [Ubuntu]
 ---
->### Linux Odbc 元件配置
+# 實作
+
+### Linux Odbc 元件配置
 
 安裝Linux Odbc元件
 ```bash
 sudo apt-get install unixodbc
 ```
 
->### Odbc Driver 安裝
+<!--more-->
+
+### Odbc Driver 安裝
 
 登入[Microsoft網頁](https://docs.microsoft.com/en-us/sql/connect/odbc/download-odbc-driver-for-sql-server?view=sql-server-ver15)下載Odbc Driver並安裝
 ```bash

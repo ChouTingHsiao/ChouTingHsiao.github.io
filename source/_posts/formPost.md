@@ -1,5 +1,5 @@
 ---
-title: 'Json格式資料如何拆解成form的輸入項'
+title: Json格式資料如何拆解成form的輸入項
 date: 2020-03-27 20:43:06
 categories: Html
 tags:
@@ -12,6 +12,9 @@ tags:
    "items": ["1","2"],
 }
 ```
+
+<!--more-->
+
 基本物件型別的拆解如下
 ```html
 "item": "1"

@@ -1,5 +1,5 @@
 ---
-title: '如何判斷function是否存在'
+title: 如何判斷function是否存在
 date: 2019-12-28 00:11:51
 categories: Javascript
 tags:
@@ -14,6 +14,9 @@ function TEST() {
     
 }
 ```
+
+<!--more-->
+
 判斷function是否存在方法，並執行
 
 ```javascript

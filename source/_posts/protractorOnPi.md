@@ -1,5 +1,5 @@
 ---
-title: '如何在pi 3b+上執行Angular Protractor'
+title: 如何在pi 3b+上執行Angular Protractor
 date: 2019-12-25 20:59:57
 categories: Angular
 tags: [Protractor, Pi]
@@ -11,6 +11,8 @@ tags: [Protractor, Pi]
 ```bash
 wget http://launchpadlibrarian.net/361669488/chromium-chromedriver_65.0.3325.181-0ubuntu0.14.04.1_armhf.deb
 ```
+
+<!--more-->
 
 接下來進行安裝
 ```bash 

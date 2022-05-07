@@ -1,5 +1,5 @@
 ---
-title: '如何將base64編碼轉成檔案'
+title: 如何將base64編碼轉成檔案
 date: 2019-12-09 20:34:09
 categories: Javascript
 tags:
@@ -7,6 +7,9 @@ tags:
 ---
 # 實作
 下方是把base64轉換成檔案的方法
+
+<!--more-->
+
 ```javascript 
  function downloadFile(base64Str) {
     //解碼base64

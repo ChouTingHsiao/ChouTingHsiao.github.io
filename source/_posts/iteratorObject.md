@@ -1,5 +1,5 @@
 ---
-title: '如何迭代JS物件'
+title: 如何迭代JS物件
 date: 2020-03-27 20:42:46
 categories: Javascript
 tags:
@@ -10,6 +10,8 @@ tags:
 for (變數 in 物件) {...
 }
 ```
+
+<!--more-->
 
 下方為Sample Code
 ```javascript

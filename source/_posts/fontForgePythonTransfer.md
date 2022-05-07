@@ -1,10 +1,13 @@
 ---
-title: 'FontForge使用Python Script進行字型檔轉換'
+title: FontForge使用Python Script進行字型檔轉換
 date: 2021-10-23 17:00:00
 categories: FontForge
 tags:
 ---
 ### 建立font.py檔案
+
+<!--more-->
+
 ```python
 import sys
 #載入FontForge模組

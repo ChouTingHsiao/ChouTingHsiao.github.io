@@ -1,5 +1,5 @@
 ---
-title: '如何在iframe讀取或寫入字串'
+title: 如何在iframe讀取或寫入字串
 date: 2019-12-28 00:22:05
 categories: Javascript
 tags:
@@ -10,6 +10,8 @@ tags:
 ```html
 <iframe id="test"></iframe>
 ```
+
+<!--more-->
 
 用Javascript搜尋iframe的DOM物件
 ```javascript

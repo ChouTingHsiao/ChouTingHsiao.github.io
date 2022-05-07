@@ -1,12 +1,14 @@
 ---
-title: '如 何 設 定 Protractor WebDriver Version'
+title: 如何設定Protractor WebDriver Version
 date: 2020-08-31 22:38:57
 categories: Angular
 tags: [Protractor]
 ---
 # 實作
 先清除目前下載的WebDriver
- 
+
+<!--more-->
+
 ```bash 
  npx  webdriver-manager clean
 ```

@@ -6,9 +6,12 @@ tags: [UnitTest, SQLite]
 ---
 # 實作
 安裝Nuget的Sqlite套件
+
 ```
 Install-Package Microsoft.EntityFrameworkCore.Sqlite
 ```
+
+<!--more-->
 
 建立EntityFramework的DbContext
 ```C#

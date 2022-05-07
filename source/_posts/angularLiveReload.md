@@ -1,5 +1,5 @@
 ---
-title: 'Angular Live Reload在Ubuntu沒反應'
+title: Angular Live Reload在Ubuntu沒反應
 date: 2020-08-31 22:41:57
 categories: Angular
 tags: [Ubuntu]
@@ -10,11 +10,14 @@ tags: [Ubuntu]
 Ubuntu 的inotify預設限制為8192
  
 您可以通過執行以下操作獲取目前的inotify文件監視限制：
- 
+
 ```bash 
  cat /proc/sys/fs/inotify/max_user_watches
 ```
- 
+
+<!--more-->
+
+
 如果此限制不足以監視目錄中的所有文件，則必須增加該限制以使其正常工作
  
 ```bash

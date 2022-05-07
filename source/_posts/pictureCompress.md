@@ -1,5 +1,5 @@
 ---
-title: '如何將圖片壓縮並下載檔案'
+title: 如何將圖片壓縮並下載檔案
 date: 2019-12-25 20:52:20
 categories: Javascript
 tags:
@@ -12,6 +12,8 @@ tags:
 <input type="file" />
 <canvas id="canvas"  width="800" height="600"></canvas>
 ```
+
+<!--more-->
 
 接下來為File Upload綁定事件
 
