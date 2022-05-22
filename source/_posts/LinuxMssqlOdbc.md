@@ -1,8 +1,8 @@
 ---
-title: Linux Mssql Odbc手動安裝
+title: Linux Mssql ODBC手動安裝
 date: 2021-10-05 22:00:00
-categories: Mssql
-tags: [Ubuntu]
+categories: Linux
+tags: [Ubuntu, Mssql, ODBC]
 ---
 
 # 實作
