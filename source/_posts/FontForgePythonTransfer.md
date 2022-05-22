@@ -2,7 +2,7 @@
 title: FontForge使用Python Script進行字型檔轉換
 date: 2021-10-23 17:00:00
 categories: FontForge
-tags:
+tags: [Font]
 ---
 # 建立font.py檔案
 
