@@ -4,7 +4,10 @@ date: 2021-10-23 17:00:00
 categories: FontForge
 tags: [Font]
 ---
-# 建立font.py檔案
+
+# 實作
+
+建立font.py檔案
 
 <!--more-->
 
@@ -61,11 +64,11 @@ def main():
 main()	
 ```
 
-# 使用FontForge執行Python Script
+使用FontForge執行Python Script
+
 ```bash
 fontforge -script font.py [FontFilePath]
 ```
-
 
 # 參考資料
 [Python Scripting](https://fontforge.org/docs/scripting/python.html)
