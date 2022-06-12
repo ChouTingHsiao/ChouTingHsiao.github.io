@@ -124,7 +124,8 @@ menu:
   #schedule: /schedule/ || fa fa-calendar
   #sitemap: /sitemap.xml || fa fa-sitemap
   #commonweal: /404/ || fa fa-heartbeat
-
+  RSS: /atom.xml || fa fa-rss
+  
 # Enable / Disable menu icons / item badges.
 menu_settings:
   icons: true
@@ -995,3 +996,17 @@ vendors:
 css: css
 js: js
 images: images
+
+feed:
+  enable: true
+  type: atom
+  path: atom.xml
+  limit: 5
+  hub:
+  content:
+  content_limit: 140
+  content_limit_delim: ' '
+  order_by: -date
+  icon: icon.png
+  autodiscovery: true
+  template:
