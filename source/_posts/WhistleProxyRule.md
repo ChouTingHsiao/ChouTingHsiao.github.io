@@ -14,7 +14,6 @@ tags:
     ```
 
 <!--more-->
-
 ## Http的StatusCode代理設定
 
 * 在Rules頁籤加入以下設定，設定狀態碼
@@ -64,3 +63,13 @@ tags:
     ```nginx
     ^https://example.com/index.html jsAppend://{test.js}
     ```
+
+## Socks代理設定
+
+* 在Rules頁籤加入以下設定，設定Domain對應Ip位置
+    ```nginx
+    example.com socks://127.0.0.1:8080
+    ```
+
+# 參考資料
+[whistle](https://wproxy.org/whistle/)
