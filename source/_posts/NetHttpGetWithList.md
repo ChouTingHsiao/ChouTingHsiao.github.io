@@ -17,6 +17,8 @@ public class User {
 }
 ```
 
+<!--more-->
+
 ## 建立HttpGet方法
 ```c#
 [ApiController]

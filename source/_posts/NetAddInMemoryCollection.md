@@ -19,6 +19,8 @@ tags: [ IConfiguration ]
 }
 ```
 
+<!--more-->
+
 ## 轉換為Dictionary<string, string>
 ```c#
 Dictionary<string, string> inMemorySettings = new Dictionary<string, string> {
