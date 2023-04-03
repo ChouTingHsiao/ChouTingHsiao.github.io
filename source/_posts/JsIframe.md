@@ -33,5 +33,19 @@ iframe.close();
 iframe.body.innerText
 ```
 
+URL.createObjectURL寫入iframe
+```javascript
+const blobx = new Blob(
+    ['<base href="[URL輸入]">' + data],
+    {
+        type: 'text/html',
+    },
+)
+
+const urlObject = URL.createObjectURL(blobx)
+
+document.getElementById('test').setAttribute('src', urlObject)
+```
+
 # 參考資料
 [MDN Document write](https://developer.mozilla.org/en-US/docs/Web/API/Document/write)
