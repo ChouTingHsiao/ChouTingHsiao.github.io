@@ -102,4 +102,7 @@ theme: next # landscape
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
-  type: ''
+  type: git
+  # repository: http://github.com/ChouTingHsiao/ChouTingHsiao.github.io.git
+  repo: git@github.com:ChouTingHsiao/ChouTingHsiao.github.io.git
+  branch: master
