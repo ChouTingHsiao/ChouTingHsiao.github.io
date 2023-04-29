@@ -46,7 +46,7 @@ darkmode: true
 
 
 # ---------------------------------------------------------------
-# Site Information Settings
+# Site Information Settings 
 # ---------------------------------------------------------------
 
 favicon:
@@ -920,7 +920,7 @@ css: css
 js: js
 images: images
 
-# RSS
+# RSS 
 feed:
   enable: true
   type: atom
