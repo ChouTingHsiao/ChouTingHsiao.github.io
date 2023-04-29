@@ -28,8 +28,13 @@ jobs:
     # Deploy hexo blog website.
     - name: Deploy
       id: deploy
-      uses: yrpang/github-actions-hexo@v1.3
+      uses: sma11black/hexo-action@v1.0.4
       with:
-        deploykey: ${{ secrets.DEPLOY_KEY }}
-        username: ${{ secrets.USER_NAME }}
-        email: ${{ secrets.USER_EMAIL }}
+        deploy_key: ${{ secrets.DEPLOY_KEY }}
+        user_name: ${{ secrets.USER_NAME }}
+        user_email: ${{ secrets.USER_EMAIL }}
+        commit_msg: ${{ github.event.head_commit.message }} # (or delete this input setting to use hexo default settings)
+    # Use the output from the `deploy` step(use for test action)
+    - name: Get the output
+      run: |
+        echo "${{ steps.deploy.outputs.notify }}"
