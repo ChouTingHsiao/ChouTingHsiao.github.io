@@ -202,6 +202,32 @@
       </categories>
   </entry>
   <entry>
+    <title>如何在iframe讀取或寫入字串</title>
+    <url>/2019/12/28/JsIframe/</url>
+    <content><![CDATA[<h1 id="實作"><a href="#實作" class="headerlink" title="實作"></a>實作</h1><p>首先在HTML建立一個iframe</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">id</span>=<span class="string">&quot;test&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<p>用Javascript搜尋iframe的DOM物件</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> iframe = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;test&#x27;</span>).<span class="property">contentDocument</span>;</span><br></pre></td></tr></table></figure>
+
+<p>字串寫入iframe</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">iframe.<span class="title function_">open</span>();</span><br><span class="line"></span><br><span class="line">iframe.<span class="title function_">write</span>(<span class="string">&#x27;&lt;a&gt;test&lt;/a&gt;&#x27;</span>);</span><br><span class="line"></span><br><span class="line">iframe.<span class="title function_">close</span>();</span><br></pre></td></tr></table></figure>
+
+<p>取得iframe字串</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">iframe.<span class="property">body</span>.<span class="property">innerText</span></span><br></pre></td></tr></table></figure>
+
+<p>URL.createObjectURL寫入iframe</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> blobx = <span class="keyword">new</span> <span class="title class_">Blob</span>(</span><br><span class="line">    [<span class="string">&#x27;&lt;base href=&quot;[URL輸入]&quot;&gt;&#x27;</span> + data],</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="attr">type</span>: <span class="string">&#x27;text/html&#x27;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> urlObject = <span class="variable constant_">URL</span>.<span class="title function_">createObjectURL</span>(blobx)</span><br><span class="line"></span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;test&#x27;</span>).<span class="title function_">setAttribute</span>(<span class="string">&#x27;src&#x27;</span>, urlObject)</span><br></pre></td></tr></table></figure>
+
+<h1 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h1><p><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/write">MDN Document write</a></p>
+]]></content>
+      <categories>
+        <category>Javascript</category>
+      </categories>
+  </entry>
+  <entry>
     <title>如何迭代JS物件</title>
     <url>/2020/03/27/JsIteratorObject/</url>
     <content><![CDATA[<h1 id="實作"><a href="#實作" class="headerlink" title="實作"></a>實作</h1><p>使用for…in語法</p>
@@ -239,32 +265,6 @@
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;input&#x27;</span>).<span class="title function_">addEventListener</span>(<span class="string">&#x27;change&#x27;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="comment">//取得第一個檔案</span></span><br><span class="line">    <span class="keyword">const</span> file= <span class="variable language_">this</span>.<span class="property">files</span>[<span class="number">0</span>];</span><br><span class="line"></span><br><span class="line">    <span class="comment">//取得canvas</span></span><br><span class="line">    <span class="keyword">const</span> canvas = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;canvas&#x27;</span>);   </span><br><span class="line">    </span><br><span class="line">    <span class="comment">//宣告Image物件</span></span><br><span class="line">    <span class="keyword">let</span> img = <span class="keyword">new</span> <span class="title class_">Image</span>; </span><br><span class="line"></span><br><span class="line">    <span class="comment">//建立Image載入事件</span></span><br><span class="line">    img.<span class="property">onload</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//在canvas載入圖片 </span></span><br><span class="line">        canvas.<span class="title function_">getContext</span>(<span class="string">&#x27;2d&#x27;</span>).<span class="title function_">drawImage</span>(img,<span class="number">0</span>,<span class="number">0</span>,<span class="number">800</span>,<span class="number">600</span>); </span><br><span class="line"></span><br><span class="line">        <span class="comment">//回收圖片物件</span></span><br><span class="line">        <span class="variable constant_">URL</span>.<span class="title function_">revokeObjectURL</span>(img.<span class="property">src</span>);   </span><br><span class="line">        </span><br><span class="line">        <span class="comment">//把canvas圖片轉成Blob格式</span></span><br><span class="line">        canvas.<span class="title function_">toBlob</span>(<span class="function">(<span class="params">blob</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="comment">//宣告FileReader物件</span></span><br><span class="line">            <span class="keyword">var</span> reader = <span class="keyword">new</span> <span class="title class_">FileReader</span>();</span><br><span class="line"></span><br><span class="line">            <span class="comment">//建立FileReader載入完成事件</span></span><br><span class="line">            reader.<span class="property">onloadend</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">log</span>(reader.<span class="property">result</span>.<span class="title function_">split</span>(<span class="string">&quot;,&quot;</span>)[<span class="number">1</span>]);</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            <span class="comment">//讀取Blob格式物件</span></span><br><span class="line">            reader.<span class="title function_">readAsDataURL</span>(blob);</span><br><span class="line">        &#125;, <span class="string">&quot;image/jpeg&quot;</span>, <span class="number">0.8</span>);</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="comment">//圖片物件載入檔案</span></span><br><span class="line">    img.<span class="property">src</span> = <span class="variable constant_">URL</span>.<span class="title function_">createObjectURL</span>(file);</span><br><span class="line">&#125;, <span class="literal">false</span>);</span><br></pre></td></tr></table></figure>
 
 <h1 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h1><p><a href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API">MDN Canvas_API</a></p>
-]]></content>
-      <categories>
-        <category>Javascript</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>如何在iframe讀取或寫入字串</title>
-    <url>/2019/12/28/JsIframe/</url>
-    <content><![CDATA[<h1 id="實作"><a href="#實作" class="headerlink" title="實作"></a>實作</h1><p>首先在HTML建立一個iframe</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">id</span>=<span class="string">&quot;test&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<span id="more"></span>
-
-<p>用Javascript搜尋iframe的DOM物件</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> iframe = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;test&#x27;</span>).<span class="property">contentDocument</span>;</span><br></pre></td></tr></table></figure>
-
-<p>字串寫入iframe</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">iframe.<span class="title function_">open</span>();</span><br><span class="line"></span><br><span class="line">iframe.<span class="title function_">write</span>(<span class="string">&#x27;&lt;a&gt;test&lt;/a&gt;&#x27;</span>);</span><br><span class="line"></span><br><span class="line">iframe.<span class="title function_">close</span>();</span><br></pre></td></tr></table></figure>
-
-<p>取得iframe字串</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">iframe.<span class="property">body</span>.<span class="property">innerText</span></span><br></pre></td></tr></table></figure>
-
-<p>URL.createObjectURL寫入iframe</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> blobx = <span class="keyword">new</span> <span class="title class_">Blob</span>(</span><br><span class="line">    [<span class="string">&#x27;&lt;base href=&quot;[URL輸入]&quot;&gt;&#x27;</span> + data],</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="attr">type</span>: <span class="string">&#x27;text/html&#x27;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> urlObject = <span class="variable constant_">URL</span>.<span class="title function_">createObjectURL</span>(blobx)</span><br><span class="line"></span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;test&#x27;</span>).<span class="title function_">setAttribute</span>(<span class="string">&#x27;src&#x27;</span>, urlObject)</span><br></pre></td></tr></table></figure>
-
-<h1 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h1><p><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/write">MDN Document write</a></p>
 ]]></content>
       <categories>
         <category>Javascript</category>
@@ -528,14 +528,7 @@
 
 <h2 id="確認docker連線-2375是否存在"><a href="#確認docker連線-2375是否存在" class="headerlink" title="確認docker連線*:2375是否存在"></a>確認docker連線*:2375是否存在</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ss -peanut</span><br></pre></td></tr></table></figure>
 
-<h2 id="Powershell取得WSL的IP位置"><a href="#Powershell取得WSL的IP位置" class="headerlink" title="Powershell取得WSL的IP位置"></a>Powershell取得WSL的IP位置</h2><figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">wsl <span class="literal">--</span> ip <span class="literal">-o</span> <span class="literal">-4</span> <span class="literal">-json</span> addr list eth0 `</span><br><span class="line">| <span class="built_in">ConvertFrom-Json</span> `</span><br><span class="line">| %&#123; <span class="variable">$_</span>.addr_info.local &#125; `</span><br><span class="line">| ?&#123; <span class="variable">$_</span> &#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="測試Docker命令"><a href="#測試Docker命令" class="headerlink" title="測試Docker命令"></a>測試Docker命令</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker -H [YOUR_WSL_IP] ps</span><br></pre></td></tr></table></figure>
-
-<h2 id="測試Docker命令-1"><a href="#測試Docker命令-1" class="headerlink" title="測試Docker命令"></a>測試Docker命令</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker -H [YOUR_WSL_IP] ps</span><br></pre></td></tr></table></figure>
-
-<!-- sudo dockerd& -->
-<!-- docker run --rm hello-world -->
+<h2 id="Chocolatey安裝Docker-CLI"><a href="#Chocolatey安裝Docker-CLI" class="headerlink" title="Chocolatey安裝Docker CLI"></a>Chocolatey安裝Docker CLI</h2><figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">choco install docker<span class="literal">-cli</span></span><br></pre></td></tr></table></figure>
 
 <h2 id="主機連線設定有兩種方式"><a href="#主機連線設定有兩種方式" class="headerlink" title="主機連線設定有兩種方式"></a>主機連線設定有兩種方式</h2><ol>
 <li><p>設定環境變數DOCKER_HOST</p>
@@ -544,6 +537,13 @@
 <li><p>設定docker context</p>
 <figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 取得WSL的IP位置</span></span><br><span class="line"><span class="variable">$wslip</span> = wsl <span class="literal">--</span> ip <span class="literal">-o</span> <span class="literal">-4</span> <span class="literal">-json</span> addr list eth0 | <span class="built_in">ConvertFrom-Json</span> | %&#123; <span class="variable">$_</span>.addr_info.local &#125; ` | ?&#123; <span class="variable">$_</span> &#125;</span><br><span class="line"><span class="built_in">Write-Host</span> <span class="string">&quot;Setting Docker context &#x27;wsl&#x27; to host=tcp://<span class="variable">$</span>(<span class="variable">$wslip</span>):2375&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 建立context</span></span><br><span class="line">docker context create wsl <span class="literal">--docker</span> <span class="string">&quot;host=tcp://<span class="variable">$</span>(<span class="variable">$wslip</span>):2375&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 更新context</span></span><br><span class="line">docker context update wsl <span class="literal">--docker</span> <span class="string">&quot;host=tcp://<span class="variable">$</span>(<span class="variable">$wslip</span>):2375&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用context</span></span><br><span class="line">docker context use wsl</span><br><span class="line">docker <span class="literal">--context</span> wsl <span class="built_in">ps</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 顯示目前設定的context</span></span><br><span class="line">docker context <span class="built_in">ls</span> <span class="literal">--format</span>=<span class="string">&quot;&#123;&#123;json .&#125;&#125;&quot;</span></span><br></pre></td></tr></table></figure></li>
 </ol>
+<h2 id="Powershell取得WSL的IP位置"><a href="#Powershell取得WSL的IP位置" class="headerlink" title="Powershell取得WSL的IP位置"></a>Powershell取得WSL的IP位置</h2><figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">wsl <span class="literal">--</span> ip <span class="literal">-o</span> <span class="literal">-4</span> <span class="literal">-json</span> addr list eth0 `</span><br><span class="line">| <span class="built_in">ConvertFrom-Json</span> `</span><br><span class="line">| %&#123; <span class="variable">$_</span>.addr_info.local &#125; `</span><br><span class="line">| ?&#123; <span class="variable">$_</span> &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="測試Docker命令"><a href="#測試Docker命令" class="headerlink" title="測試Docker命令"></a>測試Docker命令</h2><figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">docker <span class="literal">-H</span> [<span class="type">YOUR_WSL_IP</span>] <span class="built_in">ps</span></span><br></pre></td></tr></table></figure>
+
+<!-- sudo dockerd& -->
+<!-- docker run --rm hello-world -->
+
 <h2 id="登入wsl自動啟動Docker"><a href="#登入wsl自動啟動Docker" class="headerlink" title="登入wsl自動啟動Docker"></a>登入wsl自動啟動Docker</h2><p>修改&#x2F;etc&#x2F;profile</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo nano /etc/profile</span><br></pre></td></tr></table></figure>
 
@@ -555,6 +555,9 @@
 
 <p>加入以下設定</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">%ubuntu ALL=(ALL:ALL) NOPASSWD:ALL</span><br></pre></td></tr></table></figure>
+
+<h1 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h1><p><a href="https://community.chocolatey.org/packages/docker-cli">Daemon CLI (dockerd)</a></p>
+<p><a href="https://docs.docker.com/engine/reference/commandline/dockerd/#daemon-configuration-file">Chocolatey Docker CLI</a></p>
 ]]></content>
       <categories>
         <category>Wsl2</category>

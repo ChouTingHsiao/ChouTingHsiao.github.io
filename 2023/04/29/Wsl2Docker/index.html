@@ -28,7 +28,7 @@
 <meta property="og:description" content="實作開放Docker外部連線建立&#x2F;etc&#x2F;docker&#x2F;daemon.json 1sudo nano &#x2F;etc&#x2F;docker&#x2F;daemon.json  加入以下設定 1234&amp;#123;  &quot;hosts&quot;: [ &quot;tcp:&#x2F;&#x2F;0.0.0.0:&quot; ],  &quot;tls&quot;: false&amp;#125;">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-04-29T21:00:00.000Z">
-<meta property="article:modified_time" content="2023-04-30T05:18:37.114Z">
+<meta property="article:modified_time" content="2023-04-30T07:34:54.625Z">
 <meta property="article:author" content="Stephen">
 <meta property="article:tag" content="Wsl2">
 <meta name="twitter:card" content="summary">
@@ -141,7 +141,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AF%A6%E4%BD%9C"><span class="nav-number">1.</span> <span class="nav-text">實作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%96%8B%E6%94%BEDocker%E5%A4%96%E9%83%A8%E9%80%A3%E7%B7%9A"><span class="nav-number">1.1.</span> <span class="nav-text">開放Docker外部連線</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A2%BA%E8%AA%8Ddocker%E9%80%A3%E7%B7%9A-2375%E6%98%AF%E5%90%A6%E5%AD%98%E5%9C%A8"><span class="nav-number">1.2.</span> <span class="nav-text">確認docker連線*:2375是否存在</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Powershell%E5%8F%96%E5%BE%97WSL%E7%9A%84IP%E4%BD%8D%E7%BD%AE"><span class="nav-number">1.3.</span> <span class="nav-text">Powershell取得WSL的IP位置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B8%AC%E8%A9%A6Docker%E5%91%BD%E4%BB%A4"><span class="nav-number">1.4.</span> <span class="nav-text">測試Docker命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B8%AC%E8%A9%A6Docker%E5%91%BD%E4%BB%A4-1"><span class="nav-number">1.5.</span> <span class="nav-text">測試Docker命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BB%E6%A9%9F%E9%80%A3%E7%B7%9A%E8%A8%AD%E5%AE%9A%E6%9C%89%E5%85%A9%E7%A8%AE%E6%96%B9%E5%BC%8F"><span class="nav-number">1.6.</span> <span class="nav-text">主機連線設定有兩種方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%99%BB%E5%85%A5wsl%E8%87%AA%E5%8B%95%E5%95%9F%E5%8B%95Docker"><span class="nav-number">1.7.</span> <span class="nav-text">登入wsl自動啟動Docker</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%84%A1%E5%AF%86%E7%A2%BCsudo%E6%8E%88%E6%AC%8A-%E4%B8%8D%E5%BB%BA%E8%AD%B0%E7%94%A8%E5%9C%A8%E7%94%9F%E7%94%A2%E7%92%B0%E5%A2%83"><span class="nav-number">1.8.</span> <span class="nav-text">無密碼sudo授權(不建議用在生產環境)</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AF%A6%E4%BD%9C"><span class="nav-number">1.</span> <span class="nav-text">實作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%96%8B%E6%94%BEDocker%E5%A4%96%E9%83%A8%E9%80%A3%E7%B7%9A"><span class="nav-number">1.1.</span> <span class="nav-text">開放Docker外部連線</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A2%BA%E8%AA%8Ddocker%E9%80%A3%E7%B7%9A-2375%E6%98%AF%E5%90%A6%E5%AD%98%E5%9C%A8"><span class="nav-number">1.2.</span> <span class="nav-text">確認docker連線*:2375是否存在</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chocolatey%E5%AE%89%E8%A3%9DDocker-CLI"><span class="nav-number">1.3.</span> <span class="nav-text">Chocolatey安裝Docker CLI</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BB%E6%A9%9F%E9%80%A3%E7%B7%9A%E8%A8%AD%E5%AE%9A%E6%9C%89%E5%85%A9%E7%A8%AE%E6%96%B9%E5%BC%8F"><span class="nav-number">1.4.</span> <span class="nav-text">主機連線設定有兩種方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Powershell%E5%8F%96%E5%BE%97WSL%E7%9A%84IP%E4%BD%8D%E7%BD%AE"><span class="nav-number">1.5.</span> <span class="nav-text">Powershell取得WSL的IP位置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B8%AC%E8%A9%A6Docker%E5%91%BD%E4%BB%A4"><span class="nav-number">1.6.</span> <span class="nav-text">測試Docker命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%99%BB%E5%85%A5wsl%E8%87%AA%E5%8B%95%E5%95%9F%E5%8B%95Docker"><span class="nav-number">1.7.</span> <span class="nav-text">登入wsl自動啟動Docker</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%84%A1%E5%AF%86%E7%A2%BCsudo%E6%8E%88%E6%AC%8A-%E4%B8%8D%E5%BB%BA%E8%AD%B0%E7%94%A8%E5%9C%A8%E7%94%9F%E7%94%A2%E7%92%B0%E5%A2%83"><span class="nav-number">1.8.</span> <span class="nav-text">無密碼sudo授權(不建議用在生產環境)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99"><span class="nav-number">2.</span> <span class="nav-text">參考資料</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -231,7 +231,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-04-30 05:18:37" itemprop="dateModified" datetime="2023-04-30T05:18:37+00:00">2023-04-30</time>
+      <time title="Modified: 2023-04-30 07:34:54" itemprop="dateModified" datetime="2023-04-30T07:34:54+00:00">2023-04-30</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -263,14 +263,7 @@
 
 <h2 id="確認docker連線-2375是否存在"><a href="#確認docker連線-2375是否存在" class="headerlink" title="確認docker連線*:2375是否存在"></a>確認docker連線*:2375是否存在</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ss -peanut</span><br></pre></td></tr></table></figure>
 
-<h2 id="Powershell取得WSL的IP位置"><a href="#Powershell取得WSL的IP位置" class="headerlink" title="Powershell取得WSL的IP位置"></a>Powershell取得WSL的IP位置</h2><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">wsl <span class="literal">--</span> ip <span class="literal">-o</span> <span class="literal">-4</span> <span class="literal">-json</span> addr list eth0 `</span><br><span class="line">| <span class="built_in">ConvertFrom-Json</span> `</span><br><span class="line">| %&#123; <span class="variable">$_</span>.addr_info.local &#125; `</span><br><span class="line">| ?&#123; <span class="variable">$_</span> &#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="測試Docker命令"><a href="#測試Docker命令" class="headerlink" title="測試Docker命令"></a>測試Docker命令</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker -H [YOUR_WSL_IP] ps</span><br></pre></td></tr></table></figure>
-
-<h2 id="測試Docker命令-1"><a href="#測試Docker命令-1" class="headerlink" title="測試Docker命令"></a>測試Docker命令</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker -H [YOUR_WSL_IP] ps</span><br></pre></td></tr></table></figure>
-
-<!-- sudo dockerd& -->
-<!-- docker run --rm hello-world -->
+<h2 id="Chocolatey安裝Docker-CLI"><a href="#Chocolatey安裝Docker-CLI" class="headerlink" title="Chocolatey安裝Docker CLI"></a>Chocolatey安裝Docker CLI</h2><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">choco install docker<span class="literal">-cli</span></span><br></pre></td></tr></table></figure>
 
 <h2 id="主機連線設定有兩種方式"><a href="#主機連線設定有兩種方式" class="headerlink" title="主機連線設定有兩種方式"></a>主機連線設定有兩種方式</h2><ol>
 <li><p>設定環境變數DOCKER_HOST</p>
@@ -279,6 +272,13 @@
 <li><p>設定docker context</p>
 <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 取得WSL的IP位置</span></span><br><span class="line"><span class="variable">$wslip</span> = wsl <span class="literal">--</span> ip <span class="literal">-o</span> <span class="literal">-4</span> <span class="literal">-json</span> addr list eth0 | <span class="built_in">ConvertFrom-Json</span> | %&#123; <span class="variable">$_</span>.addr_info.local &#125; ` | ?&#123; <span class="variable">$_</span> &#125;</span><br><span class="line"><span class="built_in">Write-Host</span> <span class="string">&quot;Setting Docker context &#x27;wsl&#x27; to host=tcp://<span class="variable">$</span>(<span class="variable">$wslip</span>):2375&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 建立context</span></span><br><span class="line">docker context create wsl <span class="literal">--docker</span> <span class="string">&quot;host=tcp://<span class="variable">$</span>(<span class="variable">$wslip</span>):2375&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 更新context</span></span><br><span class="line">docker context update wsl <span class="literal">--docker</span> <span class="string">&quot;host=tcp://<span class="variable">$</span>(<span class="variable">$wslip</span>):2375&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用context</span></span><br><span class="line">docker context use wsl</span><br><span class="line">docker <span class="literal">--context</span> wsl <span class="built_in">ps</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 顯示目前設定的context</span></span><br><span class="line">docker context <span class="built_in">ls</span> <span class="literal">--format</span>=<span class="string">&quot;&#123;&#123;json .&#125;&#125;&quot;</span></span><br></pre></td></tr></table></figure></li>
 </ol>
+<h2 id="Powershell取得WSL的IP位置"><a href="#Powershell取得WSL的IP位置" class="headerlink" title="Powershell取得WSL的IP位置"></a>Powershell取得WSL的IP位置</h2><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">wsl <span class="literal">--</span> ip <span class="literal">-o</span> <span class="literal">-4</span> <span class="literal">-json</span> addr list eth0 `</span><br><span class="line">| <span class="built_in">ConvertFrom-Json</span> `</span><br><span class="line">| %&#123; <span class="variable">$_</span>.addr_info.local &#125; `</span><br><span class="line">| ?&#123; <span class="variable">$_</span> &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="測試Docker命令"><a href="#測試Docker命令" class="headerlink" title="測試Docker命令"></a>測試Docker命令</h2><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="literal">-H</span> [<span class="type">YOUR_WSL_IP</span>] <span class="built_in">ps</span></span><br></pre></td></tr></table></figure>
+
+<!-- sudo dockerd& -->
+<!-- docker run --rm hello-world -->
+
 <h2 id="登入wsl自動啟動Docker"><a href="#登入wsl自動啟動Docker" class="headerlink" title="登入wsl自動啟動Docker"></a>登入wsl自動啟動Docker</h2><p>修改&#x2F;etc&#x2F;profile</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /etc/profile</span><br></pre></td></tr></table></figure>
 
@@ -290,6 +290,9 @@
 
 <p>加入以下設定</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">%ubuntu ALL=(ALL:ALL) NOPASSWD:ALL</span><br></pre></td></tr></table></figure>
+
+<h1 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h1><p><a target="_blank" rel="noopener" href="https://community.chocolatey.org/packages/docker-cli">Daemon CLI (dockerd)</a></p>
+<p><a target="_blank" rel="noopener" href="https://docs.docker.com/engine/reference/commandline/dockerd/#daemon-configuration-file">Chocolatey Docker CLI</a></p>
 
     </div>
 
