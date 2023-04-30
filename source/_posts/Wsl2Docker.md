@@ -1,8 +1,8 @@
 ---
 title: WSL2開放Docker外部連線
 date: 2023-04-29 21:00:00
-categories: WSL2
-tags: [ WSL2 ]
+categories: Wsl2
+tags: [ Wsl2 ]
 ---
 
 # 實作

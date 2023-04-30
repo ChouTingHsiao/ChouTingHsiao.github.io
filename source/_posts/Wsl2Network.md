@@ -1,8 +1,8 @@
 ---
 title: WSL2設定固定IP
 date: 2023-04-29 21:00:00
-categories: WSL2
-tags: [ WSL2 ]
+categories: Wsl2
+tags: [ Wsl2 ]
 ---
 
 # 實作
