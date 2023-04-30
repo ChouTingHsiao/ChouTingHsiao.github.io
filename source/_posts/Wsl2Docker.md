@@ -29,26 +29,10 @@ sudo nano /etc/docker/daemon.json
 ss -peanut
 ```
 
-## Powershell取得WSL的IP位置
+## Chocolatey安裝Docker CLI
 ```powershell
-wsl -- ip -o -4 -json addr list eth0 `
-| ConvertFrom-Json `
-| %{ $_.addr_info.local } `
-| ?{ $_ }
+choco install docker-cli
 ```
-
-## 測試Docker命令
-```bash
-docker -H [YOUR_WSL_IP] ps
-```
-
-## 測試Docker命令
-```bash
-docker -H [YOUR_WSL_IP] ps
-```
-
-<!-- sudo dockerd& -->
-<!-- docker run --rm hello-world -->
 
 ## 主機連線設定有兩種方式
 
@@ -77,6 +61,22 @@ docker --context wsl ps
 docker context ls --format="{{json .}}"
 ```
 
+## Powershell取得WSL的IP位置
+```powershell
+wsl -- ip -o -4 -json addr list eth0 `
+| ConvertFrom-Json `
+| %{ $_.addr_info.local } `
+| ?{ $_ }
+```
+
+## 測試Docker命令
+```powershell
+docker -H [YOUR_WSL_IP] ps
+```
+
+<!-- sudo dockerd& -->
+<!-- docker run --rm hello-world -->
+
 ## 登入wsl自動啟動Docker
 修改/etc/profile
 ```bash
@@ -99,3 +99,9 @@ sudo nano /etc/sudoers
 ```
 %ubuntu ALL=(ALL:ALL) NOPASSWD:ALL
 ```
+
+# 參考資料
+
+[Daemon CLI (dockerd)](https://community.chocolatey.org/packages/docker-cli)
+
+[Chocolatey Docker CLI](https://docs.docker.com/engine/reference/commandline/dockerd/#daemon-configuration-file)
