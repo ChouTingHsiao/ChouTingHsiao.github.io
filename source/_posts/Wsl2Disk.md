@@ -32,6 +32,9 @@ wsl --import "Ubuntu-22.04" d:\ubuntu e:\ubuntu.tar
 
 # 刪除Linux發行版壓縮檔
 del d:\ubuntu.tar
+
+# 因重新建立WSL會以root為預設帳戶，需重新設定預設帳戶
+ubuntu2204.exe config --default-user ubuntu
 ```
 
 # 參考資料
