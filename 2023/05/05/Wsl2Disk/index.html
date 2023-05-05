@@ -28,7 +28,7 @@
 <meta property="og:description" content="實作列出已安裝的Linux發行版執行下方命令 1wsl -l -v">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-05-05T00:10:00.000Z">
-<meta property="article:modified_time" content="2023-05-04T16:18:25.617Z">
+<meta property="article:modified_time" content="2023-05-05T14:31:54.089Z">
 <meta property="article:author" content="Stephen">
 <meta property="article:tag" content="Wsl2">
 <meta name="twitter:card" content="summary">
@@ -223,15 +223,9 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
+      
 
-      <time title="Created: 2023-05-05 00:10:00" itemprop="dateCreated datePublished" datetime="2023-05-05T00:10:00+00:00">2023-05-05</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-05-04 16:18:25" itemprop="dateModified" datetime="2023-05-04T16:18:25+00:00">2023-05-04</time>
+      <time title="Created: 2023-05-05 00:10:00 / Modified: 14:31:54" itemprop="dateCreated datePublished" datetime="2023-05-05T00:10:00+00:00">2023-05-05</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -258,7 +252,7 @@
 
 <span id="more"></span>
 
-<h2 id="遷移至磁碟機D"><a href="#遷移至磁碟機D" class="headerlink" title="遷移至磁碟機D"></a>遷移至磁碟機D</h2><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 導出已安裝的Linux發行版壓縮檔</span></span><br><span class="line">wsl <span class="literal">--export</span> <span class="string">&quot;Ubuntu-22.04&quot;</span> d:\ubuntu.tar</span><br><span class="line"></span><br><span class="line"><span class="comment"># 移除WSL</span></span><br><span class="line">wsl <span class="literal">--unregister</span> <span class="string">&quot;Ubuntu-22.04&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 建立解壓縮的目錄</span></span><br><span class="line">mkdir d:\Ubuntu</span><br><span class="line"></span><br><span class="line"><span class="comment"># Linux發行版壓縮檔解壓縮至新目錄後加入WSL</span></span><br><span class="line">wsl <span class="literal">--import</span> <span class="string">&quot;Ubuntu-22.04&quot;</span> d:\ubuntu e:\ubuntu.tar</span><br><span class="line"></span><br><span class="line"><span class="comment"># 刪除Linux發行版壓縮檔</span></span><br><span class="line"><span class="built_in">del</span> d:\ubuntu.tar</span><br></pre></td></tr></table></figure>
+<h2 id="遷移至磁碟機D"><a href="#遷移至磁碟機D" class="headerlink" title="遷移至磁碟機D"></a>遷移至磁碟機D</h2><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 導出已安裝的Linux發行版壓縮檔</span></span><br><span class="line">wsl <span class="literal">--export</span> <span class="string">&quot;Ubuntu-22.04&quot;</span> d:\ubuntu.tar</span><br><span class="line"></span><br><span class="line"><span class="comment"># 移除WSL</span></span><br><span class="line">wsl <span class="literal">--unregister</span> <span class="string">&quot;Ubuntu-22.04&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 建立解壓縮的目錄</span></span><br><span class="line">mkdir d:\Ubuntu</span><br><span class="line"></span><br><span class="line"><span class="comment"># Linux發行版壓縮檔解壓縮至新目錄後加入WSL</span></span><br><span class="line">wsl <span class="literal">--import</span> <span class="string">&quot;Ubuntu-22.04&quot;</span> d:\ubuntu e:\ubuntu.tar</span><br><span class="line"></span><br><span class="line"><span class="comment"># 刪除Linux發行版壓縮檔</span></span><br><span class="line"><span class="built_in">del</span> d:\ubuntu.tar</span><br><span class="line"></span><br><span class="line"><span class="comment"># 因重新建立WSL會以root為預設帳戶，需重新設定預設帳戶</span></span><br><span class="line">ubuntu2204.exe config <span class="literal">--default-user</span> ubuntu</span><br></pre></td></tr></table></figure>
 
 <h1 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h1><p><a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-tw/windows/wsl/use-custom-distro">匯入任何要與 WSL 搭配使用的 Linux 發行版本</a></p>
 
