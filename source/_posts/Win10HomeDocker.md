@@ -26,7 +26,8 @@ Copy-Item 'C:\ProgramData\docker' -Destination 'd:\\docker'
 {
   "hosts": [ "tcp://0.0.0.0:" ],
   "tls": false,
-  "data-root": "d:\\docker"
+  "data-root": "d:\\docker",
+  "dns": ["8.8.8.8"]
 }
 ```
 
