@@ -28,7 +28,7 @@ wsl --unregister "Ubuntu-22.04"
 mkdir d:\Ubuntu
 
 # Linux發行版壓縮檔解壓縮至新目錄後加入WSL
-wsl --import "Ubuntu-22.04" d:\ubuntu e:\ubuntu.tar
+wsl --import "Ubuntu-22.04" d:\ubuntu d:\ubuntu.tar
 
 # 刪除Linux發行版壓縮檔
 del d:\ubuntu.tar
