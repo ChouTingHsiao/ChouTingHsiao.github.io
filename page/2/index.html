@@ -159,7 +159,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-count">34</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -206,7 +206,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/04/29/Wsl2Network/" class="post-title-link" itemprop="url">WSL2設定固定IP</a>
+          <a href="/2023/04/29/Wsl2Network/" class="post-title-link" itemprop="url">WSL2 設定固定 IP</a>
         </h2>
 
         <div class="post-meta-container">
@@ -224,7 +224,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-05-07 09:53:08" itemprop="dateModified" datetime="2023-05-07T09:53:08+00:00">2023-05-07</time>
+      <time title="Modified: 2023-05-07 14:22:28" itemprop="dateModified" datetime="2023-05-07T14:22:28+00:00">2023-05-07</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -246,7 +246,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="實作"><a href="#實作" class="headerlink" title="實作"></a>實作</h1><h2 id="設定DNS"><a href="#設定DNS" class="headerlink" title="設定DNS"></a>設定DNS</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 刪除原始的resolv.conf設定</span></span><br><span class="line">sudo <span class="built_in">rm</span> /etc/resolv.conf</span><br><span class="line"></span><br><span class="line"><span class="comment"># 建立resolv.conf設定，加入自訂DNS</span></span><br><span class="line">sudo bash -c <span class="string">&#x27;echo &quot;nameserver 192.168.50.1&quot; &gt; /etc/resolv.conf&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 加入Google的DNS加速</span></span><br><span class="line">sudo bash -c <span class="string">&#x27;echo &quot;nameserver 8.8.8.8&quot; &gt;&gt; /etc/resolv.conf&#x27;</span></span><br><span class="line">sudo bash -c <span class="string">&#x27;echo &quot;nameserver 8.8.4.4&quot; &gt;&gt; /etc/resolv.conf&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 設定/etc/wsl.conf</span></span><br><span class="line">sudo bash -c <span class="string">&#x27;echo &quot;[network]&quot; &gt; /etc/wsl.conf&#x27;</span></span><br><span class="line">sudo bash -c <span class="string">&#x27;echo &quot;generateResolvConf = false&quot; &gt;&gt; /etc/wsl.conf&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 鎖定resolv.conf設定</span></span><br><span class="line">sudo chattr +i /etc/resolv.conf</span><br></pre></td></tr></table></figure>
+          <h1 id="實作"><a href="#實作" class="headerlink" title="實作"></a>實作</h1><h2 id="設定-DNS"><a href="#設定-DNS" class="headerlink" title="設定 DNS"></a>設定 DNS</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 刪除原始的 resolv.conf 設定</span></span><br><span class="line">sudo <span class="built_in">rm</span> /etc/resolv.conf</span><br><span class="line"></span><br><span class="line"><span class="comment"># 建立 resolv.conf 設定，加入自訂 DNS</span></span><br><span class="line">sudo bash -c <span class="string">&#x27;echo &quot;nameserver 192.168.50.1&quot; &gt; /etc/resolv.conf&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 加入 Google 的 DNS 加速</span></span><br><span class="line">sudo bash -c <span class="string">&#x27;echo &quot;nameserver 8.8.8.8&quot; &gt;&gt; /etc/resolv.conf&#x27;</span></span><br><span class="line">sudo bash -c <span class="string">&#x27;echo &quot;nameserver 8.8.4.4&quot; &gt;&gt; /etc/resolv.conf&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 設定 /etc/wsl.conf</span></span><br><span class="line">sudo bash -c <span class="string">&#x27;echo &quot;[network]&quot; &gt; /etc/wsl.conf&#x27;</span></span><br><span class="line">sudo bash -c <span class="string">&#x27;echo &quot;generateResolvConf = false&quot; &gt;&gt; /etc/wsl.conf&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 鎖定 resolv.conf 設定</span></span><br><span class="line">sudo chattr +i /etc/resolv.conf</span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2023/04/29/Wsl2Network/#more" rel="contents">
@@ -298,7 +298,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/01/21/NetHttpGetWithList/" class="post-title-link" itemprop="url">Http的Get方法傳入List參數</a>
+          <a href="/2023/01/21/NetHttpGetWithList/" class="post-title-link" itemprop="url">Http 的 Get 方法傳入 List 參數</a>
         </h2>
 
         <div class="post-meta-container">
@@ -316,7 +316,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-05-07 09:53:08" itemprop="dateModified" datetime="2023-05-07T09:53:08+00:00">2023-05-07</time>
+      <time title="Modified: 2023-05-07 14:22:28" itemprop="dateModified" datetime="2023-05-07T14:22:28+00:00">2023-05-07</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -390,7 +390,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/01/21/NetAddInMemoryCollection/" class="post-title-link" itemprop="url">使用AddInMemoryCollection設定Configuration</a>
+          <a href="/2023/01/21/NetAddInMemoryCollection/" class="post-title-link" itemprop="url">使用 AddInMemoryCollection 設定 Configuration</a>
         </h2>
 
         <div class="post-meta-container">
@@ -408,7 +408,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-05-07 09:53:08" itemprop="dateModified" datetime="2023-05-07T09:53:08+00:00">2023-05-07</time>
+      <time title="Modified: 2023-05-07 14:22:28" itemprop="dateModified" datetime="2023-05-07T14:22:28+00:00">2023-05-07</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -430,7 +430,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="實作"><a href="#實作" class="headerlink" title="實作"></a>實作</h1><h2 id="appsettings-json設定如下"><a href="#appsettings-json設定如下" class="headerlink" title="appsettings.json設定如下"></a>appsettings.json設定如下</h2><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;Logging&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;LogLevel&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;Default&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Information&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;Microsoft.AspNetCore&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Warning&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+          <h1 id="實作"><a href="#實作" class="headerlink" title="實作"></a>實作</h1><h2 id="appsettings-json-設定如下"><a href="#appsettings-json-設定如下" class="headerlink" title="appsettings.json 設定如下"></a>appsettings.json 設定如下</h2><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;Logging&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;LogLevel&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;Default&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Information&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;Microsoft.AspNetCore&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Warning&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2023/01/21/NetAddInMemoryCollection/#more" rel="contents">
@@ -482,7 +482,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/01/20/WhistleProxyRule/" class="post-title-link" itemprop="url">Whistle代理規則使用</a>
+          <a href="/2023/01/20/WhistleProxyRule/" class="post-title-link" itemprop="url">Whistle 代理規則使用</a>
         </h2>
 
         <div class="post-meta-container">
@@ -500,7 +500,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-05-07 09:53:08" itemprop="dateModified" datetime="2023-05-07T09:53:08+00:00">2023-05-07</time>
+      <time title="Modified: 2023-05-07 14:22:28" itemprop="dateModified" datetime="2023-05-07T14:22:28+00:00">2023-05-07</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -522,8 +522,8 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="實作"><a href="#實作" class="headerlink" title="實作"></a>實作</h1><h2 id="Dns代理設定"><a href="#Dns代理設定" class="headerlink" title="Dns代理設定"></a>Dns代理設定</h2><ul>
-<li>在Rules頁籤加入以下設定，設定Domain對應Ip位置  <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">example.<span class="attribute">com</span> <span class="number">192.168.0.1</span></span><br></pre></td></tr></table></figure></li>
+          <h1 id="實作"><a href="#實作" class="headerlink" title="實作"></a>實作</h1><h2 id="Dns-代理設定"><a href="#Dns-代理設定" class="headerlink" title="Dns 代理設定"></a>Dns 代理設定</h2><ul>
+<li>在 Rules 頁籤加入以下設定，設定 Domain 對應 Ip 位置  <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">example.<span class="attribute">com</span> <span class="number">192.168.0.1</span></span><br></pre></td></tr></table></figure></li>
 </ul>
           <!--noindex-->
             <div class="post-button">
@@ -576,7 +576,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/01/20/WhistleProxyInstall/" class="post-title-link" itemprop="url">安裝Whistle</a>
+          <a href="/2023/01/20/WhistleProxyInstall/" class="post-title-link" itemprop="url">安裝 Whistle</a>
         </h2>
 
         <div class="post-meta-container">
@@ -594,7 +594,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-05-07 09:53:08" itemprop="dateModified" datetime="2023-05-07T09:53:08+00:00">2023-05-07</time>
+      <time title="Modified: 2023-05-07 14:22:28" itemprop="dateModified" datetime="2023-05-07T14:22:28+00:00">2023-05-07</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -616,7 +616,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="實作"><a href="#實作" class="headerlink" title="實作"></a>實作</h1><h2 id="使用Node安裝Whistle"><a href="#使用Node安裝Whistle" class="headerlink" title="使用Node安裝Whistle"></a>使用Node安裝Whistle</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i -g whistle</span><br></pre></td></tr></table></figure>
+          <h1 id="實作"><a href="#實作" class="headerlink" title="實作"></a>實作</h1><h2 id="使用-Node-安裝-Whistle"><a href="#使用-Node-安裝-Whistle" class="headerlink" title="使用 Node 安裝 Whistle"></a>使用 Node 安裝 Whistle</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i -g whistle</span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2023/01/20/WhistleProxyInstall/#more" rel="contents">

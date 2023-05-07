@@ -20,16 +20,17 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"choutinghsiao.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.15.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="實作取得檔案列表方法使用以下Linxu指令，將預設目錄每個檔案使用一列的方式逐一列出 1ls -1 &#x2F;home&#x2F;ubuntu">
+    <meta name="description" content="實作取得檔案列表方法使用以下 Linxu 指令，將預設目錄每個檔案使用一列的方式逐一列出 1ls -1 &#x2F;home&#x2F;ubuntu">
 <meta property="og:type" content="article">
-<meta property="og:title" content="使用Linux檔案列表建立Jenkins下拉選單">
+<meta property="og:title" content="使用 Linux 檔案列表建立 Jenkins 下拉選單">
 <meta property="og:url" content="https://choutinghsiao.github.io/2021/10/23/JenkinsFileDropdown/index.html">
 <meta property="og:site_name" content="Stephen&#39;s Note">
-<meta property="og:description" content="實作取得檔案列表方法使用以下Linxu指令，將預設目錄每個檔案使用一列的方式逐一列出 1ls -1 &#x2F;home&#x2F;ubuntu">
+<meta property="og:description" content="實作取得檔案列表方法使用以下 Linxu 指令，將預設目錄每個檔案使用一列的方式逐一列出 1ls -1 &#x2F;home&#x2F;ubuntu">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-10-23T16:00:00.000Z">
-<meta property="article:modified_time" content="2023-05-07T09:53:08.015Z">
+<meta property="article:modified_time" content="2023-05-07T14:22:28.031Z">
 <meta property="article:author" content="Stephen">
+<meta property="article:tag" content="Jenkins">
 <meta name="twitter:card" content="summary">
 
 
@@ -37,10 +38,10 @@
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://choutinghsiao.github.io/2021/10/23/JenkinsFileDropdown/","path":"2021/10/23/JenkinsFileDropdown/","title":"使用Linux檔案列表建立Jenkins下拉選單"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://choutinghsiao.github.io/2021/10/23/JenkinsFileDropdown/","path":"2021/10/23/JenkinsFileDropdown/","title":"使用 Linux 檔案列表建立 Jenkins 下拉選單"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>使用Linux檔案列表建立Jenkins下拉選單 | Stephen's Note</title>
+<title>使用 Linux 檔案列表建立 Jenkins 下拉選單 | Stephen's Note</title>
   
 
 
@@ -140,7 +141,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AF%A6%E4%BD%9C"><span class="nav-number">1.</span> <span class="nav-text">實作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%96%E5%BE%97%E6%AA%94%E6%A1%88%E5%88%97%E8%A1%A8%E6%96%B9%E6%B3%95"><span class="nav-number">1.1.</span> <span class="nav-text">取得檔案列表方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BB%BA%E7%AB%8BJenkins-Pipeline"><span class="nav-number">1.2.</span> <span class="nav-text">建立Jenkins Pipeline</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AF%A6%E4%BD%9C"><span class="nav-number">1.</span> <span class="nav-text">實作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%96%E5%BE%97%E6%AA%94%E6%A1%88%E5%88%97%E8%A1%A8%E6%96%B9%E6%B3%95"><span class="nav-number">1.1.</span> <span class="nav-text">取得檔案列表方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BB%BA%E7%AB%8B-Jenkins-Pipeline"><span class="nav-number">1.2.</span> <span class="nav-text">建立 Jenkins Pipeline</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -164,7 +165,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-count">34</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -207,12 +208,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="使用Linux檔案列表建立Jenkins下拉選單 | Stephen's Note">
+      <meta itemprop="name" content="使用 Linux 檔案列表建立 Jenkins 下拉選單 | Stephen's Note">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          使用Linux檔案列表建立Jenkins下拉選單
+          使用 Linux 檔案列表建立 Jenkins 下拉選單
         </h1>
 
         <div class="post-meta-container">
@@ -230,7 +231,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-05-07 09:53:08" itemprop="dateModified" datetime="2023-05-07T09:53:08+00:00">2023-05-07</time>
+      <time title="Modified: 2023-05-07 14:22:28" itemprop="dateModified" datetime="2023-05-07T14:22:28+00:00">2023-05-07</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -252,14 +253,14 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h1 id="實作"><a href="#實作" class="headerlink" title="實作"></a>實作</h1><h2 id="取得檔案列表方法"><a href="#取得檔案列表方法" class="headerlink" title="取得檔案列表方法"></a>取得檔案列表方法</h2><p>使用以下Linxu指令，將預設目錄每個檔案使用一列的方式逐一列出</p>
+        <h1 id="實作"><a href="#實作" class="headerlink" title="實作"></a>實作</h1><h2 id="取得檔案列表方法"><a href="#取得檔案列表方法" class="headerlink" title="取得檔案列表方法"></a>取得檔案列表方法</h2><p>使用以下 Linxu 指令，將預設目錄每個檔案使用一列的方式逐一列出</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ls</span> -1 /home/ubuntu</span><br></pre></td></tr></table></figure>
 
 <span id="more"></span>
 
-<h2 id="建立Jenkins-Pipeline"><a href="#建立Jenkins-Pipeline" class="headerlink" title="建立Jenkins Pipeline"></a>建立Jenkins Pipeline</h2><p>在Pipeline執行Linxu指令，把結果存入變數</p>
+<h2 id="建立-Jenkins-Pipeline"><a href="#建立-Jenkins-Pipeline" class="headerlink" title="建立 Jenkins Pipeline"></a>建立 Jenkins Pipeline</h2><p>在 Pipeline 執行 Linxu 指令，把結果存入變數</p>
 <figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> fileInFolder = sh(<span class="attr">script:</span> <span class="string">&quot;ls -1 /home/ubuntu&quot;</span>, <span class="attr">returnStdout:</span> <span class="literal">true</span>).trim();</span><br></pre></td></tr></table></figure>
-<p>在Pipeline定義Dialog，把 parameters -&gt; choice -&gt; choices定義替換為上方變數 fileInFolder</p>
+<p>在 Pipeline 定義 Dialog ，把 parameters -&gt; choice -&gt; choices 定義替換為上方變數 fileInFolder</p>
 <figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> dialogMessage = <span class="string">&quot;Release $&#123;JOB_NAME&#125; now?&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> confirmDialog =</span><br><span class="line">    input <span class="attr">message:</span> dialogMessage,</span><br><span class="line">    <span class="symbol">parameters:</span> [choice(<span class="attr">name:</span> <span class="string">&#x27;action&#x27;</span>, <span class="attr">choices:</span> fileInFolder, <span class="attr">description:</span> <span class="string">&#x27;&#x27;</span>)],</span><br><span class="line">    <span class="symbol">submitterParameter:</span> <span class="string">&#x27;releaseApprover&#x27;</span></span><br></pre></td></tr></table></figure>
 <p>取得用戶選取參數，使用變數 confirmDialog -&gt; parameters -&gt; choice -&gt; name的定義</p>
 <figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">confirmDialog.action</span><br></pre></td></tr></table></figure>
@@ -281,7 +282,7 @@
   </li>
   <li class="post-copyright-link">
       <strong>Post link: </strong>
-      <a href="https://choutinghsiao.github.io/2021/10/23/JenkinsFileDropdown/" title="使用Linux檔案列表建立Jenkins下拉選單">https://choutinghsiao.github.io/2021/10/23/JenkinsFileDropdown/</a>
+      <a href="https://choutinghsiao.github.io/2021/10/23/JenkinsFileDropdown/" title="使用 Linux 檔案列表建立 Jenkins 下拉選單">https://choutinghsiao.github.io/2021/10/23/JenkinsFileDropdown/</a>
   </li>
   <li class="post-copyright-license">
       <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
@@ -289,18 +290,21 @@
 </ul>
 </div>
 
+          <div class="post-tags">
+              <a href="/tags/Jenkins/" rel="tag"># Jenkins</a>
+          </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2021/10/05/LinuxIbmIAccessOdbc/" rel="prev" title="Linux IBM i Access Odbc手動安裝">
-                  <i class="fa fa-chevron-left"></i> Linux IBM i Access Odbc手動安裝
+                <a href="/2021/10/05/LinuxIbmIAccessOdbc/" rel="prev" title="Linux IBM i Access Odbc 手動安裝">
+                  <i class="fa fa-chevron-left"></i> Linux IBM i Access Odbc 手動安裝
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2021/10/23/FontForgePythonTransfer/" rel="next" title="FontForge使用Python Script進行字型檔轉換">
-                  FontForge使用Python Script進行字型檔轉換 <i class="fa fa-chevron-right"></i>
+                <a href="/2021/10/23/FontForgePythonTransfer/" rel="next" title="FontForge 使用 Python Script 進行字型檔轉換">
+                  FontForge 使用 Python Script 進行字型檔轉換 <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
