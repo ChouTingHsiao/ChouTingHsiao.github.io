@@ -20,27 +20,29 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"choutinghsiao.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.15.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="實作使用for…in語法 12for (變數 in 物件) &amp;#123;...&amp;#125;">
+    <meta name="description" content="實作本機特定端口轉發至跳板機1ssh -p [跳板機端口] -C -f -N -g -L [本地端口]:[遠端服務IP]:[遠端服務端口] [帳號]@[跳板機IP]">
 <meta property="og:type" content="article">
-<meta property="og:title" content="如何迭代JS物件">
-<meta property="og:url" content="https://choutinghsiao.github.io/2020/03/27/JsIteratorObject/index.html">
+<meta property="og:title" content="使用SSH建立通道">
+<meta property="og:url" content="https://choutinghsiao.github.io/2023/05/07/LinuxSshTunnel/index.html">
 <meta property="og:site_name" content="Stephen&#39;s Note">
-<meta property="og:description" content="實作使用for…in語法 12for (變數 in 物件) &amp;#123;...&amp;#125;">
+<meta property="og:description" content="實作本機特定端口轉發至跳板機1ssh -p [跳板機端口] -C -f -N -g -L [本地端口]:[遠端服務IP]:[遠端服務端口] [帳號]@[跳板機IP]">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-03-27T20:42:46.000Z">
-<meta property="article:modified_time" content="2023-05-07T09:53:08.015Z">
+<meta property="article:published_time" content="2023-05-07T18:00:00.000Z">
+<meta property="article:modified_time" content="2023-05-07T09:53:08.019Z">
 <meta property="article:author" content="Stephen">
+<meta property="article:tag" content="Ubuntu">
+<meta property="article:tag" content="ssh">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://choutinghsiao.github.io/2020/03/27/JsIteratorObject/">
+<link rel="canonical" href="https://choutinghsiao.github.io/2023/05/07/LinuxSshTunnel/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://choutinghsiao.github.io/2020/03/27/JsIteratorObject/","path":"2020/03/27/JsIteratorObject/","title":"如何迭代JS物件"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://choutinghsiao.github.io/2023/05/07/LinuxSshTunnel/","path":"2023/05/07/LinuxSshTunnel/","title":"使用SSH建立通道"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>如何迭代JS物件 | Stephen's Note</title>
+<title>使用SSH建立通道 | Stephen's Note</title>
   
 
 
@@ -140,7 +142,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AF%A6%E4%BD%9C"><span class="nav-number">1.</span> <span class="nav-text">實作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99"><span class="nav-number">2.</span> <span class="nav-text">參考資料</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AF%A6%E4%BD%9C"><span class="nav-number">1.</span> <span class="nav-text">實作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%AC%E6%A9%9F%E7%89%B9%E5%AE%9A%E7%AB%AF%E5%8F%A3%E8%BD%89%E7%99%BC%E8%87%B3%E8%B7%B3%E6%9D%BF%E6%A9%9F"><span class="nav-number">1.1.</span> <span class="nav-text">本機特定端口轉發至跳板機</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B7%B3%E6%9D%BF%E6%A9%9F%E8%BD%89%E7%99%BC%E8%87%B3%E6%9C%AC%E6%A9%9F%E7%89%B9%E5%AE%9A%E7%AB%AF%E5%8F%A3"><span class="nav-number">1.2.</span> <span class="nav-text">跳板機轉發至本機特定端口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AB%8B%E6%B1%82%E8%BD%89%E7%99%BC%E8%87%B3%E8%B7%B3%E6%9D%BF"><span class="nav-number">1.3.</span> <span class="nav-text">請求轉發至跳板</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ssh%E5%9F%B7%E8%A1%8C%E9%81%B8%E9%A0%85%E8%AA%AA%E6%98%8E"><span class="nav-number">1.4.</span> <span class="nav-text">ssh執行選項說明</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99"><span class="nav-number">2.</span> <span class="nav-text">參考資料</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -194,7 +196,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://choutinghsiao.github.io/2020/03/27/JsIteratorObject/">
+    <link itemprop="mainEntityOfPage" href="https://choutinghsiao.github.io/2023/05/07/LinuxSshTunnel/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -207,12 +209,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="如何迭代JS物件 | Stephen's Note">
+      <meta itemprop="name" content="使用SSH建立通道 | Stephen's Note">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          如何迭代JS物件
+          使用SSH建立通道
         </h1>
 
         <div class="post-meta-container">
@@ -222,15 +224,9 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
+      
 
-      <time title="Created: 2020-03-27 20:42:46" itemprop="dateCreated datePublished" datetime="2020-03-27T20:42:46+00:00">2020-03-27</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-05-07 09:53:08" itemprop="dateModified" datetime="2023-05-07T09:53:08+00:00">2023-05-07</time>
+      <time title="Created: 2023-05-07 18:00:00 / Modified: 09:53:08" itemprop="dateCreated datePublished" datetime="2023-05-07T18:00:00+00:00">2023-05-07</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -238,7 +234,7 @@
       </span>
       <span class="post-meta-item-text">In</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Javascript/" itemprop="url" rel="index"><span itemprop="name">Javascript</span></a>
+          <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
         </span>
     </span>
 
@@ -252,24 +248,22 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h1 id="實作"><a href="#實作" class="headerlink" title="實作"></a>實作</h1><p>使用for…in語法</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (變數 <span class="keyword">in</span> 物件) &#123;...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h1 id="實作"><a href="#實作" class="headerlink" title="實作"></a>實作</h1><h2 id="本機特定端口轉發至跳板機"><a href="#本機特定端口轉發至跳板機" class="headerlink" title="本機特定端口轉發至跳板機"></a>本機特定端口轉發至跳板機</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -p [跳板機端口] -C -f -N -g -L [本地端口]:[遠端服務IP]:[遠端服務端口] [帳號]@[跳板機IP]</span><br></pre></td></tr></table></figure>
 
 <span id="more"></span>
 
-<p>下方為Sample Code</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> model = &#123;</span><br><span class="line">    <span class="attr">item</span>: <span class="string">&#x27;1&#x27;</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> filed <span class="keyword">in</span> model) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(model[filed]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="跳板機轉發至本機特定端口"><a href="#跳板機轉發至本機特定端口" class="headerlink" title="跳板機轉發至本機特定端口"></a>跳板機轉發至本機特定端口</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -p [跳板機端口] -C -g -R 0.0.0.0:[跳板機端口]:localhost:[本地端口] [帳號]@[跳板機IP]</span><br></pre></td></tr></table></figure>
 
-<p>使用Object.keys()</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Object</span>.<span class="title function_">keys</span>(物件);</span><br></pre></td></tr></table></figure>
+<h2 id="請求轉發至跳板"><a href="#請求轉發至跳板" class="headerlink" title="請求轉發至跳板"></a>請求轉發至跳板</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -p [跳板機端口] -D localhost:[本地端口] [帳號]@[跳板機IP]</span><br></pre></td></tr></table></figure>
 
-<p>下方為Sample Code</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> model = &#123;</span><br><span class="line">    <span class="attr">item</span>: <span class="string">&#x27;1&#x27;</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> keys = <span class="title class_">Object</span>.<span class="title function_">keys</span>(model);</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> length = keys.<span class="property">length</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt;= length; i++) &#123;</span><br><span class="line">    <span class="keyword">let</span> key =  keys[i];</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(model[key]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="ssh執行選項說明"><a href="#ssh執行選項說明" class="headerlink" title="ssh執行選項說明"></a>ssh執行選項說明</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">-L: 指定將本機上的特定端口轉發到遠端主機</span><br><span class="line">-R: 表示使用遠程端口轉發創建ssh隧道</span><br><span class="line">-D: port動態應用級端口轉​​發</span><br><span class="line">-p: 跳板機端口</span><br><span class="line">-C: 使用數據壓縮</span><br><span class="line">-c: cipher_spec選擇用於加密會話的密碼規範</span><br><span class="line">-f: 代表後台運行程序</span><br><span class="line">-F: configfile指定每個用戶的配置文件</span><br><span class="line">-N: 不要執行任何遠端指令</span><br><span class="line">-g: 允許遠程主機連接到本地轉發端口</span><br></pre></td></tr></table></figure>
 
-<p>Object.keys與for…in不同之處</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">for-in 迴圈還會迭代出物件自其原型鏈所繼承來的可列舉屬性</span><br></pre></td></tr></table></figure>
+<!-- /etc/ssh/sshd_config 加入GatewayPorts 設定，能讓所有人都連到 -->
 
-<h1 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h1><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys">MDN Object keys</a></p>
+<!-- scoop install putty
+plink -v -x -a -T -C -noagent -ssh -pw "[密碼]" -P 50893 -L [本地端口]:[遠端服務IP]:[遠端服務端口] [帳號]@[跳板機IP] -->
+
+<h1 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h1><p><a target="_blank" rel="noopener" href="https://www.ssh.com/academy/ssh/command">SSH Command - Usage, Options, Configuration</a></p>
 
     </div>
 
@@ -287,7 +281,7 @@
   </li>
   <li class="post-copyright-link">
       <strong>Post link: </strong>
-      <a href="https://choutinghsiao.github.io/2020/03/27/JsIteratorObject/" title="如何迭代JS物件">https://choutinghsiao.github.io/2020/03/27/JsIteratorObject/</a>
+      <a href="https://choutinghsiao.github.io/2023/05/07/LinuxSshTunnel/" title="使用SSH建立通道">https://choutinghsiao.github.io/2023/05/07/LinuxSshTunnel/</a>
   </li>
   <li class="post-copyright-license">
       <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
@@ -295,19 +289,20 @@
 </ul>
 </div>
 
+          <div class="post-tags">
+              <a href="/tags/Ubuntu/" rel="tag"># Ubuntu</a>
+              <a href="/tags/ssh/" rel="tag"># ssh</a>
+          </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2019/12/28/JsIframe/" rel="prev" title="如何在iframe讀取或寫入字串">
-                  <i class="fa fa-chevron-left"></i> 如何在iframe讀取或寫入字串
+                <a href="/2023/05/07/NetCoreDump/" rel="prev" title="使用lldb分析Dotnet核心傾印檔案">
+                  <i class="fa fa-chevron-left"></i> 使用lldb分析Dotnet核心傾印檔案
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2020/03/27/HtmlFormPost/" rel="next" title="Json格式資料如何拆解成form的輸入項">
-                  Json格式資料如何拆解成form的輸入項 <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>

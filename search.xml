@@ -334,6 +334,34 @@
       </tags>
   </entry>
   <entry>
+    <title>使用SSH建立通道</title>
+    <url>/2023/05/07/LinuxSshTunnel/</url>
+    <content><![CDATA[<h1 id="實作"><a href="#實作" class="headerlink" title="實作"></a>實作</h1><h2 id="本機特定端口轉發至跳板機"><a href="#本機特定端口轉發至跳板機" class="headerlink" title="本機特定端口轉發至跳板機"></a>本機特定端口轉發至跳板機</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh -p [跳板機端口] -C -f -N -g -L [本地端口]:[遠端服務IP]:[遠端服務端口] [帳號]@[跳板機IP]</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<h2 id="跳板機轉發至本機特定端口"><a href="#跳板機轉發至本機特定端口" class="headerlink" title="跳板機轉發至本機特定端口"></a>跳板機轉發至本機特定端口</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh -p [跳板機端口] -C -g -R 0.0.0.0:[跳板機端口]:localhost:[本地端口] [帳號]@[跳板機IP]</span><br></pre></td></tr></table></figure>
+
+<h2 id="請求轉發至跳板"><a href="#請求轉發至跳板" class="headerlink" title="請求轉發至跳板"></a>請求轉發至跳板</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh -p [跳板機端口] -D localhost:[本地端口] [帳號]@[跳板機IP]</span><br></pre></td></tr></table></figure>
+
+<h2 id="ssh執行選項說明"><a href="#ssh執行選項說明" class="headerlink" title="ssh執行選項說明"></a>ssh執行選項說明</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">-L: 指定將本機上的特定端口轉發到遠端主機</span><br><span class="line">-R: 表示使用遠程端口轉發創建ssh隧道</span><br><span class="line">-D: port動態應用級端口轉​​發</span><br><span class="line">-p: 跳板機端口</span><br><span class="line">-C: 使用數據壓縮</span><br><span class="line">-c: cipher_spec選擇用於加密會話的密碼規範</span><br><span class="line">-f: 代表後台運行程序</span><br><span class="line">-F: configfile指定每個用戶的配置文件</span><br><span class="line">-N: 不要執行任何遠端指令</span><br><span class="line">-g: 允許遠程主機連接到本地轉發端口</span><br></pre></td></tr></table></figure>
+
+<!-- /etc/ssh/sshd_config 加入GatewayPorts 設定，能讓所有人都連到 -->
+
+<!-- scoop install putty
+plink -v -x -a -T -C -noagent -ssh -pw "[密碼]" -P 50893 -L [本地端口]:[遠端服務IP]:[遠端服務端口] [帳號]@[跳板機IP] -->
+
+<h1 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h1><p><a href="https://www.ssh.com/academy/ssh/command">SSH Command - Usage, Options, Configuration</a></p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Ubuntu</tag>
+        <tag>ssh</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>使用AddInMemoryCollection設定Configuration</title>
     <url>/2023/01/21/NetAddInMemoryCollection/</url>
     <content><![CDATA[<h1 id="實作"><a href="#實作" class="headerlink" title="實作"></a>實作</h1><h2 id="appsettings-json設定如下"><a href="#appsettings-json設定如下" class="headerlink" title="appsettings.json設定如下"></a>appsettings.json設定如下</h2><figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;Logging&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;LogLevel&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;Default&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Information&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;Microsoft.AspNetCore&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Warning&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
@@ -370,6 +398,71 @@
         <tag>Font</tag>
         <tag>Big5</tag>
         <tag>Unicode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>使用lldb分析Dotnet核心傾印檔案</title>
+    <url>/2023/05/07/NetCoreDump/</url>
+    <content><![CDATA[<h1 id="實作"><a href="#實作" class="headerlink" title="實作"></a>實作</h1><h2 id="使用apport解壓縮核心傾印檔案"><a href="#使用apport解壓縮核心傾印檔案" class="headerlink" title="使用apport解壓縮核心傾印檔案"></a>使用apport解壓縮核心傾印檔案</h2><p>安裝apport</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt install apport</span><br></pre></td></tr></table></figure>
+
+<p>解壓縮核心傾印檔案</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">apport-unpack [systemGeneratedCrashReportPath].crash [yourNewUnpackDirectoryHere]</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<!-- cd [yourNewUnpackDirectoryHere]/
+sudo apt install gdb
+gdb `cat ExecutablePath` CoreDump
+堆疊: bt full
+顯示一些特定的資訊: info
+中斷點: b
+印出程式碼: list ( l )
+顯示正在執行的程式:info frame 0
+對執行中的程式以進行除錯: attach PID
+在拋出的異常上設置斷點: catch throw
+印出變數內容: print *(long**)0x7fffffffdc98
+檢查點: watch *(long**)0x7fffffffdc98
+反向調試: reverse-stepi -->
+
+<!-- export PATH="$HOME/.dotnet/tools:$PATH" -->
+
+<!-- dotnet tool install -g dotnet-dump
+dotnet-dump ps
+dotnet-dump collect --process-id 1902 -->
+
+<h2 id="安裝Dotnet工具"><a href="#安裝Dotnet工具" class="headerlink" title="安裝Dotnet工具"></a>安裝Dotnet工具</h2><p>安裝dotnet-symbol導出傾印檔案的符號</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dotnet tool install -g dotnet-symbol</span><br></pre></td></tr></table></figure>
+
+<p>導出傾印檔案的符號</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dotnet-symbol ~/dumps/dotnet/CoreDump -o ~/dumps/symbols --host-only</span><br></pre></td></tr></table></figure>
+
+<p>安裝SOS擴充偵錯工具功能</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dotnet tool install -g dotnet-sos</span><br><span class="line">dotnet-sos install</span><br></pre></td></tr></table></figure>
+
+<h2 id="使用lldb偵錯"><a href="#使用lldb偵錯" class="headerlink" title="使用lldb偵錯"></a>使用lldb偵錯</h2><p>安裝lldb</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt-get install lldb</span><br></pre></td></tr></table></figure>
+
+<p>使用lldb分析核心傾印檔案</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">lldb --core ~/dumps/dotnet/CoreDump</span><br></pre></td></tr></table></figure>
+
+<p>在lldb中載入導入傾印檔案的符號</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">setsymbolserver -directory ~/dumps/symbols</span><br></pre></td></tr></table></figure>
+
+<p>在lldb中常用命令</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">原生執行緒清單: clrthreads</span><br><span class="line">切換執行序: thread <span class="keyword">select</span> 15</span><br><span class="line">導出所有的線程棧: clrstack</span><br><span class="line">所有 Managed 物件: dso</span><br><span class="line">託管堆狀態: dumpheap -<span class="built_in">stat</span></span><br><span class="line">程序最近都拋了什麼異常: dumpheap -<span class="built_in">type</span> Exception</span><br><span class="line">異常的詳細信息: pe [address]</span><br><span class="line">尋找物件的位址: dumpheap -mt &lt;address&gt;</span><br><span class="line">分析物件位置: dumpObj [address]</span><br><span class="line">分析陣列位置: dumparray [address]</span><br><span class="line">GC狀態:  eeheap -gc</span><br></pre></td></tr></table></figure>
+
+<h2 id="安裝ProcDump"><a href="#安裝ProcDump" class="headerlink" title="安裝ProcDump"></a>安裝ProcDump</h2><p>當目標進程 CPU 或記憶體使用量達到特定臨界值或低於限制值時，您可以使用 ProcDump 來擷取記憶體傾印檔案。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt install procdump</span><br></pre></td></tr></table></figure>
+
+<h1 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h1><p><a href="https://learn.microsoft.com/zh-tw/troubleshoot/developer/webapps/aspnetcore/practice-troubleshoot-linux/lab-1-1-reproduce-troubleshoot">重現損毀問題並進行疑難排解</a></p>
+]]></content>
+      <categories>
+        <category>.Net</category>
+      </categories>
+      <tags>
+        <tag>.Net</tag>
+        <tag>lldb</tag>
       </tags>
   </entry>
   <entry>
