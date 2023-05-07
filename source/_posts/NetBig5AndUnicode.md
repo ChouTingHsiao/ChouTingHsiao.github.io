@@ -1,8 +1,8 @@
 ---
-title: 依字元內碼轉換Big5與Unicode
+title: 依字元內碼轉換 Big5 與 Unicode
 date: 2022-05-22 14:00:00
 categories: .Net
-tags: [Font, Big5, Unicode]
+tags: [.Net, Linux, Font, Big5, Unicode]
 ---
 
 # 實作

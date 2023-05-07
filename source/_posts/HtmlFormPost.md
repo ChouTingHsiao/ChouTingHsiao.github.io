@@ -1,12 +1,12 @@
 ---
-title: Json格式資料如何拆解成form的輸入項
+title: Json 格式資料如何拆解成 form 的輸入項
 date: 2020-03-27 20:43:06
 categories: Html
-tags:
+tags: [Html, Json]
 ---
 
 # 實作
-下方是json格式資料
+下方是 Json 格式資料
 ```json
 {
    "item": "1",

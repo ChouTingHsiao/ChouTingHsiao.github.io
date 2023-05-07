@@ -1,8 +1,8 @@
 ---
-title: Http的Get方法傳入List參數
+title: Http 的 Get 方法傳入 List 參數
 date: 2023-01-21 18:10:00
 categories: .Net
-tags: []
+tags: [.Net]
 ---
 
 # 實作
@@ -19,7 +19,7 @@ public class User {
 
 <!--more-->
 
-## 建立HttpGet方法
+## 建立 HttpGet 方法
 ```c#
 [ApiController]
 [Route("[controller]")]
@@ -33,7 +33,7 @@ public class UserController : ControllerBase
 }
 ```
 
-## 組合Request的Url
+## 組合 Request 的 Url
 ```nginx
 https://example.com/User?user[0].Name='張三'&user[0].Age=10&user[1].Name='李四'&user[1].Age=20
 ```

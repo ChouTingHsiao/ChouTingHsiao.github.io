@@ -1,15 +1,15 @@
 ---
-title: Linux Mssql ODBC手動安裝
+title: Linux Mssql Odbc 手動安裝
 date: 2021-10-05 22:00:00
 categories: Linux
-tags: [Ubuntu, Mssql, ODBC]
+tags: [Linux, Ubuntu, Odbc, Mssql]
 ---
 
 # 實作
 
 ## Linux Odbc 元件配置
 
-安裝Linux Odbc元件
+安裝 Linux Odbc 元件
 ```bash
 sudo apt-get install unixodbc
 ```
@@ -22,11 +22,11 @@ sudo apt-get install unixodbc
 ```bash
 sudo dpkg -i msodbcsql17_17.8.1.1-1_amd64.deb
 ```
-查看Linux Odbc Drivers設定檔位置
+查看 Linux Odbc Drivers 設定檔位置
 ```bash
 odbcinst -j
 ```
-查看設定檔是否出現ODBC Driver 17 for SQL Server的設定
+查看設定檔是否出現 ODBC Driver 17 for SQL Server 的設定
 ```bash
 cat /etc/odbcinst.ini
 ```

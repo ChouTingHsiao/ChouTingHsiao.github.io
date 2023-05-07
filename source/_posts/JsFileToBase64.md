@@ -1,13 +1,12 @@
 ---
-title: 如何將檔案轉成base64編碼
+title: 如何將檔案轉成 Base64 編碼
 date: 2019-12-09 20:34:09
 categories: Javascript
-tags:
-  - base64
+tags: [Javascript, Base64]
 ---
 
 # 實作
-首先在HTML建立一個File Upload與一個顯示結果的div
+首先在 HTML 建立一個 File Upload 與一個顯示結果的 div
 
 ```html
 <input type="file" />
@@ -17,16 +16,16 @@ tags:
 
 <!--more-->
 
-接下來為File Upload綁定事件
+接下來為 File Upload 綁定事件
 
 ```javascript
  document.querySelector('input').addEventListener('change', function () {
 
-        //建立FileReader去讀取File Upload的內容
+        // 建立 FileReader 去讀取 File Upload 的內容
 
         let reader = new FileReader();
 
-        //設定初始化事件
+        // 設定初始化事件
 
         reader.onload = function () {
 
@@ -40,7 +39,7 @@ tags:
           document.querySelector('#result').innerHTML = arrayBuffer + '  ' + arrayBuffer.byteLength;    
         }
 
-       //開始讀取
+       // 開始讀取
 
        reader.readAsArrayBuffer(this.files[0]);
 

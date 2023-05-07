@@ -1,12 +1,12 @@
 ---
-title: 如何設定Protractor WebDriver Version
+title: 如何設定 Protractor WebDriver Version
 date: 2020-08-31 22:38:57
 categories: Angular
-tags: [Protractor]
+tags: [Angular, Protractor]
 ---
 
 # 實作
-先清除目前下載的WebDriver
+先清除目前下載的 WebDriver
 
 <!--more-->
 
@@ -14,17 +14,17 @@ tags: [Protractor]
  npx  webdriver-manager clean
 ```
  
-以chrome為例從[chromedriver網頁](http://chromedriver.chromium.org/)
+以 chrome 為例從[chromedriver網頁](http://chromedriver.chromium.org/)
  
 查詢所需的版本號
  
-接下來依版本下載WebDriver
+接下來依版本下載 WebDriver
  
 ```bash
 npx webdriver-manager update  --versions.chrome  [chrome版本號]
 ```
  
-運行Protractor時使用--no-webdriver-update選項
+運行 Protractor 時使用 --no-webdriver-update 選項
  
 ```bash
  ng e2e --no-webdriver-update

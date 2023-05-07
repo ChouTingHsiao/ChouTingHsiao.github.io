@@ -1,13 +1,11 @@
 ---
-title: 如何使用Regex群組
+title: 如何使用 Regex 群組
 date: 2022-05-22 14:00:00
 categories: Javascript
-tags: [Regex]
+tags: [Javascript, Regex]
 ---
 
 # 實作
-
-建立一個名稱為TEST的function
 
 ```javascript
 // 建立規則

@@ -1,44 +1,44 @@
 ---
-title: Whistle代理規則使用
+title: Whistle 代理規則使用
 date: 2023-01-20 16:10:00
 categories: Whistle
-tags:
+tags: [Whistle]
 ---
 
 # 實作
-## Dns代理設定
+## Dns 代理設定
 
-* 在Rules頁籤加入以下設定，設定Domain對應Ip位置
+* 在 Rules 頁籤加入以下設定，設定 Domain 對應 Ip 位置
     ```nginx
     example.com 192.168.0.1
     ```
 
 <!--more-->
-## Http的StatusCode代理設定
+## Http 的 StatusCode 代理設定
 
-* 在Rules頁籤加入以下設定，設定狀態碼
+* 在 Rules 頁籤加入以下設定，設定狀態碼
     ```nginx
     ^https://example.com/User/Get statusCode://200
     ```
 
-## Http的Headers代理設定
+## Http 的 Headers 代理設定
 
-* 在Values頁籤加入以下設定，命名為corsheaders
+* 在 Values 頁籤加入以下設定，命名為 corsheaders
 
     ```nginx
     Access-Control-Allow-Origin: *
     Content-Type: application/json; charset=utf8
     ```
 
-* 在Rules頁籤加入以下設定，設定Headers
+* 在 Rules 頁籤加入以下設定，設定 Headers
 
     ```nginx
     ^https://example.com/User/Get resHeaders://{corsheaders}
     ```
 
-## Http的Body代理設定
+## Http 的 Body 代理設定
 
-* 在Values頁籤加入以下設定，命名為User.json
+* 在 Values 頁籤加入以下設定，命名為 User.json
     ```json
     {
         "Name": "張三",
@@ -46,27 +46,27 @@ tags:
     }
     ```
 
-* 在Rules頁籤加入以下設定，設定Headers
+* 在 Rules 頁籤加入以下設定，設定 Headers
 
     ```nginx
     ^https://example.com/User/Get resBody://{User.json}
     ```
 
-## 網頁嵌入Js檔案代理設定
+## 網頁嵌入 Js 檔案代理設定
 
-* 在Values頁籤加入以下設定，命名為test.js
+* 在 Values 頁籤加入以下設定，命名為 test.js
     ```javascript
     console.log('test')
     ```
 
-* 在Rules頁籤加入以下設定，設定Js檔案
+* 在 Rules 頁籤加入以下設定，設定 Js 檔案
     ```nginx
     ^https://example.com/index.html jsAppend://{test.js}
     ```
 
-## Socks代理設定
+## Socks 代理設定
 
-* 在Rules頁籤加入以下設定，設定Domain對應Ip位置
+* 在 Rules 頁籤加入以下設定，設定 Domain 對應 Ip 位置
     ```nginx
     example.com socks://127.0.0.1:8080
     ```

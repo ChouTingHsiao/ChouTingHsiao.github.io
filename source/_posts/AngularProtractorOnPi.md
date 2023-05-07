@@ -1,8 +1,8 @@
 ---
-title: 如何在pi 3b+上執行Angular Protractor
+title: 如何在 pi 3b+ 上執行 Angular Protractor
 date: 2019-12-25 20:59:57
 categories: Angular
-tags: [Protractor, Pi]
+tags: [Linux, Pi, Angular, Protractor]
 ---
 
 # 實作
@@ -25,12 +25,12 @@ wget http://launchpadlibrarian.net/361669488/chromium-chromedriver_65.0.3325.181
 /usr/lib/chromium-browser/chromedriver
 ```
 
-接下來更改protractor.conf.js的設定，加入下方設定
+接下來更改 protractor.conf.js 的設定，加入下方設定
 ```
 chromeDriver: '/usr/lib/chromium-browser/chromedriver'
 ```
 
-運行Protractor時使用--no-webdriver-update選項
+運行 Protractor 時使用 --no-webdriver-update 選項
 ```bash
 ng e2e --no-webdriver-update
 ```
@@ -38,4 +38,4 @@ ng e2e --no-webdriver-update
 # 參考資料
 [樹莓派 Raspberry Pi 使用 Python + Selenium 控制 Chromium 瀏覽器](https://blog.gtwang.org/iot/raspberry-pi/raspberry-pi-install-chromium-chrome-driver/)
 
-[Protractor config設定參考](https://github.com/angular/protractor/blob/master/lib/config.ts)
+[Protractor config 設定參考](https://github.com/angular/protractor/blob/master/lib/config.ts)

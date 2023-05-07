@@ -1,15 +1,15 @@
 ---
-title: 使用lldb分析Dotnet核心傾印檔案
+title: 使用 lldb 分析 Dotnet 核心傾印檔案
 date: 2023-05-07 18:00:00
 categories: .Net
-tags: [.Net, lldb]
+tags: [.Net, Linux, lldb]
 ---
 
 # 實作
 
-## 使用apport解壓縮核心傾印檔案
+## 使用 apport 解壓縮核心傾印檔案
 
-安裝apport
+安裝 apport
 ```bash
 sudo apt install apport
 ```
@@ -41,9 +41,9 @@ gdb `cat ExecutablePath` CoreDump
 dotnet-dump ps
 dotnet-dump collect --process-id 1902 -->
 
-## 安裝Dotnet工具
+## 安裝 Dotnet 工具
 
-安裝dotnet-symbol導出傾印檔案的符號
+安裝 dotnet-symbol 導出傾印檔案的符號
 ```bash
 dotnet tool install -g dotnet-symbol
 ```
@@ -53,45 +53,45 @@ dotnet tool install -g dotnet-symbol
 dotnet-symbol ~/dumps/dotnet/CoreDump -o ~/dumps/symbols --host-only
 ```
 
-安裝SOS擴充偵錯工具功能
+安裝 SOS 擴充偵錯工具功能
 ```bash
 dotnet tool install -g dotnet-sos
 dotnet-sos install
 ```
 
-## 使用lldb偵錯
+## 使用 lldb 偵錯
 
-安裝lldb
+安裝 lldb
 ```bash
 sudo apt-get install lldb
 ```
 
-使用lldb分析核心傾印檔案
+使用 lldb 分析核心傾印檔案
 ```bash
 lldb --core ~/dumps/dotnet/CoreDump
 ```
 
-在lldb中載入導入傾印檔案的符號
+在 lldb 中載入導入傾印檔案的符號
 ```bash
 setsymbolserver -directory ~/dumps/symbols
 ```
 
-在lldb中常用命令
+在 lldb 中常用命令
 ```bash
 原生執行緒清單: clrthreads
-切換執行序: thread select 15
+切換執行序: thread select [執行緒編號]
 導出所有的線程棧: clrstack
 所有 Managed 物件: dso
 託管堆狀態: dumpheap -stat
 程序最近都拋了什麼異常: dumpheap -type Exception
 異常的詳細信息: pe [address]
-尋找物件的位址: dumpheap -mt <address>
+尋找物件的位址: dumpheap -mt [address]
 分析物件位置: dumpObj [address]
 分析陣列位置: dumparray [address]
 GC狀態:  eeheap -gc
 ```
 
-## 安裝ProcDump
+## 安裝 ProcDump
 
 當目標進程 CPU 或記憶體使用量達到特定臨界值或低於限制值時，您可以使用 ProcDump 來擷取記憶體傾印檔案。
 ```bash

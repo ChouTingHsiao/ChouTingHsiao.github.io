@@ -1,27 +1,27 @@
 ---
-title: Win10家用版安裝Docker
+title: Win10 家用版安裝 Docker
 date: 2023-05-05 00:10:00
 categories: Wsl2
-tags: [ Wsl2, docker ]
+tags: [Wsl2, docker]
 ---
 
 # 實作
 
-## 使用Scoop安裝Docker
+## 使用 Scoop 安裝 Docker
 
-執行下方命令安裝，請注意下方Docker只支援Ｗindows的Image
+執行下方命令安裝，請注意下方 Docker 只支援 Ｗindows 的 Image
 ```powershell
 scoop install docker
 ```
 
 <!--more-->
 
-複製Docker資料至磁碟機D，節省磁碟機C的空間
+複製 Docker 資料至磁碟機 D ，節省磁碟機 C 的空間
 ```powershell
 Copy-Item 'C:\ProgramData\docker' -Destination 'd:\\docker'
 ```
 
-建立C:\ProgramData\docker\config\daemon.json
+建立 'C:\ProgramData\docker\config\daemon.json'
 ```json
 {
   "hosts": [ "tcp://0.0.0.0:" ],
@@ -31,7 +31,7 @@ Copy-Item 'C:\ProgramData\docker' -Destination 'd:\\docker'
 }
 ```
 
-## 安裝Hyper-V功能
+## 安裝 Hyper-V 功能
 ```powershell
 # 將批處理檔案所在的目錄設定為工作目錄
 pushd "%~dp0"
@@ -67,8 +67,8 @@ del container.txt
 Dism /online /enable-feature /featurename:containers /LimitAccess /ALL
 ```
  
-## 執行Docker
-執行下方命令註冊Ｗindows服務
+## 執行 Docker
+執行下方命令註冊 Ｗindows 服務
 ```powershell
 dockerd --register-service ; Start-Service docker ; exit
 ```

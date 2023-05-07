@@ -2,19 +2,19 @@
 title: 如何在商業邏輯層進行單元測試
 date: 2022-05-01 13:00:00
 categories: .Net
-tags: [UnitTest, Moq]
+tags: [.Net, UnitTest, Moq]
 ---
 
 # 實作
-安裝Nuget的Moq套件
+安裝 Nuget 的 Moq 套件
 
-```
+```powershell
 Install-Package Moq
 ```
 
 <!--more-->
 
-建立Repository的模擬物件
+建立 Repository 的模擬物件
 ```C#
 Mock<Repository> mockRepository = new Mock<Repository>();
 
@@ -26,12 +26,12 @@ mockRepository
 });
 ```
 
-把Repository的模擬物件注入Service
+把 Repository 的模擬物件注入 Service
 ```C#
 Service service = new Service(mockRepository.Object);
 ```
 
-使用Service
+使用 Service
 ```C#
 Table result = service.RunLogic();
 
@@ -55,7 +55,7 @@ mockRepository
 });
 ```
 
-模擬呼叫方法多次依序回傳不同內容，可用SetupSequence做設定
+模擬呼叫方法多次依序回傳不同內容，可用 SetupSequence 做設定
 ```C#
 mockRepository
 .SetupSequence(x=> x.GetData(It.IsAny<string>()))

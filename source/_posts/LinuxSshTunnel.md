@@ -1,8 +1,8 @@
 ---
-title: 使用SSH建立通道
+title: 使用 SSH 建立通道
 date: 2023-05-07 18:00:00
 categories: Linux
-tags: [Ubuntu, ssh]
+tags: [Linux, Ubuntu, Ssh]
 ---
 
 # 實作
@@ -24,7 +24,7 @@ ssh -p [跳板機端口] -C -g -R 0.0.0.0:[跳板機端口]:localhost:[本地端
 ssh -p [跳板機端口] -D localhost:[本地端口] [帳號]@[跳板機IP]
 ```
 
-## ssh執行選項說明
+## ssh 執行選項說明
 ```bash
 -L: 指定將本機上的特定端口轉發到遠端主機
 -R: 表示使用遠程端口轉發創建ssh隧道
