@@ -38,6 +38,7 @@ public class UserController : ControllerBase
 https://example.com/User?user[0].Name='張三'&user[0].Age=10&user[1].Name='李四'&user[1].Age=20
 ```
 
-# 參考資料
-
+{% note warning %}
+參考資料
 [MemoryConfigurationBuilderExtensions.AddInMemoryCollection Method](https://learn.microsoft.com/en-us/dotnet/api/microsoft.extensions.configuration.memoryconfigurationbuilderextensions.addinmemorycollection?view=dotnet-plat-ext-7.0)
+{% endnote %}

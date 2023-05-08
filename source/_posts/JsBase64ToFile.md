@@ -65,5 +65,7 @@ function downloadFile(base64Str) {
 };
 ```
 
-# 參考資料
+{% note warning %}
+參考資料
 [MDN atob](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/atob)
+{% endnote %}

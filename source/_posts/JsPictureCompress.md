@@ -56,5 +56,7 @@ document.querySelector('input').addEventListener('change', function () {
 }, false);
 ```
 
-# 參考資料
+{% note warning %}
+參考資料
 [MDN Canvas_API](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API)
+{% endnote %}

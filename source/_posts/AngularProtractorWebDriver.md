@@ -30,5 +30,7 @@ npx webdriver-manager update  --versions.chrome  [chrome版本號]
  ng e2e --no-webdriver-update
 ```
 
-# 參考資料
+{% note warning %}
+參考資料
 [webdriver-manager NPM](https://www.npmjs.com/package/webdriver-manager)
+{% endnote %}

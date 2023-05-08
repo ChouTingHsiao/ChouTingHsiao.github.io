@@ -69,5 +69,7 @@ main()
 fontforge -script font.py [FontFilePath]
 ```
 
-# 參考資料
+{% note warning %}
+參考資料
 [Python Scripting](https://fontforge.org/docs/scripting/python.html)
+{% endnote %}

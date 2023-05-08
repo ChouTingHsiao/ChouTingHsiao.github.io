@@ -47,5 +47,7 @@ const urlObject = URL.createObjectURL(blobx)
 document.getElementById('test').setAttribute('src', urlObject)
 ```
 
-# 參考資料
+{% note warning %}
+參考資料
 [MDN Document write](https://developer.mozilla.org/en-US/docs/Web/API/Document/write)
+{% endnote %}

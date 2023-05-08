@@ -71,5 +71,7 @@ tags: [Whistle]
     example.com socks://127.0.0.1:8080
     ```
 
-# 參考資料
+{% note warning %}
+參考資料
 [whistle](https://wproxy.org/whistle/)
+{% endnote %}

@@ -68,8 +68,9 @@ connection.CreateFunction("current_date", (x) => DateTime.Now);
 connection.Open();
 ```
 
-# 參考資料
-
+{% note warning %}
+參考資料
 [Microsoft文件](https://docs.microsoft.com/en-us/dotnet/api/microsoft.data.sqlite.sqliteconnection.createfunction?view=msdata-sqlite-6.0.0)
 
 [SQLite Examples](https://csharp.hotexamples.com/examples/-/SQLiteConnection/CreateFunction/php-sqliteconnection-createfunction-method-examples.html)
+{% endnote %}

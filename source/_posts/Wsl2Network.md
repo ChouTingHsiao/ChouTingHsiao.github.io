@@ -70,6 +70,7 @@ if(!(Get-NetAdapter 'vEthernet (WSL)' | Get-NetIPAddress).IPAddress.Contains('19
 }
 ```
 
-# 參考資料
-
+{% note warning %}
+參考資料
 [知乎-給 WSL2 設置靜態IP地址](https://zhuanlan.zhihu.com/p/380779630)
+{% endnote %}

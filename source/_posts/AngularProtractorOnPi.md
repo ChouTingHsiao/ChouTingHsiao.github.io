@@ -35,7 +35,9 @@ chromeDriver: '/usr/lib/chromium-browser/chromedriver'
 ng e2e --no-webdriver-update
 ```
 
-# 參考資料
+{% note warning %}
+參考資料
 [樹莓派 Raspberry Pi 使用 Python + Selenium 控制 Chromium 瀏覽器](https://blog.gtwang.org/iot/raspberry-pi/raspberry-pi-install-chromium-chrome-driver/)
 
 [Protractor config 設定參考](https://github.com/angular/protractor/blob/master/lib/config.ts)
+{% endnote %}

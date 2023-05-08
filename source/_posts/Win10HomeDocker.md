@@ -73,8 +73,9 @@ Dism /online /enable-feature /featurename:containers /LimitAccess /ALL
 dockerd --register-service ; Start-Service docker ; exit
 ```
 
-# 參考資料
-
+{% note warning %}
+參考資料
 [Scoop Docker](https://scoop.sh/#/apps?q=docker&s=0&d=1&o=true)
 
 [Windows Base Image](https://learn.microsoft.com/zh-tw/virtualization/windowscontainers/manage-containers/container-base-images)
+{% endnote %}

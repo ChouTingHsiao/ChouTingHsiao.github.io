@@ -100,8 +100,9 @@ sudo nano /etc/sudoers
 %ubuntu ALL=(ALL:ALL) NOPASSWD:ALL
 ```
 
-# 參考資料
-
+{% note warning %}
+參考資料
 [Daemon CLI (dockerd)](https://community.chocolatey.org/packages/docker-cli)
 
 [Chocolatey Docker CLI](https://docs.docker.com/engine/reference/commandline/dockerd/#daemon-configuration-file)
+{% endnote %}
