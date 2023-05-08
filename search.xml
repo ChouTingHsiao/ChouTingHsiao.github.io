@@ -16,8 +16,8 @@
 <p>如果想讓自己的限制永久化，請輸入以下命令:</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> fs.inotify.max_user_watches=524288 | sudo <span class="built_in">tee</span> -a /etc/sysctl.conf</span><br><span class="line">sudo sysctl -p</span><br></pre></td></tr></table></figure>
 
-<h1 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h1><p><a href="https://askubuntu.com/questions/770374/user-limit-of-inotify-watches-reached-on-ubuntu-16-04">User limit of inotify watches reached on Ubuntu 16.04</a></p>
-]]></content>
+<div class="note warning"><p>參考資料<br><a href="https://askubuntu.com/questions/770374/user-limit-of-inotify-watches-reached-on-ubuntu-16-04">User limit of inotify watches reached on Ubuntu 16.04</a></p>
+</div>]]></content>
       <categories>
         <category>Angular</category>
       </categories>
@@ -48,9 +48,9 @@
 <p>運行 Protractor 時使用 –no-webdriver-update 選項</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ng e2e --no-webdriver-update</span><br></pre></td></tr></table></figure>
 
-<h1 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h1><p><a href="https://blog.gtwang.org/iot/raspberry-pi/raspberry-pi-install-chromium-chrome-driver/">樹莓派 Raspberry Pi 使用 Python + Selenium 控制 Chromium 瀏覽器</a></p>
+<div class="note warning"><p>參考資料<br><a href="https://blog.gtwang.org/iot/raspberry-pi/raspberry-pi-install-chromium-chrome-driver/">樹莓派 Raspberry Pi 使用 Python + Selenium 控制 Chromium 瀏覽器</a></p>
 <p><a href="https://github.com/angular/protractor/blob/master/lib/config.ts">Protractor config 設定參考</a></p>
-]]></content>
+</div>]]></content>
       <categories>
         <category>Angular</category>
       </categories>
@@ -75,8 +75,8 @@
 <p>運行 Protractor 時使用 –no-webdriver-update 選項</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ng e2e --no-webdriver-update</span><br></pre></td></tr></table></figure>
 
-<h1 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h1><p><a href="https://www.npmjs.com/package/webdriver-manager">webdriver-manager NPM</a></p>
-]]></content>
+<div class="note warning"><p>參考資料<br><a href="https://www.npmjs.com/package/webdriver-manager">webdriver-manager NPM</a></p>
+</div>]]></content>
       <categories>
         <category>Angular</category>
       </categories>
@@ -96,8 +96,8 @@
 <p>使用 FontForge 執行 Python Script</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">fontforge -script font.py [FontFilePath]</span><br></pre></td></tr></table></figure>
 
-<h1 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h1><p><a href="https://fontforge.org/docs/scripting/python.html">Python Scripting</a></p>
-]]></content>
+<div class="note warning"><p>參考資料<br><a href="https://fontforge.org/docs/scripting/python.html">Python Scripting</a></p>
+</div>]]></content>
       <categories>
         <category>FontForge</category>
       </categories>
@@ -124,8 +124,8 @@
 <p>最後是完整的 HTML form 設定</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">&quot;/api/Test/Post&quot;</span> <span class="attr">method</span>=<span class="string">&quot;post&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;item&quot;</span> <span class="attr">value</span>=<span class="string">&quot;1&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;items[0]&quot;</span> <span class="attr">value</span>=<span class="string">&quot;1&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;items[1]&quot;</span> <span class="attr">value</span>=<span class="string">&quot;2&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">　<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> <span class="attr">value</span>=<span class="string">&quot;送出表單&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<h1 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h1><p><a href="https://stackoverflow.com/questions/9073690/post-an-array-from-an-html-form-without-javascript">POST an array from an HTML form without javascript</a></p>
-]]></content>
+<div class="note warning"><p>參考資料<br><a href="https://stackoverflow.com/questions/9073690/post-an-array-from-an-html-form-without-javascript">POST an array from an HTML form without javascript</a></p>
+</div>]]></content>
       <categories>
         <category>Html</category>
       </categories>
@@ -168,8 +168,8 @@
 <p>如果瀏覽器使用IE 10以上版本，可使用 window.navigator.msSaveBlob 作為替代方法</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">downloadFile</span>(<span class="params">base64Str</span>) &#123;</span><br><span class="line">   <span class="comment">// 解碼 base64</span></span><br><span class="line">   <span class="keyword">const</span> byteCharacters = <span class="title function_">atob</span>(base64Str);</span><br><span class="line">	</span><br><span class="line">   <span class="comment">// 建立 Byte Array</span></span><br><span class="line">   <span class="keyword">const</span> byteNumbers = <span class="keyword">new</span> <span class="title class_">Array</span>(byteCharacters.<span class="property">length</span>);</span><br><span class="line">	</span><br><span class="line">   <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; byteCharacters.<span class="property">length</span>; i++) &#123;</span><br><span class="line">      byteNumbers[i] = byteCharacters.<span class="title function_">charCodeAt</span>(i);</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">const</span> byteArray = <span class="keyword">new</span> <span class="title class_">Uint8Array</span>(byteNumbers);</span><br><span class="line"></span><br><span class="line">   <span class="comment">// 建立二進制檔和聲明 MIME Type</span></span><br><span class="line">   <span class="keyword">const</span> blob = <span class="keyword">new</span> <span class="title class_">Blob</span>([byteArray], &#123;<span class="attr">type</span>: <span class="string">&#x27;image/jpg&#x27;</span>&#125;);</span><br><span class="line"> </span><br><span class="line">   <span class="comment">// 下載檔案</span></span><br><span class="line">   <span class="variable language_">window</span>.<span class="property">navigator</span>.<span class="title function_">msSaveBlob</span>(blob, <span class="string">&#x27;file.jpg&#x27;</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-<h1 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h1><p><a href="https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/atob">MDN atob</a></p>
-]]></content>
+<div class="note warning"><p>參考資料<br><a href="https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/atob">MDN atob</a></p>
+</div>]]></content>
       <categories>
         <category>Javascript</category>
       </categories>
@@ -189,8 +189,8 @@
 <p>接下來為 File Upload 綁定事件</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;input&#x27;</span>).<span class="title function_">addEventListener</span>(<span class="string">&#x27;change&#x27;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line"></span><br><span class="line">       <span class="comment">// 建立 FileReader 去讀取 File Upload 的內容</span></span><br><span class="line"></span><br><span class="line">       <span class="keyword">let</span> reader = <span class="keyword">new</span> <span class="title class_">FileReader</span>();</span><br><span class="line"></span><br><span class="line">       <span class="comment">// 設定初始化事件</span></span><br><span class="line"></span><br><span class="line">       reader.<span class="property">onload</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line"></span><br><span class="line">           <span class="keyword">let</span> arrayBuffer = <span class="variable language_">this</span>.<span class="property">result</span>;</span><br><span class="line"></span><br><span class="line">           <span class="keyword">let</span> base64 = <span class="title function_">btoa</span>(</span><br><span class="line">               <span class="keyword">new</span> <span class="title class_">Uint8Array</span>(arrayBuffer)</span><br><span class="line">                   .<span class="title function_">reduce</span>(<span class="function">(<span class="params">data, byte</span>) =&gt;</span> data + <span class="title class_">String</span>.<span class="title function_">fromCharCode</span>(byte), <span class="string">&#x27;&#x27;</span>)</span><br><span class="line">           );</span><br><span class="line">       </span><br><span class="line">         <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;#result&#x27;</span>).<span class="property">innerHTML</span> = arrayBuffer + <span class="string">&#x27;  &#x27;</span> + arrayBuffer.<span class="property">byteLength</span>;    </span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">      <span class="comment">// 開始讀取</span></span><br><span class="line"></span><br><span class="line">      reader.<span class="title function_">readAsArrayBuffer</span>(<span class="variable language_">this</span>.<span class="property">files</span>[<span class="number">0</span>]);</span><br><span class="line"></span><br><span class="line">   &#125;, <span class="literal">false</span>);</span><br></pre></td></tr></table></figure>
 
-<h1 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h1><p><a href="https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/btoa">MDN btoa</a></p>
-]]></content>
+<div class="note warning"><p>參考資料<br><a href="https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/btoa">MDN btoa</a></p>
+</div>]]></content>
       <categories>
         <category>Javascript</category>
       </categories>
@@ -210,8 +210,8 @@
 <p>判斷 function 是否存在方法，並執行</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> funcName = <span class="string">&#x27;TEST&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">typeof</span> (<span class="variable language_">window</span>[<span class="title class_">FuncName</span>]) == <span class="string">&quot;function&quot;</span>) &#123;</span><br><span class="line">        <span class="comment">// 執行方法</span></span><br><span class="line">        <span class="variable language_">window</span>[<span class="title class_">FuncName</span>]();</span><br><span class="line">&#125; </span><br><span class="line"><span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;此方法不存在&#x27;</span>);</span><br><span class="line">&#125;  </span><br></pre></td></tr></table></figure>
 
-<h1 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h1><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof">MDN typeof</a></p>
-]]></content>
+<div class="note warning"><p>參考資料<br><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof">MDN typeof</a></p>
+</div>]]></content>
       <categories>
         <category>Javascript</category>
       </categories>
@@ -240,8 +240,8 @@
 <p>URL.createObjectURL 寫入 iframe</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> blobx = <span class="keyword">new</span> <span class="title class_">Blob</span>(</span><br><span class="line">    [<span class="string">&#x27;&lt;base href=&quot;[URL輸入]&quot;&gt;&#x27;</span> + data],</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="attr">type</span>: <span class="string">&#x27;text/html&#x27;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> urlObject = <span class="variable constant_">URL</span>.<span class="title function_">createObjectURL</span>(blobx)</span><br><span class="line"></span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;test&#x27;</span>).<span class="title function_">setAttribute</span>(<span class="string">&#x27;src&#x27;</span>, urlObject)</span><br></pre></td></tr></table></figure>
 
-<h1 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h1><p><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/write">MDN Document write</a></p>
-]]></content>
+<div class="note warning"><p>參考資料<br><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/write">MDN Document write</a></p>
+</div>]]></content>
       <categories>
         <category>Javascript</category>
       </categories>
@@ -270,8 +270,8 @@
 <p>Object.keys 與 for…in 不同之處</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">for-in 迴圈還會迭代出物件自其原型鏈所繼承來的可列舉屬性</span><br></pre></td></tr></table></figure>
 
-<h1 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h1><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys">MDN Object keys</a></p>
-]]></content>
+<div class="note warning"><p>參考資料<br><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys">MDN Object keys</a></p>
+</div>]]></content>
       <categories>
         <category>Javascript</category>
       </categories>
@@ -291,8 +291,8 @@
 <p>接下來為 File Upload 綁定事件</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;input&#x27;</span>).<span class="title function_">addEventListener</span>(<span class="string">&#x27;change&#x27;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="comment">// 取得第一個檔案</span></span><br><span class="line">    <span class="keyword">const</span> file= <span class="variable language_">this</span>.<span class="property">files</span>[<span class="number">0</span>];</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 取得 canvas</span></span><br><span class="line">    <span class="keyword">const</span> canvas = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;canvas&#x27;</span>);   </span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 宣告 Image 物件</span></span><br><span class="line">    <span class="keyword">let</span> img = <span class="keyword">new</span> <span class="title class_">Image</span>; </span><br><span class="line"></span><br><span class="line">    <span class="comment">// 建立 Image 載入事件</span></span><br><span class="line">    img.<span class="property">onload</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 在 canvas 載入圖片 </span></span><br><span class="line">        canvas.<span class="title function_">getContext</span>(<span class="string">&#x27;2d&#x27;</span>).<span class="title function_">drawImage</span>(img,<span class="number">0</span>,<span class="number">0</span>,<span class="number">800</span>,<span class="number">600</span>); </span><br><span class="line"></span><br><span class="line">        <span class="comment">// 回收圖片物件</span></span><br><span class="line">        <span class="variable constant_">URL</span>.<span class="title function_">revokeObjectURL</span>(img.<span class="property">src</span>);   </span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 把 canvas 圖片轉成 Blob 格式</span></span><br><span class="line">        canvas.<span class="title function_">toBlob</span>(<span class="function">(<span class="params">blob</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="comment">// 宣告FileReader物件</span></span><br><span class="line">            <span class="keyword">var</span> reader = <span class="keyword">new</span> <span class="title class_">FileReader</span>();</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 建立 FileReader 載入完成事件</span></span><br><span class="line">            reader.<span class="property">onloadend</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">log</span>(reader.<span class="property">result</span>.<span class="title function_">split</span>(<span class="string">&quot;,&quot;</span>)[<span class="number">1</span>]);</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            <span class="comment">// 讀取 Blob 格式物件</span></span><br><span class="line">            reader.<span class="title function_">readAsDataURL</span>(blob);</span><br><span class="line">        &#125;, <span class="string">&quot;image/jpeg&quot;</span>, <span class="number">0.8</span>);</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="comment">// 圖片物件載入檔案</span></span><br><span class="line">    img.<span class="property">src</span> = <span class="variable constant_">URL</span>.<span class="title function_">createObjectURL</span>(file);</span><br><span class="line">&#125;, <span class="literal">false</span>);</span><br></pre></td></tr></table></figure>
 
-<h1 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h1><p><a href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API">MDN Canvas_API</a></p>
-]]></content>
+<div class="note warning"><p>參考資料<br><a href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API">MDN Canvas_API</a></p>
+</div>]]></content>
       <categories>
         <category>Javascript</category>
       </categories>
@@ -308,8 +308,8 @@
 
 <span id="more"></span>
 
-<h1 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h1><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Groups_and_Ranges">MDN</a></p>
-]]></content>
+<div class="note warning"><p>參考資料<br><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Groups_and_Ranges">MDN</a></p>
+</div>]]></content>
       <categories>
         <category>Javascript</category>
       </categories>
@@ -384,8 +384,8 @@
 <!-- scoop install putty
 plink -v -x -a -T -C -noagent -ssh -pw "[密碼]" -P 50893 -L [本地端口]:[遠端服務IP]:[遠端服務端口] [帳號]@[跳板機IP] -->
 
-<h1 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h1><p><a href="https://www.ssh.com/academy/ssh/command">SSH Command - Usage, Options, Configuration</a></p>
-]]></content>
+<div class="note warning"><p>參考資料<br><a href="https://www.ssh.com/academy/ssh/command">SSH Command - Usage, Options, Configuration</a></p>
+</div>]]></content>
       <categories>
         <category>Linux</category>
       </categories>
@@ -406,8 +406,8 @@ plink -v -x -a -T -C -noagent -ssh -pw "[密碼]" -P 50893 -L [本地端口]:[�
 
 <h2 id="建立-Configuration"><a href="#建立-Configuration" class="headerlink" title="建立 Configuration"></a>建立 Configuration</h2><figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">IConfiguration configuration = <span class="keyword">new</span> ConfigurationBuilder()</span><br><span class="line">            .AddInMemoryCollection(inMemorySettings)</span><br><span class="line">            .Build();</span><br></pre></td></tr></table></figure>
 
-<h1 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h1><p><a href="https://learn.microsoft.com/en-us/dotnet/api/microsoft.extensions.configuration.memoryconfigurationbuilderextensions.addinmemorycollection?view=dotnet-plat-ext-7.0">MemoryConfigurationBuilderExtensions.AddInMemoryCollection Method</a></p>
-]]></content>
+<div class="note warning"><p>參考資料<br><a href="https://learn.microsoft.com/en-us/dotnet/api/microsoft.extensions.configuration.memoryconfigurationbuilderextensions.addinmemorycollection?view=dotnet-plat-ext-7.0">MemoryConfigurationBuilderExtensions.AddInMemoryCollection Method</a></p>
+</div>]]></content>
       <categories>
         <category>.Net</category>
       </categories>
@@ -492,8 +492,8 @@ dotnet-dump collect --process-id 1902 -->
 <h2 id="安裝-ProcDump"><a href="#安裝-ProcDump" class="headerlink" title="安裝 ProcDump"></a>安裝 ProcDump</h2><p>當目標進程 CPU 或記憶體使用量達到特定臨界值或低於限制值時，您可以使用 ProcDump 來擷取記憶體傾印檔案。</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt install procdump</span><br></pre></td></tr></table></figure>
 
-<h1 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h1><p><a href="https://learn.microsoft.com/zh-tw/troubleshoot/developer/webapps/aspnetcore/practice-troubleshoot-linux/lab-1-1-reproduce-troubleshoot">重現損毀問題並進行疑難排解</a></p>
-]]></content>
+<div class="note warning"><p>參考資料<br><a href="https://learn.microsoft.com/zh-tw/troubleshoot/developer/webapps/aspnetcore/practice-troubleshoot-linux/lab-1-1-reproduce-troubleshoot">重現損毀問題並進行疑難排解</a></p>
+</div>]]></content>
       <categories>
         <category>.Net</category>
       </categories>
@@ -514,8 +514,8 @@ dotnet-dump collect --process-id 1902 -->
 
 <h2 id="組合-Request-的-Url"><a href="#組合-Request-的-Url" class="headerlink" title="組合 Request 的 Url"></a>組合 Request 的 Url</h2><figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line">https://example.com/User?user[0].Name=&#x27;張三&#x27;&amp;user[0].Age=10&amp;user[1].Name=&#x27;李四&#x27;&amp;user[1].Age=20</span><br></pre></td></tr></table></figure>
 
-<h1 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h1><p><a href="https://learn.microsoft.com/en-us/dotnet/api/microsoft.extensions.configuration.memoryconfigurationbuilderextensions.addinmemorycollection?view=dotnet-plat-ext-7.0">MemoryConfigurationBuilderExtensions.AddInMemoryCollection Method</a></p>
-]]></content>
+<div class="note warning"><p>參考資料<br><a href="https://learn.microsoft.com/en-us/dotnet/api/microsoft.extensions.configuration.memoryconfigurationbuilderextensions.addinmemorycollection?view=dotnet-plat-ext-7.0">MemoryConfigurationBuilderExtensions.AddInMemoryCollection Method</a></p>
+</div>]]></content>
       <categories>
         <category>.Net</category>
       </categories>
@@ -546,9 +546,9 @@ dotnet-dump collect --process-id 1902 -->
 <p>如果有使用 Sqlite 未定義的 Database Function , 可在程式中使用 CreateFunction 定義</p>
 <figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">SqliteConnection connection = <span class="keyword">new</span> SqliteConnection(<span class="string">&quot;Data Source=:memory:&quot;</span>);</span><br><span class="line"></span><br><span class="line">connection.CreateFunction(<span class="string">&quot;current_date&quot;</span>, (x) =&gt; DateTime.Now);</span><br><span class="line"></span><br><span class="line">connection.Open();</span><br></pre></td></tr></table></figure>
 
-<h1 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h1><p><a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.data.sqlite.sqliteconnection.createfunction?view=msdata-sqlite-6.0.0">Microsoft文件</a></p>
+<div class="note warning"><p>參考資料<br><a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.data.sqlite.sqliteconnection.createfunction?view=msdata-sqlite-6.0.0">Microsoft文件</a></p>
 <p><a href="https://csharp.hotexamples.com/examples/-/SQLiteConnection/CreateFunction/php-sqliteconnection-createfunction-method-examples.html">SQLite Examples</a></p>
-]]></content>
+</div>]]></content>
       <categories>
         <category>.Net</category>
       </categories>
@@ -581,8 +581,8 @@ dotnet-dump collect --process-id 1902 -->
 <p>模擬呼叫方法多次依序回傳不同內容，可用 SetupSequence 做設定</p>
 <figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">mockRepository</span><br><span class="line">.SetupSequence(x=&gt; x.GetData(It.IsAny&lt;<span class="built_in">string</span>&gt;()))</span><br><span class="line">.Returns(<span class="keyword">new</span> Table &#123;</span><br><span class="line">    Id = <span class="number">1</span>,</span><br><span class="line">    Name = <span class="string">&quot;張三&quot;</span></span><br><span class="line">&#125;)</span><br><span class="line">.Returns(<span class="keyword">new</span> Table &#123;</span><br><span class="line">    Id = <span class="number">2</span>,</span><br><span class="line">    Name = <span class="string">&quot;李四&quot;</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
-<h1 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h1><p><a href="https://github.com/Moq/moq4/wiki/Quickstart#customizing-mock-behavior">Moq文件</a></p>
-]]></content>
+<div class="note warning"><p>參考資料<br><a href="https://github.com/Moq/moq4/wiki/Quickstart#customizing-mock-behavior">Moq文件</a></p>
+</div>]]></content>
       <categories>
         <category>.Net</category>
       </categories>
@@ -605,8 +605,8 @@ dotnet-dump collect --process-id 1902 -->
 <h2 id="停止-Whistle"><a href="#停止-Whistle" class="headerlink" title="停止 Whistle"></a>停止 Whistle</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">w2 stop</span><br></pre></td></tr></table></figure>
 
 <h2 id="設定-Whistle-為-Proxy-的-Server"><a href="#設定-Whistle-為-Proxy-的-Server" class="headerlink" title="設定 Whistle 為 Proxy 的 Server"></a>設定 Whistle 為 Proxy 的 Server</h2><p><img src="/Win10ProxySetting.png" alt="Win10ProxySetting"></p>
-<h1 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h1><p><a href="https://www.npmjs.com/package/whistle">whistle npm</a></p>
-]]></content>
+<div class="note warning"><p>參考資料<br><a href="https://www.npmjs.com/package/whistle">whistle npm</a></p>
+</div>]]></content>
       <categories>
         <category>Whistle</category>
       </categories>
@@ -648,8 +648,8 @@ dotnet-dump collect --process-id 1902 -->
 <h2 id="Socks-代理設定"><a href="#Socks-代理設定" class="headerlink" title="Socks 代理設定"></a>Socks 代理設定</h2><ul>
 <li>在 Rules 頁籤加入以下設定，設定 Domain 對應 Ip 位置  <figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line">example.<span class="attribute">com</span> socks://127.0.0.1:8080</span><br></pre></td></tr></table></figure></li>
 </ul>
-<h1 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h1><p><a href="https://wproxy.org/whistle/">whistle</a></p>
-]]></content>
+<div class="note warning"><p>參考資料<br><a href="https://wproxy.org/whistle/">whistle</a></p>
+</div>]]></content>
       <categories>
         <category>Whistle</category>
       </categories>
@@ -677,9 +677,9 @@ dotnet-dump collect --process-id 1902 -->
 <h2 id="執行-Docker"><a href="#執行-Docker" class="headerlink" title="執行 Docker"></a>執行 Docker</h2><p>執行下方命令註冊 Ｗindows 服務</p>
 <figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">dockerd <span class="literal">--register-service</span> ; <span class="built_in">Start-Service</span> docker ; <span class="keyword">exit</span></span><br></pre></td></tr></table></figure>
 
-<h1 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h1><p><a href="https://scoop.sh/#/apps?q=docker&s=0&d=1&o=true">Scoop Docker</a></p>
+<div class="note warning"><p>參考資料<br><a href="https://scoop.sh/#/apps?q=docker&s=0&d=1&o=true">Scoop Docker</a></p>
 <p><a href="https://learn.microsoft.com/zh-tw/virtualization/windowscontainers/manage-containers/container-base-images">Windows Base Image</a></p>
-]]></content>
+</div>]]></content>
       <categories>
         <category>Wsl2</category>
       </categories>
@@ -698,8 +698,8 @@ dotnet-dump collect --process-id 1902 -->
 
 <h2 id="遷移至磁碟機-D"><a href="#遷移至磁碟機-D" class="headerlink" title="遷移至磁碟機 D"></a>遷移至磁碟機 D</h2><figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 導出已安裝的 Linux 發行版壓縮檔</span></span><br><span class="line">wsl <span class="literal">--export</span> <span class="string">&quot;Ubuntu-22.04&quot;</span> d:\ubuntu.tar</span><br><span class="line"></span><br><span class="line"><span class="comment"># 移除 WSL</span></span><br><span class="line">wsl <span class="literal">--unregister</span> <span class="string">&quot;Ubuntu-22.04&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 建立解壓縮的目錄</span></span><br><span class="line">mkdir d:\Ubuntu</span><br><span class="line"></span><br><span class="line"><span class="comment"># Linux 發行版壓縮檔解壓縮至新目錄後加入 WSL</span></span><br><span class="line">wsl <span class="literal">--import</span> <span class="string">&quot;Ubuntu-22.04&quot;</span> d:\ubuntu d:\ubuntu.tar</span><br><span class="line"></span><br><span class="line"><span class="comment"># 刪除 Linux 發行版壓縮檔</span></span><br><span class="line"><span class="built_in">del</span> d:\ubuntu.tar</span><br><span class="line"></span><br><span class="line"><span class="comment"># 因重新建立 WSL 會以 root 為預設帳戶，需重新設定預設帳戶</span></span><br><span class="line">ubuntu2204.exe config <span class="literal">--default-user</span> ubuntu</span><br></pre></td></tr></table></figure>
 
-<h1 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h1><p><a href="https://learn.microsoft.com/zh-tw/windows/wsl/use-custom-distro">匯入任何要與 WSL 搭配使用的 Linux 發行版本</a></p>
-]]></content>
+<div class="note warning"><p>參考資料<br><a href="https://learn.microsoft.com/zh-tw/windows/wsl/use-custom-distro">匯入任何要與 WSL 搭配使用的 Linux 發行版本</a></p>
+</div>]]></content>
       <categories>
         <category>Wsl2</category>
       </categories>
@@ -748,9 +748,9 @@ dotnet-dump collect --process-id 1902 -->
 <p>加入以下設定</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">%ubuntu ALL=(ALL:ALL) NOPASSWD:ALL</span><br></pre></td></tr></table></figure>
 
-<h1 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h1><p><a href="https://community.chocolatey.org/packages/docker-cli">Daemon CLI (dockerd)</a></p>
+<div class="note warning"><p>參考資料<br><a href="https://community.chocolatey.org/packages/docker-cli">Daemon CLI (dockerd)</a></p>
 <p><a href="https://docs.docker.com/engine/reference/commandline/dockerd/#daemon-configuration-file">Chocolatey Docker CLI</a></p>
-]]></content>
+</div>]]></content>
       <categories>
         <category>Wsl2</category>
       </categories>
@@ -773,8 +773,8 @@ dotnet-dump collect --process-id 1902 -->
 
 <h2 id="Powershell-設定-vEthernet-WSL"><a href="#Powershell-設定-vEthernet-WSL" class="headerlink" title="Powershell 設定 vEthernet (WSL)"></a>Powershell 設定 vEthernet (WSL)</h2><figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 確認是否為自訂的 vEthernet (WSL) 設定</span></span><br><span class="line"><span class="keyword">if</span>(!(<span class="built_in">Get-NetAdapter</span> <span class="string">&#x27;vEthernet (WSL)&#x27;</span> | <span class="built_in">Get-NetIPAddress</span>).IPAddress.Contains(<span class="string">&#x27;192.168.50.1&#x27;</span>))&#123;</span><br><span class="line">  <span class="comment"># 移除 vEthernet (WSL)設定</span></span><br><span class="line">  <span class="built_in">Get-NetAdapter</span> <span class="string">&#x27;vEthernet (WSL)&#x27;</span> | <span class="built_in">Get-NetIPAddress</span> | <span class="built_in">Remove-NetIPAddress</span> <span class="literal">-Confirm</span>:<span class="variable">$False</span></span><br><span class="line">  </span><br><span class="line">  <span class="comment"># 加入自訂的 vEthernet (WSL)</span></span><br><span class="line">  <span class="built_in">New-NetIPAddress</span> <span class="literal">-IPAddress</span> <span class="number">192.168</span>.<span class="number">50.1</span> <span class="literal">-PrefixLength</span> <span class="number">24</span> <span class="literal">-InterfaceAlias</span> <span class="string">&#x27;vEthernet (WSL)&#x27;</span></span><br><span class="line">  </span><br><span class="line">  <span class="comment"># 移除 WSLNat 設定</span></span><br><span class="line">  <span class="built_in">Get-NetNat</span> | ? Name <span class="operator">-Eq</span> WSLNat | <span class="built_in">Remove-NetNat</span> <span class="literal">-Confirm</span>:<span class="variable">$False</span></span><br><span class="line">  </span><br><span class="line">  <span class="comment"># 加入自訂的 WSLNat</span></span><br><span class="line">  <span class="built_in">New-NetNat</span> <span class="literal">-Name</span> WSLNat <span class="literal">-InternalIPInterfaceAddressPrefix</span> <span class="number">192.168</span>.<span class="number">50.0</span>/<span class="number">24</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h1 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h1><p><a href="https://zhuanlan.zhihu.com/p/380779630">知乎-給 WSL2 設置靜態IP地址</a></p>
-]]></content>
+<div class="note warning"><p>參考資料<br><a href="https://zhuanlan.zhihu.com/p/380779630">知乎-給 WSL2 設置靜態IP地址</a></p>
+</div>]]></content>
       <categories>
         <category>Wsl2</category>
       </categories>
