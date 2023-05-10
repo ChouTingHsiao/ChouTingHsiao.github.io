@@ -28,7 +28,7 @@
 <meta property="og:description" content="實作安裝 Nuget 的 Sqlite 套件 1Install-Package Microsoft.EntityFrameworkCore.Sqlite">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-05-01T12:00:00.000Z">
-<meta property="article:modified_time" content="2023-05-08T14:34:32.385Z">
+<meta property="article:modified_time" content="2023-05-10T15:20:15.958Z">
 <meta property="article:author" content="Stephen">
 <meta property="article:tag" content=".Net">
 <meta property="article:tag" content="UnitTest">
@@ -233,7 +233,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-05-08 14:34:32" itemprop="dateModified" datetime="2023-05-08T14:34:32+00:00">2023-05-08</time>
+      <time title="Modified: 2023-05-10 15:20:15" itemprop="dateModified" datetime="2023-05-10T15:20:15+00:00">2023-05-10</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -275,8 +275,11 @@
 <p>如果有使用 Sqlite 未定義的 Database Function , 可在程式中使用 CreateFunction 定義</p>
 <figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">SqliteConnection connection = <span class="keyword">new</span> SqliteConnection(<span class="string">&quot;Data Source=:memory:&quot;</span>);</span><br><span class="line"></span><br><span class="line">connection.CreateFunction(<span class="string">&quot;current_date&quot;</span>, (x) =&gt; DateTime.Now);</span><br><span class="line"></span><br><span class="line">connection.Open();</span><br></pre></td></tr></table></figure>
 
-<div class="note warning"><p>參考資料<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.data.sqlite.sqliteconnection.createfunction?view=msdata-sqlite-6.0.0">Microsoft文件</a></p>
-<p><a target="_blank" rel="noopener" href="https://csharp.hotexamples.com/examples/-/SQLiteConnection/CreateFunction/php-sqliteconnection-createfunction-method-examples.html">SQLite Examples</a></p>
+<div class="note warning"><p>參考資料</p>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.data.sqlite.sqliteconnection.createfunction?view=msdata-sqlite-6.0.0">Microsoft文件</a></li>
+<li><a target="_blank" rel="noopener" href="https://csharp.hotexamples.com/examples/-/SQLiteConnection/CreateFunction/php-sqliteconnection-createfunction-method-examples.html">SQLite Examples</a></li>
+</ol>
 </div>
     </div>
 
