@@ -100,5 +100,5 @@ sudo apt install procdump
 
 {% note warning %}
 參考資料
-[重現損毀問題並進行疑難排解](https://learn.microsoft.com/zh-tw/troubleshoot/developer/webapps/aspnetcore/practice-troubleshoot-linux/lab-1-1-reproduce-troubleshoot)
+1. [重現損毀問題並進行疑難排解](https://learn.microsoft.com/zh-tw/troubleshoot/developer/webapps/aspnetcore/practice-troubleshoot-linux/lab-1-1-reproduce-troubleshoot)
 {% endnote %}

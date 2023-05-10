@@ -33,5 +33,5 @@ w2 stop
 
 {% note warning %}
 參考資料
-[whistle npm](https://www.npmjs.com/package/whistle)
+1. [whistle npm](https://www.npmjs.com/package/whistle)
 {% endnote %}

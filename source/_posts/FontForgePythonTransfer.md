@@ -71,5 +71,5 @@ fontforge -script font.py [FontFilePath]
 
 {% note warning %}
 參考資料
-[Python Scripting](https://fontforge.org/docs/scripting/python.html)
+1. [Python Scripting](https://fontforge.org/docs/scripting/python.html)
 {% endnote %}

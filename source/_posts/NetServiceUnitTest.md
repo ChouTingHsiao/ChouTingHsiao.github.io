@@ -71,5 +71,5 @@ mockRepository
 
 {% note warning %}
 參考資料
-[Moq文件](https://github.com/Moq/moq4/wiki/Quickstart#customizing-mock-behavior)
+1. [Moq文件](https://github.com/Moq/moq4/wiki/Quickstart#customizing-mock-behavior)
 {% endnote %}

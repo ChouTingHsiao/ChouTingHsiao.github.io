@@ -75,7 +75,6 @@ dockerd --register-service ; Start-Service docker ; exit
 
 {% note warning %}
 參考資料
-[Scoop Docker](https://scoop.sh/#/apps?q=docker&s=0&d=1&o=true)
-
-[Windows Base Image](https://learn.microsoft.com/zh-tw/virtualization/windowscontainers/manage-containers/container-base-images)
+1. [Scoop Docker](https://scoop.sh/#/apps?q=docker&s=0&d=1&o=true)
+2. [Windows Base Image](https://learn.microsoft.com/zh-tw/virtualization/windowscontainers/manage-containers/container-base-images)
 {% endnote %}

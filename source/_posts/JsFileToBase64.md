@@ -48,5 +48,5 @@ tags: [Javascript, Base64]
 
 {% note warning %}
 參考資料
-[MDN btoa](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/btoa)
+1. [MDN btoa](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/btoa)
 {% endnote %}

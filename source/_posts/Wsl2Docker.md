@@ -102,7 +102,6 @@ sudo nano /etc/sudoers
 
 {% note warning %}
 參考資料
-[Daemon CLI (dockerd)](https://community.chocolatey.org/packages/docker-cli)
-
-[Chocolatey Docker CLI](https://docs.docker.com/engine/reference/commandline/dockerd/#daemon-configuration-file)
+1. [Daemon CLI (dockerd)](https://community.chocolatey.org/packages/docker-cli)
+2. [Chocolatey Docker CLI](https://docs.docker.com/engine/reference/commandline/dockerd/#daemon-configuration-file)
 {% endnote %}

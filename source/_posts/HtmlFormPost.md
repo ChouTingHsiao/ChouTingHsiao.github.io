@@ -43,5 +43,5 @@ tags: [Html, Json]
 
 {% note warning %}
 參考資料
-[POST an array from an HTML form without javascript](https://stackoverflow.com/questions/9073690/post-an-array-from-an-html-form-without-javascript)
+1. [POST an array from an HTML form without javascript](https://stackoverflow.com/questions/9073690/post-an-array-from-an-html-form-without-javascript)
 {% endnote %}

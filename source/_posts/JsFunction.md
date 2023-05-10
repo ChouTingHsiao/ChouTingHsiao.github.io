@@ -34,5 +34,5 @@ else {
 
 {% note warning %}
 參考資料
-[MDN typeof](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof)
+1. [MDN typeof](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof)
 {% endnote %}

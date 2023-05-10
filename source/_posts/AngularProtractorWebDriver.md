@@ -32,5 +32,5 @@ npx webdriver-manager update  --versions.chrome  [chrome版本號]
 
 {% note warning %}
 參考資料
-[webdriver-manager NPM](https://www.npmjs.com/package/webdriver-manager)
+1. [webdriver-manager NPM](https://www.npmjs.com/package/webdriver-manager)
 {% endnote %}

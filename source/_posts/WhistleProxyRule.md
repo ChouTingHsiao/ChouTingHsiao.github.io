@@ -73,5 +73,5 @@ tags: [Whistle]
 
 {% note warning %}
 參考資料
-[whistle](https://wproxy.org/whistle/)
+1. [whistle](https://wproxy.org/whistle/)
 {% endnote %}

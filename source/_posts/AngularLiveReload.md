@@ -35,5 +35,5 @@ sudo sysctl -p
 
 {% note warning %}
 參考資料
-[User limit of inotify watches reached on Ubuntu 16.04](https://askubuntu.com/questions/770374/user-limit-of-inotify-watches-reached-on-ubuntu-16-04)
+1. [User limit of inotify watches reached on Ubuntu 16.04](https://askubuntu.com/questions/770374/user-limit-of-inotify-watches-reached-on-ubuntu-16-04)
 {% endnote %}

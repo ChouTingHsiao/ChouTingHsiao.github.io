@@ -45,5 +45,5 @@ plink -v -x -a -T -C -noagent -ssh -pw "[密碼]" -P 50893 -L [本地端口]:[�
 
 {% note warning %}
 參考資料
-[SSH Command - Usage, Options, Configuration](https://www.ssh.com/academy/ssh/command)
+1. [SSH Command - Usage, Options, Configuration](https://www.ssh.com/academy/ssh/command)
 {% endnote %}

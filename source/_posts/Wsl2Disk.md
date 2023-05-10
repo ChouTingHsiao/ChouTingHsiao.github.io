@@ -39,5 +39,5 @@ ubuntu2204.exe config --default-user ubuntu
 
 {% note warning %}
 參考資料
-[匯入任何要與 WSL 搭配使用的 Linux 發行版本](https://learn.microsoft.com/zh-tw/windows/wsl/use-custom-distro)
+1. [匯入任何要與 WSL 搭配使用的 Linux 發行版本](https://learn.microsoft.com/zh-tw/windows/wsl/use-custom-distro)
 {% endnote %}
