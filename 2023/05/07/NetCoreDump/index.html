@@ -28,7 +28,7 @@
 <meta property="og:description" content="實作使用 apport 解壓縮核心傾印檔案安裝 apport 1sudo apt install apport  解壓縮核心傾印檔案 1apport-unpack [systemGeneratedCrashReportPath].crash [yourNewUnpackDirectoryHere]">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-05-07T18:00:00.000Z">
-<meta property="article:modified_time" content="2023-05-10T15:20:15.958Z">
+<meta property="article:modified_time" content="2023-05-14T09:05:17.626Z">
 <meta property="article:author" content="Stephen">
 <meta property="article:tag" content="Linux">
 <meta property="article:tag" content=".Net">
@@ -233,7 +233,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-05-10 15:20:15" itemprop="dateModified" datetime="2023-05-10T15:20:15+00:00">2023-05-10</time>
+      <time title="Modified: 2023-05-14 09:05:17" itemprop="dateModified" datetime="2023-05-14T09:05:17+00:00">2023-05-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -277,7 +277,7 @@ gdb `cat ExecutablePath` CoreDump
 檢查點: watch *(long**)0x7fffffffdc98
 反向調試: reverse-stepi -->
 
-<!-- export PATH="$HOME/.dotnet/tools:$PATH" -->
+<!-- export PATH="$PATH:/root/.dotnet/tools" -->
 
 <!-- dotnet tool install -g dotnet-dump
 dotnet-dump ps
@@ -302,7 +302,7 @@ dotnet-dump collect --process-id 1902 -->
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setsymbolserver -directory ~/dumps/symbols</span><br></pre></td></tr></table></figure>
 
 <p>在 lldb 中常用命令</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">原生執行緒清單: clrthreads</span><br><span class="line">切換執行序: thread <span class="keyword">select</span> [執行緒編號]</span><br><span class="line">導出所有的線程棧: clrstack</span><br><span class="line">所有 Managed 物件: dso</span><br><span class="line">託管堆狀態: dumpheap -<span class="built_in">stat</span></span><br><span class="line">程序最近都拋了什麼異常: dumpheap -<span class="built_in">type</span> Exception</span><br><span class="line">異常的詳細信息: pe [address]</span><br><span class="line">尋找物件的位址: dumpheap -mt [address]</span><br><span class="line">分析物件位置: dumpObj [address]</span><br><span class="line">分析陣列位置: dumparray [address]</span><br><span class="line">GC狀態:  eeheap -gc</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">執行緒清單: clrthreads</span><br><span class="line">切換執行序: thread <span class="keyword">select</span> [thread]</span><br><span class="line">線程棧清單: clrstack</span><br><span class="line">所有託管堆物件: dso</span><br><span class="line">託管堆狀態: dumpheap -<span class="built_in">stat</span></span><br><span class="line">尋找託管堆的位址: dumpheap -mt [address]</span><br><span class="line">程序最近都拋了什麼異常: dumpheap -<span class="built_in">type</span> Exception</span><br><span class="line">異常狀況資訊: pe</span><br><span class="line">異常的詳細信息: pe [address]</span><br><span class="line">分析物件位置: dumpobj [address]</span><br><span class="line">分析陣列位置: dumparray [address]</span><br><span class="line">GC狀態:  eeheap -gc</span><br></pre></td></tr></table></figure>
 
 <h2 id="安裝-ProcDump"><a href="#安裝-ProcDump" class="headerlink" title="安裝 ProcDump"></a>安裝 ProcDump</h2><p>當目標進程 CPU 或記憶體使用量達到特定臨界值或低於限制值時，您可以使用 ProcDump 來擷取記憶體傾印檔案。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install procdump</span><br></pre></td></tr></table></figure>
