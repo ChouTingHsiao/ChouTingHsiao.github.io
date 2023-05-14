@@ -35,7 +35,7 @@ gdb `cat ExecutablePath` CoreDump
 檢查點: watch *(long**)0x7fffffffdc98
 反向調試: reverse-stepi -->
 
-<!-- export PATH="$HOME/.dotnet/tools:$PATH" -->
+<!-- export PATH="$PATH:/root/.dotnet/tools" -->
 
 <!-- dotnet tool install -g dotnet-dump
 dotnet-dump ps
@@ -78,15 +78,16 @@ setsymbolserver -directory ~/dumps/symbols
 
 在 lldb 中常用命令
 ```bash
-原生執行緒清單: clrthreads
-切換執行序: thread select [執行緒編號]
-導出所有的線程棧: clrstack
-所有 Managed 物件: dso
+執行緒清單: clrthreads
+切換執行序: thread select [thread]
+線程棧清單: clrstack
+所有託管堆物件: dso
 託管堆狀態: dumpheap -stat
+尋找託管堆的位址: dumpheap -mt [address]
 程序最近都拋了什麼異常: dumpheap -type Exception
+異常狀況資訊: pe
 異常的詳細信息: pe [address]
-尋找物件的位址: dumpheap -mt [address]
-分析物件位置: dumpObj [address]
+分析物件位置: dumpobj [address]
 分析陣列位置: dumparray [address]
 GC狀態:  eeheap -gc
 ```
