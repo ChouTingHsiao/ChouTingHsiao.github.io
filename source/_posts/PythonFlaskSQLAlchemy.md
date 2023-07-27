@@ -40,7 +40,7 @@ class AddressMap(db.Model):
     # 唯一識別碼
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     # 地址
-    Address = db.Column(db.String(200, collation="Chinese_Taiwan_Stroke_CI_AS"), unique=True, nullable=False)
+    address = db.Column(db.String(200, collation="Chinese_Taiwan_Stroke_CI_AS"), unique=True, nullable=False)
     # 郵區
     zip = db.Column(db.String(6), unique=False, nullable=False)
 
