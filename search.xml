@@ -613,29 +613,29 @@ dotnet-dump collect --process-id 1902 -->
   <entry>
     <title>如何在商業邏輯層進行單元測試</title>
     <url>/2022/05/01/NetServiceUnitTest/</url>
-    <content><![CDATA[<h1 id="實作"><a href="#實作" class="headerlink" title="實作"></a>實作</h1><p>安裝 Nuget 的 Moq 套件</p>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Install-Package</span> Moq</span><br></pre></td></tr></table></figure>
+    <content><![CDATA[<h1 id="實作"><a href="#實作" class="headerlink" title="實作"></a>實作</h1><p>安裝 Nuget 的 NSubstitute 套件</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Install-Package</span> NSubstitute</span><br></pre></td></tr></table></figure>
 
 <span id="more"></span>
 
 <p>建立 Repository 的模擬物件</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">Mock&lt;Repository&gt; mockRepository = <span class="keyword">new</span> Mock&lt;Repository&gt;();</span><br><span class="line"></span><br><span class="line">mockRepository</span><br><span class="line">.Setup(x=&gt; x.GetData(It.IsAny&lt;<span class="built_in">string</span>&gt;()))</span><br><span class="line">.Returns(<span class="keyword">new</span> Table &#123;</span><br><span class="line">    Id = <span class="number">1</span>,</span><br><span class="line">    Name = <span class="string">&quot;張三&quot;</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">Repository mockRepository = Substitute.For&lt;Repository&gt;();</span><br><span class="line"></span><br><span class="line">mockRepository</span><br><span class="line">.GetData(Arg.Any&lt;<span class="built_in">string</span>&gt;())</span><br><span class="line">.Returns(<span class="keyword">new</span> Table &#123;</span><br><span class="line">    Id = <span class="number">1</span>,</span><br><span class="line">    Name = <span class="string">&quot;張三&quot;</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
 <p>把 Repository 的模擬物件注入 Service</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">Service service = <span class="keyword">new</span> Service(mockRepository.Object);</span><br></pre></td></tr></table></figure>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">Service service = <span class="keyword">new</span> Service(mockRepository);</span><br></pre></td></tr></table></figure>
 
 <p>使用 Service</p>
 <figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">Table result = service.RunLogic();</span><br><span class="line"></span><br><span class="line">Assert.That(result.Name, Is.EqualTo(<span class="string">&quot;張三&quot;</span>));</span><br></pre></td></tr></table></figure>
 
 <p>依傳入參數做回傳</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">mockRepository</span><br><span class="line">.Setup(x=&gt; x.GetData(<span class="string">&quot;張三&quot;</span>))</span><br><span class="line">.Returns(<span class="keyword">new</span> Table &#123;</span><br><span class="line">    Id = <span class="number">1</span>,</span><br><span class="line">    Name = <span class="string">&quot;張三&quot;</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">mockRepository</span><br><span class="line">.Setup(x=&gt; x.GetData(<span class="string">&quot;李四&quot;</span>))</span><br><span class="line">.Returns(<span class="keyword">new</span> Table &#123;</span><br><span class="line">    Id = <span class="number">2</span>,</span><br><span class="line">    Name = <span class="string">&quot;李四&quot;</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">mockRepository</span><br><span class="line">.GetData(<span class="string">&quot;張三&quot;</span>)</span><br><span class="line">.Returns(<span class="keyword">new</span> Table &#123;</span><br><span class="line">    Id = <span class="number">1</span>,</span><br><span class="line">    Name = <span class="string">&quot;張三&quot;</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">mockRepository</span><br><span class="line">.GetData(<span class="string">&quot;李四&quot;</span>)</span><br><span class="line">.Returns(<span class="keyword">new</span> Table &#123;</span><br><span class="line">    Id = <span class="number">2</span>,</span><br><span class="line">    Name = <span class="string">&quot;李四&quot;</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
-<p>模擬呼叫方法多次依序回傳不同內容，可用 SetupSequence 做設定</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">mockRepository</span><br><span class="line">.SetupSequence(x=&gt; x.GetData(It.IsAny&lt;<span class="built_in">string</span>&gt;()))</span><br><span class="line">.Returns(<span class="keyword">new</span> Table &#123;</span><br><span class="line">    Id = <span class="number">1</span>,</span><br><span class="line">    Name = <span class="string">&quot;張三&quot;</span></span><br><span class="line">&#125;)</span><br><span class="line">.Returns(<span class="keyword">new</span> Table &#123;</span><br><span class="line">    Id = <span class="number">2</span>,</span><br><span class="line">    Name = <span class="string">&quot;李四&quot;</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>模擬呼叫方法多次依序回傳不同內容</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">mockRepository</span><br><span class="line">.GetData(Arg.Any&lt;<span class="built_in">string</span>&gt;())</span><br><span class="line">.Returns(</span><br><span class="line">    <span class="keyword">new</span> Table</span><br><span class="line">    &#123;</span><br><span class="line">        Id = <span class="number">1</span>,</span><br><span class="line">        Name = <span class="string">&quot;張三&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="keyword">new</span> Table</span><br><span class="line">    &#123;</span><br><span class="line">        Id = <span class="number">2</span>,</span><br><span class="line">        Name = <span class="string">&quot;李四&quot;</span></span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
 
 <div class="note warning"><p>參考資料</p>
 <ol>
-<li><a href="https://github.com/Moq/moq4/wiki/Quickstart#customizing-mock-behavior">Moq文件</a></li>
+<li><a href="https://nsubstitute.github.io/help.html">NSubstitute文件</a></li>
 </ol>
 </div>]]></content>
       <categories>
@@ -644,7 +644,7 @@ dotnet-dump collect --process-id 1902 -->
       <tags>
         <tag>.Net</tag>
         <tag>UnitTest</tag>
-        <tag>Moq</tag>
+        <tag>NSubstitute</tag>
       </tags>
   </entry>
   <entry>
