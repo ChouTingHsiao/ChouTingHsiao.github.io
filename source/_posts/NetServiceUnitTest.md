@@ -2,24 +2,24 @@
 title: 如何在商業邏輯層進行單元測試
 date: 2022-05-01 13:00:00
 categories: .Net
-tags: [.Net, UnitTest, Moq]
+tags: [.Net, UnitTest, NSubstitute]
 ---
 
 # 實作
-安裝 Nuget 的 Moq 套件
+安裝 Nuget 的 NSubstitute 套件
 
 ```powershell
-Install-Package Moq
+Install-Package NSubstitute
 ```
 
 <!--more-->
 
 建立 Repository 的模擬物件
 ```C#
-Mock<Repository> mockRepository = new Mock<Repository>();
+Repository mockRepository = Substitute.For<Repository>();
 
 mockRepository
-.Setup(x=> x.GetData(It.IsAny<string>()))
+.GetData(Arg.Any<string>())
 .Returns(new Table {
     Id = 1,
     Name = "張三"
@@ -28,7 +28,7 @@ mockRepository
 
 把 Repository 的模擬物件注入 Service
 ```C#
-Service service = new Service(mockRepository.Object);
+Service service = new Service(mockRepository);
 ```
 
 使用 Service
@@ -41,35 +41,38 @@ Assert.That(result.Name, Is.EqualTo("張三"));
 依傳入參數做回傳
 ```C#
 mockRepository
-.Setup(x=> x.GetData("張三"))
+.GetData("張三")
 .Returns(new Table {
     Id = 1,
     Name = "張三"
 });
 
 mockRepository
-.Setup(x=> x.GetData("李四"))
+.GetData("李四")
 .Returns(new Table {
     Id = 2,
     Name = "李四"
 });
 ```
 
-模擬呼叫方法多次依序回傳不同內容，可用 SetupSequence 做設定
+模擬呼叫方法多次依序回傳不同內容
 ```C#
 mockRepository
-.SetupSequence(x=> x.GetData(It.IsAny<string>()))
-.Returns(new Table {
-    Id = 1,
-    Name = "張三"
-})
-.Returns(new Table {
-    Id = 2,
-    Name = "李四"
-});
+.GetData(Arg.Any<string>())
+.Returns(
+    new Table
+    {
+        Id = 1,
+        Name = "張三"
+    },
+    new Table
+    {
+        Id = 2,
+        Name = "李四"
+    });
 ```
 
 {% note warning %}
 參考資料
-1. [Moq文件](https://github.com/Moq/moq4/wiki/Quickstart#customizing-mock-behavior)
+1. [NSubstitute文件](https://nsubstitute.github.io/help.html)
 {% endnote %}
