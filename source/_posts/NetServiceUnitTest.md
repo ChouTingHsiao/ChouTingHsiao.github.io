@@ -72,6 +72,13 @@ mockRepository
     });
 ```
 
+驗證呼叫方法的次數與傳入參數
+```C#
+mockRepository
+.Received(1)
+.GetData(Arg.Is<string>(x => x == "張三"));
+```
+
 {% note warning %}
 參考資料
 1. [NSubstitute文件](https://nsubstitute.github.io/help.html)
