@@ -7,7 +7,7 @@ tags: [Wsl2, docker]
 
 # 實作
 {% note danger %}
-請注意，下方 Docker 應用只支援 Ｗindows 的 Image
+請注意，下方 Docker 應用只支援以 Ｗindows 為基底的 Image
 {% endnote %}
 
 ## 使用 Scoop 安裝 Docker
@@ -63,13 +63,13 @@ Dism /online /enable-feature /featurename:Microsoft-Hyper-V-All /LimitAccess /AL
 pushd "%~dp0"
 
 # 尋找符合檔案名的所有檔案名，匯出文字檔
-dir /b %SystemRoot%\servicing\Packages\*container*.mum >container.txt
+dir /b %SystemRoot%\servicing\Packages\*containers*.mum >containers.txt
 
 # 加入套件
-for /f %%i in ('findstr /i . container.txt 2^>nul') do dism /online /norestart /add-package:"%SystemRoot%\servicing\Packages\%%i"
+for /f %%i in ('findstr /i . containers.txt 2^>nul') do dism /online /norestart /add-package:"%SystemRoot%\servicing\Packages\%%i"
 
 # 移除文字檔
-del container.txt
+del containers.txt
 
 # 安裝容器套件
 Dism /online /enable-feature /featurename:containers /LimitAccess /ALL
