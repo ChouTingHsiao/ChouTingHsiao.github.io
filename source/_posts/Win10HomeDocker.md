@@ -34,7 +34,7 @@ Copy-Item 'C:\ProgramData\docker' -Destination 'd:\\docker'
 ```
 
 {% note danger %}
-請注意，因 Win10 家用版本身不支援安裝下方功能，開啟後可能發生未知錯誤，僅供開發測試使用
+請注意，因 Win10 家用版本身不支援安裝下方功能，開啟後可能發生未知錯誤，僅供學習使用
 {% endnote %}
 
 ## 安裝 Hyper-V 功能
