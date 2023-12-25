@@ -17,7 +17,7 @@ sudo nano /etc/docker/daemon.json
 加入以下設定
 ```json
 {
-  "hosts": [ "tcp://0.0.0.0:" ],
+  "hosts": [ "unix:///var/run/docker.sock", "tcp://0.0.0.0:" ],
   "tls": false
 }
 ```
