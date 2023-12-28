@@ -66,6 +66,8 @@ tags: [Whistle]
 
 ## Socks 代理設定
 
+搭配SSH動態端口轉發請求
+
 * 在 Rules 頁籤加入以下設定，設定 Domain 對應 Ip 位置
     ```nginx
     example.com socks://127.0.0.1:8080
