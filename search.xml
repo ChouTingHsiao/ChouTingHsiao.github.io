@@ -480,6 +480,29 @@ plink -v -x -a -T -C -noagent -ssh -pw "[密碼]" -P 50893 -L [本地端口]:[�
       </tags>
   </entry>
   <entry>
+    <title>Http 的 Get 方法傳入 List 參數</title>
+    <url>/2023/01/21/NetHttpGetWithList/</url>
+    <content><![CDATA[<h1 id="實作"><a href="#實作" class="headerlink" title="實作"></a>實作</h1><h2 id="建立類別"><a href="#建立類別" class="headerlink" title="建立類別"></a>建立類別</h2><figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">User</span> &#123;</span><br><span class="line">  </span><br><span class="line">	<span class="keyword">public</span> <span class="built_in">string</span> Name &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> <span class="built_in">int</span> Age &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<h2 id="建立-HttpGet-方法"><a href="#建立-HttpGet-方法" class="headerlink" title="建立 HttpGet 方法"></a>建立 HttpGet 方法</h2><figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">[<span class="meta">ApiController</span>]</span><br><span class="line">[<span class="meta">Route(<span class="string">&quot;[controller]&quot;</span>)</span>]</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">UserController</span> : <span class="title">ControllerBase</span></span><br><span class="line">&#123;</span><br><span class="line">  [<span class="meta">HttpGet</span>]</span><br><span class="line">  <span class="function"><span class="keyword">public</span> List&lt;User&gt; <span class="title">Get</span>(<span class="params">[FromQuery] List&lt;User&gt; user</span>)</span></span><br><span class="line">  &#123;</span><br><span class="line">      <span class="keyword">return</span> user;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="組合-Request-的-Url"><a href="#組合-Request-的-Url" class="headerlink" title="組合 Request 的 Url"></a>組合 Request 的 Url</h2><figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line">https://example.com/User?user[0].Name=&#x27;張三&#x27;&amp;user[0].Age=10&amp;user[1].Name=&#x27;李四&#x27;&amp;user[1].Age=20</span><br></pre></td></tr></table></figure>
+
+<div class="note warning"><p>參考資料</p>
+<ol>
+<li><a href="https://learn.microsoft.com/en-us/dotnet/api/microsoft.extensions.configuration.memoryconfigurationbuilderextensions.addinmemorycollection?view=dotnet-plat-ext-7.0">MemoryConfigurationBuilderExtensions.AddInMemoryCollection Method</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>.Net</category>
+      </categories>
+      <tags>
+        <tag>.Net</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>使用 lldb 分析 Dotnet 核心傾印檔案</title>
     <url>/2023/05/07/NetCoreDump/</url>
     <content><![CDATA[<h1 id="實作"><a href="#實作" class="headerlink" title="實作"></a>實作</h1><h2 id="使用-apport-解壓縮核心傾印檔案"><a href="#使用-apport-解壓縮核心傾印檔案" class="headerlink" title="使用 apport 解壓縮核心傾印檔案"></a>使用 apport 解壓縮核心傾印檔案</h2><p>安裝 apport</p>
@@ -547,29 +570,6 @@ dotnet-dump collect --process-id 1902 -->
         <tag>Linux</tag>
         <tag>.Net</tag>
         <tag>lldb</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Http 的 Get 方法傳入 List 參數</title>
-    <url>/2023/01/21/NetHttpGetWithList/</url>
-    <content><![CDATA[<h1 id="實作"><a href="#實作" class="headerlink" title="實作"></a>實作</h1><h2 id="建立類別"><a href="#建立類別" class="headerlink" title="建立類別"></a>建立類別</h2><figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">User</span> &#123;</span><br><span class="line">  </span><br><span class="line">	<span class="keyword">public</span> <span class="built_in">string</span> Name &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> <span class="built_in">int</span> Age &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<span id="more"></span>
-
-<h2 id="建立-HttpGet-方法"><a href="#建立-HttpGet-方法" class="headerlink" title="建立 HttpGet 方法"></a>建立 HttpGet 方法</h2><figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">[<span class="meta">ApiController</span>]</span><br><span class="line">[<span class="meta">Route(<span class="string">&quot;[controller]&quot;</span>)</span>]</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">UserController</span> : <span class="title">ControllerBase</span></span><br><span class="line">&#123;</span><br><span class="line">  [<span class="meta">HttpGet</span>]</span><br><span class="line">  <span class="function"><span class="keyword">public</span> List&lt;User&gt; <span class="title">Get</span>(<span class="params">[FromQuery] List&lt;User&gt; user</span>)</span></span><br><span class="line">  &#123;</span><br><span class="line">      <span class="keyword">return</span> user;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="組合-Request-的-Url"><a href="#組合-Request-的-Url" class="headerlink" title="組合 Request 的 Url"></a>組合 Request 的 Url</h2><figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line">https://example.com/User?user[0].Name=&#x27;張三&#x27;&amp;user[0].Age=10&amp;user[1].Name=&#x27;李四&#x27;&amp;user[1].Age=20</span><br></pre></td></tr></table></figure>
-
-<div class="note warning"><p>參考資料</p>
-<ol>
-<li><a href="https://learn.microsoft.com/en-us/dotnet/api/microsoft.extensions.configuration.memoryconfigurationbuilderextensions.addinmemorycollection?view=dotnet-plat-ext-7.0">MemoryConfigurationBuilderExtensions.AddInMemoryCollection Method</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>.Net</category>
-      </categories>
-      <tags>
-        <tag>.Net</tag>
       </tags>
   </entry>
   <entry>
@@ -732,52 +732,6 @@ db.create_all() -->
       </tags>
   </entry>
   <entry>
-    <title>Whistle 代理規則使用</title>
-    <url>/2023/01/20/WhistleProxyRule/</url>
-    <content><![CDATA[<h1 id="實作"><a href="#實作" class="headerlink" title="實作"></a>實作</h1><h2 id="Dns-代理設定"><a href="#Dns-代理設定" class="headerlink" title="Dns 代理設定"></a>Dns 代理設定</h2><ul>
-<li>在 Rules 頁籤加入以下設定，設定 Domain 對應 Ip 位置  <figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line">example.<span class="attribute">com</span> <span class="number">192.168.0.1</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-<span id="more"></span>
-<h2 id="Http-的-StatusCode-代理設定"><a href="#Http-的-StatusCode-代理設定" class="headerlink" title="Http 的 StatusCode 代理設定"></a>Http 的 StatusCode 代理設定</h2><ul>
-<li>在 Rules 頁籤加入以下設定，設定狀態碼  <figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line">^https://example.com/User/<span class="attribute">Get</span> statusCode://200</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="Http-的-Headers-代理設定"><a href="#Http-的-Headers-代理設定" class="headerlink" title="Http 的 Headers 代理設定"></a>Http 的 Headers 代理設定</h2><ul>
-<li><p>在 Values 頁籤加入以下設定，命名為 corsheaders</p>
-  <figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line">Access-Control-Allow-Origin: *</span><br><span class="line">Content-Type: application/json; charset=utf8</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在 Rules 頁籤加入以下設定，設定 Headers</p>
-  <figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line">^https://example.com/User/<span class="attribute">Get</span> resHeaders://&#123;corsheaders&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="Http-的-Body-代理設定"><a href="#Http-的-Body-代理設定" class="headerlink" title="Http 的 Body 代理設定"></a>Http 的 Body 代理設定</h2><ul>
-<li><p>在 Values 頁籤加入以下設定，命名為 User.json</p>
-  <figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;Name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;張三&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;Age&quot;</span><span class="punctuation">:</span> <span class="number">18</span><span class="punctuation">,</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在 Rules 頁籤加入以下設定，設定 Headers</p>
-  <figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line">^https://example.com/User/<span class="attribute">Get</span> resBody://&#123;User.json&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="網頁嵌入-Js-檔案代理設定"><a href="#網頁嵌入-Js-檔案代理設定" class="headerlink" title="網頁嵌入 Js 檔案代理設定"></a>網頁嵌入 Js 檔案代理設定</h2><ul>
-<li><p>在 Values 頁籤加入以下設定，命名為 test.js</p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;test&#x27;</span>)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在 Rules 頁籤加入以下設定，設定 Js 檔案</p>
-  <figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line">^https://example.com/index.<span class="attribute">html</span> jsAppend://&#123;test.js&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="Socks-代理設定"><a href="#Socks-代理設定" class="headerlink" title="Socks 代理設定"></a>Socks 代理設定</h2><ul>
-<li>在 Rules 頁籤加入以下設定，設定 Domain 對應 Ip 位置  <figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line">example.<span class="attribute">com</span> socks://127.0.0.1:8080</span><br></pre></td></tr></table></figure></li>
-</ul>
-<div class="note warning"><p>參考資料</p>
-<ol>
-<li><a href="https://wproxy.org/whistle/">whistle</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>Whistle</category>
-      </categories>
-      <tags>
-        <tag>Whistle</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Win10 家用版安裝 Docker</title>
     <url>/2023/05/05/Win10HomeDocker/</url>
     <content><![CDATA[<h1 id="實作"><a href="#實作" class="headerlink" title="實作"></a>實作</h1><div class="note danger"><p>請注意，下方 Docker 應用只支援以 Ｗindows 為基底的 Image</p>
@@ -818,6 +772,53 @@ db.create_all() -->
       <tags>
         <tag>Wsl2</tag>
         <tag>docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Whistle 代理規則使用</title>
+    <url>/2023/01/20/WhistleProxyRule/</url>
+    <content><![CDATA[<h1 id="實作"><a href="#實作" class="headerlink" title="實作"></a>實作</h1><h2 id="Dns-代理設定"><a href="#Dns-代理設定" class="headerlink" title="Dns 代理設定"></a>Dns 代理設定</h2><ul>
+<li>在 Rules 頁籤加入以下設定，設定 Domain 對應 Ip 位置  <figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line">example.<span class="attribute">com</span> <span class="number">192.168.0.1</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<span id="more"></span>
+<h2 id="Http-的-StatusCode-代理設定"><a href="#Http-的-StatusCode-代理設定" class="headerlink" title="Http 的 StatusCode 代理設定"></a>Http 的 StatusCode 代理設定</h2><ul>
+<li>在 Rules 頁籤加入以下設定，設定狀態碼  <figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line">^https://example.com/User/<span class="attribute">Get</span> statusCode://200</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="Http-的-Headers-代理設定"><a href="#Http-的-Headers-代理設定" class="headerlink" title="Http 的 Headers 代理設定"></a>Http 的 Headers 代理設定</h2><ul>
+<li><p>在 Values 頁籤加入以下設定，命名為 corsheaders</p>
+  <figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line">Access-Control-Allow-Origin: *</span><br><span class="line">Content-Type: application/json; charset=utf8</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在 Rules 頁籤加入以下設定，設定 Headers</p>
+  <figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line">^https://example.com/User/<span class="attribute">Get</span> resHeaders://&#123;corsheaders&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="Http-的-Body-代理設定"><a href="#Http-的-Body-代理設定" class="headerlink" title="Http 的 Body 代理設定"></a>Http 的 Body 代理設定</h2><ul>
+<li><p>在 Values 頁籤加入以下設定，命名為 User.json</p>
+  <figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;Name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;張三&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;Age&quot;</span><span class="punctuation">:</span> <span class="number">18</span><span class="punctuation">,</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在 Rules 頁籤加入以下設定，設定 Headers</p>
+  <figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line">^https://example.com/User/<span class="attribute">Get</span> resBody://&#123;User.json&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="網頁嵌入-Js-檔案代理設定"><a href="#網頁嵌入-Js-檔案代理設定" class="headerlink" title="網頁嵌入 Js 檔案代理設定"></a>網頁嵌入 Js 檔案代理設定</h2><ul>
+<li><p>在 Values 頁籤加入以下設定，命名為 test.js</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;test&#x27;</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在 Rules 頁籤加入以下設定，設定 Js 檔案</p>
+  <figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line">^https://example.com/index.<span class="attribute">html</span> jsAppend://&#123;test.js&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="Socks-代理設定"><a href="#Socks-代理設定" class="headerlink" title="Socks 代理設定"></a>Socks 代理設定</h2><p>搭配SSH動態端口轉發請求</p>
+<ul>
+<li>在 Rules 頁籤加入以下設定，設定 Domain 對應 Ip 位置  <figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line">example.<span class="attribute">com</span> socks://127.0.0.1:8080</span><br></pre></td></tr></table></figure></li>
+</ul>
+<div class="note warning"><p>參考資料</p>
+<ol>
+<li><a href="https://wproxy.org/whistle/">whistle</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>Whistle</category>
+      </categories>
+      <tags>
+        <tag>Whistle</tag>
       </tags>
   </entry>
   <entry>
