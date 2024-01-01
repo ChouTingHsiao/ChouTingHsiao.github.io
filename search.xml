@@ -95,6 +95,31 @@
       </tags>
   </entry>
   <entry>
+    <title>FontForge 使用 Python Script 進行字型檔轉換</title>
+    <url>/2021/10/23/FontForgePythonTransfer/</url>
+    <content><![CDATA[<h1 id="實作"><a href="#實作" class="headerlink" title="實作"></a>實作</h1><p>建立 font.py 檔案</p>
+<span id="more"></span>
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="comment"># 載入 FontForge 模組</span></span><br><span class="line"><span class="keyword">import</span> fontforge</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定義 main 函數</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():	</span><br><span class="line">	<span class="comment"># 載入參數</span></span><br><span class="line">	fontFilePath = sys.argv[<span class="number">1</span>]	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 開啟字型檔</span></span><br><span class="line">	originFile=fontforge.<span class="built_in">open</span>(fontFilePath)	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 選取 unicode 特定範圍的字型</span></span><br><span class="line">	originFile.selection.select((<span class="string">&quot;ranges&quot;</span>, <span class="string">&quot;unicode&quot;</span>), <span class="number">0xe000</span>, <span class="number">0xf8ff</span>)	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 複製字型至剪貼簿</span></span><br><span class="line">	originFile.copy()	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 建立新的字型檔</span></span><br><span class="line">	newFile=fontforge.font()</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 設定 sfnt_names 參數與原檔一致</span></span><br><span class="line">	newFile.sfnt_names = originFile.sfnt_names	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 設定 encoding 參數與原檔一致</span></span><br><span class="line">	newFile.encoding = originFile.encoding	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 設定 size 參數與原檔一致</span></span><br><span class="line">	newFile.em = originFile.em	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 設定 layers 參數與原檔一致</span></span><br><span class="line">	newFile.layers[<span class="string">&#x27;Fore&#x27;</span>].is_quadratic = originFile.layers[<span class="string">&#x27;Fore&#x27;</span>].is_quadratic	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 選取 unicode 特定範圍的字型</span></span><br><span class="line">	newFile.selection.select((<span class="string">&quot;ranges&quot;</span>, <span class="string">&quot;unicode&quot;</span>), <span class="number">0xe000</span>, <span class="number">0xf8ff</span>)	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 貼上剪貼簿內容</span></span><br><span class="line">	newFile.paste()	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 設定字型名稱</span></span><br><span class="line">	newFile.fontname=<span class="string">&quot;EUDC&quot;</span>	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 保存為woff字型</span></span><br><span class="line">	newFile.generate(<span class="string">&quot;EUDC.woff&quot;</span>)	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 關閉字型檔</span></span><br><span class="line">	originFile.close()	</span><br><span class="line"></span><br><span class="line"><span class="comment"># 執行 main 函數</span></span><br><span class="line">main()	</span><br></pre></td></tr></table></figure>
+
+<p>使用 FontForge 執行 Python Script</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">fontforge -script font.py [FontFilePath]</span><br></pre></td></tr></table></figure>
+
+<div class="note warning"><p>參考資料</p>
+<ol>
+<li><a href="https://fontforge.org/docs/scripting/python.html">Python Scripting</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>FontForge</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>Font</tag>
+        <tag>Woff</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Json 格式資料如何拆解成 form 的輸入項</title>
     <url>/2020/03/27/HtmlFormPost/</url>
     <content><![CDATA[<h1 id="實作"><a href="#實作" class="headerlink" title="實作"></a>實作</h1><p>下方是 Json 格式資料</p>
@@ -125,28 +150,30 @@
       </tags>
   </entry>
   <entry>
-    <title>FontForge 使用 Python Script 進行字型檔轉換</title>
-    <url>/2021/10/23/FontForgePythonTransfer/</url>
-    <content><![CDATA[<h1 id="實作"><a href="#實作" class="headerlink" title="實作"></a>實作</h1><p>建立 font.py 檔案</p>
+    <title>Jenkins 執行備份專案命令</title>
+    <url>/2024/01/01/JenkinsBackupProject/</url>
+    <content><![CDATA[<h1 id="實作"><a href="#實作" class="headerlink" title="實作"></a>實作</h1><h2 id="建立-Jenkins-Pipeline"><a href="#建立-Jenkins-Pipeline" class="headerlink" title="建立 Jenkins Pipeline"></a>建立 Jenkins Pipeline</h2><p>在 Pipeline 取得執行時間</p>
+<figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line">dateNow = <span class="keyword">new</span> Date().format( <span class="string">&#x27;yyyyMMddHHmmss&#x27;</span> )</span><br></pre></td></tr></table></figure>
+
 <span id="more"></span>
 
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="comment"># 載入 FontForge 模組</span></span><br><span class="line"><span class="keyword">import</span> fontforge</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定義 main 函數</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():	</span><br><span class="line">	<span class="comment"># 載入參數</span></span><br><span class="line">	fontFilePath = sys.argv[<span class="number">1</span>]	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 開啟字型檔</span></span><br><span class="line">	originFile=fontforge.<span class="built_in">open</span>(fontFilePath)	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 選取 unicode 特定範圍的字型</span></span><br><span class="line">	originFile.selection.select((<span class="string">&quot;ranges&quot;</span>, <span class="string">&quot;unicode&quot;</span>), <span class="number">0xe000</span>, <span class="number">0xf8ff</span>)	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 複製字型至剪貼簿</span></span><br><span class="line">	originFile.copy()	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 建立新的字型檔</span></span><br><span class="line">	newFile=fontforge.font()</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 設定 sfnt_names 參數與原檔一致</span></span><br><span class="line">	newFile.sfnt_names = originFile.sfnt_names	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 設定 encoding 參數與原檔一致</span></span><br><span class="line">	newFile.encoding = originFile.encoding	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 設定 size 參數與原檔一致</span></span><br><span class="line">	newFile.em = originFile.em	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 設定 layers 參數與原檔一致</span></span><br><span class="line">	newFile.layers[<span class="string">&#x27;Fore&#x27;</span>].is_quadratic = originFile.layers[<span class="string">&#x27;Fore&#x27;</span>].is_quadratic	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 選取 unicode 特定範圍的字型</span></span><br><span class="line">	newFile.selection.select((<span class="string">&quot;ranges&quot;</span>, <span class="string">&quot;unicode&quot;</span>), <span class="number">0xe000</span>, <span class="number">0xf8ff</span>)	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 貼上剪貼簿內容</span></span><br><span class="line">	newFile.paste()	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 設定字型名稱</span></span><br><span class="line">	newFile.fontname=<span class="string">&quot;EUDC&quot;</span>	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 保存為woff字型</span></span><br><span class="line">	newFile.generate(<span class="string">&quot;EUDC.woff&quot;</span>)	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 關閉字型檔</span></span><br><span class="line">	originFile.close()	</span><br><span class="line"></span><br><span class="line"><span class="comment"># 執行 main 函數</span></span><br><span class="line">main()	</span><br></pre></td></tr></table></figure>
+<p>在 Pipeline 定義專案目錄與備份目錄</p>
+<figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line">projectPath = <span class="string">&quot;[專案目錄]&quot;</span></span><br><span class="line">backupPath = <span class="string">&quot;[備份目錄]&quot;</span></span><br></pre></td></tr></table></figure>
 
-<p>使用 FontForge 執行 Python Script</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">fontforge -script font.py [FontFilePath]</span><br></pre></td></tr></table></figure>
+<p>使用 ssh 命令登入 Server 移除三個月以上的備份資料</p>
+<figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line">sh <span class="string">&quot;ssh -p [ssh連接Port] [帳號]@[Server位置] \&quot;find $&#123;backupPath&#125;* -maxdepth 0 -type d -ctime +90 2&gt;/dev/null | sudo xargs -r rm -rf \&quot;&quot;</span></span><br></pre></td></tr></table></figure>
 
-<div class="note warning"><p>參考資料</p>
-<ol>
-<li><a href="https://fontforge.org/docs/scripting/python.html">Python Scripting</a></li>
-</ol>
-</div>]]></content>
+<p>使用 ssh 命令登入 Server 依執行時間建立備份目錄</p>
+<figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line">sh <span class="string">&quot;ssh -p [ssh連接Port] [帳號]@[Server位置] \&quot;sudo mkdir -p $&#123;backupPath&#125;$&#123;dateNow&#125; \&quot;&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>使用 ssh 命令登入 Server 將專案複製至備份目錄</p>
+<figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line">sh <span class="string">&quot;ssh -p [ssh連接Port] [帳號]@[Server位置] \&quot;sudo cp -r $&#123;projectPath&#125;* $&#123;backupPath&#125;$&#123;dateNow&#125;/ \&quot;&quot;</span></span><br></pre></td></tr></table></figure>
+]]></content>
       <categories>
-        <category>FontForge</category>
+        <category>Jenkins</category>
       </categories>
       <tags>
-        <tag>Python</tag>
-        <tag>Font</tag>
-        <tag>Woff</tag>
+        <tag>Jenkins</tag>
       </tags>
   </entry>
   <entry>
@@ -197,30 +224,6 @@
       </tags>
   </entry>
   <entry>
-    <title>如何判斷 Function 是否存在</title>
-    <url>/2019/12/28/JsFunction/</url>
-    <content><![CDATA[<h1 id="實作"><a href="#實作" class="headerlink" title="實作"></a>實作</h1><p>建立一個名稱為 TEST 的 function</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">TEST</span>(<span class="params"></span>) &#123;</span><br><span class="line"></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;call function TEST&#x27;</span>);</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<span id="more"></span>
-
-<p>判斷 function 是否存在方法，並執行</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> funcName = <span class="string">&#x27;TEST&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">typeof</span> (<span class="variable language_">window</span>[<span class="title class_">FuncName</span>]) == <span class="string">&quot;function&quot;</span>) &#123;</span><br><span class="line">        <span class="comment">// 執行方法</span></span><br><span class="line">        <span class="variable language_">window</span>[<span class="title class_">FuncName</span>]();</span><br><span class="line">&#125; </span><br><span class="line"><span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;此方法不存在&#x27;</span>);</span><br><span class="line">&#125;  </span><br></pre></td></tr></table></figure>
-
-<div class="note warning"><p>參考資料</p>
-<ol>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof">MDN typeof</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>Javascript</category>
-      </categories>
-      <tags>
-        <tag>Javascript</tag>
-        <tag>Function</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>如何將檔案轉成 Base64 編碼</title>
     <url>/2019/12/09/JsFileToBase64/</url>
     <content><![CDATA[<h1 id="實作"><a href="#實作" class="headerlink" title="實作"></a>實作</h1><p>首先在 HTML 建立一個 File Upload 與一個顯示結果的 div</p>
@@ -242,6 +245,30 @@
       <tags>
         <tag>Javascript</tag>
         <tag>Base64</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>如何判斷 Function 是否存在</title>
+    <url>/2019/12/28/JsFunction/</url>
+    <content><![CDATA[<h1 id="實作"><a href="#實作" class="headerlink" title="實作"></a>實作</h1><p>建立一個名稱為 TEST 的 function</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">TEST</span>(<span class="params"></span>) &#123;</span><br><span class="line"></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;call function TEST&#x27;</span>);</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<p>判斷 function 是否存在方法，並執行</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> funcName = <span class="string">&#x27;TEST&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">typeof</span> (<span class="variable language_">window</span>[<span class="title class_">FuncName</span>]) == <span class="string">&quot;function&quot;</span>) &#123;</span><br><span class="line">        <span class="comment">// 執行方法</span></span><br><span class="line">        <span class="variable language_">window</span>[<span class="title class_">FuncName</span>]();</span><br><span class="line">&#125; </span><br><span class="line"><span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;此方法不存在&#x27;</span>);</span><br><span class="line">&#125;  </span><br></pre></td></tr></table></figure>
+
+<div class="note warning"><p>參考資料</p>
+<ol>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof">MDN typeof</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>Javascript</category>
+      </categories>
+      <tags>
+        <tag>Javascript</tag>
+        <tag>Function</tag>
       </tags>
   </entry>
   <entry>
@@ -335,26 +362,6 @@
       </tags>
   </entry>
   <entry>
-    <title>如何使用 Regex 群組</title>
-    <url>/2022/05/22/JsRegexGroup/</url>
-    <content><![CDATA[<h1 id="實作"><a href="#實作" class="headerlink" title="實作"></a>實作</h1><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 建立規則</span></span><br><span class="line"><span class="keyword">var</span> myRegexp = <span class="regexp">/(?&lt;群組名稱&gt;.*)Test/g</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 執行規則</span></span><br><span class="line"><span class="keyword">var</span> match =  myRegexp.<span class="title function_">exec</span>(<span class="string">&#x27;123Test&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 取得執行結果 output: 123</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(match.<span class="property">groups</span>.群組名稱);</span><br></pre></td></tr></table></figure>
-
-<span id="more"></span>
-
-<div class="note warning"><p>參考資料</p>
-<ol>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Groups_and_Ranges">MDN</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>Javascript</category>
-      </categories>
-      <tags>
-        <tag>Javascript</tag>
-        <tag>Regex</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Linux IBM i Access Odbc 手動安裝</title>
     <url>/2021/10/05/LinuxIbmIAccessOdbc/</url>
     <content><![CDATA[<h1 id="實作"><a href="#實作" class="headerlink" title="實作"></a>實作</h1><h2 id="Odbc-元件配置"><a href="#Odbc-元件配置" class="headerlink" title="Odbc 元件配置"></a>Odbc 元件配置</h2><p>安裝 Linux Odbc 元件</p>
@@ -376,6 +383,26 @@
         <tag>Ubuntu</tag>
         <tag>Odbc</tag>
         <tag>IBM i Access</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>如何使用 Regex 群組</title>
+    <url>/2022/05/22/JsRegexGroup/</url>
+    <content><![CDATA[<h1 id="實作"><a href="#實作" class="headerlink" title="實作"></a>實作</h1><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 建立規則</span></span><br><span class="line"><span class="keyword">var</span> myRegexp = <span class="regexp">/(?&lt;群組名稱&gt;.*)Test/g</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 執行規則</span></span><br><span class="line"><span class="keyword">var</span> match =  myRegexp.<span class="title function_">exec</span>(<span class="string">&#x27;123Test&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 取得執行結果 output: 123</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(match.<span class="property">groups</span>.群組名稱);</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<div class="note warning"><p>參考資料</p>
+<ol>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Groups_and_Ranges">MDN</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>Javascript</category>
+      </categories>
+      <tags>
+        <tag>Javascript</tag>
+        <tag>Regex</tag>
       </tags>
   </entry>
   <entry>
@@ -573,6 +600,44 @@ dotnet-dump collect --process-id 1902 -->
       </tags>
   </entry>
   <entry>
+    <title>如何在資料存取層進行單元測試</title>
+    <url>/2022/05/01/NetRepositoryUnitTest/</url>
+    <content><![CDATA[<h1 id="實作"><a href="#實作" class="headerlink" title="實作"></a>實作</h1><p>安裝 Nuget 的 Sqlite 套件</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Install-Package</span> Microsoft.EntityFrameworkCore.Sqlite</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<p>建立 EntityFramework 的 DbContext</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">TestDbContext</span> : <span class="title">DbContext</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">DbSet</span>&lt;<span class="title">Table</span>&gt;? Table</span> &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">TestDbContext</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">TestDbContext</span>(<span class="params">DbContextOptions options</span>) : <span class="title">base</span>(<span class="params">options</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">OnModelCreating</span>(<span class="params">ModelBuilder modelBuilder</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        modelBuilder.Entity&lt;Table&gt;(entity =&gt; &#123;</span><br><span class="line">            entity.HasKey(x =&gt; x.Id);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>使用 Sqlite 的 In-Memory 模式載入 DbContext</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">SqliteConnection connection = <span class="keyword">new</span> SqliteConnection(<span class="string">&quot;Data Source=:memory:&quot;</span>);</span><br><span class="line"></span><br><span class="line">connection.Open();</span><br><span class="line"></span><br><span class="line">DbContextOptions options = <span class="keyword">new</span> DbContextOptionsBuilder()</span><br><span class="line">.UseSqlite(connection)</span><br><span class="line">.Options;</span><br></pre></td></tr></table></figure>
+
+<p>然後使用 DbContext 的設定建立資料庫</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> TestDbContext context = <span class="keyword">new</span> TestDbContext(options);</span><br><span class="line">context.Database.EnsureCreated();</span><br></pre></td></tr></table></figure>
+
+<p>最後可開始使用 EntityFramework 開始操作資料庫</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> TestDbContext context = <span class="keyword">new</span> TestDbContext(options);</span><br><span class="line">List&lt;Table&gt; table = context.Table.ToList();</span><br></pre></td></tr></table></figure>
+
+<p>如果有使用 Sqlite 未定義的 Database Function , 可在程式中使用 CreateFunction 定義</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">SqliteConnection connection = <span class="keyword">new</span> SqliteConnection(<span class="string">&quot;Data Source=:memory:&quot;</span>);</span><br><span class="line"></span><br><span class="line">connection.CreateFunction(<span class="string">&quot;current_date&quot;</span>, (x) =&gt; DateTime.Now);</span><br><span class="line"></span><br><span class="line">connection.Open();</span><br></pre></td></tr></table></figure>
+
+<div class="note warning"><p>參考資料</p>
+<ol>
+<li><a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.data.sqlite.sqliteconnection.createfunction?view=msdata-sqlite-6.0.0">Microsoft文件</a></li>
+<li><a href="https://csharp.hotexamples.com/examples/-/SQLiteConnection/CreateFunction/php-sqliteconnection-createfunction-method-examples.html">SQLite Examples</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>.Net</category>
+      </categories>
+      <tags>
+        <tag>.Net</tag>
+        <tag>UnitTest</tag>
+        <tag>SQLite</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>如何在商業邏輯層進行單元測試</title>
     <url>/2022/05/01/NetServiceUnitTest/</url>
     <content><![CDATA[<h1 id="實作"><a href="#實作" class="headerlink" title="實作"></a>實作</h1><p>安裝 Nuget 的 NSubstitute 套件</p>
@@ -610,44 +675,6 @@ dotnet-dump collect --process-id 1902 -->
         <tag>.Net</tag>
         <tag>UnitTest</tag>
         <tag>NSubstitute</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>如何在資料存取層進行單元測試</title>
-    <url>/2022/05/01/NetRepositoryUnitTest/</url>
-    <content><![CDATA[<h1 id="實作"><a href="#實作" class="headerlink" title="實作"></a>實作</h1><p>安裝 Nuget 的 Sqlite 套件</p>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Install-Package</span> Microsoft.EntityFrameworkCore.Sqlite</span><br></pre></td></tr></table></figure>
-
-<span id="more"></span>
-
-<p>建立 EntityFramework 的 DbContext</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">TestDbContext</span> : <span class="title">DbContext</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">DbSet</span>&lt;<span class="title">Table</span>&gt;? Table</span> &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">TestDbContext</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">TestDbContext</span>(<span class="params">DbContextOptions options</span>) : <span class="title">base</span>(<span class="params">options</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">OnModelCreating</span>(<span class="params">ModelBuilder modelBuilder</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        modelBuilder.Entity&lt;Table&gt;(entity =&gt; &#123;</span><br><span class="line">            entity.HasKey(x =&gt; x.Id);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>使用 Sqlite 的 In-Memory 模式載入 DbContext</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">SqliteConnection connection = <span class="keyword">new</span> SqliteConnection(<span class="string">&quot;Data Source=:memory:&quot;</span>);</span><br><span class="line"></span><br><span class="line">connection.Open();</span><br><span class="line"></span><br><span class="line">DbContextOptions options = <span class="keyword">new</span> DbContextOptionsBuilder()</span><br><span class="line">.UseSqlite(connection)</span><br><span class="line">.Options;</span><br></pre></td></tr></table></figure>
-
-<p>然後使用 DbContext 的設定建立資料庫</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> TestDbContext context = <span class="keyword">new</span> TestDbContext(options);</span><br><span class="line">context.Database.EnsureCreated();</span><br></pre></td></tr></table></figure>
-
-<p>最後可開始使用 EntityFramework 開始操作資料庫</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> TestDbContext context = <span class="keyword">new</span> TestDbContext(options);</span><br><span class="line">List&lt;Table&gt; table = context.Table.ToList();</span><br></pre></td></tr></table></figure>
-
-<p>如果有使用 Sqlite 未定義的 Database Function , 可在程式中使用 CreateFunction 定義</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">SqliteConnection connection = <span class="keyword">new</span> SqliteConnection(<span class="string">&quot;Data Source=:memory:&quot;</span>);</span><br><span class="line"></span><br><span class="line">connection.CreateFunction(<span class="string">&quot;current_date&quot;</span>, (x) =&gt; DateTime.Now);</span><br><span class="line"></span><br><span class="line">connection.Open();</span><br></pre></td></tr></table></figure>
-
-<div class="note warning"><p>參考資料</p>
-<ol>
-<li><a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.data.sqlite.sqliteconnection.createfunction?view=msdata-sqlite-6.0.0">Microsoft文件</a></li>
-<li><a href="https://csharp.hotexamples.com/examples/-/SQLiteConnection/CreateFunction/php-sqliteconnection-createfunction-method-examples.html">SQLite Examples</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>.Net</category>
-      </categories>
-      <tags>
-        <tag>.Net</tag>
-        <tag>UnitTest</tag>
-        <tag>SQLite</tag>
       </tags>
   </entry>
   <entry>
@@ -888,6 +915,44 @@ db.create_all() -->
 <ol>
 <li><a href="https://community.chocolatey.org/packages/docker-cli">Daemon CLI (dockerd)</a></li>
 <li><a href="https://docs.docker.com/engine/reference/commandline/dockerd/#daemon-configuration-file">Chocolatey Docker CLI</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>Wsl2</category>
+      </categories>
+      <tags>
+        <tag>Wsl2</tag>
+        <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>WSL2 設定 Docker In Docker</title>
+    <url>/2024/01/01/Wsl2DockerInDocker/</url>
+    <content><![CDATA[<h1 id="實作"><a href="#實作" class="headerlink" title="實作"></a>實作</h1><h2 id="掛載主機的-Docker-Socket"><a href="#掛載主機的-Docker-Socket" class="headerlink" title="掛載主機的 Docker Socket"></a>掛載主機的 Docker Socket</h2><h3 id="建立-‘-etc-docker-daemon-json’"><a href="#建立-‘-etc-docker-daemon-json’" class="headerlink" title="建立 ‘&#x2F;etc&#x2F;docker&#x2F;daemon.json’"></a>建立 ‘&#x2F;etc&#x2F;docker&#x2F;daemon.json’</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo nano /etc/docker/daemon.json</span><br></pre></td></tr></table></figure>
+
+<p>加入以下設定</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;hosts&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span> <span class="string">&quot;unix:///var/run/docker.sock&quot;</span><span class="punctuation">,</span> <span class="string">&quot;tcp://0.0.0.0:&quot;</span> <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;tls&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="執行命令時須掛載-docker-sock"><a href="#執行命令時須掛載-docker-sock" class="headerlink" title="執行命令時須掛載 docker.sock"></a>執行命令時須掛載 docker.sock</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run -v /var/run/docker.sock:/var/run/docker.sock -ti [Docker 映像檔]</span><br></pre></td></tr></table></figure>
+
+<h3 id="透過-Curl-執行-Docker-Socket-建立-Containers"><a href="#透過-Curl-執行-Docker-Socket-建立-Containers" class="headerlink" title="透過 Curl 執行 Docker Socket 建立 Containers"></a>透過 Curl 執行 Docker Socket 建立 Containers</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl -XPOST --unix-socket /var/run/docker.sock -d <span class="string">&#x27;&#123;&quot;Image&quot;:&quot;[Docker 映像檔]&quot;&#125;&#x27;</span> -H <span class="string">&#x27;Content-Type: application/json&#x27;</span> http://localhost/containers/create</span><br></pre></td></tr></table></figure>
+
+<h3 id="透過-Curl-執行-Docker-Socket-啟動-Containers"><a href="#透過-Curl-執行-Docker-Socket-啟動-Containers" class="headerlink" title="透過 Curl 執行 Docker Socket 啟動 Containers"></a>透過 Curl 執行 Docker Socket 啟動 Containers</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl -XPOST --unix-socket /var/run/docker.sock http://localhost/containers/[容器編號]/start</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<h2 id="使用-docker-dind-映像"><a href="#使用-docker-dind-映像" class="headerlink" title="使用 docker:dind 映像"></a>使用 docker:dind 映像</h2><p>可參考以下兩種方法運行 docker:dind 映像</p>
+<h3 id="需要執行帶有該–privileged選項和一些附加標誌的容器"><a href="#需要執行帶有該–privileged選項和一些附加標誌的容器" class="headerlink" title="需要執行帶有該–privileged選項和一些附加標誌的容器"></a>需要執行帶有該–privileged選項和一些附加標誌的容器</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run -p [本機連接Port]:2375 --privileged -e DOCKER_TLS_CERTDIR=<span class="string">&quot;&quot;</span> --name privileged-docker -d docker:dind</span><br></pre></td></tr></table></figure>
+
+<h3 id="使用-Nestybox-Sysbox-運行時執行"><a href="#使用-Nestybox-Sysbox-運行時執行" class="headerlink" title="使用 Nestybox Sysbox 運行時執行"></a>使用 Nestybox Sysbox 運行時執行</h3><p><a href="https://github.com/nestybox/sysbox?ref=kodekloud.com">安裝 Nestybox Sysbox</a>，不需要特權模式或特殊配置，即可執行</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 開放 2375 至本機連接 Port</span></span><br><span class="line">docker run -p [本機連接Port]:2375 -e DOCKER_TLS_CERTDIR=<span class="string">&quot;&quot;</span> --runtime=sysbox-runc --name sysbox-docker -d docker:dind</span><br></pre></td></tr></table></figure>
+
+<p>VSCode 使用 Docker contexts 連線至遠端 Docker</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker context create <span class="built_in">test</span> --docker <span class="string">&quot;host=tcp://127.0.0.1:[本機連接Port]&quot;</span></span><br></pre></td></tr></table></figure>
+
+<div class="note warning"><p>參考資料</p>
+<ol>
+<li><a href="https://kodekloud.com/blog/run-docker-in-docker-container/">3 Best Ways to Run Docker in Docker Container</a></li>
 </ol>
 </div>]]></content>
       <categories>
