@@ -31,6 +31,33 @@
       </tags>
   </entry>
   <entry>
+    <title>如何設定 Protractor WebDriver Version</title>
+    <url>/2020/08/31/AngularProtractorWebDriver/</url>
+    <content><![CDATA[<h1 id="實作"><a href="#實作" class="headerlink" title="實作"></a>實作</h1><p>先清除目前下載的 WebDriver</p>
+<span id="more"></span>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npx  webdriver-manager clean</span><br></pre></td></tr></table></figure>
+<p>以 chrome 為例從<a href="http://chromedriver.chromium.org/">chromedriver網頁</a></p>
+<p>查詢所需的版本號</p>
+<p>接下來依版本下載 WebDriver</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npx webdriver-manager update  --versions.chrome  [chrome版本號]</span><br></pre></td></tr></table></figure>
+<p>運行 Protractor 時使用 –no-webdriver-update 選項</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ng e2e --no-webdriver-update</span><br></pre></td></tr></table></figure>
+
+<div class="note warning"><p>參考資料</p>
+<ol>
+<li><a href="https://www.npmjs.com/package/webdriver-manager">webdriver-manager NPM</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>Angular</category>
+      </categories>
+      <tags>
+        <tag>Angular</tag>
+        <tag>Protractor</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>如何在 pi 3b+ 上執行 Angular Protractor</title>
     <url>/2019/12/25/AngularProtractorOnPi/</url>
     <content><![CDATA[<h1 id="實作"><a href="#實作" class="headerlink" title="實作"></a>實作</h1><p>首先依照硬體架構從<a href="https://launchpad.net/ubuntu/trusty/+package/chromium-chromedriver">launchpad.net</a></p>
@@ -63,35 +90,8 @@
       <tags>
         <tag>Linux</tag>
         <tag>Angular</tag>
+        <tag>Protractor</tag>
         <tag>Pi</tag>
-        <tag>Protractor</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>如何設定 Protractor WebDriver Version</title>
-    <url>/2020/08/31/AngularProtractorWebDriver/</url>
-    <content><![CDATA[<h1 id="實作"><a href="#實作" class="headerlink" title="實作"></a>實作</h1><p>先清除目前下載的 WebDriver</p>
-<span id="more"></span>
-
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npx  webdriver-manager clean</span><br></pre></td></tr></table></figure>
-<p>以 chrome 為例從<a href="http://chromedriver.chromium.org/">chromedriver網頁</a></p>
-<p>查詢所需的版本號</p>
-<p>接下來依版本下載 WebDriver</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npx webdriver-manager update  --versions.chrome  [chrome版本號]</span><br></pre></td></tr></table></figure>
-<p>運行 Protractor 時使用 –no-webdriver-update 選項</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ng e2e --no-webdriver-update</span><br></pre></td></tr></table></figure>
-
-<div class="note warning"><p>參考資料</p>
-<ol>
-<li><a href="https://www.npmjs.com/package/webdriver-manager">webdriver-manager NPM</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>Angular</category>
-      </categories>
-      <tags>
-        <tag>Angular</tag>
-        <tag>Protractor</tag>
       </tags>
   </entry>
   <entry>
@@ -178,7 +178,7 @@
   </entry>
   <entry>
     <title>使用 Linux 檔案列表建立 Jenkins 下拉選單</title>
-    <url>/2021/10/23/JenkinsFileDropdown/</url>
+    <url>/2021/10/23/JenkinsDropdown/</url>
     <content><![CDATA[<h1 id="實作"><a href="#實作" class="headerlink" title="實作"></a>實作</h1><h2 id="取得檔案列表方法"><a href="#取得檔案列表方法" class="headerlink" title="取得檔案列表方法"></a>取得檔案列表方法</h2><p>使用以下 Linxu 指令，將預設目錄每個檔案使用一列的方式逐一列出</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">ls</span> -1 /home/ubuntu</span><br></pre></td></tr></table></figure>
 
@@ -362,6 +362,26 @@
       </tags>
   </entry>
   <entry>
+    <title>如何使用 Regex 群組</title>
+    <url>/2022/05/22/JsRegexGroup/</url>
+    <content><![CDATA[<h1 id="實作"><a href="#實作" class="headerlink" title="實作"></a>實作</h1><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 建立規則</span></span><br><span class="line"><span class="keyword">var</span> myRegexp = <span class="regexp">/(?&lt;群組名稱&gt;.*)Test/g</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 執行規則</span></span><br><span class="line"><span class="keyword">var</span> match =  myRegexp.<span class="title function_">exec</span>(<span class="string">&#x27;123Test&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 取得執行結果 output: 123</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(match.<span class="property">groups</span>.群組名稱);</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<div class="note warning"><p>參考資料</p>
+<ol>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Groups_and_Ranges">MDN</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>Javascript</category>
+      </categories>
+      <tags>
+        <tag>Javascript</tag>
+        <tag>Regex</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Linux IBM i Access Odbc 手動安裝</title>
     <url>/2021/10/05/LinuxIbmIAccessOdbc/</url>
     <content><![CDATA[<h1 id="實作"><a href="#實作" class="headerlink" title="實作"></a>實作</h1><h2 id="Odbc-元件配置"><a href="#Odbc-元件配置" class="headerlink" title="Odbc 元件配置"></a>Odbc 元件配置</h2><p>安裝 Linux Odbc 元件</p>
@@ -383,26 +403,6 @@
         <tag>Ubuntu</tag>
         <tag>Odbc</tag>
         <tag>IBM i Access</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>如何使用 Regex 群組</title>
-    <url>/2022/05/22/JsRegexGroup/</url>
-    <content><![CDATA[<h1 id="實作"><a href="#實作" class="headerlink" title="實作"></a>實作</h1><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 建立規則</span></span><br><span class="line"><span class="keyword">var</span> myRegexp = <span class="regexp">/(?&lt;群組名稱&gt;.*)Test/g</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 執行規則</span></span><br><span class="line"><span class="keyword">var</span> match =  myRegexp.<span class="title function_">exec</span>(<span class="string">&#x27;123Test&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 取得執行結果 output: 123</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(match.<span class="property">groups</span>.群組名稱);</span><br></pre></td></tr></table></figure>
-
-<span id="more"></span>
-
-<div class="note warning"><p>參考資料</p>
-<ol>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Groups_and_Ranges">MDN</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>Javascript</category>
-      </categories>
-      <tags>
-        <tag>Javascript</tag>
-        <tag>Regex</tag>
       </tags>
   </entry>
   <entry>
@@ -871,6 +871,44 @@ db.create_all() -->
       </tags>
   </entry>
   <entry>
+    <title>WSL2 設定 Docker In Docker</title>
+    <url>/2024/01/01/Wsl2DockerInDocker/</url>
+    <content><![CDATA[<h1 id="實作"><a href="#實作" class="headerlink" title="實作"></a>實作</h1><h2 id="掛載主機的-Docker-Socket"><a href="#掛載主機的-Docker-Socket" class="headerlink" title="掛載主機的 Docker Socket"></a>掛載主機的 Docker Socket</h2><h3 id="建立-‘-etc-docker-daemon-json’"><a href="#建立-‘-etc-docker-daemon-json’" class="headerlink" title="建立 ‘&#x2F;etc&#x2F;docker&#x2F;daemon.json’"></a>建立 ‘&#x2F;etc&#x2F;docker&#x2F;daemon.json’</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo nano /etc/docker/daemon.json</span><br></pre></td></tr></table></figure>
+
+<p>加入以下設定</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;hosts&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span> <span class="string">&quot;unix:///var/run/docker.sock&quot;</span><span class="punctuation">,</span> <span class="string">&quot;tcp://0.0.0.0:&quot;</span> <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;tls&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="執行命令時須掛載-docker-sock"><a href="#執行命令時須掛載-docker-sock" class="headerlink" title="執行命令時須掛載 docker.sock"></a>執行命令時須掛載 docker.sock</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run -v /var/run/docker.sock:/var/run/docker.sock -ti [Docker 映像檔]</span><br></pre></td></tr></table></figure>
+
+<h3 id="透過-Curl-執行-Docker-Socket-建立-Containers"><a href="#透過-Curl-執行-Docker-Socket-建立-Containers" class="headerlink" title="透過 Curl 執行 Docker Socket 建立 Containers"></a>透過 Curl 執行 Docker Socket 建立 Containers</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl -XPOST --unix-socket /var/run/docker.sock -d <span class="string">&#x27;&#123;&quot;Image&quot;:&quot;[Docker 映像檔]&quot;&#125;&#x27;</span> -H <span class="string">&#x27;Content-Type: application/json&#x27;</span> http://localhost/containers/create</span><br></pre></td></tr></table></figure>
+
+<h3 id="透過-Curl-執行-Docker-Socket-啟動-Containers"><a href="#透過-Curl-執行-Docker-Socket-啟動-Containers" class="headerlink" title="透過 Curl 執行 Docker Socket 啟動 Containers"></a>透過 Curl 執行 Docker Socket 啟動 Containers</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl -XPOST --unix-socket /var/run/docker.sock http://localhost/containers/[容器編號]/start</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<h2 id="使用-docker-dind-映像"><a href="#使用-docker-dind-映像" class="headerlink" title="使用 docker:dind 映像"></a>使用 docker:dind 映像</h2><p>可參考以下兩種方法運行 docker:dind 映像</p>
+<h3 id="需要執行帶有該–privileged選項和一些附加標誌的容器"><a href="#需要執行帶有該–privileged選項和一些附加標誌的容器" class="headerlink" title="需要執行帶有該–privileged選項和一些附加標誌的容器"></a>需要執行帶有該–privileged選項和一些附加標誌的容器</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run -p [本機連接Port]:2375 --privileged -e DOCKER_TLS_CERTDIR=<span class="string">&quot;&quot;</span> --name privileged-docker -d docker:dind</span><br></pre></td></tr></table></figure>
+
+<h3 id="使用-Nestybox-Sysbox-運行時執行"><a href="#使用-Nestybox-Sysbox-運行時執行" class="headerlink" title="使用 Nestybox Sysbox 運行時執行"></a>使用 Nestybox Sysbox 運行時執行</h3><p><a href="https://github.com/nestybox/sysbox?ref=kodekloud.com">安裝 Nestybox Sysbox</a>，不需要特權模式或特殊配置，即可執行</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 開放 2375 至本機連接 Port</span></span><br><span class="line">docker run -p [本機連接Port]:2375 -e DOCKER_TLS_CERTDIR=<span class="string">&quot;&quot;</span> --runtime=sysbox-runc --name sysbox-docker -d docker:dind</span><br></pre></td></tr></table></figure>
+
+<p>VSCode 使用 Docker contexts 連線至遠端 Docker</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker context create <span class="built_in">test</span> --docker <span class="string">&quot;host=tcp://127.0.0.1:[本機連接Port]&quot;</span></span><br></pre></td></tr></table></figure>
+
+<div class="note warning"><p>參考資料</p>
+<ol>
+<li><a href="https://kodekloud.com/blog/run-docker-in-docker-container/">3 Best Ways to Run Docker in Docker Container</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>Wsl2</category>
+      </categories>
+      <tags>
+        <tag>Wsl2</tag>
+        <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>WSL2 開放 Docker 外部連線</title>
     <url>/2023/04/29/Wsl2Docker/</url>
     <content><![CDATA[<h1 id="實作"><a href="#實作" class="headerlink" title="實作"></a>實作</h1><h2 id="開放-Docker-外部連線"><a href="#開放-Docker-外部連線" class="headerlink" title="開放 Docker 外部連線"></a>開放 Docker 外部連線</h2><p>建立 ‘&#x2F;etc&#x2F;docker&#x2F;daemon.json’</p>
@@ -915,44 +953,6 @@ db.create_all() -->
 <ol>
 <li><a href="https://community.chocolatey.org/packages/docker-cli">Daemon CLI (dockerd)</a></li>
 <li><a href="https://docs.docker.com/engine/reference/commandline/dockerd/#daemon-configuration-file">Chocolatey Docker CLI</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>Wsl2</category>
-      </categories>
-      <tags>
-        <tag>Wsl2</tag>
-        <tag>Docker</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>WSL2 設定 Docker In Docker</title>
-    <url>/2024/01/01/Wsl2DockerInDocker/</url>
-    <content><![CDATA[<h1 id="實作"><a href="#實作" class="headerlink" title="實作"></a>實作</h1><h2 id="掛載主機的-Docker-Socket"><a href="#掛載主機的-Docker-Socket" class="headerlink" title="掛載主機的 Docker Socket"></a>掛載主機的 Docker Socket</h2><h3 id="建立-‘-etc-docker-daemon-json’"><a href="#建立-‘-etc-docker-daemon-json’" class="headerlink" title="建立 ‘&#x2F;etc&#x2F;docker&#x2F;daemon.json’"></a>建立 ‘&#x2F;etc&#x2F;docker&#x2F;daemon.json’</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo nano /etc/docker/daemon.json</span><br></pre></td></tr></table></figure>
-
-<p>加入以下設定</p>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;hosts&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span> <span class="string">&quot;unix:///var/run/docker.sock&quot;</span><span class="punctuation">,</span> <span class="string">&quot;tcp://0.0.0.0:&quot;</span> <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;tls&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="執行命令時須掛載-docker-sock"><a href="#執行命令時須掛載-docker-sock" class="headerlink" title="執行命令時須掛載 docker.sock"></a>執行命令時須掛載 docker.sock</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run -v /var/run/docker.sock:/var/run/docker.sock -ti [Docker 映像檔]</span><br></pre></td></tr></table></figure>
-
-<h3 id="透過-Curl-執行-Docker-Socket-建立-Containers"><a href="#透過-Curl-執行-Docker-Socket-建立-Containers" class="headerlink" title="透過 Curl 執行 Docker Socket 建立 Containers"></a>透過 Curl 執行 Docker Socket 建立 Containers</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl -XPOST --unix-socket /var/run/docker.sock -d <span class="string">&#x27;&#123;&quot;Image&quot;:&quot;[Docker 映像檔]&quot;&#125;&#x27;</span> -H <span class="string">&#x27;Content-Type: application/json&#x27;</span> http://localhost/containers/create</span><br></pre></td></tr></table></figure>
-
-<h3 id="透過-Curl-執行-Docker-Socket-啟動-Containers"><a href="#透過-Curl-執行-Docker-Socket-啟動-Containers" class="headerlink" title="透過 Curl 執行 Docker Socket 啟動 Containers"></a>透過 Curl 執行 Docker Socket 啟動 Containers</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl -XPOST --unix-socket /var/run/docker.sock http://localhost/containers/[容器編號]/start</span><br></pre></td></tr></table></figure>
-
-<span id="more"></span>
-
-<h2 id="使用-docker-dind-映像"><a href="#使用-docker-dind-映像" class="headerlink" title="使用 docker:dind 映像"></a>使用 docker:dind 映像</h2><p>可參考以下兩種方法運行 docker:dind 映像</p>
-<h3 id="需要執行帶有該–privileged選項和一些附加標誌的容器"><a href="#需要執行帶有該–privileged選項和一些附加標誌的容器" class="headerlink" title="需要執行帶有該–privileged選項和一些附加標誌的容器"></a>需要執行帶有該–privileged選項和一些附加標誌的容器</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run -p [本機連接Port]:2375 --privileged -e DOCKER_TLS_CERTDIR=<span class="string">&quot;&quot;</span> --name privileged-docker -d docker:dind</span><br></pre></td></tr></table></figure>
-
-<h3 id="使用-Nestybox-Sysbox-運行時執行"><a href="#使用-Nestybox-Sysbox-運行時執行" class="headerlink" title="使用 Nestybox Sysbox 運行時執行"></a>使用 Nestybox Sysbox 運行時執行</h3><p><a href="https://github.com/nestybox/sysbox?ref=kodekloud.com">安裝 Nestybox Sysbox</a>，不需要特權模式或特殊配置，即可執行</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 開放 2375 至本機連接 Port</span></span><br><span class="line">docker run -p [本機連接Port]:2375 -e DOCKER_TLS_CERTDIR=<span class="string">&quot;&quot;</span> --runtime=sysbox-runc --name sysbox-docker -d docker:dind</span><br></pre></td></tr></table></figure>
-
-<p>VSCode 使用 Docker contexts 連線至遠端 Docker</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker context create <span class="built_in">test</span> --docker <span class="string">&quot;host=tcp://127.0.0.1:[本機連接Port]&quot;</span></span><br></pre></td></tr></table></figure>
-
-<div class="note warning"><p>參考資料</p>
-<ol>
-<li><a href="https://kodekloud.com/blog/run-docker-in-docker-container/">3 Best Ways to Run Docker in Docker Container</a></li>
 </ol>
 </div>]]></content>
       <categories>
