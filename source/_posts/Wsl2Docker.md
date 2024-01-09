@@ -7,7 +7,9 @@ tags: [Wsl2, Docker]
 
 # 實作
 
-## 開放 Docker 外部連線
+## 開放外部連線至 Docker，有兩種方式可擇一設定
+
+### 建立 daemon.json
 
 建立 '/etc/docker/daemon.json'
 ```bash
@@ -20,6 +22,25 @@ sudo nano /etc/docker/daemon.json
   "hosts": [ "unix:///var/run/docker.sock", "tcp://0.0.0.0:" ],
   "tls": false
 }
+```
+
+### 設定 Docker 服務
+
+調整服務
+```bash
+sudo systemctl edit docker.service
+```
+
+服務指令結尾加入 -H tcp://127.0.0.1:2375
+```bash
+[Service]
+ExecStart=/usr/bin/dockerd -H fd:// -H tcp://127.0.0.1:2375
+```
+
+重啟服務
+```bash
+sudo systemctl daemon-reload
+sudo systemctl restart docker.service
 ```
 
 <!--more-->
@@ -104,4 +125,5 @@ sudo nano /etc/sudoers
 參考資料
 1. [Daemon CLI (dockerd)](https://community.chocolatey.org/packages/docker-cli)
 2. [Chocolatey Docker CLI](https://docs.docker.com/engine/reference/commandline/dockerd/#daemon-configuration-file)
+3. [Configure remote access for Docker daemon](https://docs.docker.com/config/daemon/remote-access/)
 {% endnote %}
