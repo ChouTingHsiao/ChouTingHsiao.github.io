@@ -5,9 +5,9 @@ categories: FontForge
 tags: [Python, Font, Woff]
 ---
 
-# 實作
+# 建立 font.py 檔案
 
-建立 font.py 檔案
+使用 python 操作 fontforge 轉換字型檔
 
 <!--more-->
 
@@ -63,7 +63,7 @@ def main():
 # 執行 main 函數
 main()	
 ```
-
+# 執行 Python Script
 使用 FontForge 執行 Python Script
 ```bash
 fontforge -script font.py [FontFilePath]

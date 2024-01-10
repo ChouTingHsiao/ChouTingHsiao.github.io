@@ -5,7 +5,7 @@ categories: Html
 tags: [Html, Json]
 ---
 
-# 實作
+# 拆解 Json 格式資料
 下方是 Json 格式資料
 ```json
 {
@@ -16,6 +16,7 @@ tags: [Html, Json]
 
 <!--more-->
 
+# 基本物件型別拆解
 基本物件型別的拆解如下
 ```html
 "item": "1"
@@ -23,6 +24,7 @@ tags: [Html, Json]
 <input type="text" name="item" value="1"><br>
 ```
 
+# 陣列型別拆解
 陣列部分需依造陣列結構做拆解
 ```html
 "items": ["1","2"]
@@ -31,6 +33,7 @@ tags: [Html, Json]
 <input type="text" name="items[1]" value="2">
 ```
 
+# 完整拆解設定
 最後是完整的 HTML form 設定
 ```html
 <form action="/api/Test/Post" method="post">

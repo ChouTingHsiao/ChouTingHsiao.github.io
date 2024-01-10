@@ -5,7 +5,7 @@ categories: Javascript
 tags: [Javascript, Base64]
 ---
 
-# 實作
+# 建立 HTML
 首先在 HTML 建立一個 File Upload 與一個顯示結果的 div
 
 ```html
@@ -15,6 +15,8 @@ tags: [Javascript, Base64]
 ```
 
 <!--more-->
+
+# 綁定事件
 
 接下來為 File Upload 綁定事件
 

@@ -5,10 +5,7 @@ categories: .Net
 tags: [.Net, Linux, lldb]
 ---
 
-# 實作
-
-## 使用 apport 解壓縮核心傾印檔案
-
+# 使用 apport 解壓縮核心傾印檔案
 安裝 apport
 ```bash
 sudo apt install apport
@@ -41,7 +38,7 @@ gdb `cat ExecutablePath` CoreDump
 dotnet-dump ps
 dotnet-dump collect --process-id 1902 -->
 
-## 安裝 Dotnet 工具
+# 安裝 Dotnet 工具
 
 安裝 dotnet-symbol 導出傾印檔案的符號
 ```bash
@@ -59,7 +56,7 @@ dotnet tool install -g dotnet-sos
 dotnet-sos install
 ```
 
-## 使用 lldb 偵錯
+# 使用 lldb 偵錯
 
 安裝 lldb
 ```bash
@@ -92,7 +89,7 @@ setsymbolserver -directory ~/dumps/symbols
 GC狀態:  eeheap -gc
 ```
 
-## 安裝 ProcDump
+# 安裝 ProcDump
 
 當目標進程 CPU 或記憶體使用量達到特定臨界值或低於限制值時，您可以使用 ProcDump 來擷取記憶體傾印檔案。
 ```bash

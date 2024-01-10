@@ -5,7 +5,7 @@ categories: Javascript
 tags: [Javascript, Function]
 ---
 
-# 實作
+# 建立 function
 建立一個名稱為 TEST 的 function
 
 ```javascript
@@ -18,7 +18,8 @@ function TEST() {
 
 <!--more-->
 
-判斷 function 是否存在方法，並執行
+# 判斷 function 是否存在
+判斷 function 是否存在 Window 變數中，並執行
 
 ```javascript
 let funcName = 'TEST';

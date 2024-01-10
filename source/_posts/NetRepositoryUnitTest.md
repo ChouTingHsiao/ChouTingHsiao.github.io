@@ -5,7 +5,7 @@ categories: .Net
 tags: [.Net, UnitTest, SQLite]
 ---
 
-# 實作
+# 安裝 Sqlite
 安裝 Nuget 的 Sqlite 套件
 ```powershell
 Install-Package Microsoft.EntityFrameworkCore.Sqlite
@@ -13,6 +13,7 @@ Install-Package Microsoft.EntityFrameworkCore.Sqlite
 
 <!--more-->
 
+# 建立 DbContext
 建立 EntityFramework 的 DbContext
 ```C#
 public class TestDbContext : DbContext
@@ -36,6 +37,7 @@ public class TestDbContext : DbContext
 }
 ```
 
+# 使用 In-Memory 模式操作資料庫
 使用 Sqlite 的 In-Memory 模式載入 DbContext
 ```C#
 SqliteConnection connection = new SqliteConnection("Data Source=:memory:");
@@ -59,6 +61,7 @@ using TestDbContext context = new TestDbContext(options);
 List<Table> table = context.Table.ToList();
 ```
 
+# 自定義 Database Function
 如果有使用 Sqlite 未定義的 Database Function , 可在程式中使用 CreateFunction 定義
 ```C#
 SqliteConnection connection = new SqliteConnection("Data Source=:memory:");

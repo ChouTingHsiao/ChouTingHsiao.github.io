@@ -5,12 +5,11 @@ categories: Wsl2
 tags: [Wsl2, Docker]
 ---
 
-# 實作
 {% note danger %}
 請注意，下方 Docker 應用只支援以 Ｗindows 為基底的 Image
 {% endnote %}
 
-## 使用 Scoop 安裝 Docker
+# 使用 Scoop 安裝 Docker
 執行下方命令安裝
 ```powershell
 scoop install docker
@@ -18,6 +17,7 @@ scoop install docker
 
 <!--more-->
 
+# 調整安裝空間
 複製 Docker 資料至磁碟機 D ，節省磁碟機 C 的空間
 ```powershell
 Copy-Item 'C:\ProgramData\docker' -Destination 'd:\\docker'
@@ -37,7 +37,7 @@ Copy-Item 'C:\ProgramData\docker' -Destination 'd:\\docker'
 請注意，因 Win10 家用版本身不支援安裝下方功能，開啟後可能發生未知錯誤，僅供學習使用
 {% endnote %}
 
-## 安裝 Hyper-V 功能
+# 安裝 Hyper-V 功能
 ```powershell
 # 將批處理檔案所在的目錄設定為工作目錄
 pushd "%~dp0"
@@ -57,7 +57,7 @@ Dism /online /enable-feature /featurename:Microsoft-Hyper-V-All /LimitAccess /AL
 
 以上方代碼建立 .bat 執行文件，並使用管理者權限執行
 
-## 安裝容器功能
+# 安裝容器功能
 ```powershell
 # 將批處理檔案所在的目錄設定為工作目錄
 pushd "%~dp0"
@@ -77,7 +77,7 @@ Dism /online /enable-feature /featurename:containers /LimitAccess /ALL
 
 以上方代碼建立 .bat 執行文件，並使用管理者權限執行
 
-## 執行 Docker
+# 執行 Docker
 執行下方命令註冊 Ｗindows 服務
 ```powershell
 dockerd --register-service ; Start-Service docker ; exit

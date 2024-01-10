@@ -5,7 +5,7 @@ categories: Angular
 tags: [Linux, Ubuntu, Angular]
 ---
 
-# 實作
+# 確認 inotify 設定
 在 Linux 上，默認情況下，Listen 使用 inotify 監視目錄中的更改
  
 Ubuntu 的 inotify 預設限制為8192
@@ -18,7 +18,7 @@ Ubuntu 的 inotify 預設限制為8192
 
 <!--more-->
 
-
+# 調整 inotify 設定
 如果此限制不足以監視目錄中的所有文件，則必須增加該限制以使其正常工作
  
 ```bash

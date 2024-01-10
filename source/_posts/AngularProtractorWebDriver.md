@@ -5,7 +5,7 @@ categories: Angular
 tags: [Angular, Protractor]
 ---
 
-# 實作
+# 安裝 WebDriver
 先清除目前下載的 WebDriver
 
 <!--more-->
@@ -23,7 +23,7 @@ tags: [Angular, Protractor]
 ```bash
 npx webdriver-manager update  --versions.chrome  [chrome版本號]
 ```
- 
+# 運行 Protractor
 運行 Protractor 時使用 --no-webdriver-update 選項
  
 ```bash

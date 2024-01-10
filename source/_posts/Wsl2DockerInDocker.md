@@ -5,11 +5,9 @@ categories: Wsl2
 tags: [Wsl2, Docker]
 ---
 
-# 實作
+# 掛載主機的 Docker Socket
 
-## 掛載主機的 Docker Socket
-
-### 建立 '/etc/docker/daemon.json'
+## 建立 daemon.json
 ```bash
 sudo nano /etc/docker/daemon.json
 ```
@@ -22,33 +20,33 @@ sudo nano /etc/docker/daemon.json
 }
 ```
 
-### 執行命令時須掛載 docker.sock 
+## 執行命令時須掛載 docker.sock 
 ```bash
 docker run -v /var/run/docker.sock:/var/run/docker.sock -ti [Docker 映像檔]
 ```
 
-### 透過 Curl 執行 Docker Socket 建立 Containers 
+## 透過 Curl 執行 Docker Socket 建立 Containers 
 ```bash
 curl -XPOST --unix-socket /var/run/docker.sock -d '{"Image":"[Docker 映像檔]"}' -H 'Content-Type: application/json' http://localhost/containers/create
 ```
 
-### 透過 Curl 執行 Docker Socket 啟動 Containers 
+## 透過 Curl 執行 Docker Socket 啟動 Containers 
 ```bash
 curl -XPOST --unix-socket /var/run/docker.sock http://localhost/containers/[容器編號]/start
 ```
 
 <!--more-->
 
-## 使用 docker:dind 映像
+# 使用 docker:dind 映像
 
 可參考以下兩種方法運行 docker:dind 映像
 
-### 需要執行帶有該--privileged選項和一些附加標誌的容器
+## 需要執行帶有該--privileged選項和一些附加標誌的容器
 ```bash
 docker run -p [本機連接Port]:2375 --privileged -e DOCKER_TLS_CERTDIR="" --name privileged-docker -d docker:dind
 ```
 
-### 使用 Nestybox Sysbox 運行時執行
+## 使用 Nestybox Sysbox 運行時執行
 [安裝 Nestybox Sysbox](https://github.com/nestybox/sysbox?ref=kodekloud.com)，不需要特權模式或特殊配置，即可執行
 
 ```bash

@@ -5,30 +5,29 @@ categories: Whistle
 tags: [Whistle]
 ---
 
-# 實作
-## 使用 Node 安裝 Whistle
+# 使用 Node 安裝 Whistle
 ```bash
 npm i -g whistle
 ```
 
 <!--more-->
-## 啟動 Whistle
+
+# 啟動 Whistle
 ```bash
 w2 start
 ```
 
-## 查看 Whistle 狀態
+# 查看 Whistle 狀態
 ```bash
 w2 status
 ```
 
-## 停止 Whistle
+# 停止 Whistle
 ```bash
 w2 stop
 ```
 
-## 設定 Whistle 為 Proxy 的 Server
-
+# 設定 Whistle 為 Proxy 的 Server
 ![Win10ProxySetting](Win10ProxySetting.png)
 
 {% note warning %}

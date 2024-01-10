@@ -5,7 +5,7 @@ categories: Javascript
 tags: [Javascript, Canvas]
 ---
 
-# 實作
+# 建立 HTML
 首先在 HTML 建立一個 File Upload 與一個 canvas
 
 ```html
@@ -15,6 +15,7 @@ tags: [Javascript, Canvas]
 
 <!--more-->
 
+# 綁定事件
 接下來為 File Upload 綁定事件
 
 ```javascript

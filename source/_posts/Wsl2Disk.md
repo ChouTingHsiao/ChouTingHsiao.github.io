@@ -5,10 +5,7 @@ categories: Wsl2
 tags: [Wsl2]
 ---
 
-# 實作
-
-## 列出已安裝的 Linux 發行版
-
+# 列出已安裝的 Linux 發行版
 執行下方命令
 ```powershell
 wsl -l -v
@@ -16,7 +13,7 @@ wsl -l -v
 
 <!--more-->
 
-## 遷移至磁碟機 D
+# 遷移至磁碟機 D
 ```powershell
 # 導出已安裝的 Linux 發行版壓縮檔
 wsl --export "Ubuntu-22.04" d:\ubuntu.tar

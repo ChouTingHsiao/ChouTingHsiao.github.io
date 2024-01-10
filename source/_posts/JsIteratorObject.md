@@ -5,7 +5,7 @@ categories: Javascript
 tags: [Javascript, Object]
 ---
 
-# 實作
+# for...in
 使用 for...in 語法
 ```javascript
 for (變數 in 物件) {...
@@ -25,6 +25,7 @@ for (let filed in model) {
 }
 ```
 
+# Object.keys()
 使用 Object.keys()
 ```javascript
 Object.keys(物件);
@@ -46,6 +47,7 @@ for (let i = 0; i <= length; i++) {
 }
 ```
 
+# 差異
 Object.keys 與 for...in 不同之處
 ```
 for-in 迴圈還會迭代出物件自其原型鏈所繼承來的可列舉屬性

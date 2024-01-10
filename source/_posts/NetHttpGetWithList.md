@@ -5,9 +5,7 @@ categories: .Net
 tags: [.Net]
 ---
 
-# 實作
-
-## 建立類別
+# 建立類別
 ```c#
 public class User {
   
@@ -19,7 +17,7 @@ public class User {
 
 <!--more-->
 
-## 建立 HttpGet 方法
+# 建立 HttpGet 方法
 ```c#
 [ApiController]
 [Route("[controller]")]
@@ -33,7 +31,7 @@ public class UserController : ControllerBase
 }
 ```
 
-## 組合 Request 的 Url
+# 組合 Request 的 Url
 ```nginx
 https://example.com/User?user[0].Name='張三'&user[0].Age=10&user[1].Name='李四'&user[1].Age=20
 ```

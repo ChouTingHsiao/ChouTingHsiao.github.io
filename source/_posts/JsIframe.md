@@ -5,7 +5,7 @@ categories: Javascript
 tags: [Javascript, Iframe]
 ---
 
-# 實作
+# 建立 HTML
 首先在 HTML 建立一個 iframe
 
 ```html
@@ -14,6 +14,7 @@ tags: [Javascript, Iframe]
 
 <!--more-->
 
+# 操作 iframe
 用 Javascript 搜尋 iframe 的DOM物件
 ```javascript
 let iframe = document.getElementById('test').contentDocument;
