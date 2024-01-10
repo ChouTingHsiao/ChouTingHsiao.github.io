@@ -34,6 +34,7 @@ sudo systemctl edit docker.service
 服務指令結尾加入 -H tcp://127.0.0.1:2375
 ```bash
 [Service]
+ExecStart=
 ExecStart=/usr/bin/dockerd -H fd:// -H tcp://127.0.0.1:2375
 ```
 
@@ -47,7 +48,7 @@ sudo systemctl restart docker.service
 
 ## 確認 docker 連線 *:2375是否存在
 ```bash
-ss -peanut
+ss -peanut | grep :2375
 ```
 
 ## Chocolatey 安裝 Docker CLI
