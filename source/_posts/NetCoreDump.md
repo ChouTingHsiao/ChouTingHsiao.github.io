@@ -97,7 +97,7 @@ sudo apt install procdump
 ```
 
 {% note warning %}
-參考資料
+📜 參考資料
 1. [重現損毀問題並進行疑難排解](https://learn.microsoft.com/zh-tw/troubleshoot/developer/webapps/aspnetcore/practice-troubleshoot-linux/lab-1-1-reproduce-troubleshoot)
 2. [SOS debugging extension](https://learn.microsoft.com/en-us/dotnet/core/diagnostics/sos-debugging-extension)
 {% endnote %}

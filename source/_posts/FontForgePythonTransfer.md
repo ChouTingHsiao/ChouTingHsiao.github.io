@@ -70,6 +70,6 @@ fontforge -script font.py [FontFilePath]
 ```
 
 {% note warning %}
-參考資料
+📜 參考資料
 1. [Python Scripting](https://fontforge.org/docs/scripting/python.html)
 {% endnote %}

@@ -142,6 +142,6 @@ curl --location 'http://127.0.0.1:5000/Address/Delete' \
 ```
 
 {% note warning %}
-參考資料
+📜 參考資料
 1. [Flask-SQLAlchemy](https://flask-sqlalchemy.palletsprojects.com/en/3.0.x/)
 {% endnote %}

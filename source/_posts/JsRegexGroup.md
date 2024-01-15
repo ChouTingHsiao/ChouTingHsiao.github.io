@@ -21,6 +21,6 @@ console.log(match.groups.群組名稱);
 <!--more-->
 
 {% note warning %}
-參考資料
+📜 參考資料
 1. [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Groups_and_Ranges)
 {% endnote %}

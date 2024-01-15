@@ -31,6 +31,6 @@ w2 stop
 ![Win10ProxySetting](Win10ProxySetting.png)
 
 {% note warning %}
-參考資料
+📜 參考資料
 1. [whistle npm](https://www.npmjs.com/package/whistle)
 {% endnote %}

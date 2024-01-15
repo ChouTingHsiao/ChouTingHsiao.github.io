@@ -68,6 +68,6 @@ tags: [Whistle]
     ```
 
 {% note warning %}
-參考資料
+📜 參考資料
 1. [whistle](https://wproxy.org/whistle/)
 {% endnote %}

@@ -35,6 +35,6 @@ IConfiguration configuration = new ConfigurationBuilder()
 ```
 
 {% note warning %}
-參考資料
+📜 參考資料
 1. [MemoryConfigurationBuilderExtensions.AddInMemoryCollection Method](https://learn.microsoft.com/en-us/dotnet/api/microsoft.extensions.configuration.memoryconfigurationbuilderextensions.addinmemorycollection?view=dotnet-plat-ext-7.0)
 {% endnote %}

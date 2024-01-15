@@ -83,6 +83,6 @@ mockRepository
 ```
 
 {% note warning %}
-參考資料
+📜 參考資料
 1. [NSubstitute文件](https://nsubstitute.github.io/help.html)
 {% endnote %}

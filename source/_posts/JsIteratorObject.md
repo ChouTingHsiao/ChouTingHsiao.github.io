@@ -54,6 +54,6 @@ for-in 迴圈還會迭代出物件自其原型鏈所繼承來的可列舉屬性
 ```
 
 {% note warning %}
-參考資料
+📜 參考資料
 1. [MDN Object keys](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys)
 {% endnote %}

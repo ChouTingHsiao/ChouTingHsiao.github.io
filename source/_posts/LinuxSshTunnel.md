@@ -42,6 +42,6 @@ ssh -p [跳板機端口] -D localhost:[本地端口] [帳號]@[跳板機IP]
 plink -v -x -a -T -C -noagent -ssh -pw "[密碼]" -P 50893 -L [本地端口]:[遠端服務IP]:[遠端服務端口] [帳號]@[跳板機IP] -->
 
 {% note warning %}
-參考資料
+📜 參考資料
 1. [SSH Command - Usage, Options, Configuration](https://www.ssh.com/academy/ssh/command)
 {% endnote %}

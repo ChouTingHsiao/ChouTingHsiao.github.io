@@ -49,6 +49,6 @@ document.getElementById('test').setAttribute('src', urlObject)
 ```
 
 {% note warning %}
-參考資料
+📜 參考資料
 1. [MDN Document write](https://developer.mozilla.org/en-US/docs/Web/API/Document/write)
 {% endnote %}

@@ -118,7 +118,7 @@ sudo nano /etc/sudoers
 ```
 
 {% note warning %}
-參考資料
+📜 參考資料
 1. [Daemon CLI (dockerd)](https://community.chocolatey.org/packages/docker-cli)
 2. [Chocolatey Docker CLI](https://docs.docker.com/engine/reference/commandline/dockerd/#daemon-configuration-file)
 3. [Configure remote access for Docker daemon](https://docs.docker.com/config/daemon/remote-access/)

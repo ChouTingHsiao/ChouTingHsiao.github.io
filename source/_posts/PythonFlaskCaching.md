@@ -62,6 +62,6 @@ if __name__ == '__main__':
 ```
 
 {% note warning %}
-參考資料
+📜 參考資料
 1. [Flask-Caching](https://flask-caching.readthedocs.io/en/latest/)
 {% endnote %}
