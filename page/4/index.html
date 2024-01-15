@@ -224,7 +224,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2024-01-10 14:53:33" itemprop="dateModified" datetime="2024-01-10T14:53:33+00:00">2024-01-10</time>
+      <time title="Modified: 2024-01-15 14:10:14" itemprop="dateModified" datetime="2024-01-15T14:10:14+00:00">2024-01-15</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -246,7 +246,8 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="Big5-字元轉換"><a href="#Big5-字元轉換" class="headerlink" title="Big5 字元轉換"></a>Big5 字元轉換</h1><p>Big5 依傳入內碼轉成字元</p>
+          <h1>Big5 字元轉換</h1>
+<p>Big5 依傳入內碼轉成字元</p>
 <figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 建立兩位元陣列</span></span><br><span class="line"><span class="built_in">byte</span>[] codeBytes = <span class="keyword">new</span> <span class="built_in">byte</span>[<span class="number">2</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 欲轉換內碼前兩字轉為16進制</span></span><br><span class="line">codeBytes[<span class="number">0</span>] = (<span class="built_in">byte</span>)Convert.ToInt32(<span class="string">&quot;欲轉換內碼&quot;</span>.Substring(<span class="number">0</span>, <span class="number">2</span>), <span class="number">16</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 欲轉換內碼後兩字轉為16進制</span></span><br><span class="line">codeBytes[<span class="number">1</span>] = (<span class="built_in">byte</span>)Convert.ToInt32(<span class="string">&quot;欲轉換內碼&quot;</span>.Substring(<span class="number">2</span>, <span class="number">2</span>), <span class="number">16</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 轉成字元</span></span><br><span class="line">Encoding big5 = Encoding.GetEncoding(<span class="number">950</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">string</span> result = big5.GetString(bytes);</span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
@@ -317,7 +318,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2024-01-10 14:53:33" itemprop="dateModified" datetime="2024-01-10T14:53:33+00:00">2024-01-10</time>
+      <time title="Modified: 2024-01-15 14:10:14" itemprop="dateModified" datetime="2024-01-15T14:10:14+00:00">2024-01-15</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -339,7 +340,8 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="安裝-NSubstitute"><a href="#安裝-NSubstitute" class="headerlink" title="安裝 NSubstitute"></a>安裝 NSubstitute</h1><p>安裝 Nuget 的 NSubstitute 套件</p>
+          <h1>安裝 NSubstitute</h1>
+<p>安裝 Nuget 的 NSubstitute 套件</p>
 <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Install-Package</span> NSubstitute</span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
@@ -410,7 +412,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2024-01-10 14:53:33" itemprop="dateModified" datetime="2024-01-10T14:53:33+00:00">2024-01-10</time>
+      <time title="Modified: 2024-01-15 14:10:14" itemprop="dateModified" datetime="2024-01-15T14:10:14+00:00">2024-01-15</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -432,7 +434,8 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="安裝-Sqlite"><a href="#安裝-Sqlite" class="headerlink" title="安裝 Sqlite"></a>安裝 Sqlite</h1><p>安裝 Nuget 的 Sqlite 套件</p>
+          <h1>安裝 Sqlite</h1>
+<p>安裝 Nuget 的 Sqlite 套件</p>
 <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Install-Package</span> Microsoft.EntityFrameworkCore.Sqlite</span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
@@ -503,7 +506,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2024-01-10 14:53:33" itemprop="dateModified" datetime="2024-01-10T14:53:33+00:00">2024-01-10</time>
+      <time title="Modified: 2024-01-15 14:10:14" itemprop="dateModified" datetime="2024-01-15T14:10:14+00:00">2024-01-15</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -525,7 +528,8 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="建立-font-py-檔案"><a href="#建立-font-py-檔案" class="headerlink" title="建立 font.py 檔案"></a>建立 font.py 檔案</h1><p>使用 python 操作 fontforge 轉換字型檔</p>
+          <h1>建立 <a target="_blank" rel="noopener" href="http://font.py">font.py</a> 檔案</h1>
+<p>使用 python 操作 fontforge 轉換字型檔</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2021/10/23/FontForgePythonTransfer/#more" rel="contents">
@@ -595,7 +599,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2024-01-10 14:53:33" itemprop="dateModified" datetime="2024-01-10T14:53:33+00:00">2024-01-10</time>
+      <time title="Modified: 2024-01-15 14:10:14" itemprop="dateModified" datetime="2024-01-15T14:10:14+00:00">2024-01-15</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -617,7 +621,8 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="取得檔案列表方法"><a href="#取得檔案列表方法" class="headerlink" title="取得檔案列表方法"></a>取得檔案列表方法</h1><p>使用以下 Linxu 指令，將預設目錄每個檔案使用一列的方式逐一列出</p>
+          <h1>取得檔案列表方法</h1>
+<p>使用以下 Linxu 指令，將預設目錄每個檔案使用一列的方式逐一列出</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ls</span> -1 /home/ubuntu</span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">

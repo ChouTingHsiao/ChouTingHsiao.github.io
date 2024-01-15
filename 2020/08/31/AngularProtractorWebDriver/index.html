@@ -20,15 +20,15 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"choutinghsiao.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.18.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="安裝 WebDriver先清除目前下載的 WebDriver">
+    <meta name="description" content="安裝 WebDriver 先清除目前下載的 WebDriver">
 <meta property="og:type" content="article">
 <meta property="og:title" content="如何設定 Protractor WebDriver Version">
 <meta property="og:url" content="https://choutinghsiao.github.io/2020/08/31/AngularProtractorWebDriver/index.html">
 <meta property="og:site_name" content="Stephen&#39;s Note">
-<meta property="og:description" content="安裝 WebDriver先清除目前下載的 WebDriver">
+<meta property="og:description" content="安裝 WebDriver 先清除目前下載的 WebDriver">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-08-31T22:38:57.000Z">
-<meta property="article:modified_time" content="2024-01-10T14:53:33.831Z">
+<meta property="article:modified_time" content="2024-01-15T14:10:14.488Z">
 <meta property="article:author" content="Stephen">
 <meta property="article:tag" content="Angular">
 <meta property="article:tag" content="Protractor">
@@ -142,7 +142,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%9D-WebDriver"><span class="nav-number">1.</span> <span class="nav-text">安裝 WebDriver</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%81%8B%E8%A1%8C-Protractor"><span class="nav-number">2.</span> <span class="nav-text">運行 Protractor</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">安裝 WebDriver</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">運行 Protractor</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -232,7 +232,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2024-01-10 14:53:33" itemprop="dateModified" datetime="2024-01-10T14:53:33+00:00">2024-01-10</time>
+      <time title="Modified: 2024-01-15 14:10:14" itemprop="dateModified" datetime="2024-01-15T14:10:14+00:00">2024-01-15</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -253,17 +253,17 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><h1 id="安裝-WebDriver"><a href="#安裝-WebDriver" class="headerlink" title="安裝 WebDriver"></a>安裝 WebDriver</h1><p>先清除目前下載的 WebDriver</p>
+    <div class="post-body" itemprop="articleBody"><h1>安裝 WebDriver</h1>
+<p>先清除目前下載的 WebDriver</p>
 <span id="more"></span>
-
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npx  webdriver-manager clean</span><br></pre></td></tr></table></figure>
 <p>以 chrome 為例從<a target="_blank" rel="noopener" href="http://chromedriver.chromium.org/">chromedriver網頁</a></p>
 <p>查詢所需的版本號</p>
 <p>接下來依版本下載 WebDriver</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npx webdriver-manager update  --versions.chrome  [chrome版本號]</span><br></pre></td></tr></table></figure>
-<h1 id="運行-Protractor"><a href="#運行-Protractor" class="headerlink" title="運行 Protractor"></a>運行 Protractor</h1><p>運行 Protractor 時使用 –no-webdriver-update 選項</p>
+<h1>運行 Protractor</h1>
+<p>運行 Protractor 時使用 --no-webdriver-update 選項</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ng e2e --no-webdriver-update</span><br></pre></td></tr></table></figure>
-
 <div class="note warning"><p>參考資料</p>
 <ol>
 <li><a target="_blank" rel="noopener" href="https://www.npmjs.com/package/webdriver-manager">webdriver-manager NPM</a></li>

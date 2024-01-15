@@ -20,15 +20,15 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"choutinghsiao.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.18.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="本機特定端口轉發至跳板機1ssh -p [跳板機端口] -C -f -N -g -L [本地端口]:[遠端服務IP]:[遠端服務端口] [帳號]@[跳板機IP]">
+    <meta name="description" content="本機特定端口轉發至跳板機 1ssh -p [跳板機端口] -C -f -N -g -L [本地端口]:[遠端服務IP]:[遠端服務端口] [帳號]@[跳板機IP]">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用 SSH 建立通道">
 <meta property="og:url" content="https://choutinghsiao.github.io/2023/05/07/LinuxSshTunnel/index.html">
 <meta property="og:site_name" content="Stephen&#39;s Note">
-<meta property="og:description" content="本機特定端口轉發至跳板機1ssh -p [跳板機端口] -C -f -N -g -L [本地端口]:[遠端服務IP]:[遠端服務端口] [帳號]@[跳板機IP]">
+<meta property="og:description" content="本機特定端口轉發至跳板機 1ssh -p [跳板機端口] -C -f -N -g -L [本地端口]:[遠端服務IP]:[遠端服務端口] [帳號]@[跳板機IP]">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-05-07T18:00:00.000Z">
-<meta property="article:modified_time" content="2024-01-10T14:53:33.831Z">
+<meta property="article:modified_time" content="2024-01-15T14:10:14.488Z">
 <meta property="article:author" content="Stephen">
 <meta property="article:tag" content="Linux">
 <meta property="article:tag" content="Ubuntu">
@@ -143,7 +143,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%AC%E6%A9%9F%E7%89%B9%E5%AE%9A%E7%AB%AF%E5%8F%A3%E8%BD%89%E7%99%BC%E8%87%B3%E8%B7%B3%E6%9D%BF%E6%A9%9F"><span class="nav-number">1.</span> <span class="nav-text">本機特定端口轉發至跳板機</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%B7%B3%E6%9D%BF%E6%A9%9F%E8%BD%89%E7%99%BC%E8%87%B3%E6%9C%AC%E6%A9%9F%E7%89%B9%E5%AE%9A%E7%AB%AF%E5%8F%A3"><span class="nav-number">2.</span> <span class="nav-text">跳板機轉發至本機特定端口</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AB%8B%E6%B1%82%E8%BD%89%E7%99%BC%E8%87%B3%E8%B7%B3%E6%9D%BF%EF%BC%8C%E5%8F%AF%E6%90%AD%E9%85%8D-Whistle-%E5%81%9A-Socks-%E4%BB%A3%E7%90%86"><span class="nav-number">3.</span> <span class="nav-text">請求轉發至跳板，可搭配 Whistle 做 Socks 代理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ssh-%E5%9F%B7%E8%A1%8C%E9%81%B8%E9%A0%85%E8%AA%AA%E6%98%8E"><span class="nav-number">4.</span> <span class="nav-text">ssh 執行選項說明</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">本機特定端口轉發至跳板機</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">跳板機轉發至本機特定端口</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">請求轉發至跳板，可搭配 Whistle 做 Socks 代理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">4.</span> <span class="nav-text">ssh 執行選項說明</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -233,7 +233,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2024-01-10 14:53:33" itemprop="dateModified" datetime="2024-01-10T14:53:33+00:00">2024-01-10</time>
+      <time title="Modified: 2024-01-15 14:10:14" itemprop="dateModified" datetime="2024-01-15T14:10:14+00:00">2024-01-15</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -254,21 +254,18 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><h1 id="本機特定端口轉發至跳板機"><a href="#本機特定端口轉發至跳板機" class="headerlink" title="本機特定端口轉發至跳板機"></a>本機特定端口轉發至跳板機</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -p [跳板機端口] -C -f -N -g -L [本地端口]:[遠端服務IP]:[遠端服務端口] [帳號]@[跳板機IP]</span><br></pre></td></tr></table></figure>
-
+    <div class="post-body" itemprop="articleBody"><h1>本機特定端口轉發至跳板機</h1>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -p [跳板機端口] -C -f -N -g -L [本地端口]:[遠端服務IP]:[遠端服務端口] [帳號]@[跳板機IP]</span><br></pre></td></tr></table></figure>
 <span id="more"></span>
-
-<h1 id="跳板機轉發至本機特定端口"><a href="#跳板機轉發至本機特定端口" class="headerlink" title="跳板機轉發至本機特定端口"></a>跳板機轉發至本機特定端口</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -p [跳板機端口] -C -g -R 0.0.0.0:[跳板機端口]:localhost:[本地端口] [帳號]@[跳板機IP]</span><br></pre></td></tr></table></figure>
-
-<h1 id="請求轉發至跳板，可搭配-Whistle-做-Socks-代理"><a href="#請求轉發至跳板，可搭配-Whistle-做-Socks-代理" class="headerlink" title="請求轉發至跳板，可搭配 Whistle 做 Socks 代理"></a>請求轉發至跳板，可搭配 Whistle 做 Socks 代理</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -p [跳板機端口] -D localhost:[本地端口] [帳號]@[跳板機IP]</span><br></pre></td></tr></table></figure>
-
-<h1 id="ssh-執行選項說明"><a href="#ssh-執行選項說明" class="headerlink" title="ssh 執行選項說明"></a>ssh 執行選項說明</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">-L: 指定將本機上的特定端口轉發到遠端主機</span><br><span class="line">-R: 表示使用遠程端口轉發創建ssh隧道</span><br><span class="line">-D: port動態應用級端口轉​​發</span><br><span class="line">-p: 跳板機端口</span><br><span class="line">-C: 使用數據壓縮</span><br><span class="line">-c: cipher_spec選擇用於加密會話的密碼規範</span><br><span class="line">-f: 代表後台運行程序</span><br><span class="line">-F: configfile指定每個用戶的配置文件</span><br><span class="line">-N: 不要執行任何遠端指令</span><br><span class="line">-g: 允許遠程主機連接到本地轉發端口</span><br></pre></td></tr></table></figure>
-
+<h1>跳板機轉發至本機特定端口</h1>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -p [跳板機端口] -C -g -R 0.0.0.0:[跳板機端口]:localhost:[本地端口] [帳號]@[跳板機IP]</span><br></pre></td></tr></table></figure>
+<h1>請求轉發至跳板，可搭配 Whistle 做 Socks 代理</h1>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -p [跳板機端口] -D localhost:[本地端口] [帳號]@[跳板機IP]</span><br></pre></td></tr></table></figure>
+<h1>ssh 執行選項說明</h1>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">-L: 指定將本機上的特定端口轉發到遠端主機</span><br><span class="line">-R: 表示使用遠程端口轉發創建ssh隧道</span><br><span class="line">-D: port動態應用級端口轉​​發</span><br><span class="line">-p: 跳板機端口</span><br><span class="line">-C: 使用數據壓縮</span><br><span class="line">-c: cipher_spec選擇用於加密會話的密碼規範</span><br><span class="line">-f: 代表後台運行程序</span><br><span class="line">-F: configfile指定每個用戶的配置文件</span><br><span class="line">-N: 不要執行任何遠端指令</span><br><span class="line">-g: 允許遠程主機連接到本地轉發端口</span><br></pre></td></tr></table></figure>
 <!-- /etc/ssh/sshd_config 加入GatewayPorts 設定，能讓所有人都連到 -->
-
 <!-- scoop install putty
 plink -v -x -a -T -C -noagent -ssh -pw "[密碼]" -P 50893 -L [本地端口]:[遠端服務IP]:[遠端服務端口] [帳號]@[跳板機IP] -->
-
 <div class="note warning"><p>參考資料</p>
 <ol>
 <li><a target="_blank" rel="noopener" href="https://www.ssh.com/academy/ssh/command">SSH Command - Usage, Options, Configuration</a></li>
@@ -313,8 +310,8 @@ plink -v -x -a -T -C -noagent -ssh -pw "[密碼]" -P 50893 -L [本地端口]:[�
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2023/07/07/PythonFlaskSQLAlchemy/" rel="next" title="使用 Flask-SQLAlchemy 連接 MSSQL 進行 CRUD">
-                  使用 Flask-SQLAlchemy 連接 MSSQL 進行 CRUD <i class="fa fa-angle-right"></i>
+                <a href="/2023/07/07/PythonFlaskCaching/" rel="next" title="使用 Flask-Caching 緩存 Flask 呼叫方法產生的資料">
+                  使用 Flask-Caching 緩存 Flask 呼叫方法產生的資料 <i class="fa fa-angle-right"></i>
                 </a>
             </div>
           </div>

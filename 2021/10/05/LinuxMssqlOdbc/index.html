@@ -20,15 +20,15 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"choutinghsiao.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.18.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="Linux Odbc 元件配置安裝 Linux Odbc 元件 1sudo apt-get install unixodbc">
+    <meta name="description" content="Linux Odbc 元件配置 安裝 Linux Odbc 元件 1sudo apt-get install unixodbc">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux Mssql Odbc 手動安裝">
 <meta property="og:url" content="https://choutinghsiao.github.io/2021/10/05/LinuxMssqlOdbc/index.html">
 <meta property="og:site_name" content="Stephen&#39;s Note">
-<meta property="og:description" content="Linux Odbc 元件配置安裝 Linux Odbc 元件 1sudo apt-get install unixodbc">
+<meta property="og:description" content="Linux Odbc 元件配置 安裝 Linux Odbc 元件 1sudo apt-get install unixodbc">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-10-05T22:00:00.000Z">
-<meta property="article:modified_time" content="2024-01-10T14:53:33.831Z">
+<meta property="article:modified_time" content="2024-01-15T14:10:14.488Z">
 <meta property="article:author" content="Stephen">
 <meta property="article:tag" content="Linux">
 <meta property="article:tag" content="Ubuntu">
@@ -144,7 +144,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Linux-Odbc-%E5%85%83%E4%BB%B6%E9%85%8D%E7%BD%AE"><span class="nav-number">1.</span> <span class="nav-text">Linux Odbc 元件配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Odbc-Driver-%E5%AE%89%E8%A3%9D"><span class="nav-number">2.</span> <span class="nav-text">Odbc Driver 安裝</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">Linux Odbc 元件配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">Odbc Driver 安裝</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -234,7 +234,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2024-01-10 14:53:33" itemprop="dateModified" datetime="2024-01-10T14:53:33+00:00">2024-01-10</time>
+      <time title="Modified: 2024-01-15 14:10:14" itemprop="dateModified" datetime="2024-01-15T14:10:14+00:00">2024-01-15</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -255,17 +255,15 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><h1 id="Linux-Odbc-元件配置"><a href="#Linux-Odbc-元件配置" class="headerlink" title="Linux Odbc 元件配置"></a>Linux Odbc 元件配置</h1><p>安裝 Linux Odbc 元件</p>
+    <div class="post-body" itemprop="articleBody"><h1>Linux Odbc 元件配置</h1>
+<p>安裝 Linux Odbc 元件</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install unixodbc</span><br></pre></td></tr></table></figure>
-
 <span id="more"></span>
-
-<h1 id="Odbc-Driver-安裝"><a href="#Odbc-Driver-安裝" class="headerlink" title="Odbc Driver 安裝"></a>Odbc Driver 安裝</h1><p>登入<a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/sql/connect/odbc/download-odbc-driver-for-sql-server?view=sql-server-ver15">Microsoft網頁</a>下載Odbc Driver並安裝</p>
+<h1>Odbc Driver 安裝</h1>
+<p>登入<a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/sql/connect/odbc/download-odbc-driver-for-sql-server?view=sql-server-ver15">Microsoft網頁</a>下載Odbc Driver並安裝</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dpkg -i msodbcsql17_17.8.1.1-1_amd64.deb</span><br></pre></td></tr></table></figure>
-
 <p>查看 Linux Odbc Drivers 設定檔位置</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">odbcinst -j</span><br></pre></td></tr></table></figure>
-
 <p>查看設定檔是否出現 ODBC Driver 17 for SQL Server 的設定</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span> /etc/odbcinst.ini</span><br></pre></td></tr></table></figure>
     </div>

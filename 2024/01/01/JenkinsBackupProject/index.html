@@ -20,15 +20,15 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"choutinghsiao.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.18.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="設定執行時間在 Pipeline 取得執行時間 1dateNow &#x3D; new Date().format( &amp;#x27;yyyyMMddHHmmss&amp;#x27; )">
+    <meta name="description" content="設定執行時間 在 Pipeline 取得執行時間 1dateNow &#x3D; new Date().format( &amp;#x27;yyyyMMddHHmmss&amp;#x27; )">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Jenkins 執行備份專案命令">
 <meta property="og:url" content="https://choutinghsiao.github.io/2024/01/01/JenkinsBackupProject/index.html">
 <meta property="og:site_name" content="Stephen&#39;s Note">
-<meta property="og:description" content="設定執行時間在 Pipeline 取得執行時間 1dateNow &#x3D; new Date().format( &amp;#x27;yyyyMMddHHmmss&amp;#x27; )">
+<meta property="og:description" content="設定執行時間 在 Pipeline 取得執行時間 1dateNow &#x3D; new Date().format( &amp;#x27;yyyyMMddHHmmss&amp;#x27; )">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-01-01T16:00:00.000Z">
-<meta property="article:modified_time" content="2024-01-10T14:53:33.831Z">
+<meta property="article:modified_time" content="2024-01-15T14:10:14.488Z">
 <meta property="article:author" content="Stephen">
 <meta property="article:tag" content="Jenkins">
 <meta name="twitter:card" content="summary">
@@ -141,7 +141,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A8%AD%E5%AE%9A%E5%9F%B7%E8%A1%8C%E6%99%82%E9%96%93"><span class="nav-number">1.</span> <span class="nav-text">設定執行時間</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A8%AD%E5%AE%9A%E5%B0%88%E6%A1%88%E7%9B%AE%E9%8C%84%E8%88%87%E5%82%99%E4%BB%BD%E7%9B%AE%E9%8C%84"><span class="nav-number">2.</span> <span class="nav-text">設定專案目錄與備份目錄</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A7%BB%E9%99%A4%E4%B8%89%E5%80%8B%E6%9C%88%E4%BB%A5%E4%B8%8A%E7%9A%84%E5%82%99%E4%BB%BD%E8%B3%87%E6%96%99"><span class="nav-number">3.</span> <span class="nav-text">移除三個月以上的備份資料</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BE%9D%E5%9F%B7%E8%A1%8C%E6%99%82%E9%96%93%E5%BB%BA%E7%AB%8B%E5%82%99%E4%BB%BD%E7%9B%AE%E9%8C%84"><span class="nav-number">4.</span> <span class="nav-text">依執行時間建立備份目錄</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B0%88%E6%A1%88%E8%A4%87%E8%A3%BD%E8%87%B3%E5%82%99%E4%BB%BD%E7%9B%AE%E9%8C%84"><span class="nav-number">5.</span> <span class="nav-text">專案複製至備份目錄</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">設定執行時間</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">設定專案目錄與備份目錄</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">移除三個月以上的備份資料</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">4.</span> <span class="nav-text">依執行時間建立備份目錄</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">5.</span> <span class="nav-text">專案複製至備份目錄</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -231,7 +231,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2024-01-10 14:53:33" itemprop="dateModified" datetime="2024-01-10T14:53:33+00:00">2024-01-10</time>
+      <time title="Modified: 2024-01-15 14:10:14" itemprop="dateModified" datetime="2024-01-15T14:10:14+00:00">2024-01-15</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -252,21 +252,21 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><h1 id="設定執行時間"><a href="#設定執行時間" class="headerlink" title="設定執行時間"></a>設定執行時間</h1><p>在 Pipeline 取得執行時間</p>
+    <div class="post-body" itemprop="articleBody"><h1>設定執行時間</h1>
+<p>在 Pipeline 取得執行時間</p>
 <figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dateNow = <span class="keyword">new</span> Date().format( <span class="string">&#x27;yyyyMMddHHmmss&#x27;</span> )</span><br></pre></td></tr></table></figure>
-
 <span id="more"></span>
-
-<h1 id="設定專案目錄與備份目錄"><a href="#設定專案目錄與備份目錄" class="headerlink" title="設定專案目錄與備份目錄"></a>設定專案目錄與備份目錄</h1><p>在 Pipeline 定義專案目錄與備份目錄</p>
+<h1>設定專案目錄與備份目錄</h1>
+<p>在 Pipeline 定義專案目錄與備份目錄</p>
 <figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">projectPath = <span class="string">&quot;[專案目錄]&quot;</span></span><br><span class="line">backupPath = <span class="string">&quot;[備份目錄]&quot;</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="移除三個月以上的備份資料"><a href="#移除三個月以上的備份資料" class="headerlink" title="移除三個月以上的備份資料"></a>移除三個月以上的備份資料</h1><p>使用 ssh 命令登入 Server 移除三個月以上的備份資料</p>
+<h1>移除三個月以上的備份資料</h1>
+<p>使用 ssh 命令登入 Server 移除三個月以上的備份資料</p>
 <figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sh <span class="string">&quot;ssh -p [ssh連接Port] [帳號]@[Server位置] \&quot;find $&#123;backupPath&#125;* -maxdepth 0 -type d -ctime +90 2&gt;/dev/null | sudo xargs -r rm -rf \&quot;&quot;</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="依執行時間建立備份目錄"><a href="#依執行時間建立備份目錄" class="headerlink" title="依執行時間建立備份目錄"></a>依執行時間建立備份目錄</h1><p>使用 ssh 命令登入 Server 依執行時間建立備份目錄</p>
+<h1>依執行時間建立備份目錄</h1>
+<p>使用 ssh 命令登入 Server 依執行時間建立備份目錄</p>
 <figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sh <span class="string">&quot;ssh -p [ssh連接Port] [帳號]@[Server位置] \&quot;sudo mkdir -p $&#123;backupPath&#125;$&#123;dateNow&#125; \&quot;&quot;</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="專案複製至備份目錄"><a href="#專案複製至備份目錄" class="headerlink" title="專案複製至備份目錄"></a>專案複製至備份目錄</h1><p>使用 ssh 命令登入 Server 將專案複製至備份目錄</p>
+<h1>專案複製至備份目錄</h1>
+<p>使用 ssh 命令登入 Server 將專案複製至備份目錄</p>
 <figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sh <span class="string">&quot;ssh -p [ssh連接Port] [帳號]@[Server位置] \&quot;sudo cp -r $&#123;projectPath&#125;* $&#123;backupPath&#125;$&#123;dateNow&#125;/ \&quot;&quot;</span></span><br></pre></td></tr></table></figure>
 
     </div>
