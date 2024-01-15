@@ -28,7 +28,7 @@
 <meta property="og:description" content="安裝套件 12pip install Flaskpip install Flask-Caching">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-07-07T23:00:00.000Z">
-<meta property="article:modified_time" content="2024-01-15T14:10:14.488Z">
+<meta property="article:modified_time" content="2024-01-15T14:18:51.282Z">
 <meta property="article:author" content="Stephen">
 <meta property="article:tag" content="Python">
 <meta property="article:tag" content="Flask">
@@ -233,7 +233,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2024-01-15 14:10:14" itemprop="dateModified" datetime="2024-01-15T14:10:14+00:00">2024-01-15</time>
+      <time title="Modified: 2024-01-15 14:18:51" itemprop="dateModified" datetime="2024-01-15T14:18:51+00:00">2024-01-15</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -261,7 +261,7 @@
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;Address&quot;</span><span class="punctuation">:</span> <span class="string">&quot;新竹市&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;Zip&quot;</span><span class="punctuation">:</span> <span class="string">&quot;300&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
 <h1>建立 <a target="_blank" rel="noopener" href="http://app.py">app.py</a> 內容如下</h1>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</span><br><span class="line"><span class="keyword">from</span> flask_caching <span class="keyword">import</span> Cache</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line">config = &#123;</span><br><span class="line">    <span class="string">&quot;DEBUG&quot;</span>: <span class="literal">True</span>,</span><br><span class="line">    <span class="string">&quot;CACHE_TYPE&quot;</span>: <span class="string">&quot;SimpleCache&quot;</span>,</span><br><span class="line">    <span class="string">&quot;CACHE_DEFAULT_TIMEOUT&quot;</span>: <span class="number">3000</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line">app.config.from_mapping(config)</span><br><span class="line">cache = Cache(app)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用裝飾器緩存呼叫方法產生的資料</span></span><br><span class="line"><span class="meta">@cache.memoize(<span class="params">timeout=<span class="number">50</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">LoadAllAddress</span>():</span><br><span class="line">    <span class="comment"># 讀取 address.json</span></span><br><span class="line">    file = <span class="built_in">open</span>(<span class="string">&#x27;address.json&#x27;</span>)</span><br><span class="line">    data = json.load(file)</span><br><span class="line">    <span class="keyword">return</span> data</span><br><span class="line"></span><br><span class="line"><span class="comment"># 刪除緩存</span></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/ClearAddressCache&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">delAddress</span>():</span><br><span class="line">   <span class="comment"># 刪除緩存呼叫方法產生的資料</span></span><br><span class="line">   cache.delete_memoized(LoadAllAddress)</span><br><span class="line">   <span class="keyword">return</span> <span class="string">&quot;Clear Success&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 取得 address.json 的資料</span></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/GetAllAddress&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">AllAddress</span>():</span><br><span class="line">    <span class="keyword">return</span> LoadAllAddress()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    app.run()</span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>參考資料</p>
+<div class="note warning"><p>📜 參考資料</p>
 <ol>
 <li><a target="_blank" rel="noopener" href="https://flask-caching.readthedocs.io/en/latest/">Flask-Caching</a></li>
 </ol>
@@ -300,13 +300,13 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2023/05/07/LinuxSshTunnel/" rel="prev" title="使用 SSH 建立通道">
-                  <i class="fa fa-angle-left"></i> 使用 SSH 建立通道
+                <a href="/2023/07/07/PythonFlaskSQLAlchemy/" rel="prev" title="使用 Flask-SQLAlchemy 連接 MSSQL 進行 CRUD">
+                  <i class="fa fa-angle-left"></i> 使用 Flask-SQLAlchemy 連接 MSSQL 進行 CRUD
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2023/07/07/PythonFlaskSQLAlchemy/" rel="next" title="使用 Flask-SQLAlchemy 連接 MSSQL 進行 CRUD">
-                  使用 Flask-SQLAlchemy 連接 MSSQL 進行 CRUD <i class="fa fa-angle-right"></i>
+                <a href="/2024/01/01/Wsl2DockerInDocker/" rel="next" title="WSL2 設定 Docker In Docker">
+                  WSL2 設定 Docker In Docker <i class="fa fa-angle-right"></i>
                 </a>
             </div>
           </div>

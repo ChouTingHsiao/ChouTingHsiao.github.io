@@ -28,7 +28,7 @@
 <meta property="og:description" content="安裝 NSubstitute 安裝 Nuget 的 NSubstitute 套件 1Install-Package NSubstitute">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-05-01T13:00:00.000Z">
-<meta property="article:modified_time" content="2024-01-15T14:10:14.488Z">
+<meta property="article:modified_time" content="2024-01-15T14:18:51.282Z">
 <meta property="article:author" content="Stephen">
 <meta property="article:tag" content=".Net">
 <meta property="article:tag" content="UnitTest">
@@ -233,7 +233,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2024-01-15 14:10:14" itemprop="dateModified" datetime="2024-01-15T14:10:14+00:00">2024-01-15</time>
+      <time title="Modified: 2024-01-15 14:18:51" itemprop="dateModified" datetime="2024-01-15T14:18:51+00:00">2024-01-15</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -273,7 +273,7 @@
 <figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">mockRepository</span><br><span class="line">.GetData(Arg.Any&lt;<span class="built_in">string</span>&gt;())</span><br><span class="line">.Returns(</span><br><span class="line">    <span class="keyword">new</span> Table</span><br><span class="line">    &#123;</span><br><span class="line">        Id = <span class="number">1</span>,</span><br><span class="line">        Name = <span class="string">&quot;張三&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="keyword">new</span> Table</span><br><span class="line">    &#123;</span><br><span class="line">        Id = <span class="number">2</span>,</span><br><span class="line">        Name = <span class="string">&quot;李四&quot;</span></span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
 <p>驗證呼叫方法的次數與傳入參數</p>
 <figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mockRepository</span><br><span class="line">.Received(<span class="number">1</span>)</span><br><span class="line">.GetData(Arg.Is&lt;<span class="built_in">string</span>&gt;(x =&gt; x == <span class="string">&quot;張三&quot;</span>));</span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>參考資料</p>
+<div class="note warning"><p>📜 參考資料</p>
 <ol>
 <li><a target="_blank" rel="noopener" href="https://nsubstitute.github.io/help.html">NSubstitute文件</a></li>
 </ol>

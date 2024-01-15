@@ -28,7 +28,7 @@
 <meta property="og:description" content="開放外部連線至 Docker，有兩種方式可擇一設定 建立 daemon.json 建立 ‘&#x2F;etc&#x2F;docker&#x2F;daemon.json’ 1sudo nano &#x2F;etc&#x2F;docker&#x2F;daemon.json 加入以下設定 1234&amp;#123;  &quot;hosts&quot;: [ &quot;unix:&#x2F;&#x2F;&#x2F;var&#x2F;run&#x2F;docker.sock&quot;, &quot;tcp:&#x2F;&#x2F;0.">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-04-29T21:00:00.000Z">
-<meta property="article:modified_time" content="2024-01-15T14:10:14.488Z">
+<meta property="article:modified_time" content="2024-01-15T14:18:51.282Z">
 <meta property="article:author" content="Stephen">
 <meta property="article:tag" content="Wsl2">
 <meta property="article:tag" content="Docker">
@@ -232,7 +232,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2024-01-15 14:10:14" itemprop="dateModified" datetime="2024-01-15T14:10:14+00:00">2024-01-15</time>
+      <time title="Modified: 2024-01-15 14:18:51" itemprop="dateModified" datetime="2024-01-15T14:18:51+00:00">2024-01-15</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -296,7 +296,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /etc/sudoers</span><br></pre></td></tr></table></figure>
 <p>加入以下設定</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">%ubuntu ALL=(ALL:ALL) NOPASSWD:ALL</span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>參考資料</p>
+<div class="note warning"><p>📜 參考資料</p>
 <ol>
 <li><a target="_blank" rel="noopener" href="https://community.chocolatey.org/packages/docker-cli">Daemon CLI (dockerd)</a></li>
 <li><a target="_blank" rel="noopener" href="https://docs.docker.com/engine/reference/commandline/dockerd/#daemon-configuration-file">Chocolatey Docker CLI</a></li>
