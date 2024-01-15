@@ -40,7 +40,10 @@ external_link:
   exclude: ''
 filename_case: 0
 render_drafts: false
-post_asset_folder: false
+post_asset_folder: true
+marked:
+  prependRoot: true
+  postAsset: true
 relative_link: false
 future: true
 highlight:
@@ -108,3 +111,34 @@ deploy:
   repo: git@github.com:ChouTingHsiao/ChouTingHsiao.github.io.git
   branch: master
   ignore_hidden: false
+
+# 搜尋設定
+search:
+  path: search.xml
+  field: post
+  format: html
+  # 設定搜尋的文件量，當文章量多時可以設定高些
+  limit: 100
+
+# markdown it
+markdown:
+  render:
+    html: true
+    xhtmlOut: false
+    breaks: true
+    linkify: true
+    typographer: true
+    quotes: '“”‘’'
+  plugins:
+    - markdown-it-abbr
+    - markdown-it-footnote
+    - markdown-it-ins
+    - markdown-it-sub
+    - markdown-it-sup
+    - markdown-it-emoji
+  anchors:
+    level: 2
+    collisionSuffix: 'v'
+    permalink: true
+    permalinkClass: header-anchor
+    permalinkSymbol: ''
