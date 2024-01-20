@@ -14,6 +14,22 @@ Install-Package NSubstitute
 
 <!--more-->
 
+# 類別結構
+
+{% plantuml %}
+@startuml
+
+participant Service << (C,#ADD1B2) RunLogic >>
+
+participant Repository << (I,#ADD1B2) GetData >>
+
+Service ->> Repository: 1. Run GetData 
+
+Repository -->> Service: 2. Return Table Data
+
+@enduml
+{% endplantuml %}
+
 # 建立模擬物件
 建立 Repository 的模擬物件
 ```C#
