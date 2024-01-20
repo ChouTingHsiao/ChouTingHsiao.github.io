@@ -28,7 +28,7 @@
 <meta property="og:description" content="安裝 NSubstitute 安裝 Nuget 的 NSubstitute 套件 1Install-Package NSubstitute">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-05-01T13:00:00.000Z">
-<meta property="article:modified_time" content="2024-01-15T14:18:51.282Z">
+<meta property="article:modified_time" content="2024-01-20T15:07:55.352Z">
 <meta property="article:author" content="Stephen">
 <meta property="article:tag" content=".Net">
 <meta property="article:tag" content="UnitTest">
@@ -143,7 +143,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">安裝 NSubstitute</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">建立模擬物件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">注入模擬物件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">4.</span> <span class="nav-text">驗證模擬物件</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">安裝 NSubstitute</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">類別結構</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">建立模擬物件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">4.</span> <span class="nav-text">注入模擬物件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">5.</span> <span class="nav-text">驗證模擬物件</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -233,7 +233,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2024-01-15 14:18:51" itemprop="dateModified" datetime="2024-01-15T14:18:51+00:00">2024-01-15</time>
+      <time title="Modified: 2024-01-20 15:07:55" itemprop="dateModified" datetime="2024-01-20T15:07:55+00:00">2024-01-20</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -258,6 +258,8 @@
 <p>安裝 Nuget 的 NSubstitute 套件</p>
 <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Install-Package</span> NSubstitute</span><br></pre></td></tr></table></figure>
 <span id="more"></span>
+<h1>類別結構</h1>
+<img  src=http://www.plantuml.com/plantuml/svg/SoWkIImgAStDuU8g038oapCB4lDA589JYyeoarCLR6mKD9nrb1rTN0oTZ3GLWahpVFBJCvCLxEnGrGUb5kGNPvRa5rM2jNWYjBYdbhWabYI2TS1CrRMpGz9XfM2e1p8PhfIB2yauNP1Yg4Oh1IEWojIIqg8yXP34f9nK1P1wBYw7rBmKe1S0>
 <h1>建立模擬物件</h1>
 <p>建立 Repository 的模擬物件</p>
 <figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Repository mockRepository = Substitute.For&lt;Repository&gt;();</span><br><span class="line"></span><br><span class="line">mockRepository</span><br><span class="line">.GetData(Arg.Any&lt;<span class="built_in">string</span>&gt;())</span><br><span class="line">.Returns(<span class="keyword">new</span> Table &#123;</span><br><span class="line">    Id = <span class="number">1</span>,</span><br><span class="line">    Name = <span class="string">&quot;張三&quot;</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>

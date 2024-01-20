@@ -410,29 +410,6 @@
       </tags>
   </entry>
   <entry>
-    <title>使用 AddInMemoryCollection 設定 Configuration</title>
-    <url>/2023/01/21/NetAddInMemoryCollection/</url>
-    <content><![CDATA[<h1>appsettings.json 設定如下</h1>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;Logging&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;LogLevel&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;Default&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Information&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;Microsoft.AspNetCore&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Warning&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1>轉換為 Dictionary&lt;string, string&gt;</h1>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">Dictionary&lt;<span class="built_in">string</span>, <span class="built_in">string</span>&gt; inMemorySettings = <span class="keyword">new</span> Dictionary&lt;<span class="built_in">string</span>, <span class="built_in">string</span>&gt; &#123;</span><br><span class="line">    &#123;<span class="string">&quot;Logging:LogLevel:Default&quot;</span>,  <span class="string">&quot;Information&quot;</span>&#125;,</span><br><span class="line">    &#123;<span class="string">&quot;Logging:LogLevel:Microsoft.AspNetCore&quot;</span>,  <span class="string">&quot;Warning&quot;</span>&#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h1>建立 Configuration</h1>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">IConfiguration configuration = <span class="keyword">new</span> ConfigurationBuilder()</span><br><span class="line">            .AddInMemoryCollection(inMemorySettings)</span><br><span class="line">            .Build();</span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://learn.microsoft.com/en-us/dotnet/api/microsoft.extensions.configuration.memoryconfigurationbuilderextensions.addinmemorycollection?view=dotnet-plat-ext-7.0">MemoryConfigurationBuilderExtensions.AddInMemoryCollection Method</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>.Net</category>
-      </categories>
-      <tags>
-        <tag>.Net</tag>
-        <tag>IConfiguration</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>使用 SSH 建立通道</title>
     <url>/2023/05/07/LinuxSshTunnel/</url>
     <content><![CDATA[<h1>本機特定端口轉發至跳板機</h1>
@@ -459,6 +436,29 @@ plink -v -x -a -T -C -noagent -ssh -pw "[密碼]" -P 50893 -L [本地端口]:[�
         <tag>Linux</tag>
         <tag>Ubuntu</tag>
         <tag>Ssh</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>使用 AddInMemoryCollection 設定 Configuration</title>
+    <url>/2023/01/21/NetAddInMemoryCollection/</url>
+    <content><![CDATA[<h1>appsettings.json 設定如下</h1>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;Logging&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;LogLevel&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;Default&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Information&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;Microsoft.AspNetCore&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Warning&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1>轉換為 Dictionary&lt;string, string&gt;</h1>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">Dictionary&lt;<span class="built_in">string</span>, <span class="built_in">string</span>&gt; inMemorySettings = <span class="keyword">new</span> Dictionary&lt;<span class="built_in">string</span>, <span class="built_in">string</span>&gt; &#123;</span><br><span class="line">    &#123;<span class="string">&quot;Logging:LogLevel:Default&quot;</span>,  <span class="string">&quot;Information&quot;</span>&#125;,</span><br><span class="line">    &#123;<span class="string">&quot;Logging:LogLevel:Microsoft.AspNetCore&quot;</span>,  <span class="string">&quot;Warning&quot;</span>&#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h1>建立 Configuration</h1>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">IConfiguration configuration = <span class="keyword">new</span> ConfigurationBuilder()</span><br><span class="line">            .AddInMemoryCollection(inMemorySettings)</span><br><span class="line">            .Build();</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://learn.microsoft.com/en-us/dotnet/api/microsoft.extensions.configuration.memoryconfigurationbuilderextensions.addinmemorycollection?view=dotnet-plat-ext-7.0">MemoryConfigurationBuilderExtensions.AddInMemoryCollection Method</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>.Net</category>
+      </categories>
+      <tags>
+        <tag>.Net</tag>
+        <tag>IConfiguration</tag>
       </tags>
   </entry>
   <entry>
@@ -606,6 +606,8 @@ dotnet-dump collect --process-id 1902 -->
 <p>安裝 Nuget 的 NSubstitute 套件</p>
 <figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Install-Package</span> NSubstitute</span><br></pre></td></tr></table></figure>
 <span id="more"></span>
+<h1>類別結構</h1>
+<img  src=http://www.plantuml.com/plantuml/svg/SoWkIImgAStDuU8g038oapCB4lDA589JYyeoarCLR6mKD9nrb1rTN0oTZ3GLWahpVFBJCvCLxEnGrGUb5kGNPvRa5rM2jNWYjBYdbhWabYI2TS1CrRMpGz9XfM2e1p8PhfIB2yauNP1Yg4Oh1IEWojIIqg8yXP34f9nK1P1wBYw7rBmKe1S0>
 <h1>建立模擬物件</h1>
 <p>建立 Repository 的模擬物件</p>
 <figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">Repository mockRepository = Substitute.For&lt;Repository&gt;();</span><br><span class="line"></span><br><span class="line">mockRepository</span><br><span class="line">.GetData(Arg.Any&lt;<span class="built_in">string</span>&gt;())</span><br><span class="line">.Returns(<span class="keyword">new</span> Table &#123;</span><br><span class="line">    Id = <span class="number">1</span>,</span><br><span class="line">    Name = <span class="string">&quot;張三&quot;</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
@@ -901,6 +903,31 @@ db.create_all() -->
       </tags>
   </entry>
   <entry>
+    <title>WSL2 設定固定 IP</title>
+    <url>/2023/04/29/Wsl2Network/</url>
+    <content><![CDATA[<h1>設定 DNS</h1>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 刪除原始的 resolv.conf 設定</span></span><br><span class="line">sudo <span class="built_in">rm</span> /etc/resolv.conf</span><br><span class="line"></span><br><span class="line"><span class="comment"># 建立 resolv.conf 設定，加入自訂 DNS</span></span><br><span class="line">sudo bash -c <span class="string">&#x27;echo &quot;nameserver 192.168.50.1&quot; &gt; /etc/resolv.conf&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 加入 Google 的 DNS 加速</span></span><br><span class="line">sudo bash -c <span class="string">&#x27;echo &quot;nameserver 8.8.8.8&quot; &gt;&gt; /etc/resolv.conf&#x27;</span></span><br><span class="line">sudo bash -c <span class="string">&#x27;echo &quot;nameserver 8.8.4.4&quot; &gt;&gt; /etc/resolv.conf&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 設定 /etc/wsl.conf</span></span><br><span class="line">sudo bash -c <span class="string">&#x27;echo &quot;[network]&quot; &gt; /etc/wsl.conf&#x27;</span></span><br><span class="line">sudo bash -c <span class="string">&#x27;echo &quot;generateResolvConf = false&quot; &gt;&gt; /etc/wsl.conf&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 鎖定 resolv.conf 設定</span></span><br><span class="line">sudo chattr +i /etc/resolv.conf</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1>Powershell 設定 Ububtu 網卡</h1>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 搜尋 eth0 網卡 IP 設定</span></span><br><span class="line"><span class="variable">$ipAddr</span> = wsl <span class="literal">-u</span> root /bin/bash <span class="literal">-c</span> <span class="string">&quot;ip addr show eth0 | grep &#x27;inet\b&#x27;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="variable">$ipAddr</span> = <span class="variable">$ipAddr</span>.Trim().Split(<span class="string">&quot; &quot;</span>)[<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 確認是否為自訂的網卡設定</span></span><br><span class="line"><span class="keyword">if</span>(!<span class="variable">$ipAddr</span>.Contains(<span class="string">&quot;192.168.50.2&quot;</span>))&#123;</span><br><span class="line">  <span class="comment"># 移除 Ububtu 網卡設定</span></span><br><span class="line">  wsl <span class="literal">-u</span> root /bin/bash <span class="literal">-c</span> <span class="string">&quot;ip addr del <span class="variable">$ipAddr</span> dev eth0&quot;</span></span><br><span class="line">  </span><br><span class="line">  <span class="comment"># 加入自訂的網卡</span></span><br><span class="line">  wsl <span class="literal">-u</span> root /bin/bash <span class="literal">-c</span> <span class="string">&quot;ip addr add 192.168.50.2/24 broadcast 192.168.50.255 dev eth0&quot;</span></span><br><span class="line">  </span><br><span class="line">  <span class="comment"># 加入自訂的路由</span></span><br><span class="line">  wsl <span class="literal">-u</span> root /bin/bash <span class="literal">-c</span> <span class="string">&quot;ip route add 0.0.0.0/0 via 192.168.50.1 dev eth0&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<!-- sudo ip addr del $(ip addr show eth0 | grep 'inet\b' | awk '{print $2}' | head -n 1) dev eth0 -->
+<!-- sudo ip addr add 192.168.50.2/24 broadcast 192.168.50.255 dev eth0 -->
+<!-- sudo ip route add 0.0.0.0/0 via 192.168.50.1 dev eth0 -->
+<h1>Powershell 設定 vEthernet (WSL)</h1>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 確認是否為自訂的 vEthernet (WSL) 設定</span></span><br><span class="line"><span class="keyword">if</span>(!(<span class="built_in">Get-NetAdapter</span> <span class="string">&#x27;vEthernet (WSL)&#x27;</span> | <span class="built_in">Get-NetIPAddress</span>).IPAddress.Contains(<span class="string">&#x27;192.168.50.1&#x27;</span>))&#123;</span><br><span class="line">  <span class="comment"># 移除 vEthernet (WSL)設定</span></span><br><span class="line">  <span class="built_in">Get-NetAdapter</span> <span class="string">&#x27;vEthernet (WSL)&#x27;</span> | <span class="built_in">Get-NetIPAddress</span> | <span class="built_in">Remove-NetIPAddress</span> <span class="literal">-Confirm</span>:<span class="variable">$False</span></span><br><span class="line">  </span><br><span class="line">  <span class="comment"># 加入自訂的 vEthernet (WSL)</span></span><br><span class="line">  <span class="built_in">New-NetIPAddress</span> <span class="literal">-IPAddress</span> <span class="number">192.168</span>.<span class="number">50.1</span> <span class="literal">-PrefixLength</span> <span class="number">24</span> <span class="literal">-InterfaceAlias</span> <span class="string">&#x27;vEthernet (WSL)&#x27;</span></span><br><span class="line">  </span><br><span class="line">  <span class="comment"># 移除 WSLNat 設定</span></span><br><span class="line">  <span class="built_in">Get-NetNat</span> | ? Name <span class="operator">-Eq</span> WSLNat | <span class="built_in">Remove-NetNat</span> <span class="literal">-Confirm</span>:<span class="variable">$False</span></span><br><span class="line">  </span><br><span class="line">  <span class="comment"># 加入自訂的 WSLNat</span></span><br><span class="line">  <span class="built_in">New-NetNat</span> <span class="literal">-Name</span> WSLNat <span class="literal">-InternalIPInterfaceAddressPrefix</span> <span class="number">192.168</span>.<span class="number">50.0</span>/<span class="number">24</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://zhuanlan.zhihu.com/p/380779630">知乎-給 WSL2 設置靜態IP地址</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>Wsl2</category>
+      </categories>
+      <tags>
+        <tag>Wsl2</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>WSL2 設定 Docker In Docker</title>
     <url>/2024/01/01/Wsl2DockerInDocker/</url>
     <content><![CDATA[<h1>掛載主機的 Docker Socket</h1>
@@ -936,31 +963,6 @@ db.create_all() -->
       <tags>
         <tag>Wsl2</tag>
         <tag>Docker</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>WSL2 設定固定 IP</title>
-    <url>/2023/04/29/Wsl2Network/</url>
-    <content><![CDATA[<h1>設定 DNS</h1>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 刪除原始的 resolv.conf 設定</span></span><br><span class="line">sudo <span class="built_in">rm</span> /etc/resolv.conf</span><br><span class="line"></span><br><span class="line"><span class="comment"># 建立 resolv.conf 設定，加入自訂 DNS</span></span><br><span class="line">sudo bash -c <span class="string">&#x27;echo &quot;nameserver 192.168.50.1&quot; &gt; /etc/resolv.conf&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 加入 Google 的 DNS 加速</span></span><br><span class="line">sudo bash -c <span class="string">&#x27;echo &quot;nameserver 8.8.8.8&quot; &gt;&gt; /etc/resolv.conf&#x27;</span></span><br><span class="line">sudo bash -c <span class="string">&#x27;echo &quot;nameserver 8.8.4.4&quot; &gt;&gt; /etc/resolv.conf&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 設定 /etc/wsl.conf</span></span><br><span class="line">sudo bash -c <span class="string">&#x27;echo &quot;[network]&quot; &gt; /etc/wsl.conf&#x27;</span></span><br><span class="line">sudo bash -c <span class="string">&#x27;echo &quot;generateResolvConf = false&quot; &gt;&gt; /etc/wsl.conf&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 鎖定 resolv.conf 設定</span></span><br><span class="line">sudo chattr +i /etc/resolv.conf</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1>Powershell 設定 Ububtu 網卡</h1>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 搜尋 eth0 網卡 IP 設定</span></span><br><span class="line"><span class="variable">$ipAddr</span> = wsl <span class="literal">-u</span> root /bin/bash <span class="literal">-c</span> <span class="string">&quot;ip addr show eth0 | grep &#x27;inet\b&#x27;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="variable">$ipAddr</span> = <span class="variable">$ipAddr</span>.Trim().Split(<span class="string">&quot; &quot;</span>)[<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 確認是否為自訂的網卡設定</span></span><br><span class="line"><span class="keyword">if</span>(!<span class="variable">$ipAddr</span>.Contains(<span class="string">&quot;192.168.50.2&quot;</span>))&#123;</span><br><span class="line">  <span class="comment"># 移除 Ububtu 網卡設定</span></span><br><span class="line">  wsl <span class="literal">-u</span> root /bin/bash <span class="literal">-c</span> <span class="string">&quot;ip addr del <span class="variable">$ipAddr</span> dev eth0&quot;</span></span><br><span class="line">  </span><br><span class="line">  <span class="comment"># 加入自訂的網卡</span></span><br><span class="line">  wsl <span class="literal">-u</span> root /bin/bash <span class="literal">-c</span> <span class="string">&quot;ip addr add 192.168.50.2/24 broadcast 192.168.50.255 dev eth0&quot;</span></span><br><span class="line">  </span><br><span class="line">  <span class="comment"># 加入自訂的路由</span></span><br><span class="line">  wsl <span class="literal">-u</span> root /bin/bash <span class="literal">-c</span> <span class="string">&quot;ip route add 0.0.0.0/0 via 192.168.50.1 dev eth0&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<!-- sudo ip addr del $(ip addr show eth0 | grep 'inet\b' | awk '{print $2}' | head -n 1) dev eth0 -->
-<!-- sudo ip addr add 192.168.50.2/24 broadcast 192.168.50.255 dev eth0 -->
-<!-- sudo ip route add 0.0.0.0/0 via 192.168.50.1 dev eth0 -->
-<h1>Powershell 設定 vEthernet (WSL)</h1>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 確認是否為自訂的 vEthernet (WSL) 設定</span></span><br><span class="line"><span class="keyword">if</span>(!(<span class="built_in">Get-NetAdapter</span> <span class="string">&#x27;vEthernet (WSL)&#x27;</span> | <span class="built_in">Get-NetIPAddress</span>).IPAddress.Contains(<span class="string">&#x27;192.168.50.1&#x27;</span>))&#123;</span><br><span class="line">  <span class="comment"># 移除 vEthernet (WSL)設定</span></span><br><span class="line">  <span class="built_in">Get-NetAdapter</span> <span class="string">&#x27;vEthernet (WSL)&#x27;</span> | <span class="built_in">Get-NetIPAddress</span> | <span class="built_in">Remove-NetIPAddress</span> <span class="literal">-Confirm</span>:<span class="variable">$False</span></span><br><span class="line">  </span><br><span class="line">  <span class="comment"># 加入自訂的 vEthernet (WSL)</span></span><br><span class="line">  <span class="built_in">New-NetIPAddress</span> <span class="literal">-IPAddress</span> <span class="number">192.168</span>.<span class="number">50.1</span> <span class="literal">-PrefixLength</span> <span class="number">24</span> <span class="literal">-InterfaceAlias</span> <span class="string">&#x27;vEthernet (WSL)&#x27;</span></span><br><span class="line">  </span><br><span class="line">  <span class="comment"># 移除 WSLNat 設定</span></span><br><span class="line">  <span class="built_in">Get-NetNat</span> | ? Name <span class="operator">-Eq</span> WSLNat | <span class="built_in">Remove-NetNat</span> <span class="literal">-Confirm</span>:<span class="variable">$False</span></span><br><span class="line">  </span><br><span class="line">  <span class="comment"># 加入自訂的 WSLNat</span></span><br><span class="line">  <span class="built_in">New-NetNat</span> <span class="literal">-Name</span> WSLNat <span class="literal">-InternalIPInterfaceAddressPrefix</span> <span class="number">192.168</span>.<span class="number">50.0</span>/<span class="number">24</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://zhuanlan.zhihu.com/p/380779630">知乎-給 WSL2 設置靜態IP地址</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>Wsl2</category>
-      </categories>
-      <tags>
-        <tag>Wsl2</tag>
       </tags>
   </entry>
 </search>
