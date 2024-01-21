@@ -18,6 +18,7 @@ Install-Package NSubstitute
 
 {% plantuml %}
 @startuml
+!theme spacelab
 
 participant Service << (C,#ADD1B2) RunLogic >>
 
