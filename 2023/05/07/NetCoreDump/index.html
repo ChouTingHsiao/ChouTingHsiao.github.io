@@ -28,7 +28,7 @@
 <meta property="og:description" content="使用 apport 解壓縮核心傾印檔案 安裝 apport 1sudo apt install apport 解壓縮核心傾印檔案 1apport-unpack [systemGeneratedCrashReportPath].crash [yourNewUnpackDirectoryHere]">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-05-07T18:00:00.000Z">
-<meta property="article:modified_time" content="2024-01-24T15:09:10.220Z">
+<meta property="article:modified_time" content="2024-01-25T15:00:22.657Z">
 <meta property="article:author" content="Stephen">
 <meta property="article:tag" content="Linux">
 <meta property="article:tag" content=".Net">
@@ -143,7 +143,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">使用 apport 解壓縮核心傾印檔案</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">安裝 Dotnet 工具</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">使用 lldb 偵錯</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">4.</span> <span class="nav-text">安裝 ProcDump</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-apport-%E8%A7%A3%E5%A3%93%E7%B8%AE%E6%A0%B8%E5%BF%83%E5%82%BE%E5%8D%B0%E6%AA%94%E6%A1%88"><span class="nav-number">1.</span> <span class="nav-text">使用 apport 解壓縮核心傾印檔案</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%9D-Dotnet-%E5%B7%A5%E5%85%B7"><span class="nav-number">2.</span> <span class="nav-text">安裝 Dotnet 工具</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-lldb-%E5%81%B5%E9%8C%AF"><span class="nav-number">3.</span> <span class="nav-text">使用 lldb 偵錯</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%9D-ProcDump"><span class="nav-number">4.</span> <span class="nav-text">安裝 ProcDump</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -175,7 +175,40 @@
   <div class="cc-license animated" itemprop="license">
     <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
   </div>
-
+<!-- recent posts -->
+    <div class="links-of-blogroll motion-element links-of-blogroll-block">
+        <div class="links-of-blogroll-title recent-posts-title">
+	    <i class="fa fa-history " aria-hidden="true"></i>
+            近期文章
+	</div>
+	<ul class="links-of-blogroll-list recent-posts-list">
+	        <li class="my-links-of-blogroll-item">
+		    <a href="/2024/01/01/JenkinsBackupProject/" title="Jenkins 執行備份專案命令" target="">
+		    Jenkins 執行備份專案命令
+		    </a>
+		</li>
+	        <li class="my-links-of-blogroll-item">
+		    <a href="/2024/01/01/Wsl2DockerInDocker/" title="WSL2 設定 Docker In Docker" target="">
+		    WSL2 設定 Docker In Docker
+		    </a>
+		</li>
+	        <li class="my-links-of-blogroll-item">
+		    <a href="/2023/07/07/PythonFlaskCaching/" title="使用 Flask-Caching 緩存 Flask 呼叫方法產生的資料" target="">
+		    使用 Flask-Caching 緩存 Flask 呼叫方法產生的資料
+		    </a>
+		</li>
+	        <li class="my-links-of-blogroll-item">
+		    <a href="/2023/07/07/PythonFlaskSQLAlchemy/" title="使用 Flask-SQLAlchemy 連接 MSSQL 進行 CRUD" target="">
+		    使用 Flask-SQLAlchemy 連接 MSSQL 進行 CRUD
+		    </a>
+		</li>
+	        <li class="my-links-of-blogroll-item">
+		    <a href="/2023/05/07/LinuxSshTunnel/" title="使用 SSH 建立通道" target="">
+		    使用 SSH 建立通道
+		    </a>
+		</li>
+	</ul>
+    </div>
         </div>
       </div>
     </div>
@@ -233,7 +266,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2024-01-24 15:09:10" itemprop="dateModified" datetime="2024-01-24T15:09:10+00:00">2024-01-24</time>
+      <time title="Modified: 2024-01-25 15:00:22" itemprop="dateModified" datetime="2024-01-25T15:00:22+00:00">2024-01-25</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -269,7 +302,7 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><h1>使用 apport 解壓縮核心傾印檔案</h1>
+    <div class="post-body" itemprop="articleBody"><h1 id="使用-apport-解壓縮核心傾印檔案"><a class="header-anchor" href="#使用-apport-解壓縮核心傾印檔案"></a>使用 apport 解壓縮核心傾印檔案</h1>
 <p>安裝 apport</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install apport</span><br></pre></td></tr></table></figure>
 <p>解壓縮核心傾印檔案</p>
@@ -292,14 +325,14 @@ gdb `cat ExecutablePath` CoreDump
 <!-- dotnet tool install -g dotnet-dump
 dotnet-dump ps
 dotnet-dump collect --process-id 1902 -->
-<h1>安裝 Dotnet 工具</h1>
+<h1 id="安裝-Dotnet-工具"><a class="header-anchor" href="#安裝-Dotnet-工具"></a>安裝 Dotnet 工具</h1>
 <p>安裝 dotnet-symbol 導出傾印檔案的符號</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dotnet tool install -g dotnet-symbol</span><br></pre></td></tr></table></figure>
 <p>導出傾印檔案的符號</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dotnet-symbol ~/dumps/dotnet/CoreDump -o ~/dumps/symbols --host-only</span><br></pre></td></tr></table></figure>
 <p>安裝 SOS 擴充偵錯工具功能</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dotnet tool install -g dotnet-sos</span><br><span class="line">dotnet-sos install</span><br></pre></td></tr></table></figure>
-<h1>使用 lldb 偵錯</h1>
+<h1 id="使用-lldb-偵錯"><a class="header-anchor" href="#使用-lldb-偵錯"></a>使用 lldb 偵錯</h1>
 <p>安裝 lldb</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install lldb</span><br></pre></td></tr></table></figure>
 <p>使用 lldb 分析核心傾印檔案</p>
@@ -308,7 +341,7 @@ dotnet-dump collect --process-id 1902 -->
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setsymbolserver -directory ~/dumps/symbols</span><br></pre></td></tr></table></figure>
 <p>在 lldb 中常用命令</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">執行緒清單: clrthreads</span><br><span class="line">切換執行序: thread <span class="keyword">select</span> [thread]</span><br><span class="line">線程棧清單: clrstack</span><br><span class="line">所有託管堆物件: dso</span><br><span class="line">託管堆狀態: dumpheap -<span class="built_in">stat</span></span><br><span class="line">尋找託管堆的位址: dumpheap -mt [address]</span><br><span class="line">程序最近都拋了什麼異常: dumpheap -<span class="built_in">type</span> Exception</span><br><span class="line">異常狀況資訊: pe</span><br><span class="line">異常的詳細信息: pe [address]</span><br><span class="line">分析物件位置: dumpobj [address]</span><br><span class="line">分析陣列位置: dumparray [address]</span><br><span class="line">GC狀態:  eeheap -gc</span><br></pre></td></tr></table></figure>
-<h1>安裝 ProcDump</h1>
+<h1 id="安裝-ProcDump"><a class="header-anchor" href="#安裝-ProcDump"></a>安裝 ProcDump</h1>
 <p>當目標進程 CPU 或記憶體使用量達到特定臨界值或低於限制值時，您可以使用 ProcDump 來擷取記憶體傾印檔案。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install procdump</span><br></pre></td></tr></table></figure>
 <div class="note warning"><p>📜 參考資料</p>

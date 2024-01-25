@@ -167,7 +167,40 @@
   <div class="cc-license animated" itemprop="license">
     <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
   </div>
-
+<!-- recent posts -->
+    <div class="links-of-blogroll motion-element links-of-blogroll-block">
+        <div class="links-of-blogroll-title recent-posts-title">
+	    <i class="fa fa-history " aria-hidden="true"></i>
+            近期文章
+	</div>
+	<ul class="links-of-blogroll-list recent-posts-list">
+	        <li class="my-links-of-blogroll-item">
+		    <a href="/2024/01/01/JenkinsBackupProject/" title="Jenkins 執行備份專案命令" target="">
+		    Jenkins 執行備份專案命令
+		    </a>
+		</li>
+	        <li class="my-links-of-blogroll-item">
+		    <a href="/2024/01/01/Wsl2DockerInDocker/" title="WSL2 設定 Docker In Docker" target="">
+		    WSL2 設定 Docker In Docker
+		    </a>
+		</li>
+	        <li class="my-links-of-blogroll-item">
+		    <a href="/2023/07/07/PythonFlaskCaching/" title="使用 Flask-Caching 緩存 Flask 呼叫方法產生的資料" target="">
+		    使用 Flask-Caching 緩存 Flask 呼叫方法產生的資料
+		    </a>
+		</li>
+	        <li class="my-links-of-blogroll-item">
+		    <a href="/2023/07/07/PythonFlaskSQLAlchemy/" title="使用 Flask-SQLAlchemy 連接 MSSQL 進行 CRUD" target="">
+		    使用 Flask-SQLAlchemy 連接 MSSQL 進行 CRUD
+		    </a>
+		</li>
+	        <li class="my-links-of-blogroll-item">
+		    <a href="/2023/05/07/LinuxSshTunnel/" title="使用 SSH 建立通道" target="">
+		    使用 SSH 建立通道
+		    </a>
+		</li>
+	</ul>
+    </div>
         </div>
       </div>
     </div>
@@ -224,7 +257,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2024-01-24 15:09:10" itemprop="dateModified" datetime="2024-01-24T15:09:10+00:00">2024-01-24</time>
+      <time title="Modified: 2024-01-25 15:00:22" itemprop="dateModified" datetime="2024-01-25T15:00:22+00:00">2024-01-25</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -261,7 +294,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1>Big5 字元轉換</h1>
+          <h1 id="Big5-字元轉換"><a class="header-anchor" href="#Big5-字元轉換"></a>Big5 字元轉換</h1>
 <p>Big5 依傳入內碼轉成字元</p>
 <figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 建立兩位元陣列</span></span><br><span class="line"><span class="built_in">byte</span>[] codeBytes = <span class="keyword">new</span> <span class="built_in">byte</span>[<span class="number">2</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 欲轉換內碼前兩字轉為16進制</span></span><br><span class="line">codeBytes[<span class="number">0</span>] = (<span class="built_in">byte</span>)Convert.ToInt32(<span class="string">&quot;欲轉換內碼&quot;</span>.Substring(<span class="number">0</span>, <span class="number">2</span>), <span class="number">16</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 欲轉換內碼後兩字轉為16進制</span></span><br><span class="line">codeBytes[<span class="number">1</span>] = (<span class="built_in">byte</span>)Convert.ToInt32(<span class="string">&quot;欲轉換內碼&quot;</span>.Substring(<span class="number">2</span>, <span class="number">2</span>), <span class="number">16</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 轉成字元</span></span><br><span class="line">Encoding big5 = Encoding.GetEncoding(<span class="number">950</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">string</span> result = big5.GetString(bytes);</span><br></pre></td></tr></table></figure>
           <!--noindex-->
@@ -333,7 +366,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2024-01-24 15:09:10" itemprop="dateModified" datetime="2024-01-24T15:09:10+00:00">2024-01-24</time>
+      <time title="Modified: 2024-01-25 15:00:22" itemprop="dateModified" datetime="2024-01-25T15:00:22+00:00">2024-01-25</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -370,7 +403,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1>安裝 NSubstitute</h1>
+          <h1 id="安裝-NSubstitute"><a class="header-anchor" href="#安裝-NSubstitute"></a>安裝 NSubstitute</h1>
 <p>安裝 Nuget 的 NSubstitute 套件</p>
 <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Install-Package</span> NSubstitute</span><br></pre></td></tr></table></figure>
           <!--noindex-->
@@ -442,7 +475,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2024-01-24 15:09:10" itemprop="dateModified" datetime="2024-01-24T15:09:10+00:00">2024-01-24</time>
+      <time title="Modified: 2024-01-25 15:00:22" itemprop="dateModified" datetime="2024-01-25T15:00:22+00:00">2024-01-25</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -479,7 +512,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1>安裝 Sqlite</h1>
+          <h1 id="安裝-Sqlite"><a class="header-anchor" href="#安裝-Sqlite"></a>安裝 Sqlite</h1>
 <p>安裝 Nuget 的 Sqlite 套件</p>
 <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Install-Package</span> Microsoft.EntityFrameworkCore.Sqlite</span><br></pre></td></tr></table></figure>
           <!--noindex-->
@@ -551,7 +584,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2024-01-24 15:09:10" itemprop="dateModified" datetime="2024-01-24T15:09:10+00:00">2024-01-24</time>
+      <time title="Modified: 2024-01-25 15:00:22" itemprop="dateModified" datetime="2024-01-25T15:00:22+00:00">2024-01-25</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -588,7 +621,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1>建立 <a target="_blank" rel="noopener" href="http://font.py">font.py</a> 檔案</h1>
+          <h1 id="建立-font-py-檔案"><a class="header-anchor" href="#建立-font-py-檔案"></a>建立 <a target="_blank" rel="noopener" href="http://font.py">font.py</a> 檔案</h1>
 <p>使用 python 操作 fontforge 轉換字型檔</p>
           <!--noindex-->
             <div class="post-button">
@@ -659,7 +692,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2024-01-24 15:09:10" itemprop="dateModified" datetime="2024-01-24T15:09:10+00:00">2024-01-24</time>
+      <time title="Modified: 2024-01-25 15:00:22" itemprop="dateModified" datetime="2024-01-25T15:00:22+00:00">2024-01-25</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -696,7 +729,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1>取得檔案列表方法</h1>
+          <h1 id="取得檔案列表方法"><a class="header-anchor" href="#取得檔案列表方法"></a>取得檔案列表方法</h1>
 <p>使用以下 Linxu 指令，將預設目錄每個檔案使用一列的方式逐一列出</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ls</span> -1 /home/ubuntu</span><br></pre></td></tr></table></figure>
           <!--noindex-->

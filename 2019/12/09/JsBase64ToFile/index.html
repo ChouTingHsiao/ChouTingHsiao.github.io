@@ -28,7 +28,7 @@
 <meta property="og:description" content="Chrome base64 轉換成檔案 下方是使用 JavaScript 把 base64 轉換成檔案的方法">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2019-12-09T20:34:09.000Z">
-<meta property="article:modified_time" content="2024-01-24T15:09:10.220Z">
+<meta property="article:modified_time" content="2024-01-25T15:00:22.653Z">
 <meta property="article:author" content="Stephen">
 <meta property="article:tag" content="Javascript">
 <meta property="article:tag" content="Base64">
@@ -142,7 +142,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">Chrome base64 轉換成檔案</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">IE 10 base64 轉換成檔案</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Chrome-base64-%E8%BD%89%E6%8F%9B%E6%88%90%E6%AA%94%E6%A1%88"><span class="nav-number">1.</span> <span class="nav-text">Chrome base64 轉換成檔案</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#IE-10-base64-%E8%BD%89%E6%8F%9B%E6%88%90%E6%AA%94%E6%A1%88"><span class="nav-number">2.</span> <span class="nav-text">IE 10 base64 轉換成檔案</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -174,7 +174,40 @@
   <div class="cc-license animated" itemprop="license">
     <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
   </div>
-
+<!-- recent posts -->
+    <div class="links-of-blogroll motion-element links-of-blogroll-block">
+        <div class="links-of-blogroll-title recent-posts-title">
+	    <i class="fa fa-history " aria-hidden="true"></i>
+            近期文章
+	</div>
+	<ul class="links-of-blogroll-list recent-posts-list">
+	        <li class="my-links-of-blogroll-item">
+		    <a href="/2024/01/01/JenkinsBackupProject/" title="Jenkins 執行備份專案命令" target="">
+		    Jenkins 執行備份專案命令
+		    </a>
+		</li>
+	        <li class="my-links-of-blogroll-item">
+		    <a href="/2024/01/01/Wsl2DockerInDocker/" title="WSL2 設定 Docker In Docker" target="">
+		    WSL2 設定 Docker In Docker
+		    </a>
+		</li>
+	        <li class="my-links-of-blogroll-item">
+		    <a href="/2023/07/07/PythonFlaskCaching/" title="使用 Flask-Caching 緩存 Flask 呼叫方法產生的資料" target="">
+		    使用 Flask-Caching 緩存 Flask 呼叫方法產生的資料
+		    </a>
+		</li>
+	        <li class="my-links-of-blogroll-item">
+		    <a href="/2023/07/07/PythonFlaskSQLAlchemy/" title="使用 Flask-SQLAlchemy 連接 MSSQL 進行 CRUD" target="">
+		    使用 Flask-SQLAlchemy 連接 MSSQL 進行 CRUD
+		    </a>
+		</li>
+	        <li class="my-links-of-blogroll-item">
+		    <a href="/2023/05/07/LinuxSshTunnel/" title="使用 SSH 建立通道" target="">
+		    使用 SSH 建立通道
+		    </a>
+		</li>
+	</ul>
+    </div>
         </div>
       </div>
     </div>
@@ -232,7 +265,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2024-01-24 15:09:10" itemprop="dateModified" datetime="2024-01-24T15:09:10+00:00">2024-01-24</time>
+      <time title="Modified: 2024-01-25 15:00:22" itemprop="dateModified" datetime="2024-01-25T15:00:22+00:00">2024-01-25</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -268,11 +301,11 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><h1>Chrome base64 轉換成檔案</h1>
+    <div class="post-body" itemprop="articleBody"><h1 id="Chrome-base64-轉換成檔案"><a class="header-anchor" href="#Chrome-base64-轉換成檔案"></a>Chrome base64 轉換成檔案</h1>
 <p>下方是使用 JavaScript 把 base64 轉換成檔案的方法</p>
 <span id="more"></span>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">function</span> <span class="title function_">downloadFile</span>(<span class="params">base64Str</span>) &#123;</span><br><span class="line">    <span class="comment">// 解碼 base64</span></span><br><span class="line">    <span class="keyword">const</span> byteCharacters = <span class="title function_">atob</span>(base64Str);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 建立 Byte Array</span></span><br><span class="line">    <span class="keyword">const</span> byteNumbers = <span class="keyword">new</span> <span class="title class_">Array</span>(byteCharacters.<span class="property">length</span>);</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; byteCharacters.<span class="property">length</span>; i++) &#123;</span><br><span class="line"> </span><br><span class="line">       byteNumbers[i] = byteCharacters.<span class="title function_">charCodeAt</span>(i);</span><br><span class="line"> </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">const</span> byteArray = <span class="keyword">new</span> <span class="title class_">Uint8Array</span>(byteNumbers);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 建立二進制檔和聲明 MIME Type</span></span><br><span class="line">    <span class="keyword">const</span> blob = <span class="keyword">new</span> <span class="title class_">Blob</span>([byteArray], &#123;<span class="attr">type</span>: <span class="string">&#x27;image/jpg&#x27;</span>&#125;);</span><br><span class="line"> </span><br><span class="line">    <span class="comment">// 下載檔案</span></span><br><span class="line">    <span class="keyword">let</span> link = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&#x27;a&#x27;</span>);</span><br><span class="line"> </span><br><span class="line">    <span class="comment">// 建立檔案物件連結</span></span><br><span class="line">    <span class="keyword">const</span> blobUrl = <span class="variable constant_">URL</span>.<span class="title function_">createObjectURL</span>(blob);</span><br><span class="line"> </span><br><span class="line">    link.<span class="property">href</span> = blobUrl;</span><br><span class="line"> </span><br><span class="line">    link.<span class="property">download</span> = <span class="string">&#x27;file.jpg&#x27;</span>;</span><br><span class="line"> </span><br><span class="line">    link.<span class="title function_">click</span>();</span><br><span class="line"> </span><br><span class="line">    <span class="variable constant_">URL</span>.<span class="title function_">revokeObjectURL</span>(blobUrl);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1>IE 10 base64 轉換成檔案</h1>
+<h1 id="IE-10-base64-轉換成檔案"><a class="header-anchor" href="#IE-10-base64-轉換成檔案"></a>IE 10 base64 轉換成檔案</h1>
 <p>如果瀏覽器使用 IE 10 以上版本，可使用 window.navigator.msSaveBlob 作為替代方法</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">downloadFile</span>(<span class="params">base64Str</span>) &#123;</span><br><span class="line">   <span class="comment">// 解碼 base64</span></span><br><span class="line">   <span class="keyword">const</span> byteCharacters = <span class="title function_">atob</span>(base64Str);</span><br><span class="line">	</span><br><span class="line">   <span class="comment">// 建立 Byte Array</span></span><br><span class="line">   <span class="keyword">const</span> byteNumbers = <span class="keyword">new</span> <span class="title class_">Array</span>(byteCharacters.<span class="property">length</span>);</span><br><span class="line">	</span><br><span class="line">   <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; byteCharacters.<span class="property">length</span>; i++) &#123;</span><br><span class="line">      byteNumbers[i] = byteCharacters.<span class="title function_">charCodeAt</span>(i);</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">const</span> byteArray = <span class="keyword">new</span> <span class="title class_">Uint8Array</span>(byteNumbers);</span><br><span class="line"></span><br><span class="line">   <span class="comment">// 建立二進制檔和聲明 MIME Type</span></span><br><span class="line">   <span class="keyword">const</span> blob = <span class="keyword">new</span> <span class="title class_">Blob</span>([byteArray], &#123;<span class="attr">type</span>: <span class="string">&#x27;image/jpg&#x27;</span>&#125;);</span><br><span class="line"> </span><br><span class="line">   <span class="comment">// 下載檔案</span></span><br><span class="line">   <span class="variable language_">window</span>.<span class="property">navigator</span>.<span class="title function_">msSaveBlob</span>(blob, <span class="string">&#x27;file.jpg&#x27;</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <div class="note warning"><p>📜 參考資料</p>

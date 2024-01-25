@@ -28,7 +28,7 @@
 <meta property="og:description" content="取得檔案列表方法 使用以下 Linxu 指令，將預設目錄每個檔案使用一列的方式逐一列出 1ls -1 &#x2F;home&#x2F;ubuntu">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-10-23T16:00:00.000Z">
-<meta property="article:modified_time" content="2024-01-24T15:09:10.220Z">
+<meta property="article:modified_time" content="2024-01-25T15:00:22.653Z">
 <meta property="article:author" content="Stephen">
 <meta property="article:tag" content="Jenkins">
 <meta name="twitter:card" content="summary">
@@ -141,7 +141,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">取得檔案列表方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">定義 Dialog</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%96%E5%BE%97%E6%AA%94%E6%A1%88%E5%88%97%E8%A1%A8%E6%96%B9%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">取得檔案列表方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%9A%E7%BE%A9-Dialog"><span class="nav-number">2.</span> <span class="nav-text">定義 Dialog</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -173,7 +173,40 @@
   <div class="cc-license animated" itemprop="license">
     <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
   </div>
-
+<!-- recent posts -->
+    <div class="links-of-blogroll motion-element links-of-blogroll-block">
+        <div class="links-of-blogroll-title recent-posts-title">
+	    <i class="fa fa-history " aria-hidden="true"></i>
+            近期文章
+	</div>
+	<ul class="links-of-blogroll-list recent-posts-list">
+	        <li class="my-links-of-blogroll-item">
+		    <a href="/2024/01/01/JenkinsBackupProject/" title="Jenkins 執行備份專案命令" target="">
+		    Jenkins 執行備份專案命令
+		    </a>
+		</li>
+	        <li class="my-links-of-blogroll-item">
+		    <a href="/2024/01/01/Wsl2DockerInDocker/" title="WSL2 設定 Docker In Docker" target="">
+		    WSL2 設定 Docker In Docker
+		    </a>
+		</li>
+	        <li class="my-links-of-blogroll-item">
+		    <a href="/2023/07/07/PythonFlaskCaching/" title="使用 Flask-Caching 緩存 Flask 呼叫方法產生的資料" target="">
+		    使用 Flask-Caching 緩存 Flask 呼叫方法產生的資料
+		    </a>
+		</li>
+	        <li class="my-links-of-blogroll-item">
+		    <a href="/2023/07/07/PythonFlaskSQLAlchemy/" title="使用 Flask-SQLAlchemy 連接 MSSQL 進行 CRUD" target="">
+		    使用 Flask-SQLAlchemy 連接 MSSQL 進行 CRUD
+		    </a>
+		</li>
+	        <li class="my-links-of-blogroll-item">
+		    <a href="/2023/05/07/LinuxSshTunnel/" title="使用 SSH 建立通道" target="">
+		    使用 SSH 建立通道
+		    </a>
+		</li>
+	</ul>
+    </div>
         </div>
       </div>
     </div>
@@ -231,7 +264,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2024-01-24 15:09:10" itemprop="dateModified" datetime="2024-01-24T15:09:10+00:00">2024-01-24</time>
+      <time title="Modified: 2024-01-25 15:00:22" itemprop="dateModified" datetime="2024-01-25T15:00:22+00:00">2024-01-25</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -267,13 +300,13 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><h1>取得檔案列表方法</h1>
+    <div class="post-body" itemprop="articleBody"><h1 id="取得檔案列表方法"><a class="header-anchor" href="#取得檔案列表方法"></a>取得檔案列表方法</h1>
 <p>使用以下 Linxu 指令，將預設目錄每個檔案使用一列的方式逐一列出</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ls</span> -1 /home/ubuntu</span><br></pre></td></tr></table></figure>
 <span id="more"></span>
 <p>在 Pipeline 執行 Linxu 指令，把結果存入變數</p>
 <figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> fileInFolder = sh(<span class="attr">script:</span> <span class="string">&quot;ls -1 /home/ubuntu&quot;</span>, <span class="attr">returnStdout:</span> <span class="literal">true</span>).trim();</span><br></pre></td></tr></table></figure>
-<h1>定義 Dialog</h1>
+<h1 id="定義-Dialog"><a class="header-anchor" href="#定義-Dialog"></a>定義 Dialog</h1>
 <p>在 Pipeline 定義 Dialog ，把 parameters -&gt; choice -&gt; choices 定義替換為上方變數 fileInFolder</p>
 <figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> dialogMessage = <span class="string">&quot;Release $&#123;JOB_NAME&#125; now?&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> confirmDialog =</span><br><span class="line">    input <span class="attr">message:</span> dialogMessage,</span><br><span class="line">    <span class="symbol">parameters:</span> [choice(<span class="attr">name:</span> <span class="string">&#x27;action&#x27;</span>, <span class="attr">choices:</span> fileInFolder, <span class="attr">description:</span> <span class="string">&#x27;&#x27;</span>)],</span><br><span class="line">    <span class="symbol">submitterParameter:</span> <span class="string">&#x27;releaseApprover&#x27;</span></span><br></pre></td></tr></table></figure>
 <p>取得用戶選取參數，使用變數 confirmDialog -&gt; parameters -&gt; choice -&gt; name的定義</p>
@@ -312,8 +345,8 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2021/10/05/LinuxMssqlOdbc/" rel="prev" title="Linux Mssql Odbc 手動安裝">
-                  <i class="fa fa-angle-left"></i> Linux Mssql Odbc 手動安裝
+                <a href="/2021/10/05/LinuxIbmIAccessOdbc/" rel="prev" title="Linux IBM i Access Odbc 手動安裝">
+                  <i class="fa fa-angle-left"></i> Linux IBM i Access Odbc 手動安裝
                 </a>
             </div>
             <div class="post-nav-item">
