@@ -21,7 +21,7 @@ minify: false
 custom_file_path:
   #head: source/_data/head.njk
   #header: source/_data/header.njk
-  #sidebar: source/_data/sidebar.njk
+  sidebar: source/_data/sidebar.njk
   #postMeta: source/_data/post-meta.njk
   #postBodyEnd: source/_data/post-body-end.njk
   #footer: source/_data/footer.njk
@@ -378,7 +378,7 @@ back2top:
   # Back to top in sidebar.
   sidebar: false
   # Scroll percent label in b2t button.
-  scrollpercent: false
+  scrollpercent: true
 
 # Reading progress bar
 reading_progress:
@@ -934,3 +934,8 @@ feed:
   icon: icon.png
   autodiscovery: true
   template:
+
+# 加入近期文章設定
+recent_posts_title: 近期文章
+recent_posts_layout: block
+recent_posts: true
