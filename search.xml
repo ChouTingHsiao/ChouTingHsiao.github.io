@@ -261,35 +261,6 @@
       </tags>
   </entry>
   <entry>
-    <title>如何在 Iframe 讀取或寫入字串</title>
-    <url>/2019/12/28/JsIframe/</url>
-    <content><![CDATA[<h1 id="建立-HTML"><a class="header-anchor" href="#建立-HTML"></a>建立 HTML</h1>
-<p>首先在 HTML 建立一個 iframe</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">id</span>=<span class="string">&quot;test&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="操作-iframe"><a class="header-anchor" href="#操作-iframe"></a>操作 iframe</h1>
-<p>用 Javascript 搜尋 iframe 的DOM物件</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> iframe = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;test&#x27;</span>).<span class="property">contentDocument</span>;</span><br></pre></td></tr></table></figure>
-<p>字串寫入 iframe</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">iframe.<span class="title function_">open</span>();</span><br><span class="line"></span><br><span class="line">iframe.<span class="title function_">write</span>(<span class="string">&#x27;&lt;a&gt;test&lt;/a&gt;&#x27;</span>);</span><br><span class="line"></span><br><span class="line">iframe.<span class="title function_">close</span>();</span><br></pre></td></tr></table></figure>
-<p>取得 iframe 字串</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">iframe.<span class="property">body</span>.<span class="property">innerText</span></span><br></pre></td></tr></table></figure>
-<p>URL.createObjectURL 寫入 iframe</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> blobx = <span class="keyword">new</span> <span class="title class_">Blob</span>(</span><br><span class="line">    [<span class="string">&#x27;&lt;base href=&quot;[URL輸入]&quot;&gt;&#x27;</span> + data],</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="attr">type</span>: <span class="string">&#x27;text/html&#x27;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> urlObject = <span class="variable constant_">URL</span>.<span class="title function_">createObjectURL</span>(blobx)</span><br><span class="line"></span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;test&#x27;</span>).<span class="title function_">setAttribute</span>(<span class="string">&#x27;src&#x27;</span>, urlObject)</span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/write">MDN Document write</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>Javascript</category>
-      </categories>
-      <tags>
-        <tag>Javascript</tag>
-        <tag>Iframe</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>如何迭代 Js 物件</title>
     <url>/2020/03/27/JsIteratorObject/</url>
     <content><![CDATA[<h1 id="for…in"><a class="header-anchor" href="#for…in"></a>for…in</h1>
@@ -317,6 +288,35 @@
       <tags>
         <tag>Javascript</tag>
         <tag>Object</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>如何在 Iframe 讀取或寫入字串</title>
+    <url>/2019/12/28/JsIframe/</url>
+    <content><![CDATA[<h1 id="建立-HTML"><a class="header-anchor" href="#建立-HTML"></a>建立 HTML</h1>
+<p>首先在 HTML 建立一個 iframe</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">id</span>=<span class="string">&quot;test&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="操作-iframe"><a class="header-anchor" href="#操作-iframe"></a>操作 iframe</h1>
+<p>用 Javascript 搜尋 iframe 的DOM物件</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> iframe = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;test&#x27;</span>).<span class="property">contentDocument</span>;</span><br></pre></td></tr></table></figure>
+<p>字串寫入 iframe</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">iframe.<span class="title function_">open</span>();</span><br><span class="line"></span><br><span class="line">iframe.<span class="title function_">write</span>(<span class="string">&#x27;&lt;a&gt;test&lt;/a&gt;&#x27;</span>);</span><br><span class="line"></span><br><span class="line">iframe.<span class="title function_">close</span>();</span><br></pre></td></tr></table></figure>
+<p>取得 iframe 字串</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">iframe.<span class="property">body</span>.<span class="property">innerText</span></span><br></pre></td></tr></table></figure>
+<p>URL.createObjectURL 寫入 iframe</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> blobx = <span class="keyword">new</span> <span class="title class_">Blob</span>(</span><br><span class="line">    [<span class="string">&#x27;&lt;base href=&quot;[URL輸入]&quot;&gt;&#x27;</span> + data],</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="attr">type</span>: <span class="string">&#x27;text/html&#x27;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> urlObject = <span class="variable constant_">URL</span>.<span class="title function_">createObjectURL</span>(blobx)</span><br><span class="line"></span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;test&#x27;</span>).<span class="title function_">setAttribute</span>(<span class="string">&#x27;src&#x27;</span>, urlObject)</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/write">MDN Document write</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>Javascript</category>
+      </categories>
+      <tags>
+        <tag>Javascript</tag>
+        <tag>Iframe</tag>
       </tags>
   </entry>
   <entry>
@@ -552,51 +552,12 @@ dotnet-dump collect --process-id 1902 -->
 <figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">[<span class="meta">ApiController</span>]</span><br><span class="line">[<span class="meta">Route(<span class="string">&quot;[controller]&quot;</span>)</span>]</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">UserController</span> : <span class="title">ControllerBase</span></span><br><span class="line">&#123;</span><br><span class="line">  [<span class="meta">HttpGet</span>]</span><br><span class="line">  <span class="function"><span class="keyword">public</span> List&lt;User&gt; <span class="title">Get</span>(<span class="params">[FromQuery] List&lt;User&gt; user</span>)</span></span><br><span class="line">  &#123;</span><br><span class="line">      <span class="keyword">return</span> user;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h1 id="組合-Request-的-Url"><a class="header-anchor" href="#組合-Request-的-Url"></a>組合 Request 的 Url</h1>
 <figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line">https://example.com/User?user[0].Name=&#x27;張三&#x27;&amp;user[0].Age=10&amp;user[1].Name=&#x27;李四&#x27;&amp;user[1].Age=20</span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://learn.microsoft.com/en-us/dotnet/api/microsoft.extensions.configuration.memoryconfigurationbuilderextensions.addinmemorycollection?view=dotnet-plat-ext-7.0">MemoryConfigurationBuilderExtensions.AddInMemoryCollection Method</a></li>
-</ol>
-</div>]]></content>
+]]></content>
       <categories>
         <category>.Net</category>
       </categories>
       <tags>
         <tag>.Net</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>如何在資料存取層進行單元測試</title>
-    <url>/2022/05/01/NetRepositoryUnitTest/</url>
-    <content><![CDATA[<h1 id="安裝-Sqlite"><a class="header-anchor" href="#安裝-Sqlite"></a>安裝 Sqlite</h1>
-<p>安裝 Nuget 的 Sqlite 套件</p>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Install-Package</span> Microsoft.EntityFrameworkCore.Sqlite</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="建立-DbContext"><a class="header-anchor" href="#建立-DbContext"></a>建立 DbContext</h1>
-<p>建立 EntityFramework 的 DbContext</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">TestDbContext</span> : <span class="title">DbContext</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">DbSet</span>&lt;<span class="title">Table</span>&gt;? Table</span> &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">TestDbContext</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">TestDbContext</span>(<span class="params">DbContextOptions options</span>) : <span class="title">base</span>(<span class="params">options</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">OnModelCreating</span>(<span class="params">ModelBuilder modelBuilder</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        modelBuilder.Entity&lt;Table&gt;(entity =&gt; &#123;</span><br><span class="line">            entity.HasKey(x =&gt; x.Id);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="使用-In-Memory-模式操作資料庫"><a class="header-anchor" href="#使用-In-Memory-模式操作資料庫"></a>使用 In-Memory 模式操作資料庫</h1>
-<p>使用 Sqlite 的 In-Memory 模式載入 DbContext</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">SqliteConnection connection = <span class="keyword">new</span> SqliteConnection(<span class="string">&quot;Data Source=:memory:&quot;</span>);</span><br><span class="line"></span><br><span class="line">connection.Open();</span><br><span class="line"></span><br><span class="line">DbContextOptions options = <span class="keyword">new</span> DbContextOptionsBuilder()</span><br><span class="line">.UseSqlite(connection)</span><br><span class="line">.Options;</span><br></pre></td></tr></table></figure>
-<p>然後使用 DbContext 的設定建立資料庫</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> TestDbContext context = <span class="keyword">new</span> TestDbContext(options);</span><br><span class="line">context.Database.EnsureCreated();</span><br></pre></td></tr></table></figure>
-<p>最後可開始使用 EntityFramework 開始操作資料庫</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> TestDbContext context = <span class="keyword">new</span> TestDbContext(options);</span><br><span class="line">List&lt;Table&gt; table = context.Table.ToList();</span><br></pre></td></tr></table></figure>
-<h1 id="自定義-Database-Function"><a class="header-anchor" href="#自定義-Database-Function"></a>自定義 Database Function</h1>
-<p>如果有使用 Sqlite 未定義的 Database Function , 可在程式中使用 CreateFunction 定義</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">SqliteConnection connection = <span class="keyword">new</span> SqliteConnection(<span class="string">&quot;Data Source=:memory:&quot;</span>);</span><br><span class="line"></span><br><span class="line">connection.CreateFunction(<span class="string">&quot;current_date&quot;</span>, (x) =&gt; DateTime.Now);</span><br><span class="line"></span><br><span class="line">connection.Open();</span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.data.sqlite.sqliteconnection.createfunction?view=msdata-sqlite-6.0.0">Microsoft文件</a></li>
-<li><a href="https://csharp.hotexamples.com/examples/-/SQLiteConnection/CreateFunction/php-sqliteconnection-createfunction-method-examples.html">SQLite Examples</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>.Net</category>
-      </categories>
-      <tags>
-        <tag>.Net</tag>
-        <tag>UnitTest</tag>
-        <tag>SQLite</tag>
       </tags>
   </entry>
   <entry>
@@ -635,6 +596,41 @@ dotnet-dump collect --process-id 1902 -->
         <tag>.Net</tag>
         <tag>UnitTest</tag>
         <tag>NSubstitute</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>如何在資料存取層進行單元測試</title>
+    <url>/2022/05/01/NetRepositoryUnitTest/</url>
+    <content><![CDATA[<h1 id="安裝-Sqlite"><a class="header-anchor" href="#安裝-Sqlite"></a>安裝 Sqlite</h1>
+<p>安裝 Nuget 的 Sqlite 套件</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Install-Package</span> Microsoft.EntityFrameworkCore.Sqlite</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="建立-DbContext"><a class="header-anchor" href="#建立-DbContext"></a>建立 DbContext</h1>
+<p>建立 EntityFramework 的 DbContext</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">TestDbContext</span> : <span class="title">DbContext</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">DbSet</span>&lt;<span class="title">Table</span>&gt;? Table</span> &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">TestDbContext</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">TestDbContext</span>(<span class="params">DbContextOptions options</span>) : <span class="title">base</span>(<span class="params">options</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">OnModelCreating</span>(<span class="params">ModelBuilder modelBuilder</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        modelBuilder.Entity&lt;Table&gt;(entity =&gt; &#123;</span><br><span class="line">            entity.HasKey(x =&gt; x.Id);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="使用-In-Memory-模式操作資料庫"><a class="header-anchor" href="#使用-In-Memory-模式操作資料庫"></a>使用 In-Memory 模式操作資料庫</h1>
+<p>使用 Sqlite 的 In-Memory 模式載入 DbContext</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">SqliteConnection connection = <span class="keyword">new</span> SqliteConnection(<span class="string">&quot;Data Source=:memory:&quot;</span>);</span><br><span class="line"></span><br><span class="line">connection.Open();</span><br><span class="line"></span><br><span class="line">DbContextOptions options = <span class="keyword">new</span> DbContextOptionsBuilder()</span><br><span class="line">.UseSqlite(connection)</span><br><span class="line">.Options;</span><br></pre></td></tr></table></figure>
+<p>然後使用 DbContext 的設定建立資料庫</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> TestDbContext context = <span class="keyword">new</span> TestDbContext(options);</span><br><span class="line">context.Database.EnsureCreated();</span><br></pre></td></tr></table></figure>
+<p>最後可開始使用 EntityFramework 開始操作資料庫</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> TestDbContext context = <span class="keyword">new</span> TestDbContext(options);</span><br><span class="line">List&lt;Table&gt; table = context.Table.ToList();</span><br></pre></td></tr></table></figure>
+<h1 id="自定義-Database-Function"><a class="header-anchor" href="#自定義-Database-Function"></a>自定義 Database Function</h1>
+<p>如果有使用 Sqlite 未定義的 Database Function , 可在程式中使用 CreateFunction 定義</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">SqliteConnection connection = <span class="keyword">new</span> SqliteConnection(<span class="string">&quot;Data Source=:memory:&quot;</span>);</span><br><span class="line"></span><br><span class="line">connection.CreateFunction(<span class="string">&quot;current_date&quot;</span>, (x) =&gt; DateTime.Now);</span><br><span class="line"></span><br><span class="line">connection.Open();</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.data.sqlite.sqliteconnection.createfunction?view=msdata-sqlite-6.0.0">Microsoft文件</a></li>
+<li><a href="https://csharp.hotexamples.com/examples/-/SQLiteConnection/CreateFunction/php-sqliteconnection-createfunction-method-examples.html">SQLite Examples</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>.Net</category>
+      </categories>
+      <tags>
+        <tag>.Net</tag>
+        <tag>UnitTest</tag>
+        <tag>SQLite</tag>
       </tags>
   </entry>
   <entry>
