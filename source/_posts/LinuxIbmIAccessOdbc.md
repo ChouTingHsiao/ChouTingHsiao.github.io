@@ -28,3 +28,8 @@ odbcinst -j
 ```bash
 cat /etc/odbcinst.ini
 ```
+
+{% note warning %}
+📜 參考資料
+1. [Installing the unixODBC driver manager](https://www.ibm.com/docs/en/db2/11.5?topic=managers-installing-unixodbc-driver-manager)
+{% endnote %}
