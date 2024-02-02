@@ -44,3 +44,8 @@ Encoding unicode= Encoding.Unicode;
 
 string result = unicode.GetString(bytes);
 ```
+
+{% note warning %}
+📜 參考資料
+1. [Encoding.GetString Method](https://learn.microsoft.com/en-us/dotnet/api/system.text.encoding.getstring?view=net-8.0)
+{% endnote %}
