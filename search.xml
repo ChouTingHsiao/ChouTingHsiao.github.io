@@ -290,6 +290,29 @@
       </tags>
   </entry>
   <entry>
+    <title>如何將圖片壓縮並下載檔案</title>
+    <url>/2019/12/25/JsPictureCompress/</url>
+    <content><![CDATA[<h1 id="建立-HTML"><a class="header-anchor" href="#建立-HTML"></a>建立 HTML</h1>
+<p>首先在 HTML 建立一個 File Upload 與一個 canvas</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;file&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">&quot;canvas&quot;</span>  <span class="attr">width</span>=<span class="string">&quot;800&quot;</span> <span class="attr">height</span>=<span class="string">&quot;600&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="綁定事件"><a class="header-anchor" href="#綁定事件"></a>綁定事件</h1>
+<p>接下來為 File Upload 綁定事件</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;input&#x27;</span>).<span class="title function_">addEventListener</span>(<span class="string">&#x27;change&#x27;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="comment">// 取得第一個檔案</span></span><br><span class="line">    <span class="keyword">const</span> file= <span class="variable language_">this</span>.<span class="property">files</span>[<span class="number">0</span>];</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 取得 canvas</span></span><br><span class="line">    <span class="keyword">const</span> canvas = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;canvas&#x27;</span>);   </span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 宣告 Image 物件</span></span><br><span class="line">    <span class="keyword">let</span> img = <span class="keyword">new</span> <span class="title class_">Image</span>; </span><br><span class="line"></span><br><span class="line">    <span class="comment">// 建立 Image 載入事件</span></span><br><span class="line">    img.<span class="property">onload</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 在 canvas 載入圖片 </span></span><br><span class="line">        canvas.<span class="title function_">getContext</span>(<span class="string">&#x27;2d&#x27;</span>).<span class="title function_">drawImage</span>(img,<span class="number">0</span>,<span class="number">0</span>,<span class="number">800</span>,<span class="number">600</span>); </span><br><span class="line"></span><br><span class="line">        <span class="comment">// 回收圖片物件</span></span><br><span class="line">        <span class="variable constant_">URL</span>.<span class="title function_">revokeObjectURL</span>(img.<span class="property">src</span>);   </span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 把 canvas 圖片轉成 Blob 格式</span></span><br><span class="line">        canvas.<span class="title function_">toBlob</span>(<span class="function">(<span class="params">blob</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="comment">// 宣告FileReader物件</span></span><br><span class="line">            <span class="keyword">var</span> reader = <span class="keyword">new</span> <span class="title class_">FileReader</span>();</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 建立 FileReader 載入完成事件</span></span><br><span class="line">            reader.<span class="property">onloadend</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">log</span>(reader.<span class="property">result</span>.<span class="title function_">split</span>(<span class="string">&quot;,&quot;</span>)[<span class="number">1</span>]);</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            <span class="comment">// 讀取 Blob 格式物件</span></span><br><span class="line">            reader.<span class="title function_">readAsDataURL</span>(blob);</span><br><span class="line">        &#125;, <span class="string">&quot;image/jpeg&quot;</span>, <span class="number">0.8</span>);</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="comment">// 圖片物件載入檔案</span></span><br><span class="line">    img.<span class="property">src</span> = <span class="variable constant_">URL</span>.<span class="title function_">createObjectURL</span>(file);</span><br><span class="line">&#125;, <span class="literal">false</span>);</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API">MDN Canvas_API</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>Javascript</category>
+      </categories>
+      <tags>
+        <tag>Javascript</tag>
+        <tag>Canvas</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>如何迭代 Js 物件</title>
     <url>/2020/03/27/JsIteratorObject/</url>
     <content><![CDATA[<h1 id="for…in"><a class="header-anchor" href="#for…in"></a>for…in</h1>
@@ -320,48 +343,6 @@
       </tags>
   </entry>
   <entry>
-    <title>如何將圖片壓縮並下載檔案</title>
-    <url>/2019/12/25/JsPictureCompress/</url>
-    <content><![CDATA[<h1 id="建立-HTML"><a class="header-anchor" href="#建立-HTML"></a>建立 HTML</h1>
-<p>首先在 HTML 建立一個 File Upload 與一個 canvas</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;file&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">&quot;canvas&quot;</span>  <span class="attr">width</span>=<span class="string">&quot;800&quot;</span> <span class="attr">height</span>=<span class="string">&quot;600&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="綁定事件"><a class="header-anchor" href="#綁定事件"></a>綁定事件</h1>
-<p>接下來為 File Upload 綁定事件</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;input&#x27;</span>).<span class="title function_">addEventListener</span>(<span class="string">&#x27;change&#x27;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="comment">// 取得第一個檔案</span></span><br><span class="line">    <span class="keyword">const</span> file= <span class="variable language_">this</span>.<span class="property">files</span>[<span class="number">0</span>];</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 取得 canvas</span></span><br><span class="line">    <span class="keyword">const</span> canvas = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;canvas&#x27;</span>);   </span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 宣告 Image 物件</span></span><br><span class="line">    <span class="keyword">let</span> img = <span class="keyword">new</span> <span class="title class_">Image</span>; </span><br><span class="line"></span><br><span class="line">    <span class="comment">// 建立 Image 載入事件</span></span><br><span class="line">    img.<span class="property">onload</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 在 canvas 載入圖片 </span></span><br><span class="line">        canvas.<span class="title function_">getContext</span>(<span class="string">&#x27;2d&#x27;</span>).<span class="title function_">drawImage</span>(img,<span class="number">0</span>,<span class="number">0</span>,<span class="number">800</span>,<span class="number">600</span>); </span><br><span class="line"></span><br><span class="line">        <span class="comment">// 回收圖片物件</span></span><br><span class="line">        <span class="variable constant_">URL</span>.<span class="title function_">revokeObjectURL</span>(img.<span class="property">src</span>);   </span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 把 canvas 圖片轉成 Blob 格式</span></span><br><span class="line">        canvas.<span class="title function_">toBlob</span>(<span class="function">(<span class="params">blob</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="comment">// 宣告FileReader物件</span></span><br><span class="line">            <span class="keyword">var</span> reader = <span class="keyword">new</span> <span class="title class_">FileReader</span>();</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 建立 FileReader 載入完成事件</span></span><br><span class="line">            reader.<span class="property">onloadend</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">log</span>(reader.<span class="property">result</span>.<span class="title function_">split</span>(<span class="string">&quot;,&quot;</span>)[<span class="number">1</span>]);</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            <span class="comment">// 讀取 Blob 格式物件</span></span><br><span class="line">            reader.<span class="title function_">readAsDataURL</span>(blob);</span><br><span class="line">        &#125;, <span class="string">&quot;image/jpeg&quot;</span>, <span class="number">0.8</span>);</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="comment">// 圖片物件載入檔案</span></span><br><span class="line">    img.<span class="property">src</span> = <span class="variable constant_">URL</span>.<span class="title function_">createObjectURL</span>(file);</span><br><span class="line">&#125;, <span class="literal">false</span>);</span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API">MDN Canvas_API</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>Javascript</category>
-      </categories>
-      <tags>
-        <tag>Javascript</tag>
-        <tag>Canvas</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>如何使用 Regex 群組</title>
-    <url>/2022/05/22/JsRegexGroup/</url>
-    <content><![CDATA[<h1 id="Regex-群組"><a class="header-anchor" href="#Regex-群組"></a>Regex 群組</h1>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 建立規則</span></span><br><span class="line"><span class="keyword">var</span> myRegexp = <span class="regexp">/(?&lt;群組名稱&gt;.*)Test/g</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 執行規則</span></span><br><span class="line"><span class="keyword">var</span> match =  myRegexp.<span class="title function_">exec</span>(<span class="string">&#x27;123Test&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 取得執行結果 output: 123</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(match.<span class="property">groups</span>.群組名稱);</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Groups_and_Ranges">MDN</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>Javascript</category>
-      </categories>
-      <tags>
-        <tag>Javascript</tag>
-        <tag>Regex</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Linux IBM i Access Odbc 手動安裝</title>
     <url>/2021/10/05/LinuxIbmIAccessOdbc/</url>
     <content><![CDATA[<h1 id="Odbc-元件配置"><a class="header-anchor" href="#Odbc-元件配置"></a>Odbc 元件配置</h1>
@@ -388,6 +369,25 @@
         <tag>Ubuntu</tag>
         <tag>Odbc</tag>
         <tag>IBM i Access</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>如何使用 Regex 群組</title>
+    <url>/2022/05/22/JsRegexGroup/</url>
+    <content><![CDATA[<h1 id="Regex-群組"><a class="header-anchor" href="#Regex-群組"></a>Regex 群組</h1>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 建立規則</span></span><br><span class="line"><span class="keyword">var</span> myRegexp = <span class="regexp">/(?&lt;群組名稱&gt;.*)Test/g</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 執行規則</span></span><br><span class="line"><span class="keyword">var</span> match =  myRegexp.<span class="title function_">exec</span>(<span class="string">&#x27;123Test&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 取得執行結果 output: 123</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(match.<span class="property">groups</span>.群組名稱);</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Groups_and_Ranges">MDN</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>Javascript</category>
+      </categories>
+      <tags>
+        <tag>Javascript</tag>
+        <tag>Regex</tag>
       </tags>
   </entry>
   <entry>
@@ -580,41 +580,6 @@ dotnet-dump collect --process-id 1902 -->
       </tags>
   </entry>
   <entry>
-    <title>如何在資料存取層進行單元測試</title>
-    <url>/2022/05/01/NetRepositoryUnitTest/</url>
-    <content><![CDATA[<h1 id="安裝-Sqlite"><a class="header-anchor" href="#安裝-Sqlite"></a>安裝 Sqlite</h1>
-<p>安裝 Nuget 的 Sqlite 套件</p>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Install-Package</span> Microsoft.EntityFrameworkCore.Sqlite</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="建立-DbContext"><a class="header-anchor" href="#建立-DbContext"></a>建立 DbContext</h1>
-<p>建立 EntityFramework 的 DbContext</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">TestDbContext</span> : <span class="title">DbContext</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">DbSet</span>&lt;<span class="title">Table</span>&gt;? Table</span> &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">TestDbContext</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">TestDbContext</span>(<span class="params">DbContextOptions options</span>) : <span class="title">base</span>(<span class="params">options</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">OnModelCreating</span>(<span class="params">ModelBuilder modelBuilder</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        modelBuilder.Entity&lt;Table&gt;(entity =&gt; &#123;</span><br><span class="line">            entity.HasKey(x =&gt; x.Id);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="使用-In-Memory-模式操作資料庫"><a class="header-anchor" href="#使用-In-Memory-模式操作資料庫"></a>使用 In-Memory 模式操作資料庫</h1>
-<p>使用 Sqlite 的 In-Memory 模式載入 DbContext</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">SqliteConnection connection = <span class="keyword">new</span> SqliteConnection(<span class="string">&quot;Data Source=:memory:&quot;</span>);</span><br><span class="line"></span><br><span class="line">connection.Open();</span><br><span class="line"></span><br><span class="line">DbContextOptions options = <span class="keyword">new</span> DbContextOptionsBuilder()</span><br><span class="line">.UseSqlite(connection)</span><br><span class="line">.Options;</span><br></pre></td></tr></table></figure>
-<p>然後使用 DbContext 的設定建立資料庫</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> TestDbContext context = <span class="keyword">new</span> TestDbContext(options);</span><br><span class="line">context.Database.EnsureCreated();</span><br></pre></td></tr></table></figure>
-<p>最後可開始使用 EntityFramework 開始操作資料庫</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> TestDbContext context = <span class="keyword">new</span> TestDbContext(options);</span><br><span class="line">List&lt;Table&gt; table = context.Table.ToList();</span><br></pre></td></tr></table></figure>
-<h1 id="自定義-Database-Function"><a class="header-anchor" href="#自定義-Database-Function"></a>自定義 Database Function</h1>
-<p>如果有使用 Sqlite 未定義的 Database Function , 可在程式中使用 CreateFunction 定義</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">SqliteConnection connection = <span class="keyword">new</span> SqliteConnection(<span class="string">&quot;Data Source=:memory:&quot;</span>);</span><br><span class="line"></span><br><span class="line">connection.CreateFunction(<span class="string">&quot;current_date&quot;</span>, (x) =&gt; DateTime.Now);</span><br><span class="line"></span><br><span class="line">connection.Open();</span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.data.sqlite.sqliteconnection.createfunction?view=msdata-sqlite-6.0.0">Microsoft文件</a></li>
-<li><a href="https://csharp.hotexamples.com/examples/-/SQLiteConnection/CreateFunction/php-sqliteconnection-createfunction-method-examples.html">SQLite Examples</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>.Net</category>
-      </categories>
-      <tags>
-        <tag>.Net</tag>
-        <tag>UnitTest</tag>
-        <tag>SQLite</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>如何在商業邏輯層進行單元測試</title>
     <url>/2022/05/01/NetServiceUnitTest/</url>
     <content><![CDATA[<h1 id="安裝-NSubstitute"><a class="header-anchor" href="#安裝-NSubstitute"></a>安裝 NSubstitute</h1>
@@ -681,6 +646,41 @@ dotnet-dump collect --process-id 1902 -->
       <tags>
         <tag>.Net</tag>
         <tag>XML</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>如何在資料存取層進行單元測試</title>
+    <url>/2022/05/01/NetRepositoryUnitTest/</url>
+    <content><![CDATA[<h1 id="安裝-Sqlite"><a class="header-anchor" href="#安裝-Sqlite"></a>安裝 Sqlite</h1>
+<p>安裝 Nuget 的 Sqlite 套件</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Install-Package</span> Microsoft.EntityFrameworkCore.Sqlite</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="建立-DbContext"><a class="header-anchor" href="#建立-DbContext"></a>建立 DbContext</h1>
+<p>建立 EntityFramework 的 DbContext</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">TestDbContext</span> : <span class="title">DbContext</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">DbSet</span>&lt;<span class="title">Table</span>&gt;? Table</span> &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">TestDbContext</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">TestDbContext</span>(<span class="params">DbContextOptions options</span>) : <span class="title">base</span>(<span class="params">options</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">OnModelCreating</span>(<span class="params">ModelBuilder modelBuilder</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        modelBuilder.Entity&lt;Table&gt;(entity =&gt; &#123;</span><br><span class="line">            entity.HasKey(x =&gt; x.Id);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="使用-In-Memory-模式操作資料庫"><a class="header-anchor" href="#使用-In-Memory-模式操作資料庫"></a>使用 In-Memory 模式操作資料庫</h1>
+<p>使用 Sqlite 的 In-Memory 模式載入 DbContext</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">SqliteConnection connection = <span class="keyword">new</span> SqliteConnection(<span class="string">&quot;Data Source=:memory:&quot;</span>);</span><br><span class="line"></span><br><span class="line">connection.Open();</span><br><span class="line"></span><br><span class="line">DbContextOptions options = <span class="keyword">new</span> DbContextOptionsBuilder()</span><br><span class="line">.UseSqlite(connection)</span><br><span class="line">.Options;</span><br></pre></td></tr></table></figure>
+<p>然後使用 DbContext 的設定建立資料庫</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> TestDbContext context = <span class="keyword">new</span> TestDbContext(options);</span><br><span class="line">context.Database.EnsureCreated();</span><br></pre></td></tr></table></figure>
+<p>最後可開始使用 EntityFramework 開始操作資料庫</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> TestDbContext context = <span class="keyword">new</span> TestDbContext(options);</span><br><span class="line">List&lt;Table&gt; table = context.Table.ToList();</span><br></pre></td></tr></table></figure>
+<h1 id="自定義-Database-Function"><a class="header-anchor" href="#自定義-Database-Function"></a>自定義 Database Function</h1>
+<p>如果有使用 Sqlite 未定義的 Database Function , 可在程式中使用 CreateFunction 定義</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">SqliteConnection connection = <span class="keyword">new</span> SqliteConnection(<span class="string">&quot;Data Source=:memory:&quot;</span>);</span><br><span class="line"></span><br><span class="line">connection.CreateFunction(<span class="string">&quot;current_date&quot;</span>, (x) =&gt; DateTime.Now);</span><br><span class="line"></span><br><span class="line">connection.Open();</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.data.sqlite.sqliteconnection.createfunction?view=msdata-sqlite-6.0.0">Microsoft文件</a></li>
+<li><a href="https://csharp.hotexamples.com/examples/-/SQLiteConnection/CreateFunction/php-sqliteconnection-createfunction-method-examples.html">SQLite Examples</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>.Net</category>
+      </categories>
+      <tags>
+        <tag>.Net</tag>
+        <tag>UnitTest</tag>
+        <tag>SQLite</tag>
       </tags>
   </entry>
   <entry>
@@ -772,32 +772,6 @@ db.create_all() -->
       </tags>
   </entry>
   <entry>
-    <title>安裝 Whistle</title>
-    <url>/2023/01/20/WhistleProxyInstall/</url>
-    <content><![CDATA[<h1 id="使用-Node-安裝-Whistle"><a class="header-anchor" href="#使用-Node-安裝-Whistle"></a>使用 Node 安裝 Whistle</h1>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm i -g whistle</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="啟動-Whistle"><a class="header-anchor" href="#啟動-Whistle"></a>啟動 Whistle</h1>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">w2 start</span><br></pre></td></tr></table></figure>
-<h1 id="查看-Whistle-狀態"><a class="header-anchor" href="#查看-Whistle-狀態"></a>查看 Whistle 狀態</h1>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">w2 status</span><br></pre></td></tr></table></figure>
-<h1 id="停止-Whistle"><a class="header-anchor" href="#停止-Whistle"></a>停止 Whistle</h1>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">w2 stop</span><br></pre></td></tr></table></figure>
-<h1 id="設定-Whistle-為-Proxy-的-Server"><a class="header-anchor" href="#設定-Whistle-為-Proxy-的-Server"></a>設定 Whistle 為 Proxy 的 Server</h1>
-<p><img src="Win10ProxySetting.png" alt="Win10ProxySetting"></p>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://www.npmjs.com/package/whistle">whistle npm</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>Whistle</category>
-      </categories>
-      <tags>
-        <tag>Whistle</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Whistle 代理規則使用</title>
     <url>/2023/01/20/WhistleProxyRule/</url>
     <content><![CDATA[<h1 id="Dns-代理設定"><a class="header-anchor" href="#Dns-代理設定"></a>Dns 代理設定</h1>
@@ -853,6 +827,32 @@ db.create_all() -->
 <div class="note warning"><p>📜 參考資料</p>
 <ol>
 <li><a href="https://wproxy.org/whistle/">whistle</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>Whistle</category>
+      </categories>
+      <tags>
+        <tag>Whistle</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>安裝 Whistle</title>
+    <url>/2023/01/20/WhistleProxyInstall/</url>
+    <content><![CDATA[<h1 id="使用-Node-安裝-Whistle"><a class="header-anchor" href="#使用-Node-安裝-Whistle"></a>使用 Node 安裝 Whistle</h1>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm i -g whistle</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="啟動-Whistle"><a class="header-anchor" href="#啟動-Whistle"></a>啟動 Whistle</h1>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">w2 start</span><br></pre></td></tr></table></figure>
+<h1 id="查看-Whistle-狀態"><a class="header-anchor" href="#查看-Whistle-狀態"></a>查看 Whistle 狀態</h1>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">w2 status</span><br></pre></td></tr></table></figure>
+<h1 id="停止-Whistle"><a class="header-anchor" href="#停止-Whistle"></a>停止 Whistle</h1>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">w2 stop</span><br></pre></td></tr></table></figure>
+<h1 id="設定-Whistle-為-Proxy-的-Server"><a class="header-anchor" href="#設定-Whistle-為-Proxy-的-Server"></a>設定 Whistle 為 Proxy 的 Server</h1>
+<p><img src="Win10ProxySetting.png" alt="Win10ProxySetting"></p>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://www.npmjs.com/package/whistle">whistle npm</a></li>
 </ol>
 </div>]]></content>
       <categories>
