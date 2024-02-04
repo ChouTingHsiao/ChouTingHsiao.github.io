@@ -5,8 +5,8 @@ categories: Project
 tags: [Projectm, PlantUML]
 ---
 
-# 在 Ubuntu 安裝 openjdk-11-jdk
-使用以下 Linxu 指令，安裝 openjdk-11-jdk
+# 在 Ubuntu 安裝 openjdk
+使用以下 Linxu 指令，安裝 openjdk11
 ```bash
 sudo apt install openjdk-11-jdk
 ```
@@ -34,14 +34,14 @@ After=syslog.target network.target
 [Service]
 # Deploy folder location
 WorkingDirectory=[執行路徑]
-# Execute project by dotnet Command
+# Execute project by java Command
 ExecStart=/usr/bin/java -jar plantuml.jar -picoweb:3060:127.0.0.1
 Restart=always
-# Restart service after 10 seconds if the dotnet service crashes:
+# Restart service after 10 seconds if the PlantUML service crashes:
 RestartSec=10
 KillSignal=SIGINT
 SyslogIdentifier=PlantUML
-User=wmsdev
+User=ubuntu
 MemoryMax=50%
 
 [Install]
