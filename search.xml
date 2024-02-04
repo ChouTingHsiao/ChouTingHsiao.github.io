@@ -653,6 +653,72 @@ dotnet-dump collect --process-id 1902 -->
       </tags>
   </entry>
   <entry>
+    <title>如何解析 XML 資料</title>
+    <url>/2024/02/04/NetXmlParse/</url>
+    <content><![CDATA[<h1 id="XML-資料"><a class="header-anchor" href="#XML-資料"></a>XML 資料</h1>
+<p>宣告 XML 格式字串</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="built_in">string</span> doc = <span class="string">@&quot;&lt;properties&gt;</span></span><br><span class="line"><span class="string">&lt;property key=&#x27;name&#x27;&gt;Test&lt;/property&gt;</span></span><br><span class="line"><span class="string">&lt;property key=&#x27;age&#x27;&gt;10&lt;/property&gt;</span></span><br><span class="line"><span class="string">&lt;/properties&gt;&quot;</span>;</span><br></pre></td></tr></table></figure>
+<h1 id="使用-XDocument-解析-XML"><a class="header-anchor" href="#使用-XDocument-解析-XML"></a>使用 XDocument 解析 XML</h1>
+<h2 id="讀取資料並解析"><a class="header-anchor" href="#讀取資料並解析"></a>讀取資料並解析</h2>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="comment">// XML 字串轉 XDocument</span></span><br><span class="line">XDocument xmlDoc = XDocument.Parse(doc);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 取得 property 列表</span></span><br><span class="line">List&lt;XElement&gt; xmlElements = xmlDoc.Element(<span class="string">&quot;properties&quot;</span>).Elements(<span class="string">&quot;property&quot;</span>).ToList();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 取得第一筆 key 為 name 資料</span></span><br><span class="line"><span class="built_in">string</span> name = xmlElements.Where(x =&gt; x.Attribute(<span class="string">&quot;key&quot;</span>).Value == <span class="string">&quot;name&quot;</span>).FirstOrDefault()?.Value;</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="使用序列化與反序列化方法解析-XML"><a class="header-anchor" href="#使用序列化與反序列化方法解析-XML"></a>使用序列化與反序列化方法解析 XML</h1>
+<h2 id="建立序列化與反序列化方法"><a class="header-anchor" href="#建立序列化與反序列化方法"></a>建立序列化與反序列化方法</h2>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 物件轉 XML 字串</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="built_in">string</span> <span class="title">XmlSerialize</span>&lt;<span class="title">T</span>&gt;(<span class="params">T obj</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">	XmlSerializer xsSubmit = <span class="keyword">new</span> XmlSerializer(<span class="keyword">typeof</span>(T));</span><br><span class="line"></span><br><span class="line">	XmlSerializerNamespaces ns = <span class="keyword">new</span> XmlSerializerNamespaces();</span><br><span class="line">	ns.Add(<span class="built_in">string</span>.Empty, <span class="built_in">string</span>.Empty);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">using</span> (<span class="keyword">var</span> memStm = <span class="keyword">new</span> MemoryStream())</span><br><span class="line">	<span class="keyword">using</span> (<span class="keyword">var</span> xw = XmlWriter.Create(memStm))</span><br><span class="line">	&#123;</span><br><span class="line">		xsSubmit.Serialize(xw, obj, ns);</span><br><span class="line">		<span class="built_in">byte</span>[] utf8 = memStm.ToArray();</span><br><span class="line">		<span class="keyword">return</span> Encoding.UTF8.GetString(utf8);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// XML 字串轉物件</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> T <span class="title">XmlDeSerialize</span>&lt;<span class="title">T</span>&gt;(<span class="params"><span class="built_in">string</span> xmlString</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">	XmlSerializer xsSubmit = <span class="keyword">new</span> XmlSerializer(<span class="keyword">typeof</span>(T));</span><br><span class="line"></span><br><span class="line">	<span class="built_in">byte</span>[] byteArray = Encoding.UTF8.GetBytes(xmlString);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">using</span> (<span class="keyword">var</span> memStm = <span class="keyword">new</span> MemoryStream(byteArray))</span><br><span class="line">	<span class="keyword">using</span> (<span class="keyword">var</span> xr = XmlReader.Create(memStm))</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">object</span> data = xsSubmit.Deserialize(xr);</span><br><span class="line">		<span class="keyword">return</span> (T)data;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="建立類別"><a class="header-anchor" href="#建立類別"></a>建立類別</h2>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">[<span class="meta">XmlRoot(ElementName = <span class="string">&quot;property&quot;</span>)</span>]</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Property</span> &#123;</span><br><span class="line"></span><br><span class="line">  [<span class="meta">XmlAttribute(AttributeName = <span class="string">&quot;key&quot;</span>)</span>]</span><br><span class="line">  <span class="keyword">public</span> <span class="built_in">string</span> Key &#123;</span><br><span class="line">    <span class="keyword">get</span>;</span><br><span class="line">    <span class="keyword">set</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  [<span class="meta">XmlText</span>]</span><br><span class="line">  <span class="keyword">public</span> <span class="built_in">string</span> Text &#123;</span><br><span class="line">    <span class="keyword">get</span>;</span><br><span class="line">    <span class="keyword">set</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">[<span class="meta">XmlRoot(ElementName = <span class="string">&quot;properties&quot;</span>)</span>]</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Properties</span> &#123;</span><br><span class="line"></span><br><span class="line">  [<span class="meta">XmlElement(ElementName = <span class="string">&quot;property&quot;</span>)</span>]</span><br><span class="line">  <span class="keyword">public</span> List &lt; Property &gt; Property &#123;</span><br><span class="line">    <span class="keyword">get</span>;</span><br><span class="line">    <span class="keyword">set</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="讀取資料並解析-v2"><a class="header-anchor" href="#讀取資料並解析-v2"></a>讀取資料並解析</h2>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="comment">// XML 字串轉物件</span></span><br><span class="line">Properties data = XmlDeSerialize&lt;Properties&gt;(doc);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 取得第一筆 key 為 name 資料</span></span><br><span class="line"><span class="built_in">string</span> name = data.Property.Where(x =&gt; x.Key == <span class="string">&quot;name&quot;</span>).FirstOrDefault().Text;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 物件轉 XML 字串</span></span><br><span class="line"><span class="built_in">string</span> xmlFile = XmlSerialize(data);</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://learn.microsoft.com/en-us/dotnet/api/system.xml.linq.xdocument?view=net-8.0">XDocument Class</a></li>
+<li><a href="https://learn.microsoft.com/en-us/dotnet/api/system.xml.serialization.xmlserializer?view=net-8.0">XmlSerializer Class</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>.Net</category>
+      </categories>
+      <tags>
+        <tag>.Net</tag>
+        <tag>XML</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>自託管 PlantUML 服務</title>
+    <url>/2024/02/04/PlantUmlSelfHosted/</url>
+    <content><![CDATA[<h1 id="在-Ubuntu-安裝-openjdk-11-jdk"><a class="header-anchor" href="#在-Ubuntu-安裝-openjdk-11-jdk"></a>在 Ubuntu 安裝 openjdk-11-jdk</h1>
+<p>使用以下 Linxu 指令，安裝 openjdk-11-jdk</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt install openjdk-11-jdk</span><br></pre></td></tr></table></figure>
+<h1 id="下載-PlantUML-的-Jar-檔案"><a class="header-anchor" href="#下載-PlantUML-的-Jar-檔案"></a><a href="https://plantuml.com/zh/download">下載 PlantUML 的 Jar 檔案</a></h1>
+<p>使用以下 Linxu 指令下載檔案</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget -O /[執行路徑]/plantuml.jar https://github.com/plantuml/plantuml/releases/download/v1.2024.0/plantuml-1.2024.0.jar</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="建立-PlantUML-服務"><a class="header-anchor" href="#建立-PlantUML-服務"></a>建立 PlantUML 服務</h1>
+<p>使用以下 Linxu 指令建立 PlantUML 服務</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo nano /etc/systemd/system/plantuml.service</span><br></pre></td></tr></table></figure>
+<p>服務貼上以下內容</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=PlantUML</span><br><span class="line">After=syslog.target network.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line"><span class="comment"># Deploy folder location</span></span><br><span class="line">WorkingDirectory=[執行路徑]</span><br><span class="line"><span class="comment"># Execute project by dotnet Command</span></span><br><span class="line">ExecStart=/usr/bin/java -jar plantuml.jar -picoweb:3060:127.0.0.1</span><br><span class="line">Restart=always</span><br><span class="line"><span class="comment"># Restart service after 10 seconds if the dotnet service crashes:</span></span><br><span class="line">RestartSec=10</span><br><span class="line">KillSignal=SIGINT</span><br><span class="line">SyslogIdentifier=PlantUML</span><br><span class="line">User=wmsdev</span><br><span class="line">MemoryMax=50%</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
+<p>啟用服務</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl daemon-reload</span><br><span class="line">systemctl start plantuml</span><br></pre></td></tr></table></figure>
+<h1 id="設定-Visual-Studio-Code"><a class="header-anchor" href="#設定-Visual-Studio-Code"></a>設定 Visual Studio Code</h1>
+<p>安裝 <a href="https://marketplace.visualstudio.com/items?itemName=jebbs.plantuml">PlantUML support for Visual Studio Code</a> 套件，並在設定檔設定 plantuml.server 參數</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="attr">&quot;plantuml.server&quot;</span><span class="punctuation">:</span> <span class="string">&quot;https://[Domain]/plantuml&quot;</span></span><br></pre></td></tr></table></figure>
+<p>建立 .puml 為附檔名的檔案，並加入以下代碼，按下 Alt + D 生成圖檔</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">@startuml</span><br><span class="line">:Hello world;</span><br><span class="line">:This is defined on</span><br><span class="line">several **lines**;</span><br><span class="line">@enduml</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://plantuml.com/zh/picoweb">PlantUML PicoWeb Server</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>Project</category>
+      </categories>
+      <tags>
+        <tag>Projectm</tag>
+        <tag>PlantUML</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>使用 Flask-Caching 緩存 Flask 呼叫方法產生的資料</title>
     <url>/2023/07/07/PythonFlaskCaching/</url>
     <content><![CDATA[<h1 id="安裝套件"><a class="header-anchor" href="#安裝套件"></a>安裝套件</h1>
