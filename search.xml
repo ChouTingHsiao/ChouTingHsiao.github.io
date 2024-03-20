@@ -292,14 +292,14 @@
   <entry>
     <title>如何迭代 Js 物件</title>
     <url>/2020/03/27/JsIteratorObject/</url>
-    <content><![CDATA[<h1 id="for…in"><a class="header-anchor" href="#for…in"></a>for…in</h1>
-<p>使用 for…in 語法</p>
+    <content><![CDATA[<h1 id="使用-for…in"><a class="header-anchor" href="#使用-for…in"></a>使用 for…in</h1>
+<p>方法格式如下</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (變數 <span class="keyword">in</span> 物件) &#123;...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <span id="more"></span>
 <p>下方為 Sample Code</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> model = &#123;</span><br><span class="line">    <span class="attr">item</span>: <span class="string">&#x27;1&#x27;</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> filed <span class="keyword">in</span> model) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(model[filed]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="Object-keys"><a class="header-anchor" href="#Object-keys"></a>Object.keys()</h1>
-<p>使用 Object.keys()</p>
+<h1 id="使用-Object-keys"><a class="header-anchor" href="#使用-Object-keys"></a>使用 Object.keys()</h1>
+<p>方法格式如下</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="title class_">Object</span>.<span class="title function_">keys</span>(物件);</span><br></pre></td></tr></table></figure>
 <p>下方為 Sample Code</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> model = &#123;</span><br><span class="line">    <span class="attr">item</span>: <span class="string">&#x27;1&#x27;</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> keys = <span class="title class_">Object</span>.<span class="title function_">keys</span>(model);</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> length = keys.<span class="property">length</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt;= length; i++) &#123;</span><br><span class="line">    <span class="keyword">let</span> key =  keys[i];</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(model[key]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -345,7 +345,8 @@
   <entry>
     <title>如何使用 Regex 群組</title>
     <url>/2022/05/22/JsRegexGroup/</url>
-    <content><![CDATA[<h1 id="Regex-群組"><a class="header-anchor" href="#Regex-群組"></a>Regex 群組</h1>
+    <content><![CDATA[<h1 id="使用-Regex-群組"><a class="header-anchor" href="#使用-Regex-群組"></a>使用 Regex 群組</h1>
+<p>群組方法用法如下</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 建立規則</span></span><br><span class="line"><span class="keyword">var</span> myRegexp = <span class="regexp">/(?&lt;群組名稱&gt;.*)Test/g</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 執行規則</span></span><br><span class="line"><span class="keyword">var</span> match =  myRegexp.<span class="title function_">exec</span>(<span class="string">&#x27;123Test&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 取得執行結果 output: 123</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(match.<span class="property">groups</span>.群組名稱);</span><br></pre></td></tr></table></figure>
 <span id="more"></span>
 <div class="note warning"><p>📜 參考資料</p>
@@ -364,11 +365,11 @@
   <entry>
     <title>Linux IBM i Access Odbc 手動安裝</title>
     <url>/2021/10/05/LinuxIbmIAccessOdbc/</url>
-    <content><![CDATA[<h1 id="Odbc-元件配置"><a class="header-anchor" href="#Odbc-元件配置"></a>Odbc 元件配置</h1>
+    <content><![CDATA[<h1 id="配置-Odbc-元件"><a class="header-anchor" href="#配置-Odbc-元件"></a>配置 Odbc 元件</h1>
 <p>安裝 Linux Odbc 元件</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt-get install unixodbc</span><br></pre></td></tr></table></figure>
 <span id="more"></span>
-<h1 id="Odbc-Driver-安裝"><a class="header-anchor" href="#Odbc-Driver-安裝"></a>Odbc Driver 安裝</h1>
+<h1 id="安裝-Odbc-Driver"><a class="header-anchor" href="#安裝-Odbc-Driver"></a>安裝 Odbc Driver</h1>
 <p>登入<a href="https://www.ibm.com/support/pages/ibm-i-access-client-solutions">IBM網頁</a>下載Linux Odbc Driver並安裝</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo dpkg -i ibm-iaccess-1.1.0.15-1.0.amd64.deb</span><br></pre></td></tr></table></figure>
 <p>查看 Linux Odbc Drivers 設定檔位置</p>
@@ -393,11 +394,11 @@
   <entry>
     <title>Linux Mssql Odbc 手動安裝</title>
     <url>/2021/10/05/LinuxMssqlOdbc/</url>
-    <content><![CDATA[<h1 id="Linux-Odbc-元件配置"><a class="header-anchor" href="#Linux-Odbc-元件配置"></a>Linux Odbc 元件配置</h1>
+    <content><![CDATA[<h1 id="配置-Linux-Odbc-元件"><a class="header-anchor" href="#配置-Linux-Odbc-元件"></a>配置 Linux Odbc 元件</h1>
 <p>安裝 Linux Odbc 元件</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt-get install unixodbc</span><br></pre></td></tr></table></figure>
 <span id="more"></span>
-<h1 id="Odbc-Driver-安裝"><a class="header-anchor" href="#Odbc-Driver-安裝"></a>Odbc Driver 安裝</h1>
+<h1 id="安裝-Odbc-Driver"><a class="header-anchor" href="#安裝-Odbc-Driver"></a>安裝 Odbc Driver</h1>
 <p>登入<a href="https://docs.microsoft.com/en-us/sql/connect/odbc/download-odbc-driver-for-sql-server?view=sql-server-ver15">Microsoft網頁</a>下載Odbc Driver並安裝</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo dpkg -i msodbcsql17_17.8.1.1-1_amd64.deb</span><br></pre></td></tr></table></figure>
 <p>查看 Linux Odbc Drivers 設定檔位置</p>
@@ -449,9 +450,9 @@ plink -v -x -a -T -C -noagent -ssh -pw "[密碼]" -P 50893 -L [本地端口]:[�
       </tags>
   </entry>
   <entry>
-    <title>使用 AddInMemoryCollection 設定 Configuration</title>
+    <title>使用 AddInMemoryCollection 設定 Configuration 進行單元測試</title>
     <url>/2023/01/21/NetAddInMemoryCollection/</url>
-    <content><![CDATA[<h1 id="appsettings-json-設定如下"><a class="header-anchor" href="#appsettings-json-設定如下"></a>appsettings.json 設定如下</h1>
+    <content><![CDATA[<h1 id="設定-appsettings-json-如下"><a class="header-anchor" href="#設定-appsettings-json-如下"></a>設定 appsettings.json 如下</h1>
 <figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;Logging&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;LogLevel&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;Default&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Information&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;Microsoft.AspNetCore&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Warning&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
 <span id="more"></span>
 <h1 id="轉換為-Dictionary-string-string"><a class="header-anchor" href="#轉換為-Dictionary-string-string"></a>轉換為 Dictionary&lt;string, string&gt;</h1>
@@ -468,17 +469,18 @@ plink -v -x -a -T -C -noagent -ssh -pw "[密碼]" -P 50893 -L [本地端口]:[�
       </categories>
       <tags>
         <tag>.Net</tag>
+        <tag>UnitTest</tag>
         <tag>IConfiguration</tag>
       </tags>
   </entry>
   <entry>
     <title>依字元內碼轉換 Big5 與 Unicode</title>
     <url>/2022/05/22/NetBig5AndUnicode/</url>
-    <content><![CDATA[<h1 id="Big5-字元轉換"><a class="header-anchor" href="#Big5-字元轉換"></a>Big5 字元轉換</h1>
+    <content><![CDATA[<h1 id="轉換-Big5-字元"><a class="header-anchor" href="#轉換-Big5-字元"></a>轉換 Big5 字元</h1>
 <p>Big5 依傳入內碼轉成字元</p>
 <figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 建立兩位元陣列</span></span><br><span class="line"><span class="built_in">byte</span>[] codeBytes = <span class="keyword">new</span> <span class="built_in">byte</span>[<span class="number">2</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 欲轉換內碼前兩字轉為16進制</span></span><br><span class="line">codeBytes[<span class="number">0</span>] = (<span class="built_in">byte</span>)Convert.ToInt32(<span class="string">&quot;欲轉換內碼&quot;</span>.Substring(<span class="number">0</span>, <span class="number">2</span>), <span class="number">16</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 欲轉換內碼後兩字轉為16進制</span></span><br><span class="line">codeBytes[<span class="number">1</span>] = (<span class="built_in">byte</span>)Convert.ToInt32(<span class="string">&quot;欲轉換內碼&quot;</span>.Substring(<span class="number">2</span>, <span class="number">2</span>), <span class="number">16</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 轉成字元</span></span><br><span class="line">Encoding big5 = Encoding.GetEncoding(<span class="number">950</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">string</span> result = big5.GetString(bytes);</span><br></pre></td></tr></table></figure>
 <span id="more"></span>
-<h1 id="Unicode-字元轉換"><a class="header-anchor" href="#Unicode-字元轉換"></a>Unicode 字元轉換</h1>
+<h1 id="轉換-Unicode-字元"><a class="header-anchor" href="#轉換-Unicode-字元"></a>轉換 Unicode 字元</h1>
 <p>Unicode 依傳入內碼轉成字元，與 Big5 轉換的方法雷同，只需調整內碼放置的順序</p>
 <figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 建立兩位元陣列</span></span><br><span class="line"><span class="built_in">byte</span>[] bytes = <span class="keyword">new</span> <span class="built_in">byte</span>[<span class="number">2</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 欲轉換內碼後兩字轉為16進制</span></span><br><span class="line">bytes[<span class="number">0</span>] = Convert.ToByte(text.Substring(<span class="number">2</span>, <span class="number">2</span>), <span class="number">16</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 欲轉換內碼前兩字轉為16進制</span></span><br><span class="line">bytes[<span class="number">1</span>] = Convert.ToByte(text.Substring(<span class="number">0</span>, <span class="number">2</span>), <span class="number">16</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 轉成字元</span></span><br><span class="line">Encoding unicode= Encoding.Unicode;</span><br><span class="line"></span><br><span class="line"><span class="built_in">string</span> result = unicode.GetString(bytes);</span><br></pre></td></tr></table></figure>
 <div class="note warning"><p>📜 參考資料</p>
@@ -495,28 +497,6 @@ plink -v -x -a -T -C -noagent -ssh -pw "[密碼]" -P 50893 -L [本地端口]:[�
         <tag>.Net</tag>
         <tag>Big5</tag>
         <tag>Unicode</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Http 的 Get 方法傳入 List 參數</title>
-    <url>/2023/01/21/NetHttpGetWithList/</url>
-    <content><![CDATA[<h1 id="建立類別"><a class="header-anchor" href="#建立類別"></a>建立類別</h1>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">User</span> &#123;</span><br><span class="line">  </span><br><span class="line">	<span class="keyword">public</span> <span class="built_in">string</span> Name &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> <span class="built_in">int</span> Age &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="建立-HttpGet-方法"><a class="header-anchor" href="#建立-HttpGet-方法"></a>建立 HttpGet 方法</h1>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">[<span class="meta">ApiController</span>]</span><br><span class="line">[<span class="meta">Route(<span class="string">&quot;[controller]&quot;</span>)</span>]</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">UserController</span> : <span class="title">ControllerBase</span></span><br><span class="line">&#123;</span><br><span class="line">  [<span class="meta">HttpGet</span>]</span><br><span class="line">  <span class="function"><span class="keyword">public</span> List&lt;User&gt; <span class="title">Get</span>(<span class="params">[FromQuery] List&lt;User&gt; user</span>)</span></span><br><span class="line">  &#123;</span><br><span class="line">      <span class="keyword">return</span> user;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="組合-Request-的-Url"><a class="header-anchor" href="#組合-Request-的-Url"></a>組合 Request 的 Url</h1>
-<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line">https://example.com/User?user[0].Name=&#x27;張三&#x27;&amp;user[0].Age=10&amp;user[1].Name=&#x27;李四&#x27;&amp;user[1].Age=20</span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://stackoverflow.com/questions/3061273/send-an-array-with-an-http-get">Send an Array with an HTTP Get</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>.Net</category>
-      </categories>
-      <tags>
-        <tag>.Net</tag>
       </tags>
   </entry>
   <entry>
@@ -545,7 +525,7 @@ gdb `cat ExecutablePath` CoreDump
 <!-- dotnet tool install -g dotnet-dump
 dotnet-dump ps
 dotnet-dump collect --process-id 1902 -->
-<h1 id="安裝-Dotnet-工具"><a class="header-anchor" href="#安裝-Dotnet-工具"></a>安裝 Dotnet 工具</h1>
+<h1 id="安裝相關-Dotnet-工具"><a class="header-anchor" href="#安裝相關-Dotnet-工具"></a>安裝相關 Dotnet 工具</h1>
 <p>安裝 dotnet-symbol 導出傾印檔案的符號</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dotnet tool install -g dotnet-symbol</span><br></pre></td></tr></table></figure>
 <p>導出傾印檔案的符號</p>
@@ -561,7 +541,7 @@ dotnet-dump collect --process-id 1902 -->
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">setsymbolserver -directory ~/dumps/symbols</span><br></pre></td></tr></table></figure>
 <p>在 lldb 中常用命令</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">執行緒清單: clrthreads</span><br><span class="line">切換執行序: thread <span class="keyword">select</span> [thread]</span><br><span class="line">線程棧清單: clrstack</span><br><span class="line">所有託管堆物件: dso</span><br><span class="line">託管堆狀態: dumpheap -<span class="built_in">stat</span></span><br><span class="line">尋找託管堆的位址: dumpheap -mt [address]</span><br><span class="line">程序最近都拋了什麼異常: dumpheap -<span class="built_in">type</span> Exception</span><br><span class="line">異常狀況資訊: pe</span><br><span class="line">異常的詳細信息: pe [address]</span><br><span class="line">分析物件位置: dumpobj [address]</span><br><span class="line">分析陣列位置: dumparray [address]</span><br><span class="line">GC狀態:  eeheap -gc</span><br></pre></td></tr></table></figure>
-<h1 id="安裝-ProcDump"><a class="header-anchor" href="#安裝-ProcDump"></a>安裝 ProcDump</h1>
+<h1 id="安裝-ProcDump-自動擷取傾印檔案"><a class="header-anchor" href="#安裝-ProcDump-自動擷取傾印檔案"></a>安裝 ProcDump 自動擷取傾印檔案</h1>
 <p>當目標進程 CPU 或記憶體使用量達到特定臨界值或低於限制值時，您可以使用 ProcDump 來擷取記憶體傾印檔案。</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt install procdump</span><br></pre></td></tr></table></figure>
 <div class="note warning"><p>📜 參考資料</p>
@@ -577,6 +557,28 @@ dotnet-dump collect --process-id 1902 -->
         <tag>Linux</tag>
         <tag>.Net</tag>
         <tag>lldb</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Http 的 Get 方法傳入 List 參數</title>
+    <url>/2023/01/21/NetHttpGetWithList/</url>
+    <content><![CDATA[<h1 id="建立類別"><a class="header-anchor" href="#建立類別"></a>建立類別</h1>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">User</span> &#123;</span><br><span class="line">  </span><br><span class="line">	<span class="keyword">public</span> <span class="built_in">string</span> Name &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> <span class="built_in">int</span> Age &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="建立-HttpGet-方法"><a class="header-anchor" href="#建立-HttpGet-方法"></a>建立 HttpGet 方法</h1>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">[<span class="meta">ApiController</span>]</span><br><span class="line">[<span class="meta">Route(<span class="string">&quot;[controller]&quot;</span>)</span>]</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">UserController</span> : <span class="title">ControllerBase</span></span><br><span class="line">&#123;</span><br><span class="line">  [<span class="meta">HttpGet</span>]</span><br><span class="line">  <span class="function"><span class="keyword">public</span> List&lt;User&gt; <span class="title">Get</span>(<span class="params">[FromQuery] List&lt;User&gt; user</span>)</span></span><br><span class="line">  &#123;</span><br><span class="line">      <span class="keyword">return</span> user;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="組合-Request-的-Url"><a class="header-anchor" href="#組合-Request-的-Url"></a>組合 Request 的 Url</h1>
+<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line">https://example.com/User?user[0].Name=&#x27;張三&#x27;&amp;user[0].Age=10&amp;user[1].Name=&#x27;李四&#x27;&amp;user[1].Age=20</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://stackoverflow.com/questions/3061273/send-an-array-with-an-http-get">Send an Array with an HTTP Get</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>.Net</category>
+      </categories>
+      <tags>
+        <tag>.Net</tag>
       </tags>
   </entry>
   <entry>
@@ -615,10 +617,48 @@ dotnet-dump collect --process-id 1902 -->
       </tags>
   </entry>
   <entry>
+    <title>如何在商業邏輯層進行單元測試</title>
+    <url>/2022/05/01/NetServiceUnitTest/</url>
+    <content><![CDATA[<h1 id="安裝-NSubstitute"><a class="header-anchor" href="#安裝-NSubstitute"></a>安裝 NSubstitute</h1>
+<p>安裝 Nuget 的 NSubstitute 套件</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Install-Package</span> NSubstitute</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="類別結構"><a class="header-anchor" href="#類別結構"></a>類別結構</h1>
+<img  src=http://www.plantuml.com/plantuml/svg/LO_T2e9044RlvoackYd8G2z55YiXWgwi5nYt8HTqNTOnwErRfH-x_iuvyEMza9UXRM0XDRUClIFD3LK0BWn66qTMyCB-OJHZbk7gi5dkYYBU9sii1tlkxaQZKlzyoQxhZNJ-EIcddt9aAKXeCZxLIAcPaMAy7SjV562MYqRuBQQO199by1QlL3MC8m-Gixs5Ioy0>
+<h1 id="建立模擬物件"><a class="header-anchor" href="#建立模擬物件"></a>建立模擬物件</h1>
+<p>建立 Repository 的模擬物件</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">Repository mockRepository = Substitute.For&lt;Repository&gt;();</span><br><span class="line"></span><br><span class="line">mockRepository</span><br><span class="line">.GetData(Arg.Any&lt;<span class="built_in">string</span>&gt;())</span><br><span class="line">.Returns(<span class="keyword">new</span> Table &#123;</span><br><span class="line">    Id = <span class="number">1</span>,</span><br><span class="line">    Name = <span class="string">&quot;張三&quot;</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h1 id="注入模擬物件"><a class="header-anchor" href="#注入模擬物件"></a>注入模擬物件</h1>
+<p>把 Repository 的模擬物件注入 Service</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">Service service = <span class="keyword">new</span> Service(mockRepository);</span><br></pre></td></tr></table></figure>
+<p>使用 Service</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">Table result = service.RunLogic();</span><br><span class="line"></span><br><span class="line">Assert.That(result.Name, Is.EqualTo(<span class="string">&quot;張三&quot;</span>));</span><br></pre></td></tr></table></figure>
+<h1 id="驗證模擬物件"><a class="header-anchor" href="#驗證模擬物件"></a>驗證模擬物件</h1>
+<p>依傳入參數做回傳</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">mockRepository</span><br><span class="line">.GetData(<span class="string">&quot;張三&quot;</span>)</span><br><span class="line">.Returns(<span class="keyword">new</span> Table &#123;</span><br><span class="line">    Id = <span class="number">1</span>,</span><br><span class="line">    Name = <span class="string">&quot;張三&quot;</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">mockRepository</span><br><span class="line">.GetData(<span class="string">&quot;李四&quot;</span>)</span><br><span class="line">.Returns(<span class="keyword">new</span> Table &#123;</span><br><span class="line">    Id = <span class="number">2</span>,</span><br><span class="line">    Name = <span class="string">&quot;李四&quot;</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>模擬呼叫方法多次依序回傳不同內容</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">mockRepository</span><br><span class="line">.GetData(Arg.Any&lt;<span class="built_in">string</span>&gt;())</span><br><span class="line">.Returns(</span><br><span class="line">    <span class="keyword">new</span> Table</span><br><span class="line">    &#123;</span><br><span class="line">        Id = <span class="number">1</span>,</span><br><span class="line">        Name = <span class="string">&quot;張三&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="keyword">new</span> Table</span><br><span class="line">    &#123;</span><br><span class="line">        Id = <span class="number">2</span>,</span><br><span class="line">        Name = <span class="string">&quot;李四&quot;</span></span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
+<p>驗證呼叫方法的次數與傳入參數</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">mockRepository</span><br><span class="line">.Received(<span class="number">1</span>)</span><br><span class="line">.GetData(Arg.Is&lt;<span class="built_in">string</span>&gt;(x =&gt; x == <span class="string">&quot;張三&quot;</span>));</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://nsubstitute.github.io/help.html">NSubstitute文件</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>.Net</category>
+      </categories>
+      <tags>
+        <tag>.Net</tag>
+        <tag>UnitTest</tag>
+        <tag>NSubstitute</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>如何解析 XML 資料</title>
     <url>/2024/02/04/NetXmlParse/</url>
-    <content><![CDATA[<h1 id="XML-資料"><a class="header-anchor" href="#XML-資料"></a>XML 資料</h1>
-<p>宣告 XML 格式字串</p>
+    <content><![CDATA[<h1 id="宣告-XML-資料"><a class="header-anchor" href="#宣告-XML-資料"></a>宣告 XML 資料</h1>
+<p>XML 格式字串如下</p>
 <figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="built_in">string</span> doc = <span class="string">@&quot;&lt;properties&gt;</span></span><br><span class="line"><span class="string">&lt;property key=&#x27;name&#x27;&gt;Test&lt;/property&gt;</span></span><br><span class="line"><span class="string">&lt;property key=&#x27;age&#x27;&gt;10&lt;/property&gt;</span></span><br><span class="line"><span class="string">&lt;/properties&gt;&quot;</span>;</span><br></pre></td></tr></table></figure>
 <h1 id="使用-XDocument-解析-XML"><a class="header-anchor" href="#使用-XDocument-解析-XML"></a>使用 XDocument 解析 XML</h1>
 <h2 id="讀取資料並解析"><a class="header-anchor" href="#讀取資料並解析"></a>讀取資料並解析</h2>
@@ -678,44 +718,6 @@ dotnet-dump collect --process-id 1902 -->
       <tags>
         <tag>Projectm</tag>
         <tag>PlantUML</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>如何在商業邏輯層進行單元測試</title>
-    <url>/2022/05/01/NetServiceUnitTest/</url>
-    <content><![CDATA[<h1 id="安裝-NSubstitute"><a class="header-anchor" href="#安裝-NSubstitute"></a>安裝 NSubstitute</h1>
-<p>安裝 Nuget 的 NSubstitute 套件</p>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Install-Package</span> NSubstitute</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="類別結構"><a class="header-anchor" href="#類別結構"></a>類別結構</h1>
-<img  src=http://www.plantuml.com/plantuml/svg/LO_T2e9044RlvoackYd8G2z55YiXWgwi5nYt8HTqNTOnwErRfH-x_iuvyEMza9UXRM0XDRUClIFD3LK0BWn66qTMyCB-OJHZbk7gi5dkYYBU9sii1tlkxaQZKlzyoQxhZNJ-EIcddt9aAKXeCZxLIAcPaMAy7SjV562MYqRuBQQO199by1QlL3MC8m-Gixs5Ioy0>
-<h1 id="建立模擬物件"><a class="header-anchor" href="#建立模擬物件"></a>建立模擬物件</h1>
-<p>建立 Repository 的模擬物件</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">Repository mockRepository = Substitute.For&lt;Repository&gt;();</span><br><span class="line"></span><br><span class="line">mockRepository</span><br><span class="line">.GetData(Arg.Any&lt;<span class="built_in">string</span>&gt;())</span><br><span class="line">.Returns(<span class="keyword">new</span> Table &#123;</span><br><span class="line">    Id = <span class="number">1</span>,</span><br><span class="line">    Name = <span class="string">&quot;張三&quot;</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<h1 id="注入模擬物件"><a class="header-anchor" href="#注入模擬物件"></a>注入模擬物件</h1>
-<p>把 Repository 的模擬物件注入 Service</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">Service service = <span class="keyword">new</span> Service(mockRepository);</span><br></pre></td></tr></table></figure>
-<p>使用 Service</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">Table result = service.RunLogic();</span><br><span class="line"></span><br><span class="line">Assert.That(result.Name, Is.EqualTo(<span class="string">&quot;張三&quot;</span>));</span><br></pre></td></tr></table></figure>
-<h1 id="驗證模擬物件"><a class="header-anchor" href="#驗證模擬物件"></a>驗證模擬物件</h1>
-<p>依傳入參數做回傳</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">mockRepository</span><br><span class="line">.GetData(<span class="string">&quot;張三&quot;</span>)</span><br><span class="line">.Returns(<span class="keyword">new</span> Table &#123;</span><br><span class="line">    Id = <span class="number">1</span>,</span><br><span class="line">    Name = <span class="string">&quot;張三&quot;</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">mockRepository</span><br><span class="line">.GetData(<span class="string">&quot;李四&quot;</span>)</span><br><span class="line">.Returns(<span class="keyword">new</span> Table &#123;</span><br><span class="line">    Id = <span class="number">2</span>,</span><br><span class="line">    Name = <span class="string">&quot;李四&quot;</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>模擬呼叫方法多次依序回傳不同內容</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">mockRepository</span><br><span class="line">.GetData(Arg.Any&lt;<span class="built_in">string</span>&gt;())</span><br><span class="line">.Returns(</span><br><span class="line">    <span class="keyword">new</span> Table</span><br><span class="line">    &#123;</span><br><span class="line">        Id = <span class="number">1</span>,</span><br><span class="line">        Name = <span class="string">&quot;張三&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="keyword">new</span> Table</span><br><span class="line">    &#123;</span><br><span class="line">        Id = <span class="number">2</span>,</span><br><span class="line">        Name = <span class="string">&quot;李四&quot;</span></span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
-<p>驗證呼叫方法的次數與傳入參數</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">mockRepository</span><br><span class="line">.Received(<span class="number">1</span>)</span><br><span class="line">.GetData(Arg.Is&lt;<span class="built_in">string</span>&gt;(x =&gt; x == <span class="string">&quot;張三&quot;</span>));</span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://nsubstitute.github.io/help.html">NSubstitute文件</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>.Net</category>
-      </categories>
-      <tags>
-        <tag>.Net</tag>
-        <tag>UnitTest</tag>
-        <tag>NSubstitute</tag>
       </tags>
   </entry>
   <entry>
@@ -800,18 +802,18 @@ db.create_all() -->
   <entry>
     <title>Whistle 代理規則使用</title>
     <url>/2023/01/20/WhistleProxyRule/</url>
-    <content><![CDATA[<h1 id="Dns-代理設定"><a class="header-anchor" href="#Dns-代理設定"></a>Dns 代理設定</h1>
+    <content><![CDATA[<h1 id="設定-Dns-代理"><a class="header-anchor" href="#設定-Dns-代理"></a>設定 Dns 代理</h1>
 <ul>
 <li>在 Rules 頁籤加入以下設定，設定 Domain 對應 Ip 位置  <figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line">example.<span class="attribute">com</span> <span class="number">192.168.0.1</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <span id="more"></span>
-<h1 id="Http-的-StatusCode-代理設定"><a class="header-anchor" href="#Http-的-StatusCode-代理設定"></a>Http 的 StatusCode 代理設定</h1>
+<h1 id="設定-Http-的-StatusCode-代理"><a class="header-anchor" href="#設定-Http-的-StatusCode-代理"></a>設定 Http 的 StatusCode 代理</h1>
 <ul>
 <li>在 Rules 頁籤加入以下設定，設定狀態碼  <figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line">^https://example.com/User/<span class="attribute">Get</span> statusCode://200</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h1 id="Http-的-Headers-代理設定"><a class="header-anchor" href="#Http-的-Headers-代理設定"></a>Http 的 Headers 代理設定</h1>
+<h1 id="設定-Http-的-Headers-代理"><a class="header-anchor" href="#設定-Http-的-Headers-代理"></a>設定 Http 的 Headers 代理</h1>
 <ul>
 <li>
 <p>在 Values 頁籤加入以下設定，命名為 corsheaders</p>
@@ -822,7 +824,7 @@ db.create_all() -->
   <figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line">^https://example.com/User/<span class="attribute">Get</span> resHeaders://&#123;corsheaders&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h1 id="Http-的-Body-代理設定"><a class="header-anchor" href="#Http-的-Body-代理設定"></a>Http 的 Body 代理設定</h1>
+<h1 id="設定-Http-的-Body-代理"><a class="header-anchor" href="#設定-Http-的-Body-代理"></a>設定 Http 的 Body 代理</h1>
 <ul>
 <li>
 <p>在 Values 頁籤加入以下設定，命名為 User.json</p>
@@ -833,7 +835,7 @@ db.create_all() -->
   <figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line">^https://example.com/User/<span class="attribute">Get</span> resBody://&#123;User.json&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h1 id="網頁嵌入-Js-檔案代理設定"><a class="header-anchor" href="#網頁嵌入-Js-檔案代理設定"></a>網頁嵌入 Js 檔案代理設定</h1>
+<h1 id="設定網頁嵌入-Js-檔案"><a class="header-anchor" href="#設定網頁嵌入-Js-檔案"></a>設定網頁嵌入 Js 檔案</h1>
 <ul>
 <li>
 <p>在 Values 頁籤加入以下設定，命名為 test.js</p>
@@ -844,7 +846,7 @@ db.create_all() -->
   <figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line">^https://example.com/index.<span class="attribute">html</span> jsAppend://&#123;test.js&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h1 id="Socks-代理設定"><a class="header-anchor" href="#Socks-代理設定"></a>Socks 代理設定</h1>
+<h1 id="設定-Socks-代理"><a class="header-anchor" href="#設定-Socks-代理"></a>設定 Socks 代理</h1>
 <p>搭配<a href="/2023/05/07/LinuxSshTunnel/" title="使用 SSH 建立通道">SSH</a>動態端口轉發請求</p>
 <ul>
 <li>在 Rules 頁籤加入以下設定，設定 Domain 對應 Ip 位置  <figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line">example.<span class="attribute">com</span> socks://127.0.0.1:8080</span><br></pre></td></tr></table></figure>
@@ -908,7 +910,7 @@ db.create_all() -->
 <p>執行下方命令</p>
 <figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">wsl <span class="literal">-l</span> <span class="literal">-v</span></span><br></pre></td></tr></table></figure>
 <span id="more"></span>
-<h1 id="遷移至磁碟機-D"><a class="header-anchor" href="#遷移至磁碟機-D"></a>遷移至磁碟機 D</h1>
+<h1 id="遷移-WSL2-至磁碟機-D"><a class="header-anchor" href="#遷移-WSL2-至磁碟機-D"></a>遷移 WSL2 至磁碟機 D</h1>
 <figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 導出已安裝的 Linux 發行版壓縮檔</span></span><br><span class="line">wsl <span class="literal">--export</span> <span class="string">&quot;Ubuntu-22.04&quot;</span> d:\ubuntu.tar</span><br><span class="line"></span><br><span class="line"><span class="comment"># 移除 WSL</span></span><br><span class="line">wsl <span class="literal">--unregister</span> <span class="string">&quot;Ubuntu-22.04&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 建立解壓縮的目錄</span></span><br><span class="line">mkdir d:\Ubuntu</span><br><span class="line"></span><br><span class="line"><span class="comment"># Linux 發行版壓縮檔解壓縮至新目錄後加入 WSL</span></span><br><span class="line">wsl <span class="literal">--import</span> <span class="string">&quot;Ubuntu-22.04&quot;</span> d:\ubuntu d:\ubuntu.tar</span><br><span class="line"></span><br><span class="line"><span class="comment"># 刪除 Linux 發行版壓縮檔</span></span><br><span class="line"><span class="built_in">del</span> d:\ubuntu.tar</span><br><span class="line"></span><br><span class="line"><span class="comment"># 因重新建立 WSL 會以 root 為預設帳戶，需重新設定預設帳戶</span></span><br><span class="line">ubuntu2204.exe config <span class="literal">--default-user</span> ubuntu</span><br></pre></td></tr></table></figure>
 <div class="note warning"><p>📜 參考資料</p>
 <ol>
@@ -941,9 +943,9 @@ db.create_all() -->
 <span id="more"></span>
 <h1 id="確認-docker-連線-2375是否存在"><a class="header-anchor" href="#確認-docker-連線-2375是否存在"></a>確認 docker 連線 *:2375是否存在</h1>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ss -peanut | grep :2375</span><br></pre></td></tr></table></figure>
-<h1 id="Chocolatey-安裝-Docker-CLI"><a class="header-anchor" href="#Chocolatey-安裝-Docker-CLI"></a>Chocolatey 安裝 Docker CLI</h1>
+<h1 id="使用-Chocolatey-安裝-Docker-CLI"><a class="header-anchor" href="#使用-Chocolatey-安裝-Docker-CLI"></a>使用 Chocolatey 安裝 Docker CLI</h1>
 <figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">choco install docker<span class="literal">-cli</span></span><br></pre></td></tr></table></figure>
-<h1 id="主機連線設定有兩種方式"><a class="header-anchor" href="#主機連線設定有兩種方式"></a>主機連線設定有兩種方式</h1>
+<h1 id="設定主機連線有兩種方式"><a class="header-anchor" href="#設定主機連線有兩種方式"></a>設定主機連線有兩種方式</h1>
 <ol>
 <li>設定環境變數 DOCKER_HOST</li>
 </ol>
@@ -952,7 +954,7 @@ db.create_all() -->
 <li>設定 docker context</li>
 </ol>
 <figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 取得 WSL 的 IP 位置</span></span><br><span class="line"><span class="variable">$wslip</span> = wsl <span class="literal">--</span> ip <span class="literal">-o</span> <span class="literal">-4</span> <span class="literal">-json</span> addr list eth0 | <span class="built_in">ConvertFrom-Json</span> | %&#123; <span class="variable">$_</span>.addr_info.local &#125; ` | ?&#123; <span class="variable">$_</span> &#125;</span><br><span class="line"><span class="built_in">Write-Host</span> <span class="string">&quot;Setting Docker context &#x27;wsl&#x27; to host=tcp://<span class="variable">$</span>(<span class="variable">$wslip</span>):2375&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 建立 context</span></span><br><span class="line">docker context create wsl <span class="literal">--docker</span> <span class="string">&quot;host=tcp://<span class="variable">$</span>(<span class="variable">$wslip</span>):2375&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 更新 context</span></span><br><span class="line">docker context update wsl <span class="literal">--docker</span> <span class="string">&quot;host=tcp://<span class="variable">$</span>(<span class="variable">$wslip</span>):2375&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用 context</span></span><br><span class="line">docker context use wsl</span><br><span class="line">docker <span class="literal">--context</span> wsl <span class="built_in">ps</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 顯示目前設定的 context</span></span><br><span class="line">docker context <span class="built_in">ls</span> <span class="literal">--format</span>=<span class="string">&quot;&#123;&#123;json .&#125;&#125;&quot;</span></span><br></pre></td></tr></table></figure>
-<h1 id="Powershell-取得-WSL-的-IP-位置"><a class="header-anchor" href="#Powershell-取得-WSL-的-IP-位置"></a>Powershell 取得 WSL 的 IP 位置</h1>
+<h1 id="使用-Powershell-取得-WSL-的-IP-位置"><a class="header-anchor" href="#使用-Powershell-取得-WSL-的-IP-位置"></a>使用 Powershell 取得 WSL 的 IP 位置</h1>
 <figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">wsl <span class="literal">--</span> ip <span class="literal">-o</span> <span class="literal">-4</span> <span class="literal">-json</span> addr list eth0 `</span><br><span class="line">| <span class="built_in">ConvertFrom-Json</span> `</span><br><span class="line">| %&#123; <span class="variable">$_</span>.addr_info.local &#125; `</span><br><span class="line">| ?&#123; <span class="variable">$_</span> &#125;</span><br></pre></td></tr></table></figure>
 <h1 id="測試-Docker-命令"><a class="header-anchor" href="#測試-Docker-命令"></a>測試 Docker 命令</h1>
 <figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">docker <span class="literal">-H</span> [<span class="type">YOUR_WSL_IP</span>] <span class="built_in">ps</span></span><br></pre></td></tr></table></figure>
@@ -986,12 +988,12 @@ db.create_all() -->
   <entry>
     <title>WSL2 設定 Docker In Docker</title>
     <url>/2024/01/01/Wsl2DockerInDocker/</url>
-    <content><![CDATA[<h1 id="掛載主機的-Docker-Socket"><a class="header-anchor" href="#掛載主機的-Docker-Socket"></a>掛載主機的 Docker Socket</h1>
+    <content><![CDATA[<h1 id="使用主機的-Docker-Socket"><a class="header-anchor" href="#使用主機的-Docker-Socket"></a>使用主機的 Docker Socket</h1>
 <h2 id="建立-daemon-json"><a class="header-anchor" href="#建立-daemon-json"></a>建立 daemon.json</h2>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo nano /etc/docker/daemon.json</span><br></pre></td></tr></table></figure>
 <p>加入以下設定</p>
 <figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;hosts&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span> <span class="string">&quot;unix:///var/run/docker.sock&quot;</span><span class="punctuation">,</span> <span class="string">&quot;tcp://0.0.0.0:&quot;</span> <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;tls&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-<h2 id="執行命令時須掛載-docker-sock"><a class="header-anchor" href="#執行命令時須掛載-docker-sock"></a>執行命令時須掛載 docker.sock</h2>
+<h2 id="執行命令時掛載-docker-sock"><a class="header-anchor" href="#執行命令時掛載-docker-sock"></a>執行命令時掛載 docker.sock</h2>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run -v /var/run/docker.sock:/var/run/docker.sock -ti [Docker 映像檔]</span><br></pre></td></tr></table></figure>
 <h2 id="透過-Curl-執行-Docker-Socket-建立-Containers"><a class="header-anchor" href="#透過-Curl-執行-Docker-Socket-建立-Containers"></a>透過 Curl 執行 Docker Socket 建立 Containers</h2>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl -XPOST --unix-socket /var/run/docker.sock -d <span class="string">&#x27;&#123;&quot;Image&quot;:&quot;[Docker 映像檔]&quot;&#125;&#x27;</span> -H <span class="string">&#x27;Content-Type: application/json&#x27;</span> http://localhost/containers/create</span><br></pre></td></tr></table></figure>
@@ -1000,13 +1002,15 @@ db.create_all() -->
 <span id="more"></span>
 <h1 id="使用-docker-dind-映像"><a class="header-anchor" href="#使用-docker-dind-映像"></a>使用 docker:dind 映像</h1>
 <p>可參考以下兩種方法運行 docker:dind 映像</p>
-<h2 id="需要執行帶有該–privileged選項和一些附加標誌的容器"><a class="header-anchor" href="#需要執行帶有該–privileged選項和一些附加標誌的容器"></a>需要執行帶有該–privileged選項和一些附加標誌的容器</h2>
+<h2 id="透過特權模式選項執行命令"><a class="header-anchor" href="#透過特權模式選項執行命令"></a>透過特權模式選項執行命令</h2>
+<p>特權模式選項: --privileged</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run -p [本機連接Port]:2375 --privileged -e DOCKER_TLS_CERTDIR=<span class="string">&quot;&quot;</span> --name privileged-docker -d docker:dind</span><br></pre></td></tr></table></figure>
-<h2 id="使用-Nestybox-Sysbox-運行時執行"><a class="header-anchor" href="#使用-Nestybox-Sysbox-運行時執行"></a>使用 Nestybox Sysbox 運行時執行</h2>
-<p><a href="https://github.com/nestybox/sysbox?ref=kodekloud.com">安裝 Nestybox Sysbox</a>，不需要特權模式或特殊配置，即可執行</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 開放 2375 至本機連接 Port</span></span><br><span class="line">docker run -p [本機連接Port]:2375 -e DOCKER_TLS_CERTDIR=<span class="string">&quot;&quot;</span> --runtime=sysbox-runc --name sysbox-docker -d docker:dind</span><br></pre></td></tr></table></figure>
-<p>VSCode 使用 Docker contexts 連線至遠端 Docker</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker context create <span class="built_in">test</span> --docker <span class="string">&quot;host=tcp://127.0.0.1:[本機連接Port]&quot;</span></span><br></pre></td></tr></table></figure>
+<h2 id="透過-Nestybox-Sysbox-運行時選項執行命令"><a class="header-anchor" href="#透過-Nestybox-Sysbox-運行時選項執行命令"></a>透過 Nestybox Sysbox 運行時選項執行命令</h2>
+<p>安裝 <a href="https://github.com/nestybox/sysbox?tab=readme-ov-file#installation">Nestybox Sysbox</a> 後，不需要特權模式，即可執行</p>
+<p>運行時選項: --runtime=sysbox-runc</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run -p [本機連接Port]:2375 -e DOCKER_TLS_CERTDIR=<span class="string">&quot;&quot;</span> --runtime=sysbox-runc --name sysbox-docker -d docker:dind</span><br></pre></td></tr></table></figure>
+<h1 id="使用-Docker-CLI-透過-Docker-contexts-連線至遠端-Docker"><a class="header-anchor" href="#使用-Docker-CLI-透過-Docker-contexts-連線至遠端-Docker"></a>使用 Docker CLI 透過 Docker contexts 連線至遠端 Docker</h1>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 建立 Docker contexts</span></span><br><span class="line">docker context create <span class="built_in">test</span> --docker <span class="string">&quot;host=tcp://127.0.0.1:[本機連接Port]&quot;</span></span><br><span class="line"><span class="comment"># 使用 Docker contexts</span></span><br><span class="line">docker context use <span class="built_in">test</span></span><br></pre></td></tr></table></figure>
 <div class="note warning"><p>📜 參考資料</p>
 <ol>
 <li><a href="https://kodekloud.com/blog/run-docker-in-docker-container/">3 Best Ways to Run Docker in Docker Container</a></li>
@@ -1027,12 +1031,12 @@ db.create_all() -->
     <content><![CDATA[<h1 id="設定-DNS"><a class="header-anchor" href="#設定-DNS"></a>設定 DNS</h1>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 刪除原始的 resolv.conf 設定</span></span><br><span class="line">sudo <span class="built_in">rm</span> /etc/resolv.conf</span><br><span class="line"></span><br><span class="line"><span class="comment"># 建立 resolv.conf 設定，加入自訂 DNS</span></span><br><span class="line">sudo bash -c <span class="string">&#x27;echo &quot;nameserver 192.168.50.1&quot; &gt; /etc/resolv.conf&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 加入 Google 的 DNS 加速</span></span><br><span class="line">sudo bash -c <span class="string">&#x27;echo &quot;nameserver 8.8.8.8&quot; &gt;&gt; /etc/resolv.conf&#x27;</span></span><br><span class="line">sudo bash -c <span class="string">&#x27;echo &quot;nameserver 8.8.4.4&quot; &gt;&gt; /etc/resolv.conf&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 設定 /etc/wsl.conf</span></span><br><span class="line">sudo bash -c <span class="string">&#x27;echo &quot;[network]&quot; &gt; /etc/wsl.conf&#x27;</span></span><br><span class="line">sudo bash -c <span class="string">&#x27;echo &quot;generateResolvConf = false&quot; &gt;&gt; /etc/wsl.conf&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 鎖定 resolv.conf 設定</span></span><br><span class="line">sudo chattr +i /etc/resolv.conf</span><br></pre></td></tr></table></figure>
 <span id="more"></span>
-<h1 id="Powershell-設定-Ububtu-網卡"><a class="header-anchor" href="#Powershell-設定-Ububtu-網卡"></a>Powershell 設定 Ububtu 網卡</h1>
+<h1 id="使用-Powershell-設定-Ububtu-網卡"><a class="header-anchor" href="#使用-Powershell-設定-Ububtu-網卡"></a>使用 Powershell 設定 Ububtu 網卡</h1>
 <figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 搜尋 eth0 網卡 IP 設定</span></span><br><span class="line"><span class="variable">$ipAddr</span> = wsl <span class="literal">-u</span> root /bin/bash <span class="literal">-c</span> <span class="string">&quot;ip addr show eth0 | grep &#x27;inet\b&#x27;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="variable">$ipAddr</span> = <span class="variable">$ipAddr</span>.Trim().Split(<span class="string">&quot; &quot;</span>)[<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 確認是否為自訂的網卡設定</span></span><br><span class="line"><span class="keyword">if</span>(!<span class="variable">$ipAddr</span>.Contains(<span class="string">&quot;192.168.50.2&quot;</span>))&#123;</span><br><span class="line">  <span class="comment"># 移除 Ububtu 網卡設定</span></span><br><span class="line">  wsl <span class="literal">-u</span> root /bin/bash <span class="literal">-c</span> <span class="string">&quot;ip addr del <span class="variable">$ipAddr</span> dev eth0&quot;</span></span><br><span class="line">  </span><br><span class="line">  <span class="comment"># 加入自訂的網卡</span></span><br><span class="line">  wsl <span class="literal">-u</span> root /bin/bash <span class="literal">-c</span> <span class="string">&quot;ip addr add 192.168.50.2/24 broadcast 192.168.50.255 dev eth0&quot;</span></span><br><span class="line">  </span><br><span class="line">  <span class="comment"># 加入自訂的路由</span></span><br><span class="line">  wsl <span class="literal">-u</span> root /bin/bash <span class="literal">-c</span> <span class="string">&quot;ip route add 0.0.0.0/0 via 192.168.50.1 dev eth0&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <!-- sudo ip addr del $(ip addr show eth0 | grep 'inet\b' | awk '{print $2}' | head -n 1) dev eth0 -->
 <!-- sudo ip addr add 192.168.50.2/24 broadcast 192.168.50.255 dev eth0 -->
 <!-- sudo ip route add 0.0.0.0/0 via 192.168.50.1 dev eth0 -->
-<h1 id="Powershell-設定-vEthernet-WSL"><a class="header-anchor" href="#Powershell-設定-vEthernet-WSL"></a>Powershell 設定 vEthernet (WSL)</h1>
+<h1 id="使用-Powershell-設定-vEthernet-WSL"><a class="header-anchor" href="#使用-Powershell-設定-vEthernet-WSL"></a>使用 Powershell 設定 vEthernet (WSL)</h1>
 <figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 確認是否為自訂的 vEthernet (WSL) 設定</span></span><br><span class="line"><span class="keyword">if</span>(!(<span class="built_in">Get-NetAdapter</span> <span class="string">&#x27;vEthernet (WSL)&#x27;</span> | <span class="built_in">Get-NetIPAddress</span>).IPAddress.Contains(<span class="string">&#x27;192.168.50.1&#x27;</span>))&#123;</span><br><span class="line">  <span class="comment"># 移除 vEthernet (WSL)設定</span></span><br><span class="line">  <span class="built_in">Get-NetAdapter</span> <span class="string">&#x27;vEthernet (WSL)&#x27;</span> | <span class="built_in">Get-NetIPAddress</span> | <span class="built_in">Remove-NetIPAddress</span> <span class="literal">-Confirm</span>:<span class="variable">$False</span></span><br><span class="line">  </span><br><span class="line">  <span class="comment"># 加入自訂的 vEthernet (WSL)</span></span><br><span class="line">  <span class="built_in">New-NetIPAddress</span> <span class="literal">-IPAddress</span> <span class="number">192.168</span>.<span class="number">50.1</span> <span class="literal">-PrefixLength</span> <span class="number">24</span> <span class="literal">-InterfaceAlias</span> <span class="string">&#x27;vEthernet (WSL)&#x27;</span></span><br><span class="line">  </span><br><span class="line">  <span class="comment"># 移除 WSLNat 設定</span></span><br><span class="line">  <span class="built_in">Get-NetNat</span> | ? Name <span class="operator">-Eq</span> WSLNat | <span class="built_in">Remove-NetNat</span> <span class="literal">-Confirm</span>:<span class="variable">$False</span></span><br><span class="line">  </span><br><span class="line">  <span class="comment"># 加入自訂的 WSLNat</span></span><br><span class="line">  <span class="built_in">New-NetNat</span> <span class="literal">-Name</span> WSLNat <span class="literal">-InternalIPInterfaceAddressPrefix</span> <span class="number">192.168</span>.<span class="number">50.0</span>/<span class="number">24</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <div class="note warning"><p>📜 參考資料</p>
 <ol>

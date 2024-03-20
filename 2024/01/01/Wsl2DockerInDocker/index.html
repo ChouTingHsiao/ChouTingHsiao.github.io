@@ -20,15 +20,15 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"choutinghsiao.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.18.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="掛載主機的 Docker Socket 建立 daemon.json 1sudo nano &#x2F;etc&#x2F;docker&#x2F;daemon.json 加入以下設定 1234&amp;#123;  &quot;hosts&quot;: [ &quot;unix:&#x2F;&#x2F;&#x2F;var&#x2F;run&#x2F;docker.sock&quot;, &quot;tcp:&#x2F;&#x2F;0.0.0.0:&quot; ],  &quot;tls&quot;: f">
+    <meta name="description" content="使用主機的 Docker Socket 建立 daemon.json 1sudo nano &#x2F;etc&#x2F;docker&#x2F;daemon.json 加入以下設定 1234&amp;#123;  &quot;hosts&quot;: [ &quot;unix:&#x2F;&#x2F;&#x2F;var&#x2F;run&#x2F;docker.sock&quot;, &quot;tcp:&#x2F;&#x2F;0.0.0.0:&quot; ],  &quot;tls&quot;: f">
 <meta property="og:type" content="article">
 <meta property="og:title" content="WSL2 設定 Docker In Docker">
 <meta property="og:url" content="https://choutinghsiao.github.io/2024/01/01/Wsl2DockerInDocker/index.html">
 <meta property="og:site_name" content="Stephen&#39;s Note">
-<meta property="og:description" content="掛載主機的 Docker Socket 建立 daemon.json 1sudo nano &#x2F;etc&#x2F;docker&#x2F;daemon.json 加入以下設定 1234&amp;#123;  &quot;hosts&quot;: [ &quot;unix:&#x2F;&#x2F;&#x2F;var&#x2F;run&#x2F;docker.sock&quot;, &quot;tcp:&#x2F;&#x2F;0.0.0.0:&quot; ],  &quot;tls&quot;: f">
+<meta property="og:description" content="使用主機的 Docker Socket 建立 daemon.json 1sudo nano &#x2F;etc&#x2F;docker&#x2F;daemon.json 加入以下設定 1234&amp;#123;  &quot;hosts&quot;: [ &quot;unix:&#x2F;&#x2F;&#x2F;var&#x2F;run&#x2F;docker.sock&quot;, &quot;tcp:&#x2F;&#x2F;0.0.0.0:&quot; ],  &quot;tls&quot;: f">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-01-01T16:00:00.000Z">
-<meta property="article:modified_time" content="2024-02-04T13:51:15.020Z">
+<meta property="article:modified_time" content="2024-03-20T14:49:55.712Z">
 <meta property="article:author" content="Stephen">
 <meta property="article:tag" content="Wsl2">
 <meta property="article:tag" content="Docker">
@@ -142,7 +142,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8E%9B%E8%BC%89%E4%B8%BB%E6%A9%9F%E7%9A%84-Docker-Socket"><span class="nav-number">1.</span> <span class="nav-text">掛載主機的 Docker Socket</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BB%BA%E7%AB%8B-daemon-json"><span class="nav-number">1.1.</span> <span class="nav-text">建立 daemon.json</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%B7%E8%A1%8C%E5%91%BD%E4%BB%A4%E6%99%82%E9%A0%88%E6%8E%9B%E8%BC%89-docker-sock"><span class="nav-number">1.2.</span> <span class="nav-text">執行命令時須掛載 docker.sock</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%8F%E9%81%8E-Curl-%E5%9F%B7%E8%A1%8C-Docker-Socket-%E5%BB%BA%E7%AB%8B-Containers"><span class="nav-number">1.3.</span> <span class="nav-text">透過 Curl 執行 Docker Socket 建立 Containers</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%8F%E9%81%8E-Curl-%E5%9F%B7%E8%A1%8C-Docker-Socket-%E5%95%9F%E5%8B%95-Containers"><span class="nav-number">1.4.</span> <span class="nav-text">透過 Curl 執行 Docker Socket 啟動 Containers</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-docker-dind-%E6%98%A0%E5%83%8F"><span class="nav-number">2.</span> <span class="nav-text">使用 docker:dind 映像</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9C%80%E8%A6%81%E5%9F%B7%E8%A1%8C%E5%B8%B6%E6%9C%89%E8%A9%B2%E2%80%93privileged%E9%81%B8%E9%A0%85%E5%92%8C%E4%B8%80%E4%BA%9B%E9%99%84%E5%8A%A0%E6%A8%99%E8%AA%8C%E7%9A%84%E5%AE%B9%E5%99%A8"><span class="nav-number">2.1.</span> <span class="nav-text">需要執行帶有該–privileged選項和一些附加標誌的容器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-Nestybox-Sysbox-%E9%81%8B%E8%A1%8C%E6%99%82%E5%9F%B7%E8%A1%8C"><span class="nav-number">2.2.</span> <span class="nav-text">使用 Nestybox Sysbox 運行時執行</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E4%B8%BB%E6%A9%9F%E7%9A%84-Docker-Socket"><span class="nav-number">1.</span> <span class="nav-text">使用主機的 Docker Socket</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BB%BA%E7%AB%8B-daemon-json"><span class="nav-number">1.1.</span> <span class="nav-text">建立 daemon.json</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%B7%E8%A1%8C%E5%91%BD%E4%BB%A4%E6%99%82%E6%8E%9B%E8%BC%89-docker-sock"><span class="nav-number">1.2.</span> <span class="nav-text">執行命令時掛載 docker.sock</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%8F%E9%81%8E-Curl-%E5%9F%B7%E8%A1%8C-Docker-Socket-%E5%BB%BA%E7%AB%8B-Containers"><span class="nav-number">1.3.</span> <span class="nav-text">透過 Curl 執行 Docker Socket 建立 Containers</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%8F%E9%81%8E-Curl-%E5%9F%B7%E8%A1%8C-Docker-Socket-%E5%95%9F%E5%8B%95-Containers"><span class="nav-number">1.4.</span> <span class="nav-text">透過 Curl 執行 Docker Socket 啟動 Containers</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-docker-dind-%E6%98%A0%E5%83%8F"><span class="nav-number">2.</span> <span class="nav-text">使用 docker:dind 映像</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%8F%E9%81%8E%E7%89%B9%E6%AC%8A%E6%A8%A1%E5%BC%8F%E9%81%B8%E9%A0%85%E5%9F%B7%E8%A1%8C%E5%91%BD%E4%BB%A4"><span class="nav-number">2.1.</span> <span class="nav-text">透過特權模式選項執行命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%8F%E9%81%8E-Nestybox-Sysbox-%E9%81%8B%E8%A1%8C%E6%99%82%E9%81%B8%E9%A0%85%E5%9F%B7%E8%A1%8C%E5%91%BD%E4%BB%A4"><span class="nav-number">2.2.</span> <span class="nav-text">透過 Nestybox Sysbox 運行時選項執行命令</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-Docker-CLI-%E9%80%8F%E9%81%8E-Docker-contexts-%E9%80%A3%E7%B7%9A%E8%87%B3%E9%81%A0%E7%AB%AF-Docker"><span class="nav-number">3.</span> <span class="nav-text">使用 Docker CLI 透過 Docker contexts 連線至遠端 Docker</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -265,7 +265,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2024-02-04 13:51:15" itemprop="dateModified" datetime="2024-02-04T13:51:15+00:00">2024-02-04</time>
+      <time title="Modified: 2024-03-20 14:49:55" itemprop="dateModified" datetime="2024-03-20T14:49:55+00:00">2024-03-20</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -284,7 +284,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Word count in article: </span>
-      <span>283</span>
+      <span>295</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
@@ -301,12 +301,12 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><h1 id="掛載主機的-Docker-Socket"><a class="header-anchor" href="#掛載主機的-Docker-Socket"></a>掛載主機的 Docker Socket</h1>
+    <div class="post-body" itemprop="articleBody"><h1 id="使用主機的-Docker-Socket"><a class="header-anchor" href="#使用主機的-Docker-Socket"></a>使用主機的 Docker Socket</h1>
 <h2 id="建立-daemon-json"><a class="header-anchor" href="#建立-daemon-json"></a>建立 daemon.json</h2>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /etc/docker/daemon.json</span><br></pre></td></tr></table></figure>
 <p>加入以下設定</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;hosts&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span> <span class="string">&quot;unix:///var/run/docker.sock&quot;</span><span class="punctuation">,</span> <span class="string">&quot;tcp://0.0.0.0:&quot;</span> <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;tls&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-<h2 id="執行命令時須掛載-docker-sock"><a class="header-anchor" href="#執行命令時須掛載-docker-sock"></a>執行命令時須掛載 docker.sock</h2>
+<h2 id="執行命令時掛載-docker-sock"><a class="header-anchor" href="#執行命令時掛載-docker-sock"></a>執行命令時掛載 docker.sock</h2>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -v /var/run/docker.sock:/var/run/docker.sock -ti [Docker 映像檔]</span><br></pre></td></tr></table></figure>
 <h2 id="透過-Curl-執行-Docker-Socket-建立-Containers"><a class="header-anchor" href="#透過-Curl-執行-Docker-Socket-建立-Containers"></a>透過 Curl 執行 Docker Socket 建立 Containers</h2>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -XPOST --unix-socket /var/run/docker.sock -d <span class="string">&#x27;&#123;&quot;Image&quot;:&quot;[Docker 映像檔]&quot;&#125;&#x27;</span> -H <span class="string">&#x27;Content-Type: application/json&#x27;</span> http://localhost/containers/create</span><br></pre></td></tr></table></figure>
@@ -315,13 +315,15 @@
 <span id="more"></span>
 <h1 id="使用-docker-dind-映像"><a class="header-anchor" href="#使用-docker-dind-映像"></a>使用 docker:dind 映像</h1>
 <p>可參考以下兩種方法運行 docker:dind 映像</p>
-<h2 id="需要執行帶有該–privileged選項和一些附加標誌的容器"><a class="header-anchor" href="#需要執行帶有該–privileged選項和一些附加標誌的容器"></a>需要執行帶有該–privileged選項和一些附加標誌的容器</h2>
+<h2 id="透過特權模式選項執行命令"><a class="header-anchor" href="#透過特權模式選項執行命令"></a>透過特權模式選項執行命令</h2>
+<p>特權模式選項: --privileged</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -p [本機連接Port]:2375 --privileged -e DOCKER_TLS_CERTDIR=<span class="string">&quot;&quot;</span> --name privileged-docker -d docker:dind</span><br></pre></td></tr></table></figure>
-<h2 id="使用-Nestybox-Sysbox-運行時執行"><a class="header-anchor" href="#使用-Nestybox-Sysbox-運行時執行"></a>使用 Nestybox Sysbox 運行時執行</h2>
-<p><a target="_blank" rel="noopener" href="https://github.com/nestybox/sysbox?ref=kodekloud.com">安裝 Nestybox Sysbox</a>，不需要特權模式或特殊配置，即可執行</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 開放 2375 至本機連接 Port</span></span><br><span class="line">docker run -p [本機連接Port]:2375 -e DOCKER_TLS_CERTDIR=<span class="string">&quot;&quot;</span> --runtime=sysbox-runc --name sysbox-docker -d docker:dind</span><br></pre></td></tr></table></figure>
-<p>VSCode 使用 Docker contexts 連線至遠端 Docker</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker context create <span class="built_in">test</span> --docker <span class="string">&quot;host=tcp://127.0.0.1:[本機連接Port]&quot;</span></span><br></pre></td></tr></table></figure>
+<h2 id="透過-Nestybox-Sysbox-運行時選項執行命令"><a class="header-anchor" href="#透過-Nestybox-Sysbox-運行時選項執行命令"></a>透過 Nestybox Sysbox 運行時選項執行命令</h2>
+<p>安裝 <a target="_blank" rel="noopener" href="https://github.com/nestybox/sysbox?tab=readme-ov-file#installation">Nestybox Sysbox</a> 後，不需要特權模式，即可執行</p>
+<p>運行時選項: --runtime=sysbox-runc</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -p [本機連接Port]:2375 -e DOCKER_TLS_CERTDIR=<span class="string">&quot;&quot;</span> --runtime=sysbox-runc --name sysbox-docker -d docker:dind</span><br></pre></td></tr></table></figure>
+<h1 id="使用-Docker-CLI-透過-Docker-contexts-連線至遠端-Docker"><a class="header-anchor" href="#使用-Docker-CLI-透過-Docker-contexts-連線至遠端-Docker"></a>使用 Docker CLI 透過 Docker contexts 連線至遠端 Docker</h1>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 建立 Docker contexts</span></span><br><span class="line">docker context create <span class="built_in">test</span> --docker <span class="string">&quot;host=tcp://127.0.0.1:[本機連接Port]&quot;</span></span><br><span class="line"><span class="comment"># 使用 Docker contexts</span></span><br><span class="line">docker context use <span class="built_in">test</span></span><br></pre></td></tr></table></figure>
 <div class="note warning"><p>📜 參考資料</p>
 <ol>
 <li><a target="_blank" rel="noopener" href="https://kodekloud.com/blog/run-docker-in-docker-container/">3 Best Ways to Run Docker in Docker Container</a></li>
