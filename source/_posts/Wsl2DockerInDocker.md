@@ -5,7 +5,7 @@ categories: Wsl2
 tags: [Wsl2, Docker]
 ---
 
-# 掛載主機的 Docker Socket
+# 使用主機的 Docker Socket
 
 ## 建立 daemon.json
 ```bash
@@ -20,7 +20,7 @@ sudo nano /etc/docker/daemon.json
 }
 ```
 
-## 執行命令時須掛載 docker.sock 
+## 執行命令時掛載 docker.sock 
 ```bash
 docker run -v /var/run/docker.sock:/var/run/docker.sock -ti [Docker 映像檔]
 ```
@@ -41,23 +41,27 @@ curl -XPOST --unix-socket /var/run/docker.sock http://localhost/containers/[容�
 
 可參考以下兩種方法運行 docker:dind 映像
 
-## 需要執行帶有該--privileged選項和一些附加標誌的容器
+## 透過特權模式選項執行命令
+特權模式選項: --privileged
 ```bash
 docker run -p [本機連接Port]:2375 --privileged -e DOCKER_TLS_CERTDIR="" --name privileged-docker -d docker:dind
 ```
 
-## 使用 Nestybox Sysbox 運行時執行
-[安裝 Nestybox Sysbox](https://github.com/nestybox/sysbox?ref=kodekloud.com)，不需要特權模式或特殊配置，即可執行
+## 透過 Nestybox Sysbox 運行時選項執行命令
+安裝 [Nestybox Sysbox](https://github.com/nestybox/sysbox?tab=readme-ov-file#installation) 後，不需要特權模式，即可執行
 
+運行時選項: --runtime=sysbox-runc
 ```bash
-# 開放 2375 至本機連接 Port
 docker run -p [本機連接Port]:2375 -e DOCKER_TLS_CERTDIR="" --runtime=sysbox-runc --name sysbox-docker -d docker:dind
 ```
 
-VSCode 使用 Docker contexts 連線至遠端 Docker
+# 使用 Docker CLI 透過 Docker contexts 連線至遠端 Docker
 
 ```bash
+# 建立 Docker contexts
 docker context create test --docker "host=tcp://127.0.0.1:[本機連接Port]"
+# 使用 Docker contexts
+docker context use test
 ```
 
 {% note warning %}

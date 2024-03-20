@@ -5,7 +5,7 @@ categories: Linux
 tags: [Linux, Ubuntu, Odbc, Mssql]
 ---
 
-# Linux Odbc 元件配置
+# 配置 Linux Odbc 元件
 安裝 Linux Odbc 元件
 ```bash
 sudo apt-get install unixodbc
@@ -13,7 +13,7 @@ sudo apt-get install unixodbc
 
 <!--more-->
 
-# Odbc Driver 安裝
+# 安裝 Odbc Driver
 登入[Microsoft網頁](https://docs.microsoft.com/en-us/sql/connect/odbc/download-odbc-driver-for-sql-server?view=sql-server-ver15)下載Odbc Driver並安裝
 ```bash
 sudo dpkg -i msodbcsql17_17.8.1.1-1_amd64.deb

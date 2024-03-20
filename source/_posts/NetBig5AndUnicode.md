@@ -5,7 +5,7 @@ categories: .Net
 tags: [.Net, Linux, Font, Big5, Unicode]
 ---
 
-# Big5 字元轉換
+# 轉換 Big5 字元
 Big5 依傳入內碼轉成字元
 
 ```C#
@@ -26,7 +26,7 @@ string result = big5.GetString(bytes);
 
 <!--more-->
 
-# Unicode 字元轉換
+# 轉換 Unicode 字元
 Unicode 依傳入內碼轉成字元，與 Big5 轉換的方法雷同，只需調整內碼放置的順序
 
 ```C#

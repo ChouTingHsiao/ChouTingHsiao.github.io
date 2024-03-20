@@ -13,7 +13,7 @@ wsl -l -v
 
 <!--more-->
 
-# 遷移至磁碟機 D
+# 遷移 WSL2 至磁碟機 D
 ```powershell
 # 導出已安裝的 Linux 發行版壓縮檔
 wsl --export "Ubuntu-22.04" d:\ubuntu.tar

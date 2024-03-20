@@ -38,7 +38,7 @@ gdb `cat ExecutablePath` CoreDump
 dotnet-dump ps
 dotnet-dump collect --process-id 1902 -->
 
-# 安裝 Dotnet 工具
+# 安裝相關 Dotnet 工具
 
 安裝 dotnet-symbol 導出傾印檔案的符號
 ```bash
@@ -89,7 +89,7 @@ setsymbolserver -directory ~/dumps/symbols
 GC狀態:  eeheap -gc
 ```
 
-# 安裝 ProcDump
+# 安裝 ProcDump 自動擷取傾印檔案
 
 當目標進程 CPU 或記憶體使用量達到特定臨界值或低於限制值時，您可以使用 ProcDump 來擷取記憶體傾印檔案。
 ```bash

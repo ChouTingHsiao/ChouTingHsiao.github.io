@@ -5,9 +5,9 @@ categories: .Net
 tags: [.Net, XML]
 ---
 
-# XML 資料
+# 宣告 XML 資料
 
-宣告 XML 格式字串
+XML 格式字串如下
 ```c#
 string doc = @"<properties>
 <property key='name'>Test</property>

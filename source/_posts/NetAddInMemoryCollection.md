@@ -1,11 +1,11 @@
 ---
-title: 使用 AddInMemoryCollection 設定 Configuration
+title: 使用 AddInMemoryCollection 設定 Configuration 進行單元測試
 date: 2023-01-21 18:00:00
 categories: .Net
-tags: [.Net, IConfiguration]
+tags: [.Net, UnitTest, IConfiguration]
 ---
 
-# appsettings.json 設定如下
+# 設定 appsettings.json 如下
 ```json
 {
   "Logging": {

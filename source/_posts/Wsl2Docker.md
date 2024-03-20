@@ -47,12 +47,12 @@ sudo systemctl restart docker.service
 ss -peanut | grep :2375
 ```
 
-# Chocolatey 安裝 Docker CLI
+# 使用 Chocolatey 安裝 Docker CLI
 ```powershell
 choco install docker-cli
 ```
 
-# 主機連線設定有兩種方式
+# 設定主機連線有兩種方式
 1. 設定環境變數 DOCKER_HOST
 ```powershell
 [Environment]::SetEnvironmentVariable('DOCKER_HOST', "tcp://$($wslip):2375", 'User')
@@ -78,7 +78,7 @@ docker --context wsl ps
 docker context ls --format="{{json .}}"
 ```
 
-# Powershell 取得 WSL 的 IP 位置
+# 使用 Powershell 取得 WSL 的 IP 位置
 ```powershell
 wsl -- ip -o -4 -json addr list eth0 `
 | ConvertFrom-Json `

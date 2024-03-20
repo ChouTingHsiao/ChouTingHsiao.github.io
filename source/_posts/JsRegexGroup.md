@@ -5,8 +5,8 @@ categories: Javascript
 tags: [Javascript, Regex]
 ---
 
-# Regex 群組
-
+# 使用 Regex 群組
+群組方法用法如下
 ```javascript
 // 建立規則
 var myRegexp = /(?<群組名稱>.*)Test/g;

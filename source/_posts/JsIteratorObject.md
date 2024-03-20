@@ -5,8 +5,8 @@ categories: Javascript
 tags: [Javascript, Object]
 ---
 
-# for...in
-使用 for...in 語法
+# 使用 for...in
+方法格式如下
 ```javascript
 for (變數 in 物件) {...
 }
@@ -25,8 +25,8 @@ for (let filed in model) {
 }
 ```
 
-# Object.keys()
-使用 Object.keys()
+# 使用 Object.keys()
+方法格式如下
 ```javascript
 Object.keys(物件);
 ```
