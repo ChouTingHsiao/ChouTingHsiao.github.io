@@ -130,30 +130,6 @@
       </tags>
   </entry>
   <entry>
-    <title>FontForge 使用 Python Script 進行字型檔轉換</title>
-    <url>/2021/10/23/FontForgePythonTransfer/</url>
-    <content><![CDATA[<h1 id="建立-font-py-檔案"><a class="header-anchor" href="#建立-font-py-檔案"></a>建立 <a href="http://font.py">font.py</a> 檔案</h1>
-<p>使用 python 操作 fontforge 轉換字型檔</p>
-<span id="more"></span>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="comment"># 載入 FontForge 模組</span></span><br><span class="line"><span class="keyword">import</span> fontforge</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定義 main 函數</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():	</span><br><span class="line">	<span class="comment"># 載入參數</span></span><br><span class="line">	fontFilePath = sys.argv[<span class="number">1</span>]	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 開啟字型檔</span></span><br><span class="line">	originFile=fontforge.<span class="built_in">open</span>(fontFilePath)	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 選取 unicode 特定範圍的字型</span></span><br><span class="line">	originFile.selection.select((<span class="string">&quot;ranges&quot;</span>, <span class="string">&quot;unicode&quot;</span>), <span class="number">0xe000</span>, <span class="number">0xf8ff</span>)	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 複製字型至剪貼簿</span></span><br><span class="line">	originFile.copy()	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 建立新的字型檔</span></span><br><span class="line">	newFile=fontforge.font()</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 設定 sfnt_names 參數與原檔一致</span></span><br><span class="line">	newFile.sfnt_names = originFile.sfnt_names	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 設定 encoding 參數與原檔一致</span></span><br><span class="line">	newFile.encoding = originFile.encoding	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 設定 size 參數與原檔一致</span></span><br><span class="line">	newFile.em = originFile.em	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 設定 layers 參數與原檔一致</span></span><br><span class="line">	newFile.layers[<span class="string">&#x27;Fore&#x27;</span>].is_quadratic = originFile.layers[<span class="string">&#x27;Fore&#x27;</span>].is_quadratic	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 選取 unicode 特定範圍的字型</span></span><br><span class="line">	newFile.selection.select((<span class="string">&quot;ranges&quot;</span>, <span class="string">&quot;unicode&quot;</span>), <span class="number">0xe000</span>, <span class="number">0xf8ff</span>)	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 貼上剪貼簿內容</span></span><br><span class="line">	newFile.paste()	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 設定字型名稱</span></span><br><span class="line">	newFile.fontname=<span class="string">&quot;EUDC&quot;</span>	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 保存為woff字型</span></span><br><span class="line">	newFile.generate(<span class="string">&quot;EUDC.woff&quot;</span>)	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 關閉字型檔</span></span><br><span class="line">	originFile.close()	</span><br><span class="line"></span><br><span class="line"><span class="comment"># 執行 main 函數</span></span><br><span class="line">main()	</span><br></pre></td></tr></table></figure>
-<h1 id="執行-Python-Script"><a class="header-anchor" href="#執行-Python-Script"></a>執行 Python Script</h1>
-<p>使用 FontForge 執行 Python Script</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">fontforge -script font.py [FontFilePath]</span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://fontforge.org/docs/scripting/python.html">Python Scripting</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>FontForge</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-        <tag>Font</tag>
-        <tag>Woff</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>如何設定 Protractor WebDriver Version</title>
     <url>/2020/08/31/AngularProtractorWebDriver/</url>
     <content><![CDATA[<h1 id="安裝-WebDriver"><a class="header-anchor" href="#安裝-WebDriver"></a>安裝 WebDriver</h1>
@@ -178,6 +154,30 @@
       <tags>
         <tag>Angular</tag>
         <tag>Protractor</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>FontForge 使用 Python Script 進行字型檔轉換</title>
+    <url>/2021/10/23/FontForgePythonTransfer/</url>
+    <content><![CDATA[<h1 id="建立-font-py-檔案"><a class="header-anchor" href="#建立-font-py-檔案"></a>建立 <a href="http://font.py">font.py</a> 檔案</h1>
+<p>使用 python 操作 fontforge 轉換字型檔</p>
+<span id="more"></span>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="comment"># 載入 FontForge 模組</span></span><br><span class="line"><span class="keyword">import</span> fontforge</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定義 main 函數</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():	</span><br><span class="line">	<span class="comment"># 載入參數</span></span><br><span class="line">	fontFilePath = sys.argv[<span class="number">1</span>]	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 開啟字型檔</span></span><br><span class="line">	originFile=fontforge.<span class="built_in">open</span>(fontFilePath)	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 選取 unicode 特定範圍的字型</span></span><br><span class="line">	originFile.selection.select((<span class="string">&quot;ranges&quot;</span>, <span class="string">&quot;unicode&quot;</span>), <span class="number">0xe000</span>, <span class="number">0xf8ff</span>)	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 複製字型至剪貼簿</span></span><br><span class="line">	originFile.copy()	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 建立新的字型檔</span></span><br><span class="line">	newFile=fontforge.font()</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 設定 sfnt_names 參數與原檔一致</span></span><br><span class="line">	newFile.sfnt_names = originFile.sfnt_names	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 設定 encoding 參數與原檔一致</span></span><br><span class="line">	newFile.encoding = originFile.encoding	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 設定 size 參數與原檔一致</span></span><br><span class="line">	newFile.em = originFile.em	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 設定 layers 參數與原檔一致</span></span><br><span class="line">	newFile.layers[<span class="string">&#x27;Fore&#x27;</span>].is_quadratic = originFile.layers[<span class="string">&#x27;Fore&#x27;</span>].is_quadratic	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 選取 unicode 特定範圍的字型</span></span><br><span class="line">	newFile.selection.select((<span class="string">&quot;ranges&quot;</span>, <span class="string">&quot;unicode&quot;</span>), <span class="number">0xe000</span>, <span class="number">0xf8ff</span>)	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 貼上剪貼簿內容</span></span><br><span class="line">	newFile.paste()	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 設定字型名稱</span></span><br><span class="line">	newFile.fontname=<span class="string">&quot;EUDC&quot;</span>	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 保存為woff字型</span></span><br><span class="line">	newFile.generate(<span class="string">&quot;EUDC.woff&quot;</span>)	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 關閉字型檔</span></span><br><span class="line">	originFile.close()	</span><br><span class="line"></span><br><span class="line"><span class="comment"># 執行 main 函數</span></span><br><span class="line">main()	</span><br></pre></td></tr></table></figure>
+<h1 id="執行-Python-Script"><a class="header-anchor" href="#執行-Python-Script"></a>執行 Python Script</h1>
+<p>使用 FontForge 執行 Python Script</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">fontforge -script font.py [FontFilePath]</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://fontforge.org/docs/scripting/python.html">Python Scripting</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>FontForge</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>Font</tag>
+        <tag>Woff</tag>
       </tags>
   </entry>
   <entry>
@@ -210,6 +210,29 @@
       </tags>
   </entry>
   <entry>
+    <title>使用 Linux 檔案列表建立 Jenkins 下拉選單</title>
+    <url>/2021/10/23/JenkinsDropdown/</url>
+    <content><![CDATA[<h1 id="取得檔案列表方法"><a class="header-anchor" href="#取得檔案列表方法"></a>取得檔案列表方法</h1>
+<p>使用以下 Linxu 指令，將預設目錄每個檔案使用一列的方式逐一列出</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">ls</span> -1 /home/ubuntu</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<p>在 Pipeline 執行 Linxu 指令，把結果存入變數</p>
+<figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> fileInFolder = sh(<span class="attr">script:</span> <span class="string">&quot;ls -1 /home/ubuntu&quot;</span>, <span class="attr">returnStdout:</span> <span class="literal">true</span>).trim();</span><br></pre></td></tr></table></figure>
+<h1 id="定義-Dialog"><a class="header-anchor" href="#定義-Dialog"></a>定義 Dialog</h1>
+<p>在 Pipeline 定義 Dialog ，把 parameters -&gt; choice -&gt; choices 定義替換為上方變數 fileInFolder</p>
+<figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> dialogMessage = <span class="string">&quot;Release $&#123;JOB_NAME&#125; now?&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> confirmDialog =</span><br><span class="line">    input <span class="attr">message:</span> dialogMessage,</span><br><span class="line">    <span class="symbol">parameters:</span> [choice(<span class="attr">name:</span> <span class="string">&#x27;action&#x27;</span>, <span class="attr">choices:</span> fileInFolder, <span class="attr">description:</span> <span class="string">&#x27;&#x27;</span>)],</span><br><span class="line">    <span class="symbol">submitterParameter:</span> <span class="string">&#x27;releaseApprover&#x27;</span></span><br></pre></td></tr></table></figure>
+<p>取得用戶選取參數，使用變數 confirmDialog -&gt; parameters -&gt; choice -&gt; name的定義</p>
+<figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line">confirmDialog.action</span><br></pre></td></tr></table></figure>
+<p>取得點擊確認的用戶，使用變數 confirmDialog -&gt; submitterParameter的定義</p>
+<figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line">confirmDialog.releaseApprover</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Jenkins</category>
+      </categories>
+      <tags>
+        <tag>Jenkins</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Jenkins 執行備份專案命令</title>
     <url>/2024/01/01/JenkinsBackupProject/</url>
     <content><![CDATA[<h1 id="設定執行時間"><a class="header-anchor" href="#設定執行時間"></a>設定執行時間</h1>
@@ -229,29 +252,6 @@
 <p>使用 ssh 命令登入 Server 將專案複製至備份目錄</p>
 <figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line">sh <span class="string">&quot;ssh -p [ssh連接Port] [帳號]@[Server位置] \&quot;sudo cp -r $&#123;projectPath&#125;* $&#123;backupPath&#125;$&#123;dateNow&#125;/ \&quot;&quot;</span></span><br></pre></td></tr></table></figure>
 ]]></content>
-      <categories>
-        <category>Jenkins</category>
-      </categories>
-      <tags>
-        <tag>Jenkins</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>使用 Linux 檔案列表建立 Jenkins 下拉選單</title>
-    <url>/2021/10/23/JenkinsDropdown/</url>
-    <content><![CDATA[<h1 id="取得檔案列表方法"><a class="header-anchor" href="#取得檔案列表方法"></a>取得檔案列表方法</h1>
-<p>使用以下 Linxu 指令，將預設目錄每個檔案使用一列的方式逐一列出</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">ls</span> -1 /home/ubuntu</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<p>在 Pipeline 執行 Linxu 指令，把結果存入變數</p>
-<figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> fileInFolder = sh(<span class="attr">script:</span> <span class="string">&quot;ls -1 /home/ubuntu&quot;</span>, <span class="attr">returnStdout:</span> <span class="literal">true</span>).trim();</span><br></pre></td></tr></table></figure>
-<h1 id="定義-Dialog"><a class="header-anchor" href="#定義-Dialog"></a>定義 Dialog</h1>
-<p>在 Pipeline 定義 Dialog ，把 parameters -&gt; choice -&gt; choices 定義替換為上方變數 fileInFolder</p>
-<figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> dialogMessage = <span class="string">&quot;Release $&#123;JOB_NAME&#125; now?&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> confirmDialog =</span><br><span class="line">    input <span class="attr">message:</span> dialogMessage,</span><br><span class="line">    <span class="symbol">parameters:</span> [choice(<span class="attr">name:</span> <span class="string">&#x27;action&#x27;</span>, <span class="attr">choices:</span> fileInFolder, <span class="attr">description:</span> <span class="string">&#x27;&#x27;</span>)],</span><br><span class="line">    <span class="symbol">submitterParameter:</span> <span class="string">&#x27;releaseApprover&#x27;</span></span><br></pre></td></tr></table></figure>
-<p>取得用戶選取參數，使用變數 confirmDialog -&gt; parameters -&gt; choice -&gt; name的定義</p>
-<figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line">confirmDialog.action</span><br></pre></td></tr></table></figure>
-<p>取得點擊確認的用戶，使用變數 confirmDialog -&gt; submitterParameter的定義</p>
-<figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line">confirmDialog.releaseApprover</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>Jenkins</category>
       </categories>
@@ -388,6 +388,29 @@
       </tags>
   </entry>
   <entry>
+    <title>如何將圖片壓縮並下載檔案</title>
+    <url>/2019/12/25/JsPictureCompress/</url>
+    <content><![CDATA[<h1 id="建立-HTML"><a class="header-anchor" href="#建立-HTML"></a>建立 HTML</h1>
+<p>首先在 HTML 建立一個 File Upload 與一個 canvas</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;file&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">&quot;canvas&quot;</span>  <span class="attr">width</span>=<span class="string">&quot;800&quot;</span> <span class="attr">height</span>=<span class="string">&quot;600&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="綁定事件"><a class="header-anchor" href="#綁定事件"></a>綁定事件</h1>
+<p>接下來為 File Upload 綁定事件</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;input&#x27;</span>).<span class="title function_">addEventListener</span>(<span class="string">&#x27;change&#x27;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="comment">// 取得第一個檔案</span></span><br><span class="line">    <span class="keyword">const</span> file= <span class="variable language_">this</span>.<span class="property">files</span>[<span class="number">0</span>];</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 取得 canvas</span></span><br><span class="line">    <span class="keyword">const</span> canvas = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;canvas&#x27;</span>);   </span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 宣告 Image 物件</span></span><br><span class="line">    <span class="keyword">let</span> img = <span class="keyword">new</span> <span class="title class_">Image</span>; </span><br><span class="line"></span><br><span class="line">    <span class="comment">// 建立 Image 載入事件</span></span><br><span class="line">    img.<span class="property">onload</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 在 canvas 載入圖片 </span></span><br><span class="line">        canvas.<span class="title function_">getContext</span>(<span class="string">&#x27;2d&#x27;</span>).<span class="title function_">drawImage</span>(img,<span class="number">0</span>,<span class="number">0</span>,<span class="number">800</span>,<span class="number">600</span>); </span><br><span class="line"></span><br><span class="line">        <span class="comment">// 回收圖片物件</span></span><br><span class="line">        <span class="variable constant_">URL</span>.<span class="title function_">revokeObjectURL</span>(img.<span class="property">src</span>);   </span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 把 canvas 圖片轉成 Blob 格式</span></span><br><span class="line">        canvas.<span class="title function_">toBlob</span>(<span class="function">(<span class="params">blob</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="comment">// 宣告FileReader物件</span></span><br><span class="line">            <span class="keyword">var</span> reader = <span class="keyword">new</span> <span class="title class_">FileReader</span>();</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 建立 FileReader 載入完成事件</span></span><br><span class="line">            reader.<span class="property">onloadend</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">log</span>(reader.<span class="property">result</span>.<span class="title function_">split</span>(<span class="string">&quot;,&quot;</span>)[<span class="number">1</span>]);</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            <span class="comment">// 讀取 Blob 格式物件</span></span><br><span class="line">            reader.<span class="title function_">readAsDataURL</span>(blob);</span><br><span class="line">        &#125;, <span class="string">&quot;image/jpeg&quot;</span>, <span class="number">0.8</span>);</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="comment">// 圖片物件載入檔案</span></span><br><span class="line">    img.<span class="property">src</span> = <span class="variable constant_">URL</span>.<span class="title function_">createObjectURL</span>(file);</span><br><span class="line">&#125;, <span class="literal">false</span>);</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API">MDN Canvas_API</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>Javascript</category>
+      </categories>
+      <tags>
+        <tag>Javascript</tag>
+        <tag>Canvas</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>如何使用 Regex 群組</title>
     <url>/2022/05/22/JsRegexGroup/</url>
     <content><![CDATA[<h1 id="使用-Regex-群組"><a class="header-anchor" href="#使用-Regex-群組"></a>使用 Regex 群組</h1>
@@ -434,29 +457,6 @@
         <tag>Ubuntu</tag>
         <tag>Odbc</tag>
         <tag>IBM i Access</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>如何將圖片壓縮並下載檔案</title>
-    <url>/2019/12/25/JsPictureCompress/</url>
-    <content><![CDATA[<h1 id="建立-HTML"><a class="header-anchor" href="#建立-HTML"></a>建立 HTML</h1>
-<p>首先在 HTML 建立一個 File Upload 與一個 canvas</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;file&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">&quot;canvas&quot;</span>  <span class="attr">width</span>=<span class="string">&quot;800&quot;</span> <span class="attr">height</span>=<span class="string">&quot;600&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="綁定事件"><a class="header-anchor" href="#綁定事件"></a>綁定事件</h1>
-<p>接下來為 File Upload 綁定事件</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;input&#x27;</span>).<span class="title function_">addEventListener</span>(<span class="string">&#x27;change&#x27;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="comment">// 取得第一個檔案</span></span><br><span class="line">    <span class="keyword">const</span> file= <span class="variable language_">this</span>.<span class="property">files</span>[<span class="number">0</span>];</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 取得 canvas</span></span><br><span class="line">    <span class="keyword">const</span> canvas = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;canvas&#x27;</span>);   </span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 宣告 Image 物件</span></span><br><span class="line">    <span class="keyword">let</span> img = <span class="keyword">new</span> <span class="title class_">Image</span>; </span><br><span class="line"></span><br><span class="line">    <span class="comment">// 建立 Image 載入事件</span></span><br><span class="line">    img.<span class="property">onload</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 在 canvas 載入圖片 </span></span><br><span class="line">        canvas.<span class="title function_">getContext</span>(<span class="string">&#x27;2d&#x27;</span>).<span class="title function_">drawImage</span>(img,<span class="number">0</span>,<span class="number">0</span>,<span class="number">800</span>,<span class="number">600</span>); </span><br><span class="line"></span><br><span class="line">        <span class="comment">// 回收圖片物件</span></span><br><span class="line">        <span class="variable constant_">URL</span>.<span class="title function_">revokeObjectURL</span>(img.<span class="property">src</span>);   </span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 把 canvas 圖片轉成 Blob 格式</span></span><br><span class="line">        canvas.<span class="title function_">toBlob</span>(<span class="function">(<span class="params">blob</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="comment">// 宣告FileReader物件</span></span><br><span class="line">            <span class="keyword">var</span> reader = <span class="keyword">new</span> <span class="title class_">FileReader</span>();</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 建立 FileReader 載入完成事件</span></span><br><span class="line">            reader.<span class="property">onloadend</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">log</span>(reader.<span class="property">result</span>.<span class="title function_">split</span>(<span class="string">&quot;,&quot;</span>)[<span class="number">1</span>]);</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            <span class="comment">// 讀取 Blob 格式物件</span></span><br><span class="line">            reader.<span class="title function_">readAsDataURL</span>(blob);</span><br><span class="line">        &#125;, <span class="string">&quot;image/jpeg&quot;</span>, <span class="number">0.8</span>);</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="comment">// 圖片物件載入檔案</span></span><br><span class="line">    img.<span class="property">src</span> = <span class="variable constant_">URL</span>.<span class="title function_">createObjectURL</span>(file);</span><br><span class="line">&#125;, <span class="literal">false</span>);</span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API">MDN Canvas_API</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>Javascript</category>
-      </categories>
-      <tags>
-        <tag>Javascript</tag>
-        <tag>Canvas</tag>
       </tags>
   </entry>
   <entry>
@@ -568,6 +568,28 @@ plink -v -x -a -T -C -noagent -ssh -pw "[密碼]" -P 50893 -L [本地端口]:[�
       </tags>
   </entry>
   <entry>
+    <title>Http 的 Get 方法傳入 List 參數</title>
+    <url>/2023/01/21/NetHttpGetWithList/</url>
+    <content><![CDATA[<h1 id="建立類別"><a class="header-anchor" href="#建立類別"></a>建立類別</h1>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">User</span> &#123;</span><br><span class="line">  </span><br><span class="line">	<span class="keyword">public</span> <span class="built_in">string</span> Name &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> <span class="built_in">int</span> Age &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="建立-HttpGet-方法"><a class="header-anchor" href="#建立-HttpGet-方法"></a>建立 HttpGet 方法</h1>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">[<span class="meta">ApiController</span>]</span><br><span class="line">[<span class="meta">Route(<span class="string">&quot;[controller]&quot;</span>)</span>]</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">UserController</span> : <span class="title">ControllerBase</span></span><br><span class="line">&#123;</span><br><span class="line">  [<span class="meta">HttpGet</span>]</span><br><span class="line">  <span class="function"><span class="keyword">public</span> List&lt;User&gt; <span class="title">Get</span>(<span class="params">[FromQuery] List&lt;User&gt; user</span>)</span></span><br><span class="line">  &#123;</span><br><span class="line">      <span class="keyword">return</span> user;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="組合-Request-的-Url"><a class="header-anchor" href="#組合-Request-的-Url"></a>組合 Request 的 Url</h1>
+<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line">https://example.com/User?user[0].Name=&#x27;張三&#x27;&amp;user[0].Age=10&amp;user[1].Name=&#x27;李四&#x27;&amp;user[1].Age=20</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://stackoverflow.com/questions/3061273/send-an-array-with-an-http-get">Send an Array with an HTTP Get</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>.Net</category>
+      </categories>
+      <tags>
+        <tag>.Net</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>使用 lldb 分析 Dotnet 核心傾印檔案</title>
     <url>/2023/05/07/NetCoreDump/</url>
     <content><![CDATA[<h1 id="使用-apport-解壓縮核心傾印檔案"><a class="header-anchor" href="#使用-apport-解壓縮核心傾印檔案"></a>使用 apport 解壓縮核心傾印檔案</h1>
@@ -628,18 +650,29 @@ dotnet-dump collect --process-id 1902 -->
       </tags>
   </entry>
   <entry>
-    <title>Http 的 Get 方法傳入 List 參數</title>
-    <url>/2023/01/21/NetHttpGetWithList/</url>
-    <content><![CDATA[<h1 id="建立類別"><a class="header-anchor" href="#建立類別"></a>建立類別</h1>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">User</span> &#123;</span><br><span class="line">  </span><br><span class="line">	<span class="keyword">public</span> <span class="built_in">string</span> Name &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> <span class="built_in">int</span> Age &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    <title>如何在資料存取層進行單元測試</title>
+    <url>/2022/05/01/NetRepositoryUnitTest/</url>
+    <content><![CDATA[<h1 id="安裝-Sqlite"><a class="header-anchor" href="#安裝-Sqlite"></a>安裝 Sqlite</h1>
+<p>安裝 Nuget 的 Sqlite 套件</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Install-Package</span> Microsoft.EntityFrameworkCore.Sqlite</span><br></pre></td></tr></table></figure>
 <span id="more"></span>
-<h1 id="建立-HttpGet-方法"><a class="header-anchor" href="#建立-HttpGet-方法"></a>建立 HttpGet 方法</h1>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">[<span class="meta">ApiController</span>]</span><br><span class="line">[<span class="meta">Route(<span class="string">&quot;[controller]&quot;</span>)</span>]</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">UserController</span> : <span class="title">ControllerBase</span></span><br><span class="line">&#123;</span><br><span class="line">  [<span class="meta">HttpGet</span>]</span><br><span class="line">  <span class="function"><span class="keyword">public</span> List&lt;User&gt; <span class="title">Get</span>(<span class="params">[FromQuery] List&lt;User&gt; user</span>)</span></span><br><span class="line">  &#123;</span><br><span class="line">      <span class="keyword">return</span> user;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="組合-Request-的-Url"><a class="header-anchor" href="#組合-Request-的-Url"></a>組合 Request 的 Url</h1>
-<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line">https://example.com/User?user[0].Name=&#x27;張三&#x27;&amp;user[0].Age=10&amp;user[1].Name=&#x27;李四&#x27;&amp;user[1].Age=20</span><br></pre></td></tr></table></figure>
+<h1 id="建立-DbContext"><a class="header-anchor" href="#建立-DbContext"></a>建立 DbContext</h1>
+<p>建立 EntityFramework 的 DbContext</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">TestDbContext</span> : <span class="title">DbContext</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">DbSet</span>&lt;<span class="title">Table</span>&gt;? Table</span> &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">TestDbContext</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">TestDbContext</span>(<span class="params">DbContextOptions options</span>) : <span class="title">base</span>(<span class="params">options</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">OnModelCreating</span>(<span class="params">ModelBuilder modelBuilder</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        modelBuilder.Entity&lt;Table&gt;(entity =&gt; &#123;</span><br><span class="line">            entity.HasKey(x =&gt; x.Id);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="使用-In-Memory-模式操作資料庫"><a class="header-anchor" href="#使用-In-Memory-模式操作資料庫"></a>使用 In-Memory 模式操作資料庫</h1>
+<p>使用 Sqlite 的 In-Memory 模式載入 DbContext</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">SqliteConnection connection = <span class="keyword">new</span> SqliteConnection(<span class="string">&quot;Data Source=:memory:&quot;</span>);</span><br><span class="line"></span><br><span class="line">connection.Open();</span><br><span class="line"></span><br><span class="line">DbContextOptions options = <span class="keyword">new</span> DbContextOptionsBuilder()</span><br><span class="line">.UseSqlite(connection)</span><br><span class="line">.Options;</span><br></pre></td></tr></table></figure>
+<p>然後使用 DbContext 的設定建立資料庫</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> TestDbContext context = <span class="keyword">new</span> TestDbContext(options);</span><br><span class="line">context.Database.EnsureCreated();</span><br></pre></td></tr></table></figure>
+<p>最後可開始使用 EntityFramework 開始操作資料庫</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> TestDbContext context = <span class="keyword">new</span> TestDbContext(options);</span><br><span class="line">List&lt;Table&gt; table = context.Table.ToList();</span><br></pre></td></tr></table></figure>
+<h1 id="自定義-Database-Function"><a class="header-anchor" href="#自定義-Database-Function"></a>自定義 Database Function</h1>
+<p>如果有使用 Sqlite 未定義的 Database Function , 可在程式中使用 CreateFunction 定義</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">SqliteConnection connection = <span class="keyword">new</span> SqliteConnection(<span class="string">&quot;Data Source=:memory:&quot;</span>);</span><br><span class="line"></span><br><span class="line">connection.CreateFunction(<span class="string">&quot;current_date&quot;</span>, (x) =&gt; DateTime.Now);</span><br><span class="line"></span><br><span class="line">connection.Open();</span><br></pre></td></tr></table></figure>
 <div class="note warning"><p>📜 參考資料</p>
 <ol>
-<li><a href="https://stackoverflow.com/questions/3061273/send-an-array-with-an-http-get">Send an Array with an HTTP Get</a></li>
+<li><a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.data.sqlite.sqliteconnection.createfunction?view=msdata-sqlite-6.0.0">Microsoft文件</a></li>
+<li><a href="https://csharp.hotexamples.com/examples/-/SQLiteConnection/CreateFunction/php-sqliteconnection-createfunction-method-examples.html">SQLite Examples</a></li>
 </ol>
 </div>]]></content>
       <categories>
@@ -647,6 +680,8 @@ dotnet-dump collect --process-id 1902 -->
       </categories>
       <tags>
         <tag>.Net</tag>
+        <tag>UnitTest</tag>
+        <tag>SQLite</tag>
       </tags>
   </entry>
   <entry>
@@ -688,41 +723,6 @@ dotnet-dump collect --process-id 1902 -->
       </tags>
   </entry>
   <entry>
-    <title>如何在資料存取層進行單元測試</title>
-    <url>/2022/05/01/NetRepositoryUnitTest/</url>
-    <content><![CDATA[<h1 id="安裝-Sqlite"><a class="header-anchor" href="#安裝-Sqlite"></a>安裝 Sqlite</h1>
-<p>安裝 Nuget 的 Sqlite 套件</p>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Install-Package</span> Microsoft.EntityFrameworkCore.Sqlite</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="建立-DbContext"><a class="header-anchor" href="#建立-DbContext"></a>建立 DbContext</h1>
-<p>建立 EntityFramework 的 DbContext</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">TestDbContext</span> : <span class="title">DbContext</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">DbSet</span>&lt;<span class="title">Table</span>&gt;? Table</span> &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">TestDbContext</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">TestDbContext</span>(<span class="params">DbContextOptions options</span>) : <span class="title">base</span>(<span class="params">options</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">OnModelCreating</span>(<span class="params">ModelBuilder modelBuilder</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        modelBuilder.Entity&lt;Table&gt;(entity =&gt; &#123;</span><br><span class="line">            entity.HasKey(x =&gt; x.Id);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="使用-In-Memory-模式操作資料庫"><a class="header-anchor" href="#使用-In-Memory-模式操作資料庫"></a>使用 In-Memory 模式操作資料庫</h1>
-<p>使用 Sqlite 的 In-Memory 模式載入 DbContext</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">SqliteConnection connection = <span class="keyword">new</span> SqliteConnection(<span class="string">&quot;Data Source=:memory:&quot;</span>);</span><br><span class="line"></span><br><span class="line">connection.Open();</span><br><span class="line"></span><br><span class="line">DbContextOptions options = <span class="keyword">new</span> DbContextOptionsBuilder()</span><br><span class="line">.UseSqlite(connection)</span><br><span class="line">.Options;</span><br></pre></td></tr></table></figure>
-<p>然後使用 DbContext 的設定建立資料庫</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> TestDbContext context = <span class="keyword">new</span> TestDbContext(options);</span><br><span class="line">context.Database.EnsureCreated();</span><br></pre></td></tr></table></figure>
-<p>最後可開始使用 EntityFramework 開始操作資料庫</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> TestDbContext context = <span class="keyword">new</span> TestDbContext(options);</span><br><span class="line">List&lt;Table&gt; table = context.Table.ToList();</span><br></pre></td></tr></table></figure>
-<h1 id="自定義-Database-Function"><a class="header-anchor" href="#自定義-Database-Function"></a>自定義 Database Function</h1>
-<p>如果有使用 Sqlite 未定義的 Database Function , 可在程式中使用 CreateFunction 定義</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">SqliteConnection connection = <span class="keyword">new</span> SqliteConnection(<span class="string">&quot;Data Source=:memory:&quot;</span>);</span><br><span class="line"></span><br><span class="line">connection.CreateFunction(<span class="string">&quot;current_date&quot;</span>, (x) =&gt; DateTime.Now);</span><br><span class="line"></span><br><span class="line">connection.Open();</span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.data.sqlite.sqliteconnection.createfunction?view=msdata-sqlite-6.0.0">Microsoft文件</a></li>
-<li><a href="https://csharp.hotexamples.com/examples/-/SQLiteConnection/CreateFunction/php-sqliteconnection-createfunction-method-examples.html">SQLite Examples</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>.Net</category>
-      </categories>
-      <tags>
-        <tag>.Net</tag>
-        <tag>UnitTest</tag>
-        <tag>SQLite</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>如何解析 XML 資料</title>
     <url>/2024/02/04/NetXmlParse/</url>
     <content><![CDATA[<h1 id="宣告-XML-資料"><a class="header-anchor" href="#宣告-XML-資料"></a>宣告 XML 資料</h1>
@@ -751,63 +751,6 @@ dotnet-dump collect --process-id 1902 -->
       <tags>
         <tag>.Net</tag>
         <tag>XML</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>在 Polyglot Notebooks 使用 DataFrame</title>
-    <url>/2024/05/05/PolyglotNotebooksDataFrame/</url>
-    <content><![CDATA[<h1 id="載入-CSV-資料"><a class="header-anchor" href="#載入-CSV-資料"></a>載入 CSV 資料</h1>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="meta">#r &quot;nuget: Microsoft.Data.Analysis, 0.21.1&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> System.IO;</span><br><span class="line"><span class="keyword">using</span> Microsoft.Data.Analysis;</span><br><span class="line"></span><br><span class="line"><span class="built_in">string</span> csvfile = File.ReadAllText(<span class="string">&quot;test.csv&quot;</span>);</span><br><span class="line">DataFrame df = DataFrame.LoadCsvFromString(csvfile, <span class="string">&#x27;,&#x27;</span>);</span><br><span class="line">Console.WriteLine(df);</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="取得前-1-筆"><a class="header-anchor" href="#取得前-1-筆"></a>取得前 1 筆</h1>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">DataFrame headRow = df.Head(<span class="number">1</span>);</span><br><span class="line">Console.WriteLine(headRow);</span><br></pre></td></tr></table></figure>
-<h1 id="加入新-column"><a class="header-anchor" href="#加入新-column"></a>加入新 column</h1>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">df.Columns.Add(<span class="keyword">new</span> PrimitiveDataFrameColumn&lt;<span class="built_in">int</span>&gt;(<span class="string">&quot;AGE&quot;</span>, <span class="keyword">new</span> List&lt;<span class="built_in">int</span>&gt;&#123;<span class="number">1</span>, <span class="number">1</span>&#125;));</span><br></pre></td></tr></table></figure>
-<h1 id="加入新-row"><a class="header-anchor" href="#加入新-row"></a>加入新 row</h1>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">df.Append(<span class="keyword">new</span> List&lt;KeyValuePair&lt;<span class="built_in">string</span>, <span class="built_in">object</span>&gt;&gt;() &#123;</span><br><span class="line"><span class="keyword">new</span> KeyValuePair&lt;<span class="built_in">string</span>, <span class="built_in">object</span>&gt;(<span class="string">&quot;NAME&quot;</span>, <span class="string">&quot;王五&quot;</span>),</span><br><span class="line"><span class="keyword">new</span> KeyValuePair&lt;<span class="built_in">string</span>, <span class="built_in">object</span>&gt;(<span class="string">&quot;AGE&quot;</span>, <span class="number">3</span>)</span><br><span class="line">&#125;, <span class="literal">true</span>);</span><br><span class="line"></span><br><span class="line">Console.WriteLine(df);</span><br></pre></td></tr></table></figure>
-<h1 id="排序資料"><a class="header-anchor" href="#排序資料"></a>排序資料</h1>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">DataFrame orderByData = df.OrderByDescending(<span class="string">&quot;AGE&quot;</span>);</span><br><span class="line">Console.WriteLine(orderByData);</span><br></pre></td></tr></table></figure>
-<h1 id="分群資料"><a class="header-anchor" href="#分群資料"></a>分群資料</h1>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">GroupBy groupByData = df.GroupBy(<span class="string">&quot;AGE&quot;</span>);</span><br><span class="line">Console.WriteLine(groupByData);</span><br></pre></td></tr></table></figure>
-<h1 id="篩選資料"><a class="header-anchor" href="#篩選資料"></a>篩選資料</h1>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">DataFrame filterData = df.Filter(df.Columns[<span class="string">&quot;AGE&quot;</span>].ElementwiseGreaterThan(<span class="number">1</span>));</span><br><span class="line">Console.WriteLine(filterData);</span><br></pre></td></tr></table></figure>
-<h1 id="合併資料"><a class="header-anchor" href="#合併資料"></a>合併資料</h1>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">DataFrame df1 = DataFrame.LoadCsvFromString(csvfile, <span class="string">&#x27;,&#x27;</span>);</span><br><span class="line">DataFrame mergeData = df1.Merge&lt;<span class="built_in">string</span>&gt;(df, <span class="string">&quot;NAME&quot;</span>, <span class="string">&quot;NAME&quot;</span>);</span><br><span class="line">Console.WriteLine(mergeData);</span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://learn.microsoft.com/en-us/dotnet/api/microsoft.data.analysis.dataframe?view=ml-dotnet-preview&amp;viewFallbackFrom=ml-dotnet">DataFrame Class</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>PolyglotNotebooks</category>
-      </categories>
-      <tags>
-        <tag>PolyglotNotebooks</tag>
-        <tag>DataFrame</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>使用 Flask-Caching 緩存 Flask 呼叫方法產生的資料</title>
-    <url>/2023/07/07/PythonFlaskCaching/</url>
-    <content><![CDATA[<h1 id="安裝套件"><a class="header-anchor" href="#安裝套件"></a>安裝套件</h1>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip install Flask</span><br><span class="line">pip install Flask-Caching</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="建立-address-json-內容如下"><a class="header-anchor" href="#建立-address-json-內容如下"></a>建立 address.json 內容如下</h1>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;Address&quot;</span><span class="punctuation">:</span> <span class="string">&quot;新竹市&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;Zip&quot;</span><span class="punctuation">:</span> <span class="string">&quot;300&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-<h1 id="建立-app-py-內容如下"><a class="header-anchor" href="#建立-app-py-內容如下"></a>建立 <a href="http://app.py">app.py</a> 內容如下</h1>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</span><br><span class="line"><span class="keyword">from</span> flask_caching <span class="keyword">import</span> Cache</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line">config = &#123;</span><br><span class="line">    <span class="string">&quot;DEBUG&quot;</span>: <span class="literal">True</span>,</span><br><span class="line">    <span class="string">&quot;CACHE_TYPE&quot;</span>: <span class="string">&quot;SimpleCache&quot;</span>,</span><br><span class="line">    <span class="string">&quot;CACHE_DEFAULT_TIMEOUT&quot;</span>: <span class="number">3000</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line">app.config.from_mapping(config)</span><br><span class="line">cache = Cache(app)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用裝飾器緩存呼叫方法產生的資料</span></span><br><span class="line"><span class="meta">@cache.memoize(<span class="params">timeout=<span class="number">50</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">LoadAllAddress</span>():</span><br><span class="line">    <span class="comment"># 讀取 address.json</span></span><br><span class="line">    file = <span class="built_in">open</span>(<span class="string">&#x27;address.json&#x27;</span>)</span><br><span class="line">    data = json.load(file)</span><br><span class="line">    <span class="keyword">return</span> data</span><br><span class="line"></span><br><span class="line"><span class="comment"># 刪除緩存</span></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/ClearAddressCache&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">delAddress</span>():</span><br><span class="line">   <span class="comment"># 刪除緩存呼叫方法產生的資料</span></span><br><span class="line">   cache.delete_memoized(LoadAllAddress)</span><br><span class="line">   <span class="keyword">return</span> <span class="string">&quot;Clear Success&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 取得 address.json 的資料</span></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/GetAllAddress&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">AllAddress</span>():</span><br><span class="line">    <span class="keyword">return</span> LoadAllAddress()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    app.run()</span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://flask-caching.readthedocs.io/en/latest/">Flask-Caching</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>Python</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-        <tag>Flask</tag>
-        <tag>Caching</tag>
       </tags>
   </entry>
   <entry>
@@ -846,6 +789,63 @@ dotnet-dump collect --process-id 1902 -->
       </tags>
   </entry>
   <entry>
+    <title>在 Polyglot Notebooks 使用 DataFrame</title>
+    <url>/2024/05/05/PolyglotNotebooksDataFrame/</url>
+    <content><![CDATA[<h1 id="載入-CSV-資料"><a class="header-anchor" href="#載入-CSV-資料"></a>載入 CSV 資料</h1>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="meta">#r &quot;nuget: Microsoft.Data.Analysis, 0.21.1&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> System.IO;</span><br><span class="line"><span class="keyword">using</span> Microsoft.Data.Analysis;</span><br><span class="line"></span><br><span class="line"><span class="built_in">string</span> csvfile = File.ReadAllText(<span class="string">&quot;test.csv&quot;</span>);</span><br><span class="line">DataFrame df = DataFrame.LoadCsvFromString(csvfile, <span class="string">&#x27;,&#x27;</span>);</span><br><span class="line">Console.WriteLine(df);</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="取得前-1-筆"><a class="header-anchor" href="#取得前-1-筆"></a>取得前 1 筆</h1>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">DataFrame headRow = df.Head(<span class="number">1</span>);</span><br><span class="line">Console.WriteLine(headRow);</span><br></pre></td></tr></table></figure>
+<h1 id="加入新-column"><a class="header-anchor" href="#加入新-column"></a>加入新 column</h1>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">df.Columns.Add(<span class="keyword">new</span> PrimitiveDataFrameColumn&lt;<span class="built_in">int</span>&gt;(<span class="string">&quot;AGE&quot;</span>, <span class="keyword">new</span> List&lt;<span class="built_in">int</span>&gt;&#123;<span class="number">1</span>, <span class="number">1</span>&#125;));</span><br></pre></td></tr></table></figure>
+<h1 id="加入新-row"><a class="header-anchor" href="#加入新-row"></a>加入新 row</h1>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">df.Append(<span class="keyword">new</span> List&lt;KeyValuePair&lt;<span class="built_in">string</span>, <span class="built_in">object</span>&gt;&gt;() &#123;</span><br><span class="line"><span class="keyword">new</span> KeyValuePair&lt;<span class="built_in">string</span>, <span class="built_in">object</span>&gt;(<span class="string">&quot;NAME&quot;</span>, <span class="string">&quot;王五&quot;</span>),</span><br><span class="line"><span class="keyword">new</span> KeyValuePair&lt;<span class="built_in">string</span>, <span class="built_in">object</span>&gt;(<span class="string">&quot;AGE&quot;</span>, <span class="number">3</span>)</span><br><span class="line">&#125;, <span class="literal">true</span>);</span><br><span class="line"></span><br><span class="line">Console.WriteLine(df);</span><br></pre></td></tr></table></figure>
+<h1 id="排序資料"><a class="header-anchor" href="#排序資料"></a>排序資料</h1>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">DataFrame orderByData = df.OrderByDescending(<span class="string">&quot;AGE&quot;</span>);</span><br><span class="line">Console.WriteLine(orderByData);</span><br></pre></td></tr></table></figure>
+<h1 id="分群資料"><a class="header-anchor" href="#分群資料"></a>分群資料</h1>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">GroupBy groupByData = df.GroupBy(<span class="string">&quot;AGE&quot;</span>);</span><br><span class="line">Console.WriteLine(groupByData);</span><br></pre></td></tr></table></figure>
+<h1 id="篩選資料"><a class="header-anchor" href="#篩選資料"></a>篩選資料</h1>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">DataFrame filterData = df.Filter(df.Columns[<span class="string">&quot;AGE&quot;</span>].ElementwiseGreaterThan(<span class="number">1</span>));</span><br><span class="line">Console.WriteLine(filterData);</span><br></pre></td></tr></table></figure>
+<h1 id="合併資料"><a class="header-anchor" href="#合併資料"></a>合併資料</h1>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">DataFrame df1 = DataFrame.LoadCsvFromString(csvfile, <span class="string">&#x27;,&#x27;</span>);</span><br><span class="line">DataFrame mergeData = df1.Merge&lt;<span class="built_in">string</span>&gt;(df, <span class="string">&quot;NAME&quot;</span>, <span class="string">&quot;NAME&quot;</span>);</span><br><span class="line">Console.WriteLine(mergeData);</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://learn.microsoft.com/en-us/dotnet/api/microsoft.data.analysis.dataframe?view=ml-dotnet-preview&amp;viewFallbackFrom=ml-dotnet">DataFrame Class</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>Polyglot Notebooks</category>
+      </categories>
+      <tags>
+        <tag>Polyglot Notebooks</tag>
+        <tag>DataFrame</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>使用 Flask-Caching 緩存 Flask 呼叫方法產生的資料</title>
+    <url>/2023/07/07/PythonFlaskCaching/</url>
+    <content><![CDATA[<h1 id="安裝套件"><a class="header-anchor" href="#安裝套件"></a>安裝套件</h1>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip install Flask</span><br><span class="line">pip install Flask-Caching</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="建立-address-json-內容如下"><a class="header-anchor" href="#建立-address-json-內容如下"></a>建立 address.json 內容如下</h1>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;Address&quot;</span><span class="punctuation">:</span> <span class="string">&quot;新竹市&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;Zip&quot;</span><span class="punctuation">:</span> <span class="string">&quot;300&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<h1 id="建立-app-py-內容如下"><a class="header-anchor" href="#建立-app-py-內容如下"></a>建立 <a href="http://app.py">app.py</a> 內容如下</h1>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</span><br><span class="line"><span class="keyword">from</span> flask_caching <span class="keyword">import</span> Cache</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line">config = &#123;</span><br><span class="line">    <span class="string">&quot;DEBUG&quot;</span>: <span class="literal">True</span>,</span><br><span class="line">    <span class="string">&quot;CACHE_TYPE&quot;</span>: <span class="string">&quot;SimpleCache&quot;</span>,</span><br><span class="line">    <span class="string">&quot;CACHE_DEFAULT_TIMEOUT&quot;</span>: <span class="number">3000</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line">app.config.from_mapping(config)</span><br><span class="line">cache = Cache(app)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用裝飾器緩存呼叫方法產生的資料</span></span><br><span class="line"><span class="meta">@cache.memoize(<span class="params">timeout=<span class="number">50</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">LoadAllAddress</span>():</span><br><span class="line">    <span class="comment"># 讀取 address.json</span></span><br><span class="line">    file = <span class="built_in">open</span>(<span class="string">&#x27;address.json&#x27;</span>)</span><br><span class="line">    data = json.load(file)</span><br><span class="line">    <span class="keyword">return</span> data</span><br><span class="line"></span><br><span class="line"><span class="comment"># 刪除緩存</span></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/ClearAddressCache&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">delAddress</span>():</span><br><span class="line">   <span class="comment"># 刪除緩存呼叫方法產生的資料</span></span><br><span class="line">   cache.delete_memoized(LoadAllAddress)</span><br><span class="line">   <span class="keyword">return</span> <span class="string">&quot;Clear Success&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 取得 address.json 的資料</span></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/GetAllAddress&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">AllAddress</span>():</span><br><span class="line">    <span class="keyword">return</span> LoadAllAddress()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    app.run()</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://flask-caching.readthedocs.io/en/latest/">Flask-Caching</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>Flask</tag>
+        <tag>Caching</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>使用 Flask-SQLAlchemy 連接 MSSQL 進行 CRUD</title>
     <url>/2023/07/07/PythonFlaskSQLAlchemy/</url>
     <content><![CDATA[<h1 id="安裝套件"><a class="header-anchor" href="#安裝套件"></a>安裝套件</h1>
@@ -872,6 +872,32 @@ db.create_all() -->
         <tag>Python</tag>
         <tag>Flask</tag>
         <tag>MSSQL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>安裝 Whistle</title>
+    <url>/2023/01/20/WhistleProxyInstall/</url>
+    <content><![CDATA[<h1 id="使用-Node-安裝-Whistle"><a class="header-anchor" href="#使用-Node-安裝-Whistle"></a>使用 Node 安裝 Whistle</h1>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm i -g whistle</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="啟動-Whistle"><a class="header-anchor" href="#啟動-Whistle"></a>啟動 Whistle</h1>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">w2 start</span><br></pre></td></tr></table></figure>
+<h1 id="查看-Whistle-狀態"><a class="header-anchor" href="#查看-Whistle-狀態"></a>查看 Whistle 狀態</h1>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">w2 status</span><br></pre></td></tr></table></figure>
+<h1 id="停止-Whistle"><a class="header-anchor" href="#停止-Whistle"></a>停止 Whistle</h1>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">w2 stop</span><br></pre></td></tr></table></figure>
+<h1 id="設定-Whistle-為-Proxy-的-Server"><a class="header-anchor" href="#設定-Whistle-為-Proxy-的-Server"></a>設定 Whistle 為 Proxy 的 Server</h1>
+<p><img src="Win10ProxySetting.png" alt="Win10ProxySetting"></p>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://www.npmjs.com/package/whistle">whistle npm</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>Whistle</category>
+      </categories>
+      <tags>
+        <tag>Whistle</tag>
       </tags>
   </entry>
   <entry>
@@ -940,29 +966,63 @@ db.create_all() -->
       </tags>
   </entry>
   <entry>
-    <title>安裝 Whistle</title>
-    <url>/2023/01/20/WhistleProxyInstall/</url>
-    <content><![CDATA[<h1 id="使用-Node-安裝-Whistle"><a class="header-anchor" href="#使用-Node-安裝-Whistle"></a>使用 Node 安裝 Whistle</h1>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm i -g whistle</span><br></pre></td></tr></table></figure>
+    <title>Win10 家用版安裝 Docker</title>
+    <url>/2023/05/05/Win10HomeDocker/</url>
+    <content><![CDATA[<div class="note danger"><p>請注意，下方 Docker 應用只支援以 Ｗindows 為基底的 Image</p>
+</div>
+<h1 id="使用-Scoop-安裝-Docker"><a class="header-anchor" href="#使用-Scoop-安裝-Docker"></a>使用 Scoop 安裝 Docker</h1>
+<p>執行下方命令安裝</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">scoop install docker</span><br></pre></td></tr></table></figure>
 <span id="more"></span>
-<h1 id="啟動-Whistle"><a class="header-anchor" href="#啟動-Whistle"></a>啟動 Whistle</h1>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">w2 start</span><br></pre></td></tr></table></figure>
-<h1 id="查看-Whistle-狀態"><a class="header-anchor" href="#查看-Whistle-狀態"></a>查看 Whistle 狀態</h1>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">w2 status</span><br></pre></td></tr></table></figure>
-<h1 id="停止-Whistle"><a class="header-anchor" href="#停止-Whistle"></a>停止 Whistle</h1>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">w2 stop</span><br></pre></td></tr></table></figure>
-<h1 id="設定-Whistle-為-Proxy-的-Server"><a class="header-anchor" href="#設定-Whistle-為-Proxy-的-Server"></a>設定 Whistle 為 Proxy 的 Server</h1>
-<p><img src="Win10ProxySetting.png" alt="Win10ProxySetting"></p>
+<h1 id="調整安裝空間"><a class="header-anchor" href="#調整安裝空間"></a>調整安裝空間</h1>
+<p>複製 Docker 資料至磁碟機 D ，節省磁碟機 C 的空間</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Copy-Item</span> <span class="string">&#x27;C:\ProgramData\docker&#x27;</span> <span class="literal">-Destination</span> <span class="string">&#x27;d:\\docker&#x27;</span></span><br></pre></td></tr></table></figure>
+<p>建立 ‘C:\ProgramData\docker\config\daemon.json’</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;hosts&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span> <span class="string">&quot;tcp://0.0.0.0:&quot;</span> <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;tls&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;data-root&quot;</span><span class="punctuation">:</span> <span class="string">&quot;d:\\docker&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;dns&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;8.8.8.8&quot;</span><span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<div class="note danger"><p>請注意，因 Win10 家用版本身不支援安裝下方功能，開啟後可能發生未知錯誤，僅供學習使用</p>
+</div>
+<h1 id="安裝-Hyper-V-功能"><a class="header-anchor" href="#安裝-Hyper-V-功能"></a>安裝 Hyper-V 功能</h1>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 將批處理檔案所在的目錄設定為工作目錄</span></span><br><span class="line"><span class="built_in">pushd</span> <span class="string">&quot;%~dp0&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 尋找符合檔案名的所有檔案名，匯出文字檔</span></span><br><span class="line"><span class="built_in">dir</span> /b %SystemRoot%\servicing\Packages\*Hyper<span class="literal">-V</span>*.mum &gt;hyper<span class="literal">-v</span>.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 加入套件</span></span><br><span class="line"><span class="keyword">for</span> /f %%i <span class="keyword">in</span> (<span class="string">&#x27;findstr /i . hyper-v.txt 2^&gt;nul&#x27;</span>) <span class="keyword">do</span> dism /online /norestart /<span class="built_in">add-package</span>:<span class="string">&quot;%SystemRoot%\servicing\Packages\%%i&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 移除文字檔</span></span><br><span class="line"><span class="built_in">del</span> hyper<span class="literal">-v</span>.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安裝容器套件</span></span><br><span class="line">Dism /online /<span class="built_in">enable-feature</span> /featurename:Microsoft<span class="literal">-Hyper-V-All</span> /LimitAccess /ALL</span><br></pre></td></tr></table></figure>
+<p>以上方代碼建立 .bat 執行文件，並使用管理者權限執行</p>
+<h1 id="安裝容器功能"><a class="header-anchor" href="#安裝容器功能"></a>安裝容器功能</h1>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 將批處理檔案所在的目錄設定為工作目錄</span></span><br><span class="line"><span class="built_in">pushd</span> <span class="string">&quot;%~dp0&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 尋找符合檔案名的所有檔案名，匯出文字檔</span></span><br><span class="line"><span class="built_in">dir</span> /b %SystemRoot%\servicing\Packages\*containers*.mum &gt;containers.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 加入套件</span></span><br><span class="line"><span class="keyword">for</span> /f %%i <span class="keyword">in</span> (<span class="string">&#x27;findstr /i . containers.txt 2^&gt;nul&#x27;</span>) <span class="keyword">do</span> dism /online /norestart /<span class="built_in">add-package</span>:<span class="string">&quot;%SystemRoot%\servicing\Packages\%%i&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 移除文字檔</span></span><br><span class="line"><span class="built_in">del</span> containers.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安裝容器套件</span></span><br><span class="line">Dism /online /<span class="built_in">enable-feature</span> /featurename:containers /LimitAccess /ALL</span><br></pre></td></tr></table></figure>
+<p>以上方代碼建立 .bat 執行文件，並使用管理者權限執行</p>
+<h1 id="執行-Docker"><a class="header-anchor" href="#執行-Docker"></a>執行 Docker</h1>
+<p>執行下方命令註冊 Ｗindows 服務</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">dockerd <span class="literal">--register-service</span> ; <span class="built_in">Start-Service</span> docker ; <span class="keyword">exit</span></span><br></pre></td></tr></table></figure>
 <div class="note warning"><p>📜 參考資料</p>
 <ol>
-<li><a href="https://www.npmjs.com/package/whistle">whistle npm</a></li>
+<li><a href="https://scoop.sh/#/apps?q=docker&amp;s=0&amp;d=1&amp;o=true">Scoop Docker</a></li>
+<li><a href="https://learn.microsoft.com/zh-tw/virtualization/windowscontainers/manage-containers/container-base-images">Windows Base Image</a></li>
 </ol>
 </div>]]></content>
       <categories>
-        <category>Whistle</category>
+        <category>Wsl2</category>
       </categories>
       <tags>
-        <tag>Whistle</tag>
+        <tag>Wsl2</tag>
+        <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>WSL2 移動至其它硬碟</title>
+    <url>/2023/05/05/Wsl2Disk/</url>
+    <content><![CDATA[<h1 id="列出已安裝的-Linux-發行版"><a class="header-anchor" href="#列出已安裝的-Linux-發行版"></a>列出已安裝的 Linux 發行版</h1>
+<p>執行下方命令</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">wsl <span class="literal">-l</span> <span class="literal">-v</span></span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="遷移-WSL2-至磁碟機-D"><a class="header-anchor" href="#遷移-WSL2-至磁碟機-D"></a>遷移 WSL2 至磁碟機 D</h1>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 導出已安裝的 Linux 發行版壓縮檔</span></span><br><span class="line">wsl <span class="literal">--export</span> <span class="string">&quot;Ubuntu-22.04&quot;</span> d:\ubuntu.tar</span><br><span class="line"></span><br><span class="line"><span class="comment"># 移除 WSL</span></span><br><span class="line">wsl <span class="literal">--unregister</span> <span class="string">&quot;Ubuntu-22.04&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 建立解壓縮的目錄</span></span><br><span class="line">mkdir d:\Ubuntu</span><br><span class="line"></span><br><span class="line"><span class="comment"># Linux 發行版壓縮檔解壓縮至新目錄後加入 WSL</span></span><br><span class="line">wsl <span class="literal">--import</span> <span class="string">&quot;Ubuntu-22.04&quot;</span> d:\ubuntu d:\ubuntu.tar</span><br><span class="line"></span><br><span class="line"><span class="comment"># 刪除 Linux 發行版壓縮檔</span></span><br><span class="line"><span class="built_in">del</span> d:\ubuntu.tar</span><br><span class="line"></span><br><span class="line"><span class="comment"># 因重新建立 WSL 會以 root 為預設帳戶，需重新設定預設帳戶</span></span><br><span class="line">ubuntu2204.exe config <span class="literal">--default-user</span> ubuntu</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://learn.microsoft.com/zh-tw/windows/wsl/use-custom-distro">匯入任何要與 WSL 搭配使用的 Linux 發行版本</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>Wsl2</category>
+      </categories>
+      <tags>
+        <tag>Wsl2</tag>
       </tags>
   </entry>
   <entry>
@@ -1027,45 +1087,6 @@ db.create_all() -->
       </tags>
   </entry>
   <entry>
-    <title>Win10 家用版安裝 Docker</title>
-    <url>/2023/05/05/Win10HomeDocker/</url>
-    <content><![CDATA[<div class="note danger"><p>請注意，下方 Docker 應用只支援以 Ｗindows 為基底的 Image</p>
-</div>
-<h1 id="使用-Scoop-安裝-Docker"><a class="header-anchor" href="#使用-Scoop-安裝-Docker"></a>使用 Scoop 安裝 Docker</h1>
-<p>執行下方命令安裝</p>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">scoop install docker</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="調整安裝空間"><a class="header-anchor" href="#調整安裝空間"></a>調整安裝空間</h1>
-<p>複製 Docker 資料至磁碟機 D ，節省磁碟機 C 的空間</p>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Copy-Item</span> <span class="string">&#x27;C:\ProgramData\docker&#x27;</span> <span class="literal">-Destination</span> <span class="string">&#x27;d:\\docker&#x27;</span></span><br></pre></td></tr></table></figure>
-<p>建立 ‘C:\ProgramData\docker\config\daemon.json’</p>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;hosts&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span> <span class="string">&quot;tcp://0.0.0.0:&quot;</span> <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;tls&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;data-root&quot;</span><span class="punctuation">:</span> <span class="string">&quot;d:\\docker&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;dns&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;8.8.8.8&quot;</span><span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-<div class="note danger"><p>請注意，因 Win10 家用版本身不支援安裝下方功能，開啟後可能發生未知錯誤，僅供學習使用</p>
-</div>
-<h1 id="安裝-Hyper-V-功能"><a class="header-anchor" href="#安裝-Hyper-V-功能"></a>安裝 Hyper-V 功能</h1>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 將批處理檔案所在的目錄設定為工作目錄</span></span><br><span class="line"><span class="built_in">pushd</span> <span class="string">&quot;%~dp0&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 尋找符合檔案名的所有檔案名，匯出文字檔</span></span><br><span class="line"><span class="built_in">dir</span> /b %SystemRoot%\servicing\Packages\*Hyper<span class="literal">-V</span>*.mum &gt;hyper<span class="literal">-v</span>.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 加入套件</span></span><br><span class="line"><span class="keyword">for</span> /f %%i <span class="keyword">in</span> (<span class="string">&#x27;findstr /i . hyper-v.txt 2^&gt;nul&#x27;</span>) <span class="keyword">do</span> dism /online /norestart /<span class="built_in">add-package</span>:<span class="string">&quot;%SystemRoot%\servicing\Packages\%%i&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 移除文字檔</span></span><br><span class="line"><span class="built_in">del</span> hyper<span class="literal">-v</span>.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安裝容器套件</span></span><br><span class="line">Dism /online /<span class="built_in">enable-feature</span> /featurename:Microsoft<span class="literal">-Hyper-V-All</span> /LimitAccess /ALL</span><br></pre></td></tr></table></figure>
-<p>以上方代碼建立 .bat 執行文件，並使用管理者權限執行</p>
-<h1 id="安裝容器功能"><a class="header-anchor" href="#安裝容器功能"></a>安裝容器功能</h1>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 將批處理檔案所在的目錄設定為工作目錄</span></span><br><span class="line"><span class="built_in">pushd</span> <span class="string">&quot;%~dp0&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 尋找符合檔案名的所有檔案名，匯出文字檔</span></span><br><span class="line"><span class="built_in">dir</span> /b %SystemRoot%\servicing\Packages\*containers*.mum &gt;containers.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 加入套件</span></span><br><span class="line"><span class="keyword">for</span> /f %%i <span class="keyword">in</span> (<span class="string">&#x27;findstr /i . containers.txt 2^&gt;nul&#x27;</span>) <span class="keyword">do</span> dism /online /norestart /<span class="built_in">add-package</span>:<span class="string">&quot;%SystemRoot%\servicing\Packages\%%i&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 移除文字檔</span></span><br><span class="line"><span class="built_in">del</span> containers.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安裝容器套件</span></span><br><span class="line">Dism /online /<span class="built_in">enable-feature</span> /featurename:containers /LimitAccess /ALL</span><br></pre></td></tr></table></figure>
-<p>以上方代碼建立 .bat 執行文件，並使用管理者權限執行</p>
-<h1 id="執行-Docker"><a class="header-anchor" href="#執行-Docker"></a>執行 Docker</h1>
-<p>執行下方命令註冊 Ｗindows 服務</p>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">dockerd <span class="literal">--register-service</span> ; <span class="built_in">Start-Service</span> docker ; <span class="keyword">exit</span></span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://scoop.sh/#/apps?q=docker&amp;s=0&amp;d=1&amp;o=true">Scoop Docker</a></li>
-<li><a href="https://learn.microsoft.com/zh-tw/virtualization/windowscontainers/manage-containers/container-base-images">Windows Base Image</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>Wsl2</category>
-      </categories>
-      <tags>
-        <tag>Wsl2</tag>
-        <tag>Docker</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>WSL2 設定 Docker In Docker</title>
     <url>/2024/01/01/Wsl2DockerInDocker/</url>
     <content><![CDATA[<h1 id="使用主機的-Docker-Socket"><a class="header-anchor" href="#使用主機的-Docker-Socket"></a>使用主機的 Docker Socket</h1>
@@ -1103,27 +1124,6 @@ db.create_all() -->
       <tags>
         <tag>Wsl2</tag>
         <tag>Docker</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>WSL2 移動至其它硬碟</title>
-    <url>/2023/05/05/Wsl2Disk/</url>
-    <content><![CDATA[<h1 id="列出已安裝的-Linux-發行版"><a class="header-anchor" href="#列出已安裝的-Linux-發行版"></a>列出已安裝的 Linux 發行版</h1>
-<p>執行下方命令</p>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">wsl <span class="literal">-l</span> <span class="literal">-v</span></span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="遷移-WSL2-至磁碟機-D"><a class="header-anchor" href="#遷移-WSL2-至磁碟機-D"></a>遷移 WSL2 至磁碟機 D</h1>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 導出已安裝的 Linux 發行版壓縮檔</span></span><br><span class="line">wsl <span class="literal">--export</span> <span class="string">&quot;Ubuntu-22.04&quot;</span> d:\ubuntu.tar</span><br><span class="line"></span><br><span class="line"><span class="comment"># 移除 WSL</span></span><br><span class="line">wsl <span class="literal">--unregister</span> <span class="string">&quot;Ubuntu-22.04&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 建立解壓縮的目錄</span></span><br><span class="line">mkdir d:\Ubuntu</span><br><span class="line"></span><br><span class="line"><span class="comment"># Linux 發行版壓縮檔解壓縮至新目錄後加入 WSL</span></span><br><span class="line">wsl <span class="literal">--import</span> <span class="string">&quot;Ubuntu-22.04&quot;</span> d:\ubuntu d:\ubuntu.tar</span><br><span class="line"></span><br><span class="line"><span class="comment"># 刪除 Linux 發行版壓縮檔</span></span><br><span class="line"><span class="built_in">del</span> d:\ubuntu.tar</span><br><span class="line"></span><br><span class="line"><span class="comment"># 因重新建立 WSL 會以 root 為預設帳戶，需重新設定預設帳戶</span></span><br><span class="line">ubuntu2204.exe config <span class="literal">--default-user</span> ubuntu</span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://learn.microsoft.com/zh-tw/windows/wsl/use-custom-distro">匯入任何要與 WSL 搭配使用的 Linux 發行版本</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>Wsl2</category>
-      </categories>
-      <tags>
-        <tag>Wsl2</tag>
       </tags>
   </entry>
   <entry>
