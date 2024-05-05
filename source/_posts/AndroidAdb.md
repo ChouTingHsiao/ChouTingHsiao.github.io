@@ -178,4 +178,6 @@ adb pull /data/data/[應用名稱]/databases/[sqlite檔案名稱]
 {% note warning %}
 📜 參考資料
 1. [Android Debug Bridge (adb)](https://developer.android.com/tools/adb?hl=zh-tw)
+2. [dumpsys](https://developer.android.com/tools/dumpsys?hl=zh-tw)
+3. [sqlite3](https://developer.android.com/tools/sqlite3?hl=zh-tw)
 {% endnote %}
