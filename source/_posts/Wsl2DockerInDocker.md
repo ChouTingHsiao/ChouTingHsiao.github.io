@@ -5,9 +5,9 @@ categories: Wsl2
 tags: [Wsl2, Docker]
 ---
 
-# 使用主機的 Docker Socket
+# 🚀 使用主機的 Docker Socket
 
-## 建立 daemon.json
+## 建立 daemon.json 設定檔
 ```bash
 sudo nano /etc/docker/daemon.json
 ```
@@ -37,17 +37,17 @@ curl -XPOST --unix-socket /var/run/docker.sock http://localhost/containers/[容�
 
 <!--more-->
 
-# 使用 docker:dind 映像
+# 🚀 使用 docker:dind 映像
 
 可參考以下兩種方法運行 docker:dind 映像
 
-## 透過特權模式選項執行命令
+## ⭐ 透過特權模式選項執行命令
 特權模式選項: --privileged
 ```bash
 docker run -p [本機連接Port]:2375 --privileged -e DOCKER_TLS_CERTDIR="" --name privileged-docker -d docker:dind
 ```
 
-## 透過 Nestybox Sysbox 運行時選項執行命令
+## ⭐ 透過 Nestybox Sysbox 運行時選項執行命令
 安裝 [Nestybox Sysbox](https://github.com/nestybox/sysbox?tab=readme-ov-file#installation) 後，不需要特權模式，即可執行
 
 運行時選項: --runtime=sysbox-runc
@@ -55,7 +55,7 @@ docker run -p [本機連接Port]:2375 --privileged -e DOCKER_TLS_CERTDIR="" --na
 docker run -p [本機連接Port]:2375 -e DOCKER_TLS_CERTDIR="" --runtime=sysbox-runc --name sysbox-docker -d docker:dind
 ```
 
-# 使用 Docker CLI 透過 Docker contexts 連線至遠端 Docker
+# 🚀 使用 Docker CLI 透過 Docker contexts 連線至遠端 Docker
 
 ```bash
 # 建立 Docker contexts

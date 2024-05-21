@@ -7,7 +7,7 @@ tags: [Wsl2, Docker]
 
 # 開放外部連線至 Docker，有兩種方式可擇一設定
 
-## 建立 daemon.json
+## ⭐ 建立 daemon.json 開放連線
 建立 '/etc/docker/daemon.json'
 ```bash
 sudo nano /etc/docker/daemon.json
@@ -21,13 +21,13 @@ sudo nano /etc/docker/daemon.json
 }
 ```
 
-## 設定 Docker 服務
+## ⭐ 建立 Docker 服務開放連線
 調整服務
 ```bash
 sudo systemctl edit docker.service
 ```
 
-服務指令結尾加入 -H tcp://127.0.0.1:2375
+服務指令結尾加入參數 [-H tcp://127.0.0.1:2375]
 ```bash
 [Service]
 ExecStart=
@@ -53,12 +53,12 @@ choco install docker-cli
 ```
 
 # 設定主機連線有兩種方式
-1. 設定環境變數 DOCKER_HOST
+## ⭐ 設定環境變數 DOCKER_HOST 進行連線
 ```powershell
 [Environment]::SetEnvironmentVariable('DOCKER_HOST', "tcp://$($wslip):2375", 'User')
 ```
 
-2. 設定 docker context
+## ⭐ 設定 docker context 進行連線
 ```powershell
 # 取得 WSL 的 IP 位置
 $wslip = wsl -- ip -o -4 -json addr list eth0 | ConvertFrom-Json | %{ $_.addr_info.local } ` | ?{ $_ }
@@ -106,7 +106,11 @@ export DOCKER_HOST="tcp://127.0.0.1:2375"
 sudo service docker start
 ```
 
-# 無密碼 sudo 授權(不建議用在生產環境)
+{% note danger %}
+請注意，下方設定不建議用在生產環境
+{% endnote %}
+
+# 無密碼 sudo 授權
 修改/etc/sudoers
 ```bash
 sudo nano /etc/sudoers

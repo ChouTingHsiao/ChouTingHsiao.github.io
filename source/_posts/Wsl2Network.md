@@ -50,20 +50,20 @@ if(!$ipAddr.Contains("192.168.50.2")){
 <!-- sudo ip addr add 192.168.50.2/24 broadcast 192.168.50.255 dev eth0 -->
 <!-- sudo ip route add 0.0.0.0/0 via 192.168.50.1 dev eth0 -->
 
-# 使用 Powershell 設定 vEthernet (WSL)
+# 使用 Powershell 設定網路介面 vEthernet (WSL)
 ```powershell
 # 確認是否為自訂的 vEthernet (WSL) 設定
 if(!(Get-NetAdapter 'vEthernet (WSL)' | Get-NetIPAddress).IPAddress.Contains('192.168.50.1')){
-  # 移除 vEthernet (WSL)設定
+  # 移除 vEthernet (WSL) 設定
   Get-NetAdapter 'vEthernet (WSL)' | Get-NetIPAddress | Remove-NetIPAddress -Confirm:$False
   
-  # 加入自訂的 vEthernet (WSL)
+  # 加入自訂的 vEthernet (WSL) 設定
   New-NetIPAddress -IPAddress 192.168.50.1 -PrefixLength 24 -InterfaceAlias 'vEthernet (WSL)'
   
   # 移除 WSLNat 設定
   Get-NetNat | ? Name -Eq WSLNat | Remove-NetNat -Confirm:$False
   
-  # 加入自訂的 WSLNat
+  # 加入自訂的 WSLNat 設定
   New-NetNat -Name WSLNat -InternalIPInterfaceAddressPrefix 192.168.50.0/24;
 }
 ```
