@@ -210,29 +210,6 @@
       </tags>
   </entry>
   <entry>
-    <title>使用 Linux 檔案列表建立 Jenkins 下拉選單</title>
-    <url>/2021/10/23/JenkinsDropdown/</url>
-    <content><![CDATA[<h1 id="取得檔案列表方法"><a class="header-anchor" href="#取得檔案列表方法"></a>取得檔案列表方法</h1>
-<p>使用以下 Linxu 指令，將預設目錄每個檔案使用一列的方式逐一列出</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">ls</span> -1 /home/ubuntu</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<p>在 Pipeline 執行 Linxu 指令，把結果存入變數</p>
-<figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> fileInFolder = sh(<span class="attr">script:</span> <span class="string">&quot;ls -1 /home/ubuntu&quot;</span>, <span class="attr">returnStdout:</span> <span class="literal">true</span>).trim();</span><br></pre></td></tr></table></figure>
-<h1 id="定義-Dialog"><a class="header-anchor" href="#定義-Dialog"></a>定義 Dialog</h1>
-<p>在 Pipeline 定義 Dialog ，把 parameters -&gt; choice -&gt; choices 定義替換為上方變數 fileInFolder</p>
-<figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> dialogMessage = <span class="string">&quot;Release $&#123;JOB_NAME&#125; now?&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> confirmDialog =</span><br><span class="line">    input <span class="attr">message:</span> dialogMessage,</span><br><span class="line">    <span class="symbol">parameters:</span> [choice(<span class="attr">name:</span> <span class="string">&#x27;action&#x27;</span>, <span class="attr">choices:</span> fileInFolder, <span class="attr">description:</span> <span class="string">&#x27;&#x27;</span>)],</span><br><span class="line">    <span class="symbol">submitterParameter:</span> <span class="string">&#x27;releaseApprover&#x27;</span></span><br></pre></td></tr></table></figure>
-<p>取得用戶選取參數，使用變數 confirmDialog -&gt; parameters -&gt; choice -&gt; name的定義</p>
-<figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line">confirmDialog.action</span><br></pre></td></tr></table></figure>
-<p>取得點擊確認的用戶，使用變數 confirmDialog -&gt; submitterParameter的定義</p>
-<figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line">confirmDialog.releaseApprover</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>Jenkins</category>
-      </categories>
-      <tags>
-        <tag>Jenkins</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Jenkins 執行備份專案命令</title>
     <url>/2024/01/01/JenkinsBackupProject/</url>
     <content><![CDATA[<h1 id="設定執行時間"><a class="header-anchor" href="#設定執行時間"></a>設定執行時間</h1>
@@ -252,6 +229,29 @@
 <p>使用 ssh 命令登入 Server 將專案複製至備份目錄</p>
 <figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line">sh <span class="string">&quot;ssh -p [ssh連接Port] [帳號]@[Server位置] \&quot;sudo cp -r $&#123;projectPath&#125;* $&#123;backupPath&#125;$&#123;dateNow&#125;/ \&quot;&quot;</span></span><br></pre></td></tr></table></figure>
 ]]></content>
+      <categories>
+        <category>Jenkins</category>
+      </categories>
+      <tags>
+        <tag>Jenkins</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>使用 Linux 檔案列表建立 Jenkins 下拉選單</title>
+    <url>/2021/10/23/JenkinsDropdown/</url>
+    <content><![CDATA[<h1 id="取得檔案列表方法"><a class="header-anchor" href="#取得檔案列表方法"></a>取得檔案列表方法</h1>
+<p>使用以下 Linxu 指令，將預設目錄每個檔案使用一列的方式逐一列出</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">ls</span> -1 /home/ubuntu</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<p>在 Pipeline 執行 Linxu 指令，把結果存入變數</p>
+<figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> fileInFolder = sh(<span class="attr">script:</span> <span class="string">&quot;ls -1 /home/ubuntu&quot;</span>, <span class="attr">returnStdout:</span> <span class="literal">true</span>).trim();</span><br></pre></td></tr></table></figure>
+<h1 id="定義-Dialog"><a class="header-anchor" href="#定義-Dialog"></a>定義 Dialog</h1>
+<p>在 Pipeline 定義 Dialog ，把 parameters -&gt; choice -&gt; choices 定義替換為上方變數 fileInFolder</p>
+<figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> dialogMessage = <span class="string">&quot;Release $&#123;JOB_NAME&#125; now?&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> confirmDialog =</span><br><span class="line">    input <span class="attr">message:</span> dialogMessage,</span><br><span class="line">    <span class="symbol">parameters:</span> [choice(<span class="attr">name:</span> <span class="string">&#x27;action&#x27;</span>, <span class="attr">choices:</span> fileInFolder, <span class="attr">description:</span> <span class="string">&#x27;&#x27;</span>)],</span><br><span class="line">    <span class="symbol">submitterParameter:</span> <span class="string">&#x27;releaseApprover&#x27;</span></span><br></pre></td></tr></table></figure>
+<p>取得用戶選取參數，使用變數 confirmDialog -&gt; parameters -&gt; choice -&gt; name的定義</p>
+<figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line">confirmDialog.action</span><br></pre></td></tr></table></figure>
+<p>取得點擊確認的用戶，使用變數 confirmDialog -&gt; submitterParameter的定義</p>
+<figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line">confirmDialog.releaseApprover</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>Jenkins</category>
       </categories>
@@ -568,28 +568,6 @@ plink -v -x -a -T -C -noagent -ssh -pw "[密碼]" -P 50893 -L [本地端口]:[�
       </tags>
   </entry>
   <entry>
-    <title>Http 的 Get 方法傳入 List 參數</title>
-    <url>/2023/01/21/NetHttpGetWithList/</url>
-    <content><![CDATA[<h1 id="建立類別"><a class="header-anchor" href="#建立類別"></a>建立類別</h1>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">User</span> &#123;</span><br><span class="line">  </span><br><span class="line">	<span class="keyword">public</span> <span class="built_in">string</span> Name &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> <span class="built_in">int</span> Age &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="建立-HttpGet-方法"><a class="header-anchor" href="#建立-HttpGet-方法"></a>建立 HttpGet 方法</h1>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">[<span class="meta">ApiController</span>]</span><br><span class="line">[<span class="meta">Route(<span class="string">&quot;[controller]&quot;</span>)</span>]</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">UserController</span> : <span class="title">ControllerBase</span></span><br><span class="line">&#123;</span><br><span class="line">  [<span class="meta">HttpGet</span>]</span><br><span class="line">  <span class="function"><span class="keyword">public</span> List&lt;User&gt; <span class="title">Get</span>(<span class="params">[FromQuery] List&lt;User&gt; user</span>)</span></span><br><span class="line">  &#123;</span><br><span class="line">      <span class="keyword">return</span> user;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="組合-Request-的-Url"><a class="header-anchor" href="#組合-Request-的-Url"></a>組合 Request 的 Url</h1>
-<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line">https://example.com/User?user[0].Name=&#x27;張三&#x27;&amp;user[0].Age=10&amp;user[1].Name=&#x27;李四&#x27;&amp;user[1].Age=20</span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://stackoverflow.com/questions/3061273/send-an-array-with-an-http-get">Send an Array with an HTTP Get</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>.Net</category>
-      </categories>
-      <tags>
-        <tag>.Net</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>使用 lldb 分析 Dotnet 核心傾印檔案</title>
     <url>/2023/05/07/NetCoreDump/</url>
     <content><![CDATA[<h1 id="使用-apport-解壓縮核心傾印檔案"><a class="header-anchor" href="#使用-apport-解壓縮核心傾印檔案"></a>使用 apport 解壓縮核心傾印檔案</h1>
@@ -647,6 +625,28 @@ dotnet-dump collect --process-id 1902 -->
         <tag>Linux</tag>
         <tag>.Net</tag>
         <tag>lldb</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Http 的 Get 方法傳入 List 參數</title>
+    <url>/2023/01/21/NetHttpGetWithList/</url>
+    <content><![CDATA[<h1 id="建立類別"><a class="header-anchor" href="#建立類別"></a>建立類別</h1>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">User</span> &#123;</span><br><span class="line">  </span><br><span class="line">	<span class="keyword">public</span> <span class="built_in">string</span> Name &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> <span class="built_in">int</span> Age &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="建立-HttpGet-方法"><a class="header-anchor" href="#建立-HttpGet-方法"></a>建立 HttpGet 方法</h1>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">[<span class="meta">ApiController</span>]</span><br><span class="line">[<span class="meta">Route(<span class="string">&quot;[controller]&quot;</span>)</span>]</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">UserController</span> : <span class="title">ControllerBase</span></span><br><span class="line">&#123;</span><br><span class="line">  [<span class="meta">HttpGet</span>]</span><br><span class="line">  <span class="function"><span class="keyword">public</span> List&lt;User&gt; <span class="title">Get</span>(<span class="params">[FromQuery] List&lt;User&gt; user</span>)</span></span><br><span class="line">  &#123;</span><br><span class="line">      <span class="keyword">return</span> user;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="組合-Request-的-Url"><a class="header-anchor" href="#組合-Request-的-Url"></a>組合 Request 的 Url</h1>
+<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line">https://example.com/User?user[0].Name=&#x27;張三&#x27;&amp;user[0].Age=10&amp;user[1].Name=&#x27;李四&#x27;&amp;user[1].Age=20</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://stackoverflow.com/questions/3061273/send-an-array-with-an-http-get">Send an Array with an HTTP Get</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>.Net</category>
+      </categories>
+      <tags>
+        <tag>.Net</tag>
       </tags>
   </entry>
   <entry>
@@ -1029,15 +1029,15 @@ db.create_all() -->
     <title>WSL2 開放 Docker 外部連線</title>
     <url>/2023/04/29/Wsl2Docker/</url>
     <content><![CDATA[<h1 id="開放外部連線至-Docker，有兩種方式可擇一設定"><a class="header-anchor" href="#開放外部連線至-Docker，有兩種方式可擇一設定"></a>開放外部連線至 Docker，有兩種方式可擇一設定</h1>
-<h2 id="建立-daemon-json"><a class="header-anchor" href="#建立-daemon-json"></a>建立 daemon.json</h2>
+<h2 id="⭐-建立-daemon-json-開放連線"><a class="header-anchor" href="#⭐-建立-daemon-json-開放連線"></a>⭐ 建立 daemon.json 開放連線</h2>
 <p>建立 ‘/etc/docker/daemon.json’</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo nano /etc/docker/daemon.json</span><br></pre></td></tr></table></figure>
 <p>加入以下設定</p>
 <figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;hosts&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span> <span class="string">&quot;unix:///var/run/docker.sock&quot;</span><span class="punctuation">,</span> <span class="string">&quot;tcp://0.0.0.0:&quot;</span> <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;tls&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-<h2 id="設定-Docker-服務"><a class="header-anchor" href="#設定-Docker-服務"></a>設定 Docker 服務</h2>
+<h2 id="⭐-建立-Docker-服務開放連線"><a class="header-anchor" href="#⭐-建立-Docker-服務開放連線"></a>⭐ 建立 Docker 服務開放連線</h2>
 <p>調整服務</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo systemctl edit docker.service</span><br></pre></td></tr></table></figure>
-<p>服務指令結尾加入 -H tcp://127.0.0.1:2375</p>
+<p>服務指令結尾加入參數 [-H tcp://127.0.0.1:2375]</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[Service]</span><br><span class="line">ExecStart=</span><br><span class="line">ExecStart=/usr/bin/dockerd -H fd:// -H tcp://127.0.0.1:2375</span><br></pre></td></tr></table></figure>
 <p>重啟服務</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo systemctl daemon-reload</span><br><span class="line">sudo systemctl restart docker.service</span><br></pre></td></tr></table></figure>
@@ -1047,13 +1047,9 @@ db.create_all() -->
 <h1 id="使用-Chocolatey-安裝-Docker-CLI"><a class="header-anchor" href="#使用-Chocolatey-安裝-Docker-CLI"></a>使用 Chocolatey 安裝 Docker CLI</h1>
 <figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">choco install docker<span class="literal">-cli</span></span><br></pre></td></tr></table></figure>
 <h1 id="設定主機連線有兩種方式"><a class="header-anchor" href="#設定主機連線有兩種方式"></a>設定主機連線有兩種方式</h1>
-<ol>
-<li>設定環境變數 DOCKER_HOST</li>
-</ol>
+<h2 id="⭐-設定環境變數-DOCKER-HOST-進行連線"><a class="header-anchor" href="#⭐-設定環境變數-DOCKER-HOST-進行連線"></a>⭐ 設定環境變數 DOCKER_HOST 進行連線</h2>
 <figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">[<span class="type">Environment</span>]::SetEnvironmentVariable(<span class="string">&#x27;DOCKER_HOST&#x27;</span>, <span class="string">&quot;tcp://<span class="variable">$</span>(<span class="variable">$wslip</span>):2375&quot;</span>, <span class="string">&#x27;User&#x27;</span>)</span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li>設定 docker context</li>
-</ol>
+<h2 id="⭐-設定-docker-context-進行連線"><a class="header-anchor" href="#⭐-設定-docker-context-進行連線"></a>⭐ 設定 docker context 進行連線</h2>
 <figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 取得 WSL 的 IP 位置</span></span><br><span class="line"><span class="variable">$wslip</span> = wsl <span class="literal">--</span> ip <span class="literal">-o</span> <span class="literal">-4</span> <span class="literal">-json</span> addr list eth0 | <span class="built_in">ConvertFrom-Json</span> | %&#123; <span class="variable">$_</span>.addr_info.local &#125; ` | ?&#123; <span class="variable">$_</span> &#125;</span><br><span class="line"><span class="built_in">Write-Host</span> <span class="string">&quot;Setting Docker context &#x27;wsl&#x27; to host=tcp://<span class="variable">$</span>(<span class="variable">$wslip</span>):2375&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 建立 context</span></span><br><span class="line">docker context create wsl <span class="literal">--docker</span> <span class="string">&quot;host=tcp://<span class="variable">$</span>(<span class="variable">$wslip</span>):2375&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 更新 context</span></span><br><span class="line">docker context update wsl <span class="literal">--docker</span> <span class="string">&quot;host=tcp://<span class="variable">$</span>(<span class="variable">$wslip</span>):2375&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用 context</span></span><br><span class="line">docker context use wsl</span><br><span class="line">docker <span class="literal">--context</span> wsl <span class="built_in">ps</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 顯示目前設定的 context</span></span><br><span class="line">docker context <span class="built_in">ls</span> <span class="literal">--format</span>=<span class="string">&quot;&#123;&#123;json .&#125;&#125;&quot;</span></span><br></pre></td></tr></table></figure>
 <h1 id="使用-Powershell-取得-WSL-的-IP-位置"><a class="header-anchor" href="#使用-Powershell-取得-WSL-的-IP-位置"></a>使用 Powershell 取得 WSL 的 IP 位置</h1>
 <figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">wsl <span class="literal">--</span> ip <span class="literal">-o</span> <span class="literal">-4</span> <span class="literal">-json</span> addr list eth0 `</span><br><span class="line">| <span class="built_in">ConvertFrom-Json</span> `</span><br><span class="line">| %&#123; <span class="variable">$_</span>.addr_info.local &#125; `</span><br><span class="line">| ?&#123; <span class="variable">$_</span> &#125;</span><br></pre></td></tr></table></figure>
@@ -1066,7 +1062,9 @@ db.create_all() -->
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo nano /etc/profile</span><br></pre></td></tr></table></figure>
 <p>加入以下設定</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">export DOCKER_HOST=&quot;tcp://127.0.0.1:2375&quot;</span><br><span class="line">sudo service docker start</span><br></pre></td></tr></table></figure>
-<h1 id="無密碼-sudo-授權-不建議用在生產環境"><a class="header-anchor" href="#無密碼-sudo-授權-不建議用在生產環境"></a>無密碼 sudo 授權(不建議用在生產環境)</h1>
+<div class="note danger"><p>請注意，下方設定不建議用在生產環境</p>
+</div>
+<h1 id="無密碼-sudo-授權"><a class="header-anchor" href="#無密碼-sudo-授權"></a>無密碼 sudo 授權</h1>
 <p>修改/etc/sudoers</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo nano /etc/sudoers</span><br></pre></td></tr></table></figure>
 <p>加入以下設定</p>
@@ -1089,8 +1087,8 @@ db.create_all() -->
   <entry>
     <title>WSL2 設定 Docker In Docker</title>
     <url>/2024/01/01/Wsl2DockerInDocker/</url>
-    <content><![CDATA[<h1 id="使用主機的-Docker-Socket"><a class="header-anchor" href="#使用主機的-Docker-Socket"></a>使用主機的 Docker Socket</h1>
-<h2 id="建立-daemon-json"><a class="header-anchor" href="#建立-daemon-json"></a>建立 daemon.json</h2>
+    <content><![CDATA[<h1 id="🚀-使用主機的-Docker-Socket"><a class="header-anchor" href="#🚀-使用主機的-Docker-Socket"></a>🚀 使用主機的 Docker Socket</h1>
+<h2 id="建立-daemon-json-設定檔"><a class="header-anchor" href="#建立-daemon-json-設定檔"></a>建立 daemon.json 設定檔</h2>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo nano /etc/docker/daemon.json</span><br></pre></td></tr></table></figure>
 <p>加入以下設定</p>
 <figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;hosts&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span> <span class="string">&quot;unix:///var/run/docker.sock&quot;</span><span class="punctuation">,</span> <span class="string">&quot;tcp://0.0.0.0:&quot;</span> <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;tls&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
@@ -1101,16 +1099,16 @@ db.create_all() -->
 <h2 id="透過-Curl-執行-Docker-Socket-啟動-Containers"><a class="header-anchor" href="#透過-Curl-執行-Docker-Socket-啟動-Containers"></a>透過 Curl 執行 Docker Socket 啟動 Containers</h2>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl -XPOST --unix-socket /var/run/docker.sock http://localhost/containers/[容器編號]/start</span><br></pre></td></tr></table></figure>
 <span id="more"></span>
-<h1 id="使用-docker-dind-映像"><a class="header-anchor" href="#使用-docker-dind-映像"></a>使用 docker:dind 映像</h1>
+<h1 id="🚀-使用-docker-dind-映像"><a class="header-anchor" href="#🚀-使用-docker-dind-映像"></a>🚀 使用 docker:dind 映像</h1>
 <p>可參考以下兩種方法運行 docker:dind 映像</p>
-<h2 id="透過特權模式選項執行命令"><a class="header-anchor" href="#透過特權模式選項執行命令"></a>透過特權模式選項執行命令</h2>
+<h2 id="⭐-透過特權模式選項執行命令"><a class="header-anchor" href="#⭐-透過特權模式選項執行命令"></a>⭐ 透過特權模式選項執行命令</h2>
 <p>特權模式選項: --privileged</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run -p [本機連接Port]:2375 --privileged -e DOCKER_TLS_CERTDIR=<span class="string">&quot;&quot;</span> --name privileged-docker -d docker:dind</span><br></pre></td></tr></table></figure>
-<h2 id="透過-Nestybox-Sysbox-運行時選項執行命令"><a class="header-anchor" href="#透過-Nestybox-Sysbox-運行時選項執行命令"></a>透過 Nestybox Sysbox 運行時選項執行命令</h2>
+<h2 id="⭐-透過-Nestybox-Sysbox-運行時選項執行命令"><a class="header-anchor" href="#⭐-透過-Nestybox-Sysbox-運行時選項執行命令"></a>⭐ 透過 Nestybox Sysbox 運行時選項執行命令</h2>
 <p>安裝 <a href="https://github.com/nestybox/sysbox?tab=readme-ov-file#installation">Nestybox Sysbox</a> 後，不需要特權模式，即可執行</p>
 <p>運行時選項: --runtime=sysbox-runc</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run -p [本機連接Port]:2375 -e DOCKER_TLS_CERTDIR=<span class="string">&quot;&quot;</span> --runtime=sysbox-runc --name sysbox-docker -d docker:dind</span><br></pre></td></tr></table></figure>
-<h1 id="使用-Docker-CLI-透過-Docker-contexts-連線至遠端-Docker"><a class="header-anchor" href="#使用-Docker-CLI-透過-Docker-contexts-連線至遠端-Docker"></a>使用 Docker CLI 透過 Docker contexts 連線至遠端 Docker</h1>
+<h1 id="🚀-使用-Docker-CLI-透過-Docker-contexts-連線至遠端-Docker"><a class="header-anchor" href="#🚀-使用-Docker-CLI-透過-Docker-contexts-連線至遠端-Docker"></a>🚀 使用 Docker CLI 透過 Docker contexts 連線至遠端 Docker</h1>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 建立 Docker contexts</span></span><br><span class="line">docker context create <span class="built_in">test</span> --docker <span class="string">&quot;host=tcp://127.0.0.1:[本機連接Port]&quot;</span></span><br><span class="line"><span class="comment"># 使用 Docker contexts</span></span><br><span class="line">docker context use <span class="built_in">test</span></span><br></pre></td></tr></table></figure>
 <div class="note warning"><p>📜 參考資料</p>
 <ol>
@@ -1137,8 +1135,8 @@ db.create_all() -->
 <!-- sudo ip addr del $(ip addr show eth0 | grep 'inet\b' | awk '{print $2}' | head -n 1) dev eth0 -->
 <!-- sudo ip addr add 192.168.50.2/24 broadcast 192.168.50.255 dev eth0 -->
 <!-- sudo ip route add 0.0.0.0/0 via 192.168.50.1 dev eth0 -->
-<h1 id="使用-Powershell-設定-vEthernet-WSL"><a class="header-anchor" href="#使用-Powershell-設定-vEthernet-WSL"></a>使用 Powershell 設定 vEthernet (WSL)</h1>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 確認是否為自訂的 vEthernet (WSL) 設定</span></span><br><span class="line"><span class="keyword">if</span>(!(<span class="built_in">Get-NetAdapter</span> <span class="string">&#x27;vEthernet (WSL)&#x27;</span> | <span class="built_in">Get-NetIPAddress</span>).IPAddress.Contains(<span class="string">&#x27;192.168.50.1&#x27;</span>))&#123;</span><br><span class="line">  <span class="comment"># 移除 vEthernet (WSL)設定</span></span><br><span class="line">  <span class="built_in">Get-NetAdapter</span> <span class="string">&#x27;vEthernet (WSL)&#x27;</span> | <span class="built_in">Get-NetIPAddress</span> | <span class="built_in">Remove-NetIPAddress</span> <span class="literal">-Confirm</span>:<span class="variable">$False</span></span><br><span class="line">  </span><br><span class="line">  <span class="comment"># 加入自訂的 vEthernet (WSL)</span></span><br><span class="line">  <span class="built_in">New-NetIPAddress</span> <span class="literal">-IPAddress</span> <span class="number">192.168</span>.<span class="number">50.1</span> <span class="literal">-PrefixLength</span> <span class="number">24</span> <span class="literal">-InterfaceAlias</span> <span class="string">&#x27;vEthernet (WSL)&#x27;</span></span><br><span class="line">  </span><br><span class="line">  <span class="comment"># 移除 WSLNat 設定</span></span><br><span class="line">  <span class="built_in">Get-NetNat</span> | ? Name <span class="operator">-Eq</span> WSLNat | <span class="built_in">Remove-NetNat</span> <span class="literal">-Confirm</span>:<span class="variable">$False</span></span><br><span class="line">  </span><br><span class="line">  <span class="comment"># 加入自訂的 WSLNat</span></span><br><span class="line">  <span class="built_in">New-NetNat</span> <span class="literal">-Name</span> WSLNat <span class="literal">-InternalIPInterfaceAddressPrefix</span> <span class="number">192.168</span>.<span class="number">50.0</span>/<span class="number">24</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="使用-Powershell-設定網路介面-vEthernet-WSL"><a class="header-anchor" href="#使用-Powershell-設定網路介面-vEthernet-WSL"></a>使用 Powershell 設定網路介面 vEthernet (WSL)</h1>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 確認是否為自訂的 vEthernet (WSL) 設定</span></span><br><span class="line"><span class="keyword">if</span>(!(<span class="built_in">Get-NetAdapter</span> <span class="string">&#x27;vEthernet (WSL)&#x27;</span> | <span class="built_in">Get-NetIPAddress</span>).IPAddress.Contains(<span class="string">&#x27;192.168.50.1&#x27;</span>))&#123;</span><br><span class="line">  <span class="comment"># 移除 vEthernet (WSL) 設定</span></span><br><span class="line">  <span class="built_in">Get-NetAdapter</span> <span class="string">&#x27;vEthernet (WSL)&#x27;</span> | <span class="built_in">Get-NetIPAddress</span> | <span class="built_in">Remove-NetIPAddress</span> <span class="literal">-Confirm</span>:<span class="variable">$False</span></span><br><span class="line">  </span><br><span class="line">  <span class="comment"># 加入自訂的 vEthernet (WSL) 設定</span></span><br><span class="line">  <span class="built_in">New-NetIPAddress</span> <span class="literal">-IPAddress</span> <span class="number">192.168</span>.<span class="number">50.1</span> <span class="literal">-PrefixLength</span> <span class="number">24</span> <span class="literal">-InterfaceAlias</span> <span class="string">&#x27;vEthernet (WSL)&#x27;</span></span><br><span class="line">  </span><br><span class="line">  <span class="comment"># 移除 WSLNat 設定</span></span><br><span class="line">  <span class="built_in">Get-NetNat</span> | ? Name <span class="operator">-Eq</span> WSLNat | <span class="built_in">Remove-NetNat</span> <span class="literal">-Confirm</span>:<span class="variable">$False</span></span><br><span class="line">  </span><br><span class="line">  <span class="comment"># 加入自訂的 WSLNat 設定</span></span><br><span class="line">  <span class="built_in">New-NetNat</span> <span class="literal">-Name</span> WSLNat <span class="literal">-InternalIPInterfaceAddressPrefix</span> <span class="number">192.168</span>.<span class="number">50.0</span>/<span class="number">24</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <div class="note warning"><p>📜 參考資料</p>
 <ol>
 <li><a href="https://zhuanlan.zhihu.com/p/380779630">知乎-給 WSL2 設置靜態IP地址</a></li>
