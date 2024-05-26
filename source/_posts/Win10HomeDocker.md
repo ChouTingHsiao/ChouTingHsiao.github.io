@@ -6,7 +6,7 @@ tags: [Wsl2, Docker]
 ---
 
 {% note danger %}
-請注意，下方 Docker 應用只支援以 Ｗindows 為基底的 Image
+⚠️請注意，下方 Docker 應用只支援以 Ｗindows 為基底的 Image
 {% endnote %}
 
 # 使用 Scoop 安裝 Docker
@@ -34,7 +34,7 @@ Copy-Item 'C:\ProgramData\docker' -Destination 'd:\\docker'
 ```
 
 {% note danger %}
-請注意，因 Win10 家用版本身不支援安裝下方功能，開啟後可能發生未知錯誤，僅供學習使用
+⚠️請注意，因 Win10 家用版本身不支援安裝下方功能，開啟後可能發生未知錯誤，僅供學習使用
 {% endnote %}
 
 # 安裝 Hyper-V 功能

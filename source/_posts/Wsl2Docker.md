@@ -5,7 +5,7 @@ categories: Wsl2
 tags: [Wsl2, Docker]
 ---
 
-# 開放外部連線至 Docker，有兩種方式可擇一設定
+# 🚀 開放外部連線至 Docker，有兩種方式可擇一設定
 
 ## ⭐ 建立 daemon.json 開放連線
 建立 '/etc/docker/daemon.json'
@@ -42,17 +42,17 @@ sudo systemctl restart docker.service
 
 <!--more-->
 
-# 確認 docker 連線 *:2375是否存在
+# 🚀 確認 docker 連線 *:2375是否存在
 ```bash
 ss -peanut | grep :2375
 ```
 
-# 使用 Chocolatey 安裝 Docker CLI
+# 🚀 使用 Chocolatey 安裝 Docker CLI
 ```powershell
 choco install docker-cli
 ```
 
-# 設定主機連線有兩種方式
+# 🚀 設定主機連線有兩種方式
 ## ⭐ 設定環境變數 DOCKER_HOST 進行連線
 ```powershell
 [Environment]::SetEnvironmentVariable('DOCKER_HOST', "tcp://$($wslip):2375", 'User')
@@ -78,7 +78,7 @@ docker --context wsl ps
 docker context ls --format="{{json .}}"
 ```
 
-# 使用 Powershell 取得 WSL 的 IP 位置
+# 🚀 使用 Powershell 取得 WSL 的 IP 位置
 ```powershell
 wsl -- ip -o -4 -json addr list eth0 `
 | ConvertFrom-Json `
@@ -86,7 +86,7 @@ wsl -- ip -o -4 -json addr list eth0 `
 | ?{ $_ }
 ```
 
-# 測試 Docker 命令
+# 🚀 測試 Docker 命令
 ```powershell
 docker -H [YOUR_WSL_IP] ps
 ```
@@ -94,7 +94,7 @@ docker -H [YOUR_WSL_IP] ps
 <!-- sudo dockerd& -->
 <!-- docker run --rm hello-world -->
 
-# 登入 wsl 自動啟動 Docker
+# 🚀 登入 wsl 自動啟動 Docker
 修改/etc/profile
 ```bash
 sudo nano /etc/profile
@@ -106,11 +106,12 @@ export DOCKER_HOST="tcp://127.0.0.1:2375"
 sudo service docker start
 ```
 
+# 🚀 無密碼 sudo 授權
+
 {% note danger %}
-請注意，下方設定不建議用在生產環境
+⚠️請注意，下方設定不建議用在生產環境
 {% endnote %}
 
-# 無密碼 sudo 授權
 修改/etc/sudoers
 ```bash
 sudo nano /etc/sudoers

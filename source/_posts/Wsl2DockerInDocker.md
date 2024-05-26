@@ -7,7 +7,7 @@ tags: [Wsl2, Docker]
 
 # 🚀 使用主機的 Docker Socket
 
-## 建立 daemon.json 設定檔
+建立 daemon.json 設定檔
 ```bash
 sudo nano /etc/docker/daemon.json
 ```
@@ -20,17 +20,17 @@ sudo nano /etc/docker/daemon.json
 }
 ```
 
-## 執行命令時掛載 docker.sock 
+執行命令時掛載 docker.sock 
 ```bash
 docker run -v /var/run/docker.sock:/var/run/docker.sock -ti [Docker 映像檔]
 ```
 
-## 透過 Curl 執行 Docker Socket 建立 Containers 
+透過 Curl 執行 Docker Socket 建立 Containers 
 ```bash
 curl -XPOST --unix-socket /var/run/docker.sock -d '{"Image":"[Docker 映像檔]"}' -H 'Content-Type: application/json' http://localhost/containers/create
 ```
 
-## 透過 Curl 執行 Docker Socket 啟動 Containers 
+透過 Curl 執行 Docker Socket 啟動 Containers 
 ```bash
 curl -XPOST --unix-socket /var/run/docker.sock http://localhost/containers/[容器編號]/start
 ```
