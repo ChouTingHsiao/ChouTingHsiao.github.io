@@ -283,29 +283,6 @@
       </tags>
   </entry>
   <entry>
-    <title>如何判斷 Function 是否存在</title>
-    <url>/2019/12/28/JsFunction/</url>
-    <content><![CDATA[<h1 id="建立-function"><a class="header-anchor" href="#建立-function"></a>建立 function</h1>
-<p>建立一個名稱為 TEST 的 function</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">TEST</span>(<span class="params"></span>) &#123;</span><br><span class="line"></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;call function TEST&#x27;</span>);</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="判斷-function-是否存在"><a class="header-anchor" href="#判斷-function-是否存在"></a>判斷 function 是否存在</h1>
-<p>判斷 function 是否存在 Window 變數中，並執行</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> funcName = <span class="string">&#x27;TEST&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">typeof</span> (<span class="variable language_">window</span>[<span class="title class_">FuncName</span>]) == <span class="string">&quot;function&quot;</span>) &#123;</span><br><span class="line">        <span class="comment">// 執行方法</span></span><br><span class="line">        <span class="variable language_">window</span>[<span class="title class_">FuncName</span>]();</span><br><span class="line">&#125; </span><br><span class="line"><span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;此方法不存在&#x27;</span>);</span><br><span class="line">&#125;  </span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof">MDN typeof</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>Javascript</category>
-      </categories>
-      <tags>
-        <tag>Javascript</tag>
-        <tag>Function</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>如何將檔案轉成 Base64 編碼</title>
     <url>/2019/12/09/JsFileToBase64/</url>
     <content><![CDATA[<h1 id="建立-HTML"><a class="header-anchor" href="#建立-HTML"></a>建立 HTML</h1>
@@ -326,6 +303,29 @@
       <tags>
         <tag>Javascript</tag>
         <tag>Base64</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>如何判斷 Function 是否存在</title>
+    <url>/2019/12/28/JsFunction/</url>
+    <content><![CDATA[<h1 id="建立-function"><a class="header-anchor" href="#建立-function"></a>建立 function</h1>
+<p>建立一個名稱為 TEST 的 function</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">TEST</span>(<span class="params"></span>) &#123;</span><br><span class="line"></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;call function TEST&#x27;</span>);</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="判斷-function-是否存在"><a class="header-anchor" href="#判斷-function-是否存在"></a>判斷 function 是否存在</h1>
+<p>判斷 function 是否存在 Window 變數中，並執行</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> funcName = <span class="string">&#x27;TEST&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">typeof</span> (<span class="variable language_">window</span>[<span class="title class_">FuncName</span>]) == <span class="string">&quot;function&quot;</span>) &#123;</span><br><span class="line">        <span class="comment">// 執行方法</span></span><br><span class="line">        <span class="variable language_">window</span>[<span class="title class_">FuncName</span>]();</span><br><span class="line">&#125; </span><br><span class="line"><span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;此方法不存在&#x27;</span>);</span><br><span class="line">&#125;  </span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof">MDN typeof</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>Javascript</category>
+      </categories>
+      <tags>
+        <tag>Javascript</tag>
+        <tag>Function</tag>
       </tags>
   </entry>
   <entry>
@@ -388,26 +388,6 @@
       </tags>
   </entry>
   <entry>
-    <title>如何使用 Regex 群組</title>
-    <url>/2022/05/22/JsRegexGroup/</url>
-    <content><![CDATA[<h1 id="使用-Regex-群組"><a class="header-anchor" href="#使用-Regex-群組"></a>使用 Regex 群組</h1>
-<p>群組方法用法如下</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 建立規則</span></span><br><span class="line"><span class="keyword">var</span> myRegexp = <span class="regexp">/(?&lt;群組名稱&gt;.*)Test/g</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 執行規則</span></span><br><span class="line"><span class="keyword">var</span> match =  myRegexp.<span class="title function_">exec</span>(<span class="string">&#x27;123Test&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 取得執行結果 output: 123</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(match.<span class="property">groups</span>.群組名稱);</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Groups_and_Ranges">MDN</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>Javascript</category>
-      </categories>
-      <tags>
-        <tag>Javascript</tag>
-        <tag>Regex</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>如何將圖片壓縮並下載檔案</title>
     <url>/2019/12/25/JsPictureCompress/</url>
     <content><![CDATA[<h1 id="建立-HTML"><a class="header-anchor" href="#建立-HTML"></a>建立 HTML</h1>
@@ -428,6 +408,26 @@
       <tags>
         <tag>Javascript</tag>
         <tag>Canvas</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>如何使用 Regex 群組</title>
+    <url>/2022/05/22/JsRegexGroup/</url>
+    <content><![CDATA[<h1 id="使用-Regex-群組"><a class="header-anchor" href="#使用-Regex-群組"></a>使用 Regex 群組</h1>
+<p>群組方法用法如下</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 建立規則</span></span><br><span class="line"><span class="keyword">var</span> myRegexp = <span class="regexp">/(?&lt;群組名稱&gt;.*)Test/g</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 執行規則</span></span><br><span class="line"><span class="keyword">var</span> match =  myRegexp.<span class="title function_">exec</span>(<span class="string">&#x27;123Test&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 取得執行結果 output: 123</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(match.<span class="property">groups</span>.群組名稱);</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Groups_and_Ranges">MDN</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>Javascript</category>
+      </categories>
+      <tags>
+        <tag>Javascript</tag>
+        <tag>Regex</tag>
       </tags>
   </entry>
   <entry>
@@ -835,6 +835,38 @@ dotnet-dump collect --process-id 1902 -->
       <tags>
         <tag>Polyglot Notebooks</tag>
         <tag>DataFrame</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>在 Polyglot Notebooks 使用 ScottPlot</title>
+    <url>/2024/06/01/PolyglotNotebooksScottPlot/</url>
+    <content><![CDATA[<h1 id="初始化設定"><a class="header-anchor" href="#初始化設定"></a>初始化設定</h1>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 套件 Microsoft.Data.Analysis 檔案轉 DataFrame 格式</span></span><br><span class="line"><span class="meta">#r &quot;nuget: Microsoft.Data.Analysis, 0.21.1&quot;</span></span><br><span class="line"><span class="comment">// 套件 MathNet.Numerics 進行數學計算</span></span><br><span class="line"><span class="meta">#r &quot;nuget: MathNet.Numerics, 5.0.0&quot;</span></span><br><span class="line"><span class="comment">// 套件 ScottPlot 產生圖片</span></span><br><span class="line"><span class="meta">#r &quot;nuget:ScottPlot, 5.0.*&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> System.IO;</span><br><span class="line"><span class="keyword">using</span> Microsoft.Data.Analysis;</span><br><span class="line"><span class="keyword">using</span> MathNet.Numerics.Distributions;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 設定 ScottPlot 圖片格式</span></span><br><span class="line"><span class="keyword">using</span> Microsoft.DotNet.Interactive.Formatting;</span><br><span class="line">Formatter.Register(<span class="keyword">typeof</span>(ScottPlot.Plot), (p, w) =&gt; </span><br><span class="line">    w.Write(((ScottPlot.Plot)p).GetImageHtml(<span class="number">400</span>, <span class="number">300</span>)), HtmlFormatter.MimeType);</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="載入-CSV-資料"><a class="header-anchor" href="#載入-CSV-資料"></a>載入 CSV 資料</h1>
+<p>可參考這篇 <a href="/2024/05/05/PolyglotNotebooksDataFrame/" title="在 Polyglot Notebooks 使用 DataFrame">DataFrame</a> 載入 <a href="test.csv">CSV 資料</a></p>
+<h1 id="使用-SignalXY-繪圖"><a class="header-anchor" href="#使用-SignalXY-繪圖"></a>使用 SignalXY 繪圖</h1>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">ScottPlot.Plot myPlot1 = <span class="keyword">new</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 計算資料筆數</span></span><br><span class="line"><span class="built_in">int</span>[] rowIndex = Enumerable.Range(<span class="number">0</span>, (<span class="built_in">int</span>)df.Rows.Count).ToArray();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 載入 Duration 欄</span></span><br><span class="line"><span class="built_in">double</span>[] durationsY = Enumerable.Range(<span class="number">0</span>, (<span class="built_in">int</span>)df.Rows.Count).Select(x =&gt; Convert.ToDouble(df[<span class="string">&quot;Duration&quot;</span>][x])).ToArray();</span><br><span class="line"></span><br><span class="line">ScottPlot.Plottables.SignalXY sigAll1 = myPlot1.Add.SignalXY(rowIndex, durationsY);</span><br><span class="line">sigAll1.LegendText = <span class="string">&quot;Duration&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 載入 Pulse 欄</span></span><br><span class="line"><span class="built_in">double</span>[] pulseY = Enumerable.Range(<span class="number">0</span>, (<span class="built_in">int</span>)df.Rows.Count).Select(x =&gt; Convert.ToDouble(df[<span class="string">&quot;Pulse&quot;</span>][x])).ToArray();</span><br><span class="line"></span><br><span class="line">ScottPlot.Plottables.SignalXY sigAll2 = myPlot1.Add.SignalXY(rowIndex, pulseY);</span><br><span class="line">sigAll2.LegendText = <span class="string">&quot;Pulse&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 載入 Maxpulse 欄</span></span><br><span class="line"><span class="built_in">double</span>[] maxpulseY = Enumerable.Range(<span class="number">0</span>, (<span class="built_in">int</span>)df.Rows.Count).Select(x =&gt; Convert.ToDouble(df[<span class="string">&quot;Maxpulse&quot;</span>][x])).ToArray();</span><br><span class="line"></span><br><span class="line">ScottPlot.Plottables.SignalXY sigAll3 = myPlot1.Add.SignalXY(rowIndex, maxpulseY);</span><br><span class="line">sigAll3.LegendText = <span class="string">&quot;Maxpulse&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 載入 Calories 欄</span></span><br><span class="line"><span class="built_in">double</span>[] caloriesY = Enumerable.Range(<span class="number">0</span>, (<span class="built_in">int</span>)df.Rows.Count).Select(x =&gt; Convert.ToDouble(df[<span class="string">&quot;Calories&quot;</span>][x])).ToArray();</span><br><span class="line"></span><br><span class="line">ScottPlot.Plottables.SignalXY sigAll4 = myPlot1.Add.SignalXY(rowIndex, caloriesY);</span><br><span class="line">sigAll4.LegendText = <span class="string">&quot;Calories&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 設定 Legend 位置</span></span><br><span class="line">myPlot1.Legend.Alignment = ScottPlot.Alignment.UpperRight;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 顯示圖表</span></span><br><span class="line">myPlot1</span><br></pre></td></tr></table></figure>
+<h1 id="使用-Scatter-繪圖，分析關聯性"><a class="header-anchor" href="#使用-Scatter-繪圖，分析關聯性"></a>使用 Scatter 繪圖，分析關聯性</h1>
+<p>使用「Duration」作為 x 軸，使用「Calories」作為 y 軸</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">ScottPlot.Plot myPlot2 = <span class="keyword">new</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 載入 Scatter</span></span><br><span class="line">ScottPlot.Plottables.Scatter sp1 = myPlot2.Add.Scatter(durationsY, caloriesY);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 移除線條</span></span><br><span class="line">sp1.LineWidth = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 顯示圖表</span></span><br><span class="line">myPlot2</span><br></pre></td></tr></table></figure>
+<p>使用「Duration」作為 x 軸，使用「Maxpulse」作為 y 軸</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">ScottPlot.Plot myPlot3 = <span class="keyword">new</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 載入 Scatter</span></span><br><span class="line">ScottPlot.Plottables.Scatter sp2 = myPlot3.Add.Scatter(durationsY, maxpulseY);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 移除線條</span></span><br><span class="line">sp2.LineWidth = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 顯示圖表</span></span><br><span class="line">myPlot3</span><br></pre></td></tr></table></figure>
+<h1 id="使用-Bars-繪圖，分析-Duration-頻率"><a class="header-anchor" href="#使用-Bars-繪圖，分析-Duration-頻率"></a>使用 Bars 繪圖，分析 Duration 頻率</h1>
+<p>目前 ScottPlot 5.0 版未實現直方圖，搭配 MathNet.Numerics 做計算</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">ScottPlot.Plot myPlot4 = <span class="keyword">new</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 載入 Duration 欄</span></span><br><span class="line"><span class="built_in">double</span>[] durationsY = Enumerable.Range(<span class="number">0</span>, (<span class="built_in">int</span>)df.Rows.Count).Select(x =&gt; Convert.ToDouble(df[<span class="string">&quot;Duration&quot;</span>][x])).ToArray();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 直方圖分箱數</span></span><br><span class="line"><span class="built_in">int</span> binCount = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 獲取直方圖數據</span></span><br><span class="line"><span class="keyword">var</span> histogram = <span class="keyword">new</span> MathNet.Numerics.Statistics.Histogram(durationsY, binCount);</span><br><span class="line"></span><br><span class="line"><span class="built_in">double</span>[] binEdges = <span class="keyword">new</span> <span class="built_in">double</span>[binCount + <span class="number">1</span>];</span><br><span class="line"><span class="built_in">double</span>[] binCounts = <span class="keyword">new</span> <span class="built_in">double</span>[binCount];</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; binCount; i++)</span><br><span class="line">&#123;</span><br><span class="line">    binEdges[i] = histogram[i].LowerBound;</span><br><span class="line">    binCounts[i] = histogram[i].Count;</span><br><span class="line">&#125;</span><br><span class="line">binEdges[binCount] = histogram[binCount - <span class="number">1</span>].UpperBound;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 設定 Bars</span></span><br><span class="line">ScottPlot.Plottables.BarPlot bar = myPlot4.Add.Bars(binEdges.Take(binCount).ToArray(), binCounts);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 設定 Y 軸刻度</span></span><br><span class="line">myPlot4.Axes.Left.TickGenerator = <span class="keyword">new</span> ScottPlot.TickGenerators.NumericFixedInterval(<span class="number">20</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 設定 Bars 的顏色與寬度</span></span><br><span class="line"><span class="keyword">foreach</span>(<span class="keyword">var</span> item <span class="keyword">in</span> bar.Bars)&#123;</span><br><span class="line">    item.BorderColor = ScottPlot.Color.FromColor(System.Drawing.Color.Blue);</span><br><span class="line">    item.BorderLineWidth = <span class="number">10</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 顯示圖表</span></span><br><span class="line">myPlot4</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://www.w3schools.com/python/pandas/pandas_plotting.asp">pandas plotting</a></li>
+<li><a href="//https://swharden.com/blog/2022-05-01-dotnet-dataframe/#plot-values-from-a-dataframe">plot values from a dataframe</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>Polyglot Notebooks</category>
+      </categories>
+      <tags>
+        <tag>Polyglot Notebooks</tag>
+        <tag>ScottPlot</tag>
       </tags>
   </entry>
   <entry>
