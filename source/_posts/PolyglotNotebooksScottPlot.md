@@ -141,6 +141,6 @@ myPlot4
 
 {% note warning %}
 📜 參考資料
-1. [pandas plotting](https://www.w3schools.com/python/pandas/pandas_plotting.asp)
-2. [plot values from a dataframe](//https://swharden.com/blog/2022-05-01-dotnet-dataframe/#plot-values-from-a-dataframe)
+1. [scottplot](https://scottplot.net/quickstart/notebook/)
+2. [pandas plotting](https://www.w3schools.com/python/pandas/pandas_plotting.asp)
 {% endnote %}
