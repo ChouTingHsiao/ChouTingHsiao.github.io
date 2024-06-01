@@ -28,7 +28,7 @@
 <meta property="og:description" content="初始化設定 123456789101112131415&#x2F;&#x2F; 套件 Microsoft.Data.Analysis 檔案轉 DataFrame 格式#r &quot;nuget: Microsoft.Data.Analysis, 0.21.1&quot;&#x2F;&#x2F; 套件 MathNet.Numerics 進行數學計算#r &quot;nuget: MathNet.Numerics, 5.0.0&quot;">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-06-01T19:10:00.000Z">
-<meta property="article:modified_time" content="2024-06-01T07:51:25.504Z">
+<meta property="article:modified_time" content="2024-06-01T12:30:47.000Z">
 <meta property="article:author" content="Stephen">
 <meta property="article:tag" content="Polyglot Notebooks">
 <meta property="article:tag" content="ScottPlot">
@@ -259,7 +259,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2024-06-01 19:10:00 / Modified: 07:51:25" itemprop="dateCreated datePublished" datetime="2024-06-01T19:10:00+00:00">2024-06-01</time>
+      <time title="Created: 2024-06-01 19:10:00 / Modified: 12:30:47" itemprop="dateCreated datePublished" datetime="2024-06-01T19:10:00+00:00">2024-06-01</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -278,7 +278,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Word count in article: </span>
-      <span>481</span>
+      <span>477</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
@@ -312,8 +312,8 @@
 <figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">ScottPlot.Plot myPlot4 = <span class="keyword">new</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 載入 Duration 欄</span></span><br><span class="line"><span class="built_in">double</span>[] durationsY = Enumerable.Range(<span class="number">0</span>, (<span class="built_in">int</span>)df.Rows.Count).Select(x =&gt; Convert.ToDouble(df[<span class="string">&quot;Duration&quot;</span>][x])).ToArray();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 直方圖分箱數</span></span><br><span class="line"><span class="built_in">int</span> binCount = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 獲取直方圖數據</span></span><br><span class="line"><span class="keyword">var</span> histogram = <span class="keyword">new</span> MathNet.Numerics.Statistics.Histogram(durationsY, binCount);</span><br><span class="line"></span><br><span class="line"><span class="built_in">double</span>[] binEdges = <span class="keyword">new</span> <span class="built_in">double</span>[binCount + <span class="number">1</span>];</span><br><span class="line"><span class="built_in">double</span>[] binCounts = <span class="keyword">new</span> <span class="built_in">double</span>[binCount];</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; binCount; i++)</span><br><span class="line">&#123;</span><br><span class="line">    binEdges[i] = histogram[i].LowerBound;</span><br><span class="line">    binCounts[i] = histogram[i].Count;</span><br><span class="line">&#125;</span><br><span class="line">binEdges[binCount] = histogram[binCount - <span class="number">1</span>].UpperBound;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 設定 Bars</span></span><br><span class="line">ScottPlot.Plottables.BarPlot bar = myPlot4.Add.Bars(binEdges.Take(binCount).ToArray(), binCounts);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 設定 Y 軸刻度</span></span><br><span class="line">myPlot4.Axes.Left.TickGenerator = <span class="keyword">new</span> ScottPlot.TickGenerators.NumericFixedInterval(<span class="number">20</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 設定 Bars 的顏色與寬度</span></span><br><span class="line"><span class="keyword">foreach</span>(<span class="keyword">var</span> item <span class="keyword">in</span> bar.Bars)&#123;</span><br><span class="line">    item.BorderColor = ScottPlot.Color.FromColor(System.Drawing.Color.Blue);</span><br><span class="line">    item.BorderLineWidth = <span class="number">10</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 顯示圖表</span></span><br><span class="line">myPlot4</span><br></pre></td></tr></table></figure>
 <div class="note warning"><p>📜 參考資料</p>
 <ol>
+<li><a target="_blank" rel="noopener" href="https://scottplot.net/quickstart/notebook/">scottplot</a></li>
 <li><a target="_blank" rel="noopener" href="https://www.w3schools.com/python/pandas/pandas_plotting.asp">pandas plotting</a></li>
-<li><a target="_blank" rel="noopener" href="//https://swharden.com/blog/2022-05-01-dotnet-dataframe/#plot-values-from-a-dataframe">plot values from a dataframe</a></li>
 </ol>
 </div>
     </div>

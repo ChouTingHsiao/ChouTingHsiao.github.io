@@ -857,8 +857,8 @@ dotnet-dump collect --process-id 1902 -->
 <figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">ScottPlot.Plot myPlot4 = <span class="keyword">new</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 載入 Duration 欄</span></span><br><span class="line"><span class="built_in">double</span>[] durationsY = Enumerable.Range(<span class="number">0</span>, (<span class="built_in">int</span>)df.Rows.Count).Select(x =&gt; Convert.ToDouble(df[<span class="string">&quot;Duration&quot;</span>][x])).ToArray();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 直方圖分箱數</span></span><br><span class="line"><span class="built_in">int</span> binCount = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 獲取直方圖數據</span></span><br><span class="line"><span class="keyword">var</span> histogram = <span class="keyword">new</span> MathNet.Numerics.Statistics.Histogram(durationsY, binCount);</span><br><span class="line"></span><br><span class="line"><span class="built_in">double</span>[] binEdges = <span class="keyword">new</span> <span class="built_in">double</span>[binCount + <span class="number">1</span>];</span><br><span class="line"><span class="built_in">double</span>[] binCounts = <span class="keyword">new</span> <span class="built_in">double</span>[binCount];</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; binCount; i++)</span><br><span class="line">&#123;</span><br><span class="line">    binEdges[i] = histogram[i].LowerBound;</span><br><span class="line">    binCounts[i] = histogram[i].Count;</span><br><span class="line">&#125;</span><br><span class="line">binEdges[binCount] = histogram[binCount - <span class="number">1</span>].UpperBound;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 設定 Bars</span></span><br><span class="line">ScottPlot.Plottables.BarPlot bar = myPlot4.Add.Bars(binEdges.Take(binCount).ToArray(), binCounts);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 設定 Y 軸刻度</span></span><br><span class="line">myPlot4.Axes.Left.TickGenerator = <span class="keyword">new</span> ScottPlot.TickGenerators.NumericFixedInterval(<span class="number">20</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 設定 Bars 的顏色與寬度</span></span><br><span class="line"><span class="keyword">foreach</span>(<span class="keyword">var</span> item <span class="keyword">in</span> bar.Bars)&#123;</span><br><span class="line">    item.BorderColor = ScottPlot.Color.FromColor(System.Drawing.Color.Blue);</span><br><span class="line">    item.BorderLineWidth = <span class="number">10</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 顯示圖表</span></span><br><span class="line">myPlot4</span><br></pre></td></tr></table></figure>
 <div class="note warning"><p>📜 參考資料</p>
 <ol>
+<li><a href="https://scottplot.net/quickstart/notebook/">scottplot</a></li>
 <li><a href="https://www.w3schools.com/python/pandas/pandas_plotting.asp">pandas plotting</a></li>
-<li><a href="//https://swharden.com/blog/2022-05-01-dotnet-dataframe/#plot-values-from-a-dataframe">plot values from a dataframe</a></li>
 </ol>
 </div>]]></content>
       <categories>
@@ -1053,6 +1053,27 @@ db.create_all() -->
       </tags>
   </entry>
   <entry>
+    <title>WSL2 移動至其它硬碟</title>
+    <url>/2023/05/05/Wsl2Disk/</url>
+    <content><![CDATA[<h1 id="列出已安裝的-Linux-發行版"><a class="header-anchor" href="#列出已安裝的-Linux-發行版"></a>列出已安裝的 Linux 發行版</h1>
+<p>執行下方命令</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">wsl <span class="literal">-l</span> <span class="literal">-v</span></span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="遷移-WSL2-至磁碟機-D"><a class="header-anchor" href="#遷移-WSL2-至磁碟機-D"></a>遷移 WSL2 至磁碟機 D</h1>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 導出已安裝的 Linux 發行版壓縮檔</span></span><br><span class="line">wsl <span class="literal">--export</span> <span class="string">&quot;Ubuntu-22.04&quot;</span> d:\ubuntu.tar</span><br><span class="line"></span><br><span class="line"><span class="comment"># 移除 WSL</span></span><br><span class="line">wsl <span class="literal">--unregister</span> <span class="string">&quot;Ubuntu-22.04&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 建立解壓縮的目錄</span></span><br><span class="line">mkdir d:\Ubuntu</span><br><span class="line"></span><br><span class="line"><span class="comment"># Linux 發行版壓縮檔解壓縮至新目錄後加入 WSL</span></span><br><span class="line">wsl <span class="literal">--import</span> <span class="string">&quot;Ubuntu-22.04&quot;</span> d:\ubuntu d:\ubuntu.tar</span><br><span class="line"></span><br><span class="line"><span class="comment"># 刪除 Linux 發行版壓縮檔</span></span><br><span class="line"><span class="built_in">del</span> d:\ubuntu.tar</span><br><span class="line"></span><br><span class="line"><span class="comment"># 因重新建立 WSL 會以 root 為預設帳戶，需重新設定預設帳戶</span></span><br><span class="line">ubuntu2204.exe config <span class="literal">--default-user</span> ubuntu</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://learn.microsoft.com/zh-tw/windows/wsl/use-custom-distro">匯入任何要與 WSL 搭配使用的 Linux 發行版本</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>Wsl2</category>
+      </categories>
+      <tags>
+        <tag>Wsl2</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>WSL2 開放 Docker 外部連線</title>
     <url>/2023/04/29/Wsl2Docker/</url>
     <content><![CDATA[<h1 id="🚀-開放外部連線至-Docker，有兩種方式可擇一設定"><a class="header-anchor" href="#🚀-開放外部連線至-Docker，有兩種方式可擇一設定"></a>🚀 開放外部連線至 Docker，有兩種方式可擇一設定</h1>
@@ -1109,27 +1130,6 @@ db.create_all() -->
       <tags>
         <tag>Wsl2</tag>
         <tag>Docker</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>WSL2 移動至其它硬碟</title>
-    <url>/2023/05/05/Wsl2Disk/</url>
-    <content><![CDATA[<h1 id="列出已安裝的-Linux-發行版"><a class="header-anchor" href="#列出已安裝的-Linux-發行版"></a>列出已安裝的 Linux 發行版</h1>
-<p>執行下方命令</p>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">wsl <span class="literal">-l</span> <span class="literal">-v</span></span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="遷移-WSL2-至磁碟機-D"><a class="header-anchor" href="#遷移-WSL2-至磁碟機-D"></a>遷移 WSL2 至磁碟機 D</h1>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 導出已安裝的 Linux 發行版壓縮檔</span></span><br><span class="line">wsl <span class="literal">--export</span> <span class="string">&quot;Ubuntu-22.04&quot;</span> d:\ubuntu.tar</span><br><span class="line"></span><br><span class="line"><span class="comment"># 移除 WSL</span></span><br><span class="line">wsl <span class="literal">--unregister</span> <span class="string">&quot;Ubuntu-22.04&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 建立解壓縮的目錄</span></span><br><span class="line">mkdir d:\Ubuntu</span><br><span class="line"></span><br><span class="line"><span class="comment"># Linux 發行版壓縮檔解壓縮至新目錄後加入 WSL</span></span><br><span class="line">wsl <span class="literal">--import</span> <span class="string">&quot;Ubuntu-22.04&quot;</span> d:\ubuntu d:\ubuntu.tar</span><br><span class="line"></span><br><span class="line"><span class="comment"># 刪除 Linux 發行版壓縮檔</span></span><br><span class="line"><span class="built_in">del</span> d:\ubuntu.tar</span><br><span class="line"></span><br><span class="line"><span class="comment"># 因重新建立 WSL 會以 root 為預設帳戶，需重新設定預設帳戶</span></span><br><span class="line">ubuntu2204.exe config <span class="literal">--default-user</span> ubuntu</span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://learn.microsoft.com/zh-tw/windows/wsl/use-custom-distro">匯入任何要與 WSL 搭配使用的 Linux 發行版本</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>Wsl2</category>
-      </categories>
-      <tags>
-        <tag>Wsl2</tag>
       </tags>
   </entry>
   <entry>
