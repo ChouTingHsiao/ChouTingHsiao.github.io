@@ -1,6 +1,6 @@
 ---
 title: 使用 ADB 命令
-date: 2024-05-05 11:30:00
+date: 2024-05-05 11:00:00
 categories: Android
 tags: [Android, adb]
 ---
