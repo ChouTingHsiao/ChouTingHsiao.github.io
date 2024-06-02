@@ -2,7 +2,7 @@
 title: 如何在 pi 3b+ 上執行 Angular Protractor
 date: 2019-12-25 20:59:57
 categories: Angular
-tags: [Linux, Pi, Angular, Protractor]
+tags: [Angular, Linux, Pi, Protractor]
 ---
 
 # 安裝 WebDriver

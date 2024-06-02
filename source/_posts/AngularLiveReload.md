@@ -2,7 +2,7 @@
 title: Angular Live Reload 在 Ubuntu 沒反應
 date: 2020-08-31 22:41:57
 categories: Angular
-tags: [Linux, Ubuntu, Angular]
+tags: [Angular, Linux, Ubuntu]
 ---
 
 # 確認 inotify 設定

@@ -2,7 +2,7 @@
 title: 自託管 PlantUML 服務
 date: 2024-02-04 18:00:00
 categories: Project
-tags: [Projectm, PlantUML]
+tags: [Project, PlantUML]
 ---
 
 # 在 Ubuntu 安裝 openjdk

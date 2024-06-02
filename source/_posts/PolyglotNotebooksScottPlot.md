@@ -67,6 +67,10 @@ myPlot1.Legend.Alignment = ScottPlot.Alignment.UpperRight;
 myPlot1
 ```
 
+<!-- myPlot1.GetImage(400, 300).SaveWebp("SignalXY.webp"); -->
+
+![SignalXY](SignalXY.webp)
+
 # 使用 Scatter 繪圖，分析關聯性
 
 使用「Duration」作為 x 軸，使用「Calories」作為 y 軸
@@ -83,6 +87,8 @@ sp1.LineWidth = 0;
 myPlot2
 ```
 
+![Scatter1](Scatter1.webp)
+
 使用「Duration」作為 x 軸，使用「Maxpulse」作為 y 軸
 ```c#
 ScottPlot.Plot myPlot3 = new();
@@ -96,6 +102,8 @@ sp2.LineWidth = 0;
 // 顯示圖表
 myPlot3
 ```
+
+![Scatter2](Scatter2.webp)
 
 # 使用 Bars 繪圖，分析 Duration 頻率
 
@@ -138,6 +146,8 @@ foreach(var item in bar.Bars){
 // 顯示圖表
 myPlot4
 ```
+
+![Win10ProxySetting](Histogram.webp)
 
 {% note warning %}
 📜 參考資料
