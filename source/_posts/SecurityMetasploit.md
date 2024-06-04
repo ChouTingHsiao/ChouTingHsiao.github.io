@@ -16,10 +16,9 @@ msfconsole
 
 # 初始化 PostgreSQL 資料庫
 
-初始化後產生資料庫設定: "/home/[user]/.msf4/database.yml"
-
 ```bash
 # 初始化資料庫
+# 資料庫設定: /home/[user]/.msf4/database.yml
 msfdb init
 
 # 建立資料庫連線
