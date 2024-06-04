@@ -15,9 +15,18 @@ msfconsole
 <!--more-->
 
 # 初始化 PostgreSQL 資料庫
+
+初始化後產生資料庫設定: "/home/[user]/.msf4/database.yml"
+
 ```bash
 # 初始化資料庫
 msfdb init
+
+# 建立資料庫連線
+msfdb start
+
+# 停止資料庫連線
+msfdb stop
 
 # 查詢資料庫狀態
 db_status
@@ -25,6 +34,9 @@ db_status
 
 # nmap 掃描
 ```bash
+# 更新 nmap
+db_nmap --script-updatedb
+
 # 網段主機掃描
 db_nmap -sn [CIDR網段]
 
@@ -42,11 +54,9 @@ db_nmap -sV -p- [IP]
 # OS 識別
 db_nmap [IP] -p [端口] -O
 
-# 基礎漏洞掃描
-db_nmap -sV --script vulners [IP]
-
-# vulners.com 線上漏洞掃描
-db_nmap -sV --script vulners [IP]
+# 使用 script 掃描漏洞
+# script 路徑: /usr/share/nmap/scripts
+db_nmap -sV --script [漏洞script檔] [IP]
 
 # 掃描結果導出
 db_nmap [IP] -p [端口] -oN result.txt
