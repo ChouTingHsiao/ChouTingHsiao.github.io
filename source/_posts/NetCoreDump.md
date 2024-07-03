@@ -91,9 +91,16 @@ GC狀態:  eeheap -gc
 
 # 安裝 ProcDump 自動擷取傾印檔案
 
-當目標進程 CPU 或記憶體使用量達到特定臨界值或低於限制值時，您可以使用 ProcDump 來擷取記憶體傾印檔案。
+當目標進程 CPU 或記憶體使用量達到特定臨界值或低於限制值時，您可以使用 ProcDump 來擷取記憶體傾印檔案
+
+安裝 ProcDump
 ```bash
 sudo apt install procdump
+```
+
+產生 dump 至服務工作目錄
+```bash
+sudo procdump [PID]
 ```
 
 {% note warning %}
