@@ -305,35 +305,6 @@
       </tags>
   </entry>
   <entry>
-    <title>如何在 Iframe 讀取或寫入字串</title>
-    <url>/2019/12/28/JsIframe/</url>
-    <content><![CDATA[<h1 id="建立-HTML"><a class="header-anchor" href="#建立-HTML"></a>建立 HTML</h1>
-<p>首先在 HTML 建立一個 iframe</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">id</span>=<span class="string">&quot;test&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="操作-iframe"><a class="header-anchor" href="#操作-iframe"></a>操作 iframe</h1>
-<p>用 Javascript 搜尋 iframe 的DOM物件</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> iframe = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;test&#x27;</span>).<span class="property">contentDocument</span>;</span><br></pre></td></tr></table></figure>
-<p>字串寫入 iframe</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">iframe.<span class="title function_">open</span>();</span><br><span class="line"></span><br><span class="line">iframe.<span class="title function_">write</span>(<span class="string">&#x27;&lt;a&gt;test&lt;/a&gt;&#x27;</span>);</span><br><span class="line"></span><br><span class="line">iframe.<span class="title function_">close</span>();</span><br></pre></td></tr></table></figure>
-<p>取得 iframe 字串</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">iframe.<span class="property">body</span>.<span class="property">innerText</span></span><br></pre></td></tr></table></figure>
-<p>URL.createObjectURL 寫入 iframe</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> blobx = <span class="keyword">new</span> <span class="title class_">Blob</span>(</span><br><span class="line">    [<span class="string">&#x27;&lt;base href=&quot;[URL輸入]&quot;&gt;&#x27;</span> + data],</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="attr">type</span>: <span class="string">&#x27;text/html&#x27;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> urlObject = <span class="variable constant_">URL</span>.<span class="title function_">createObjectURL</span>(blobx)</span><br><span class="line"></span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;test&#x27;</span>).<span class="title function_">setAttribute</span>(<span class="string">&#x27;src&#x27;</span>, urlObject)</span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/write">MDN Document write</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>Javascript</category>
-      </categories>
-      <tags>
-        <tag>Javascript</tag>
-        <tag>Iframe</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>如何迭代 Js 物件</title>
     <url>/2020/03/27/JsIteratorObject/</url>
     <content><![CDATA[<h1 id="使用-for…in"><a class="header-anchor" href="#使用-for…in"></a>使用 for…in</h1>
@@ -364,6 +335,35 @@
       </tags>
   </entry>
   <entry>
+    <title>如何在 Iframe 讀取或寫入字串</title>
+    <url>/2019/12/28/JsIframe/</url>
+    <content><![CDATA[<h1 id="建立-HTML"><a class="header-anchor" href="#建立-HTML"></a>建立 HTML</h1>
+<p>首先在 HTML 建立一個 iframe</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">id</span>=<span class="string">&quot;test&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="操作-iframe"><a class="header-anchor" href="#操作-iframe"></a>操作 iframe</h1>
+<p>用 Javascript 搜尋 iframe 的DOM物件</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> iframe = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;test&#x27;</span>).<span class="property">contentDocument</span>;</span><br></pre></td></tr></table></figure>
+<p>字串寫入 iframe</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">iframe.<span class="title function_">open</span>();</span><br><span class="line"></span><br><span class="line">iframe.<span class="title function_">write</span>(<span class="string">&#x27;&lt;a&gt;test&lt;/a&gt;&#x27;</span>);</span><br><span class="line"></span><br><span class="line">iframe.<span class="title function_">close</span>();</span><br></pre></td></tr></table></figure>
+<p>取得 iframe 字串</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">iframe.<span class="property">body</span>.<span class="property">innerText</span></span><br></pre></td></tr></table></figure>
+<p>URL.createObjectURL 寫入 iframe</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> blobx = <span class="keyword">new</span> <span class="title class_">Blob</span>(</span><br><span class="line">    [<span class="string">&#x27;&lt;base href=&quot;[URL輸入]&quot;&gt;&#x27;</span> + data],</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="attr">type</span>: <span class="string">&#x27;text/html&#x27;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> urlObject = <span class="variable constant_">URL</span>.<span class="title function_">createObjectURL</span>(blobx)</span><br><span class="line"></span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;test&#x27;</span>).<span class="title function_">setAttribute</span>(<span class="string">&#x27;src&#x27;</span>, urlObject)</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/write">MDN Document write</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>Javascript</category>
+      </categories>
+      <tags>
+        <tag>Javascript</tag>
+        <tag>Iframe</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>如何將圖片壓縮並下載檔案</title>
     <url>/2019/12/25/JsPictureCompress/</url>
     <content><![CDATA[<h1 id="建立-HTML"><a class="header-anchor" href="#建立-HTML"></a>建立 HTML</h1>
@@ -384,26 +384,6 @@
       <tags>
         <tag>Javascript</tag>
         <tag>Canvas</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>如何使用 Regex 群組</title>
-    <url>/2022/05/22/JsRegexGroup/</url>
-    <content><![CDATA[<h1 id="使用-Regex-群組"><a class="header-anchor" href="#使用-Regex-群組"></a>使用 Regex 群組</h1>
-<p>群組方法用法如下</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 建立規則</span></span><br><span class="line"><span class="keyword">var</span> myRegexp = <span class="regexp">/(?&lt;群組名稱&gt;.*)Test/g</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 執行規則</span></span><br><span class="line"><span class="keyword">var</span> match =  myRegexp.<span class="title function_">exec</span>(<span class="string">&#x27;123Test&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 取得執行結果 output: 123</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(match.<span class="property">groups</span>.群組名稱);</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Groups_and_Ranges">MDN</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>Javascript</category>
-      </categories>
-      <tags>
-        <tag>Javascript</tag>
-        <tag>Regex</tag>
       </tags>
   </entry>
   <entry>
@@ -433,6 +413,26 @@
         <tag>Ubuntu</tag>
         <tag>Odbc</tag>
         <tag>IBM i Access</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>如何使用 Regex 群組</title>
+    <url>/2022/05/22/JsRegexGroup/</url>
+    <content><![CDATA[<h1 id="使用-Regex-群組"><a class="header-anchor" href="#使用-Regex-群組"></a>使用 Regex 群組</h1>
+<p>群組方法用法如下</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 建立規則</span></span><br><span class="line"><span class="keyword">var</span> myRegexp = <span class="regexp">/(?&lt;群組名稱&gt;.*)Test/g</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 執行規則</span></span><br><span class="line"><span class="keyword">var</span> match =  myRegexp.<span class="title function_">exec</span>(<span class="string">&#x27;123Test&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 取得執行結果 output: 123</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(match.<span class="property">groups</span>.群組名稱);</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Groups_and_Ranges">MDN</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>Javascript</category>
+      </categories>
+      <tags>
+        <tag>Javascript</tag>
+        <tag>Regex</tag>
       </tags>
   </entry>
   <entry>
@@ -1095,27 +1095,6 @@ db.create_all() -->
       </tags>
   </entry>
   <entry>
-    <title>WSL2 移動至其它硬碟</title>
-    <url>/2023/05/05/Wsl2Disk/</url>
-    <content><![CDATA[<h1 id="列出已安裝的-Linux-發行版"><a class="header-anchor" href="#列出已安裝的-Linux-發行版"></a>列出已安裝的 Linux 發行版</h1>
-<p>執行下方命令</p>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">wsl <span class="literal">-l</span> <span class="literal">-v</span></span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="遷移-WSL2-至磁碟機-D"><a class="header-anchor" href="#遷移-WSL2-至磁碟機-D"></a>遷移 WSL2 至磁碟機 D</h1>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 導出已安裝的 Linux 發行版壓縮檔</span></span><br><span class="line">wsl <span class="literal">--export</span> <span class="string">&quot;Ubuntu-22.04&quot;</span> d:\ubuntu.tar</span><br><span class="line"></span><br><span class="line"><span class="comment"># 移除 WSL</span></span><br><span class="line">wsl <span class="literal">--unregister</span> <span class="string">&quot;Ubuntu-22.04&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 建立解壓縮的目錄</span></span><br><span class="line">mkdir d:\Ubuntu</span><br><span class="line"></span><br><span class="line"><span class="comment"># Linux 發行版壓縮檔解壓縮至新目錄後加入 WSL</span></span><br><span class="line">wsl <span class="literal">--import</span> <span class="string">&quot;Ubuntu-22.04&quot;</span> d:\ubuntu d:\ubuntu.tar</span><br><span class="line"></span><br><span class="line"><span class="comment"># 刪除 Linux 發行版壓縮檔</span></span><br><span class="line"><span class="built_in">del</span> d:\ubuntu.tar</span><br><span class="line"></span><br><span class="line"><span class="comment"># 因重新建立 WSL 會以 root 為預設帳戶，需重新設定預設帳戶</span></span><br><span class="line">ubuntu2204.exe config <span class="literal">--default-user</span> ubuntu</span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://learn.microsoft.com/zh-tw/windows/wsl/use-custom-distro">匯入任何要與 WSL 搭配使用的 Linux 發行版本</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>Wsl2</category>
-      </categories>
-      <tags>
-        <tag>Wsl2</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>WSL2 開放 Docker 外部連線</title>
     <url>/2023/04/29/Wsl2Docker/</url>
     <content><![CDATA[<h1 id="🚀-開放外部連線至-Docker，有兩種方式可擇一設定"><a class="header-anchor" href="#🚀-開放外部連線至-Docker，有兩種方式可擇一設定"></a>🚀 開放外部連線至 Docker，有兩種方式可擇一設定</h1>
@@ -1172,6 +1151,27 @@ db.create_all() -->
       <tags>
         <tag>Wsl2</tag>
         <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>WSL2 移動至其它硬碟</title>
+    <url>/2023/05/05/Wsl2Disk/</url>
+    <content><![CDATA[<h1 id="列出已安裝的-Linux-發行版"><a class="header-anchor" href="#列出已安裝的-Linux-發行版"></a>列出已安裝的 Linux 發行版</h1>
+<p>執行下方命令</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">wsl <span class="literal">-l</span> <span class="literal">-v</span></span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="遷移-WSL2-至磁碟機-D"><a class="header-anchor" href="#遷移-WSL2-至磁碟機-D"></a>遷移 WSL2 至磁碟機 D</h1>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 導出已安裝的 Linux 發行版壓縮檔</span></span><br><span class="line">wsl <span class="literal">--export</span> <span class="string">&quot;Ubuntu-22.04&quot;</span> d:\ubuntu.tar</span><br><span class="line"></span><br><span class="line"><span class="comment"># 移除 WSL</span></span><br><span class="line">wsl <span class="literal">--unregister</span> <span class="string">&quot;Ubuntu-22.04&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 建立解壓縮的目錄</span></span><br><span class="line">mkdir d:\Ubuntu</span><br><span class="line"></span><br><span class="line"><span class="comment"># Linux 發行版壓縮檔解壓縮至新目錄後加入 WSL</span></span><br><span class="line">wsl <span class="literal">--import</span> <span class="string">&quot;Ubuntu-22.04&quot;</span> d:\ubuntu d:\ubuntu.tar</span><br><span class="line"></span><br><span class="line"><span class="comment"># 刪除 Linux 發行版壓縮檔</span></span><br><span class="line"><span class="built_in">del</span> d:\ubuntu.tar</span><br><span class="line"></span><br><span class="line"><span class="comment"># 因重新建立 WSL 會以 root 為預設帳戶，需重新設定預設帳戶</span></span><br><span class="line">ubuntu2204.exe config <span class="literal">--default-user</span> ubuntu</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://learn.microsoft.com/zh-tw/windows/wsl/use-custom-distro">匯入任何要與 WSL 搭配使用的 Linux 發行版本</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>Wsl2</category>
+      </categories>
+      <tags>
+        <tag>Wsl2</tag>
       </tags>
   </entry>
   <entry>
