@@ -257,7 +257,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2024-07-03 15:27:13" itemprop="dateModified" datetime="2024-07-03T15:27:13+00:00">2024-07-03</time>
+      <time title="Modified: 2024-07-05 16:11:52" itemprop="dateModified" datetime="2024-07-05T16:11:52+00:00">2024-07-05</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -365,7 +365,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2024-07-03 15:27:13" itemprop="dateModified" datetime="2024-07-03T15:27:13+00:00">2024-07-03</time>
+      <time title="Modified: 2024-07-05 16:11:52" itemprop="dateModified" datetime="2024-07-05T16:11:52+00:00">2024-07-05</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -384,7 +384,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Word count in article: </span>
-      <span>476</span>
+      <span>579</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
@@ -402,11 +402,14 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="使用-apport-解壓縮核心傾印檔案"><a class="header-anchor" href="#使用-apport-解壓縮核心傾印檔案"></a>使用 apport 解壓縮核心傾印檔案</h1>
+          <h1 id="查詢服務資訊"><a class="header-anchor" href="#查詢服務資訊"></a>查詢服務資訊</h1>
+<p>使用 journalctl 查詢服務 Log</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">journalctl -r --identifier=[服務的identifier] --since <span class="string">&quot;2 minute ago&quot;</span></span><br><span class="line">journalctl -r -u [服務名稱] --since <span class="string">&quot;2 day ago&quot;</span></span><br></pre></td></tr></table></figure>
+<h1 id="取得系統產生的傾印檔案"><a class="header-anchor" href="#取得系統產生的傾印檔案"></a>取得系統產生的傾印檔案</h1>
 <p>安裝 apport</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install apport</span><br></pre></td></tr></table></figure>
-<p>解壓縮核心傾印檔案</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apport-unpack [systemGeneratedCrashReportPath].crash [yourNewUnpackDirectoryHere]</span><br></pre></td></tr></table></figure>
+<p>進入目錄 <code>/var/crash</code> 搜尋核心傾印檔案，之後使用 apport 解壓縮</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apport-unpack [核心傾印檔案].crash [解壓縮目錄]</span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2023/05/07/NetCoreDump/#more" rel="contents">
@@ -476,7 +479,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2024-07-03 15:27:13" itemprop="dateModified" datetime="2024-07-03T15:27:13+00:00">2024-07-03</time>
+      <time title="Modified: 2024-07-05 16:11:52" itemprop="dateModified" datetime="2024-07-05T16:11:52+00:00">2024-07-05</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -585,7 +588,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2024-07-03 15:27:13" itemprop="dateModified" datetime="2024-07-03T15:27:13+00:00">2024-07-03</time>
+      <time title="Modified: 2024-07-05 16:11:52" itemprop="dateModified" datetime="2024-07-05T16:11:52+00:00">2024-07-05</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -696,7 +699,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2024-07-03 15:27:13" itemprop="dateModified" datetime="2024-07-03T15:27:13+00:00">2024-07-03</time>
+      <time title="Modified: 2024-07-05 16:11:52" itemprop="dateModified" datetime="2024-07-05T16:11:52+00:00">2024-07-05</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -800,7 +803,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">32 mins.</span>
+    <span title="Reading time total">33 mins.</span>
   </span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>

@@ -20,15 +20,15 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"choutinghsiao.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.18.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="使用 apport 解壓縮核心傾印檔案 安裝 apport 1sudo apt install apport 解壓縮核心傾印檔案 1apport-unpack [systemGeneratedCrashReportPath].crash [yourNewUnpackDirectoryHere]">
+    <meta name="description" content="查詢服務資訊 使用 journalctl 查詢服務 Log 12journalctl -r --identifier&#x3D;[服務的identifier] --since &quot;2 minute ago&quot;journalctl -r -u [服務名稱] --since &quot;2 day ago&quot; 取得系統產生的傾印檔案 安裝 apport 1sudo apt install">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用 lldb 分析 Dotnet 核心傾印檔案">
 <meta property="og:url" content="https://choutinghsiao.github.io/2023/05/07/NetCoreDump/index.html">
 <meta property="og:site_name" content="Stephen&#39;s Note">
-<meta property="og:description" content="使用 apport 解壓縮核心傾印檔案 安裝 apport 1sudo apt install apport 解壓縮核心傾印檔案 1apport-unpack [systemGeneratedCrashReportPath].crash [yourNewUnpackDirectoryHere]">
+<meta property="og:description" content="查詢服務資訊 使用 journalctl 查詢服務 Log 12journalctl -r --identifier&#x3D;[服務的identifier] --since &quot;2 minute ago&quot;journalctl -r -u [服務名稱] --since &quot;2 day ago&quot; 取得系統產生的傾印檔案 安裝 apport 1sudo apt install">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-05-07T18:00:00.000Z">
-<meta property="article:modified_time" content="2024-07-03T15:27:13.267Z">
+<meta property="article:modified_time" content="2024-07-05T16:11:52.214Z">
 <meta property="article:author" content="Stephen">
 <meta property="article:tag" content="Linux">
 <meta property="article:tag" content=".Net">
@@ -143,7 +143,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-apport-%E8%A7%A3%E5%A3%93%E7%B8%AE%E6%A0%B8%E5%BF%83%E5%82%BE%E5%8D%B0%E6%AA%94%E6%A1%88"><span class="nav-number">1.</span> <span class="nav-text">使用 apport 解壓縮核心傾印檔案</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%9D%E7%9B%B8%E9%97%9C-Dotnet-%E5%B7%A5%E5%85%B7"><span class="nav-number">2.</span> <span class="nav-text">安裝相關 Dotnet 工具</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-lldb-%E5%81%B5%E9%8C%AF"><span class="nav-number">3.</span> <span class="nav-text">使用 lldb 偵錯</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%9D-ProcDump-%E8%87%AA%E5%8B%95%E6%93%B7%E5%8F%96%E5%82%BE%E5%8D%B0%E6%AA%94%E6%A1%88"><span class="nav-number">4.</span> <span class="nav-text">安裝 ProcDump 自動擷取傾印檔案</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9F%A5%E8%A9%A2%E6%9C%8D%E5%8B%99%E8%B3%87%E8%A8%8A"><span class="nav-number">1.</span> <span class="nav-text">查詢服務資訊</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%96%E5%BE%97%E7%B3%BB%E7%B5%B1%E7%94%A2%E7%94%9F%E7%9A%84%E5%82%BE%E5%8D%B0%E6%AA%94%E6%A1%88"><span class="nav-number">2.</span> <span class="nav-text">取得系統產生的傾印檔案</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-ProcDump-%E7%94%A2%E7%94%9F%E5%82%BE%E5%8D%B0%E6%AA%94%E6%A1%88"><span class="nav-number">3.</span> <span class="nav-text">使用 ProcDump 產生傾印檔案</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%9D%E7%9B%B8%E9%97%9C-Dotnet-%E5%B7%A5%E5%85%B7%E5%8A%A0%E5%BC%B7-lldb-%E5%81%B5%E9%8C%AF"><span class="nav-number">4.</span> <span class="nav-text">安裝相關 Dotnet 工具加強 lldb 偵錯</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-lldb-%E5%81%B5%E9%8C%AF"><span class="nav-number">5.</span> <span class="nav-text">使用 lldb 偵錯</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -266,7 +266,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2024-07-03 15:27:13" itemprop="dateModified" datetime="2024-07-03T15:27:13+00:00">2024-07-03</time>
+      <time title="Modified: 2024-07-05 16:11:52" itemprop="dateModified" datetime="2024-07-05T16:11:52+00:00">2024-07-05</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -285,7 +285,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Word count in article: </span>
-      <span>476</span>
+      <span>579</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
@@ -302,12 +302,24 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><h1 id="使用-apport-解壓縮核心傾印檔案"><a class="header-anchor" href="#使用-apport-解壓縮核心傾印檔案"></a>使用 apport 解壓縮核心傾印檔案</h1>
+    <div class="post-body" itemprop="articleBody"><h1 id="查詢服務資訊"><a class="header-anchor" href="#查詢服務資訊"></a>查詢服務資訊</h1>
+<p>使用 journalctl 查詢服務 Log</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">journalctl -r --identifier=[服務的identifier] --since <span class="string">&quot;2 minute ago&quot;</span></span><br><span class="line">journalctl -r -u [服務名稱] --since <span class="string">&quot;2 day ago&quot;</span></span><br></pre></td></tr></table></figure>
+<h1 id="取得系統產生的傾印檔案"><a class="header-anchor" href="#取得系統產生的傾印檔案"></a>取得系統產生的傾印檔案</h1>
 <p>安裝 apport</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install apport</span><br></pre></td></tr></table></figure>
-<p>解壓縮核心傾印檔案</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apport-unpack [systemGeneratedCrashReportPath].crash [yourNewUnpackDirectoryHere]</span><br></pre></td></tr></table></figure>
+<p>進入目錄 <code>/var/crash</code> 搜尋核心傾印檔案，之後使用 apport 解壓縮</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apport-unpack [核心傾印檔案].crash [解壓縮目錄]</span><br></pre></td></tr></table></figure>
 <span id="more"></span>
+<h1 id="使用-ProcDump-產生傾印檔案"><a class="header-anchor" href="#使用-ProcDump-產生傾印檔案"></a>使用 ProcDump 產生傾印檔案</h1>
+<p>安裝 ProcDump</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install procdump</span><br></pre></td></tr></table></figure>
+<p>產生傾印檔案至服務工作目錄</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo procdump [服務PID]</span><br></pre></td></tr></table></figure>
+<p>當目標進程 CPU 或記憶體使用量達到特定臨界值或低於限制值時</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo procdump -c [CPU使用率] -m [記憶體使用MB數] [服務PID]</span><br></pre></td></tr></table></figure>
+<p>當目標進程收到特定訊號時</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo procdump -sig [Linux 信號] [服務PID]</span><br></pre></td></tr></table></figure>
 <!-- cd [yourNewUnpackDirectoryHere]/
 sudo apt install gdb
 gdb `cat ExecutablePath` CoreDump
@@ -325,7 +337,7 @@ gdb `cat ExecutablePath` CoreDump
 <!-- dotnet tool install -g dotnet-dump
 dotnet-dump ps
 dotnet-dump collect --process-id 1902 -->
-<h1 id="安裝相關-Dotnet-工具"><a class="header-anchor" href="#安裝相關-Dotnet-工具"></a>安裝相關 Dotnet 工具</h1>
+<h1 id="安裝相關-Dotnet-工具加強-lldb-偵錯"><a class="header-anchor" href="#安裝相關-Dotnet-工具加強-lldb-偵錯"></a>安裝相關 Dotnet 工具加強 lldb 偵錯</h1>
 <p>安裝 dotnet-symbol 導出傾印檔案的符號</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dotnet tool install -g dotnet-symbol</span><br></pre></td></tr></table></figure>
 <p>導出傾印檔案的符號</p>
@@ -340,15 +352,10 @@ dotnet-dump collect --process-id 1902 -->
 <p>在 lldb 中載入導入傾印檔案的符號</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setsymbolserver -directory ~/dumps/symbols</span><br></pre></td></tr></table></figure>
 <p>在 lldb 中常用命令</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">執行緒清單: clrthreads</span><br><span class="line">切換執行序: thread <span class="keyword">select</span> [thread]</span><br><span class="line">線程棧清單: clrstack</span><br><span class="line">所有託管堆物件: dso</span><br><span class="line">託管堆狀態: dumpheap -<span class="built_in">stat</span></span><br><span class="line">尋找託管堆的位址: dumpheap -mt [address]</span><br><span class="line">程序最近都拋了什麼異常: dumpheap -<span class="built_in">type</span> Exception</span><br><span class="line">異常狀況資訊: pe</span><br><span class="line">異常的詳細信息: pe [address]</span><br><span class="line">分析物件位置: dumpobj [address]</span><br><span class="line">分析陣列位置: dumparray [address]</span><br><span class="line">GC狀態:  eeheap -gc</span><br></pre></td></tr></table></figure>
-<h1 id="安裝-ProcDump-自動擷取傾印檔案"><a class="header-anchor" href="#安裝-ProcDump-自動擷取傾印檔案"></a>安裝 ProcDump 自動擷取傾印檔案</h1>
-<p>當目標進程 CPU 或記憶體使用量達到特定臨界值或低於限制值時，您可以使用 ProcDump 來擷取記憶體傾印檔案</p>
-<p>安裝 ProcDump</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install procdump</span><br></pre></td></tr></table></figure>
-<p>產生 dump 至服務工作目錄</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo procdump [PID]</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">執行緒清單: clrthreads</span><br><span class="line">切換執行序: thread <span class="keyword">select</span> [thread]</span><br><span class="line">線程棧清單: clrstack</span><br><span class="line">GC狀態:  eeheap -gc</span><br><span class="line">所有託管堆物件: dso</span><br><span class="line">託管堆狀態: dumpheap -<span class="built_in">stat</span></span><br><span class="line">尋找託管堆的位址: dumpheap -mt [address]</span><br><span class="line">程序最近都拋了什麼異常: dumpheap -<span class="built_in">type</span> Exception</span><br><span class="line">異常狀況資訊: pe</span><br><span class="line">異常的詳細信息: pe [address]</span><br><span class="line">列印異常信息: printexception [address]</span><br><span class="line">分析物件位置: dumpobj [address]</span><br><span class="line">分析陣列位置: dumparray [address]</span><br></pre></td></tr></table></figure>
 <div class="note warning"><p>📜 參考資料</p>
 <ol>
+<li><a target="_blank" rel="noopener" href="https://github.com/Sysinternals/ProcDump-for-Linux">ProcDump for Linux</a></li>
 <li><a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-tw/troubleshoot/developer/webapps/aspnetcore/practice-troubleshoot-linux/lab-1-1-reproduce-troubleshoot">重現損毀問題並進行疑難排解</a></li>
 <li><a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/dotnet/core/diagnostics/sos-debugging-extension">SOS debugging extension</a></li>
 </ol>
@@ -431,7 +438,7 @@ dotnet-dump collect --process-id 1902 -->
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">32 mins.</span>
+    <span title="Reading time total">33 mins.</span>
   </span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>

@@ -546,12 +546,24 @@ plink -v -x -a -T -C -noagent -ssh -pw "[密碼]" -P 50893 -L [本地端口]:[�
   <entry>
     <title>使用 lldb 分析 Dotnet 核心傾印檔案</title>
     <url>/2023/05/07/NetCoreDump/</url>
-    <content><![CDATA[<h1 id="使用-apport-解壓縮核心傾印檔案"><a class="header-anchor" href="#使用-apport-解壓縮核心傾印檔案"></a>使用 apport 解壓縮核心傾印檔案</h1>
+    <content><![CDATA[<h1 id="查詢服務資訊"><a class="header-anchor" href="#查詢服務資訊"></a>查詢服務資訊</h1>
+<p>使用 journalctl 查詢服務 Log</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">journalctl -r --identifier=[服務的identifier] --since <span class="string">&quot;2 minute ago&quot;</span></span><br><span class="line">journalctl -r -u [服務名稱] --since <span class="string">&quot;2 day ago&quot;</span></span><br></pre></td></tr></table></figure>
+<h1 id="取得系統產生的傾印檔案"><a class="header-anchor" href="#取得系統產生的傾印檔案"></a>取得系統產生的傾印檔案</h1>
 <p>安裝 apport</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt install apport</span><br></pre></td></tr></table></figure>
-<p>解壓縮核心傾印檔案</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">apport-unpack [systemGeneratedCrashReportPath].crash [yourNewUnpackDirectoryHere]</span><br></pre></td></tr></table></figure>
+<p>進入目錄 <code>/var/crash</code> 搜尋核心傾印檔案，之後使用 apport 解壓縮</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">apport-unpack [核心傾印檔案].crash [解壓縮目錄]</span><br></pre></td></tr></table></figure>
 <span id="more"></span>
+<h1 id="使用-ProcDump-產生傾印檔案"><a class="header-anchor" href="#使用-ProcDump-產生傾印檔案"></a>使用 ProcDump 產生傾印檔案</h1>
+<p>安裝 ProcDump</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt install procdump</span><br></pre></td></tr></table></figure>
+<p>產生傾印檔案至服務工作目錄</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo procdump [服務PID]</span><br></pre></td></tr></table></figure>
+<p>當目標進程 CPU 或記憶體使用量達到特定臨界值或低於限制值時</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo procdump -c [CPU使用率] -m [記憶體使用MB數] [服務PID]</span><br></pre></td></tr></table></figure>
+<p>當目標進程收到特定訊號時</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo procdump -sig [Linux 信號] [服務PID]</span><br></pre></td></tr></table></figure>
 <!-- cd [yourNewUnpackDirectoryHere]/
 sudo apt install gdb
 gdb `cat ExecutablePath` CoreDump
@@ -569,7 +581,7 @@ gdb `cat ExecutablePath` CoreDump
 <!-- dotnet tool install -g dotnet-dump
 dotnet-dump ps
 dotnet-dump collect --process-id 1902 -->
-<h1 id="安裝相關-Dotnet-工具"><a class="header-anchor" href="#安裝相關-Dotnet-工具"></a>安裝相關 Dotnet 工具</h1>
+<h1 id="安裝相關-Dotnet-工具加強-lldb-偵錯"><a class="header-anchor" href="#安裝相關-Dotnet-工具加強-lldb-偵錯"></a>安裝相關 Dotnet 工具加強 lldb 偵錯</h1>
 <p>安裝 dotnet-symbol 導出傾印檔案的符號</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dotnet tool install -g dotnet-symbol</span><br></pre></td></tr></table></figure>
 <p>導出傾印檔案的符號</p>
@@ -584,15 +596,10 @@ dotnet-dump collect --process-id 1902 -->
 <p>在 lldb 中載入導入傾印檔案的符號</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">setsymbolserver -directory ~/dumps/symbols</span><br></pre></td></tr></table></figure>
 <p>在 lldb 中常用命令</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">執行緒清單: clrthreads</span><br><span class="line">切換執行序: thread <span class="keyword">select</span> [thread]</span><br><span class="line">線程棧清單: clrstack</span><br><span class="line">所有託管堆物件: dso</span><br><span class="line">託管堆狀態: dumpheap -<span class="built_in">stat</span></span><br><span class="line">尋找託管堆的位址: dumpheap -mt [address]</span><br><span class="line">程序最近都拋了什麼異常: dumpheap -<span class="built_in">type</span> Exception</span><br><span class="line">異常狀況資訊: pe</span><br><span class="line">異常的詳細信息: pe [address]</span><br><span class="line">分析物件位置: dumpobj [address]</span><br><span class="line">分析陣列位置: dumparray [address]</span><br><span class="line">GC狀態:  eeheap -gc</span><br></pre></td></tr></table></figure>
-<h1 id="安裝-ProcDump-自動擷取傾印檔案"><a class="header-anchor" href="#安裝-ProcDump-自動擷取傾印檔案"></a>安裝 ProcDump 自動擷取傾印檔案</h1>
-<p>當目標進程 CPU 或記憶體使用量達到特定臨界值或低於限制值時，您可以使用 ProcDump 來擷取記憶體傾印檔案</p>
-<p>安裝 ProcDump</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt install procdump</span><br></pre></td></tr></table></figure>
-<p>產生 dump 至服務工作目錄</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo procdump [PID]</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">執行緒清單: clrthreads</span><br><span class="line">切換執行序: thread <span class="keyword">select</span> [thread]</span><br><span class="line">線程棧清單: clrstack</span><br><span class="line">GC狀態:  eeheap -gc</span><br><span class="line">所有託管堆物件: dso</span><br><span class="line">託管堆狀態: dumpheap -<span class="built_in">stat</span></span><br><span class="line">尋找託管堆的位址: dumpheap -mt [address]</span><br><span class="line">程序最近都拋了什麼異常: dumpheap -<span class="built_in">type</span> Exception</span><br><span class="line">異常狀況資訊: pe</span><br><span class="line">異常的詳細信息: pe [address]</span><br><span class="line">列印異常信息: printexception [address]</span><br><span class="line">分析物件位置: dumpobj [address]</span><br><span class="line">分析陣列位置: dumparray [address]</span><br></pre></td></tr></table></figure>
 <div class="note warning"><p>📜 參考資料</p>
 <ol>
+<li><a href="https://github.com/Sysinternals/ProcDump-for-Linux">ProcDump for Linux</a></li>
 <li><a href="https://learn.microsoft.com/zh-tw/troubleshoot/developer/webapps/aspnetcore/practice-troubleshoot-linux/lab-1-1-reproduce-troubleshoot">重現損毀問題並進行疑難排解</a></li>
 <li><a href="https://learn.microsoft.com/en-us/dotnet/core/diagnostics/sos-debugging-extension">SOS debugging extension</a></li>
 </ol>
@@ -817,6 +824,30 @@ dotnet-dump collect --process-id 1902 -->
       </tags>
   </entry>
   <entry>
+    <title>使用 Flask-Caching 緩存 Flask 呼叫方法產生的資料</title>
+    <url>/2023/07/07/PythonFlaskCaching/</url>
+    <content><![CDATA[<h1 id="安裝套件"><a class="header-anchor" href="#安裝套件"></a>安裝套件</h1>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip install Flask</span><br><span class="line">pip install Flask-Caching</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="建立-address-json-內容如下"><a class="header-anchor" href="#建立-address-json-內容如下"></a>建立 address.json 內容如下</h1>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;Address&quot;</span><span class="punctuation">:</span> <span class="string">&quot;新竹市&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;Zip&quot;</span><span class="punctuation">:</span> <span class="string">&quot;300&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<h1 id="建立-app-py-內容如下"><a class="header-anchor" href="#建立-app-py-內容如下"></a>建立 <a href="http://app.py">app.py</a> 內容如下</h1>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</span><br><span class="line"><span class="keyword">from</span> flask_caching <span class="keyword">import</span> Cache</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line">config = &#123;</span><br><span class="line">    <span class="string">&quot;DEBUG&quot;</span>: <span class="literal">True</span>,</span><br><span class="line">    <span class="string">&quot;CACHE_TYPE&quot;</span>: <span class="string">&quot;SimpleCache&quot;</span>,</span><br><span class="line">    <span class="string">&quot;CACHE_DEFAULT_TIMEOUT&quot;</span>: <span class="number">3000</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line">app.config.from_mapping(config)</span><br><span class="line">cache = Cache(app)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用裝飾器緩存呼叫方法產生的資料</span></span><br><span class="line"><span class="meta">@cache.memoize(<span class="params">timeout=<span class="number">50</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">LoadAllAddress</span>():</span><br><span class="line">    <span class="comment"># 讀取 address.json</span></span><br><span class="line">    file = <span class="built_in">open</span>(<span class="string">&#x27;address.json&#x27;</span>)</span><br><span class="line">    data = json.load(file)</span><br><span class="line">    <span class="keyword">return</span> data</span><br><span class="line"></span><br><span class="line"><span class="comment"># 刪除緩存</span></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/ClearAddressCache&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">delAddress</span>():</span><br><span class="line">   <span class="comment"># 刪除緩存呼叫方法產生的資料</span></span><br><span class="line">   cache.delete_memoized(LoadAllAddress)</span><br><span class="line">   <span class="keyword">return</span> <span class="string">&quot;Clear Success&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 取得 address.json 的資料</span></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/GetAllAddress&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">AllAddress</span>():</span><br><span class="line">    <span class="keyword">return</span> LoadAllAddress()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    app.run()</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://flask-caching.readthedocs.io/en/latest/">Flask-Caching</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>Flask</tag>
+        <tag>Caching</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>在 Polyglot Notebooks 使用 ScottPlot</title>
     <url>/2024/06/01/PolyglotNotebooksScottPlot/</url>
     <content><![CDATA[<h1 id="初始化設定"><a class="header-anchor" href="#初始化設定"></a>初始化設定</h1>
@@ -851,30 +882,6 @@ dotnet-dump collect --process-id 1902 -->
       <tags>
         <tag>Polyglot Notebooks</tag>
         <tag>ScottPlot</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>使用 Flask-Caching 緩存 Flask 呼叫方法產生的資料</title>
-    <url>/2023/07/07/PythonFlaskCaching/</url>
-    <content><![CDATA[<h1 id="安裝套件"><a class="header-anchor" href="#安裝套件"></a>安裝套件</h1>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip install Flask</span><br><span class="line">pip install Flask-Caching</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="建立-address-json-內容如下"><a class="header-anchor" href="#建立-address-json-內容如下"></a>建立 address.json 內容如下</h1>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;Address&quot;</span><span class="punctuation">:</span> <span class="string">&quot;新竹市&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;Zip&quot;</span><span class="punctuation">:</span> <span class="string">&quot;300&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-<h1 id="建立-app-py-內容如下"><a class="header-anchor" href="#建立-app-py-內容如下"></a>建立 <a href="http://app.py">app.py</a> 內容如下</h1>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</span><br><span class="line"><span class="keyword">from</span> flask_caching <span class="keyword">import</span> Cache</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line">config = &#123;</span><br><span class="line">    <span class="string">&quot;DEBUG&quot;</span>: <span class="literal">True</span>,</span><br><span class="line">    <span class="string">&quot;CACHE_TYPE&quot;</span>: <span class="string">&quot;SimpleCache&quot;</span>,</span><br><span class="line">    <span class="string">&quot;CACHE_DEFAULT_TIMEOUT&quot;</span>: <span class="number">3000</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line">app.config.from_mapping(config)</span><br><span class="line">cache = Cache(app)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用裝飾器緩存呼叫方法產生的資料</span></span><br><span class="line"><span class="meta">@cache.memoize(<span class="params">timeout=<span class="number">50</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">LoadAllAddress</span>():</span><br><span class="line">    <span class="comment"># 讀取 address.json</span></span><br><span class="line">    file = <span class="built_in">open</span>(<span class="string">&#x27;address.json&#x27;</span>)</span><br><span class="line">    data = json.load(file)</span><br><span class="line">    <span class="keyword">return</span> data</span><br><span class="line"></span><br><span class="line"><span class="comment"># 刪除緩存</span></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/ClearAddressCache&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">delAddress</span>():</span><br><span class="line">   <span class="comment"># 刪除緩存呼叫方法產生的資料</span></span><br><span class="line">   cache.delete_memoized(LoadAllAddress)</span><br><span class="line">   <span class="keyword">return</span> <span class="string">&quot;Clear Success&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 取得 address.json 的資料</span></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/GetAllAddress&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">AllAddress</span>():</span><br><span class="line">    <span class="keyword">return</span> LoadAllAddress()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    app.run()</span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://flask-caching.readthedocs.io/en/latest/">Flask-Caching</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>Python</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-        <tag>Flask</tag>
-        <tag>Caching</tag>
       </tags>
   </entry>
   <entry>
