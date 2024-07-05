@@ -126,5 +126,4 @@ GC狀態:  eeheap -gc
 1. [ProcDump for Linux](https://github.com/Sysinternals/ProcDump-for-Linux)
 2. [重現損毀問題並進行疑難排解](https://learn.microsoft.com/zh-tw/troubleshoot/developer/webapps/aspnetcore/practice-troubleshoot-linux/lab-1-1-reproduce-troubleshoot)
 3. [SOS debugging extension](https://learn.microsoft.com/en-us/dotnet/core/diagnostics/sos-debugging-extension)
-
 {% endnote %}
