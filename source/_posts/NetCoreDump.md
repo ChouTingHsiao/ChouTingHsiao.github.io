@@ -111,7 +111,7 @@ setsymbolserver -directory ~/dumps/symbols
 線程棧清單: clrstack
 GC狀態:  eeheap -gc
 所有託管堆物件: dso
-託管堆狀態: dumpheap -stat
+託管堆狀態: dumpheap -stat -min [資料Byte]
 尋找託管堆的位址: dumpheap -mt [address]
 程序最近都拋了什麼異常: dumpheap -type Exception
 異常狀況資訊: pe
