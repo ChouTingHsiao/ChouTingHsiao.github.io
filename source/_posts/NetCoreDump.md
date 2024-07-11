@@ -106,18 +106,22 @@ setsymbolserver -directory ~/dumps/symbols
 
 在 lldb 中常用命令
 ```bash
+顯示語法資訊: help
+附加至進程: process attach -p [PID]
 執行緒清單: clrthreads
 切換執行序: thread select [thread]
 線程棧清單: clrstack
+顯示IP方法資訊: ip2md [IP]
+顯示MethodDesc資訊: dumpmd [MethodDesc]
 執行緒鎖定資訊: syncblk
 GC狀態: eeheap -gc
 檢查GC堆積毀損狀態: verifyheap
 列印所有託管堆物件(dso): dumpstackobjects
 託管堆狀態: dumpheap -stat -min [資料Byte]
-尋找託管堆的位址: dumpheap -mt [address]
+尋找託管堆的位址: dumpheap -mt [MT]
 程序最近都拋了什麼異常: dumpheap -type Exception
 異常狀況資訊(pe): printexception
-異常的詳細信息: pe [address]
+異常的詳細信息: printexception [address]
 分析物件位置(do): dumpobj [address]
 檢查物件毀損狀態: verifyobj
 分析陣列位置(da): dumparray [address]
