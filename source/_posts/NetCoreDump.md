@@ -104,10 +104,16 @@ lldb --core ~/dumps/dotnet/CoreDump
 setsymbolserver -directory ~/dumps/symbols
 ```
 
+<!-- plugin load /usr/share/dotnet/shared/Microsoft.NETCore.App/2.1.0/libsosplugin.so -->
+
 在 lldb 中常用命令
 ```bash
 顯示語法資訊: help
 附加至進程: process attach -p [PID]
+建立中斷點: bpmd [dll檔案] [命名空間].[class名稱].[方法]
+列出中斷點: bpmd -list
+程序繼續: process continue
+程序暫停: process interrupt
 執行緒清單: clrthreads
 切換執行序: thread select [thread]
 線程棧清單: clrstack
