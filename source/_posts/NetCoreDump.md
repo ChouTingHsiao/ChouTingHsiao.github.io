@@ -108,7 +108,7 @@ setsymbolserver -directory ~/dumps/symbols
 
 在 lldb 中常用命令
 ```bash
-顯示語法資訊: help
+語法資訊: help
 附加至進程: process attach -p [PID]
 建立中斷點: bpmd [dll檔案] [命名空間].[class名稱].[方法]
 列出中斷點: bpmd -list
@@ -116,11 +116,14 @@ setsymbolserver -directory ~/dumps/symbols
 程序暫停: process interrupt
 執行緒清單: clrthreads
 切換執行序: thread select [thread]
+執行緒池資訊: threadpool
+列印所有緒線程棧: eestack
 線程棧清單: clrstack
 顯示IP方法資訊: ip2md [IP]
 顯示MethodDesc資訊: dumpmd [MethodDesc]
 執行緒鎖定資訊: syncblk
-GC狀態: eeheap -gc
+顯示GC狀態: eeheap -gc
+顯示GC世代: dumpgen [gen0、gen1、gen2、loh、poh]
 檢查GC堆積毀損狀態: verifyheap
 列印所有託管堆物件(dso): dumpstackobjects
 託管堆狀態: dumpheap -stat -min [資料Byte]
