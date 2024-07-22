@@ -236,29 +236,6 @@
       </tags>
   </entry>
   <entry>
-    <title>如何將檔案轉成 Base64 編碼</title>
-    <url>/2019/12/09/JsFileToBase64/</url>
-    <content><![CDATA[<h1 id="建立-HTML"><a class="header-anchor" href="#建立-HTML"></a>建立 HTML</h1>
-<p>首先在 HTML 建立一個 File Upload 與一個顯示結果的 div</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;file&quot;</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;result&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="綁定事件"><a class="header-anchor" href="#綁定事件"></a>綁定事件</h1>
-<p>接下來為 File Upload 綁定事件</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;input&#x27;</span>).<span class="title function_">addEventListener</span>(<span class="string">&#x27;change&#x27;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line"></span><br><span class="line">       <span class="comment">// 建立 FileReader 去讀取 File Upload 的內容</span></span><br><span class="line"></span><br><span class="line">       <span class="keyword">let</span> reader = <span class="keyword">new</span> <span class="title class_">FileReader</span>();</span><br><span class="line"></span><br><span class="line">       <span class="comment">// 設定初始化事件</span></span><br><span class="line"></span><br><span class="line">       reader.<span class="property">onload</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line"></span><br><span class="line">           <span class="keyword">let</span> arrayBuffer = <span class="variable language_">this</span>.<span class="property">result</span>;</span><br><span class="line"></span><br><span class="line">           <span class="keyword">let</span> base64 = <span class="title function_">btoa</span>(</span><br><span class="line">               <span class="keyword">new</span> <span class="title class_">Uint8Array</span>(arrayBuffer)</span><br><span class="line">                   .<span class="title function_">reduce</span>(<span class="function">(<span class="params">data, byte</span>) =&gt;</span> data + <span class="title class_">String</span>.<span class="title function_">fromCharCode</span>(byte), <span class="string">&#x27;&#x27;</span>)</span><br><span class="line">           );</span><br><span class="line">       </span><br><span class="line">         <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;#result&#x27;</span>).<span class="property">innerHTML</span> = arrayBuffer + <span class="string">&#x27;  &#x27;</span> + arrayBuffer.<span class="property">byteLength</span>;    </span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">      <span class="comment">// 開始讀取</span></span><br><span class="line"></span><br><span class="line">      reader.<span class="title function_">readAsArrayBuffer</span>(<span class="variable language_">this</span>.<span class="property">files</span>[<span class="number">0</span>]);</span><br><span class="line"></span><br><span class="line">   &#125;, <span class="literal">false</span>);</span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/btoa">MDN btoa</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>Javascript</category>
-      </categories>
-      <tags>
-        <tag>Javascript</tag>
-        <tag>Base64</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>如何將 Base64 編碼轉成檔案</title>
     <url>/2019/12/09/JsBase64ToFile/</url>
     <content><![CDATA[<h1 id="Chrome-base64-轉換成檔案"><a class="header-anchor" href="#Chrome-base64-轉換成檔案"></a>Chrome base64 轉換成檔案</h1>
@@ -271,6 +248,29 @@
 <div class="note warning"><p>📜 參考資料</p>
 <ol>
 <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/atob">MDN atob</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>Javascript</category>
+      </categories>
+      <tags>
+        <tag>Javascript</tag>
+        <tag>Base64</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>如何將檔案轉成 Base64 編碼</title>
+    <url>/2019/12/09/JsFileToBase64/</url>
+    <content><![CDATA[<h1 id="建立-HTML"><a class="header-anchor" href="#建立-HTML"></a>建立 HTML</h1>
+<p>首先在 HTML 建立一個 File Upload 與一個顯示結果的 div</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;file&quot;</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;result&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="綁定事件"><a class="header-anchor" href="#綁定事件"></a>綁定事件</h1>
+<p>接下來為 File Upload 綁定事件</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;input&#x27;</span>).<span class="title function_">addEventListener</span>(<span class="string">&#x27;change&#x27;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line"></span><br><span class="line">       <span class="comment">// 建立 FileReader 去讀取 File Upload 的內容</span></span><br><span class="line"></span><br><span class="line">       <span class="keyword">let</span> reader = <span class="keyword">new</span> <span class="title class_">FileReader</span>();</span><br><span class="line"></span><br><span class="line">       <span class="comment">// 設定初始化事件</span></span><br><span class="line"></span><br><span class="line">       reader.<span class="property">onload</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line"></span><br><span class="line">           <span class="keyword">let</span> arrayBuffer = <span class="variable language_">this</span>.<span class="property">result</span>;</span><br><span class="line"></span><br><span class="line">           <span class="keyword">let</span> base64 = <span class="title function_">btoa</span>(</span><br><span class="line">               <span class="keyword">new</span> <span class="title class_">Uint8Array</span>(arrayBuffer)</span><br><span class="line">                   .<span class="title function_">reduce</span>(<span class="function">(<span class="params">data, byte</span>) =&gt;</span> data + <span class="title class_">String</span>.<span class="title function_">fromCharCode</span>(byte), <span class="string">&#x27;&#x27;</span>)</span><br><span class="line">           );</span><br><span class="line">       </span><br><span class="line">         <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;#result&#x27;</span>).<span class="property">innerHTML</span> = arrayBuffer + <span class="string">&#x27;  &#x27;</span> + arrayBuffer.<span class="property">byteLength</span>;    </span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">      <span class="comment">// 開始讀取</span></span><br><span class="line"></span><br><span class="line">      reader.<span class="title function_">readAsArrayBuffer</span>(<span class="variable language_">this</span>.<span class="property">files</span>[<span class="number">0</span>]);</span><br><span class="line"></span><br><span class="line">   &#125;, <span class="literal">false</span>);</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/btoa">MDN btoa</a></li>
 </ol>
 </div>]]></content>
       <categories>
@@ -407,35 +407,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Linux IBM i Access Odbc 手動安裝</title>
-    <url>/2021/10/05/LinuxIbmIAccessOdbc/</url>
-    <content><![CDATA[<h1 id="配置-Odbc-元件"><a class="header-anchor" href="#配置-Odbc-元件"></a>配置 Odbc 元件</h1>
-<p>安裝 Linux Odbc 元件</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt-get install unixodbc</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="安裝-Odbc-Driver"><a class="header-anchor" href="#安裝-Odbc-Driver"></a>安裝 Odbc Driver</h1>
-<p>登入<a href="https://www.ibm.com/support/pages/ibm-i-access-client-solutions">IBM網頁</a>下載Linux Odbc Driver並安裝</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo dpkg -i ibm-iaccess-1.1.0.15-1.0.amd64.deb</span><br></pre></td></tr></table></figure>
-<p>查看 Linux Odbc Drivers 設定檔位置</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">odbcinst -j</span><br></pre></td></tr></table></figure>
-<p>查看設定檔是否出現 IBM i Access ODBC Driver 的設定</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cat</span> /etc/odbcinst.ini</span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://www.ibm.com/docs/en/db2/11.5?topic=managers-installing-unixodbc-driver-manager">Installing the unixODBC driver manager</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-        <tag>Ubuntu</tag>
-        <tag>Odbc</tag>
-        <tag>IBM i Access</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Linux Mssql Odbc 手動安裝</title>
     <url>/2021/10/05/LinuxMssqlOdbc/</url>
     <content><![CDATA[<h1 id="配置-Linux-Odbc-元件"><a class="header-anchor" href="#配置-Linux-Odbc-元件"></a>配置 Linux Odbc 元件</h1>
@@ -462,6 +433,35 @@
         <tag>Ubuntu</tag>
         <tag>Odbc</tag>
         <tag>Mssql</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Linux IBM i Access Odbc 手動安裝</title>
+    <url>/2021/10/05/LinuxIbmIAccessOdbc/</url>
+    <content><![CDATA[<h1 id="配置-Odbc-元件"><a class="header-anchor" href="#配置-Odbc-元件"></a>配置 Odbc 元件</h1>
+<p>安裝 Linux Odbc 元件</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt-get install unixodbc</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="安裝-Odbc-Driver"><a class="header-anchor" href="#安裝-Odbc-Driver"></a>安裝 Odbc Driver</h1>
+<p>登入<a href="https://www.ibm.com/support/pages/ibm-i-access-client-solutions">IBM網頁</a>下載Linux Odbc Driver並安裝</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo dpkg -i ibm-iaccess-1.1.0.15-1.0.amd64.deb</span><br></pre></td></tr></table></figure>
+<p>查看 Linux Odbc Drivers 設定檔位置</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">odbcinst -j</span><br></pre></td></tr></table></figure>
+<p>查看設定檔是否出現 IBM i Access ODBC Driver 的設定</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cat</span> /etc/odbcinst.ini</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://www.ibm.com/docs/en/db2/11.5?topic=managers-installing-unixodbc-driver-manager">Installing the unixODBC driver manager</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>Ubuntu</tag>
+        <tag>Odbc</tag>
+        <tag>IBM i Access</tag>
       </tags>
   </entry>
   <entry>
@@ -597,7 +597,7 @@ dotnet-dump collect --process-id 1902 -->
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">setsymbolserver -directory ~/dumps/symbols</span><br></pre></td></tr></table></figure>
 <!-- plugin load /usr/share/dotnet/shared/Microsoft.NETCore.App/2.1.0/libsosplugin.so -->
 <p>在 lldb 中常用命令</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">顯示語法資訊: <span class="built_in">help</span></span><br><span class="line">附加至進程: process attach -p [PID]</span><br><span class="line">建立中斷點: bpmd [dll檔案] [命名空間].[class名稱].[方法]</span><br><span class="line">列出中斷點: bpmd -list</span><br><span class="line">程序繼續: process <span class="built_in">continue</span></span><br><span class="line">程序暫停: process interrupt</span><br><span class="line">執行緒清單: clrthreads</span><br><span class="line">切換執行序: thread <span class="keyword">select</span> [thread]</span><br><span class="line">線程棧清單: clrstack</span><br><span class="line">顯示IP方法資訊: ip2md [IP]</span><br><span class="line">顯示MethodDesc資訊: dumpmd [MethodDesc]</span><br><span class="line">執行緒鎖定資訊: syncblk</span><br><span class="line">GC狀態: eeheap -gc</span><br><span class="line">檢查GC堆積毀損狀態: verifyheap</span><br><span class="line">列印所有託管堆物件(dso): dumpstackobjects</span><br><span class="line">託管堆狀態: dumpheap -<span class="built_in">stat</span> -min [資料Byte]</span><br><span class="line">尋找託管堆的位址: dumpheap -mt [MT]</span><br><span class="line">程序最近都拋了什麼異常: dumpheap -<span class="built_in">type</span> Exception</span><br><span class="line">異常狀況資訊(pe): printexception</span><br><span class="line">異常的詳細信息: printexception [address]</span><br><span class="line">分析物件位置(<span class="keyword">do</span>): dumpobj [address]</span><br><span class="line">檢查物件毀損狀態: verifyobj</span><br><span class="line">分析陣列位置(da): dumparray [address]</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">語法資訊: <span class="built_in">help</span></span><br><span class="line">附加至進程: process attach -p [PID]</span><br><span class="line">建立中斷點: bpmd [dll檔案] [命名空間].[class名稱].[方法]</span><br><span class="line">列出中斷點: bpmd -list</span><br><span class="line">程序繼續: process <span class="built_in">continue</span></span><br><span class="line">程序暫停: process interrupt</span><br><span class="line">執行緒清單: clrthreads</span><br><span class="line">切換執行序: thread <span class="keyword">select</span> [thread]</span><br><span class="line">執行緒池資訊: threadpool</span><br><span class="line">列印所有緒線程棧: eestack</span><br><span class="line">線程棧清單: clrstack</span><br><span class="line">顯示IP方法資訊: ip2md [IP]</span><br><span class="line">顯示MethodDesc資訊: dumpmd [MethodDesc]</span><br><span class="line">執行緒鎖定資訊: syncblk</span><br><span class="line">顯示GC狀態: eeheap -gc</span><br><span class="line">顯示GC世代: dumpgen [gen0、gen1、gen2、loh、poh]</span><br><span class="line">檢查GC堆積毀損狀態: verifyheap</span><br><span class="line">列印所有託管堆物件(dso): dumpstackobjects</span><br><span class="line">託管堆狀態: dumpheap -<span class="built_in">stat</span> -min [資料Byte]</span><br><span class="line">尋找託管堆的位址: dumpheap -mt [MT]</span><br><span class="line">程序最近都拋了什麼異常: dumpheap -<span class="built_in">type</span> Exception</span><br><span class="line">異常狀況資訊(pe): printexception</span><br><span class="line">異常的詳細信息: printexception [address]</span><br><span class="line">分析物件位置(<span class="keyword">do</span>): dumpobj [address]</span><br><span class="line">檢查物件毀損狀態: verifyobj</span><br><span class="line">分析陣列位置(da): dumparray [address]</span><br></pre></td></tr></table></figure>
 <div class="note warning"><p>📜 參考資料</p>
 <ol>
 <li><a href="https://github.com/Sysinternals/ProcDump-for-Linux">ProcDump for Linux</a></li>
@@ -637,41 +637,6 @@ dotnet-dump collect --process-id 1902 -->
       </tags>
   </entry>
   <entry>
-    <title>如何在資料存取層進行單元測試</title>
-    <url>/2022/05/01/NetRepositoryUnitTest/</url>
-    <content><![CDATA[<h1 id="安裝-Sqlite"><a class="header-anchor" href="#安裝-Sqlite"></a>安裝 Sqlite</h1>
-<p>安裝 Nuget 的 Sqlite 套件</p>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Install-Package</span> Microsoft.EntityFrameworkCore.Sqlite</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="建立-DbContext"><a class="header-anchor" href="#建立-DbContext"></a>建立 DbContext</h1>
-<p>建立 EntityFramework 的 DbContext</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">TestDbContext</span> : <span class="title">DbContext</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">DbSet</span>&lt;<span class="title">Table</span>&gt;? Table</span> &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">TestDbContext</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">TestDbContext</span>(<span class="params">DbContextOptions options</span>) : <span class="title">base</span>(<span class="params">options</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">OnModelCreating</span>(<span class="params">ModelBuilder modelBuilder</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        modelBuilder.Entity&lt;Table&gt;(entity =&gt; &#123;</span><br><span class="line">            entity.HasKey(x =&gt; x.Id);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="使用-In-Memory-模式操作資料庫"><a class="header-anchor" href="#使用-In-Memory-模式操作資料庫"></a>使用 In-Memory 模式操作資料庫</h1>
-<p>使用 Sqlite 的 In-Memory 模式載入 DbContext</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">SqliteConnection connection = <span class="keyword">new</span> SqliteConnection(<span class="string">&quot;Data Source=:memory:&quot;</span>);</span><br><span class="line"></span><br><span class="line">connection.Open();</span><br><span class="line"></span><br><span class="line">DbContextOptions options = <span class="keyword">new</span> DbContextOptionsBuilder()</span><br><span class="line">.UseSqlite(connection)</span><br><span class="line">.Options;</span><br></pre></td></tr></table></figure>
-<p>然後使用 DbContext 的設定建立資料庫</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> TestDbContext context = <span class="keyword">new</span> TestDbContext(options);</span><br><span class="line">context.Database.EnsureCreated();</span><br></pre></td></tr></table></figure>
-<p>最後可開始使用 EntityFramework 開始操作資料庫</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> TestDbContext context = <span class="keyword">new</span> TestDbContext(options);</span><br><span class="line">List&lt;Table&gt; table = context.Table.ToList();</span><br></pre></td></tr></table></figure>
-<h1 id="自定義-Database-Function"><a class="header-anchor" href="#自定義-Database-Function"></a>自定義 Database Function</h1>
-<p>如果有使用 Sqlite 未定義的 Database Function , 可在程式中使用 CreateFunction 定義</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">SqliteConnection connection = <span class="keyword">new</span> SqliteConnection(<span class="string">&quot;Data Source=:memory:&quot;</span>);</span><br><span class="line"></span><br><span class="line">connection.CreateFunction(<span class="string">&quot;current_date&quot;</span>, (x) =&gt; DateTime.Now);</span><br><span class="line"></span><br><span class="line">connection.Open();</span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.data.sqlite.sqliteconnection.createfunction?view=msdata-sqlite-6.0.0">Microsoft文件</a></li>
-<li><a href="https://csharp.hotexamples.com/examples/-/SQLiteConnection/CreateFunction/php-sqliteconnection-createfunction-method-examples.html">SQLite Examples</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>.Net</category>
-      </categories>
-      <tags>
-        <tag>.Net</tag>
-        <tag>UnitTest</tag>
-        <tag>SQLite</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>如何在商業邏輯層進行單元測試</title>
     <url>/2022/05/01/NetServiceUnitTest/</url>
     <content><![CDATA[<h1 id="安裝-NSubstitute"><a class="header-anchor" href="#安裝-NSubstitute"></a>安裝 NSubstitute</h1>
@@ -707,6 +672,41 @@ dotnet-dump collect --process-id 1902 -->
         <tag>.Net</tag>
         <tag>UnitTest</tag>
         <tag>NSubstitute</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>如何在資料存取層進行單元測試</title>
+    <url>/2022/05/01/NetRepositoryUnitTest/</url>
+    <content><![CDATA[<h1 id="安裝-Sqlite"><a class="header-anchor" href="#安裝-Sqlite"></a>安裝 Sqlite</h1>
+<p>安裝 Nuget 的 Sqlite 套件</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Install-Package</span> Microsoft.EntityFrameworkCore.Sqlite</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="建立-DbContext"><a class="header-anchor" href="#建立-DbContext"></a>建立 DbContext</h1>
+<p>建立 EntityFramework 的 DbContext</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">TestDbContext</span> : <span class="title">DbContext</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">DbSet</span>&lt;<span class="title">Table</span>&gt;? Table</span> &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">TestDbContext</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">TestDbContext</span>(<span class="params">DbContextOptions options</span>) : <span class="title">base</span>(<span class="params">options</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">OnModelCreating</span>(<span class="params">ModelBuilder modelBuilder</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        modelBuilder.Entity&lt;Table&gt;(entity =&gt; &#123;</span><br><span class="line">            entity.HasKey(x =&gt; x.Id);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="使用-In-Memory-模式操作資料庫"><a class="header-anchor" href="#使用-In-Memory-模式操作資料庫"></a>使用 In-Memory 模式操作資料庫</h1>
+<p>使用 Sqlite 的 In-Memory 模式載入 DbContext</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">SqliteConnection connection = <span class="keyword">new</span> SqliteConnection(<span class="string">&quot;Data Source=:memory:&quot;</span>);</span><br><span class="line"></span><br><span class="line">connection.Open();</span><br><span class="line"></span><br><span class="line">DbContextOptions options = <span class="keyword">new</span> DbContextOptionsBuilder()</span><br><span class="line">.UseSqlite(connection)</span><br><span class="line">.Options;</span><br></pre></td></tr></table></figure>
+<p>然後使用 DbContext 的設定建立資料庫</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> TestDbContext context = <span class="keyword">new</span> TestDbContext(options);</span><br><span class="line">context.Database.EnsureCreated();</span><br></pre></td></tr></table></figure>
+<p>最後可開始使用 EntityFramework 開始操作資料庫</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> TestDbContext context = <span class="keyword">new</span> TestDbContext(options);</span><br><span class="line">List&lt;Table&gt; table = context.Table.ToList();</span><br></pre></td></tr></table></figure>
+<h1 id="自定義-Database-Function"><a class="header-anchor" href="#自定義-Database-Function"></a>自定義 Database Function</h1>
+<p>如果有使用 Sqlite 未定義的 Database Function , 可在程式中使用 CreateFunction 定義</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">SqliteConnection connection = <span class="keyword">new</span> SqliteConnection(<span class="string">&quot;Data Source=:memory:&quot;</span>);</span><br><span class="line"></span><br><span class="line">connection.CreateFunction(<span class="string">&quot;current_date&quot;</span>, (x) =&gt; DateTime.Now);</span><br><span class="line"></span><br><span class="line">connection.Open();</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.data.sqlite.sqliteconnection.createfunction?view=msdata-sqlite-6.0.0">Microsoft文件</a></li>
+<li><a href="https://csharp.hotexamples.com/examples/-/SQLiteConnection/CreateFunction/php-sqliteconnection-createfunction-method-examples.html">SQLite Examples</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>.Net</category>
+      </categories>
+      <tags>
+        <tag>.Net</tag>
+        <tag>UnitTest</tag>
+        <tag>SQLite</tag>
       </tags>
   </entry>
   <entry>

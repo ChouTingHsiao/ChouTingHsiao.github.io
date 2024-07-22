@@ -28,7 +28,7 @@
 <meta property="og:description" content="查詢服務資訊 使用 journalctl 查詢服務 Log 12journalctl -r --identifier&#x3D;[服務的identifier] --since &quot;2 minute ago&quot;journalctl -r -u [服務名稱] --since &quot;2 day ago&quot; 取得系統產生的傾印檔案 安裝 apport 1sudo apt install">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-05-07T18:00:00.000Z">
-<meta property="article:modified_time" content="2024-07-16T13:52:42.624Z">
+<meta property="article:modified_time" content="2024-07-22T14:00:58.694Z">
 <meta property="article:author" content="Stephen">
 <meta property="article:tag" content="Linux">
 <meta property="article:tag" content=".Net">
@@ -266,7 +266,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2024-07-16 13:52:42" itemprop="dateModified" datetime="2024-07-16T13:52:42+00:00">2024-07-16</time>
+      <time title="Modified: 2024-07-22 14:00:58" itemprop="dateModified" datetime="2024-07-22T14:00:58+00:00">2024-07-22</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -285,14 +285,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Word count in article: </span>
-      <span>686</span>
+      <span>713</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">Reading time &asymp;</span>
-      <span>2 mins.</span>
+      <span>3 mins.</span>
     </span>
 </div>
 
@@ -353,7 +353,7 @@ dotnet-dump collect --process-id 1902 -->
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setsymbolserver -directory ~/dumps/symbols</span><br></pre></td></tr></table></figure>
 <!-- plugin load /usr/share/dotnet/shared/Microsoft.NETCore.App/2.1.0/libsosplugin.so -->
 <p>在 lldb 中常用命令</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">顯示語法資訊: <span class="built_in">help</span></span><br><span class="line">附加至進程: process attach -p [PID]</span><br><span class="line">建立中斷點: bpmd [dll檔案] [命名空間].[class名稱].[方法]</span><br><span class="line">列出中斷點: bpmd -list</span><br><span class="line">程序繼續: process <span class="built_in">continue</span></span><br><span class="line">程序暫停: process interrupt</span><br><span class="line">執行緒清單: clrthreads</span><br><span class="line">切換執行序: thread <span class="keyword">select</span> [thread]</span><br><span class="line">線程棧清單: clrstack</span><br><span class="line">顯示IP方法資訊: ip2md [IP]</span><br><span class="line">顯示MethodDesc資訊: dumpmd [MethodDesc]</span><br><span class="line">執行緒鎖定資訊: syncblk</span><br><span class="line">GC狀態: eeheap -gc</span><br><span class="line">檢查GC堆積毀損狀態: verifyheap</span><br><span class="line">列印所有託管堆物件(dso): dumpstackobjects</span><br><span class="line">託管堆狀態: dumpheap -<span class="built_in">stat</span> -min [資料Byte]</span><br><span class="line">尋找託管堆的位址: dumpheap -mt [MT]</span><br><span class="line">程序最近都拋了什麼異常: dumpheap -<span class="built_in">type</span> Exception</span><br><span class="line">異常狀況資訊(pe): printexception</span><br><span class="line">異常的詳細信息: printexception [address]</span><br><span class="line">分析物件位置(<span class="keyword">do</span>): dumpobj [address]</span><br><span class="line">檢查物件毀損狀態: verifyobj</span><br><span class="line">分析陣列位置(da): dumparray [address]</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">語法資訊: <span class="built_in">help</span></span><br><span class="line">附加至進程: process attach -p [PID]</span><br><span class="line">建立中斷點: bpmd [dll檔案] [命名空間].[class名稱].[方法]</span><br><span class="line">列出中斷點: bpmd -list</span><br><span class="line">程序繼續: process <span class="built_in">continue</span></span><br><span class="line">程序暫停: process interrupt</span><br><span class="line">執行緒清單: clrthreads</span><br><span class="line">切換執行序: thread <span class="keyword">select</span> [thread]</span><br><span class="line">執行緒池資訊: threadpool</span><br><span class="line">列印所有緒線程棧: eestack</span><br><span class="line">線程棧清單: clrstack</span><br><span class="line">顯示IP方法資訊: ip2md [IP]</span><br><span class="line">顯示MethodDesc資訊: dumpmd [MethodDesc]</span><br><span class="line">執行緒鎖定資訊: syncblk</span><br><span class="line">顯示GC狀態: eeheap -gc</span><br><span class="line">顯示GC世代: dumpgen [gen0、gen1、gen2、loh、poh]</span><br><span class="line">檢查GC堆積毀損狀態: verifyheap</span><br><span class="line">列印所有託管堆物件(dso): dumpstackobjects</span><br><span class="line">託管堆狀態: dumpheap -<span class="built_in">stat</span> -min [資料Byte]</span><br><span class="line">尋找託管堆的位址: dumpheap -mt [MT]</span><br><span class="line">程序最近都拋了什麼異常: dumpheap -<span class="built_in">type</span> Exception</span><br><span class="line">異常狀況資訊(pe): printexception</span><br><span class="line">異常的詳細信息: printexception [address]</span><br><span class="line">分析物件位置(<span class="keyword">do</span>): dumpobj [address]</span><br><span class="line">檢查物件毀損狀態: verifyobj</span><br><span class="line">分析陣列位置(da): dumparray [address]</span><br></pre></td></tr></table></figure>
 <div class="note warning"><p>📜 參考資料</p>
 <ol>
 <li><a target="_blank" rel="noopener" href="https://github.com/Sysinternals/ProcDump-for-Linux">ProcDump for Linux</a></li>
