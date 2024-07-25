@@ -465,6 +465,79 @@
       </tags>
   </entry>
   <entry>
+    <title>使用 NAT 轉發請求</title>
+    <url>/2024/07/25/LinuxNatForward/</url>
+    <content><![CDATA[<h1 id="NAT介紹"><a class="header-anchor" href="#NAT介紹"></a>NAT介紹:</h1>
+<ul>
+<li>
+<p><em><strong>DNAT</strong></em><br>發生在 natTable 的 PREROUTING 鏈上，正好在剛接收到封包的之後一步，對應的是 inbound 流量</p>
+</li>
+<li>
+<p><em><strong>SNAT</strong></em><br>發生在 natTable 的 POSTROUTING 鏈上，只允許被使用在靜態 IP，要求您為其提供一個 IP 位址以套用於所有傳出資料包，正好在傳送到網路卡前的最後一步，對應的是 outbound 流量</p>
+</li>
+<li>
+<p><em><strong>Masquerading</strong></em><br>只允許被用在動態分配 IP 位址的情況下，允許您為其提供一個接口，該接口上的任何地址，都是應用於所有傳出資料包的地址</p>
+</li>
+<li>
+<p><em><strong>Redirection</strong></em><br>將流量轉發到本地系統的其他端口，而不是轉發到內部網絡中的其他主機</p>
+</li>
+</ul>
+<span id="more"></span>
+<h1 id="iptables-中的-natTable-鏈"><a class="header-anchor" href="#iptables-中的-natTable-鏈"></a>iptables 中的 natTable 鏈:</h1>
+<ol>
+<li><em><strong>PREROUTING鏈</strong></em>(通常用於DNAT): <br>處理剛到本機並在路由轉送前的資料包，它會轉換封包中的目標IP位址</li>
+<li><em><strong>INPUT鏈</strong></em>: 處理入站資料包</li>
+<li><em><strong>FORWARD鏈</strong></em>: 處理轉送封包</li>
+<li><em><strong>OUTPUT鏈</strong></em>: 處理出站資料包</li>
+<li><em><strong>POSTROUTING鏈</strong></em>(通常用於SNAT):<br> 處理即將離開本機的資料包，它會轉換封包中的來源IP位址</li>
+</ol>
+<h1 id="確認路由"><a class="header-anchor" href="#確認路由"></a>確認路由</h1>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">route -n</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ip r | grep default</span><br></pre></td></tr></table></figure>
+<h1 id="開啟-Linux-轉發"><a class="header-anchor" href="#開啟-Linux-轉發"></a>開啟 Linux 轉發</h1>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo sysctl -w net.ipv4.ip_forward=1</span><br></pre></td></tr></table></figure>
+<!-- 允許流量轉發
+sudo iptables -A FORWARD -i eth1 -o eth0 -m state --state RELATED,ESTABLISHED -j ACCEPT
+sudo iptables -A FORWARD -i eth0 -o eth1 -j ACCEPT -->
+<h1 id="設定轉發"><a class="header-anchor" href="#設定轉發"></a>設定轉發</h1>
+<p>建立 DNAT:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo iptables -t nat -A PREROUTING -p tcp -d [服務IP] --dport [服務端口] -j DNAT --to-destination [轉發IP]:[轉發端口]</span><br></pre></td></tr></table></figure>
+<p>回應客戶端(擇一設定)</p>
+<ol>
+<li>建立 SNAT 回應客戶端:</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo iptables -t nat -A POSTROUTING -p tcp -d [轉發IP] --dport [轉發端口] -j SNAT --to-source [服務IP]</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>建立 MASQUERADE 回應動態客戶端:</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo iptables -t nat -A POSTROUTING -j MASQUERADE</span><br></pre></td></tr></table></figure>
+<h1 id="查詢-NAT-規則"><a class="header-anchor" href="#查詢-NAT-規則"></a>查詢 NAT 規則</h1>
+<p>查詢 NAT 設定</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo iptables -t nat -S</span><br></pre></td></tr></table></figure>
+<p>查詢 NAT 規則對應</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo iptables -t nat -L -n -v</span><br></pre></td></tr></table></figure>
+<!-- # 刪除所有 NAT 規則
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo iptables -t nat -F</span><br><span class="line">``` --&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 持久化規則</span></span><br><span class="line"></span><br><span class="line">匯出 iptable 設定</span><br><span class="line">```bash</span><br><span class="line">sudo sh -c <span class="string">&quot;iptables-save &gt; /etc/iptables.ipv4.nat&quot;</span></span><br></pre></td></tr></table></figure>
+<p>編輯 interfaces</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo nano /etc/network/interfaces </span><br></pre></td></tr></table></figure>
+<p>在結尾加入以下代碼</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">up iptables-restore &lt; /etc/iptables.ipv4.nat</span><br></pre></td></tr></table></figure>
+<!-- sudo tcpdump -i eth0 host 192.168.50.2 and port 5000 -->
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://manpages.ubuntu.com/manpages/oracular/en/man8/iptables.8.html">ubuntu iptables</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>Ubuntu</tag>
+        <tag>Nat</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>使用 SSH 建立通道</title>
     <url>/2023/05/07/LinuxSshTunnel/</url>
     <content><![CDATA[<h1 id="本機特定端口轉發至跳板機"><a class="header-anchor" href="#本機特定端口轉發至跳板機"></a>本機特定端口轉發至跳板機</h1>
@@ -637,6 +710,41 @@ dotnet-dump collect --process-id 1902 -->
       </tags>
   </entry>
   <entry>
+    <title>如何在資料存取層進行單元測試</title>
+    <url>/2022/05/01/NetRepositoryUnitTest/</url>
+    <content><![CDATA[<h1 id="安裝-Sqlite"><a class="header-anchor" href="#安裝-Sqlite"></a>安裝 Sqlite</h1>
+<p>安裝 Nuget 的 Sqlite 套件</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Install-Package</span> Microsoft.EntityFrameworkCore.Sqlite</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="建立-DbContext"><a class="header-anchor" href="#建立-DbContext"></a>建立 DbContext</h1>
+<p>建立 EntityFramework 的 DbContext</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">TestDbContext</span> : <span class="title">DbContext</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">DbSet</span>&lt;<span class="title">Table</span>&gt;? Table</span> &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">TestDbContext</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">TestDbContext</span>(<span class="params">DbContextOptions options</span>) : <span class="title">base</span>(<span class="params">options</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">OnModelCreating</span>(<span class="params">ModelBuilder modelBuilder</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        modelBuilder.Entity&lt;Table&gt;(entity =&gt; &#123;</span><br><span class="line">            entity.HasKey(x =&gt; x.Id);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="使用-In-Memory-模式操作資料庫"><a class="header-anchor" href="#使用-In-Memory-模式操作資料庫"></a>使用 In-Memory 模式操作資料庫</h1>
+<p>使用 Sqlite 的 In-Memory 模式載入 DbContext</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">SqliteConnection connection = <span class="keyword">new</span> SqliteConnection(<span class="string">&quot;Data Source=:memory:&quot;</span>);</span><br><span class="line"></span><br><span class="line">connection.Open();</span><br><span class="line"></span><br><span class="line">DbContextOptions options = <span class="keyword">new</span> DbContextOptionsBuilder()</span><br><span class="line">.UseSqlite(connection)</span><br><span class="line">.Options;</span><br></pre></td></tr></table></figure>
+<p>然後使用 DbContext 的設定建立資料庫</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> TestDbContext context = <span class="keyword">new</span> TestDbContext(options);</span><br><span class="line">context.Database.EnsureCreated();</span><br></pre></td></tr></table></figure>
+<p>最後可開始使用 EntityFramework 開始操作資料庫</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> TestDbContext context = <span class="keyword">new</span> TestDbContext(options);</span><br><span class="line">List&lt;Table&gt; table = context.Table.ToList();</span><br></pre></td></tr></table></figure>
+<h1 id="自定義-Database-Function"><a class="header-anchor" href="#自定義-Database-Function"></a>自定義 Database Function</h1>
+<p>如果有使用 Sqlite 未定義的 Database Function , 可在程式中使用 CreateFunction 定義</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">SqliteConnection connection = <span class="keyword">new</span> SqliteConnection(<span class="string">&quot;Data Source=:memory:&quot;</span>);</span><br><span class="line"></span><br><span class="line">connection.CreateFunction(<span class="string">&quot;current_date&quot;</span>, (x) =&gt; DateTime.Now);</span><br><span class="line"></span><br><span class="line">connection.Open();</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.data.sqlite.sqliteconnection.createfunction?view=msdata-sqlite-6.0.0">Microsoft文件</a></li>
+<li><a href="https://csharp.hotexamples.com/examples/-/SQLiteConnection/CreateFunction/php-sqliteconnection-createfunction-method-examples.html">SQLite Examples</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>.Net</category>
+      </categories>
+      <tags>
+        <tag>.Net</tag>
+        <tag>UnitTest</tag>
+        <tag>SQLite</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>如何在商業邏輯層進行單元測試</title>
     <url>/2022/05/01/NetServiceUnitTest/</url>
     <content><![CDATA[<h1 id="安裝-NSubstitute"><a class="header-anchor" href="#安裝-NSubstitute"></a>安裝 NSubstitute</h1>
@@ -675,29 +783,28 @@ dotnet-dump collect --process-id 1902 -->
       </tags>
   </entry>
   <entry>
-    <title>如何在資料存取層進行單元測試</title>
-    <url>/2022/05/01/NetRepositoryUnitTest/</url>
-    <content><![CDATA[<h1 id="安裝-Sqlite"><a class="header-anchor" href="#安裝-Sqlite"></a>安裝 Sqlite</h1>
-<p>安裝 Nuget 的 Sqlite 套件</p>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Install-Package</span> Microsoft.EntityFrameworkCore.Sqlite</span><br></pre></td></tr></table></figure>
+    <title>使用 SqlPackage 備份資料庫</title>
+    <url>/2024/07/25/NetSqlPackage/</url>
+    <content><![CDATA[<h1 id="安裝-SqlPackage"><a class="header-anchor" href="#安裝-SqlPackage"></a>安裝 SqlPackage</h1>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">dotnet tool install <span class="literal">-g</span> microsoft.sqlpackage</span><br></pre></td></tr></table></figure>
+<h1 id="查詢版本"><a class="header-anchor" href="#查詢版本"></a>查詢版本</h1>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">sqlpackage /Version</span><br></pre></td></tr></table></figure>
 <span id="more"></span>
-<h1 id="建立-DbContext"><a class="header-anchor" href="#建立-DbContext"></a>建立 DbContext</h1>
-<p>建立 EntityFramework 的 DbContext</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">TestDbContext</span> : <span class="title">DbContext</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">DbSet</span>&lt;<span class="title">Table</span>&gt;? Table</span> &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">TestDbContext</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">TestDbContext</span>(<span class="params">DbContextOptions options</span>) : <span class="title">base</span>(<span class="params">options</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">OnModelCreating</span>(<span class="params">ModelBuilder modelBuilder</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        modelBuilder.Entity&lt;Table&gt;(entity =&gt; &#123;</span><br><span class="line">            entity.HasKey(x =&gt; x.Id);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="使用-In-Memory-模式操作資料庫"><a class="header-anchor" href="#使用-In-Memory-模式操作資料庫"></a>使用 In-Memory 模式操作資料庫</h1>
-<p>使用 Sqlite 的 In-Memory 模式載入 DbContext</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">SqliteConnection connection = <span class="keyword">new</span> SqliteConnection(<span class="string">&quot;Data Source=:memory:&quot;</span>);</span><br><span class="line"></span><br><span class="line">connection.Open();</span><br><span class="line"></span><br><span class="line">DbContextOptions options = <span class="keyword">new</span> DbContextOptionsBuilder()</span><br><span class="line">.UseSqlite(connection)</span><br><span class="line">.Options;</span><br></pre></td></tr></table></figure>
-<p>然後使用 DbContext 的設定建立資料庫</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> TestDbContext context = <span class="keyword">new</span> TestDbContext(options);</span><br><span class="line">context.Database.EnsureCreated();</span><br></pre></td></tr></table></figure>
-<p>最後可開始使用 EntityFramework 開始操作資料庫</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> TestDbContext context = <span class="keyword">new</span> TestDbContext(options);</span><br><span class="line">List&lt;Table&gt; table = context.Table.ToList();</span><br></pre></td></tr></table></figure>
-<h1 id="自定義-Database-Function"><a class="header-anchor" href="#自定義-Database-Function"></a>自定義 Database Function</h1>
-<p>如果有使用 Sqlite 未定義的 Database Function , 可在程式中使用 CreateFunction 定義</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">SqliteConnection connection = <span class="keyword">new</span> SqliteConnection(<span class="string">&quot;Data Source=:memory:&quot;</span>);</span><br><span class="line"></span><br><span class="line">connection.CreateFunction(<span class="string">&quot;current_date&quot;</span>, (x) =&gt; DateTime.Now);</span><br><span class="line"></span><br><span class="line">connection.Open();</span><br></pre></td></tr></table></figure>
+<h1 id="使用-BACPAC-備份"><a class="header-anchor" href="#使用-BACPAC-備份"></a>使用 BACPAC 備份</h1>
+<p>預設包含數據庫結構和數據</p>
+<p>匯出資料庫</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">sqlpackage /Action:Export /SourceDatabaseName:<span class="string">&quot;[資料庫名稱]&quot;</span> /SourceServerName:<span class="string">&quot;[服務器]&quot;</span> /TargetFile:<span class="string">&quot;[檔案名稱].bacpac&quot;</span></span><br></pre></td></tr></table></figure>
+<p>匯入資料庫</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">sqlpackage /Action:Import /TargetDatabaseName:<span class="string">&quot;[資料庫名稱]&quot;</span> /TargetServerName:<span class="string">&quot;[服務器]&quot;</span> /SourceFile:<span class="string">&quot;[檔案名稱].bacpac&quot;</span></span><br></pre></td></tr></table></figure>
+<h1 id="使用-DACPAC-備份"><a class="header-anchor" href="#使用-DACPAC-備份"></a>使用 DACPAC 備份</h1>
+<p>預設包含數據庫結構，但不包含數據</p>
+<p>匯出資料庫</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">sqlpackage /Action:Extract /SourceDatabaseName:<span class="string">&quot;[資料庫名稱]&quot;</span> /SourceServerName:<span class="string">&quot;[服務器]&quot;</span> /SourceUser:<span class="string">&quot;[帳號]&quot;</span> /SourcePassword:<span class="string">&quot;[密碼]&quot;</span> /SourceTrustServerCertificate:True /TargetFile:<span class="string">&quot;[檔案名稱].dacpac&quot;</span> `</span><br><span class="line">/p:TableData=<span class="string">&quot;[額外指定可包含資料的表]&quot;</span></span><br></pre></td></tr></table></figure>
+<p>匯入資料庫</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">sqlpackage /Action:Publish /TargetDatabaseName:<span class="string">&quot;[資料庫名稱]&quot;</span> /TargetServerName:<span class="string">&quot;[服務器]&quot;</span> /TargetUser:<span class="string">&quot;[帳號]&quot;</span> /TargetPassword:<span class="string">&quot;[密碼]&quot;</span> /TargetTrustServerCertificate:True /SourceFile:<span class="string">&quot;[檔案名稱].dacpac&quot;</span> `</span><br><span class="line">/p:ExcludeObjectType=UserDefinedDataTypes `</span><br><span class="line">/p:ExcludeObjectType=UserDefinedTableTypes `</span><br><span class="line">/p:ExcludeObjectType=ClrUserDefinedTypes `</span><br><span class="line">/p:ExcludeObjectType=Users `</span><br><span class="line">/p:ExcludeObjectType=RoleMembership `</span><br><span class="line">/p:AllowIncompatiblePlatform=True </span><br></pre></td></tr></table></figure>
 <div class="note warning"><p>📜 參考資料</p>
 <ol>
-<li><a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.data.sqlite.sqliteconnection.createfunction?view=msdata-sqlite-6.0.0">Microsoft文件</a></li>
-<li><a href="https://csharp.hotexamples.com/examples/-/SQLiteConnection/CreateFunction/php-sqliteconnection-createfunction-method-examples.html">SQLite Examples</a></li>
+<li><a href="https://learn.microsoft.com/en-us/sql/tools/sqlpackage/sqlpackage?view=sql-server-ver16">SqlPackage</a></li>
 </ol>
 </div>]]></content>
       <categories>
@@ -705,8 +812,7 @@ dotnet-dump collect --process-id 1902 -->
       </categories>
       <tags>
         <tag>.Net</tag>
-        <tag>UnitTest</tag>
-        <tag>SQLite</tag>
+        <tag>SqlPackage</tag>
       </tags>
   </entry>
   <entry>
