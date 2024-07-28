@@ -17,11 +17,15 @@ tags: [Linux, Ubuntu, Nat]
 <!--more-->
 
 # iptables 中的 natTable 鏈:
-1. ***PREROUTING鏈***(通常用於DNAT): <br>處理剛到本機並在路由轉送前的資料包，它會轉換封包中的目標IP位址
-2. ***INPUT鏈***: 處理入站資料包
-3. ***FORWARD鏈***: 處理轉送封包
-4. ***OUTPUT鏈***: 處理出站資料包
-5. ***POSTROUTING鏈***(通常用於SNAT):<br> 處理即將離開本機的資料包，它會轉換封包中的來源IP位址
+* ***PREROUTING鏈*** (通常用於DNAT)<br>處理剛到本機並在路由轉送前的資料包，它會轉換封包中的目標IP位址
+
+* ***INPUT鏈***<br>處理入站資料包
+
+* ***FORWARD鏈***<br>處理轉送封包
+
+* ***OUTPUT鏈***<br>處理出站資料包
+
+* ***POSTROUTING鏈*** (通常用於SNAT)<br> 處理即將離開本機的資料包，它會轉換封包中的來源IP位址
 
 # 確認路由
 ```bash
@@ -41,7 +45,7 @@ sudo sysctl -w net.ipv4.ip_forward=1
 sudo iptables -A FORWARD -i eth1 -o eth0 -m state --state RELATED,ESTABLISHED -j ACCEPT
 sudo iptables -A FORWARD -i eth0 -o eth1 -j ACCEPT -->
 
-# 設定轉發
+# 請求轉發至其它主機
 
 建立 DNAT:
 ```bash
@@ -50,14 +54,21 @@ sudo iptables -t nat -A PREROUTING -p tcp -d [服務IP] --dport [服務端口] -
 
 回應客戶端(擇一設定)
 
-1. 建立 SNAT 回應客戶端:
+* 建立 SNAT 回應客戶端:
 ```bash
 sudo iptables -t nat -A POSTROUTING -p tcp -d [轉發IP] --dport [轉發端口] -j SNAT --to-source [服務IP]
 ```
 
-2. 建立 MASQUERADE 回應動態客戶端:
+* 建立 MASQUERADE 回應動態客戶端:
 ```bash
 sudo iptables -t nat -A POSTROUTING -j MASQUERADE
+```
+
+# 請求轉移至主機其它端口
+
+可使用以下設定轉發端口
+```bash
+sudo iptables -t nat -A PREROUTING -p tcp --dport [服務端口] -j REDIRECT --to-port [轉發端口]
 ```
 
 # 查詢 NAT 規則
