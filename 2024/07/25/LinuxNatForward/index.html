@@ -28,7 +28,7 @@
 <meta property="og:description" content="NAT介紹:   DNAT發生在 natTable 的 PREROUTING 鏈上，正好在剛接收到封包的之後一步，對應的是 inbound 流量   SNAT發生在 natTable 的 POSTROUTING 鏈上，只允許被使用在靜態 IP，要求您為其提供一個 IP 位址以套用於所有傳出資料包，正好在傳送到網路卡前的最後一步，對應的是 outbound 流量   Masquerading只允許被">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-07-25T18:00:00.000Z">
-<meta property="article:modified_time" content="2024-07-25T13:38:20.274Z">
+<meta property="article:modified_time" content="2024-07-28T14:30:29.248Z">
 <meta property="article:author" content="Stephen">
 <meta property="article:tag" content="Linux">
 <meta property="article:tag" content="Ubuntu">
@@ -143,7 +143,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#NAT%E4%BB%8B%E7%B4%B9"><span class="nav-number">1.</span> <span class="nav-text">NAT介紹:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#iptables-%E4%B8%AD%E7%9A%84-natTable-%E9%8F%88"><span class="nav-number">2.</span> <span class="nav-text">iptables 中的 natTable 鏈:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A2%BA%E8%AA%8D%E8%B7%AF%E7%94%B1"><span class="nav-number">3.</span> <span class="nav-text">確認路由</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%96%8B%E5%95%9F-Linux-%E8%BD%89%E7%99%BC"><span class="nav-number">4.</span> <span class="nav-text">開啟 Linux 轉發</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A8%AD%E5%AE%9A%E8%BD%89%E7%99%BC"><span class="nav-number">5.</span> <span class="nav-text">設定轉發</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9F%A5%E8%A9%A2-NAT-%E8%A6%8F%E5%89%87"><span class="nav-number">6.</span> <span class="nav-text">查詢 NAT 規則</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#NAT%E4%BB%8B%E7%B4%B9"><span class="nav-number">1.</span> <span class="nav-text">NAT介紹:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#iptables-%E4%B8%AD%E7%9A%84-natTable-%E9%8F%88"><span class="nav-number">2.</span> <span class="nav-text">iptables 中的 natTable 鏈:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A2%BA%E8%AA%8D%E8%B7%AF%E7%94%B1"><span class="nav-number">3.</span> <span class="nav-text">確認路由</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%96%8B%E5%95%9F-Linux-%E8%BD%89%E7%99%BC"><span class="nav-number">4.</span> <span class="nav-text">開啟 Linux 轉發</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AB%8B%E6%B1%82%E8%BD%89%E7%99%BC%E8%87%B3%E5%85%B6%E5%AE%83%E4%B8%BB%E6%A9%9F"><span class="nav-number">5.</span> <span class="nav-text">請求轉發至其它主機</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AB%8B%E6%B1%82%E8%BD%89%E7%A7%BB%E8%87%B3%E4%B8%BB%E6%A9%9F%E5%85%B6%E5%AE%83%E7%AB%AF%E5%8F%A3"><span class="nav-number">6.</span> <span class="nav-text">請求轉移至主機其它端口</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9F%A5%E8%A9%A2-NAT-%E8%A6%8F%E5%89%87"><span class="nav-number">7.</span> <span class="nav-text">查詢 NAT 規則</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -258,9 +258,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2024-07-25 18:00:00 / Modified: 13:38:20" itemprop="dateCreated datePublished" datetime="2024-07-25T18:00:00+00:00">2024-07-25</time>
+      <time title="Created: 2024-07-25 18:00:00" itemprop="dateCreated datePublished" datetime="2024-07-25T18:00:00+00:00">2024-07-25</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2024-07-28 14:30:29" itemprop="dateModified" datetime="2024-07-28T14:30:29+00:00">2024-07-28</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -279,7 +285,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Word count in article: </span>
-      <span>555</span>
+      <span>600</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
@@ -313,13 +319,23 @@
 </ul>
 <span id="more"></span>
 <h1 id="iptables-中的-natTable-鏈"><a class="header-anchor" href="#iptables-中的-natTable-鏈"></a>iptables 中的 natTable 鏈:</h1>
-<ol>
-<li><em><strong>PREROUTING鏈</strong></em>(通常用於DNAT): <br>處理剛到本機並在路由轉送前的資料包，它會轉換封包中的目標IP位址</li>
-<li><em><strong>INPUT鏈</strong></em>: 處理入站資料包</li>
-<li><em><strong>FORWARD鏈</strong></em>: 處理轉送封包</li>
-<li><em><strong>OUTPUT鏈</strong></em>: 處理出站資料包</li>
-<li><em><strong>POSTROUTING鏈</strong></em>(通常用於SNAT):<br> 處理即將離開本機的資料包，它會轉換封包中的來源IP位址</li>
-</ol>
+<ul>
+<li>
+<p><em><strong>PREROUTING鏈</strong></em> (通常用於DNAT)<br>處理剛到本機並在路由轉送前的資料包，它會轉換封包中的目標IP位址</p>
+</li>
+<li>
+<p><em><strong>INPUT鏈</strong></em><br>處理入站資料包</p>
+</li>
+<li>
+<p><em><strong>FORWARD鏈</strong></em><br>處理轉送封包</p>
+</li>
+<li>
+<p><em><strong>OUTPUT鏈</strong></em><br>處理出站資料包</p>
+</li>
+<li>
+<p><em><strong>POSTROUTING鏈</strong></em> (通常用於SNAT)<br> 處理即將離開本機的資料包，它會轉換封包中的來源IP位址</p>
+</li>
+</ul>
 <h1 id="確認路由"><a class="header-anchor" href="#確認路由"></a>確認路由</h1>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">route -n</span><br></pre></td></tr></table></figure>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ip r | grep default</span><br></pre></td></tr></table></figure>
@@ -328,18 +344,21 @@
 <!-- 允許流量轉發
 sudo iptables -A FORWARD -i eth1 -o eth0 -m state --state RELATED,ESTABLISHED -j ACCEPT
 sudo iptables -A FORWARD -i eth0 -o eth1 -j ACCEPT -->
-<h1 id="設定轉發"><a class="header-anchor" href="#設定轉發"></a>設定轉發</h1>
+<h1 id="請求轉發至其它主機"><a class="header-anchor" href="#請求轉發至其它主機"></a>請求轉發至其它主機</h1>
 <p>建立 DNAT:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo iptables -t nat -A PREROUTING -p tcp -d [服務IP] --dport [服務端口] -j DNAT --to-destination [轉發IP]:[轉發端口]</span><br></pre></td></tr></table></figure>
 <p>回應客戶端(擇一設定)</p>
-<ol>
+<ul>
 <li>建立 SNAT 回應客戶端:</li>
-</ol>
+</ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo iptables -t nat -A POSTROUTING -p tcp -d [轉發IP] --dport [轉發端口] -j SNAT --to-source [服務IP]</span><br></pre></td></tr></table></figure>
-<ol start="2">
+<ul>
 <li>建立 MASQUERADE 回應動態客戶端:</li>
-</ol>
+</ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo iptables -t nat -A POSTROUTING -j MASQUERADE</span><br></pre></td></tr></table></figure>
+<h1 id="請求轉移至主機其它端口"><a class="header-anchor" href="#請求轉移至主機其它端口"></a>請求轉移至主機其它端口</h1>
+<p>可使用以下設定轉發端口</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo iptables -t nat -A PREROUTING -p tcp --dport [服務端口] -j REDIRECT --to-port [轉發端口]</span><br></pre></td></tr></table></figure>
 <h1 id="查詢-NAT-規則"><a class="header-anchor" href="#查詢-NAT-規則"></a>查詢 NAT 規則</h1>
 <p>查詢 NAT 設定</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo iptables -t nat -S</span><br></pre></td></tr></table></figure>
