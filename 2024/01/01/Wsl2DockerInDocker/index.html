@@ -28,7 +28,7 @@
 <meta property="og:description" content="🚀 使用主機的 Docker Socket 建立 daemon.json 設定檔 1sudo nano &#x2F;etc&#x2F;docker&#x2F;daemon.json 加入以下設定 1234&amp;#123;  &quot;hosts&quot;: [ &quot;unix:&#x2F;&#x2F;&#x2F;var&#x2F;run&#x2F;docker.sock&quot;, &quot;tcp:&#x2F;&#x2F;0.0.0.0:&quot; ],  &quot;tls&amp;q">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-01-01T16:00:00.000Z">
-<meta property="article:modified_time" content="2024-07-28T14:30:29.252Z">
+<meta property="article:modified_time" content="2024-09-02T15:40:08.843Z">
 <meta property="article:author" content="Stephen">
 <meta property="article:tag" content="Wsl2">
 <meta property="article:tag" content="Docker">
@@ -142,7 +142,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%F0%9F%9A%80-%E4%BD%BF%E7%94%A8%E4%B8%BB%E6%A9%9F%E7%9A%84-Docker-Socket"><span class="nav-number">1.</span> <span class="nav-text">🚀 使用主機的 Docker Socket</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%F0%9F%9A%80-%E4%BD%BF%E7%94%A8-docker-dind-%E6%98%A0%E5%83%8F"><span class="nav-number">2.</span> <span class="nav-text">🚀 使用 docker:dind 映像</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%AD%90-%E9%80%8F%E9%81%8E%E7%89%B9%E6%AC%8A%E6%A8%A1%E5%BC%8F%E9%81%B8%E9%A0%85%E5%9F%B7%E8%A1%8C%E5%91%BD%E4%BB%A4"><span class="nav-number">2.1.</span> <span class="nav-text">⭐ 透過特權模式選項執行命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%AD%90-%E9%80%8F%E9%81%8E-Nestybox-Sysbox-%E9%81%8B%E8%A1%8C%E6%99%82%E9%81%B8%E9%A0%85%E5%9F%B7%E8%A1%8C%E5%91%BD%E4%BB%A4"><span class="nav-number">2.2.</span> <span class="nav-text">⭐ 透過 Nestybox Sysbox 運行時選項執行命令</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%F0%9F%9A%80-%E4%BD%BF%E7%94%A8-Docker-CLI-%E9%80%8F%E9%81%8E-Docker-contexts-%E9%80%A3%E7%B7%9A%E8%87%B3%E9%81%A0%E7%AB%AF-Docker"><span class="nav-number">3.</span> <span class="nav-text">🚀 使用 Docker CLI 透過 Docker contexts 連線至遠端 Docker</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%F0%9F%9A%80-%E4%BD%BF%E7%94%A8%E4%B8%BB%E6%A9%9F%E7%9A%84-Docker-Socket"><span class="nav-number">1.</span> <span class="nav-text">🚀 使用主機的 Docker Socket</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%F0%9F%9A%80-%E4%BD%BF%E7%94%A8-docker-dind-%E6%98%A0%E5%83%8F"><span class="nav-number">2.</span> <span class="nav-text">🚀 使用 docker:dind 映像</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%AD%90-%E9%80%8F%E9%81%8E%E7%89%B9%E6%AC%8A%E6%A8%A1%E5%BC%8F%E9%81%B8%E9%A0%85%E5%9F%B7%E8%A1%8C%E5%91%BD%E4%BB%A4"><span class="nav-number">2.1.</span> <span class="nav-text">⭐ 透過特權模式選項執行命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%AD%90-%E9%80%8F%E9%81%8E-Nestybox-Sysbox-%E9%81%8B%E8%A1%8C%E6%99%82%E9%81%B8%E9%A0%85%E5%9F%B7%E8%A1%8C%E5%91%BD%E4%BB%A4"><span class="nav-number">2.2.</span> <span class="nav-text">⭐ 透過 Nestybox Sysbox 運行時選項執行命令</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%F0%9F%9A%80-%E9%80%8F%E9%81%8E-Docker-contexts-%E9%80%A3%E7%B7%9A%E8%87%B3-Docker-In-Docker-%E5%9F%B7%E8%A1%8C-Docker-%E5%91%BD%E4%BB%A4"><span class="nav-number">3.</span> <span class="nav-text">🚀 透過 Docker contexts 連線至 Docker In Docker 執行 Docker 命令</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -265,7 +265,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2024-07-28 14:30:29" itemprop="dateModified" datetime="2024-07-28T14:30:29+00:00">2024-07-28</time>
+      <time title="Modified: 2024-09-02 15:40:08" itemprop="dateModified" datetime="2024-09-02T15:40:08+00:00">2024-09-02</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -284,7 +284,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Word count in article: </span>
-      <span>298</span>
+      <span>299</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
@@ -322,8 +322,8 @@
 <p>安裝 <a target="_blank" rel="noopener" href="https://github.com/nestybox/sysbox?tab=readme-ov-file#installation">Nestybox Sysbox</a> 後，不需要特權模式，即可執行</p>
 <p>運行時選項: --runtime=sysbox-runc</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -p [本機連接Port]:2375 -e DOCKER_TLS_CERTDIR=<span class="string">&quot;&quot;</span> --runtime=sysbox-runc --name sysbox-docker -d docker:dind</span><br></pre></td></tr></table></figure>
-<h1 id="🚀-使用-Docker-CLI-透過-Docker-contexts-連線至遠端-Docker"><a class="header-anchor" href="#🚀-使用-Docker-CLI-透過-Docker-contexts-連線至遠端-Docker"></a>🚀 使用 Docker CLI 透過 Docker contexts 連線至遠端 Docker</h1>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 建立 Docker contexts</span></span><br><span class="line">docker context create <span class="built_in">test</span> --docker <span class="string">&quot;host=tcp://127.0.0.1:[本機連接Port]&quot;</span></span><br><span class="line"><span class="comment"># 使用 Docker contexts</span></span><br><span class="line">docker context use <span class="built_in">test</span></span><br></pre></td></tr></table></figure>
+<h1 id="🚀-透過-Docker-contexts-連線至-Docker-In-Docker-執行-Docker-命令"><a class="header-anchor" href="#🚀-透過-Docker-contexts-連線至-Docker-In-Docker-執行-Docker-命令"></a>🚀 透過 Docker contexts 連線至 Docker In Docker 執行 Docker 命令</h1>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 建立 Docker contexts</span></span><br><span class="line">docker context create <span class="built_in">test</span> --docker <span class="string">&quot;host=tcp://127.0.0.1:[本機連接Port]&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用 Docker contexts</span></span><br><span class="line">docker context use <span class="built_in">test</span></span><br></pre></td></tr></table></figure>
 <div class="note warning"><p>📜 參考資料</p>
 <ol>
 <li><a target="_blank" rel="noopener" href="https://kodekloud.com/blog/run-docker-in-docker-container/">3 Best Ways to Run Docker in Docker Container</a></li>
