@@ -55,11 +55,12 @@ docker run -p [本機連接Port]:2375 --privileged -e DOCKER_TLS_CERTDIR="" --na
 docker run -p [本機連接Port]:2375 -e DOCKER_TLS_CERTDIR="" --runtime=sysbox-runc --name sysbox-docker -d docker:dind
 ```
 
-# 🚀 使用 Docker CLI 透過 Docker contexts 連線至遠端 Docker
+# 🚀 透過 Docker contexts 連線至 Docker In Docker 執行 Docker 命令
 
 ```bash
 # 建立 Docker contexts
 docker context create test --docker "host=tcp://127.0.0.1:[本機連接Port]"
+
 # 使用 Docker contexts
 docker context use test
 ```

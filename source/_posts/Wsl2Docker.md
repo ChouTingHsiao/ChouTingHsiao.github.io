@@ -106,7 +106,7 @@ export DOCKER_HOST="tcp://127.0.0.1:2375"
 sudo service docker start
 ```
 
-# 🚀 無密碼 sudo 授權
+無密碼 sudo 授權
 
 {% note danger %}
 ⚠️請注意，下方設定不建議用在生產環境

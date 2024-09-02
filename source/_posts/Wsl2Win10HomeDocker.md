@@ -17,6 +17,9 @@ scoop install docker
 
 <!--more-->
 
+<!-- Invoke-WebRequest -UseBasicParsing "https://raw.githubusercontent.com/microsoft/Windows-Containers/Main/helpful_tools/Install-DockerCE/install-docker-ce.ps1" -o install-docker-ce.ps1
+.\install-docker-ce.ps1 -->
+
 # 調整安裝空間
 複製 Docker 資料至磁碟機 D ，節省磁碟機 C 的空間
 ```powershell
@@ -82,6 +85,8 @@ Dism /online /enable-feature /featurename:containers /LimitAccess /ALL
 ```powershell
 dockerd --register-service ; Start-Service docker ; exit
 ```
+
+<!-- dockerd --register-service -G docker-users --config-file C:dockerdaemon.json -->
 
 {% note warning %}
 📜 參考資料
