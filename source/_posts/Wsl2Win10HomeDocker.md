@@ -6,39 +6,10 @@ tags: [Wsl2, Docker]
 ---
 
 {% note danger %}
-⚠️請注意，下方 Docker 應用只支援以 Ｗindows 為基底的 Image
-{% endnote %}
-
-# 使用 Scoop 安裝 Docker
-執行下方命令安裝
-```powershell
-scoop install docker
-```
-
-<!--more-->
-
-<!-- Invoke-WebRequest -UseBasicParsing "https://raw.githubusercontent.com/microsoft/Windows-Containers/Main/helpful_tools/Install-DockerCE/install-docker-ce.ps1" -o install-docker-ce.ps1
-.\install-docker-ce.ps1 -->
-
-# 調整安裝空間
-複製 Docker 資料至磁碟機 D ，節省磁碟機 C 的空間
-```powershell
-Copy-Item 'C:\ProgramData\docker' -Destination 'd:\\docker'
-```
-
-建立 'C:\ProgramData\docker\config\daemon.json'
-```json
-{
-  "hosts": [ "tcp://0.0.0.0:" ],
-  "tls": false,
-  "data-root": "d:\\docker",
-  "dns": ["8.8.8.8"]
-}
-```
-
-{% note danger %}
 ⚠️請注意，因 Win10 家用版本身不支援安裝下方功能，開啟後可能發生未知錯誤，僅供學習使用
 {% endnote %}
+
+<!--more-->
 
 # 安裝 Hyper-V 功能
 ```powershell
@@ -79,6 +50,35 @@ Dism /online /enable-feature /featurename:containers /LimitAccess /ALL
 ```
 
 以上方代碼建立 .bat 執行文件，並使用管理者權限執行
+
+{% note danger %}
+⚠️請注意，下方 Docker 應用只支援以 Ｗindows 為基底的 Image
+{% endnote %}
+
+# 使用 Scoop 安裝 Docker
+執行下方命令安裝
+```powershell
+scoop install docker
+```
+
+<!-- Invoke-WebRequest -UseBasicParsing "https://raw.githubusercontent.com/microsoft/Windows-Containers/Main/helpful_tools/Install-DockerCE/install-docker-ce.ps1" -o install-docker-ce.ps1
+.\install-docker-ce.ps1 -->
+
+# 調整安裝空間
+複製 Docker 資料至磁碟機 D ，節省磁碟機 C 的空間
+```powershell
+Copy-Item 'C:\ProgramData\docker' -Destination 'd:\\docker'
+```
+
+建立 'C:\ProgramData\docker\config\daemon.json'
+```json
+{
+  "hosts": [ "tcp://0.0.0.0:" ],
+  "tls": false,
+  "data-root": "d:\\docker",
+  "dns": ["8.8.8.8"]
+}
+```
 
 # 執行 Docker
 執行下方命令註冊 Ｗindows 服務
