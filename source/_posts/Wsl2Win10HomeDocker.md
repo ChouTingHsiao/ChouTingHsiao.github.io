@@ -4,7 +4,6 @@ date: 2023-05-05 00:10:00
 categories: Wsl2
 tags: [Wsl2, Docker]
 ---
-
 {% note danger %}
 ⚠️請注意，因 Win10 家用版本身不支援安裝下方功能，開啟後可能發生未知錯誤，僅供學習使用
 {% endnote %}
@@ -12,6 +11,7 @@ tags: [Wsl2, Docker]
 <!--more-->
 
 # 安裝 Hyper-V 功能
+
 ```powershell
 # 將批處理檔案所在的目錄設定為工作目錄
 pushd "%~dp0"
@@ -32,6 +32,7 @@ Dism /online /enable-feature /featurename:Microsoft-Hyper-V-All /LimitAccess /AL
 以上方代碼建立 .bat 執行文件，並使用管理者權限執行
 
 # 安裝容器功能
+
 ```powershell
 # 將批處理檔案所在的目錄設定為工作目錄
 pushd "%~dp0"
@@ -56,7 +57,9 @@ Dism /online /enable-feature /featurename:containers /LimitAccess /ALL
 {% endnote %}
 
 # 使用 Scoop 安裝 Docker
+
 執行下方命令安裝
+
 ```powershell
 scoop install docker
 ```
@@ -65,15 +68,18 @@ scoop install docker
 .\install-docker-ce.ps1 -->
 
 # 調整安裝空間
+
 複製 Docker 資料至磁碟機 D ，節省磁碟機 C 的空間
+
 ```powershell
 Copy-Item 'C:\ProgramData\docker' -Destination 'd:\\docker'
 ```
 
 建立 'C:\ProgramData\docker\config\daemon.json'
+
 ```json
 {
-  "hosts": [ "tcp://0.0.0.0:" ],
+  "hosts": [ "npipe://", "tcp://0.0.0.0:" ],
   "tls": false,
   "data-root": "d:\\docker",
   "dns": ["8.8.8.8"]
@@ -81,7 +87,9 @@ Copy-Item 'C:\ProgramData\docker' -Destination 'd:\\docker'
 ```
 
 # 執行 Docker
+
 執行下方命令註冊 Ｗindows 服務
+
 ```powershell
 dockerd --register-service ; Start-Service docker ; exit
 ```
@@ -90,6 +98,7 @@ dockerd --register-service ; Start-Service docker ; exit
 
 {% note warning %}
 📜 參考資料
+
 1. [Scoop Docker](https://scoop.sh/#/apps?q=docker&s=0&d=1&o=true)
 2. [Windows Base Image](https://learn.microsoft.com/zh-tw/virtualization/windowscontainers/manage-containers/container-base-images)
-{% endnote %}
+   {% endnote %}
