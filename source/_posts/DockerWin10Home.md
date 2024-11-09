@@ -1,8 +1,8 @@
 ---
 title: Win10 家用版安裝 Docker
 date: 2023-05-05 00:10:00
-categories: Wsl2
-tags: [Wsl2, Docker]
+categories: Docker
+tags: [Docker]
 ---
 {% note danger %}
 ⚠️請注意，因 Win10 家用版本身不支援安裝下方功能，開啟後可能發生未知錯誤，僅供學習使用
