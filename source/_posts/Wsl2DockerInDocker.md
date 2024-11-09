@@ -41,19 +41,25 @@ curl -XPOST --unix-socket /var/run/docker.sock http://localhost/containers/[容�
 
 可參考以下兩種方法運行 docker:dind 映像
 
-## ⭐ 透過特權模式選項執行命令
+{% tabs mytab1, 1 %}
+
+<!-- tab ⭐ 透過特權模式選項執行命令 -->
 特權模式選項: --privileged
 ```bash
 docker run -p [本機連接Port]:2375 --privileged -e DOCKER_TLS_CERTDIR="" --name privileged-docker -d docker:dind
 ```
+<!-- endtab -->
 
-## ⭐ 透過 Nestybox Sysbox 運行時選項執行命令
+<!-- tab ⭐ 透過 Nestybox Sysbox 運行時選項執行命令 -->
 安裝 [Nestybox Sysbox](https://github.com/nestybox/sysbox?tab=readme-ov-file#installation) 後，不需要特權模式，即可執行
 
 運行時選項: --runtime=sysbox-runc
 ```bash
 docker run -p [本機連接Port]:2375 -e DOCKER_TLS_CERTDIR="" --runtime=sysbox-runc --name sysbox-docker -d docker:dind
 ```
+<!-- endtab -->
+
+{% endtabs %}
 
 # 🚀 透過 Docker contexts 連線至 Docker In Docker 執行 Docker 命令
 
