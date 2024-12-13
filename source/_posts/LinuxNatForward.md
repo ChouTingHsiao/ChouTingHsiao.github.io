@@ -5,7 +5,7 @@ categories: Linux
 tags: [Linux, Ubuntu, Nat]
 ---
 
-# NAT介紹:
+# NAT 介紹:
 * ***DNAT***<br>發生在 natTable 的 PREROUTING 鏈上，正好在剛接收到封包的之後一步，對應的是 inbound 流量
 
 * ***SNAT***<br>發生在 natTable 的 POSTROUTING 鏈上，只允許被使用在靜態 IP，要求您為其提供一個 IP 位址以套用於所有傳出資料包，正好在傳送到網路卡前的最後一步，對應的是 outbound 流量
@@ -16,12 +16,12 @@ tags: [Linux, Ubuntu, Nat]
 
 <!--more-->
 
-# iptables 中的 natTable 鏈:
+# iptables 中的五條鏈:
 * ***PREROUTING鏈*** (通常用於DNAT)<br>處理剛到本機並在路由轉送前的資料包，它會轉換封包中的目標IP位址
 
 * ***INPUT鏈***<br>處理入站資料包
 
-* ***FORWARD鏈***<br>處理轉送封包
+* ***FORWARD鏈(不包含 NAT)***<br>處理轉送封包
 
 * ***OUTPUT鏈***<br>處理出站資料包
 

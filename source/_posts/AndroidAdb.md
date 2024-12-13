@@ -98,6 +98,8 @@ adb shell touch [文件名稱]
 adb shell cp [source] [dest]
 # 移動或重命名文件
 adb shell mv [source] [dest]
+# 螢幕截圖
+adb shell screencap /sdcard/[檔案].png
 ```
 
 網路相關命令
@@ -143,6 +145,8 @@ adb shell dumpsys diskstats
 # 查看電池狀態 
 adb shell dumpsys battery
 adb shell dumpsys batteryproperties
+# 查看推播訊息
+adb shell dumpsys activity broadcasts
 ```
  
 偵錯應用程式
