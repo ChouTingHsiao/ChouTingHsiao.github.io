@@ -369,6 +369,29 @@
       </tags>
   </entry>
   <entry>
+    <title>如何將 Base64 編碼轉成檔案</title>
+    <url>/2019/12/09/JsBase64ToFile/</url>
+    <content><![CDATA[<h1 id="Chrome-base64-轉換成檔案"><a class="header-anchor" href="#Chrome-base64-轉換成檔案"></a>Chrome base64 轉換成檔案</h1>
+<p>下方是使用 JavaScript 把 base64 轉換成檔案的方法</p>
+<span id="more"></span>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"> <span class="keyword">function</span> <span class="title function_">downloadFile</span>(<span class="params">base64Str</span>) &#123;</span><br><span class="line">    <span class="comment">// 解碼 base64</span></span><br><span class="line">    <span class="keyword">const</span> byteCharacters = <span class="title function_">atob</span>(base64Str);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 建立 Byte Array</span></span><br><span class="line">    <span class="keyword">const</span> byteNumbers = <span class="keyword">new</span> <span class="title class_">Array</span>(byteCharacters.<span class="property">length</span>);</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; byteCharacters.<span class="property">length</span>; i++) &#123;</span><br><span class="line"> </span><br><span class="line">       byteNumbers[i] = byteCharacters.<span class="title function_">charCodeAt</span>(i);</span><br><span class="line"> </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">const</span> byteArray = <span class="keyword">new</span> <span class="title class_">Uint8Array</span>(byteNumbers);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 建立二進制檔和聲明 MIME Type</span></span><br><span class="line">    <span class="keyword">const</span> blob = <span class="keyword">new</span> <span class="title class_">Blob</span>([byteArray], &#123;<span class="attr">type</span>: <span class="string">&#x27;image/jpg&#x27;</span>&#125;);</span><br><span class="line"> </span><br><span class="line">    <span class="comment">// 下載檔案</span></span><br><span class="line">    <span class="keyword">let</span> link = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&#x27;a&#x27;</span>);</span><br><span class="line"> </span><br><span class="line">    <span class="comment">// 建立檔案物件連結</span></span><br><span class="line">    <span class="keyword">const</span> blobUrl = <span class="variable constant_">URL</span>.<span class="title function_">createObjectURL</span>(blob);</span><br><span class="line"> </span><br><span class="line">    link.<span class="property">href</span> = blobUrl;</span><br><span class="line"> </span><br><span class="line">    link.<span class="property">download</span> = <span class="string">&#x27;file.jpg&#x27;</span>;</span><br><span class="line"> </span><br><span class="line">    link.<span class="title function_">click</span>();</span><br><span class="line"> </span><br><span class="line">    <span class="variable constant_">URL</span>.<span class="title function_">revokeObjectURL</span>(blobUrl);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="IE-10-base64-轉換成檔案"><a class="header-anchor" href="#IE-10-base64-轉換成檔案"></a>IE 10 base64 轉換成檔案</h1>
+<p>如果瀏覽器使用 IE 10 以上版本，可使用 window.navigator.msSaveBlob 作為替代方法</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">downloadFile</span>(<span class="params">base64Str</span>) &#123;</span><br><span class="line">   <span class="comment">// 解碼 base64</span></span><br><span class="line">   <span class="keyword">const</span> byteCharacters = <span class="title function_">atob</span>(base64Str);</span><br><span class="line">	</span><br><span class="line">   <span class="comment">// 建立 Byte Array</span></span><br><span class="line">   <span class="keyword">const</span> byteNumbers = <span class="keyword">new</span> <span class="title class_">Array</span>(byteCharacters.<span class="property">length</span>);</span><br><span class="line">	</span><br><span class="line">   <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; byteCharacters.<span class="property">length</span>; i++) &#123;</span><br><span class="line">      byteNumbers[i] = byteCharacters.<span class="title function_">charCodeAt</span>(i);</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">const</span> byteArray = <span class="keyword">new</span> <span class="title class_">Uint8Array</span>(byteNumbers);</span><br><span class="line"></span><br><span class="line">   <span class="comment">// 建立二進制檔和聲明 MIME Type</span></span><br><span class="line">   <span class="keyword">const</span> blob = <span class="keyword">new</span> <span class="title class_">Blob</span>([byteArray], &#123;<span class="attr">type</span>: <span class="string">&#x27;image/jpg&#x27;</span>&#125;);</span><br><span class="line"> </span><br><span class="line">   <span class="comment">// 下載檔案</span></span><br><span class="line">   <span class="variable language_">window</span>.<span class="property">navigator</span>.<span class="title function_">msSaveBlob</span>(blob, <span class="string">&#x27;file.jpg&#x27;</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/atob">MDN atob</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>Javascript</category>
+      </categories>
+      <tags>
+        <tag>Javascript</tag>
+        <tag>Base64</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>如何將檔案轉成 Base64 編碼</title>
     <url>/2019/12/09/JsFileToBase64/</url>
     <content><![CDATA[<h1 id="建立-HTML"><a class="header-anchor" href="#建立-HTML"></a>建立 HTML</h1>
@@ -412,29 +435,6 @@
       <tags>
         <tag>Javascript</tag>
         <tag>Function</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>如何將 Base64 編碼轉成檔案</title>
-    <url>/2019/12/09/JsBase64ToFile/</url>
-    <content><![CDATA[<h1 id="Chrome-base64-轉換成檔案"><a class="header-anchor" href="#Chrome-base64-轉換成檔案"></a>Chrome base64 轉換成檔案</h1>
-<p>下方是使用 JavaScript 把 base64 轉換成檔案的方法</p>
-<span id="more"></span>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"> <span class="keyword">function</span> <span class="title function_">downloadFile</span>(<span class="params">base64Str</span>) &#123;</span><br><span class="line">    <span class="comment">// 解碼 base64</span></span><br><span class="line">    <span class="keyword">const</span> byteCharacters = <span class="title function_">atob</span>(base64Str);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 建立 Byte Array</span></span><br><span class="line">    <span class="keyword">const</span> byteNumbers = <span class="keyword">new</span> <span class="title class_">Array</span>(byteCharacters.<span class="property">length</span>);</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; byteCharacters.<span class="property">length</span>; i++) &#123;</span><br><span class="line"> </span><br><span class="line">       byteNumbers[i] = byteCharacters.<span class="title function_">charCodeAt</span>(i);</span><br><span class="line"> </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">const</span> byteArray = <span class="keyword">new</span> <span class="title class_">Uint8Array</span>(byteNumbers);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 建立二進制檔和聲明 MIME Type</span></span><br><span class="line">    <span class="keyword">const</span> blob = <span class="keyword">new</span> <span class="title class_">Blob</span>([byteArray], &#123;<span class="attr">type</span>: <span class="string">&#x27;image/jpg&#x27;</span>&#125;);</span><br><span class="line"> </span><br><span class="line">    <span class="comment">// 下載檔案</span></span><br><span class="line">    <span class="keyword">let</span> link = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&#x27;a&#x27;</span>);</span><br><span class="line"> </span><br><span class="line">    <span class="comment">// 建立檔案物件連結</span></span><br><span class="line">    <span class="keyword">const</span> blobUrl = <span class="variable constant_">URL</span>.<span class="title function_">createObjectURL</span>(blob);</span><br><span class="line"> </span><br><span class="line">    link.<span class="property">href</span> = blobUrl;</span><br><span class="line"> </span><br><span class="line">    link.<span class="property">download</span> = <span class="string">&#x27;file.jpg&#x27;</span>;</span><br><span class="line"> </span><br><span class="line">    link.<span class="title function_">click</span>();</span><br><span class="line"> </span><br><span class="line">    <span class="variable constant_">URL</span>.<span class="title function_">revokeObjectURL</span>(blobUrl);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="IE-10-base64-轉換成檔案"><a class="header-anchor" href="#IE-10-base64-轉換成檔案"></a>IE 10 base64 轉換成檔案</h1>
-<p>如果瀏覽器使用 IE 10 以上版本，可使用 window.navigator.msSaveBlob 作為替代方法</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">downloadFile</span>(<span class="params">base64Str</span>) &#123;</span><br><span class="line">   <span class="comment">// 解碼 base64</span></span><br><span class="line">   <span class="keyword">const</span> byteCharacters = <span class="title function_">atob</span>(base64Str);</span><br><span class="line">	</span><br><span class="line">   <span class="comment">// 建立 Byte Array</span></span><br><span class="line">   <span class="keyword">const</span> byteNumbers = <span class="keyword">new</span> <span class="title class_">Array</span>(byteCharacters.<span class="property">length</span>);</span><br><span class="line">	</span><br><span class="line">   <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; byteCharacters.<span class="property">length</span>; i++) &#123;</span><br><span class="line">      byteNumbers[i] = byteCharacters.<span class="title function_">charCodeAt</span>(i);</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">const</span> byteArray = <span class="keyword">new</span> <span class="title class_">Uint8Array</span>(byteNumbers);</span><br><span class="line"></span><br><span class="line">   <span class="comment">// 建立二進制檔和聲明 MIME Type</span></span><br><span class="line">   <span class="keyword">const</span> blob = <span class="keyword">new</span> <span class="title class_">Blob</span>([byteArray], &#123;<span class="attr">type</span>: <span class="string">&#x27;image/jpg&#x27;</span>&#125;);</span><br><span class="line"> </span><br><span class="line">   <span class="comment">// 下載檔案</span></span><br><span class="line">   <span class="variable language_">window</span>.<span class="property">navigator</span>.<span class="title function_">msSaveBlob</span>(blob, <span class="string">&#x27;file.jpg&#x27;</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/atob">MDN atob</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>Javascript</category>
-      </categories>
-      <tags>
-        <tag>Javascript</tag>
-        <tag>Base64</tag>
       </tags>
   </entry>
   <entry>
@@ -598,6 +598,92 @@
       </tags>
   </entry>
   <entry>
+    <title>使用 NAT 轉發請求</title>
+    <url>/2024/07/25/LinuxNatForward/</url>
+    <content><![CDATA[<h1 id="NAT-介紹"><a class="header-anchor" href="#NAT-介紹"></a>NAT 介紹:</h1>
+<ul>
+<li>
+<p><em><strong>DNAT</strong></em><br>發生在 natTable 的 PREROUTING 鏈上，正好在剛接收到封包的之後一步，對應的是 inbound 流量</p>
+</li>
+<li>
+<p><em><strong>SNAT</strong></em><br>發生在 natTable 的 POSTROUTING 鏈上，只允許被使用在靜態 IP，要求您為其提供一個 IP 位址以套用於所有傳出資料包，正好在傳送到網路卡前的最後一步，對應的是 outbound 流量</p>
+</li>
+<li>
+<p><em><strong>Masquerading</strong></em><br>只允許被用在動態分配 IP 位址的情況下，允許您為其提供一個接口，該接口上的任何地址，都是應用於所有傳出資料包的地址</p>
+</li>
+<li>
+<p><em><strong>Redirection</strong></em><br>將流量轉發到本地系統的其他端口，而不是轉發到內部網絡中的其他主機</p>
+</li>
+</ul>
+<span id="more"></span>
+<h1 id="iptables-中的五條鏈"><a class="header-anchor" href="#iptables-中的五條鏈"></a>iptables 中的五條鏈:</h1>
+<ul>
+<li>
+<p><em><strong>PREROUTING鏈</strong></em> (通常用於DNAT)<br> 處理剛到本機並在路由轉送前的資料包，它會轉換封包中的目標IP位址</p>
+</li>
+<li>
+<p><em><strong>INPUT鏈</strong></em> <br> 處理入站資料包</p>
+</li>
+<li>
+<p><em><strong>FORWARD鏈</strong></em> (不包含 NAT)<br> 處理轉送封包</p>
+</li>
+<li>
+<p><em><strong>OUTPUT鏈</strong></em> <br> 處理出站資料包</p>
+</li>
+<li>
+<p><em><strong>POSTROUTING鏈</strong></em> (通常用於SNAT)<br> 處理即將離開本機的資料包，它會轉換封包中的來源IP位址</p>
+</li>
+</ul>
+<h1 id="確認路由"><a class="header-anchor" href="#確認路由"></a>確認路由</h1>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">route -n</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ip r | grep default</span><br></pre></td></tr></table></figure>
+<h1 id="開啟-Linux-轉發"><a class="header-anchor" href="#開啟-Linux-轉發"></a>開啟 Linux 轉發</h1>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo sysctl -w net.ipv4.ip_forward=1</span><br></pre></td></tr></table></figure>
+<!-- 允許流量轉發
+sudo iptables -A FORWARD -i eth1 -o eth0 -m state --state RELATED,ESTABLISHED -j ACCEPT
+sudo iptables -A FORWARD -i eth0 -o eth1 -j ACCEPT -->
+<h1 id="請求轉移至本機其它端口"><a class="header-anchor" href="#請求轉移至本機其它端口"></a>請求轉移至本機其它端口</h1>
+<p>可使用以下設定轉發端口</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo iptables -t nat -A PREROUTING -p tcp --dport [服務端口] -j REDIRECT --to-port [轉發端口]</span><br></pre></td></tr></table></figure>
+<h1 id="請求轉發至其它主機"><a class="header-anchor" href="#請求轉發至其它主機"></a>請求轉發至其它主機</h1>
+<p>建立 DNAT:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo iptables -t nat -A PREROUTING -p tcp -d [服務IP] --dport [服務端口] -j DNAT --to-destination [轉發IP]:[轉發端口]</span><br></pre></td></tr></table></figure>
+<p>回應客戶端(擇一設定)</p>
+<ul>
+<li>建立 SNAT 回應客戶端:</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo iptables -t nat -A POSTROUTING -p tcp -d [轉發IP] --dport [轉發端口] -j SNAT --to-source [服務IP]</span><br></pre></td></tr></table></figure>
+<ul>
+<li>建立 MASQUERADE 回應動態客戶端:</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo iptables -t nat -A POSTROUTING -j MASQUERADE</span><br></pre></td></tr></table></figure>
+<h1 id="查詢-NAT-規則"><a class="header-anchor" href="#查詢-NAT-規則"></a>查詢 NAT 規則</h1>
+<p>查詢 NAT 設定</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo iptables -t nat -S</span><br></pre></td></tr></table></figure>
+<p>查詢 NAT 規則對應</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo iptables -t nat -L -n -v</span><br></pre></td></tr></table></figure>
+<!-- # 刪除所有 NAT 規則
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo iptables -t nat -F</span><br><span class="line">``` --&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 持久化規則</span></span><br><span class="line"></span><br><span class="line">匯出 iptable 設定</span><br><span class="line">```bash</span><br><span class="line">sudo sh -c <span class="string">&quot;iptables-save &gt; /etc/iptables.ipv4.nat&quot;</span></span><br></pre></td></tr></table></figure>
+<p>編輯 interfaces</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo nano /etc/network/interfaces </span><br></pre></td></tr></table></figure>
+<p>在結尾加入以下代碼</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">up iptables-restore &lt; /etc/iptables.ipv4.nat</span><br></pre></td></tr></table></figure>
+<!-- sudo tcpdump -i eth0 host 192.168.50.2 and port 5000 -->
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://manpages.ubuntu.com/manpages/oracular/en/man8/iptables.8.html">ubuntu iptables</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>Ubuntu</tag>
+        <tag>Nat</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>使用 SSH 建立通道</title>
     <url>/2023/05/07/LinuxSshTunnel/</url>
     <content><![CDATA[<h1 id="本機特定端口轉發至跳板機"><a class="header-anchor" href="#本機特定端口轉發至跳板機"></a>本機特定端口轉發至跳板機</h1>
@@ -624,92 +710,6 @@ plink -v -x -a -T -C -noagent -ssh -pw "[密碼]" -P 50893 -L [本地端口]:[�
         <tag>Linux</tag>
         <tag>Ubuntu</tag>
         <tag>Ssh</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>使用 NAT 轉發請求</title>
-    <url>/2024/07/25/LinuxNatForward/</url>
-    <content><![CDATA[<h1 id="NAT-介紹"><a class="header-anchor" href="#NAT-介紹"></a>NAT 介紹:</h1>
-<ul>
-<li>
-<p><em><strong>DNAT</strong></em><br>發生在 natTable 的 PREROUTING 鏈上，正好在剛接收到封包的之後一步，對應的是 inbound 流量</p>
-</li>
-<li>
-<p><em><strong>SNAT</strong></em><br>發生在 natTable 的 POSTROUTING 鏈上，只允許被使用在靜態 IP，要求您為其提供一個 IP 位址以套用於所有傳出資料包，正好在傳送到網路卡前的最後一步，對應的是 outbound 流量</p>
-</li>
-<li>
-<p><em><strong>Masquerading</strong></em><br>只允許被用在動態分配 IP 位址的情況下，允許您為其提供一個接口，該接口上的任何地址，都是應用於所有傳出資料包的地址</p>
-</li>
-<li>
-<p><em><strong>Redirection</strong></em><br>將流量轉發到本地系統的其他端口，而不是轉發到內部網絡中的其他主機</p>
-</li>
-</ul>
-<span id="more"></span>
-<h1 id="iptables-中的五條鏈"><a class="header-anchor" href="#iptables-中的五條鏈"></a>iptables 中的五條鏈:</h1>
-<ul>
-<li>
-<p><em><strong>PREROUTING鏈</strong></em> (通常用於DNAT)<br>處理剛到本機並在路由轉送前的資料包，它會轉換封包中的目標IP位址</p>
-</li>
-<li>
-<p><em><strong>INPUT鏈</strong></em><br>處理入站資料包</p>
-</li>
-<li>
-<p><em><strong>FORWARD鏈(不包含 NAT)</strong></em><br>處理轉送封包</p>
-</li>
-<li>
-<p><em><strong>OUTPUT鏈</strong></em><br>處理出站資料包</p>
-</li>
-<li>
-<p><em><strong>POSTROUTING鏈</strong></em> (通常用於SNAT)<br> 處理即將離開本機的資料包，它會轉換封包中的來源IP位址</p>
-</li>
-</ul>
-<h1 id="確認路由"><a class="header-anchor" href="#確認路由"></a>確認路由</h1>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">route -n</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ip r | grep default</span><br></pre></td></tr></table></figure>
-<h1 id="開啟-Linux-轉發"><a class="header-anchor" href="#開啟-Linux-轉發"></a>開啟 Linux 轉發</h1>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo sysctl -w net.ipv4.ip_forward=1</span><br></pre></td></tr></table></figure>
-<!-- 允許流量轉發
-sudo iptables -A FORWARD -i eth1 -o eth0 -m state --state RELATED,ESTABLISHED -j ACCEPT
-sudo iptables -A FORWARD -i eth0 -o eth1 -j ACCEPT -->
-<h1 id="請求轉發至其它主機"><a class="header-anchor" href="#請求轉發至其它主機"></a>請求轉發至其它主機</h1>
-<p>建立 DNAT:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo iptables -t nat -A PREROUTING -p tcp -d [服務IP] --dport [服務端口] -j DNAT --to-destination [轉發IP]:[轉發端口]</span><br></pre></td></tr></table></figure>
-<p>回應客戶端(擇一設定)</p>
-<ul>
-<li>建立 SNAT 回應客戶端:</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo iptables -t nat -A POSTROUTING -p tcp -d [轉發IP] --dport [轉發端口] -j SNAT --to-source [服務IP]</span><br></pre></td></tr></table></figure>
-<ul>
-<li>建立 MASQUERADE 回應動態客戶端:</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo iptables -t nat -A POSTROUTING -j MASQUERADE</span><br></pre></td></tr></table></figure>
-<h1 id="請求轉移至主機其它端口"><a class="header-anchor" href="#請求轉移至主機其它端口"></a>請求轉移至主機其它端口</h1>
-<p>可使用以下設定轉發端口</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo iptables -t nat -A PREROUTING -p tcp --dport [服務端口] -j REDIRECT --to-port [轉發端口]</span><br></pre></td></tr></table></figure>
-<h1 id="查詢-NAT-規則"><a class="header-anchor" href="#查詢-NAT-規則"></a>查詢 NAT 規則</h1>
-<p>查詢 NAT 設定</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo iptables -t nat -S</span><br></pre></td></tr></table></figure>
-<p>查詢 NAT 規則對應</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo iptables -t nat -L -n -v</span><br></pre></td></tr></table></figure>
-<!-- # 刪除所有 NAT 規則
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo iptables -t nat -F</span><br><span class="line">``` --&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 持久化規則</span></span><br><span class="line"></span><br><span class="line">匯出 iptable 設定</span><br><span class="line">```bash</span><br><span class="line">sudo sh -c <span class="string">&quot;iptables-save &gt; /etc/iptables.ipv4.nat&quot;</span></span><br></pre></td></tr></table></figure>
-<p>編輯 interfaces</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo nano /etc/network/interfaces </span><br></pre></td></tr></table></figure>
-<p>在結尾加入以下代碼</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">up iptables-restore &lt; /etc/iptables.ipv4.nat</span><br></pre></td></tr></table></figure>
-<!-- sudo tcpdump -i eth0 host 192.168.50.2 and port 5000 -->
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://manpages.ubuntu.com/manpages/oracular/en/man8/iptables.8.html">ubuntu iptables</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-        <tag>Ubuntu</tag>
-        <tag>Nat</tag>
       </tags>
   </entry>
   <entry>
