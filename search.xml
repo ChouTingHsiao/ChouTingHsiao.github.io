@@ -35,13 +35,13 @@
 <p>輸入文字至輸入框</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">adb shell input text <span class="string">&quot;hello,world&quot;</span></span><br></pre></td></tr></table></figure>
 <p>基本命令</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 查看當前路徑</span></span><br><span class="line">adb shell <span class="built_in">pwd</span></span><br><span class="line"><span class="comment"># 列出文件目錄</span></span><br><span class="line">adb shell <span class="built_in">ls</span></span><br><span class="line"><span class="comment"># 創建目錄</span></span><br><span class="line">adb shell <span class="built_in">mkdir</span> [-m][-p] [目錄名稱]</span><br><span class="line"><span class="comment"># 切換目錄</span></span><br><span class="line">adb shell <span class="built_in">cd</span> [目錄名稱]</span><br><span class="line"><span class="comment"># 建立文件</span></span><br><span class="line">adb shell <span class="built_in">touch</span> [文件名稱]</span><br><span class="line"><span class="comment"># 複製文件或目錄</span></span><br><span class="line">adb shell <span class="built_in">cp</span> [<span class="built_in">source</span>] [dest]</span><br><span class="line"><span class="comment"># 移動或重命名文件</span></span><br><span class="line">adb shell <span class="built_in">mv</span> [<span class="built_in">source</span>] [dest]</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 查看當前路徑</span></span><br><span class="line">adb shell <span class="built_in">pwd</span></span><br><span class="line"><span class="comment"># 列出文件目錄</span></span><br><span class="line">adb shell <span class="built_in">ls</span></span><br><span class="line"><span class="comment"># 創建目錄</span></span><br><span class="line">adb shell <span class="built_in">mkdir</span> [-m][-p] [目錄名稱]</span><br><span class="line"><span class="comment"># 切換目錄</span></span><br><span class="line">adb shell <span class="built_in">cd</span> [目錄名稱]</span><br><span class="line"><span class="comment"># 建立文件</span></span><br><span class="line">adb shell <span class="built_in">touch</span> [文件名稱]</span><br><span class="line"><span class="comment"># 複製文件或目錄</span></span><br><span class="line">adb shell <span class="built_in">cp</span> [<span class="built_in">source</span>] [dest]</span><br><span class="line"><span class="comment"># 移動或重命名文件</span></span><br><span class="line">adb shell <span class="built_in">mv</span> [<span class="built_in">source</span>] [dest]</span><br><span class="line"><span class="comment"># 螢幕截圖</span></span><br><span class="line">adb shell screencap /sdcard/[檔案].png</span><br></pre></td></tr></table></figure>
 <p>網路相關命令</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 連線測試</span></span><br><span class="line">adb shell ping [IP位置]</span><br><span class="line"><span class="comment"># 查詢網卡資訊</span></span><br><span class="line">adb shell ip addr</span><br><span class="line"><span class="comment"># 查詢路由</span></span><br><span class="line">adb shell route -n</span><br><span class="line"><span class="comment"># 查詢 ARP table</span></span><br><span class="line">adb shell ip neighbour</span><br></pre></td></tr></table></figure>
 <p>應用程式管理</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 查看應用安裝路徑</span></span><br><span class="line">adb shell pm path [應用程式名稱]</span><br><span class="line"><span class="comment"># 查看所有應用</span></span><br><span class="line">adb shell pm list packages</span><br><span class="line"><span class="comment"># 查看系統應用</span></span><br><span class="line">adb shell pm list packages -s</span><br><span class="line"><span class="comment"># 查看第三方應用</span></span><br><span class="line">adb shell pm list packages -3</span><br><span class="line"><span class="comment"># 查看包名包含特定字符的應用</span></span><br><span class="line">adb shell pm list packages [特定字符]</span><br><span class="line"><span class="comment"># 卸載應用</span></span><br><span class="line">adb shell pm uninstall -k --user 0 [應用程式名稱]</span><br><span class="line"><span class="comment"># 清除應用空間</span></span><br><span class="line">adb shell pm clear [應用程式名稱]</span><br></pre></td></tr></table></figure>
 <p>使用 dumpsys 查看物件詳細資訊</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 查看應用</span></span><br><span class="line">adb shell dumpsys package [應用程式名稱]</span><br><span class="line"><span class="comment"># 查看手機CPU狀態 </span></span><br><span class="line">adb shell dumpsys cpuinfo</span><br><span class="line"><span class="comment"># 查看內存使用情況 </span></span><br><span class="line">adb shell dumpsys meminfo [應用程式名稱]</span><br><span class="line"><span class="comment"># 顯示磁盤使用信息</span></span><br><span class="line">adb shell dumpsys diskstats</span><br><span class="line"><span class="comment"># 查看電池狀態 </span></span><br><span class="line">adb shell dumpsys battery</span><br><span class="line">adb shell dumpsys batteryproperties</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 查看應用</span></span><br><span class="line">adb shell dumpsys package [應用程式名稱]</span><br><span class="line"><span class="comment"># 查看手機CPU狀態 </span></span><br><span class="line">adb shell dumpsys cpuinfo</span><br><span class="line"><span class="comment"># 查看內存使用情況 </span></span><br><span class="line">adb shell dumpsys meminfo [應用程式名稱]</span><br><span class="line"><span class="comment"># 顯示磁盤使用信息</span></span><br><span class="line">adb shell dumpsys diskstats</span><br><span class="line"><span class="comment"># 查看電池狀態 </span></span><br><span class="line">adb shell dumpsys battery</span><br><span class="line">adb shell dumpsys batteryproperties</span><br><span class="line"><span class="comment"># 查看推播訊息</span></span><br><span class="line">adb shell dumpsys activity broadcasts</span><br></pre></td></tr></table></figure>
 <p>偵錯應用程式</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 執行應用程式偵錯</span></span><br><span class="line">adb shell am set-debug-app -w --persistent [應用程式名稱]</span><br><span class="line"><span class="comment"># 結束應用程式偵錯</span></span><br><span class="line">adb shell am clear-debug-app</span><br></pre></td></tr></table></figure>
 <h1 id="處理-sqllite"><a class="header-anchor" href="#處理-sqllite"></a>處理 sqllite</h1>
@@ -369,29 +369,6 @@
       </tags>
   </entry>
   <entry>
-    <title>如何將 Base64 編碼轉成檔案</title>
-    <url>/2019/12/09/JsBase64ToFile/</url>
-    <content><![CDATA[<h1 id="Chrome-base64-轉換成檔案"><a class="header-anchor" href="#Chrome-base64-轉換成檔案"></a>Chrome base64 轉換成檔案</h1>
-<p>下方是使用 JavaScript 把 base64 轉換成檔案的方法</p>
-<span id="more"></span>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"> <span class="keyword">function</span> <span class="title function_">downloadFile</span>(<span class="params">base64Str</span>) &#123;</span><br><span class="line">    <span class="comment">// 解碼 base64</span></span><br><span class="line">    <span class="keyword">const</span> byteCharacters = <span class="title function_">atob</span>(base64Str);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 建立 Byte Array</span></span><br><span class="line">    <span class="keyword">const</span> byteNumbers = <span class="keyword">new</span> <span class="title class_">Array</span>(byteCharacters.<span class="property">length</span>);</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; byteCharacters.<span class="property">length</span>; i++) &#123;</span><br><span class="line"> </span><br><span class="line">       byteNumbers[i] = byteCharacters.<span class="title function_">charCodeAt</span>(i);</span><br><span class="line"> </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">const</span> byteArray = <span class="keyword">new</span> <span class="title class_">Uint8Array</span>(byteNumbers);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 建立二進制檔和聲明 MIME Type</span></span><br><span class="line">    <span class="keyword">const</span> blob = <span class="keyword">new</span> <span class="title class_">Blob</span>([byteArray], &#123;<span class="attr">type</span>: <span class="string">&#x27;image/jpg&#x27;</span>&#125;);</span><br><span class="line"> </span><br><span class="line">    <span class="comment">// 下載檔案</span></span><br><span class="line">    <span class="keyword">let</span> link = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&#x27;a&#x27;</span>);</span><br><span class="line"> </span><br><span class="line">    <span class="comment">// 建立檔案物件連結</span></span><br><span class="line">    <span class="keyword">const</span> blobUrl = <span class="variable constant_">URL</span>.<span class="title function_">createObjectURL</span>(blob);</span><br><span class="line"> </span><br><span class="line">    link.<span class="property">href</span> = blobUrl;</span><br><span class="line"> </span><br><span class="line">    link.<span class="property">download</span> = <span class="string">&#x27;file.jpg&#x27;</span>;</span><br><span class="line"> </span><br><span class="line">    link.<span class="title function_">click</span>();</span><br><span class="line"> </span><br><span class="line">    <span class="variable constant_">URL</span>.<span class="title function_">revokeObjectURL</span>(blobUrl);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="IE-10-base64-轉換成檔案"><a class="header-anchor" href="#IE-10-base64-轉換成檔案"></a>IE 10 base64 轉換成檔案</h1>
-<p>如果瀏覽器使用 IE 10 以上版本，可使用 window.navigator.msSaveBlob 作為替代方法</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">downloadFile</span>(<span class="params">base64Str</span>) &#123;</span><br><span class="line">   <span class="comment">// 解碼 base64</span></span><br><span class="line">   <span class="keyword">const</span> byteCharacters = <span class="title function_">atob</span>(base64Str);</span><br><span class="line">	</span><br><span class="line">   <span class="comment">// 建立 Byte Array</span></span><br><span class="line">   <span class="keyword">const</span> byteNumbers = <span class="keyword">new</span> <span class="title class_">Array</span>(byteCharacters.<span class="property">length</span>);</span><br><span class="line">	</span><br><span class="line">   <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; byteCharacters.<span class="property">length</span>; i++) &#123;</span><br><span class="line">      byteNumbers[i] = byteCharacters.<span class="title function_">charCodeAt</span>(i);</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">const</span> byteArray = <span class="keyword">new</span> <span class="title class_">Uint8Array</span>(byteNumbers);</span><br><span class="line"></span><br><span class="line">   <span class="comment">// 建立二進制檔和聲明 MIME Type</span></span><br><span class="line">   <span class="keyword">const</span> blob = <span class="keyword">new</span> <span class="title class_">Blob</span>([byteArray], &#123;<span class="attr">type</span>: <span class="string">&#x27;image/jpg&#x27;</span>&#125;);</span><br><span class="line"> </span><br><span class="line">   <span class="comment">// 下載檔案</span></span><br><span class="line">   <span class="variable language_">window</span>.<span class="property">navigator</span>.<span class="title function_">msSaveBlob</span>(blob, <span class="string">&#x27;file.jpg&#x27;</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/atob">MDN atob</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>Javascript</category>
-      </categories>
-      <tags>
-        <tag>Javascript</tag>
-        <tag>Base64</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>如何將檔案轉成 Base64 編碼</title>
     <url>/2019/12/09/JsFileToBase64/</url>
     <content><![CDATA[<h1 id="建立-HTML"><a class="header-anchor" href="#建立-HTML"></a>建立 HTML</h1>
@@ -435,6 +412,29 @@
       <tags>
         <tag>Javascript</tag>
         <tag>Function</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>如何將 Base64 編碼轉成檔案</title>
+    <url>/2019/12/09/JsBase64ToFile/</url>
+    <content><![CDATA[<h1 id="Chrome-base64-轉換成檔案"><a class="header-anchor" href="#Chrome-base64-轉換成檔案"></a>Chrome base64 轉換成檔案</h1>
+<p>下方是使用 JavaScript 把 base64 轉換成檔案的方法</p>
+<span id="more"></span>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"> <span class="keyword">function</span> <span class="title function_">downloadFile</span>(<span class="params">base64Str</span>) &#123;</span><br><span class="line">    <span class="comment">// 解碼 base64</span></span><br><span class="line">    <span class="keyword">const</span> byteCharacters = <span class="title function_">atob</span>(base64Str);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 建立 Byte Array</span></span><br><span class="line">    <span class="keyword">const</span> byteNumbers = <span class="keyword">new</span> <span class="title class_">Array</span>(byteCharacters.<span class="property">length</span>);</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; byteCharacters.<span class="property">length</span>; i++) &#123;</span><br><span class="line"> </span><br><span class="line">       byteNumbers[i] = byteCharacters.<span class="title function_">charCodeAt</span>(i);</span><br><span class="line"> </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">const</span> byteArray = <span class="keyword">new</span> <span class="title class_">Uint8Array</span>(byteNumbers);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 建立二進制檔和聲明 MIME Type</span></span><br><span class="line">    <span class="keyword">const</span> blob = <span class="keyword">new</span> <span class="title class_">Blob</span>([byteArray], &#123;<span class="attr">type</span>: <span class="string">&#x27;image/jpg&#x27;</span>&#125;);</span><br><span class="line"> </span><br><span class="line">    <span class="comment">// 下載檔案</span></span><br><span class="line">    <span class="keyword">let</span> link = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&#x27;a&#x27;</span>);</span><br><span class="line"> </span><br><span class="line">    <span class="comment">// 建立檔案物件連結</span></span><br><span class="line">    <span class="keyword">const</span> blobUrl = <span class="variable constant_">URL</span>.<span class="title function_">createObjectURL</span>(blob);</span><br><span class="line"> </span><br><span class="line">    link.<span class="property">href</span> = blobUrl;</span><br><span class="line"> </span><br><span class="line">    link.<span class="property">download</span> = <span class="string">&#x27;file.jpg&#x27;</span>;</span><br><span class="line"> </span><br><span class="line">    link.<span class="title function_">click</span>();</span><br><span class="line"> </span><br><span class="line">    <span class="variable constant_">URL</span>.<span class="title function_">revokeObjectURL</span>(blobUrl);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="IE-10-base64-轉換成檔案"><a class="header-anchor" href="#IE-10-base64-轉換成檔案"></a>IE 10 base64 轉換成檔案</h1>
+<p>如果瀏覽器使用 IE 10 以上版本，可使用 window.navigator.msSaveBlob 作為替代方法</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">downloadFile</span>(<span class="params">base64Str</span>) &#123;</span><br><span class="line">   <span class="comment">// 解碼 base64</span></span><br><span class="line">   <span class="keyword">const</span> byteCharacters = <span class="title function_">atob</span>(base64Str);</span><br><span class="line">	</span><br><span class="line">   <span class="comment">// 建立 Byte Array</span></span><br><span class="line">   <span class="keyword">const</span> byteNumbers = <span class="keyword">new</span> <span class="title class_">Array</span>(byteCharacters.<span class="property">length</span>);</span><br><span class="line">	</span><br><span class="line">   <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; byteCharacters.<span class="property">length</span>; i++) &#123;</span><br><span class="line">      byteNumbers[i] = byteCharacters.<span class="title function_">charCodeAt</span>(i);</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">const</span> byteArray = <span class="keyword">new</span> <span class="title class_">Uint8Array</span>(byteNumbers);</span><br><span class="line"></span><br><span class="line">   <span class="comment">// 建立二進制檔和聲明 MIME Type</span></span><br><span class="line">   <span class="keyword">const</span> blob = <span class="keyword">new</span> <span class="title class_">Blob</span>([byteArray], &#123;<span class="attr">type</span>: <span class="string">&#x27;image/jpg&#x27;</span>&#125;);</span><br><span class="line"> </span><br><span class="line">   <span class="comment">// 下載檔案</span></span><br><span class="line">   <span class="variable language_">window</span>.<span class="property">navigator</span>.<span class="title function_">msSaveBlob</span>(blob, <span class="string">&#x27;file.jpg&#x27;</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/atob">MDN atob</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>Javascript</category>
+      </categories>
+      <tags>
+        <tag>Javascript</tag>
+        <tag>Base64</tag>
       </tags>
   </entry>
   <entry>
@@ -598,9 +598,38 @@
       </tags>
   </entry>
   <entry>
+    <title>使用 SSH 建立通道</title>
+    <url>/2023/05/07/LinuxSshTunnel/</url>
+    <content><![CDATA[<h1 id="本機特定端口轉發至跳板機"><a class="header-anchor" href="#本機特定端口轉發至跳板機"></a>本機特定端口轉發至跳板機</h1>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh -p [跳板機端口] -C -f -N -g -L [本地端口]:[遠端服務IP]:[遠端服務端口] [帳號]@[跳板機IP]</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="跳板機轉發至本機特定端口"><a class="header-anchor" href="#跳板機轉發至本機特定端口"></a>跳板機轉發至本機特定端口</h1>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh -p [跳板機端口] -C -g -R 0.0.0.0:[跳板機端口]:localhost:[本地端口] [帳號]@[跳板機IP]</span><br></pre></td></tr></table></figure>
+<h1 id="請求轉發至跳板，可搭配-Whistle-做-Socks-代理"><a class="header-anchor" href="#請求轉發至跳板，可搭配-Whistle-做-Socks-代理"></a>請求轉發至跳板，可搭配 Whistle 做 Socks 代理</h1>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh -p [跳板機端口] -D localhost:[本地端口] [帳號]@[跳板機IP]</span><br></pre></td></tr></table></figure>
+<h1 id="ssh-執行選項說明"><a class="header-anchor" href="#ssh-執行選項說明"></a>ssh 執行選項說明</h1>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">-L: 指定將本機上的特定端口轉發到遠端主機</span><br><span class="line">-R: 表示使用遠程端口轉發創建ssh隧道</span><br><span class="line">-D: port動態應用級端口轉​​發</span><br><span class="line">-p: 跳板機端口</span><br><span class="line">-C: 使用數據壓縮</span><br><span class="line">-c: cipher_spec選擇用於加密會話的密碼規範</span><br><span class="line">-f: 代表後台運行程序</span><br><span class="line">-F: configfile指定每個用戶的配置文件</span><br><span class="line">-N: 不要執行任何遠端指令</span><br><span class="line">-g: 允許遠程主機連接到本地轉發端口</span><br></pre></td></tr></table></figure>
+<!-- /etc/ssh/sshd_config 加入GatewayPorts 設定，能讓所有人都連到 -->
+<!-- scoop install putty
+plink -v -x -a -T -C -noagent -ssh -pw "[密碼]" -P 50893 -L [本地端口]:[遠端服務IP]:[遠端服務端口] [帳號]@[跳板機IP] -->
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://www.ssh.com/academy/ssh/command">SSH Command - Usage, Options, Configuration</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>Ubuntu</tag>
+        <tag>Ssh</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>使用 NAT 轉發請求</title>
     <url>/2024/07/25/LinuxNatForward/</url>
-    <content><![CDATA[<h1 id="NAT介紹"><a class="header-anchor" href="#NAT介紹"></a>NAT介紹:</h1>
+    <content><![CDATA[<h1 id="NAT-介紹"><a class="header-anchor" href="#NAT-介紹"></a>NAT 介紹:</h1>
 <ul>
 <li>
 <p><em><strong>DNAT</strong></em><br>發生在 natTable 的 PREROUTING 鏈上，正好在剛接收到封包的之後一步，對應的是 inbound 流量</p>
@@ -616,7 +645,7 @@
 </li>
 </ul>
 <span id="more"></span>
-<h1 id="iptables-中的-natTable-鏈"><a class="header-anchor" href="#iptables-中的-natTable-鏈"></a>iptables 中的 natTable 鏈:</h1>
+<h1 id="iptables-中的五條鏈"><a class="header-anchor" href="#iptables-中的五條鏈"></a>iptables 中的五條鏈:</h1>
 <ul>
 <li>
 <p><em><strong>PREROUTING鏈</strong></em> (通常用於DNAT)<br>處理剛到本機並在路由轉送前的資料包，它會轉換封包中的目標IP位址</p>
@@ -625,7 +654,7 @@
 <p><em><strong>INPUT鏈</strong></em><br>處理入站資料包</p>
 </li>
 <li>
-<p><em><strong>FORWARD鏈</strong></em><br>處理轉送封包</p>
+<p><em><strong>FORWARD鏈(不包含 NAT)</strong></em><br>處理轉送封包</p>
 </li>
 <li>
 <p><em><strong>OUTPUT鏈</strong></em><br>處理出站資料包</p>
@@ -681,35 +710,6 @@ sudo iptables -A FORWARD -i eth0 -o eth1 -j ACCEPT -->
         <tag>Linux</tag>
         <tag>Ubuntu</tag>
         <tag>Nat</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>使用 SSH 建立通道</title>
-    <url>/2023/05/07/LinuxSshTunnel/</url>
-    <content><![CDATA[<h1 id="本機特定端口轉發至跳板機"><a class="header-anchor" href="#本機特定端口轉發至跳板機"></a>本機特定端口轉發至跳板機</h1>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh -p [跳板機端口] -C -f -N -g -L [本地端口]:[遠端服務IP]:[遠端服務端口] [帳號]@[跳板機IP]</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="跳板機轉發至本機特定端口"><a class="header-anchor" href="#跳板機轉發至本機特定端口"></a>跳板機轉發至本機特定端口</h1>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh -p [跳板機端口] -C -g -R 0.0.0.0:[跳板機端口]:localhost:[本地端口] [帳號]@[跳板機IP]</span><br></pre></td></tr></table></figure>
-<h1 id="請求轉發至跳板，可搭配-Whistle-做-Socks-代理"><a class="header-anchor" href="#請求轉發至跳板，可搭配-Whistle-做-Socks-代理"></a>請求轉發至跳板，可搭配 Whistle 做 Socks 代理</h1>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh -p [跳板機端口] -D localhost:[本地端口] [帳號]@[跳板機IP]</span><br></pre></td></tr></table></figure>
-<h1 id="ssh-執行選項說明"><a class="header-anchor" href="#ssh-執行選項說明"></a>ssh 執行選項說明</h1>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">-L: 指定將本機上的特定端口轉發到遠端主機</span><br><span class="line">-R: 表示使用遠程端口轉發創建ssh隧道</span><br><span class="line">-D: port動態應用級端口轉​​發</span><br><span class="line">-p: 跳板機端口</span><br><span class="line">-C: 使用數據壓縮</span><br><span class="line">-c: cipher_spec選擇用於加密會話的密碼規範</span><br><span class="line">-f: 代表後台運行程序</span><br><span class="line">-F: configfile指定每個用戶的配置文件</span><br><span class="line">-N: 不要執行任何遠端指令</span><br><span class="line">-g: 允許遠程主機連接到本地轉發端口</span><br></pre></td></tr></table></figure>
-<!-- /etc/ssh/sshd_config 加入GatewayPorts 設定，能讓所有人都連到 -->
-<!-- scoop install putty
-plink -v -x -a -T -C -noagent -ssh -pw "[密碼]" -P 50893 -L [本地端口]:[遠端服務IP]:[遠端服務端口] [帳號]@[跳板機IP] -->
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://www.ssh.com/academy/ssh/command">SSH Command - Usage, Options, Configuration</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-        <tag>Ubuntu</tag>
-        <tag>Ssh</tag>
       </tags>
   </entry>
   <entry>
