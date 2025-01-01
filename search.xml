@@ -199,43 +199,6 @@
       </tags>
   </entry>
   <entry>
-    <title>WSL2 設定 Docker In Docker</title>
-    <url>/2024/01/01/DockerWsl2DockerInDocker/</url>
-    <content><![CDATA[<h1 id="🚀-使用主機的-Docker-Socket"><a class="header-anchor" href="#🚀-使用主機的-Docker-Socket"></a>🚀 使用主機的 Docker Socket</h1>
-<p>建立 daemon.json 設定檔</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo nano /etc/docker/daemon.json</span><br></pre></td></tr></table></figure>
-<p>加入以下設定</p>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;hosts&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span> <span class="string">&quot;unix:///var/run/docker.sock&quot;</span><span class="punctuation">,</span> <span class="string">&quot;tcp://0.0.0.0:&quot;</span> <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;tls&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-<p>執行命令時掛載 docker.sock</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run -v /var/run/docker.sock:/var/run/docker.sock -ti [Docker 映像檔]</span><br></pre></td></tr></table></figure>
-<p>透過 Curl 執行 Docker Socket 建立 Containers</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl -XPOST --unix-socket /var/run/docker.sock -d <span class="string">&#x27;&#123;&quot;Image&quot;:&quot;[Docker 映像檔]&quot;&#125;&#x27;</span> -H <span class="string">&#x27;Content-Type: application/json&#x27;</span> http://localhost/containers/create</span><br></pre></td></tr></table></figure>
-<p>透過 Curl 執行 Docker Socket 啟動 Containers</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl -XPOST --unix-socket /var/run/docker.sock http://localhost/containers/[容器編號]/start</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="🚀-使用-docker-dind-映像"><a class="header-anchor" href="#🚀-使用-docker-dind-映像"></a>🚀 使用 docker:dind 映像</h1>
-<p>可參考以下兩種方法運行 docker:dind 映像</p>
-<div class="tabs" id="mytab1"><ul class="nav-tabs"><li class="tab active"><a href="#mytab1-1">⭐ 透過特權模式選項執行命令</a></li><li class="tab"><a href="#mytab1-2">⭐ 透過 Nestybox Sysbox 運行時選項執行命令</a></li></ul><div class="tab-content"><div class="tab-pane active" id="mytab1-1"><p>特權模式選項: --privileged</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run -p [本機連接Port]:2375 --privileged -e DOCKER_TLS_CERTDIR=<span class="string">&quot;&quot;</span> --name privileged-docker -d docker:dind</span><br></pre></td></tr></table></figure></div><div class="tab-pane" id="mytab1-2"><p>安裝 <a href="https://github.com/nestybox/sysbox?tab=readme-ov-file#installation">Nestybox Sysbox</a> 後，不需要特權模式，即可執行</p>
-<p>運行時選項: --runtime=sysbox-runc</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run -p [本機連接Port]:2375 -e DOCKER_TLS_CERTDIR=<span class="string">&quot;&quot;</span> --runtime=sysbox-runc --name sysbox-docker -d docker:dind</span><br></pre></td></tr></table></figure></div></div></div>
-<h1 id="🚀-透過-Docker-contexts-連線至-Docker-In-Docker-執行-Docker-命令"><a class="header-anchor" href="#🚀-透過-Docker-contexts-連線至-Docker-In-Docker-執行-Docker-命令"></a>🚀 透過 Docker contexts 連線至 Docker In Docker 執行 Docker 命令</h1>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 建立 Docker contexts</span></span><br><span class="line">docker context create <span class="built_in">test</span> --docker <span class="string">&quot;host=tcp://127.0.0.1:[本機連接Port]&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用 Docker contexts</span></span><br><span class="line">docker context use <span class="built_in">test</span></span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://kodekloud.com/blog/run-docker-in-docker-container/">3 Best Ways to Run Docker in Docker Container</a></li>
-<li><a href="https://docs.docker.com/engine/api/sdk/examples/">Examples using the Docker Engine SDKs and Docker API</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>Docker</category>
-      </categories>
-      <tags>
-        <tag>Docker</tag>
-        <tag>Wsl2</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>WSL2 開放 Docker 外部連線</title>
     <url>/2023/04/29/DockerWsl2/</url>
     <content><![CDATA[<h1 id="🚀-開放外部連線至-Docker，有兩種方式可擇一設定"><a class="header-anchor" href="#🚀-開放外部連線至-Docker，有兩種方式可擇一設定"></a>🚀 開放外部連線至 Docker，有兩種方式可擇一設定</h1>
@@ -279,6 +242,43 @@
 <li><a href="https://community.chocolatey.org/packages/docker-cli">Daemon CLI (dockerd)</a></li>
 <li><a href="https://docs.docker.com/engine/reference/commandline/dockerd/#daemon-configuration-file">Chocolatey Docker CLI</a></li>
 <li><a href="https://docs.docker.com/config/daemon/remote-access/">Configure remote access for Docker daemon</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>Docker</category>
+      </categories>
+      <tags>
+        <tag>Docker</tag>
+        <tag>Wsl2</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>WSL2 設定 Docker In Docker</title>
+    <url>/2024/01/01/DockerWsl2DockerInDocker/</url>
+    <content><![CDATA[<h1 id="🚀-使用主機的-Docker-Socket"><a class="header-anchor" href="#🚀-使用主機的-Docker-Socket"></a>🚀 使用主機的 Docker Socket</h1>
+<p>建立 daemon.json 設定檔</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo nano /etc/docker/daemon.json</span><br></pre></td></tr></table></figure>
+<p>加入以下設定</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;hosts&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span> <span class="string">&quot;unix:///var/run/docker.sock&quot;</span><span class="punctuation">,</span> <span class="string">&quot;tcp://0.0.0.0:&quot;</span> <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;tls&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>執行命令時掛載 docker.sock</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run -v /var/run/docker.sock:/var/run/docker.sock -ti [Docker 映像檔]</span><br></pre></td></tr></table></figure>
+<p>透過 Curl 執行 Docker Socket 建立 Containers</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl -XPOST --unix-socket /var/run/docker.sock -d <span class="string">&#x27;&#123;&quot;Image&quot;:&quot;[Docker 映像檔]&quot;&#125;&#x27;</span> -H <span class="string">&#x27;Content-Type: application/json&#x27;</span> http://localhost/containers/create</span><br></pre></td></tr></table></figure>
+<p>透過 Curl 執行 Docker Socket 啟動 Containers</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl -XPOST --unix-socket /var/run/docker.sock http://localhost/containers/[容器編號]/start</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="🚀-使用-docker-dind-映像"><a class="header-anchor" href="#🚀-使用-docker-dind-映像"></a>🚀 使用 docker:dind 映像</h1>
+<p>可參考以下兩種方法運行 docker:dind 映像</p>
+<div class="tabs" id="mytab1"><ul class="nav-tabs"><li class="tab active"><a href="#mytab1-1">⭐ 透過特權模式選項執行命令</a></li><li class="tab"><a href="#mytab1-2">⭐ 透過 Nestybox Sysbox 運行時選項執行命令</a></li></ul><div class="tab-content"><div class="tab-pane active" id="mytab1-1"><p>特權模式選項: --privileged</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run -p [本機連接Port]:2375 --privileged -e DOCKER_TLS_CERTDIR=<span class="string">&quot;&quot;</span> --name privileged-docker -d docker:dind</span><br></pre></td></tr></table></figure></div><div class="tab-pane" id="mytab1-2"><p>安裝 <a href="https://github.com/nestybox/sysbox?tab=readme-ov-file#installation">Nestybox Sysbox</a> 後，不需要特權模式，即可執行</p>
+<p>運行時選項: --runtime=sysbox-runc</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run -p [本機連接Port]:2375 -e DOCKER_TLS_CERTDIR=<span class="string">&quot;&quot;</span> --runtime=sysbox-runc --name sysbox-docker -d docker:dind</span><br></pre></td></tr></table></figure></div></div></div>
+<h1 id="🚀-透過-Docker-contexts-連線至-Docker-In-Docker-執行-Docker-命令"><a class="header-anchor" href="#🚀-透過-Docker-contexts-連線至-Docker-In-Docker-執行-Docker-命令"></a>🚀 透過 Docker contexts 連線至 Docker In Docker 執行 Docker 命令</h1>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 建立 Docker contexts</span></span><br><span class="line">docker context create <span class="built_in">test</span> --docker <span class="string">&quot;host=tcp://127.0.0.1:[本機連接Port]&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用 Docker contexts</span></span><br><span class="line">docker context use <span class="built_in">test</span></span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://kodekloud.com/blog/run-docker-in-docker-container/">3 Best Ways to Run Docker in Docker Container</a></li>
+<li><a href="https://docs.docker.com/engine/api/sdk/examples/">Examples using the Docker Engine SDKs and Docker API</a></li>
 </ol>
 </div>]]></content>
       <categories>
@@ -713,27 +713,150 @@ plink -v -x -a -T -C -noagent -ssh -pw "[密碼]" -P 50893 -L [本地端口]:[�
       </tags>
   </entry>
   <entry>
-    <title>使用 AddInMemoryCollection 設定 Configuration 進行單元測試</title>
-    <url>/2023/01/21/NetAddInMemoryCollection/</url>
-    <content><![CDATA[<h1 id="設定-appsettings-json-如下"><a class="header-anchor" href="#設定-appsettings-json-如下"></a>設定 appsettings.json 如下</h1>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;Logging&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;LogLevel&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;Default&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Information&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;Microsoft.AspNetCore&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Warning&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+    <title>使用 DMV 查询 Index 分佈</title>
+    <url>/2025/01/01/MsSqlIndex/</url>
+    <content><![CDATA[<h1 id="查询目前-Index-碎片化情形"><a class="header-anchor" href="#查询目前-Index-碎片化情形"></a>查询目前 Index 碎片化情形</h1>
+<p>使用 sys.dm_db_index_physical_stats 查詢資料表碎片化情形</p>
 <span id="more"></span>
-<h1 id="轉換為-Dictionary-string-string"><a class="header-anchor" href="#轉換為-Dictionary-string-string"></a>轉換為 Dictionary&lt;string, string&gt;</h1>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">Dictionary&lt;<span class="built_in">string</span>, <span class="built_in">string</span>&gt; inMemorySettings = <span class="keyword">new</span> Dictionary&lt;<span class="built_in">string</span>, <span class="built_in">string</span>&gt; &#123;</span><br><span class="line">    &#123;<span class="string">&quot;Logging:LogLevel:Default&quot;</span>,  <span class="string">&quot;Information&quot;</span>&#125;,</span><br><span class="line">    &#123;<span class="string">&quot;Logging:LogLevel:Microsoft.AspNetCore&quot;</span>,  <span class="string">&quot;Warning&quot;</span>&#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h1 id="建立-Configuration"><a class="header-anchor" href="#建立-Configuration"></a>建立 Configuration</h1>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">IConfiguration configuration = <span class="keyword">new</span> ConfigurationBuilder()</span><br><span class="line">            .AddInMemoryCollection(inMemorySettings)</span><br><span class="line">            .Build();</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> ix.name [Index Name]</span><br><span class="line">	,s.name [Schema Name]</span><br><span class="line">	,t.name [<span class="keyword">Table</span> Name]</span><br><span class="line">	,pc.partition_count [<span class="keyword">Partition</span> Count]</span><br><span class="line">	,ps.avg_page_space_used_in_percent [Page Space Used <span class="keyword">In</span> <span class="keyword">Percent</span>]</span><br><span class="line">	,ps.avg_fragmentation_in_percent [Fragmentation <span class="keyword">In</span> <span class="keyword">Percent</span>]</span><br><span class="line"><span class="keyword">FROM</span> sys.indexes <span class="keyword">AS</span> ix</span><br><span class="line"><span class="keyword">INNER</span> <span class="keyword">JOIN</span> sys.tables t <span class="keyword">ON</span> t.object_id <span class="operator">=</span> ix.object_id</span><br><span class="line"><span class="keyword">INNER</span> <span class="keyword">JOIN</span> sys.schemas s <span class="keyword">ON</span> t.schema_id <span class="operator">=</span> s.schema_id</span><br><span class="line"><span class="keyword">INNER</span> <span class="keyword">JOIN</span> (</span><br><span class="line">	<span class="keyword">SELECT</span> object_id</span><br><span class="line">		,index_id</span><br><span class="line">		,avg_fragmentation_in_percent</span><br><span class="line">		,avg_page_space_used_in_percent</span><br><span class="line">		,partition_number</span><br><span class="line">	<span class="keyword">FROM</span> sys.dm_db_index_physical_stats(DB_ID(), <span class="keyword">NULL</span>, <span class="keyword">NULL</span>, <span class="keyword">NULL</span>, <span class="keyword">NULL</span>)</span><br><span class="line">	) ps <span class="keyword">ON</span> t.object_id <span class="operator">=</span> ps.object_id</span><br><span class="line">	<span class="keyword">AND</span> ix.index_id <span class="operator">=</span> ps.index_id</span><br><span class="line"><span class="keyword">INNER</span> <span class="keyword">JOIN</span> (</span><br><span class="line">	<span class="keyword">SELECT</span> object_id</span><br><span class="line">		,index_id</span><br><span class="line">		,<span class="built_in">COUNT</span>(<span class="keyword">DISTINCT</span> partition_number) <span class="keyword">AS</span> partition_count</span><br><span class="line">	<span class="keyword">FROM</span> sys.partitions</span><br><span class="line">	<span class="keyword">GROUP</span> <span class="keyword">BY</span> object_id</span><br><span class="line">		,index_id</span><br><span class="line">	) pc <span class="keyword">ON</span> t.object_id <span class="operator">=</span> pc.object_id</span><br><span class="line">	<span class="keyword">AND</span> ix.index_id <span class="operator">=</span> pc.index_id</span><br><span class="line"><span class="keyword">WHERE</span> ps.avg_fragmentation_in_percent <span class="operator">&gt;</span> <span class="number">10</span></span><br><span class="line">	<span class="keyword">AND</span> ix.name <span class="keyword">IS</span> <span class="keyword">NOT</span> <span class="keyword">NULL</span></span><br><span class="line">	<span class="keyword">AND</span> t.name <span class="operator">=</span> <span class="string">&#x27;[資料表名稱]&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<h1 id="索引分佈分析"><a class="header-anchor" href="#索引分佈分析"></a>索引分佈分析</h1>
+<p>Internal fragmentation:</p>
+<p>使用 avg_page_space_used_in_percent 分析索引頁面內部的空間使用情況</p>
+<p>External fragmentation:</p>
+<p>使用 avg_fragmentation_in_percent 分析索引頁在實體儲存中的順序是否連續</p>
+<h1 id="索引重組的時機"><a class="header-anchor" href="#索引重組的時機"></a>索引重組的時機</h1>
+<p>整理索引內部的實體結構，但不刪除索引</p>
+<p>檢查 avg_page_space_used_in_percent 的值建議介於 60 到 75 之間</p>
+<p>檢查 avg_fragmentation_in_percent 的值建議介於 10 到 15 之間</p>
+<p>索引重組命令:</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> INDEX [Index Name] <span class="keyword">ON</span> [Schema Name].[<span class="keyword">Table</span> Name] REORGANIZE</span><br></pre></td></tr></table></figure>
+<h1 id="索引重建的時機"><a class="header-anchor" href="#索引重建的時機"></a>索引重建的時機</h1>
+<p>刪除索引重新建立</p>
+<p>檢查 avg_page_space_used_in_percent 的值建議小於 60</p>
+<p>檢查 avg_fragmentation_in_percent 的值建議大於 15</p>
+<p>索引重建命令:</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> INDEX [Index Name] <span class="keyword">ON</span> [Schema Name].[<span class="keyword">Table</span> Name] REBUILD</span><br></pre></td></tr></table></figure>
 <div class="note warning"><p>📜 參考資料</p>
 <ol>
-<li><a href="https://learn.microsoft.com/en-us/dotnet/api/microsoft.extensions.configuration.memoryconfigurationbuilderextensions.addinmemorycollection?view=dotnet-plat-ext-7.0">MemoryConfigurationBuilderExtensions.AddInMemoryCollection Method</a></li>
+<li>
+<p><a href="https://learn.microsoft.com/zh-tw/sql/relational-databases/system-catalog-views/sys-indexes-transact-sql?view=sql-server-ver16">sys.indexes (Transact-SQL)</a></p>
+</li>
+<li>
+<p><a href="https://learn.microsoft.com/zh-tw/sql/relational-databases/system-catalog-views/sys-tables-transact-sql?view=sql-server-ver16">sys.tables (Transact-SQL)</a></p>
+</li>
+<li>
+<p><a href="https://learn.microsoft.com/en-us/sql/relational-databases/system-catalog-views/schemas-catalog-views-sys-schemas?view=sql-server-ver16">Schema catalog view - sys.schemas</a></p>
+</li>
+<li>
+<p><a href="https://learn.microsoft.com/zh-tw/sql/relational-databases/system-dynamic-management-views/sys-dm-db-index-physical-stats-transact-sql?view=sql-server-ver16">sys.dm_db_index_physical_stats (Transact-SQL)</a></p>
+</li>
+<li>
+<p><a href="https://learn.microsoft.com/zh-tw/sql/relational-databases/system-catalog-views/sys-partitions-transact-sql?view=sql-server-ver16">sys.partitions (Transact-SQL)</a></p>
+</li>
+<li>
+<p><a href="https://learn.microsoft.com/zh-tw/sql/t-sql/statements/alter-index-transact-sql?view=sql-server-ver16">ALTER INDEX (Transact-SQL)</a></p>
+</li>
+<li>
+<p><a href="https://blog.miniasp.com/post/2009/01/18/Let-SQL-Server-Tell-You-Which-Indexes-to-Rebuild-or-Reorganize">讓 SQL Server 告訴你有哪些索引應該被重建或重組</a></p>
+</li>
 </ol>
 </div>]]></content>
       <categories>
-        <category>.Net</category>
+        <category>MSSQL</category>
       </categories>
       <tags>
-        <tag>.Net</tag>
-        <tag>UnitTest</tag>
-        <tag>IConfiguration</tag>
+        <tag>MSSQL</tag>
+        <tag>DMV</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>在 SQL Server 操作 JSON</title>
+    <url>/2025/01/01/MsSqlJsonString/</url>
+    <content><![CDATA[<h1 id="宣告-JSON-字串"><a class="header-anchor" href="#宣告-JSON-字串"></a>宣告 JSON 字串</h1>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">DECLARE</span> <span class="variable">@json</span> NVARCHAR(MAX);</span><br><span class="line"></span><br><span class="line"><span class="keyword">SET</span> <span class="variable">@json</span> <span class="operator">=</span> <span class="string">&#x27;&#123;&quot;info&quot;: &#123;&quot;address&quot;: [&#123;&quot;town&quot;: &quot;Belgrade&quot;&#125;, &#123;&quot;town&quot;: &quot;Paris&quot;&#125;, &#123;&quot;town&quot;:&quot;Madrid&quot;&#125;]&#125;&#125;&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="JSON-VALUE-擷取純量值字串"><a class="header-anchor" href="#JSON-VALUE-擷取純量值字串"></a>JSON_VALUE 擷取純量值字串</h1>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="built_in">JSON_VALUE</span>(<span class="variable">@json</span>, <span class="string">&#x27;$.info.address[0].town&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<h1 id="JSON-QUERY-擷取物件或陣列字串"><a class="header-anchor" href="#JSON-QUERY-擷取物件或陣列字串"></a>JSON_QUERY 擷取物件或陣列字串</h1>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="built_in">JSON_QUERY</span>(<span class="variable">@json</span>, <span class="string">&#x27;$.info.address&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<h1 id="JSON-MODIFY-變更-JSON-字串中的值"><a class="header-anchor" href="#JSON-MODIFY-變更-JSON-字串中的值"></a>JSON_MODIFY 變更 JSON 字串中的值</h1>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SET</span> <span class="variable">@json</span> <span class="operator">=</span> JSON_MODIFY(<span class="variable">@json</span>, <span class="string">&#x27;$.info.address[1].town&#x27;</span>, <span class="string">&#x27;London&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> modifiedJson <span class="operator">=</span> <span class="variable">@json</span>;</span><br></pre></td></tr></table></figure>
+<h1 id="OPENJSON-集合轉換為資料列集"><a class="header-anchor" href="#OPENJSON-集合轉換為資料列集"></a>OPENJSON 集合轉換為資料列集</h1>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span></span><br><span class="line"><span class="keyword">FROM</span> OPENJSON(<span class="built_in">JSON_QUERY</span>(<span class="variable">@json</span>, <span class="string">&#x27;$.info.address&#x27;</span>)) <span class="keyword">WITH</span> (</span><br><span class="line">    town NVARCHAR(<span class="number">50</span>) <span class="string">&#x27;$.town&#x27;</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://learn.microsoft.com/zh-tw/sql/relational-databases/json/json-data-sql-server?view=sql-server-ver16">SQL Server 中的 JSON 資料</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>MSSQL</category>
+      </categories>
+      <tags>
+        <tag>MSSQL</tag>
+        <tag>JSON</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>使用 DMV 查询 SQL 執行性能</title>
+    <url>/2025/01/01/MsSqlPerformance/</url>
+    <content><![CDATA[<h1 id="查询執行中的-SQL-性能"><a class="header-anchor" href="#查询執行中的-SQL-性能"></a>查询執行中的 SQL 性能</h1>
+<p>使用 sys.dm_exec_requests 查詢目前執行中的請求</p>
+<span id="more"></span>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> r.scheduler_id [Scheduler Id]</span><br><span class="line">    ,STATUS [Request Status]</span><br><span class="line">    ,r.session_id [SPID]</span><br><span class="line">    ,r.blocking_session_id [Blocking <span class="keyword">By</span>]</span><br><span class="line">    ,<span class="built_in">substring</span>(ltrim(q.TEXT), r.statement_start_offset <span class="operator">/</span> <span class="number">2</span> <span class="operator">+</span> <span class="number">1</span>, (</span><br><span class="line">            <span class="keyword">CASE</span> </span><br><span class="line">                <span class="keyword">WHEN</span> r.statement_end_offset <span class="operator">=</span> <span class="operator">-</span> <span class="number">1</span></span><br><span class="line">                    <span class="keyword">THEN</span> LEN(<span class="keyword">CONVERT</span>(NVARCHAR(MAX), q.TEXT)) <span class="operator">*</span> <span class="number">2</span></span><br><span class="line">                <span class="keyword">ELSE</span> r.statement_end_offset</span><br><span class="line">                <span class="keyword">END</span> <span class="operator">-</span> r.statement_start_offset</span><br><span class="line">            ) <span class="operator">/</span> <span class="number">2</span>) [<span class="keyword">Running</span> Query]</span><br><span class="line">    ,q.TEXT [<span class="keyword">Full</span> Query]</span><br><span class="line">    ,r.cpu_time [CPU <span class="type">Time</span>(ms)]</span><br><span class="line">    ,r.start_time [<span class="keyword">Start</span> <span class="type">Time</span>]</span><br><span class="line">    ,r.total_elapsed_time [Total <span class="type">Time</span>(ms)]</span><br><span class="line">    ,r.reads [Read]</span><br><span class="line">    ,r.writes [Write]</span><br><span class="line">    ,r.logical_reads [Logic Read]</span><br><span class="line">    ,d.name <span class="keyword">AS</span> [Database Name]</span><br><span class="line"><span class="keyword">FROM</span> sys.dm_exec_requests r</span><br><span class="line"><span class="keyword">CROSS</span> APPLY sys.dm_exec_sql_text(sql_handle) <span class="keyword">AS</span> q</span><br><span class="line"><span class="keyword">LEFT</span> <span class="keyword">JOIN</span> sys.databases d <span class="keyword">ON</span> (r.database_id <span class="operator">=</span> d.database_id)</span><br><span class="line"><span class="keyword">WHERE</span> r.session_id <span class="operator">&gt;</span> <span class="number">50</span></span><br><span class="line">	<span class="keyword">AND</span> r.session_id <span class="operator">&lt;&gt;</span> @<span class="variable">@SPID</span></span><br><span class="line">	<span class="keyword">AND</span> STATUS <span class="operator">=</span> <span class="string">&#x27;running&#x27;</span></span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> r.total_elapsed_time <span class="keyword">DESC</span>;</span><br></pre></td></tr></table></figure>
+<h1 id="查询執行過的-SQL-性能"><a class="header-anchor" href="#查询執行過的-SQL-性能"></a>查询執行過的 SQL 性能</h1>
+<p>使用 sys.dm_exec_query_stats 查詢前10名執行過的請求中，是否有任何 IO、CPU、CLR、Blocked 性能瓶頸</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> TOP <span class="number">10</span> (total_logical_reads <span class="operator">+</span> total_logical_writes) <span class="operator">/</span> qs.execution_count [Avg IO]</span><br><span class="line">	,(total_logical_reads <span class="operator">+</span> total_logical_writes) [Total IO]</span><br><span class="line">	,total_worker_time <span class="operator">/</span> qs.execution_count [Avg CPU]</span><br><span class="line">	,total_worker_time [Total CPU]</span><br><span class="line">	,total_clr_time <span class="operator">/</span> execution_count [Avg CLR]</span><br><span class="line">	,total_clr_time [Total CLR]</span><br><span class="line">	,(total_elapsed_time <span class="operator">-</span> total_worker_time) <span class="operator">/</span> qs.execution_count [Avg Blocked]</span><br><span class="line">	,total_elapsed_time <span class="operator">-</span> total_worker_time [Total Blocked]</span><br><span class="line">	,qs.execution_count [Execution Count]</span><br><span class="line">	,<span class="built_in">SUBSTRING</span>(qt.TEXT, qs.statement_start_offset <span class="operator">/</span> <span class="number">2</span>, (</span><br><span class="line">			<span class="keyword">CASE</span> </span><br><span class="line">				<span class="keyword">WHEN</span> qs.statement_end_offset <span class="operator">=</span> <span class="operator">-</span> <span class="number">1</span></span><br><span class="line">					<span class="keyword">THEN</span> LEN(<span class="keyword">CONVERT</span>(NVARCHAR(MAX), qt.TEXT)) <span class="operator">*</span> <span class="number">2</span></span><br><span class="line">				<span class="keyword">ELSE</span> qs.statement_end_offset</span><br><span class="line">				<span class="keyword">END</span> <span class="operator">-</span> qs.statement_start_offset</span><br><span class="line">			) <span class="operator">/</span> <span class="number">2</span>) [<span class="keyword">Running</span> Query]</span><br><span class="line">	,qt.TEXT [<span class="keyword">Full</span> Query]</span><br><span class="line">	,DB_NAME(qt.dbid) [Database Name]</span><br><span class="line"><span class="keyword">FROM</span> sys.dm_exec_query_stats <span class="keyword">AS</span> qs</span><br><span class="line"><span class="keyword">CROSS</span> APPLY sys.dm_exec_sql_text(qs.sql_handle) <span class="keyword">AS</span> qt</span><br><span class="line"><span class="keyword">WHERE</span> qs.creation_time <span class="operator">&gt;=</span> [開始時間]</span><br><span class="line">	<span class="keyword">AND</span> qs.creation_time <span class="operator">&lt;=</span> [結束時間]</span><br><span class="line">	<span class="keyword">AND</span> qs.execution_count <span class="operator">&gt;</span> [查詢次數]</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> [選擇查詢指標排序 IO、CPU、CLR、Blocked] <span class="keyword">DESC</span>;</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li>
+<p><a href="https://learn.microsoft.com/zh-tw/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql?view=sql-server-ver16">sys.dm_exec_requests (Transact-SQL)</a></p>
+</li>
+<li>
+<p><a href="https://learn.microsoft.com/zh-tw/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-sql-text-transact-sql?view=sql-server-ver16">sys.dm_exec_sql_text (Transact-SQL)</a></p>
+</li>
+<li>
+<p><a href="https://learn.microsoft.com/en-us/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-stats-transact-sql?view=sql-server-ver16">sys.dm_exec_query_stats (Transact-SQL)</a></p>
+</li>
+<li>
+<p><a href="https://learn.microsoft.com/zh-tw/sql/relational-databases/system-catalog-views/sys-databases-transact-sql?view=sql-server-ver16">sys.databases (Transact-SQL)</a></p>
+</li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>MSSQL</category>
+      </categories>
+      <tags>
+        <tag>MSSQL</tag>
+        <tag>DMV</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>在 SQL Server 操作 XML</title>
+    <url>/2025/01/01/MsSqlXmlString/</url>
+    <content><![CDATA[<h1 id="宣告-XML-資料"><a class="header-anchor" href="#宣告-XML-資料"></a>宣告 XML 資料</h1>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">DECLARE</span> <span class="variable">@x</span> XML;</span><br><span class="line"></span><br><span class="line"><span class="keyword">SET</span> <span class="variable">@x</span> <span class="operator">=</span> <span class="string">&#x27;&lt;Root&gt;  </span></span><br><span class="line"><span class="string">    &lt;row id=&quot;1&quot;&gt;&lt;name&gt;Larry&lt;/name&gt;&lt;/row&gt;  </span></span><br><span class="line"><span class="string">    &lt;row id=&quot;2&quot;&gt;&lt;name&gt;moe&lt;/name&gt;&lt;/row&gt;  </span></span><br><span class="line"><span class="string">    &lt;row id=&quot;3&quot; /&gt;  </span></span><br><span class="line"><span class="string">&lt;/Root&gt;&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="value-擷取純量值"><a class="header-anchor" href="#value-擷取純量值"></a>value() 擷取純量值</h1>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="variable">@x</span>.<span class="keyword">value</span>(<span class="string">&#x27;(/Root/row/@id)[1]&#x27;</span>, <span class="string">&#x27;int&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<h1 id="query-擷取物件或陣列"><a class="header-anchor" href="#query-擷取物件或陣列"></a>query() 擷取物件或陣列</h1>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="variable">@x</span>.query(<span class="string">&#x27;/Root/row&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<h1 id="modify-變更-JSON-字串中的值"><a class="header-anchor" href="#modify-變更-JSON-字串中的值"></a>modify() 變更 JSON 字串中的值</h1>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SET</span> <span class="variable">@x</span>.modify(<span class="string">&#x27;</span></span><br><span class="line"><span class="string">  replace value of (/Root/row[1]/name/text())[1]</span></span><br><span class="line"><span class="string">  with &quot;new Larry&quot;</span></span><br><span class="line"><span class="string">&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> <span class="variable">@x</span>;</span><br></pre></td></tr></table></figure>
+<h1 id="nodes-集合轉換為資料列集"><a class="header-anchor" href="#nodes-集合轉換為資料列集"></a>nodes() 集合轉換為資料列集</h1>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> T.C.query(<span class="string">&#x27;.&#x27;</span>)</span><br><span class="line"><span class="keyword">FROM</span> <span class="variable">@x</span>.nodes(<span class="string">&#x27;/Root/row&#x27;</span>) T(c);</span><br></pre></td></tr></table></figure>
+<h1 id="OPENXML-集合轉換為資料列集"><a class="header-anchor" href="#OPENXML-集合轉換為資料列集"></a>OPENXML 集合轉換為資料列集</h1>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">DECLARE</span> <span class="variable">@idoc</span> <span class="type">INT</span>, <span class="variable">@doc</span> <span class="type">VARCHAR</span>(<span class="number">1000</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">SET</span> <span class="variable">@doc</span> <span class="operator">=</span> <span class="string">&#x27;&lt;Root&gt;  </span></span><br><span class="line"><span class="string">    &lt;row id=&quot;1&quot;&gt;&lt;name&gt;Larry&lt;/name&gt;&lt;/row&gt;  </span></span><br><span class="line"><span class="string">    &lt;row id=&quot;2&quot;&gt;&lt;name&gt;moe&lt;/name&gt;&lt;/row&gt;  </span></span><br><span class="line"><span class="string">    &lt;row id=&quot;3&quot; /&gt;  </span></span><br><span class="line"><span class="string">&lt;/Root&gt;&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 載入 XML 文件</span></span><br><span class="line"><span class="keyword">EXEC</span> sp_xml_preparedocument <span class="variable">@idoc</span> OUTPUT, <span class="variable">@doc</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 解析 XML 文件</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span></span><br><span class="line"><span class="keyword">FROM</span> OPENXML(<span class="variable">@idoc</span>, <span class="string">&#x27;/Root/row&#x27;</span>, <span class="number">1</span>) <span class="keyword">WITH</span> (</span><br><span class="line">      id <span class="type">INT</span> <span class="string">&#x27;@id&#x27;</span>,</span><br><span class="line">    name <span class="type">VARCHAR</span>(<span class="number">100</span>) <span class="string">&#x27;name&#x27;</span></span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 清除 XML 文件</span></span><br><span class="line"><span class="keyword">EXEC</span> sp_xml_removedocument <span class="variable">@idoc</span>;</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://learn.microsoft.com/en-us/sql/t-sql/xml/xml-transact-sql?view=sql-server-ver16">xml (Transact-SQL)</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>MSSQL</category>
+      </categories>
+      <tags>
+        <tag>MSSQL</tag>
+        <tag>XML</tag>
       </tags>
   </entry>
   <entry>
@@ -760,6 +883,30 @@ plink -v -x -a -T -C -noagent -ssh -pw "[密碼]" -P 50893 -L [本地端口]:[�
         <tag>Font</tag>
         <tag>Big5</tag>
         <tag>Unicode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>使用 AddInMemoryCollection 設定 Configuration 進行單元測試</title>
+    <url>/2023/01/21/NetAddInMemoryCollection/</url>
+    <content><![CDATA[<h1 id="設定-appsettings-json-如下"><a class="header-anchor" href="#設定-appsettings-json-如下"></a>設定 appsettings.json 如下</h1>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;Logging&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;LogLevel&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;Default&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Information&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;Microsoft.AspNetCore&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Warning&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="轉換為-Dictionary-string-string"><a class="header-anchor" href="#轉換為-Dictionary-string-string"></a>轉換為 Dictionary&lt;string, string&gt;</h1>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">Dictionary&lt;<span class="built_in">string</span>, <span class="built_in">string</span>&gt; inMemorySettings = <span class="keyword">new</span> Dictionary&lt;<span class="built_in">string</span>, <span class="built_in">string</span>&gt; &#123;</span><br><span class="line">    &#123;<span class="string">&quot;Logging:LogLevel:Default&quot;</span>,  <span class="string">&quot;Information&quot;</span>&#125;,</span><br><span class="line">    &#123;<span class="string">&quot;Logging:LogLevel:Microsoft.AspNetCore&quot;</span>,  <span class="string">&quot;Warning&quot;</span>&#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h1 id="建立-Configuration"><a class="header-anchor" href="#建立-Configuration"></a>建立 Configuration</h1>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">IConfiguration configuration = <span class="keyword">new</span> ConfigurationBuilder()</span><br><span class="line">            .AddInMemoryCollection(inMemorySettings)</span><br><span class="line">            .Build();</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://learn.microsoft.com/en-us/dotnet/api/microsoft.extensions.configuration.memoryconfigurationbuilderextensions.addinmemorycollection?view=dotnet-plat-ext-7.0">MemoryConfigurationBuilderExtensions.AddInMemoryCollection Method</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>.Net</category>
+      </categories>
+      <tags>
+        <tag>.Net</tag>
+        <tag>UnitTest</tag>
+        <tag>IConfiguration</tag>
       </tags>
   </entry>
   <entry>
@@ -988,8 +1135,8 @@ dotnet-dump collect --process-id 1902 -->
         <category>.Net</category>
       </categories>
       <tags>
-        <tag>.Net</tag>
         <tag>XML</tag>
+        <tag>.Net</tag>
       </tags>
   </entry>
   <entry>
@@ -1138,6 +1285,30 @@ dotnet-dump collect --process-id 1902 -->
       </tags>
   </entry>
   <entry>
+    <title>使用 Python Script 進行 FontForge 字型檔轉換</title>
+    <url>/2021/10/23/PythonFontForgeTransfer/</url>
+    <content><![CDATA[<h1 id="建立-font-py-檔案"><a class="header-anchor" href="#建立-font-py-檔案"></a>建立 <a href="http://font.py">font.py</a> 檔案</h1>
+<p>使用 python 操作 fontforge 轉換字型檔</p>
+<span id="more"></span>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="comment"># 載入 FontForge 模組</span></span><br><span class="line"><span class="keyword">import</span> fontforge</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定義 main 函數</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():	</span><br><span class="line">	<span class="comment"># 載入參數</span></span><br><span class="line">	fontFilePath = sys.argv[<span class="number">1</span>]	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 開啟字型檔</span></span><br><span class="line">	originFile=fontforge.<span class="built_in">open</span>(fontFilePath)	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 選取 unicode 特定範圍的字型</span></span><br><span class="line">	originFile.selection.select((<span class="string">&quot;ranges&quot;</span>, <span class="string">&quot;unicode&quot;</span>), <span class="number">0xe000</span>, <span class="number">0xf8ff</span>)	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 複製字型至剪貼簿</span></span><br><span class="line">	originFile.copy()	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 建立新的字型檔</span></span><br><span class="line">	newFile=fontforge.font()</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 設定 sfnt_names 參數與原檔一致</span></span><br><span class="line">	newFile.sfnt_names = originFile.sfnt_names	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 設定 encoding 參數與原檔一致</span></span><br><span class="line">	newFile.encoding = originFile.encoding	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 設定 size 參數與原檔一致</span></span><br><span class="line">	newFile.em = originFile.em	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 設定 layers 參數與原檔一致</span></span><br><span class="line">	newFile.layers[<span class="string">&#x27;Fore&#x27;</span>].is_quadratic = originFile.layers[<span class="string">&#x27;Fore&#x27;</span>].is_quadratic	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 選取 unicode 特定範圍的字型</span></span><br><span class="line">	newFile.selection.select((<span class="string">&quot;ranges&quot;</span>, <span class="string">&quot;unicode&quot;</span>), <span class="number">0xe000</span>, <span class="number">0xf8ff</span>)	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 貼上剪貼簿內容</span></span><br><span class="line">	newFile.paste()	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 設定字型名稱</span></span><br><span class="line">	newFile.fontname=<span class="string">&quot;EUDC&quot;</span>	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 保存為woff字型</span></span><br><span class="line">	newFile.generate(<span class="string">&quot;EUDC.woff&quot;</span>)	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 關閉字型檔</span></span><br><span class="line">	originFile.close()	</span><br><span class="line"></span><br><span class="line"><span class="comment"># 執行 main 函數</span></span><br><span class="line">main()	</span><br></pre></td></tr></table></figure>
+<h1 id="執行-Python-Script"><a class="header-anchor" href="#執行-Python-Script"></a>執行 Python Script</h1>
+<p>使用 FontForge 執行 Python Script</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">fontforge -script font.py [FontFilePath]</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://fontforge.org/docs/scripting/python.html">Python Scripting</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Font</tag>
+        <tag>Python</tag>
+        <tag>FontForge</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>使用 Flask-SQLAlchemy 連接 MSSQL 進行 CRUD</title>
     <url>/2023/07/07/PythonFlaskSQLAlchemy/</url>
     <content><![CDATA[<h1 id="安裝套件"><a class="header-anchor" href="#安裝套件"></a>安裝套件</h1>
@@ -1161,33 +1332,9 @@ db.create_all() -->
         <category>Python</category>
       </categories>
       <tags>
+        <tag>MSSQL</tag>
         <tag>Python</tag>
         <tag>Flask</tag>
-        <tag>MSSQL</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>使用 Python Script 進行 FontForge 字型檔轉換</title>
-    <url>/2021/10/23/PythonFontForgeTransfer/</url>
-    <content><![CDATA[<h1 id="建立-font-py-檔案"><a class="header-anchor" href="#建立-font-py-檔案"></a>建立 <a href="http://font.py">font.py</a> 檔案</h1>
-<p>使用 python 操作 fontforge 轉換字型檔</p>
-<span id="more"></span>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="comment"># 載入 FontForge 模組</span></span><br><span class="line"><span class="keyword">import</span> fontforge</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定義 main 函數</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():	</span><br><span class="line">	<span class="comment"># 載入參數</span></span><br><span class="line">	fontFilePath = sys.argv[<span class="number">1</span>]	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 開啟字型檔</span></span><br><span class="line">	originFile=fontforge.<span class="built_in">open</span>(fontFilePath)	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 選取 unicode 特定範圍的字型</span></span><br><span class="line">	originFile.selection.select((<span class="string">&quot;ranges&quot;</span>, <span class="string">&quot;unicode&quot;</span>), <span class="number">0xe000</span>, <span class="number">0xf8ff</span>)	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 複製字型至剪貼簿</span></span><br><span class="line">	originFile.copy()	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 建立新的字型檔</span></span><br><span class="line">	newFile=fontforge.font()</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 設定 sfnt_names 參數與原檔一致</span></span><br><span class="line">	newFile.sfnt_names = originFile.sfnt_names	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 設定 encoding 參數與原檔一致</span></span><br><span class="line">	newFile.encoding = originFile.encoding	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 設定 size 參數與原檔一致</span></span><br><span class="line">	newFile.em = originFile.em	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 設定 layers 參數與原檔一致</span></span><br><span class="line">	newFile.layers[<span class="string">&#x27;Fore&#x27;</span>].is_quadratic = originFile.layers[<span class="string">&#x27;Fore&#x27;</span>].is_quadratic	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 選取 unicode 特定範圍的字型</span></span><br><span class="line">	newFile.selection.select((<span class="string">&quot;ranges&quot;</span>, <span class="string">&quot;unicode&quot;</span>), <span class="number">0xe000</span>, <span class="number">0xf8ff</span>)	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 貼上剪貼簿內容</span></span><br><span class="line">	newFile.paste()	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 設定字型名稱</span></span><br><span class="line">	newFile.fontname=<span class="string">&quot;EUDC&quot;</span>	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 保存為woff字型</span></span><br><span class="line">	newFile.generate(<span class="string">&quot;EUDC.woff&quot;</span>)	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 關閉字型檔</span></span><br><span class="line">	originFile.close()	</span><br><span class="line"></span><br><span class="line"><span class="comment"># 執行 main 函數</span></span><br><span class="line">main()	</span><br></pre></td></tr></table></figure>
-<h1 id="執行-Python-Script"><a class="header-anchor" href="#執行-Python-Script"></a>執行 Python Script</h1>
-<p>使用 FontForge 執行 Python Script</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">fontforge -script font.py [FontFilePath]</span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://fontforge.org/docs/scripting/python.html">Python Scripting</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>Python</category>
-      </categories>
-      <tags>
-        <tag>Font</tag>
-        <tag>Python</tag>
-        <tag>FontForge</tag>
       </tags>
   </entry>
   <entry>
@@ -1283,6 +1430,27 @@ db.create_all() -->
       </tags>
   </entry>
   <entry>
+    <title>WSL2 移動至其它硬碟</title>
+    <url>/2023/05/05/Wsl2Disk/</url>
+    <content><![CDATA[<h1 id="列出已安裝的-Linux-發行版"><a class="header-anchor" href="#列出已安裝的-Linux-發行版"></a>列出已安裝的 Linux 發行版</h1>
+<p>執行下方命令</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">wsl <span class="literal">-l</span> <span class="literal">-v</span></span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="遷移-WSL2-至磁碟機-D"><a class="header-anchor" href="#遷移-WSL2-至磁碟機-D"></a>遷移 WSL2 至磁碟機 D</h1>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 導出已安裝的 Linux 發行版壓縮檔</span></span><br><span class="line">wsl <span class="literal">--export</span> <span class="string">&quot;Ubuntu-22.04&quot;</span> d:\ubuntu.tar</span><br><span class="line"></span><br><span class="line"><span class="comment"># 移除 WSL</span></span><br><span class="line">wsl <span class="literal">--unregister</span> <span class="string">&quot;Ubuntu-22.04&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 建立解壓縮的目錄</span></span><br><span class="line">mkdir d:\Ubuntu</span><br><span class="line"></span><br><span class="line"><span class="comment"># Linux 發行版壓縮檔解壓縮至新目錄後加入 WSL</span></span><br><span class="line">wsl <span class="literal">--import</span> <span class="string">&quot;Ubuntu-22.04&quot;</span> d:\ubuntu d:\ubuntu.tar</span><br><span class="line"></span><br><span class="line"><span class="comment"># 刪除 Linux 發行版壓縮檔</span></span><br><span class="line"><span class="built_in">del</span> d:\ubuntu.tar</span><br><span class="line"></span><br><span class="line"><span class="comment"># 因重新建立 WSL 會以 root 為預設帳戶，需重新設定預設帳戶</span></span><br><span class="line">ubuntu2204.exe config <span class="literal">--default-user</span> ubuntu</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://learn.microsoft.com/zh-tw/windows/wsl/use-custom-distro">匯入任何要與 WSL 搭配使用的 Linux 發行版本</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>Wsl2</category>
+      </categories>
+      <tags>
+        <tag>Wsl2</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Whistle 代理規則使用</title>
     <url>/2023/01/20/WhistleProxyRule/</url>
     <content><![CDATA[<h1 id="設定-Dns-代理"><a class="header-anchor" href="#設定-Dns-代理"></a>設定 Dns 代理</h1>
@@ -1345,27 +1513,6 @@ db.create_all() -->
       </categories>
       <tags>
         <tag>Whistle</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>WSL2 移動至其它硬碟</title>
-    <url>/2023/05/05/Wsl2Disk/</url>
-    <content><![CDATA[<h1 id="列出已安裝的-Linux-發行版"><a class="header-anchor" href="#列出已安裝的-Linux-發行版"></a>列出已安裝的 Linux 發行版</h1>
-<p>執行下方命令</p>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">wsl <span class="literal">-l</span> <span class="literal">-v</span></span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="遷移-WSL2-至磁碟機-D"><a class="header-anchor" href="#遷移-WSL2-至磁碟機-D"></a>遷移 WSL2 至磁碟機 D</h1>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 導出已安裝的 Linux 發行版壓縮檔</span></span><br><span class="line">wsl <span class="literal">--export</span> <span class="string">&quot;Ubuntu-22.04&quot;</span> d:\ubuntu.tar</span><br><span class="line"></span><br><span class="line"><span class="comment"># 移除 WSL</span></span><br><span class="line">wsl <span class="literal">--unregister</span> <span class="string">&quot;Ubuntu-22.04&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 建立解壓縮的目錄</span></span><br><span class="line">mkdir d:\Ubuntu</span><br><span class="line"></span><br><span class="line"><span class="comment"># Linux 發行版壓縮檔解壓縮至新目錄後加入 WSL</span></span><br><span class="line">wsl <span class="literal">--import</span> <span class="string">&quot;Ubuntu-22.04&quot;</span> d:\ubuntu d:\ubuntu.tar</span><br><span class="line"></span><br><span class="line"><span class="comment"># 刪除 Linux 發行版壓縮檔</span></span><br><span class="line"><span class="built_in">del</span> d:\ubuntu.tar</span><br><span class="line"></span><br><span class="line"><span class="comment"># 因重新建立 WSL 會以 root 為預設帳戶，需重新設定預設帳戶</span></span><br><span class="line">ubuntu2204.exe config <span class="literal">--default-user</span> ubuntu</span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://learn.microsoft.com/zh-tw/windows/wsl/use-custom-distro">匯入任何要與 WSL 搭配使用的 Linux 發行版本</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>Wsl2</category>
-      </categories>
-      <tags>
-        <tag>Wsl2</tag>
       </tags>
   </entry>
   <entry>
