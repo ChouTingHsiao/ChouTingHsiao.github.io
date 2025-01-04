@@ -35,7 +35,7 @@ sqlpackage /Action:Import /TargetDatabaseName:"[資料庫名稱]" /TargetServerN
 
 依資料筆數搜尋可能是主檔的資料表，並產生指令
 
-```
+```sql
 SELECT '/p:TableData="[' + s.Name + '].[' + t.NAME + ']" `' [Package]
 	,t.NAME [TableName]
 	,s.Name [SchemaName]
