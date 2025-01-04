@@ -28,7 +28,7 @@
 <meta property="og:description" content="NAT 介紹:   DNAT發生在 natTable 的 PREROUTING 鏈上，正好在剛接收到封包的之後一步，對應的是 inbound 流量   SNAT發生在 natTable 的 POSTROUTING 鏈上，只允許被使用在靜態 IP，要求您為其提供一個 IP 位址以套用於所有傳出資料包，正好在傳送到網路卡前的最後一步，對應的是 outbound 流量   Masquerading只允許">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-07-25T18:00:00.000Z">
-<meta property="article:modified_time" content="2025-01-01T14:26:29.388Z">
+<meta property="article:modified_time" content="2025-01-04T15:29:05.293Z">
 <meta property="article:author" content="Stephen">
 <meta property="article:tag" content="Linux">
 <meta property="article:tag" content="Ubuntu">
@@ -183,8 +183,8 @@
 	</div>
 	<ul class="links-of-blogroll-list recent-posts-list">
 	        <li class="my-links-of-blogroll-item">
-		    <a href="/2025/01/01/MsSqlIndex/" title="使用 DMV 查询 Index 分佈" target="">
-		    使用 DMV 查询 Index 分佈
+		    <a href="/2025/01/01/MsSqlIndexFragmentation/" title="使用 DMV 查询 Index 碎片化" target="">
+		    使用 DMV 查询 Index 碎片化
 		    </a>
 		</li>
 	        <li class="my-links-of-blogroll-item">
@@ -266,7 +266,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-01-01 14:26:29" itemprop="dateModified" datetime="2025-01-01T14:26:29+00:00">2025-01-01</time>
+      <time title="Modified: 2025-01-04 15:29:05" itemprop="dateModified" datetime="2025-01-04T15:29:05+00:00">2025-01-04</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -454,7 +454,7 @@ sudo iptables -A FORWARD -i eth0 -o eth1 -j ACCEPT -->
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">40 mins.</span>
+    <span title="Reading time total">41 mins.</span>
   </span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>

@@ -253,6 +253,35 @@
       </tags>
   </entry>
   <entry>
+    <title>Json 格式資料如何拆解成 form 的輸入項</title>
+    <url>/2020/03/27/HtmlFormPost/</url>
+    <content><![CDATA[<h1 id="拆解-Json-格式資料"><a class="header-anchor" href="#拆解-Json-格式資料"></a>拆解 Json 格式資料</h1>
+<p>下方是 Json 格式資料</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">   <span class="attr">&quot;item&quot;</span><span class="punctuation">:</span> <span class="string">&quot;1&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;items&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;1&quot;</span><span class="punctuation">,</span><span class="string">&quot;2&quot;</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="基本物件型別拆解"><a class="header-anchor" href="#基本物件型別拆解"></a>基本物件型別拆解</h1>
+<p>基本物件型別的拆解如下</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">&quot;item&quot;: &quot;1&quot;</span><br><span class="line">可拆解成:</span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;item&quot;</span> <span class="attr">value</span>=<span class="string">&quot;1&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h1 id="陣列型別拆解"><a class="header-anchor" href="#陣列型別拆解"></a>陣列型別拆解</h1>
+<p>陣列部分需依造陣列結構做拆解</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">&quot;items&quot;: [&quot;1&quot;,&quot;2&quot;]</span><br><span class="line">可拆解成:</span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;items[0]&quot;</span> <span class="attr">value</span>=<span class="string">&quot;1&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;items[1]&quot;</span> <span class="attr">value</span>=<span class="string">&quot;2&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h1 id="完整拆解設定"><a class="header-anchor" href="#完整拆解設定"></a>完整拆解設定</h1>
+<p>最後是完整的 HTML form 設定</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">&quot;/api/Test/Post&quot;</span> <span class="attr">method</span>=<span class="string">&quot;post&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;item&quot;</span> <span class="attr">value</span>=<span class="string">&quot;1&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;items[0]&quot;</span> <span class="attr">value</span>=<span class="string">&quot;1&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;items[1]&quot;</span> <span class="attr">value</span>=<span class="string">&quot;2&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">　<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> <span class="attr">value</span>=<span class="string">&quot;送出表單&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://stackoverflow.com/questions/9073690/post-an-array-from-an-html-form-without-javascript">POST an array from an HTML form without javascript</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>Html</category>
+      </categories>
+      <tags>
+        <tag>Html</tag>
+        <tag>Json</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>WSL2 設定 Docker In Docker</title>
     <url>/2024/01/01/DockerWsl2DockerInDocker/</url>
     <content><![CDATA[<h1 id="🚀-使用主機的-Docker-Socket"><a class="header-anchor" href="#🚀-使用主機的-Docker-Socket"></a>🚀 使用主機的 Docker Socket</h1>
@@ -287,35 +316,6 @@
       <tags>
         <tag>Docker</tag>
         <tag>Wsl2</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Json 格式資料如何拆解成 form 的輸入項</title>
-    <url>/2020/03/27/HtmlFormPost/</url>
-    <content><![CDATA[<h1 id="拆解-Json-格式資料"><a class="header-anchor" href="#拆解-Json-格式資料"></a>拆解 Json 格式資料</h1>
-<p>下方是 Json 格式資料</p>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">   <span class="attr">&quot;item&quot;</span><span class="punctuation">:</span> <span class="string">&quot;1&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;items&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;1&quot;</span><span class="punctuation">,</span><span class="string">&quot;2&quot;</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="基本物件型別拆解"><a class="header-anchor" href="#基本物件型別拆解"></a>基本物件型別拆解</h1>
-<p>基本物件型別的拆解如下</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">&quot;item&quot;: &quot;1&quot;</span><br><span class="line">可拆解成:</span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;item&quot;</span> <span class="attr">value</span>=<span class="string">&quot;1&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h1 id="陣列型別拆解"><a class="header-anchor" href="#陣列型別拆解"></a>陣列型別拆解</h1>
-<p>陣列部分需依造陣列結構做拆解</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">&quot;items&quot;: [&quot;1&quot;,&quot;2&quot;]</span><br><span class="line">可拆解成:</span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;items[0]&quot;</span> <span class="attr">value</span>=<span class="string">&quot;1&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;items[1]&quot;</span> <span class="attr">value</span>=<span class="string">&quot;2&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h1 id="完整拆解設定"><a class="header-anchor" href="#完整拆解設定"></a>完整拆解設定</h1>
-<p>最後是完整的 HTML form 設定</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">&quot;/api/Test/Post&quot;</span> <span class="attr">method</span>=<span class="string">&quot;post&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;item&quot;</span> <span class="attr">value</span>=<span class="string">&quot;1&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;items[0]&quot;</span> <span class="attr">value</span>=<span class="string">&quot;1&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;items[1]&quot;</span> <span class="attr">value</span>=<span class="string">&quot;2&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">　<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> <span class="attr">value</span>=<span class="string">&quot;送出表單&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://stackoverflow.com/questions/9073690/post-an-array-from-an-html-form-without-javascript">POST an array from an HTML form without javascript</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>Html</category>
-      </categories>
-      <tags>
-        <tag>Html</tag>
-        <tag>Json</tag>
       </tags>
   </entry>
   <entry>
@@ -467,6 +467,29 @@
       </tags>
   </entry>
   <entry>
+    <title>如何將圖片壓縮並下載檔案</title>
+    <url>/2019/12/25/JsPictureCompress/</url>
+    <content><![CDATA[<h1 id="建立-HTML"><a class="header-anchor" href="#建立-HTML"></a>建立 HTML</h1>
+<p>首先在 HTML 建立一個 File Upload 與一個 canvas</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;file&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">&quot;canvas&quot;</span>  <span class="attr">width</span>=<span class="string">&quot;800&quot;</span> <span class="attr">height</span>=<span class="string">&quot;600&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="綁定事件"><a class="header-anchor" href="#綁定事件"></a>綁定事件</h1>
+<p>接下來為 File Upload 綁定事件</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;input&#x27;</span>).<span class="title function_">addEventListener</span>(<span class="string">&#x27;change&#x27;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="comment">// 取得第一個檔案</span></span><br><span class="line">    <span class="keyword">const</span> file= <span class="variable language_">this</span>.<span class="property">files</span>[<span class="number">0</span>];</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 取得 canvas</span></span><br><span class="line">    <span class="keyword">const</span> canvas = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;canvas&#x27;</span>);   </span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 宣告 Image 物件</span></span><br><span class="line">    <span class="keyword">let</span> img = <span class="keyword">new</span> <span class="title class_">Image</span>; </span><br><span class="line"></span><br><span class="line">    <span class="comment">// 建立 Image 載入事件</span></span><br><span class="line">    img.<span class="property">onload</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 在 canvas 載入圖片 </span></span><br><span class="line">        canvas.<span class="title function_">getContext</span>(<span class="string">&#x27;2d&#x27;</span>).<span class="title function_">drawImage</span>(img,<span class="number">0</span>,<span class="number">0</span>,<span class="number">800</span>,<span class="number">600</span>); </span><br><span class="line"></span><br><span class="line">        <span class="comment">// 回收圖片物件</span></span><br><span class="line">        <span class="variable constant_">URL</span>.<span class="title function_">revokeObjectURL</span>(img.<span class="property">src</span>);   </span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 把 canvas 圖片轉成 Blob 格式</span></span><br><span class="line">        canvas.<span class="title function_">toBlob</span>(<span class="function">(<span class="params">blob</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="comment">// 宣告FileReader物件</span></span><br><span class="line">            <span class="keyword">var</span> reader = <span class="keyword">new</span> <span class="title class_">FileReader</span>();</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 建立 FileReader 載入完成事件</span></span><br><span class="line">            reader.<span class="property">onloadend</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">log</span>(reader.<span class="property">result</span>.<span class="title function_">split</span>(<span class="string">&quot;,&quot;</span>)[<span class="number">1</span>]);</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            <span class="comment">// 讀取 Blob 格式物件</span></span><br><span class="line">            reader.<span class="title function_">readAsDataURL</span>(blob);</span><br><span class="line">        &#125;, <span class="string">&quot;image/jpeg&quot;</span>, <span class="number">0.8</span>);</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="comment">// 圖片物件載入檔案</span></span><br><span class="line">    img.<span class="property">src</span> = <span class="variable constant_">URL</span>.<span class="title function_">createObjectURL</span>(file);</span><br><span class="line">&#125;, <span class="literal">false</span>);</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API">MDN Canvas_API</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>Javascript</category>
+      </categories>
+      <tags>
+        <tag>Javascript</tag>
+        <tag>Canvas</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>如何迭代 Js 物件</title>
     <url>/2020/03/27/JsIteratorObject/</url>
     <content><![CDATA[<h1 id="使用-for…in"><a class="header-anchor" href="#使用-for…in"></a>使用 for…in</h1>
@@ -497,49 +520,6 @@
       </tags>
   </entry>
   <entry>
-    <title>如何將圖片壓縮並下載檔案</title>
-    <url>/2019/12/25/JsPictureCompress/</url>
-    <content><![CDATA[<h1 id="建立-HTML"><a class="header-anchor" href="#建立-HTML"></a>建立 HTML</h1>
-<p>首先在 HTML 建立一個 File Upload 與一個 canvas</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;file&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">&quot;canvas&quot;</span>  <span class="attr">width</span>=<span class="string">&quot;800&quot;</span> <span class="attr">height</span>=<span class="string">&quot;600&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="綁定事件"><a class="header-anchor" href="#綁定事件"></a>綁定事件</h1>
-<p>接下來為 File Upload 綁定事件</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;input&#x27;</span>).<span class="title function_">addEventListener</span>(<span class="string">&#x27;change&#x27;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="comment">// 取得第一個檔案</span></span><br><span class="line">    <span class="keyword">const</span> file= <span class="variable language_">this</span>.<span class="property">files</span>[<span class="number">0</span>];</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 取得 canvas</span></span><br><span class="line">    <span class="keyword">const</span> canvas = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;canvas&#x27;</span>);   </span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 宣告 Image 物件</span></span><br><span class="line">    <span class="keyword">let</span> img = <span class="keyword">new</span> <span class="title class_">Image</span>; </span><br><span class="line"></span><br><span class="line">    <span class="comment">// 建立 Image 載入事件</span></span><br><span class="line">    img.<span class="property">onload</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 在 canvas 載入圖片 </span></span><br><span class="line">        canvas.<span class="title function_">getContext</span>(<span class="string">&#x27;2d&#x27;</span>).<span class="title function_">drawImage</span>(img,<span class="number">0</span>,<span class="number">0</span>,<span class="number">800</span>,<span class="number">600</span>); </span><br><span class="line"></span><br><span class="line">        <span class="comment">// 回收圖片物件</span></span><br><span class="line">        <span class="variable constant_">URL</span>.<span class="title function_">revokeObjectURL</span>(img.<span class="property">src</span>);   </span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 把 canvas 圖片轉成 Blob 格式</span></span><br><span class="line">        canvas.<span class="title function_">toBlob</span>(<span class="function">(<span class="params">blob</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="comment">// 宣告FileReader物件</span></span><br><span class="line">            <span class="keyword">var</span> reader = <span class="keyword">new</span> <span class="title class_">FileReader</span>();</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 建立 FileReader 載入完成事件</span></span><br><span class="line">            reader.<span class="property">onloadend</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">log</span>(reader.<span class="property">result</span>.<span class="title function_">split</span>(<span class="string">&quot;,&quot;</span>)[<span class="number">1</span>]);</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            <span class="comment">// 讀取 Blob 格式物件</span></span><br><span class="line">            reader.<span class="title function_">readAsDataURL</span>(blob);</span><br><span class="line">        &#125;, <span class="string">&quot;image/jpeg&quot;</span>, <span class="number">0.8</span>);</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="comment">// 圖片物件載入檔案</span></span><br><span class="line">    img.<span class="property">src</span> = <span class="variable constant_">URL</span>.<span class="title function_">createObjectURL</span>(file);</span><br><span class="line">&#125;, <span class="literal">false</span>);</span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API">MDN Canvas_API</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>Javascript</category>
-      </categories>
-      <tags>
-        <tag>Javascript</tag>
-        <tag>Canvas</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>如何使用 Regex 群組</title>
-    <url>/2022/05/22/JsRegexGroup/</url>
-    <content><![CDATA[<h1 id="使用-Regex-群組"><a class="header-anchor" href="#使用-Regex-群組"></a>使用 Regex 群組</h1>
-<p>群組方法用法如下</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 建立規則</span></span><br><span class="line"><span class="keyword">var</span> myRegexp = <span class="regexp">/(?&lt;群組名稱&gt;.*)Test/g</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 執行規則</span></span><br><span class="line"><span class="keyword">var</span> match =  myRegexp.<span class="title function_">exec</span>(<span class="string">&#x27;123Test&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 取得執行結果 output: 123</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(match.<span class="property">groups</span>.群組名稱);</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Groups_and_Ranges">MDN</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>Javascript</category>
-      </categories>
-      <tags>
-        <tag>Javascript</tag>
-        <tag>Regex</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Linux IBM i Access Odbc 手動安裝</title>
     <url>/2021/10/05/LinuxIbmIAccessOdbc/</url>
     <content><![CDATA[<h1 id="配置-Odbc-元件"><a class="header-anchor" href="#配置-Odbc-元件"></a>配置 Odbc 元件</h1>
@@ -566,6 +546,26 @@
         <tag>Ubuntu</tag>
         <tag>Odbc</tag>
         <tag>IBM i Access</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>如何使用 Regex 群組</title>
+    <url>/2022/05/22/JsRegexGroup/</url>
+    <content><![CDATA[<h1 id="使用-Regex-群組"><a class="header-anchor" href="#使用-Regex-群組"></a>使用 Regex 群組</h1>
+<p>群組方法用法如下</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 建立規則</span></span><br><span class="line"><span class="keyword">var</span> myRegexp = <span class="regexp">/(?&lt;群組名稱&gt;.*)Test/g</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 執行規則</span></span><br><span class="line"><span class="keyword">var</span> match =  myRegexp.<span class="title function_">exec</span>(<span class="string">&#x27;123Test&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 取得執行結果 output: 123</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(match.<span class="property">groups</span>.群組名稱);</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Groups_and_Ranges">MDN</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>Javascript</category>
+      </categories>
+      <tags>
+        <tag>Javascript</tag>
+        <tag>Regex</tag>
       </tags>
   </entry>
   <entry>
@@ -713,8 +713,8 @@ plink -v -x -a -T -C -noagent -ssh -pw "[密碼]" -P 50893 -L [本地端口]:[�
       </tags>
   </entry>
   <entry>
-    <title>使用 DMV 查询 Index 分佈</title>
-    <url>/2025/01/01/MsSqlIndex/</url>
+    <title>使用 DMV 查询 Index 碎片化</title>
+    <url>/2025/01/01/MsSqlIndexFragmentation/</url>
     <content><![CDATA[<h1 id="查询目前-Index-碎片化情形"><a class="header-anchor" href="#查询目前-Index-碎片化情形"></a>查询目前 Index 碎片化情形</h1>
 <p>使用 sys.dm_db_index_physical_stats 查詢資料表碎片化情形</p>
 <span id="more"></span>
@@ -729,13 +729,13 @@ plink -v -x -a -T -C -noagent -ssh -pw "[密碼]" -P 50893 -L [本地端口]:[�
 <p>檢查 avg_page_space_used_in_percent 的值建議介於 60 到 75 之間</p>
 <p>檢查 avg_fragmentation_in_percent 的值建議介於 10 到 15 之間</p>
 <p>索引重組命令:</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> INDEX [Index Name] <span class="keyword">ON</span> [Schema Name].[<span class="keyword">Table</span> Name] REORGANIZE</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> INDEX [Index Name] <span class="keyword">ON</span> [Schema Name].[<span class="keyword">Table</span> Name] REORGANIZE <span class="keyword">WITH</span> (ONLINE <span class="operator">=</span> <span class="keyword">ON</span>, MAXDOP <span class="operator">=</span> <span class="number">4</span>);</span><br></pre></td></tr></table></figure>
 <h1 id="索引重建的時機"><a class="header-anchor" href="#索引重建的時機"></a>索引重建的時機</h1>
 <p>刪除索引重新建立</p>
 <p>檢查 avg_page_space_used_in_percent 的值建議小於 60</p>
 <p>檢查 avg_fragmentation_in_percent 的值建議大於 15</p>
 <p>索引重建命令:</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> INDEX [Index Name] <span class="keyword">ON</span> [Schema Name].[<span class="keyword">Table</span> Name] REBUILD</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> INDEX [Index Name] <span class="keyword">ON</span> [Schema Name].[<span class="keyword">Table</span> Name] REBUILD <span class="keyword">WITH</span> (ONLINE <span class="operator">=</span> <span class="keyword">ON</span>, MAXDOP <span class="operator">=</span> <span class="number">4</span>);</span><br></pre></td></tr></table></figure>
 <div class="note warning"><p>📜 參考資料</p>
 <ol>
 <li>
@@ -842,10 +842,16 @@ plink -v -x -a -T -C -noagent -ssh -pw "[密碼]" -P 50893 -L [本地端口]:[�
 <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="variable">@x</span>.query(<span class="string">&#x27;/Root/row&#x27;</span>);</span><br></pre></td></tr></table></figure>
 <h1 id="modify-變更-JSON-字串中的值"><a class="header-anchor" href="#modify-變更-JSON-字串中的值"></a>modify() 變更 JSON 字串中的值</h1>
 <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SET</span> <span class="variable">@x</span>.modify(<span class="string">&#x27;</span></span><br><span class="line"><span class="string">  replace value of (/Root/row[1]/name/text())[1]</span></span><br><span class="line"><span class="string">  with &quot;new Larry&quot;</span></span><br><span class="line"><span class="string">&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> <span class="variable">@x</span>;</span><br></pre></td></tr></table></figure>
-<h1 id="nodes-集合轉換為資料列集"><a class="header-anchor" href="#nodes-集合轉換為資料列集"></a>nodes() 集合轉換為資料列集</h1>
+<h1 id="集合轉換為資料列集"><a class="header-anchor" href="#集合轉換為資料列集"></a>集合轉換為資料列集</h1>
+<h2 id="nodes"><a class="header-anchor" href="#nodes"></a>nodes()</h2>
 <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> T.C.query(<span class="string">&#x27;.&#x27;</span>)</span><br><span class="line"><span class="keyword">FROM</span> <span class="variable">@x</span>.nodes(<span class="string">&#x27;/Root/row&#x27;</span>) T(c);</span><br></pre></td></tr></table></figure>
-<h1 id="OPENXML-集合轉換為資料列集"><a class="header-anchor" href="#OPENXML-集合轉換為資料列集"></a>OPENXML 集合轉換為資料列集</h1>
+<h2 id="OPENXML"><a class="header-anchor" href="#OPENXML"></a>OPENXML</h2>
 <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">DECLARE</span> <span class="variable">@idoc</span> <span class="type">INT</span>, <span class="variable">@doc</span> <span class="type">VARCHAR</span>(<span class="number">1000</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">SET</span> <span class="variable">@doc</span> <span class="operator">=</span> <span class="string">&#x27;&lt;Root&gt;  </span></span><br><span class="line"><span class="string">    &lt;row id=&quot;1&quot;&gt;&lt;name&gt;Larry&lt;/name&gt;&lt;/row&gt;  </span></span><br><span class="line"><span class="string">    &lt;row id=&quot;2&quot;&gt;&lt;name&gt;moe&lt;/name&gt;&lt;/row&gt;  </span></span><br><span class="line"><span class="string">    &lt;row id=&quot;3&quot; /&gt;  </span></span><br><span class="line"><span class="string">&lt;/Root&gt;&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 載入 XML 文件</span></span><br><span class="line"><span class="keyword">EXEC</span> sp_xml_preparedocument <span class="variable">@idoc</span> OUTPUT, <span class="variable">@doc</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 解析 XML 文件</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span></span><br><span class="line"><span class="keyword">FROM</span> OPENXML(<span class="variable">@idoc</span>, <span class="string">&#x27;/Root/row&#x27;</span>, <span class="number">1</span>) <span class="keyword">WITH</span> (</span><br><span class="line">      id <span class="type">INT</span> <span class="string">&#x27;@id&#x27;</span>,</span><br><span class="line">    name <span class="type">VARCHAR</span>(<span class="number">100</span>) <span class="string">&#x27;name&#x27;</span></span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 清除 XML 文件</span></span><br><span class="line"><span class="keyword">EXEC</span> sp_xml_removedocument <span class="variable">@idoc</span>;</span><br></pre></td></tr></table></figure>
+<h1 id="Base64-字串轉換"><a class="header-anchor" href="#Base64-字串轉換"></a>Base64 字串轉換</h1>
+<p>字串轉 Base64</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="built_in">CAST</span>(N<span class="string">&#x27;&#x27;</span> <span class="keyword">AS</span> XML).<span class="keyword">value</span>(<span class="string">&#x27;xs:base64Binary(xs:hexBinary(sql:column(&quot;bin&quot;)))&#x27;</span>, <span class="string">&#x27;VARCHAR(MAX)&#x27;</span>)</span><br><span class="line"><span class="keyword">FROM</span> (</span><br><span class="line">	<span class="keyword">SELECT</span> <span class="built_in">CAST</span>(N<span class="string">&#x27;測試&#x27;</span> <span class="keyword">AS</span> <span class="type">VARBINARY</span>(MAX)) <span class="keyword">AS</span> bin</span><br><span class="line">	) <span class="keyword">AS</span> t;</span><br></pre></td></tr></table></figure>
+<p>Base64 轉字串</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="built_in">CAST</span>(<span class="built_in">CAST</span>(N<span class="string">&#x27;&#x27;</span> <span class="keyword">AS</span> XML).<span class="keyword">value</span>(<span class="string">&#x27;xs:base64Binary(&quot;LG5mig==&quot;)&#x27;</span>, <span class="string">&#x27;VARBINARY(MAX)&#x27;</span>) <span class="keyword">AS</span> NVARCHAR(MAX))</span><br></pre></td></tr></table></figure>
 <div class="note warning"><p>📜 參考資料</p>
 <ol>
 <li><a href="https://learn.microsoft.com/en-us/sql/t-sql/xml/xml-transact-sql?view=sql-server-ver16">xml (Transact-SQL)</a></li>
@@ -857,32 +863,6 @@ plink -v -x -a -T -C -noagent -ssh -pw "[密碼]" -P 50893 -L [本地端口]:[�
       <tags>
         <tag>MSSQL</tag>
         <tag>XML</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>依字元內碼轉換 Big5 與 Unicode</title>
-    <url>/2022/05/22/NetBig5AndUnicode/</url>
-    <content><![CDATA[<h1 id="轉換-Big5-字元"><a class="header-anchor" href="#轉換-Big5-字元"></a>轉換 Big5 字元</h1>
-<p>Big5 依傳入內碼轉成字元</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 建立兩位元陣列</span></span><br><span class="line"><span class="built_in">byte</span>[] big5Bytes = <span class="keyword">new</span> <span class="built_in">byte</span>[<span class="number">2</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// big5 數字 0 內碼為 A2AF</span></span><br><span class="line"><span class="built_in">string</span> big5Code = <span class="string">&quot;A2AF&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 內碼前兩字轉為16進制</span></span><br><span class="line">big5Bytes[<span class="number">0</span>] = (<span class="built_in">byte</span>)Convert.ToInt32(big5Code.Substring(<span class="number">0</span>, <span class="number">2</span>), <span class="number">16</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 內碼後兩字轉為16進制</span></span><br><span class="line">big5Bytes[<span class="number">1</span>] = (<span class="built_in">byte</span>)Convert.ToInt32(big5Code.Substring(<span class="number">2</span>, <span class="number">2</span>), <span class="number">16</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 建立 big5 編碼</span></span><br><span class="line">Encoding big5 = Encoding.GetEncoding(<span class="number">950</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 轉成字串</span></span><br><span class="line"><span class="built_in">string</span> result = big5.GetString(big5Bytes);</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="轉換-Unicode-字元"><a class="header-anchor" href="#轉換-Unicode-字元"></a>轉換 Unicode 字元</h1>
-<p>Unicode 依傳入內碼轉成字元，與 Big5 轉換的方法雷同，只需調整內碼放置的順序</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 建立兩位元陣列</span></span><br><span class="line"><span class="built_in">byte</span>[] unicodeBytes = <span class="keyword">new</span> <span class="built_in">byte</span>[<span class="number">2</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// Unicode 數字 0 內碼為 FF10</span></span><br><span class="line"><span class="built_in">string</span> unicodeCode = <span class="string">&quot;FF10&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 內碼後兩字轉為16進制</span></span><br><span class="line">unicodeBytes[<span class="number">0</span>] = Convert.ToByte(unicodeCode.Substring(<span class="number">2</span>, <span class="number">2</span>), <span class="number">16</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 內碼前兩字轉為16進制</span></span><br><span class="line">unicodeBytes[<span class="number">1</span>] = Convert.ToByte(unicodeCode.Substring(<span class="number">0</span>, <span class="number">2</span>), <span class="number">16</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 建立 Unicode 編碼</span></span><br><span class="line">Encoding unicode = Encoding.Unicode;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 轉成字串</span></span><br><span class="line"><span class="built_in">string</span> result = unicode.GetString(unicodeBytes);</span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://learn.microsoft.com/en-us/dotnet/api/system.text.encoding.getstring?view=net-8.0">Encoding.GetString Method</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>.Net</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-        <tag>.Net</tag>
-        <tag>Font</tag>
-        <tag>Big5</tag>
-        <tag>Unicode</tag>
       </tags>
   </entry>
   <entry>
@@ -978,6 +958,32 @@ dotnet-dump collect --process-id 1902 -->
         <tag>Linux</tag>
         <tag>.Net</tag>
         <tag>lldb</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>依字元內碼轉換 Big5 與 Unicode</title>
+    <url>/2022/05/22/NetBig5AndUnicode/</url>
+    <content><![CDATA[<h1 id="轉換-Big5-字元"><a class="header-anchor" href="#轉換-Big5-字元"></a>轉換 Big5 字元</h1>
+<p>Big5 依傳入內碼轉成字元</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 建立兩位元陣列</span></span><br><span class="line"><span class="built_in">byte</span>[] big5Bytes = <span class="keyword">new</span> <span class="built_in">byte</span>[<span class="number">2</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// big5 數字 0 內碼為 A2AF</span></span><br><span class="line"><span class="built_in">string</span> big5Code = <span class="string">&quot;A2AF&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 內碼前兩字轉為16進制</span></span><br><span class="line">big5Bytes[<span class="number">0</span>] = (<span class="built_in">byte</span>)Convert.ToInt32(big5Code.Substring(<span class="number">0</span>, <span class="number">2</span>), <span class="number">16</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 內碼後兩字轉為16進制</span></span><br><span class="line">big5Bytes[<span class="number">1</span>] = (<span class="built_in">byte</span>)Convert.ToInt32(big5Code.Substring(<span class="number">2</span>, <span class="number">2</span>), <span class="number">16</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 建立 big5 編碼</span></span><br><span class="line">Encoding big5 = Encoding.GetEncoding(<span class="number">950</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 轉成字串</span></span><br><span class="line"><span class="built_in">string</span> result = big5.GetString(big5Bytes);</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="轉換-Unicode-字元"><a class="header-anchor" href="#轉換-Unicode-字元"></a>轉換 Unicode 字元</h1>
+<p>Unicode 依傳入內碼轉成字元，與 Big5 轉換的方法雷同，只需調整內碼放置的順序</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 建立兩位元陣列</span></span><br><span class="line"><span class="built_in">byte</span>[] unicodeBytes = <span class="keyword">new</span> <span class="built_in">byte</span>[<span class="number">2</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// Unicode 數字 0 內碼為 FF10</span></span><br><span class="line"><span class="built_in">string</span> unicodeCode = <span class="string">&quot;FF10&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 內碼後兩字轉為16進制</span></span><br><span class="line">unicodeBytes[<span class="number">0</span>] = Convert.ToByte(unicodeCode.Substring(<span class="number">2</span>, <span class="number">2</span>), <span class="number">16</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 內碼前兩字轉為16進制</span></span><br><span class="line">unicodeBytes[<span class="number">1</span>] = Convert.ToByte(unicodeCode.Substring(<span class="number">0</span>, <span class="number">2</span>), <span class="number">16</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 建立 Unicode 編碼</span></span><br><span class="line">Encoding unicode = Encoding.Unicode;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 轉成字串</span></span><br><span class="line"><span class="built_in">string</span> result = unicode.GetString(unicodeBytes);</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://learn.microsoft.com/en-us/dotnet/api/system.text.encoding.getstring?view=net-8.0">Encoding.GetString Method</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>.Net</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>.Net</tag>
+        <tag>Font</tag>
+        <tag>Big5</tag>
+        <tag>Unicode</tag>
       </tags>
   </entry>
   <entry>
@@ -1089,6 +1095,9 @@ dotnet-dump collect --process-id 1902 -->
 <figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">sqlpackage /Action:Export /SourceDatabaseName:<span class="string">&quot;[資料庫名稱]&quot;</span> /SourceServerName:<span class="string">&quot;[服務器]&quot;</span> /TargetFile:<span class="string">&quot;[檔案名稱].bacpac&quot;</span></span><br></pre></td></tr></table></figure>
 <p>匯入資料庫</p>
 <figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">sqlpackage /Action:Import /TargetDatabaseName:<span class="string">&quot;[資料庫名稱]&quot;</span> /TargetServerName:<span class="string">&quot;[服務器]&quot;</span> /SourceFile:<span class="string">&quot;[檔案名稱].bacpac&quot;</span></span><br></pre></td></tr></table></figure>
+<h1 id="搜尋額外指定的表"><a class="header-anchor" href="#搜尋額外指定的表"></a>搜尋額外指定的表</h1>
+<p>依資料筆數搜尋可能是主檔的資料表，並產生指令</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT &#x27;/p:TableData=&quot;[&#x27; + s.Name + &#x27;].[&#x27; + t.NAME + &#x27;]&quot; `&#x27; [Package]</span><br><span class="line">	,t.NAME [TableName]</span><br><span class="line">	,s.Name [SchemaName]</span><br><span class="line">	,p.rows [Rows]</span><br><span class="line">	,SUM(a.total_pages) * 8 [TotalSpaceKB]</span><br><span class="line">	,CAST(ROUND(((SUM(a.total_pages) * 8) / 1024.00), 2) AS NUMERIC(36, 2)) [TotalSpaceMB]</span><br><span class="line">	,SUM(a.used_pages) * 8 [UsedSpaceKB]</span><br><span class="line">	,CAST(ROUND(((SUM(a.used_pages) * 8) / 1024.00), 2) AS NUMERIC(36, 2)) [UsedSpaceMB]</span><br><span class="line">	,(SUM(a.total_pages) - SUM(a.used_pages)) * 8 [UnusedSpaceKB]</span><br><span class="line">	,CAST(ROUND(((SUM(a.total_pages) - SUM(a.used_pages)) * 8) / 1024.00, 2) AS NUMERIC(36, 2)) [UnusedSpaceMB]</span><br><span class="line">FROM sys.tables t</span><br><span class="line">INNER JOIN sys.indexes i ON t.OBJECT_ID = i.object_id</span><br><span class="line">INNER JOIN sys.partitions p ON i.object_id = p.OBJECT_ID</span><br><span class="line">	AND i.index_id = p.index_id</span><br><span class="line">INNER JOIN sys.allocation_units a ON p.partition_id = a.container_id</span><br><span class="line">LEFT OUTER JOIN sys.schemas s ON t.schema_id = s.schema_id</span><br><span class="line">WHERE t.NAME NOT LIKE &#x27;dt%&#x27;</span><br><span class="line">	AND t.is_ms_shipped = 0</span><br><span class="line">	AND i.OBJECT_ID &gt; 255</span><br><span class="line">	AND p.rows &gt; [資料筆數]</span><br><span class="line">GROUP BY t.Name</span><br><span class="line">	,s.Name</span><br><span class="line">	,p.Rows</span><br><span class="line">ORDER BY TotalSpaceMB DESC</span><br><span class="line">	,t.Name;</span><br></pre></td></tr></table></figure>
 <h1 id="使用-DACPAC-備份"><a class="header-anchor" href="#使用-DACPAC-備份"></a>使用 DACPAC 備份</h1>
 <p>預設包含數據庫結構，但不包含數據</p>
 <p>匯出資料庫</p>
@@ -1285,30 +1294,6 @@ dotnet-dump collect --process-id 1902 -->
       </tags>
   </entry>
   <entry>
-    <title>使用 Python Script 進行 FontForge 字型檔轉換</title>
-    <url>/2021/10/23/PythonFontForgeTransfer/</url>
-    <content><![CDATA[<h1 id="建立-font-py-檔案"><a class="header-anchor" href="#建立-font-py-檔案"></a>建立 <a href="http://font.py">font.py</a> 檔案</h1>
-<p>使用 python 操作 fontforge 轉換字型檔</p>
-<span id="more"></span>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="comment"># 載入 FontForge 模組</span></span><br><span class="line"><span class="keyword">import</span> fontforge</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定義 main 函數</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():	</span><br><span class="line">	<span class="comment"># 載入參數</span></span><br><span class="line">	fontFilePath = sys.argv[<span class="number">1</span>]	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 開啟字型檔</span></span><br><span class="line">	originFile=fontforge.<span class="built_in">open</span>(fontFilePath)	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 選取 unicode 特定範圍的字型</span></span><br><span class="line">	originFile.selection.select((<span class="string">&quot;ranges&quot;</span>, <span class="string">&quot;unicode&quot;</span>), <span class="number">0xe000</span>, <span class="number">0xf8ff</span>)	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 複製字型至剪貼簿</span></span><br><span class="line">	originFile.copy()	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 建立新的字型檔</span></span><br><span class="line">	newFile=fontforge.font()</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 設定 sfnt_names 參數與原檔一致</span></span><br><span class="line">	newFile.sfnt_names = originFile.sfnt_names	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 設定 encoding 參數與原檔一致</span></span><br><span class="line">	newFile.encoding = originFile.encoding	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 設定 size 參數與原檔一致</span></span><br><span class="line">	newFile.em = originFile.em	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 設定 layers 參數與原檔一致</span></span><br><span class="line">	newFile.layers[<span class="string">&#x27;Fore&#x27;</span>].is_quadratic = originFile.layers[<span class="string">&#x27;Fore&#x27;</span>].is_quadratic	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 選取 unicode 特定範圍的字型</span></span><br><span class="line">	newFile.selection.select((<span class="string">&quot;ranges&quot;</span>, <span class="string">&quot;unicode&quot;</span>), <span class="number">0xe000</span>, <span class="number">0xf8ff</span>)	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 貼上剪貼簿內容</span></span><br><span class="line">	newFile.paste()	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 設定字型名稱</span></span><br><span class="line">	newFile.fontname=<span class="string">&quot;EUDC&quot;</span>	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 保存為woff字型</span></span><br><span class="line">	newFile.generate(<span class="string">&quot;EUDC.woff&quot;</span>)	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 關閉字型檔</span></span><br><span class="line">	originFile.close()	</span><br><span class="line"></span><br><span class="line"><span class="comment"># 執行 main 函數</span></span><br><span class="line">main()	</span><br></pre></td></tr></table></figure>
-<h1 id="執行-Python-Script"><a class="header-anchor" href="#執行-Python-Script"></a>執行 Python Script</h1>
-<p>使用 FontForge 執行 Python Script</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">fontforge -script font.py [FontFilePath]</span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://fontforge.org/docs/scripting/python.html">Python Scripting</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>Python</category>
-      </categories>
-      <tags>
-        <tag>Font</tag>
-        <tag>Python</tag>
-        <tag>FontForge</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>使用 Flask-SQLAlchemy 連接 MSSQL 進行 CRUD</title>
     <url>/2023/07/07/PythonFlaskSQLAlchemy/</url>
     <content><![CDATA[<h1 id="安裝套件"><a class="header-anchor" href="#安裝套件"></a>安裝套件</h1>
@@ -1335,6 +1320,30 @@ db.create_all() -->
         <tag>MSSQL</tag>
         <tag>Python</tag>
         <tag>Flask</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>使用 Python Script 進行 FontForge 字型檔轉換</title>
+    <url>/2021/10/23/PythonFontForgeTransfer/</url>
+    <content><![CDATA[<h1 id="建立-font-py-檔案"><a class="header-anchor" href="#建立-font-py-檔案"></a>建立 <a href="http://font.py">font.py</a> 檔案</h1>
+<p>使用 python 操作 fontforge 轉換字型檔</p>
+<span id="more"></span>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="comment"># 載入 FontForge 模組</span></span><br><span class="line"><span class="keyword">import</span> fontforge</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定義 main 函數</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():	</span><br><span class="line">	<span class="comment"># 載入參數</span></span><br><span class="line">	fontFilePath = sys.argv[<span class="number">1</span>]	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 開啟字型檔</span></span><br><span class="line">	originFile=fontforge.<span class="built_in">open</span>(fontFilePath)	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 選取 unicode 特定範圍的字型</span></span><br><span class="line">	originFile.selection.select((<span class="string">&quot;ranges&quot;</span>, <span class="string">&quot;unicode&quot;</span>), <span class="number">0xe000</span>, <span class="number">0xf8ff</span>)	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 複製字型至剪貼簿</span></span><br><span class="line">	originFile.copy()	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 建立新的字型檔</span></span><br><span class="line">	newFile=fontforge.font()</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 設定 sfnt_names 參數與原檔一致</span></span><br><span class="line">	newFile.sfnt_names = originFile.sfnt_names	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 設定 encoding 參數與原檔一致</span></span><br><span class="line">	newFile.encoding = originFile.encoding	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 設定 size 參數與原檔一致</span></span><br><span class="line">	newFile.em = originFile.em	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 設定 layers 參數與原檔一致</span></span><br><span class="line">	newFile.layers[<span class="string">&#x27;Fore&#x27;</span>].is_quadratic = originFile.layers[<span class="string">&#x27;Fore&#x27;</span>].is_quadratic	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 選取 unicode 特定範圍的字型</span></span><br><span class="line">	newFile.selection.select((<span class="string">&quot;ranges&quot;</span>, <span class="string">&quot;unicode&quot;</span>), <span class="number">0xe000</span>, <span class="number">0xf8ff</span>)	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 貼上剪貼簿內容</span></span><br><span class="line">	newFile.paste()	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 設定字型名稱</span></span><br><span class="line">	newFile.fontname=<span class="string">&quot;EUDC&quot;</span>	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 保存為woff字型</span></span><br><span class="line">	newFile.generate(<span class="string">&quot;EUDC.woff&quot;</span>)	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 關閉字型檔</span></span><br><span class="line">	originFile.close()	</span><br><span class="line"></span><br><span class="line"><span class="comment"># 執行 main 函數</span></span><br><span class="line">main()	</span><br></pre></td></tr></table></figure>
+<h1 id="執行-Python-Script"><a class="header-anchor" href="#執行-Python-Script"></a>執行 Python Script</h1>
+<p>使用 FontForge 執行 Python Script</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">fontforge -script font.py [FontFilePath]</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://fontforge.org/docs/scripting/python.html">Python Scripting</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Font</tag>
+        <tag>Python</tag>
+        <tag>FontForge</tag>
       </tags>
   </entry>
   <entry>
@@ -1430,27 +1439,6 @@ db.create_all() -->
       </tags>
   </entry>
   <entry>
-    <title>WSL2 移動至其它硬碟</title>
-    <url>/2023/05/05/Wsl2Disk/</url>
-    <content><![CDATA[<h1 id="列出已安裝的-Linux-發行版"><a class="header-anchor" href="#列出已安裝的-Linux-發行版"></a>列出已安裝的 Linux 發行版</h1>
-<p>執行下方命令</p>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">wsl <span class="literal">-l</span> <span class="literal">-v</span></span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="遷移-WSL2-至磁碟機-D"><a class="header-anchor" href="#遷移-WSL2-至磁碟機-D"></a>遷移 WSL2 至磁碟機 D</h1>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 導出已安裝的 Linux 發行版壓縮檔</span></span><br><span class="line">wsl <span class="literal">--export</span> <span class="string">&quot;Ubuntu-22.04&quot;</span> d:\ubuntu.tar</span><br><span class="line"></span><br><span class="line"><span class="comment"># 移除 WSL</span></span><br><span class="line">wsl <span class="literal">--unregister</span> <span class="string">&quot;Ubuntu-22.04&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 建立解壓縮的目錄</span></span><br><span class="line">mkdir d:\Ubuntu</span><br><span class="line"></span><br><span class="line"><span class="comment"># Linux 發行版壓縮檔解壓縮至新目錄後加入 WSL</span></span><br><span class="line">wsl <span class="literal">--import</span> <span class="string">&quot;Ubuntu-22.04&quot;</span> d:\ubuntu d:\ubuntu.tar</span><br><span class="line"></span><br><span class="line"><span class="comment"># 刪除 Linux 發行版壓縮檔</span></span><br><span class="line"><span class="built_in">del</span> d:\ubuntu.tar</span><br><span class="line"></span><br><span class="line"><span class="comment"># 因重新建立 WSL 會以 root 為預設帳戶，需重新設定預設帳戶</span></span><br><span class="line">ubuntu2204.exe config <span class="literal">--default-user</span> ubuntu</span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://learn.microsoft.com/zh-tw/windows/wsl/use-custom-distro">匯入任何要與 WSL 搭配使用的 Linux 發行版本</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>Wsl2</category>
-      </categories>
-      <tags>
-        <tag>Wsl2</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Whistle 代理規則使用</title>
     <url>/2023/01/20/WhistleProxyRule/</url>
     <content><![CDATA[<h1 id="設定-Dns-代理"><a class="header-anchor" href="#設定-Dns-代理"></a>設定 Dns 代理</h1>
@@ -1513,6 +1501,27 @@ db.create_all() -->
       </categories>
       <tags>
         <tag>Whistle</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>WSL2 移動至其它硬碟</title>
+    <url>/2023/05/05/Wsl2Disk/</url>
+    <content><![CDATA[<h1 id="列出已安裝的-Linux-發行版"><a class="header-anchor" href="#列出已安裝的-Linux-發行版"></a>列出已安裝的 Linux 發行版</h1>
+<p>執行下方命令</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">wsl <span class="literal">-l</span> <span class="literal">-v</span></span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="遷移-WSL2-至磁碟機-D"><a class="header-anchor" href="#遷移-WSL2-至磁碟機-D"></a>遷移 WSL2 至磁碟機 D</h1>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 導出已安裝的 Linux 發行版壓縮檔</span></span><br><span class="line">wsl <span class="literal">--export</span> <span class="string">&quot;Ubuntu-22.04&quot;</span> d:\ubuntu.tar</span><br><span class="line"></span><br><span class="line"><span class="comment"># 移除 WSL</span></span><br><span class="line">wsl <span class="literal">--unregister</span> <span class="string">&quot;Ubuntu-22.04&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 建立解壓縮的目錄</span></span><br><span class="line">mkdir d:\Ubuntu</span><br><span class="line"></span><br><span class="line"><span class="comment"># Linux 發行版壓縮檔解壓縮至新目錄後加入 WSL</span></span><br><span class="line">wsl <span class="literal">--import</span> <span class="string">&quot;Ubuntu-22.04&quot;</span> d:\ubuntu d:\ubuntu.tar</span><br><span class="line"></span><br><span class="line"><span class="comment"># 刪除 Linux 發行版壓縮檔</span></span><br><span class="line"><span class="built_in">del</span> d:\ubuntu.tar</span><br><span class="line"></span><br><span class="line"><span class="comment"># 因重新建立 WSL 會以 root 為預設帳戶，需重新設定預設帳戶</span></span><br><span class="line">ubuntu2204.exe config <span class="literal">--default-user</span> ubuntu</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://learn.microsoft.com/zh-tw/windows/wsl/use-custom-distro">匯入任何要與 WSL 搭配使用的 Linux 發行版本</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>Wsl2</category>
+      </categories>
+      <tags>
+        <tag>Wsl2</tag>
       </tags>
   </entry>
   <entry>

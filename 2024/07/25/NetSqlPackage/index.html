@@ -28,7 +28,7 @@
 <meta property="og:description" content="安裝 SqlPackage 1dotnet tool install -g microsoft.sqlpackage 查詢版本 1sqlpackage &#x2F;Version">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-07-25T18:00:00.000Z">
-<meta property="article:modified_time" content="2025-01-01T14:26:29.389Z">
+<meta property="article:modified_time" content="2025-01-04T15:29:05.294Z">
 <meta property="article:author" content="Stephen">
 <meta property="article:tag" content=".Net">
 <meta property="article:tag" content="SqlPackage">
@@ -142,7 +142,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%9D-SqlPackage"><span class="nav-number">1.</span> <span class="nav-text">安裝 SqlPackage</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9F%A5%E8%A9%A2%E7%89%88%E6%9C%AC"><span class="nav-number">2.</span> <span class="nav-text">查詢版本</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-BACPAC-%E5%82%99%E4%BB%BD"><span class="nav-number">3.</span> <span class="nav-text">使用 BACPAC 備份</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-DACPAC-%E5%82%99%E4%BB%BD"><span class="nav-number">4.</span> <span class="nav-text">使用 DACPAC 備份</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%9D-SqlPackage"><span class="nav-number">1.</span> <span class="nav-text">安裝 SqlPackage</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9F%A5%E8%A9%A2%E7%89%88%E6%9C%AC"><span class="nav-number">2.</span> <span class="nav-text">查詢版本</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-BACPAC-%E5%82%99%E4%BB%BD"><span class="nav-number">3.</span> <span class="nav-text">使用 BACPAC 備份</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%90%9C%E5%B0%8B%E9%A1%8D%E5%A4%96%E6%8C%87%E5%AE%9A%E7%9A%84%E8%A1%A8"><span class="nav-number">4.</span> <span class="nav-text">搜尋額外指定的表</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-DACPAC-%E5%82%99%E4%BB%BD"><span class="nav-number">5.</span> <span class="nav-text">使用 DACPAC 備份</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -182,8 +182,8 @@
 	</div>
 	<ul class="links-of-blogroll-list recent-posts-list">
 	        <li class="my-links-of-blogroll-item">
-		    <a href="/2025/01/01/MsSqlIndex/" title="使用 DMV 查询 Index 分佈" target="">
-		    使用 DMV 查询 Index 分佈
+		    <a href="/2025/01/01/MsSqlIndexFragmentation/" title="使用 DMV 查询 Index 碎片化" target="">
+		    使用 DMV 查询 Index 碎片化
 		    </a>
 		</li>
 	        <li class="my-links-of-blogroll-item">
@@ -265,7 +265,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-01-01 14:26:29" itemprop="dateModified" datetime="2025-01-01T14:26:29+00:00">2025-01-01</time>
+      <time title="Modified: 2025-01-04 15:29:05" itemprop="dateModified" datetime="2025-01-04T15:29:05+00:00">2025-01-04</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -284,7 +284,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Word count in article: </span>
-      <span>197</span>
+      <span>351</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
@@ -312,6 +312,9 @@
 <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlpackage /Action:Export /SourceDatabaseName:<span class="string">&quot;[資料庫名稱]&quot;</span> /SourceServerName:<span class="string">&quot;[服務器]&quot;</span> /TargetFile:<span class="string">&quot;[檔案名稱].bacpac&quot;</span></span><br></pre></td></tr></table></figure>
 <p>匯入資料庫</p>
 <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlpackage /Action:Import /TargetDatabaseName:<span class="string">&quot;[資料庫名稱]&quot;</span> /TargetServerName:<span class="string">&quot;[服務器]&quot;</span> /SourceFile:<span class="string">&quot;[檔案名稱].bacpac&quot;</span></span><br></pre></td></tr></table></figure>
+<h1 id="搜尋額外指定的表"><a class="header-anchor" href="#搜尋額外指定的表"></a>搜尋額外指定的表</h1>
+<p>依資料筆數搜尋可能是主檔的資料表，並產生指令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">SELECT &#x27;/p:TableData=&quot;[&#x27; + s.Name + &#x27;].[&#x27; + t.NAME + &#x27;]&quot; `&#x27; [Package]</span><br><span class="line">	,t.NAME [TableName]</span><br><span class="line">	,s.Name [SchemaName]</span><br><span class="line">	,p.rows [Rows]</span><br><span class="line">	,SUM(a.total_pages) * 8 [TotalSpaceKB]</span><br><span class="line">	,CAST(ROUND(((SUM(a.total_pages) * 8) / 1024.00), 2) AS NUMERIC(36, 2)) [TotalSpaceMB]</span><br><span class="line">	,SUM(a.used_pages) * 8 [UsedSpaceKB]</span><br><span class="line">	,CAST(ROUND(((SUM(a.used_pages) * 8) / 1024.00), 2) AS NUMERIC(36, 2)) [UsedSpaceMB]</span><br><span class="line">	,(SUM(a.total_pages) - SUM(a.used_pages)) * 8 [UnusedSpaceKB]</span><br><span class="line">	,CAST(ROUND(((SUM(a.total_pages) - SUM(a.used_pages)) * 8) / 1024.00, 2) AS NUMERIC(36, 2)) [UnusedSpaceMB]</span><br><span class="line">FROM sys.tables t</span><br><span class="line">INNER JOIN sys.indexes i ON t.OBJECT_ID = i.object_id</span><br><span class="line">INNER JOIN sys.partitions p ON i.object_id = p.OBJECT_ID</span><br><span class="line">	AND i.index_id = p.index_id</span><br><span class="line">INNER JOIN sys.allocation_units a ON p.partition_id = a.container_id</span><br><span class="line">LEFT OUTER JOIN sys.schemas s ON t.schema_id = s.schema_id</span><br><span class="line">WHERE t.NAME NOT LIKE &#x27;dt%&#x27;</span><br><span class="line">	AND t.is_ms_shipped = 0</span><br><span class="line">	AND i.OBJECT_ID &gt; 255</span><br><span class="line">	AND p.rows &gt; [資料筆數]</span><br><span class="line">GROUP BY t.Name</span><br><span class="line">	,s.Name</span><br><span class="line">	,p.Rows</span><br><span class="line">ORDER BY TotalSpaceMB DESC</span><br><span class="line">	,t.Name;</span><br></pre></td></tr></table></figure>
 <h1 id="使用-DACPAC-備份"><a class="header-anchor" href="#使用-DACPAC-備份"></a>使用 DACPAC 備份</h1>
 <p>預設包含數據庫結構，但不包含數據</p>
 <p>匯出資料庫</p>
@@ -400,7 +403,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">40 mins.</span>
+    <span title="Reading time total">41 mins.</span>
   </span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>

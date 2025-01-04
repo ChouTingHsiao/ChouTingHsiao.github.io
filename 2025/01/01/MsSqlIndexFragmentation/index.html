@@ -22,27 +22,27 @@
 
     <meta name="description" content="查询目前 Index 碎片化情形 使用 sys.dm_db_index_physical_stats 查詢資料表碎片化情形">
 <meta property="og:type" content="article">
-<meta property="og:title" content="使用 DMV 查询 Index 分佈">
-<meta property="og:url" content="https://choutinghsiao.github.io/2025/01/01/MsSqlIndex/index.html">
+<meta property="og:title" content="使用 DMV 查询 Index 碎片化">
+<meta property="og:url" content="https://choutinghsiao.github.io/2025/01/01/MsSqlIndexFragmentation/index.html">
 <meta property="og:site_name" content="Stephen&#39;s Note">
 <meta property="og:description" content="查询目前 Index 碎片化情形 使用 sys.dm_db_index_physical_stats 查詢資料表碎片化情形">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2025-01-01T20:00:00.000Z">
-<meta property="article:modified_time" content="2025-01-01T14:26:29.388Z">
+<meta property="article:modified_time" content="2025-01-04T15:29:05.293Z">
 <meta property="article:author" content="Stephen">
 <meta property="article:tag" content="MSSQL">
 <meta property="article:tag" content="DMV">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://choutinghsiao.github.io/2025/01/01/MsSqlIndex/">
+<link rel="canonical" href="https://choutinghsiao.github.io/2025/01/01/MsSqlIndexFragmentation/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://choutinghsiao.github.io/2025/01/01/MsSqlIndex/","path":"2025/01/01/MsSqlIndex/","title":"使用 DMV 查询 Index 分佈"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://choutinghsiao.github.io/2025/01/01/MsSqlIndexFragmentation/","path":"2025/01/01/MsSqlIndexFragmentation/","title":"使用 DMV 查询 Index 碎片化"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>使用 DMV 查询 Index 分佈 | Stephen's Note</title>
+<title>使用 DMV 查询 Index 碎片化 | Stephen's Note</title>
   
 
 
@@ -182,8 +182,8 @@
 	</div>
 	<ul class="links-of-blogroll-list recent-posts-list">
 	        <li class="my-links-of-blogroll-item">
-		    <a href="/2025/01/01/MsSqlIndex/" title="使用 DMV 查询 Index 分佈" target="">
-		    使用 DMV 查询 Index 分佈
+		    <a href="/2025/01/01/MsSqlIndexFragmentation/" title="使用 DMV 查询 Index 碎片化" target="">
+		    使用 DMV 查询 Index 碎片化
 		    </a>
 		</li>
 	        <li class="my-links-of-blogroll-item">
@@ -229,7 +229,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://choutinghsiao.github.io/2025/01/01/MsSqlIndex/">
+    <link itemprop="mainEntityOfPage" href="https://choutinghsiao.github.io/2025/01/01/MsSqlIndexFragmentation/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -242,12 +242,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="使用 DMV 查询 Index 分佈 | Stephen's Note">
+      <meta itemprop="name" content="使用 DMV 查询 Index 碎片化 | Stephen's Note">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          使用 DMV 查询 Index 分佈
+          使用 DMV 查询 Index 碎片化
         </h1>
 
         <div class="post-meta-container">
@@ -257,9 +257,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2025-01-01 20:00:00 / Modified: 14:26:29" itemprop="dateCreated datePublished" datetime="2025-01-01T20:00:00+00:00">2025-01-01</time>
+      <time title="Created: 2025-01-01 20:00:00" itemprop="dateCreated datePublished" datetime="2025-01-01T20:00:00+00:00">2025-01-01</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2025-01-04 15:29:05" itemprop="dateModified" datetime="2025-01-04T15:29:05+00:00">2025-01-04</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -278,7 +284,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Word count in article: </span>
-      <span>349</span>
+      <span>359</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
@@ -309,13 +315,13 @@
 <p>檢查 avg_page_space_used_in_percent 的值建議介於 60 到 75 之間</p>
 <p>檢查 avg_fragmentation_in_percent 的值建議介於 10 到 15 之間</p>
 <p>索引重組命令:</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> INDEX [Index Name] <span class="keyword">ON</span> [Schema Name].[<span class="keyword">Table</span> Name] REORGANIZE</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> INDEX [Index Name] <span class="keyword">ON</span> [Schema Name].[<span class="keyword">Table</span> Name] REORGANIZE <span class="keyword">WITH</span> (ONLINE <span class="operator">=</span> <span class="keyword">ON</span>, MAXDOP <span class="operator">=</span> <span class="number">4</span>);</span><br></pre></td></tr></table></figure>
 <h1 id="索引重建的時機"><a class="header-anchor" href="#索引重建的時機"></a>索引重建的時機</h1>
 <p>刪除索引重新建立</p>
 <p>檢查 avg_page_space_used_in_percent 的值建議小於 60</p>
 <p>檢查 avg_fragmentation_in_percent 的值建議大於 15</p>
 <p>索引重建命令:</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> INDEX [Index Name] <span class="keyword">ON</span> [Schema Name].[<span class="keyword">Table</span> Name] REBUILD</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> INDEX [Index Name] <span class="keyword">ON</span> [Schema Name].[<span class="keyword">Table</span> Name] REBUILD <span class="keyword">WITH</span> (ONLINE <span class="operator">=</span> <span class="keyword">ON</span>, MAXDOP <span class="operator">=</span> <span class="number">4</span>);</span><br></pre></td></tr></table></figure>
 <div class="note warning"><p>📜 參考資料</p>
 <ol>
 <li>
@@ -357,7 +363,7 @@
   </li>
   <li class="post-copyright-link">
       <strong>Post link: </strong>
-      <a href="https://choutinghsiao.github.io/2025/01/01/MsSqlIndex/" title="使用 DMV 查询 Index 分佈">https://choutinghsiao.github.io/2025/01/01/MsSqlIndex/</a>
+      <a href="https://choutinghsiao.github.io/2025/01/01/MsSqlIndexFragmentation/" title="使用 DMV 查询 Index 碎片化">https://choutinghsiao.github.io/2025/01/01/MsSqlIndexFragmentation/</a>
   </li>
   <li class="post-copyright-license">
       <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
@@ -415,7 +421,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">40 mins.</span>
+    <span title="Reading time total">41 mins.</span>
   </span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
