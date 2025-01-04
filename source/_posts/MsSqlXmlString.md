@@ -29,7 +29,7 @@ SELECT @x.value('(/Root/row/@id)[1]', 'int');
 SELECT @x.query('/Root/row');
 ```
 
-#  modify() 變更 JSON 字串中的值
+# modify() 變更 JSON 字串中的值
 ```sql
 SET @x.modify('
   replace value of (/Root/row[1]/name/text())[1]
@@ -39,13 +39,15 @@ SET @x.modify('
 SELECT @x;
 ```
 
-#  nodes() 集合轉換為資料列集
+# 集合轉換為資料列集
+
+## nodes()
 ```sql
 SELECT T.C.query('.')
 FROM @x.nodes('/Root/row') T(c);
 ```
 
-#  OPENXML 集合轉換為資料列集
+## OPENXML
 ```sql
 DECLARE @idoc INT, @doc VARCHAR(1000);
 
@@ -67,6 +69,23 @@ FROM OPENXML(@idoc, '/Root/row', 1) WITH (
 
 -- 清除 XML 文件
 EXEC sp_xml_removedocument @idoc;
+```
+
+# Base64 字串轉換
+
+字串轉 Base64
+
+```sql
+SELECT CAST(N'' AS XML).value('xs:base64Binary(xs:hexBinary(sql:column("bin")))', 'VARCHAR(MAX)')
+FROM (
+	SELECT CAST(N'測試' AS VARBINARY(MAX)) AS bin
+	) AS t;
+```
+
+Base64 轉字串
+
+```sql
+SELECT CAST(CAST(N'' AS XML).value('xs:base64Binary("LG5mig==")', 'VARBINARY(MAX)') AS NVARCHAR(MAX))
 ```
 
 {% note warning %}
