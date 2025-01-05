@@ -71,7 +71,7 @@ FROM OPENXML(@idoc, '/Root/row', 1) WITH (
 EXEC sp_xml_removedocument @idoc;
 ```
 
-# Base64 字串轉換
+# Base64 字串轉換(UTF-16)
 
 字串轉 Base64
 
