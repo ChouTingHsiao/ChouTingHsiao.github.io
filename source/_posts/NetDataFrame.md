@@ -1,8 +1,8 @@
 ---
 title: 在 Polyglot Notebooks 使用 DataFrame
 date: 2024-05-05 11:10:00
-categories: Polyglot Notebooks
-tags: [Polyglot Notebooks, DataFrame]
+categories: .Net
+tags: [.Net, DataFrame, Polyglot Notebooks]
 ---
 
 # 載入 CSV 資料

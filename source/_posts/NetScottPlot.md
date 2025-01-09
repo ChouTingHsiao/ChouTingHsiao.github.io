@@ -1,8 +1,8 @@
 ---
 title: 在 Polyglot Notebooks 使用 ScottPlot
 date: 2024-06-01 19:10:00
-categories: Polyglot Notebooks
-tags: [Polyglot Notebooks, ScottPlot]
+categories: .Net
+tags: [.Net, ScottPlot, Polyglot Notebooks]
 ---
 
 # 初始化設定
