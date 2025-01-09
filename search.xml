@@ -1,67 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Angular Live Reload 在 Ubuntu 沒反應</title>
-    <url>/2020/08/31/AngularLiveReload/</url>
-    <content><![CDATA[<h1 id="確認-inotify-設定"><a class="header-anchor" href="#確認-inotify-設定"></a>確認 inotify 設定</h1>
-<p>在 Linux 上，默認情況下，Listen 使用 inotify 監視目錄中的更改</p>
-<p>Ubuntu 的 inotify 預設限制為8192</p>
-<p>您可以通過執行以下操作獲取目前的 inotify 文件監視限制：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cat</span> /proc/sys/fs/inotify/max_user_watches</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="調整-inotify-設定"><a class="header-anchor" href="#調整-inotify-設定"></a>調整 inotify 設定</h1>
-<p>如果此限制不足以監視目錄中的所有文件，則必須增加該限制以使其正常工作</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo sysctl fs.inotify.max_user_watches=524288 </span><br><span class="line">sudo sysctl -p</span><br></pre></td></tr></table></figure>
-<p>如果想讓自己的限制永久化，請輸入以下命令:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> fs.inotify.max_user_watches=524288 | sudo <span class="built_in">tee</span> -a /etc/sysctl.conf</span><br><span class="line">sudo sysctl -p</span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://askubuntu.com/questions/770374/user-limit-of-inotify-watches-reached-on-ubuntu-16-04">User limit of inotify watches reached on Ubuntu 16.04</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>Angular</category>
-      </categories>
-      <tags>
-        <tag>Angular</tag>
-        <tag>Linux</tag>
-        <tag>Ubuntu</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>如何在 pi 3b+ 上執行 Angular Protractor</title>
-    <url>/2019/12/25/AngularProtractorOnPi/</url>
-    <content><![CDATA[<h1 id="安裝-WebDriver"><a class="header-anchor" href="#安裝-WebDriver"></a>安裝 WebDriver</h1>
-<p>首先依照硬體架構從<a href="https://launchpad.net/ubuntu/trusty/+package/chromium-chromedriver">launchpad.net</a></p>
-<p>下載 Chromium 瀏覽器專用的 WebDriver</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget http://launchpadlibrarian.net/361669488/chromium-chromedriver_65.0.3325.181-0ubuntu0.14.04.1_armhf.deb</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<p>接下來進行安裝</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo dpkg -i chromium-chromedriver_65.0.3325.181-0ubuntu0.14.04.1_armhf.deb</span><br></pre></td></tr></table></figure>
-<p>預設會放置在</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/usr/lib/chromium-browser/chromedriver</span><br></pre></td></tr></table></figure>
-<h1 id="設定-protractor"><a class="header-anchor" href="#設定-protractor"></a>設定 protractor</h1>
-<p>接下來更改 protractor.conf.js 的設定，加入下方設定</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">chromeDriver: &#x27;/usr/lib/chromium-browser/chromedriver&#x27;</span><br></pre></td></tr></table></figure>
-<p>運行 Protractor 時使用 --no-webdriver-update 選項</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ng e2e --no-webdriver-update</span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://blog.gtwang.org/iot/raspberry-pi/raspberry-pi-install-chromium-chrome-driver/">樹莓派 Raspberry Pi 使用 Python + Selenium 控制 Chromium 瀏覽器</a></li>
-<li><a href="https://github.com/angular/protractor/blob/master/lib/config.ts">Protractor config 設定參考</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>Angular</category>
-      </categories>
-      <tags>
-        <tag>Angular</tag>
-        <tag>Linux</tag>
-        <tag>Pi</tag>
-        <tag>Protractor</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>使用 ADB 命令</title>
     <url>/2024/05/05/AndroidAdb/</url>
     <content><![CDATA[<!-- 宿主機: localhost 10.0.2.2 -->
@@ -127,6 +66,67 @@
       <tags>
         <tag>Android</tag>
         <tag>adb</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Angular Live Reload 在 Ubuntu 沒反應</title>
+    <url>/2020/08/31/AngularLiveReload/</url>
+    <content><![CDATA[<h1 id="確認-inotify-設定"><a class="header-anchor" href="#確認-inotify-設定"></a>確認 inotify 設定</h1>
+<p>在 Linux 上，默認情況下，Listen 使用 inotify 監視目錄中的更改</p>
+<p>Ubuntu 的 inotify 預設限制為8192</p>
+<p>您可以通過執行以下操作獲取目前的 inotify 文件監視限制：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cat</span> /proc/sys/fs/inotify/max_user_watches</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="調整-inotify-設定"><a class="header-anchor" href="#調整-inotify-設定"></a>調整 inotify 設定</h1>
+<p>如果此限制不足以監視目錄中的所有文件，則必須增加該限制以使其正常工作</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo sysctl fs.inotify.max_user_watches=524288 </span><br><span class="line">sudo sysctl -p</span><br></pre></td></tr></table></figure>
+<p>如果想讓自己的限制永久化，請輸入以下命令:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> fs.inotify.max_user_watches=524288 | sudo <span class="built_in">tee</span> -a /etc/sysctl.conf</span><br><span class="line">sudo sysctl -p</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://askubuntu.com/questions/770374/user-limit-of-inotify-watches-reached-on-ubuntu-16-04">User limit of inotify watches reached on Ubuntu 16.04</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>Angular</category>
+      </categories>
+      <tags>
+        <tag>Angular</tag>
+        <tag>Linux</tag>
+        <tag>Ubuntu</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>如何在 pi 3b+ 上執行 Angular Protractor</title>
+    <url>/2019/12/25/AngularProtractorOnPi/</url>
+    <content><![CDATA[<h1 id="安裝-WebDriver"><a class="header-anchor" href="#安裝-WebDriver"></a>安裝 WebDriver</h1>
+<p>首先依照硬體架構從<a href="https://launchpad.net/ubuntu/trusty/+package/chromium-chromedriver">launchpad.net</a></p>
+<p>下載 Chromium 瀏覽器專用的 WebDriver</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget http://launchpadlibrarian.net/361669488/chromium-chromedriver_65.0.3325.181-0ubuntu0.14.04.1_armhf.deb</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<p>接下來進行安裝</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo dpkg -i chromium-chromedriver_65.0.3325.181-0ubuntu0.14.04.1_armhf.deb</span><br></pre></td></tr></table></figure>
+<p>預設會放置在</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/usr/lib/chromium-browser/chromedriver</span><br></pre></td></tr></table></figure>
+<h1 id="設定-protractor"><a class="header-anchor" href="#設定-protractor"></a>設定 protractor</h1>
+<p>接下來更改 protractor.conf.js 的設定，加入下方設定</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">chromeDriver: &#x27;/usr/lib/chromium-browser/chromedriver&#x27;</span><br></pre></td></tr></table></figure>
+<p>運行 Protractor 時使用 --no-webdriver-update 選項</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ng e2e --no-webdriver-update</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://blog.gtwang.org/iot/raspberry-pi/raspberry-pi-install-chromium-chrome-driver/">樹莓派 Raspberry Pi 使用 Python + Selenium 控制 Chromium 瀏覽器</a></li>
+<li><a href="https://github.com/angular/protractor/blob/master/lib/config.ts">Protractor config 設定參考</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>Angular</category>
+      </categories>
+      <tags>
+        <tag>Angular</tag>
+        <tag>Linux</tag>
+        <tag>Pi</tag>
+        <tag>Protractor</tag>
       </tags>
   </entry>
   <entry>
@@ -290,10 +290,10 @@
       </tags>
   </entry>
   <entry>
-    <title>Json 格式資料如何拆解成 form 的輸入項</title>
+    <title>JSON 格式資料如何拆解成 form 的輸入項</title>
     <url>/2020/03/27/HtmlFormPost/</url>
-    <content><![CDATA[<h1 id="拆解-Json-格式資料"><a class="header-anchor" href="#拆解-Json-格式資料"></a>拆解 Json 格式資料</h1>
-<p>下方是 Json 格式資料</p>
+    <content><![CDATA[<h1 id="拆解-JSON-格式資料"><a class="header-anchor" href="#拆解-JSON-格式資料"></a>拆解 JSON 格式資料</h1>
+<p>下方是 JSON 格式資料</p>
 <figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">   <span class="attr">&quot;item&quot;</span><span class="punctuation">:</span> <span class="string">&quot;1&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;items&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;1&quot;</span><span class="punctuation">,</span><span class="string">&quot;2&quot;</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
 <span id="more"></span>
 <h1 id="基本物件型別拆解"><a class="header-anchor" href="#基本物件型別拆解"></a>基本物件型別拆解</h1>
@@ -315,7 +315,7 @@
       </categories>
       <tags>
         <tag>Html</tag>
-        <tag>Json</tag>
+        <tag>JSON</tag>
       </tags>
   </entry>
   <entry>
@@ -419,11 +419,11 @@
     <url>/2019/12/28/JsFunction/</url>
     <content><![CDATA[<h1 id="建立-function"><a class="header-anchor" href="#建立-function"></a>建立 function</h1>
 <p>建立一個名稱為 TEST 的 function</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">TEST</span>(<span class="params"></span>) &#123;</span><br><span class="line"></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;call function TEST&#x27;</span>);</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">TEST</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;call function TEST&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <span id="more"></span>
 <h1 id="判斷-function-是否存在"><a class="header-anchor" href="#判斷-function-是否存在"></a>判斷 function 是否存在</h1>
 <p>判斷 function 是否存在 Window 變數中，並執行</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> funcName = <span class="string">&#x27;TEST&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">typeof</span> (<span class="variable language_">window</span>[<span class="title class_">FuncName</span>]) == <span class="string">&quot;function&quot;</span>) &#123;</span><br><span class="line">        <span class="comment">// 執行方法</span></span><br><span class="line">        <span class="variable language_">window</span>[<span class="title class_">FuncName</span>]();</span><br><span class="line">&#125; </span><br><span class="line"><span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;此方法不存在&#x27;</span>);</span><br><span class="line">&#125;  </span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> funcName = <span class="string">&#x27;TEST&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="title function_">typeof</span>(<span class="variable language_">window</span>[<span class="title class_">FuncName</span>]) === <span class="string">&#x27;function&#x27;</span>) &#123;</span><br><span class="line">    <span class="comment">// 執行方法</span></span><br><span class="line">    <span class="variable language_">window</span>[<span class="title class_">FuncName</span>]();</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;此方法不存在&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <div class="note warning"><p>📜 參考資料</p>
 <ol>
 <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof">MDN typeof</a></li>
@@ -435,6 +435,35 @@
       <tags>
         <tag>Javascript</tag>
         <tag>Function</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>如何在 Iframe 讀取或寫入字串</title>
+    <url>/2019/12/28/JsIframe/</url>
+    <content><![CDATA[<h1 id="建立-HTML"><a class="header-anchor" href="#建立-HTML"></a>建立 HTML</h1>
+<p>首先在 HTML 建立一個 iframe</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">id</span>=<span class="string">&quot;test&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="操作-iframe"><a class="header-anchor" href="#操作-iframe"></a>操作 iframe</h1>
+<p>用 Javascript 搜尋 iframe 的DOM物件</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> iframe = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;test&#x27;</span>).<span class="property">contentDocument</span>;</span><br></pre></td></tr></table></figure>
+<p>字串寫入 iframe</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">iframe.<span class="title function_">open</span>();</span><br><span class="line"></span><br><span class="line">iframe.<span class="title function_">write</span>(<span class="string">&#x27;&lt;a&gt;test&lt;/a&gt;&#x27;</span>);</span><br><span class="line"></span><br><span class="line">iframe.<span class="title function_">close</span>();</span><br></pre></td></tr></table></figure>
+<p>取得 iframe 字串</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">iframe.<span class="property">body</span>.<span class="property">innerText</span></span><br></pre></td></tr></table></figure>
+<p>URL.createObjectURL 寫入 iframe</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> blobx = <span class="keyword">new</span> <span class="title class_">Blob</span>(</span><br><span class="line">    [<span class="string">&#x27;&lt;base href=&quot;[URL輸入]&quot;&gt;&#x27;</span> + data],</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="attr">type</span>: <span class="string">&#x27;text/html&#x27;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> urlObject = <span class="variable constant_">URL</span>.<span class="title function_">createObjectURL</span>(blobx)</span><br><span class="line"></span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;test&#x27;</span>).<span class="title function_">setAttribute</span>(<span class="string">&#x27;src&#x27;</span>, urlObject)</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/write">MDN Document write</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>Javascript</category>
+      </categories>
+      <tags>
+        <tag>Javascript</tag>
+        <tag>Iframe</tag>
       </tags>
   </entry>
   <entry>
@@ -465,35 +494,6 @@
       <tags>
         <tag>Javascript</tag>
         <tag>Object</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>如何在 Iframe 讀取或寫入字串</title>
-    <url>/2019/12/28/JsIframe/</url>
-    <content><![CDATA[<h1 id="建立-HTML"><a class="header-anchor" href="#建立-HTML"></a>建立 HTML</h1>
-<p>首先在 HTML 建立一個 iframe</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">id</span>=<span class="string">&quot;test&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="操作-iframe"><a class="header-anchor" href="#操作-iframe"></a>操作 iframe</h1>
-<p>用 Javascript 搜尋 iframe 的DOM物件</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> iframe = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;test&#x27;</span>).<span class="property">contentDocument</span>;</span><br></pre></td></tr></table></figure>
-<p>字串寫入 iframe</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">iframe.<span class="title function_">open</span>();</span><br><span class="line"></span><br><span class="line">iframe.<span class="title function_">write</span>(<span class="string">&#x27;&lt;a&gt;test&lt;/a&gt;&#x27;</span>);</span><br><span class="line"></span><br><span class="line">iframe.<span class="title function_">close</span>();</span><br></pre></td></tr></table></figure>
-<p>取得 iframe 字串</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">iframe.<span class="property">body</span>.<span class="property">innerText</span></span><br></pre></td></tr></table></figure>
-<p>URL.createObjectURL 寫入 iframe</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> blobx = <span class="keyword">new</span> <span class="title class_">Blob</span>(</span><br><span class="line">    [<span class="string">&#x27;&lt;base href=&quot;[URL輸入]&quot;&gt;&#x27;</span> + data],</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="attr">type</span>: <span class="string">&#x27;text/html&#x27;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> urlObject = <span class="variable constant_">URL</span>.<span class="title function_">createObjectURL</span>(blobx)</span><br><span class="line"></span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;test&#x27;</span>).<span class="title function_">setAttribute</span>(<span class="string">&#x27;src&#x27;</span>, urlObject)</span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/write">MDN Document write</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>Javascript</category>
-      </categories>
-      <tags>
-        <tag>Javascript</tag>
-        <tag>Iframe</tag>
       </tags>
   </entry>
   <entry>
@@ -537,6 +537,35 @@
       <tags>
         <tag>Javascript</tag>
         <tag>Regex</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Linux IBM i Access Odbc 手動安裝</title>
+    <url>/2021/10/05/LinuxIbmIAccessOdbc/</url>
+    <content><![CDATA[<h1 id="配置-Odbc-元件"><a class="header-anchor" href="#配置-Odbc-元件"></a>配置 Odbc 元件</h1>
+<p>安裝 Linux Odbc 元件</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt-get install unixodbc</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="安裝-Odbc-Driver"><a class="header-anchor" href="#安裝-Odbc-Driver"></a>安裝 Odbc Driver</h1>
+<p>登入<a href="https://www.ibm.com/support/pages/ibm-i-access-client-solutions">IBM網頁</a>下載Linux Odbc Driver並安裝</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo dpkg -i ibm-iaccess-1.1.0.15-1.0.amd64.deb</span><br></pre></td></tr></table></figure>
+<p>查看 Linux Odbc Drivers 設定檔位置</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">odbcinst -j</span><br></pre></td></tr></table></figure>
+<p>查看設定檔是否出現 IBM i Access ODBC Driver 的設定</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cat</span> /etc/odbcinst.ini</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://www.ibm.com/docs/en/db2/11.5?topic=managers-installing-unixodbc-driver-manager">Installing the unixODBC driver manager</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>Ubuntu</tag>
+        <tag>Odbc</tag>
+        <tag>IBM i Access</tag>
       </tags>
   </entry>
   <entry>
@@ -655,35 +684,6 @@ sudo iptables -A FORWARD -i eth0 -o eth1 -j ACCEPT -->
       </tags>
   </entry>
   <entry>
-    <title>Linux IBM i Access Odbc 手動安裝</title>
-    <url>/2021/10/05/LinuxIbmIAccessOdbc/</url>
-    <content><![CDATA[<h1 id="配置-Odbc-元件"><a class="header-anchor" href="#配置-Odbc-元件"></a>配置 Odbc 元件</h1>
-<p>安裝 Linux Odbc 元件</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt-get install unixodbc</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="安裝-Odbc-Driver"><a class="header-anchor" href="#安裝-Odbc-Driver"></a>安裝 Odbc Driver</h1>
-<p>登入<a href="https://www.ibm.com/support/pages/ibm-i-access-client-solutions">IBM網頁</a>下載Linux Odbc Driver並安裝</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo dpkg -i ibm-iaccess-1.1.0.15-1.0.amd64.deb</span><br></pre></td></tr></table></figure>
-<p>查看 Linux Odbc Drivers 設定檔位置</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">odbcinst -j</span><br></pre></td></tr></table></figure>
-<p>查看設定檔是否出現 IBM i Access ODBC Driver 的設定</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cat</span> /etc/odbcinst.ini</span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://www.ibm.com/docs/en/db2/11.5?topic=managers-installing-unixodbc-driver-manager">Installing the unixODBC driver manager</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-        <tag>Ubuntu</tag>
-        <tag>Odbc</tag>
-        <tag>IBM i Access</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>使用 SSH 建立通道</title>
     <url>/2023/05/07/LinuxSshTunnel/</url>
     <content><![CDATA[<h1 id="本機特定端口轉發至跳板機"><a class="header-anchor" href="#本機特定端口轉發至跳板機"></a>本機特定端口轉發至跳板機</h1>
@@ -770,6 +770,33 @@ plink -v -x -a -T -C -noagent -ssh -pw "[密碼]" -P 50893 -L [本地端口]:[�
       </tags>
   </entry>
   <entry>
+    <title>在 SQL Server 操作 JSON</title>
+    <url>/2025/01/01/MsSqlJsonString/</url>
+    <content><![CDATA[<h1 id="宣告-JSON-字串"><a class="header-anchor" href="#宣告-JSON-字串"></a>宣告 JSON 字串</h1>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">DECLARE</span> <span class="variable">@json</span> NVARCHAR(MAX);</span><br><span class="line"></span><br><span class="line"><span class="keyword">SET</span> <span class="variable">@json</span> <span class="operator">=</span> <span class="string">&#x27;&#123;&quot;info&quot;: &#123;&quot;address&quot;: [&#123;&quot;town&quot;: &quot;Belgrade&quot;&#125;, &#123;&quot;town&quot;: &quot;Paris&quot;&#125;, &#123;&quot;town&quot;:&quot;Madrid&quot;&#125;]&#125;&#125;&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="JSON-VALUE-擷取純量值字串"><a class="header-anchor" href="#JSON-VALUE-擷取純量值字串"></a>JSON_VALUE 擷取純量值字串</h1>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="built_in">JSON_VALUE</span>(<span class="variable">@json</span>, <span class="string">&#x27;$.info.address[0].town&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<h1 id="JSON-QUERY-擷取物件或陣列字串"><a class="header-anchor" href="#JSON-QUERY-擷取物件或陣列字串"></a>JSON_QUERY 擷取物件或陣列字串</h1>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="built_in">JSON_QUERY</span>(<span class="variable">@json</span>, <span class="string">&#x27;$.info.address&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<h1 id="JSON-MODIFY-變更-JSON-字串中的值"><a class="header-anchor" href="#JSON-MODIFY-變更-JSON-字串中的值"></a>JSON_MODIFY 變更 JSON 字串中的值</h1>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SET</span> <span class="variable">@json</span> <span class="operator">=</span> JSON_MODIFY(<span class="variable">@json</span>, <span class="string">&#x27;$.info.address[1].town&#x27;</span>, <span class="string">&#x27;London&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> modifiedJson <span class="operator">=</span> <span class="variable">@json</span>;</span><br></pre></td></tr></table></figure>
+<h1 id="OPENJSON-集合轉換為資料列集"><a class="header-anchor" href="#OPENJSON-集合轉換為資料列集"></a>OPENJSON 集合轉換為資料列集</h1>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span></span><br><span class="line"><span class="keyword">FROM</span> OPENJSON(<span class="built_in">JSON_QUERY</span>(<span class="variable">@json</span>, <span class="string">&#x27;$.info.address&#x27;</span>)) <span class="keyword">WITH</span> (</span><br><span class="line">    town NVARCHAR(<span class="number">50</span>) <span class="string">&#x27;$.town&#x27;</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://learn.microsoft.com/zh-tw/sql/relational-databases/json/json-data-sql-server?view=sql-server-ver16">SQL Server 中的 JSON 資料</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>MSSQL</category>
+      </categories>
+      <tags>
+        <tag>JSON</tag>
+        <tag>MSSQL</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>使用 DMV 查询 SQL 執行性能</title>
     <url>/2025/01/01/MsSqlPerformance/</url>
     <content><![CDATA[<h1 id="查询執行中的-SQL-性能"><a class="header-anchor" href="#查询執行中的-SQL-性能"></a>查询執行中的 SQL 性能</h1>
@@ -801,33 +828,6 @@ plink -v -x -a -T -C -noagent -ssh -pw "[密碼]" -P 50893 -L [本地端口]:[�
       <tags>
         <tag>MSSQL</tag>
         <tag>DMV</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>在 SQL Server 操作 JSON</title>
-    <url>/2025/01/01/MsSqlJsonString/</url>
-    <content><![CDATA[<h1 id="宣告-JSON-字串"><a class="header-anchor" href="#宣告-JSON-字串"></a>宣告 JSON 字串</h1>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">DECLARE</span> <span class="variable">@json</span> NVARCHAR(MAX);</span><br><span class="line"></span><br><span class="line"><span class="keyword">SET</span> <span class="variable">@json</span> <span class="operator">=</span> <span class="string">&#x27;&#123;&quot;info&quot;: &#123;&quot;address&quot;: [&#123;&quot;town&quot;: &quot;Belgrade&quot;&#125;, &#123;&quot;town&quot;: &quot;Paris&quot;&#125;, &#123;&quot;town&quot;:&quot;Madrid&quot;&#125;]&#125;&#125;&#x27;</span>;</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="JSON-VALUE-擷取純量值字串"><a class="header-anchor" href="#JSON-VALUE-擷取純量值字串"></a>JSON_VALUE 擷取純量值字串</h1>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="built_in">JSON_VALUE</span>(<span class="variable">@json</span>, <span class="string">&#x27;$.info.address[0].town&#x27;</span>);</span><br></pre></td></tr></table></figure>
-<h1 id="JSON-QUERY-擷取物件或陣列字串"><a class="header-anchor" href="#JSON-QUERY-擷取物件或陣列字串"></a>JSON_QUERY 擷取物件或陣列字串</h1>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="built_in">JSON_QUERY</span>(<span class="variable">@json</span>, <span class="string">&#x27;$.info.address&#x27;</span>);</span><br></pre></td></tr></table></figure>
-<h1 id="JSON-MODIFY-變更-JSON-字串中的值"><a class="header-anchor" href="#JSON-MODIFY-變更-JSON-字串中的值"></a>JSON_MODIFY 變更 JSON 字串中的值</h1>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SET</span> <span class="variable">@json</span> <span class="operator">=</span> JSON_MODIFY(<span class="variable">@json</span>, <span class="string">&#x27;$.info.address[1].town&#x27;</span>, <span class="string">&#x27;London&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> modifiedJson <span class="operator">=</span> <span class="variable">@json</span>;</span><br></pre></td></tr></table></figure>
-<h1 id="OPENJSON-集合轉換為資料列集"><a class="header-anchor" href="#OPENJSON-集合轉換為資料列集"></a>OPENJSON 集合轉換為資料列集</h1>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span></span><br><span class="line"><span class="keyword">FROM</span> OPENJSON(<span class="built_in">JSON_QUERY</span>(<span class="variable">@json</span>, <span class="string">&#x27;$.info.address&#x27;</span>)) <span class="keyword">WITH</span> (</span><br><span class="line">    town NVARCHAR(<span class="number">50</span>) <span class="string">&#x27;$.town&#x27;</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://learn.microsoft.com/zh-tw/sql/relational-databases/json/json-data-sql-server?view=sql-server-ver16">SQL Server 中的 JSON 資料</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>MSSQL</category>
-      </categories>
-      <tags>
-        <tag>MSSQL</tag>
-        <tag>JSON</tag>
       </tags>
   </entry>
   <entry>
@@ -866,6 +866,30 @@ plink -v -x -a -T -C -noagent -ssh -pw "[密碼]" -P 50893 -L [本地端口]:[�
       </tags>
   </entry>
   <entry>
+    <title>使用 AddInMemoryCollection 設定 Configuration 進行單元測試</title>
+    <url>/2023/01/21/NetAddInMemoryCollection/</url>
+    <content><![CDATA[<h1 id="設定-appsettings-json-如下"><a class="header-anchor" href="#設定-appsettings-json-如下"></a>設定 appsettings.json 如下</h1>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;Logging&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;LogLevel&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;Default&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Information&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;Microsoft.AspNetCore&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Warning&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="轉換為-Dictionary-string-string"><a class="header-anchor" href="#轉換為-Dictionary-string-string"></a>轉換為 Dictionary&lt;string, string&gt;</h1>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">Dictionary&lt;<span class="built_in">string</span>, <span class="built_in">string</span>&gt; inMemorySettings = <span class="keyword">new</span> Dictionary&lt;<span class="built_in">string</span>, <span class="built_in">string</span>&gt; &#123;</span><br><span class="line">    &#123;<span class="string">&quot;Logging:LogLevel:Default&quot;</span>,  <span class="string">&quot;Information&quot;</span>&#125;,</span><br><span class="line">    &#123;<span class="string">&quot;Logging:LogLevel:Microsoft.AspNetCore&quot;</span>,  <span class="string">&quot;Warning&quot;</span>&#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h1 id="建立-Configuration"><a class="header-anchor" href="#建立-Configuration"></a>建立 Configuration</h1>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">IConfiguration configuration = <span class="keyword">new</span> ConfigurationBuilder()</span><br><span class="line">            .AddInMemoryCollection(inMemorySettings)</span><br><span class="line">            .Build();</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://learn.microsoft.com/en-us/dotnet/api/microsoft.extensions.configuration.memoryconfigurationbuilderextensions.addinmemorycollection?view=dotnet-plat-ext-7.0">MemoryConfigurationBuilderExtensions.AddInMemoryCollection Method</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>.Net</category>
+      </categories>
+      <tags>
+        <tag>.Net</tag>
+        <tag>UnitTest</tag>
+        <tag>IConfiguration</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>依字元內碼轉換 Big5 與 Unicode</title>
     <url>/2022/05/22/NetBig5AndUnicode/</url>
     <content><![CDATA[<h1 id="轉換-Big5-字元"><a class="header-anchor" href="#轉換-Big5-字元"></a>轉換 Big5 字元</h1>
@@ -889,30 +913,6 @@ plink -v -x -a -T -C -noagent -ssh -pw "[密碼]" -P 50893 -L [本地端口]:[�
         <tag>Font</tag>
         <tag>Big5</tag>
         <tag>Unicode</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>使用 AddInMemoryCollection 設定 Configuration 進行單元測試</title>
-    <url>/2023/01/21/NetAddInMemoryCollection/</url>
-    <content><![CDATA[<h1 id="設定-appsettings-json-如下"><a class="header-anchor" href="#設定-appsettings-json-如下"></a>設定 appsettings.json 如下</h1>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;Logging&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;LogLevel&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;Default&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Information&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;Microsoft.AspNetCore&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Warning&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="轉換為-Dictionary-string-string"><a class="header-anchor" href="#轉換為-Dictionary-string-string"></a>轉換為 Dictionary&lt;string, string&gt;</h1>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">Dictionary&lt;<span class="built_in">string</span>, <span class="built_in">string</span>&gt; inMemorySettings = <span class="keyword">new</span> Dictionary&lt;<span class="built_in">string</span>, <span class="built_in">string</span>&gt; &#123;</span><br><span class="line">    &#123;<span class="string">&quot;Logging:LogLevel:Default&quot;</span>,  <span class="string">&quot;Information&quot;</span>&#125;,</span><br><span class="line">    &#123;<span class="string">&quot;Logging:LogLevel:Microsoft.AspNetCore&quot;</span>,  <span class="string">&quot;Warning&quot;</span>&#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h1 id="建立-Configuration"><a class="header-anchor" href="#建立-Configuration"></a>建立 Configuration</h1>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">IConfiguration configuration = <span class="keyword">new</span> ConfigurationBuilder()</span><br><span class="line">            .AddInMemoryCollection(inMemorySettings)</span><br><span class="line">            .Build();</span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://learn.microsoft.com/en-us/dotnet/api/microsoft.extensions.configuration.memoryconfigurationbuilderextensions.addinmemorycollection?view=dotnet-plat-ext-7.0">MemoryConfigurationBuilderExtensions.AddInMemoryCollection Method</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>.Net</category>
-      </categories>
-      <tags>
-        <tag>.Net</tag>
-        <tag>UnitTest</tag>
-        <tag>IConfiguration</tag>
       </tags>
   </entry>
   <entry>
@@ -1009,6 +1009,41 @@ dotnet-dump collect --process-id 1902 -->
       </tags>
   </entry>
   <entry>
+    <title>如何在資料存取層進行單元測試</title>
+    <url>/2022/05/01/NetRepositoryUnitTest/</url>
+    <content><![CDATA[<h1 id="安裝-Sqlite"><a class="header-anchor" href="#安裝-Sqlite"></a>安裝 Sqlite</h1>
+<p>安裝 Nuget 的 Sqlite 套件</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Install-Package</span> Microsoft.EntityFrameworkCore.Sqlite</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="建立-DbContext"><a class="header-anchor" href="#建立-DbContext"></a>建立 DbContext</h1>
+<p>建立 EntityFramework 的 DbContext</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">TestDbContext</span> : <span class="title">DbContext</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">DbSet</span>&lt;<span class="title">Table</span>&gt;? Table</span> &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">TestDbContext</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">TestDbContext</span>(<span class="params">DbContextOptions options</span>) : <span class="title">base</span>(<span class="params">options</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">OnModelCreating</span>(<span class="params">ModelBuilder modelBuilder</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        modelBuilder.Entity&lt;Table&gt;(entity =&gt; &#123;</span><br><span class="line">            entity.HasKey(x =&gt; x.Id);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="使用-In-Memory-模式操作資料庫"><a class="header-anchor" href="#使用-In-Memory-模式操作資料庫"></a>使用 In-Memory 模式操作資料庫</h1>
+<p>使用 Sqlite 的 In-Memory 模式載入 DbContext</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">SqliteConnection connection = <span class="keyword">new</span> SqliteConnection(<span class="string">&quot;Data Source=:memory:&quot;</span>);</span><br><span class="line"></span><br><span class="line">connection.Open();</span><br><span class="line"></span><br><span class="line">DbContextOptions options = <span class="keyword">new</span> DbContextOptionsBuilder()</span><br><span class="line">.UseSqlite(connection)</span><br><span class="line">.Options;</span><br></pre></td></tr></table></figure>
+<p>然後使用 DbContext 的設定建立資料庫</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> TestDbContext context = <span class="keyword">new</span> TestDbContext(options);</span><br><span class="line">context.Database.EnsureCreated();</span><br></pre></td></tr></table></figure>
+<p>最後可開始使用 EntityFramework 開始操作資料庫</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> TestDbContext context = <span class="keyword">new</span> TestDbContext(options);</span><br><span class="line">List&lt;Table&gt; table = context.Table.ToList();</span><br></pre></td></tr></table></figure>
+<h1 id="自定義-Database-Function"><a class="header-anchor" href="#自定義-Database-Function"></a>自定義 Database Function</h1>
+<p>如果有使用 Sqlite 未定義的 Database Function , 可在程式中使用 CreateFunction 定義</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">SqliteConnection connection = <span class="keyword">new</span> SqliteConnection(<span class="string">&quot;Data Source=:memory:&quot;</span>);</span><br><span class="line"></span><br><span class="line">connection.CreateFunction(<span class="string">&quot;current_date&quot;</span>, (x) =&gt; DateTime.Now);</span><br><span class="line"></span><br><span class="line">connection.Open();</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.data.sqlite.sqliteconnection.createfunction?view=msdata-sqlite-6.0.0">Microsoft文件</a></li>
+<li><a href="https://csharp.hotexamples.com/examples/-/SQLiteConnection/CreateFunction/php-sqliteconnection-createfunction-method-examples.html">SQLite Examples</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>.Net</category>
+      </categories>
+      <tags>
+        <tag>.Net</tag>
+        <tag>UnitTest</tag>
+        <tag>SQLite</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>如何在商業邏輯層進行單元測試</title>
     <url>/2022/05/01/NetServiceUnitTest/</url>
     <content><![CDATA[<h1 id="安裝-NSubstitute"><a class="header-anchor" href="#安裝-NSubstitute"></a>安裝 NSubstitute</h1>
@@ -1047,41 +1082,6 @@ dotnet-dump collect --process-id 1902 -->
       </tags>
   </entry>
   <entry>
-    <title>如何在資料存取層進行單元測試</title>
-    <url>/2022/05/01/NetRepositoryUnitTest/</url>
-    <content><![CDATA[<h1 id="安裝-Sqlite"><a class="header-anchor" href="#安裝-Sqlite"></a>安裝 Sqlite</h1>
-<p>安裝 Nuget 的 Sqlite 套件</p>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Install-Package</span> Microsoft.EntityFrameworkCore.Sqlite</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="建立-DbContext"><a class="header-anchor" href="#建立-DbContext"></a>建立 DbContext</h1>
-<p>建立 EntityFramework 的 DbContext</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">TestDbContext</span> : <span class="title">DbContext</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">DbSet</span>&lt;<span class="title">Table</span>&gt;? Table</span> &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">TestDbContext</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">TestDbContext</span>(<span class="params">DbContextOptions options</span>) : <span class="title">base</span>(<span class="params">options</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">OnModelCreating</span>(<span class="params">ModelBuilder modelBuilder</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        modelBuilder.Entity&lt;Table&gt;(entity =&gt; &#123;</span><br><span class="line">            entity.HasKey(x =&gt; x.Id);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="使用-In-Memory-模式操作資料庫"><a class="header-anchor" href="#使用-In-Memory-模式操作資料庫"></a>使用 In-Memory 模式操作資料庫</h1>
-<p>使用 Sqlite 的 In-Memory 模式載入 DbContext</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">SqliteConnection connection = <span class="keyword">new</span> SqliteConnection(<span class="string">&quot;Data Source=:memory:&quot;</span>);</span><br><span class="line"></span><br><span class="line">connection.Open();</span><br><span class="line"></span><br><span class="line">DbContextOptions options = <span class="keyword">new</span> DbContextOptionsBuilder()</span><br><span class="line">.UseSqlite(connection)</span><br><span class="line">.Options;</span><br></pre></td></tr></table></figure>
-<p>然後使用 DbContext 的設定建立資料庫</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> TestDbContext context = <span class="keyword">new</span> TestDbContext(options);</span><br><span class="line">context.Database.EnsureCreated();</span><br></pre></td></tr></table></figure>
-<p>最後可開始使用 EntityFramework 開始操作資料庫</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> TestDbContext context = <span class="keyword">new</span> TestDbContext(options);</span><br><span class="line">List&lt;Table&gt; table = context.Table.ToList();</span><br></pre></td></tr></table></figure>
-<h1 id="自定義-Database-Function"><a class="header-anchor" href="#自定義-Database-Function"></a>自定義 Database Function</h1>
-<p>如果有使用 Sqlite 未定義的 Database Function , 可在程式中使用 CreateFunction 定義</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">SqliteConnection connection = <span class="keyword">new</span> SqliteConnection(<span class="string">&quot;Data Source=:memory:&quot;</span>);</span><br><span class="line"></span><br><span class="line">connection.CreateFunction(<span class="string">&quot;current_date&quot;</span>, (x) =&gt; DateTime.Now);</span><br><span class="line"></span><br><span class="line">connection.Open();</span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.data.sqlite.sqliteconnection.createfunction?view=msdata-sqlite-6.0.0">Microsoft文件</a></li>
-<li><a href="https://csharp.hotexamples.com/examples/-/SQLiteConnection/CreateFunction/php-sqliteconnection-createfunction-method-examples.html">SQLite Examples</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>.Net</category>
-      </categories>
-      <tags>
-        <tag>.Net</tag>
-        <tag>UnitTest</tag>
-        <tag>SQLite</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>使用 SqlPackage 備份資料庫</title>
     <url>/2024/07/25/NetSqlPackage/</url>
     <content><![CDATA[<h1 id="安裝-SqlPackage"><a class="header-anchor" href="#安裝-SqlPackage"></a>安裝 SqlPackage</h1>
@@ -1095,15 +1095,15 @@ dotnet-dump collect --process-id 1902 -->
 <figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">sqlpackage /Action:Export /SourceDatabaseName:<span class="string">&quot;[資料庫名稱]&quot;</span> /SourceServerName:<span class="string">&quot;[服務器]&quot;</span> /TargetFile:<span class="string">&quot;[檔案名稱].bacpac&quot;</span></span><br></pre></td></tr></table></figure>
 <p>匯入資料庫</p>
 <figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">sqlpackage /Action:Import /TargetDatabaseName:<span class="string">&quot;[資料庫名稱]&quot;</span> /TargetServerName:<span class="string">&quot;[服務器]&quot;</span> /SourceFile:<span class="string">&quot;[檔案名稱].bacpac&quot;</span></span><br></pre></td></tr></table></figure>
-<h1 id="搜尋額外指定的表"><a class="header-anchor" href="#搜尋額外指定的表"></a>搜尋額外指定的表</h1>
-<p>依資料筆數搜尋可能是主檔的資料表，並產生指令</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="string">&#x27;/p:TableData=&quot;[&#x27;</span> <span class="operator">+</span> s.Name <span class="operator">+</span> <span class="string">&#x27;].[&#x27;</span> <span class="operator">+</span> t.NAME <span class="operator">+</span> <span class="string">&#x27;]&quot; `&#x27;</span> [Package]</span><br><span class="line">	,t.NAME [TableName]</span><br><span class="line">	,s.Name [SchemaName]</span><br><span class="line">	,p.rows [<span class="keyword">Rows</span>]</span><br><span class="line">	,<span class="built_in">SUM</span>(a.total_pages) <span class="operator">*</span> <span class="number">8</span> [TotalSpaceKB]</span><br><span class="line">	,<span class="built_in">CAST</span>(ROUND(((<span class="built_in">SUM</span>(a.total_pages) <span class="operator">*</span> <span class="number">8</span>) <span class="operator">/</span> <span class="number">1024.00</span>), <span class="number">2</span>) <span class="keyword">AS</span> <span class="type">NUMERIC</span>(<span class="number">36</span>, <span class="number">2</span>)) [TotalSpaceMB]</span><br><span class="line">	,<span class="built_in">SUM</span>(a.used_pages) <span class="operator">*</span> <span class="number">8</span> [UsedSpaceKB]</span><br><span class="line">	,<span class="built_in">CAST</span>(ROUND(((<span class="built_in">SUM</span>(a.used_pages) <span class="operator">*</span> <span class="number">8</span>) <span class="operator">/</span> <span class="number">1024.00</span>), <span class="number">2</span>) <span class="keyword">AS</span> <span class="type">NUMERIC</span>(<span class="number">36</span>, <span class="number">2</span>)) [UsedSpaceMB]</span><br><span class="line">	,(<span class="built_in">SUM</span>(a.total_pages) <span class="operator">-</span> <span class="built_in">SUM</span>(a.used_pages)) <span class="operator">*</span> <span class="number">8</span> [UnusedSpaceKB]</span><br><span class="line">	,<span class="built_in">CAST</span>(ROUND(((<span class="built_in">SUM</span>(a.total_pages) <span class="operator">-</span> <span class="built_in">SUM</span>(a.used_pages)) <span class="operator">*</span> <span class="number">8</span>) <span class="operator">/</span> <span class="number">1024.00</span>, <span class="number">2</span>) <span class="keyword">AS</span> <span class="type">NUMERIC</span>(<span class="number">36</span>, <span class="number">2</span>)) [UnusedSpaceMB]</span><br><span class="line"><span class="keyword">FROM</span> sys.tables t</span><br><span class="line"><span class="keyword">INNER</span> <span class="keyword">JOIN</span> sys.indexes i <span class="keyword">ON</span> t.OBJECT_ID <span class="operator">=</span> i.object_id</span><br><span class="line"><span class="keyword">INNER</span> <span class="keyword">JOIN</span> sys.partitions p <span class="keyword">ON</span> i.object_id <span class="operator">=</span> p.OBJECT_ID</span><br><span class="line">	<span class="keyword">AND</span> i.index_id <span class="operator">=</span> p.index_id</span><br><span class="line"><span class="keyword">INNER</span> <span class="keyword">JOIN</span> sys.allocation_units a <span class="keyword">ON</span> p.partition_id <span class="operator">=</span> a.container_id</span><br><span class="line"><span class="keyword">LEFT</span> <span class="keyword">OUTER</span> <span class="keyword">JOIN</span> sys.schemas s <span class="keyword">ON</span> t.schema_id <span class="operator">=</span> s.schema_id</span><br><span class="line"><span class="keyword">WHERE</span> t.NAME <span class="keyword">NOT</span> <span class="keyword">LIKE</span> <span class="string">&#x27;dt%&#x27;</span></span><br><span class="line">	<span class="keyword">AND</span> t.is_ms_shipped <span class="operator">=</span> <span class="number">0</span></span><br><span class="line">	<span class="keyword">AND</span> i.OBJECT_ID <span class="operator">&gt;</span> <span class="number">255</span></span><br><span class="line">	<span class="keyword">AND</span> p.rows <span class="operator">&gt;</span> [資料筆數]</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> t.Name</span><br><span class="line">	,s.Name</span><br><span class="line">	,p.Rows</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> TotalSpaceMB <span class="keyword">DESC</span></span><br><span class="line">	,t.Name;</span><br></pre></td></tr></table></figure>
 <h1 id="使用-DACPAC-備份"><a class="header-anchor" href="#使用-DACPAC-備份"></a>使用 DACPAC 備份</h1>
 <p>預設包含數據庫結構，但不包含數據</p>
 <p>匯出資料庫</p>
 <figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">sqlpackage /Action:Extract /SourceDatabaseName:<span class="string">&quot;[資料庫名稱]&quot;</span> /SourceServerName:<span class="string">&quot;[服務器]&quot;</span> /SourceUser:<span class="string">&quot;[帳號]&quot;</span> /SourcePassword:<span class="string">&quot;[密碼]&quot;</span> /SourceTrustServerCertificate:True /TargetFile:<span class="string">&quot;[檔案名稱].dacpac&quot;</span> `</span><br><span class="line">/p:TableData=<span class="string">&quot;[額外指定可包含資料的表]&quot;</span></span><br></pre></td></tr></table></figure>
 <p>匯入資料庫</p>
 <figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">sqlpackage /Action:Publish /TargetDatabaseName:<span class="string">&quot;[資料庫名稱]&quot;</span> /TargetServerName:<span class="string">&quot;[服務器]&quot;</span> /TargetUser:<span class="string">&quot;[帳號]&quot;</span> /TargetPassword:<span class="string">&quot;[密碼]&quot;</span> /TargetTrustServerCertificate:True /SourceFile:<span class="string">&quot;[檔案名稱].dacpac&quot;</span> `</span><br><span class="line">/p:ExcludeObjectType=UserDefinedDataTypes `</span><br><span class="line">/p:ExcludeObjectType=UserDefinedTableTypes `</span><br><span class="line">/p:ExcludeObjectType=ClrUserDefinedTypes `</span><br><span class="line">/p:ExcludeObjectType=Users `</span><br><span class="line">/p:ExcludeObjectType=RoleMembership `</span><br><span class="line">/p:AllowIncompatiblePlatform=True </span><br></pre></td></tr></table></figure>
+<h1 id="搜尋額外指定的表"><a class="header-anchor" href="#搜尋額外指定的表"></a>搜尋額外指定的表</h1>
+<p>依資料筆數搜尋可能是主檔的資料表，並產生指令</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="string">&#x27;/p:TableData=&quot;[&#x27;</span> <span class="operator">+</span> s.Name <span class="operator">+</span> <span class="string">&#x27;].[&#x27;</span> <span class="operator">+</span> t.NAME <span class="operator">+</span> <span class="string">&#x27;]&quot; `&#x27;</span> [Package]</span><br><span class="line">	,t.NAME [TableName]</span><br><span class="line">	,s.Name [SchemaName]</span><br><span class="line">	,p.rows [<span class="keyword">Rows</span>]</span><br><span class="line">	,<span class="built_in">SUM</span>(a.total_pages) <span class="operator">*</span> <span class="number">8</span> [TotalSpaceKB]</span><br><span class="line">	,<span class="built_in">CAST</span>(ROUND(((<span class="built_in">SUM</span>(a.total_pages) <span class="operator">*</span> <span class="number">8</span>) <span class="operator">/</span> <span class="number">1024.00</span>), <span class="number">2</span>) <span class="keyword">AS</span> <span class="type">NUMERIC</span>(<span class="number">36</span>, <span class="number">2</span>)) [TotalSpaceMB]</span><br><span class="line">	,<span class="built_in">SUM</span>(a.used_pages) <span class="operator">*</span> <span class="number">8</span> [UsedSpaceKB]</span><br><span class="line">	,<span class="built_in">CAST</span>(ROUND(((<span class="built_in">SUM</span>(a.used_pages) <span class="operator">*</span> <span class="number">8</span>) <span class="operator">/</span> <span class="number">1024.00</span>), <span class="number">2</span>) <span class="keyword">AS</span> <span class="type">NUMERIC</span>(<span class="number">36</span>, <span class="number">2</span>)) [UsedSpaceMB]</span><br><span class="line">	,(<span class="built_in">SUM</span>(a.total_pages) <span class="operator">-</span> <span class="built_in">SUM</span>(a.used_pages)) <span class="operator">*</span> <span class="number">8</span> [UnusedSpaceKB]</span><br><span class="line">	,<span class="built_in">CAST</span>(ROUND(((<span class="built_in">SUM</span>(a.total_pages) <span class="operator">-</span> <span class="built_in">SUM</span>(a.used_pages)) <span class="operator">*</span> <span class="number">8</span>) <span class="operator">/</span> <span class="number">1024.00</span>, <span class="number">2</span>) <span class="keyword">AS</span> <span class="type">NUMERIC</span>(<span class="number">36</span>, <span class="number">2</span>)) [UnusedSpaceMB]</span><br><span class="line"><span class="keyword">FROM</span> sys.tables t</span><br><span class="line"><span class="keyword">INNER</span> <span class="keyword">JOIN</span> sys.indexes i <span class="keyword">ON</span> t.OBJECT_ID <span class="operator">=</span> i.object_id</span><br><span class="line"><span class="keyword">INNER</span> <span class="keyword">JOIN</span> sys.partitions p <span class="keyword">ON</span> i.object_id <span class="operator">=</span> p.OBJECT_ID</span><br><span class="line">	<span class="keyword">AND</span> i.index_id <span class="operator">=</span> p.index_id</span><br><span class="line"><span class="keyword">INNER</span> <span class="keyword">JOIN</span> sys.allocation_units a <span class="keyword">ON</span> p.partition_id <span class="operator">=</span> a.container_id</span><br><span class="line"><span class="keyword">LEFT</span> <span class="keyword">OUTER</span> <span class="keyword">JOIN</span> sys.schemas s <span class="keyword">ON</span> t.schema_id <span class="operator">=</span> s.schema_id</span><br><span class="line"><span class="keyword">WHERE</span> t.NAME <span class="keyword">NOT</span> <span class="keyword">LIKE</span> <span class="string">&#x27;dt%&#x27;</span></span><br><span class="line">	<span class="keyword">AND</span> t.is_ms_shipped <span class="operator">=</span> <span class="number">0</span></span><br><span class="line">	<span class="keyword">AND</span> i.OBJECT_ID <span class="operator">&gt;</span> <span class="number">255</span></span><br><span class="line">	<span class="keyword">AND</span> p.rows <span class="operator">&gt;</span> [資料筆數]</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> t.Name</span><br><span class="line">	,s.Name</span><br><span class="line">	,p.Rows</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> TotalSpaceMB <span class="keyword">DESC</span></span><br><span class="line">	,t.Name;</span><br></pre></td></tr></table></figure>
 <div class="note warning"><p>📜 參考資料</p>
 <ol>
 <li><a href="https://learn.microsoft.com/en-us/sql/tools/sqlpackage/sqlpackage?view=sql-server-ver16">SqlPackage</a></li>
@@ -1113,57 +1113,9 @@ dotnet-dump collect --process-id 1902 -->
         <category>.Net</category>
       </categories>
       <tags>
+        <tag>MSSQL</tag>
         <tag>.Net</tag>
         <tag>SqlPackage</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>在 Polyglot Notebooks 使用 DataFrame</title>
-    <url>/2024/05/05/PolyglotNotebooksDataFrame/</url>
-    <content><![CDATA[<h1 id="載入-CSV-資料"><a class="header-anchor" href="#載入-CSV-資料"></a>載入 CSV 資料</h1>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="meta">#r &quot;nuget: Microsoft.Data.Analysis, 0.21.1&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> System.IO;</span><br><span class="line"><span class="keyword">using</span> Microsoft.Data.Analysis;</span><br><span class="line"></span><br><span class="line"><span class="built_in">string</span> csvfile = File.ReadAllText(<span class="string">&quot;test.csv&quot;</span>);</span><br><span class="line">DataFrame df = DataFrame.LoadCsvFromString(csvfile, <span class="string">&#x27;,&#x27;</span>);</span><br><span class="line">Console.WriteLine(df);</span><br></pre></td></tr></table></figure>
-<p>輸出:</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">NAME      </span><br><span class="line">張三        </span><br><span class="line">李四   </span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="取得前-1-筆"><a class="header-anchor" href="#取得前-1-筆"></a>取得前 1 筆</h1>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">DataFrame headRow = df.Head(<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">Console.WriteLine(headRow);</span><br></pre></td></tr></table></figure>
-<p>輸出:</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">NAME      </span><br><span class="line">張三   </span><br></pre></td></tr></table></figure>
-<h1 id="加入新-column"><a class="header-anchor" href="#加入新-column"></a>加入新 column</h1>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">df.Columns.Add(<span class="keyword">new</span> PrimitiveDataFrameColumn&lt;<span class="built_in">int</span>&gt;(<span class="string">&quot;AGE&quot;</span>, <span class="keyword">new</span> List&lt;<span class="built_in">int</span>&gt;&#123;<span class="number">1</span>, <span class="number">1</span>&#125;));</span><br><span class="line"></span><br><span class="line">Console.WriteLine(df);</span><br></pre></td></tr></table></figure>
-<p>輸出:</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">NAME      AGE       </span><br><span class="line">張三        <span class="number">1</span>         </span><br><span class="line">李四        <span class="number">1</span>         </span><br></pre></td></tr></table></figure>
-<h1 id="加入新-row"><a class="header-anchor" href="#加入新-row"></a>加入新 row</h1>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">df.Append(<span class="keyword">new</span> List&lt;KeyValuePair&lt;<span class="built_in">string</span>, <span class="built_in">object</span>&gt;&gt;() &#123;</span><br><span class="line"><span class="keyword">new</span> KeyValuePair&lt;<span class="built_in">string</span>, <span class="built_in">object</span>&gt;(<span class="string">&quot;NAME&quot;</span>, <span class="string">&quot;王五&quot;</span>),</span><br><span class="line"><span class="keyword">new</span> KeyValuePair&lt;<span class="built_in">string</span>, <span class="built_in">object</span>&gt;(<span class="string">&quot;AGE&quot;</span>, <span class="number">3</span>)</span><br><span class="line">&#125;, <span class="literal">true</span>);</span><br><span class="line"></span><br><span class="line">Console.WriteLine(df);</span><br></pre></td></tr></table></figure>
-<p>輸出:</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">NAME      AGE       </span><br><span class="line">張三        <span class="number">1</span>         </span><br><span class="line">李四        <span class="number">1</span>         </span><br><span class="line">王五        <span class="number">3</span>       </span><br></pre></td></tr></table></figure>
-<h1 id="排序資料"><a class="header-anchor" href="#排序資料"></a>排序資料</h1>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">DataFrame orderByData = df.OrderByDescending(<span class="string">&quot;AGE&quot;</span>);</span><br><span class="line">Console.WriteLine(orderByData);</span><br></pre></td></tr></table></figure>
-<p>輸出:</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">NAME      AGE       </span><br><span class="line">王五        <span class="number">3</span>         </span><br><span class="line">李四        <span class="number">1</span>         </span><br><span class="line">張三        <span class="number">1</span>            </span><br></pre></td></tr></table></figure>
-<h1 id="分群資料"><a class="header-anchor" href="#分群資料"></a>分群資料</h1>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">DataFrame groupByData = df.GroupBy(<span class="string">&quot;AGE&quot;</span>).Count();</span><br><span class="line">Console.WriteLine(groupByData);</span><br></pre></td></tr></table></figure>
-<p>輸出:</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">AGE       NAME      </span><br><span class="line"><span class="number">1</span>         <span class="number">2</span>         </span><br><span class="line"><span class="number">3</span>         <span class="number">1</span>         </span><br></pre></td></tr></table></figure>
-<h1 id="篩選資料"><a class="header-anchor" href="#篩選資料"></a>篩選資料</h1>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">DataFrame filterData = df.Filter(df.Columns[<span class="string">&quot;AGE&quot;</span>].ElementwiseGreaterThan(<span class="number">1</span>));</span><br><span class="line">Console.WriteLine(filterData);</span><br></pre></td></tr></table></figure>
-<p>輸出:</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">NAME      AGE       </span><br><span class="line">王五        <span class="number">3</span>            </span><br></pre></td></tr></table></figure>
-<h1 id="合併資料"><a class="header-anchor" href="#合併資料"></a>合併資料</h1>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">DataFrame df1 = DataFrame.LoadCsvFromString(csvfile, <span class="string">&#x27;,&#x27;</span>);</span><br><span class="line">DataFrame mergeData = df1.Merge&lt;<span class="built_in">string</span>&gt;(df, <span class="string">&quot;NAME&quot;</span>, <span class="string">&quot;NAME&quot;</span>);</span><br><span class="line">Console.WriteLine(mergeData);</span><br></pre></td></tr></table></figure>
-<p>輸出:</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">NAME_left  NAME_right AGE        </span><br><span class="line">張三         張三         <span class="number">1</span>          </span><br><span class="line">李四         李四         <span class="number">1</span>          </span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://learn.microsoft.com/en-us/dotnet/api/microsoft.data.analysis.dataframe?view=ml-dotnet-preview&amp;viewFallbackFrom=ml-dotnet">DataFrame Class</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>Polyglot Notebooks</category>
-      </categories>
-      <tags>
-        <tag>Polyglot Notebooks</tag>
-        <tag>DataFrame</tag>
       </tags>
   </entry>
   <entry>
@@ -1233,6 +1185,55 @@ dotnet-dump collect --process-id 1902 -->
       </tags>
   </entry>
   <entry>
+    <title>在 Polyglot Notebooks 使用 DataFrame</title>
+    <url>/2024/05/05/PolyglotNotebooksDataFrame/</url>
+    <content><![CDATA[<h1 id="載入-CSV-資料"><a class="header-anchor" href="#載入-CSV-資料"></a>載入 CSV 資料</h1>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="meta">#r &quot;nuget: Microsoft.Data.Analysis, 0.21.1&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> System.IO;</span><br><span class="line"><span class="keyword">using</span> Microsoft.Data.Analysis;</span><br><span class="line"></span><br><span class="line"><span class="built_in">string</span> csvfile = File.ReadAllText(<span class="string">&quot;test.csv&quot;</span>);</span><br><span class="line">DataFrame df = DataFrame.LoadCsvFromString(csvfile, <span class="string">&#x27;,&#x27;</span>);</span><br><span class="line">Console.WriteLine(df);</span><br></pre></td></tr></table></figure>
+<p>輸出:</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">NAME      </span><br><span class="line">張三        </span><br><span class="line">李四   </span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="取得前-1-筆"><a class="header-anchor" href="#取得前-1-筆"></a>取得前 1 筆</h1>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">DataFrame headRow = df.Head(<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">Console.WriteLine(headRow);</span><br></pre></td></tr></table></figure>
+<p>輸出:</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">NAME      </span><br><span class="line">張三   </span><br></pre></td></tr></table></figure>
+<h1 id="加入新-column"><a class="header-anchor" href="#加入新-column"></a>加入新 column</h1>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">df.Columns.Add(<span class="keyword">new</span> PrimitiveDataFrameColumn&lt;<span class="built_in">int</span>&gt;(<span class="string">&quot;AGE&quot;</span>, <span class="keyword">new</span> List&lt;<span class="built_in">int</span>&gt;&#123;<span class="number">1</span>, <span class="number">1</span>&#125;));</span><br><span class="line"></span><br><span class="line">Console.WriteLine(df);</span><br></pre></td></tr></table></figure>
+<p>輸出:</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">NAME      AGE       </span><br><span class="line">張三        <span class="number">1</span>         </span><br><span class="line">李四        <span class="number">1</span>         </span><br></pre></td></tr></table></figure>
+<h1 id="加入新-row"><a class="header-anchor" href="#加入新-row"></a>加入新 row</h1>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">df.Append(<span class="keyword">new</span> List&lt;KeyValuePair&lt;<span class="built_in">string</span>, <span class="built_in">object</span>&gt;&gt;() &#123;</span><br><span class="line"><span class="keyword">new</span> KeyValuePair&lt;<span class="built_in">string</span>, <span class="built_in">object</span>&gt;(<span class="string">&quot;NAME&quot;</span>, <span class="string">&quot;王五&quot;</span>),</span><br><span class="line"><span class="keyword">new</span> KeyValuePair&lt;<span class="built_in">string</span>, <span class="built_in">object</span>&gt;(<span class="string">&quot;AGE&quot;</span>, <span class="number">3</span>)</span><br><span class="line">&#125;, <span class="literal">true</span>);</span><br><span class="line"></span><br><span class="line">Console.WriteLine(df);</span><br></pre></td></tr></table></figure>
+<p>輸出:</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">NAME      AGE       </span><br><span class="line">張三        <span class="number">1</span>         </span><br><span class="line">李四        <span class="number">1</span>         </span><br><span class="line">王五        <span class="number">3</span>       </span><br></pre></td></tr></table></figure>
+<h1 id="排序資料"><a class="header-anchor" href="#排序資料"></a>排序資料</h1>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">DataFrame orderByData = df.OrderByDescending(<span class="string">&quot;AGE&quot;</span>);</span><br><span class="line">Console.WriteLine(orderByData);</span><br></pre></td></tr></table></figure>
+<p>輸出:</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">NAME      AGE       </span><br><span class="line">王五        <span class="number">3</span>         </span><br><span class="line">李四        <span class="number">1</span>         </span><br><span class="line">張三        <span class="number">1</span>            </span><br></pre></td></tr></table></figure>
+<h1 id="分群資料"><a class="header-anchor" href="#分群資料"></a>分群資料</h1>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">DataFrame groupByData = df.GroupBy(<span class="string">&quot;AGE&quot;</span>).Count();</span><br><span class="line">Console.WriteLine(groupByData);</span><br></pre></td></tr></table></figure>
+<p>輸出:</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">AGE       NAME      </span><br><span class="line"><span class="number">1</span>         <span class="number">2</span>         </span><br><span class="line"><span class="number">3</span>         <span class="number">1</span>         </span><br></pre></td></tr></table></figure>
+<h1 id="篩選資料"><a class="header-anchor" href="#篩選資料"></a>篩選資料</h1>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">DataFrame filterData = df.Filter(df.Columns[<span class="string">&quot;AGE&quot;</span>].ElementwiseGreaterThan(<span class="number">1</span>));</span><br><span class="line">Console.WriteLine(filterData);</span><br></pre></td></tr></table></figure>
+<p>輸出:</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">NAME      AGE       </span><br><span class="line">王五        <span class="number">3</span>            </span><br></pre></td></tr></table></figure>
+<h1 id="合併資料"><a class="header-anchor" href="#合併資料"></a>合併資料</h1>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">DataFrame df1 = DataFrame.LoadCsvFromString(csvfile, <span class="string">&#x27;,&#x27;</span>);</span><br><span class="line">DataFrame mergeData = df1.Merge&lt;<span class="built_in">string</span>&gt;(df, <span class="string">&quot;NAME&quot;</span>, <span class="string">&quot;NAME&quot;</span>);</span><br><span class="line">Console.WriteLine(mergeData);</span><br></pre></td></tr></table></figure>
+<p>輸出:</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">NAME_left  NAME_right AGE        </span><br><span class="line">張三         張三         <span class="number">1</span>          </span><br><span class="line">李四         李四         <span class="number">1</span>          </span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://learn.microsoft.com/en-us/dotnet/api/microsoft.data.analysis.dataframe?view=ml-dotnet-preview&amp;viewFallbackFrom=ml-dotnet">DataFrame Class</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>Polyglot Notebooks</category>
+      </categories>
+      <tags>
+        <tag>Polyglot Notebooks</tag>
+        <tag>DataFrame</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>在 Polyglot Notebooks 使用 ScottPlot</title>
     <url>/2024/06/01/PolyglotNotebooksScottPlot/</url>
     <content><![CDATA[<h1 id="初始化設定"><a class="header-anchor" href="#初始化設定"></a>初始化設定</h1>
@@ -1267,6 +1268,30 @@ dotnet-dump collect --process-id 1902 -->
       <tags>
         <tag>Polyglot Notebooks</tag>
         <tag>ScottPlot</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>使用 Flask-Caching 緩存 Flask 呼叫方法產生的資料</title>
+    <url>/2023/07/07/PythonFlaskCaching/</url>
+    <content><![CDATA[<h1 id="安裝套件"><a class="header-anchor" href="#安裝套件"></a>安裝套件</h1>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip install Flask</span><br><span class="line">pip install Flask-Caching</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="建立-address-json-內容如下"><a class="header-anchor" href="#建立-address-json-內容如下"></a>建立 address.json 內容如下</h1>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;Address&quot;</span><span class="punctuation">:</span> <span class="string">&quot;新竹市&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;Zip&quot;</span><span class="punctuation">:</span> <span class="string">&quot;300&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<h1 id="建立-app-py-內容如下"><a class="header-anchor" href="#建立-app-py-內容如下"></a>建立 <a href="http://app.py">app.py</a> 內容如下</h1>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</span><br><span class="line"><span class="keyword">from</span> flask_caching <span class="keyword">import</span> Cache</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line">config = &#123;</span><br><span class="line">    <span class="string">&quot;DEBUG&quot;</span>: <span class="literal">True</span>,</span><br><span class="line">    <span class="string">&quot;CACHE_TYPE&quot;</span>: <span class="string">&quot;SimpleCache&quot;</span>,</span><br><span class="line">    <span class="string">&quot;CACHE_DEFAULT_TIMEOUT&quot;</span>: <span class="number">3000</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line">app.config.from_mapping(config)</span><br><span class="line">cache = Cache(app)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用裝飾器緩存呼叫方法產生的資料</span></span><br><span class="line"><span class="meta">@cache.memoize(<span class="params">timeout=<span class="number">50</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">LoadAllAddress</span>():</span><br><span class="line">    <span class="comment"># 讀取 address.json</span></span><br><span class="line">    file = <span class="built_in">open</span>(<span class="string">&#x27;address.json&#x27;</span>)</span><br><span class="line">    data = json.load(file)</span><br><span class="line">    <span class="keyword">return</span> data</span><br><span class="line"></span><br><span class="line"><span class="comment"># 刪除緩存</span></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/ClearAddressCache&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">delAddress</span>():</span><br><span class="line">   <span class="comment"># 刪除緩存呼叫方法產生的資料</span></span><br><span class="line">   cache.delete_memoized(LoadAllAddress)</span><br><span class="line">   <span class="keyword">return</span> <span class="string">&quot;Clear Success&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 取得 address.json 的資料</span></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/GetAllAddress&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">AllAddress</span>():</span><br><span class="line">    <span class="keyword">return</span> LoadAllAddress()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    app.run()</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://flask-caching.readthedocs.io/en/latest/">Flask-Caching</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>Flask</tag>
+        <tag>Caching</tag>
       </tags>
   </entry>
   <entry>
@@ -1320,30 +1345,6 @@ db.create_all() -->
         <tag>Font</tag>
         <tag>Python</tag>
         <tag>FontForge</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>使用 Flask-Caching 緩存 Flask 呼叫方法產生的資料</title>
-    <url>/2023/07/07/PythonFlaskCaching/</url>
-    <content><![CDATA[<h1 id="安裝套件"><a class="header-anchor" href="#安裝套件"></a>安裝套件</h1>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip install Flask</span><br><span class="line">pip install Flask-Caching</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="建立-address-json-內容如下"><a class="header-anchor" href="#建立-address-json-內容如下"></a>建立 address.json 內容如下</h1>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;Address&quot;</span><span class="punctuation">:</span> <span class="string">&quot;新竹市&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;Zip&quot;</span><span class="punctuation">:</span> <span class="string">&quot;300&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-<h1 id="建立-app-py-內容如下"><a class="header-anchor" href="#建立-app-py-內容如下"></a>建立 <a href="http://app.py">app.py</a> 內容如下</h1>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</span><br><span class="line"><span class="keyword">from</span> flask_caching <span class="keyword">import</span> Cache</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line">config = &#123;</span><br><span class="line">    <span class="string">&quot;DEBUG&quot;</span>: <span class="literal">True</span>,</span><br><span class="line">    <span class="string">&quot;CACHE_TYPE&quot;</span>: <span class="string">&quot;SimpleCache&quot;</span>,</span><br><span class="line">    <span class="string">&quot;CACHE_DEFAULT_TIMEOUT&quot;</span>: <span class="number">3000</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line">app.config.from_mapping(config)</span><br><span class="line">cache = Cache(app)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用裝飾器緩存呼叫方法產生的資料</span></span><br><span class="line"><span class="meta">@cache.memoize(<span class="params">timeout=<span class="number">50</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">LoadAllAddress</span>():</span><br><span class="line">    <span class="comment"># 讀取 address.json</span></span><br><span class="line">    file = <span class="built_in">open</span>(<span class="string">&#x27;address.json&#x27;</span>)</span><br><span class="line">    data = json.load(file)</span><br><span class="line">    <span class="keyword">return</span> data</span><br><span class="line"></span><br><span class="line"><span class="comment"># 刪除緩存</span></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/ClearAddressCache&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">delAddress</span>():</span><br><span class="line">   <span class="comment"># 刪除緩存呼叫方法產生的資料</span></span><br><span class="line">   cache.delete_memoized(LoadAllAddress)</span><br><span class="line">   <span class="keyword">return</span> <span class="string">&quot;Clear Success&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 取得 address.json 的資料</span></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/GetAllAddress&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">AllAddress</span>():</span><br><span class="line">    <span class="keyword">return</span> LoadAllAddress()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    app.run()</span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://flask-caching.readthedocs.io/en/latest/">Flask-Caching</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>Python</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-        <tag>Flask</tag>
-        <tag>Caching</tag>
       </tags>
   </entry>
   <entry>
@@ -1410,6 +1411,32 @@ db.create_all() -->
         <tag>Security</tag>
         <tag>Metasploit</tag>
         <tag>Nmap</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>安裝 Whistle</title>
+    <url>/2023/01/20/WhistleProxyInstall/</url>
+    <content><![CDATA[<h1 id="使用-Node-安裝-Whistle"><a class="header-anchor" href="#使用-Node-安裝-Whistle"></a>使用 Node 安裝 Whistle</h1>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm i -g whistle</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="啟動-Whistle"><a class="header-anchor" href="#啟動-Whistle"></a>啟動 Whistle</h1>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">w2 start</span><br></pre></td></tr></table></figure>
+<h1 id="查看-Whistle-狀態"><a class="header-anchor" href="#查看-Whistle-狀態"></a>查看 Whistle 狀態</h1>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">w2 status</span><br></pre></td></tr></table></figure>
+<h1 id="停止-Whistle"><a class="header-anchor" href="#停止-Whistle"></a>停止 Whistle</h1>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">w2 stop</span><br></pre></td></tr></table></figure>
+<h1 id="設定-Whistle-為-Proxy-的-Server"><a class="header-anchor" href="#設定-Whistle-為-Proxy-的-Server"></a>設定 Whistle 為 Proxy 的 Server</h1>
+<p><img src="Win10ProxySetting.png" alt="Win10ProxySetting"></p>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://www.npmjs.com/package/whistle">whistle npm</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>Whistle</category>
+      </categories>
+      <tags>
+        <tag>Whistle</tag>
       </tags>
   </entry>
   <entry>
@@ -1496,32 +1523,6 @@ db.create_all() -->
       </categories>
       <tags>
         <tag>Wsl2</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>安裝 Whistle</title>
-    <url>/2023/01/20/WhistleProxyInstall/</url>
-    <content><![CDATA[<h1 id="使用-Node-安裝-Whistle"><a class="header-anchor" href="#使用-Node-安裝-Whistle"></a>使用 Node 安裝 Whistle</h1>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm i -g whistle</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="啟動-Whistle"><a class="header-anchor" href="#啟動-Whistle"></a>啟動 Whistle</h1>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">w2 start</span><br></pre></td></tr></table></figure>
-<h1 id="查看-Whistle-狀態"><a class="header-anchor" href="#查看-Whistle-狀態"></a>查看 Whistle 狀態</h1>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">w2 status</span><br></pre></td></tr></table></figure>
-<h1 id="停止-Whistle"><a class="header-anchor" href="#停止-Whistle"></a>停止 Whistle</h1>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">w2 stop</span><br></pre></td></tr></table></figure>
-<h1 id="設定-Whistle-為-Proxy-的-Server"><a class="header-anchor" href="#設定-Whistle-為-Proxy-的-Server"></a>設定 Whistle 為 Proxy 的 Server</h1>
-<p><img src="Win10ProxySetting.png" alt="Win10ProxySetting"></p>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://www.npmjs.com/package/whistle">whistle npm</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>Whistle</category>
-      </categories>
-      <tags>
-        <tag>Whistle</tag>
       </tags>
   </entry>
   <entry>
