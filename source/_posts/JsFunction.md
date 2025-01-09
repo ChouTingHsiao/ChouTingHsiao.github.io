@@ -10,9 +10,7 @@ tags: [Javascript, Function]
 
 ```javascript
 function TEST() {
-
     console.log('call function TEST');
-    
 }
 ```
 
@@ -24,13 +22,13 @@ function TEST() {
 ```javascript
 let funcName = 'TEST';
 
-if (typeof (window[FuncName]) == "function") {
-        // 執行方法
-        window[FuncName]();
-} 
+if (typeof(window[FuncName]) === 'function') {
+    // 執行方法
+    window[FuncName]();
+}
 else {
-        console.log('此方法不存在');
-}  
+    console.log('此方法不存在');
+}
 ```
 
 {% note warning %}
