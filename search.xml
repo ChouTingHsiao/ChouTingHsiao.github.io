@@ -369,29 +369,6 @@
       </tags>
   </entry>
   <entry>
-    <title>如何將檔案轉成 Base64 編碼</title>
-    <url>/2019/12/09/JsFileToBase64/</url>
-    <content><![CDATA[<h1 id="建立-HTML"><a class="header-anchor" href="#建立-HTML"></a>建立 HTML</h1>
-<p>首先在 HTML 建立一個 File Upload 與一個顯示結果的 div</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;file&quot;</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;result&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="綁定事件"><a class="header-anchor" href="#綁定事件"></a>綁定事件</h1>
-<p>接下來為 File Upload 綁定事件</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;input&#x27;</span>).<span class="title function_">addEventListener</span>(<span class="string">&#x27;change&#x27;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line"></span><br><span class="line">       <span class="comment">// 建立 FileReader 去讀取 File Upload 的內容</span></span><br><span class="line"></span><br><span class="line">       <span class="keyword">let</span> reader = <span class="keyword">new</span> <span class="title class_">FileReader</span>();</span><br><span class="line"></span><br><span class="line">       <span class="comment">// 設定初始化事件</span></span><br><span class="line"></span><br><span class="line">       reader.<span class="property">onload</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line"></span><br><span class="line">           <span class="keyword">let</span> arrayBuffer = <span class="variable language_">this</span>.<span class="property">result</span>;</span><br><span class="line"></span><br><span class="line">           <span class="keyword">let</span> base64 = <span class="title function_">btoa</span>(</span><br><span class="line">               <span class="keyword">new</span> <span class="title class_">Uint8Array</span>(arrayBuffer)</span><br><span class="line">                   .<span class="title function_">reduce</span>(<span class="function">(<span class="params">data, byte</span>) =&gt;</span> data + <span class="title class_">String</span>.<span class="title function_">fromCharCode</span>(byte), <span class="string">&#x27;&#x27;</span>)</span><br><span class="line">           );</span><br><span class="line">       </span><br><span class="line">         <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;#result&#x27;</span>).<span class="property">innerHTML</span> = arrayBuffer + <span class="string">&#x27;  &#x27;</span> + arrayBuffer.<span class="property">byteLength</span>;    </span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">      <span class="comment">// 開始讀取</span></span><br><span class="line"></span><br><span class="line">      reader.<span class="title function_">readAsArrayBuffer</span>(<span class="variable language_">this</span>.<span class="property">files</span>[<span class="number">0</span>]);</span><br><span class="line"></span><br><span class="line">   &#125;, <span class="literal">false</span>);</span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/btoa">MDN btoa</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>Javascript</category>
-      </categories>
-      <tags>
-        <tag>Javascript</tag>
-        <tag>Base64</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>如何將 Base64 編碼轉成檔案</title>
     <url>/2019/12/09/JsBase64ToFile/</url>
     <content><![CDATA[<h1 id="Chrome-base64-轉換成檔案"><a class="header-anchor" href="#Chrome-base64-轉換成檔案"></a>Chrome base64 轉換成檔案</h1>
@@ -404,6 +381,29 @@
 <div class="note warning"><p>📜 參考資料</p>
 <ol>
 <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/atob">MDN atob</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>Javascript</category>
+      </categories>
+      <tags>
+        <tag>Javascript</tag>
+        <tag>Base64</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>如何將檔案轉成 Base64 編碼</title>
+    <url>/2019/12/09/JsFileToBase64/</url>
+    <content><![CDATA[<h1 id="建立-HTML"><a class="header-anchor" href="#建立-HTML"></a>建立 HTML</h1>
+<p>首先在 HTML 建立一個 File Upload 與一個顯示結果的 div</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;file&quot;</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;result&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="綁定事件"><a class="header-anchor" href="#綁定事件"></a>綁定事件</h1>
+<p>接下來為 File Upload 綁定事件</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;input&#x27;</span>).<span class="title function_">addEventListener</span>(<span class="string">&#x27;change&#x27;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line"></span><br><span class="line">       <span class="comment">// 建立 FileReader 去讀取 File Upload 的內容</span></span><br><span class="line"></span><br><span class="line">       <span class="keyword">let</span> reader = <span class="keyword">new</span> <span class="title class_">FileReader</span>();</span><br><span class="line"></span><br><span class="line">       <span class="comment">// 設定初始化事件</span></span><br><span class="line"></span><br><span class="line">       reader.<span class="property">onload</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line"></span><br><span class="line">           <span class="keyword">let</span> arrayBuffer = <span class="variable language_">this</span>.<span class="property">result</span>;</span><br><span class="line"></span><br><span class="line">           <span class="keyword">let</span> base64 = <span class="title function_">btoa</span>(</span><br><span class="line">               <span class="keyword">new</span> <span class="title class_">Uint8Array</span>(arrayBuffer)</span><br><span class="line">                   .<span class="title function_">reduce</span>(<span class="function">(<span class="params">data, byte</span>) =&gt;</span> data + <span class="title class_">String</span>.<span class="title function_">fromCharCode</span>(byte), <span class="string">&#x27;&#x27;</span>)</span><br><span class="line">           );</span><br><span class="line">       </span><br><span class="line">         <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;#result&#x27;</span>).<span class="property">innerHTML</span> = arrayBuffer + <span class="string">&#x27;  &#x27;</span> + arrayBuffer.<span class="property">byteLength</span>;    </span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">      <span class="comment">// 開始讀取</span></span><br><span class="line"></span><br><span class="line">      reader.<span class="title function_">readAsArrayBuffer</span>(<span class="variable language_">this</span>.<span class="property">files</span>[<span class="number">0</span>]);</span><br><span class="line"></span><br><span class="line">   &#125;, <span class="literal">false</span>);</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/btoa">MDN btoa</a></li>
 </ol>
 </div>]]></content>
       <categories>
@@ -831,30 +831,6 @@ plink -v -x -a -T -C -noagent -ssh -pw "[密碼]" -P 50893 -L [本地端口]:[�
       </tags>
   </entry>
   <entry>
-    <title>使用 AddInMemoryCollection 設定 Configuration 進行單元測試</title>
-    <url>/2023/01/21/NetAddInMemoryCollection/</url>
-    <content><![CDATA[<h1 id="設定-appsettings-json-如下"><a class="header-anchor" href="#設定-appsettings-json-如下"></a>設定 appsettings.json 如下</h1>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;Logging&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;LogLevel&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;Default&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Information&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;Microsoft.AspNetCore&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Warning&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="轉換為-Dictionary-string-string"><a class="header-anchor" href="#轉換為-Dictionary-string-string"></a>轉換為 Dictionary&lt;string, string&gt;</h1>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">Dictionary&lt;<span class="built_in">string</span>, <span class="built_in">string</span>&gt; inMemorySettings = <span class="keyword">new</span> Dictionary&lt;<span class="built_in">string</span>, <span class="built_in">string</span>&gt; &#123;</span><br><span class="line">    &#123;<span class="string">&quot;Logging:LogLevel:Default&quot;</span>,  <span class="string">&quot;Information&quot;</span>&#125;,</span><br><span class="line">    &#123;<span class="string">&quot;Logging:LogLevel:Microsoft.AspNetCore&quot;</span>,  <span class="string">&quot;Warning&quot;</span>&#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h1 id="建立-Configuration"><a class="header-anchor" href="#建立-Configuration"></a>建立 Configuration</h1>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">IConfiguration configuration = <span class="keyword">new</span> ConfigurationBuilder()</span><br><span class="line">            .AddInMemoryCollection(inMemorySettings)</span><br><span class="line">            .Build();</span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://learn.microsoft.com/en-us/dotnet/api/microsoft.extensions.configuration.memoryconfigurationbuilderextensions.addinmemorycollection?view=dotnet-plat-ext-7.0">MemoryConfigurationBuilderExtensions.AddInMemoryCollection Method</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>.Net</category>
-      </categories>
-      <tags>
-        <tag>.Net</tag>
-        <tag>UnitTest</tag>
-        <tag>IConfiguration</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>在 SQL Server 操作 XML</title>
     <url>/2025/01/01/MsSqlXmlString/</url>
     <content><![CDATA[<h1 id="宣告-XML-資料"><a class="header-anchor" href="#宣告-XML-資料"></a>宣告 XML 資料</h1>
@@ -887,6 +863,30 @@ plink -v -x -a -T -C -noagent -ssh -pw "[密碼]" -P 50893 -L [本地端口]:[�
       <tags>
         <tag>MSSQL</tag>
         <tag>XML</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>使用 AddInMemoryCollection 設定 Configuration 進行單元測試</title>
+    <url>/2023/01/21/NetAddInMemoryCollection/</url>
+    <content><![CDATA[<h1 id="設定-appsettings-json-如下"><a class="header-anchor" href="#設定-appsettings-json-如下"></a>設定 appsettings.json 如下</h1>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;Logging&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;LogLevel&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;Default&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Information&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;Microsoft.AspNetCore&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Warning&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="轉換為-Dictionary-string-string"><a class="header-anchor" href="#轉換為-Dictionary-string-string"></a>轉換為 Dictionary&lt;string, string&gt;</h1>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">Dictionary&lt;<span class="built_in">string</span>, <span class="built_in">string</span>&gt; inMemorySettings = <span class="keyword">new</span> Dictionary&lt;<span class="built_in">string</span>, <span class="built_in">string</span>&gt; &#123;</span><br><span class="line">    &#123;<span class="string">&quot;Logging:LogLevel:Default&quot;</span>,  <span class="string">&quot;Information&quot;</span>&#125;,</span><br><span class="line">    &#123;<span class="string">&quot;Logging:LogLevel:Microsoft.AspNetCore&quot;</span>,  <span class="string">&quot;Warning&quot;</span>&#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h1 id="建立-Configuration"><a class="header-anchor" href="#建立-Configuration"></a>建立 Configuration</h1>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">IConfiguration configuration = <span class="keyword">new</span> ConfigurationBuilder()</span><br><span class="line">            .AddInMemoryCollection(inMemorySettings)</span><br><span class="line">            .Build();</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://learn.microsoft.com/en-us/dotnet/api/microsoft.extensions.configuration.memoryconfigurationbuilderextensions.addinmemorycollection?view=dotnet-plat-ext-7.0">MemoryConfigurationBuilderExtensions.AddInMemoryCollection Method</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>.Net</category>
+      </categories>
+      <tags>
+        <tag>.Net</tag>
+        <tag>UnitTest</tag>
+        <tag>IConfiguration</tag>
       </tags>
   </entry>
   <entry>
@@ -987,7 +987,7 @@ dotnet-dump collect --process-id 1902 -->
       </tags>
   </entry>
   <entry>
-    <title>在 Polyglot Notebooks 使用 DataFrame</title>
+    <title>使用 DataFrame 操作資料</title>
     <url>/2024/05/05/NetDataFrame/</url>
     <content><![CDATA[<h1 id="載入-CSV-資料"><a class="header-anchor" href="#載入-CSV-資料"></a>載入 CSV 資料</h1>
 <figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="meta">#r &quot;nuget: Microsoft.Data.Analysis, 0.21.1&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> System.IO;</span><br><span class="line"><span class="keyword">using</span> Microsoft.Data.Analysis;</span><br><span class="line"></span><br><span class="line"><span class="built_in">string</span> csvfile = File.ReadAllText(<span class="string">&quot;test.csv&quot;</span>);</span><br><span class="line">DataFrame df = DataFrame.LoadCsvFromString(csvfile, <span class="string">&#x27;,&#x27;</span>);</span><br><span class="line">Console.WriteLine(df);</span><br></pre></td></tr></table></figure>
@@ -1143,13 +1143,13 @@ dotnet-dump collect --process-id 1902 -->
       </tags>
   </entry>
   <entry>
-    <title>在 Polyglot Notebooks 使用 ScottPlot</title>
+    <title>使用 ScottPlot 繪製圖表</title>
     <url>/2024/06/01/NetScottPlot/</url>
     <content><![CDATA[<h1 id="初始化設定"><a class="header-anchor" href="#初始化設定"></a>初始化設定</h1>
 <figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 套件 Microsoft.Data.Analysis 檔案轉 DataFrame 格式</span></span><br><span class="line"><span class="meta">#r &quot;nuget: Microsoft.Data.Analysis, 0.21.1&quot;</span></span><br><span class="line"><span class="comment">// 套件 MathNet.Numerics 進行數學計算</span></span><br><span class="line"><span class="meta">#r &quot;nuget: MathNet.Numerics, 5.0.0&quot;</span></span><br><span class="line"><span class="comment">// 套件 ScottPlot 產生圖片</span></span><br><span class="line"><span class="meta">#r &quot;nuget:ScottPlot, 5.0.*&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> System.IO;</span><br><span class="line"><span class="keyword">using</span> Microsoft.Data.Analysis;</span><br><span class="line"><span class="keyword">using</span> MathNet.Numerics.Distributions;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 設定 ScottPlot 圖片格式</span></span><br><span class="line"><span class="keyword">using</span> Microsoft.DotNet.Interactive.Formatting;</span><br><span class="line">Formatter.Register(<span class="keyword">typeof</span>(ScottPlot.Plot), (p, w) =&gt; </span><br><span class="line">    w.Write(((ScottPlot.Plot)p).GetImageHtml(<span class="number">400</span>, <span class="number">300</span>)), HtmlFormatter.MimeType);</span><br></pre></td></tr></table></figure>
 <span id="more"></span>
 <h1 id="載入-CSV-資料"><a class="header-anchor" href="#載入-CSV-資料"></a>載入 CSV 資料</h1>
-<p>可參考這篇 <a href="/2024/05/05/NetDataFrame/" title="在 Polyglot Notebooks 使用 DataFrame">DataFrame</a> 載入 <a href="test.csv">CSV 資料</a></p>
+<p>可參考這篇 <a href="/2024/05/05/NetDataFrame/" title="使用 DataFrame 操作資料">DataFrame</a> 載入 <a href="test.csv">CSV 資料</a></p>
 <h1 id="使用-SignalXY-繪圖"><a class="header-anchor" href="#使用-SignalXY-繪圖"></a>使用 SignalXY 繪圖</h1>
 <figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">ScottPlot.Plot myPlot1 = <span class="keyword">new</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 計算資料筆數</span></span><br><span class="line"><span class="built_in">int</span>[] rowIndex = Enumerable.Range(<span class="number">0</span>, (<span class="built_in">int</span>)df.Rows.Count).ToArray();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 載入 Duration 欄</span></span><br><span class="line"><span class="built_in">double</span>[] durationsY = Enumerable.Range(<span class="number">0</span>, (<span class="built_in">int</span>)df.Rows.Count).Select(x =&gt; Convert.ToDouble(df[<span class="string">&quot;Duration&quot;</span>][x])).ToArray();</span><br><span class="line"></span><br><span class="line">ScottPlot.Plottables.SignalXY sigAll1 = myPlot1.Add.SignalXY(rowIndex, durationsY);</span><br><span class="line">sigAll1.LegendText = <span class="string">&quot;Duration&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 載入 Pulse 欄</span></span><br><span class="line"><span class="built_in">double</span>[] pulseY = Enumerable.Range(<span class="number">0</span>, (<span class="built_in">int</span>)df.Rows.Count).Select(x =&gt; Convert.ToDouble(df[<span class="string">&quot;Pulse&quot;</span>][x])).ToArray();</span><br><span class="line"></span><br><span class="line">ScottPlot.Plottables.SignalXY sigAll2 = myPlot1.Add.SignalXY(rowIndex, pulseY);</span><br><span class="line">sigAll2.LegendText = <span class="string">&quot;Pulse&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 載入 Maxpulse 欄</span></span><br><span class="line"><span class="built_in">double</span>[] maxpulseY = Enumerable.Range(<span class="number">0</span>, (<span class="built_in">int</span>)df.Rows.Count).Select(x =&gt; Convert.ToDouble(df[<span class="string">&quot;Maxpulse&quot;</span>][x])).ToArray();</span><br><span class="line"></span><br><span class="line">ScottPlot.Plottables.SignalXY sigAll3 = myPlot1.Add.SignalXY(rowIndex, maxpulseY);</span><br><span class="line">sigAll3.LegendText = <span class="string">&quot;Maxpulse&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 載入 Calories 欄</span></span><br><span class="line"><span class="built_in">double</span>[] caloriesY = Enumerable.Range(<span class="number">0</span>, (<span class="built_in">int</span>)df.Rows.Count).Select(x =&gt; Convert.ToDouble(df[<span class="string">&quot;Calories&quot;</span>][x])).ToArray();</span><br><span class="line"></span><br><span class="line">ScottPlot.Plottables.SignalXY sigAll4 = myPlot1.Add.SignalXY(rowIndex, caloriesY);</span><br><span class="line">sigAll4.LegendText = <span class="string">&quot;Calories&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 設定 Legend 位置</span></span><br><span class="line">myPlot1.Legend.Alignment = ScottPlot.Alignment.UpperRight;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 顯示圖表</span></span><br><span class="line">myPlot1</span><br></pre></td></tr></table></figure>
 <!-- myPlot1.GetImage(400, 300).SaveWebp("SignalXY.webp"); -->
@@ -1282,8 +1282,8 @@ dotnet-dump collect --process-id 1902 -->
         <category>.Net</category>
       </categories>
       <tags>
-        <tag>.Net</tag>
         <tag>XML</tag>
+        <tag>.Net</tag>
       </tags>
   </entry>
   <entry>
