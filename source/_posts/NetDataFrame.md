@@ -1,5 +1,5 @@
 ---
-title: 在 Polyglot Notebooks 使用 DataFrame
+title: 使用 DataFrame 操作資料
 date: 2024-05-05 11:10:00
 categories: .Net
 tags: [.Net, DataFrame, Polyglot Notebooks]

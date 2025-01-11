@@ -1,5 +1,5 @@
 ---
-title: 在 Polyglot Notebooks 使用 ScottPlot
+title: 使用 ScottPlot 繪製圖表
 date: 2024-06-01 19:10:00
 categories: .Net
 tags: [.Net, ScottPlot, Polyglot Notebooks]
