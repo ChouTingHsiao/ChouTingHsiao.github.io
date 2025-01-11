@@ -1,25 +1,25 @@
 ---
-title: Linux IBM i Access Odbc 手動安裝
+title: Linux IBM i Access ODBC 手動安裝
 date: 2021-10-05 22:00:00
 categories: Linux
-tags: [Linux, Ubuntu, Odbc, IBM i Access]
+tags: [Linux, Ubuntu, ODBC, IBM i Access]
 ---
 
-# 配置 Odbc 元件
-安裝 Linux Odbc 元件
+# 配置 ODBC 元件
+安裝 Linux ODBC 元件
 ```bash
 sudo apt-get install unixodbc
 ```
 
 <!--more-->
 
-# 安裝 Odbc Driver
-登入[IBM網頁](https://www.ibm.com/support/pages/ibm-i-access-client-solutions)下載Linux Odbc Driver並安裝
+# 安裝 ODBC Driver
+登入[IBM網頁](https://www.ibm.com/support/pages/ibm-i-access-client-solutions)下載 Linux ODBC Driver 並安裝
 ```bash
 sudo dpkg -i ibm-iaccess-1.1.0.15-1.0.amd64.deb
 ```
 
-查看 Linux Odbc Drivers 設定檔位置
+查看 Linux ODBC Drivers 設定檔位置
 ```bash
 odbcinst -j
 ```

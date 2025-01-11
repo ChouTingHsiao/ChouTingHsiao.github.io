@@ -27,7 +27,7 @@ Formatter.Register(typeof(ScottPlot.Plot), (p, w) =>
 <!--more-->
 
 # 載入 CSV 資料
-可參考這篇 {% post_link PolyglotNotebooksDataFrame DataFrame %} 載入 [CSV 資料](test.csv)
+可參考這篇 {% post_link NetDataFrame DataFrame %} 載入 [CSV 資料](test.csv)
 
 # 使用 SignalXY 繪圖
 ```c#

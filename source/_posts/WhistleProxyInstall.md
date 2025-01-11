@@ -28,6 +28,7 @@ w2 stop
 ```
 
 # 設定 Whistle 為 Proxy 的 Server
+<!-- {% asset_img Win10ProxySetting.png %} -->
 ![Win10ProxySetting](Win10ProxySetting.png)
 
 {% note warning %}

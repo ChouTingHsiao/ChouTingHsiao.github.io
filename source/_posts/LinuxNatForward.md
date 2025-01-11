@@ -3,6 +3,7 @@ title: 使用 NAT 轉發請求
 date: 2024-07-25 18:00:00
 categories: Linux
 tags: [Linux, Ubuntu, Nat]
+sticky: 100
 ---
 
 # NAT 介紹:
