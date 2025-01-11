@@ -130,6 +130,33 @@
       </tags>
   </entry>
   <entry>
+    <title>如何設定 Protractor WebDriver Version</title>
+    <url>/2020/08/31/AngularProtractorWebDriver/</url>
+    <content><![CDATA[<h1 id="安裝-WebDriver"><a class="header-anchor" href="#安裝-WebDriver"></a>安裝 WebDriver</h1>
+<p>先清除目前下載的 WebDriver</p>
+<span id="more"></span>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npx  webdriver-manager clean</span><br></pre></td></tr></table></figure>
+<p>以 chrome 為例從<a href="http://chromedriver.chromium.org/">chromedriver網頁</a></p>
+<p>查詢所需的版本號</p>
+<p>接下來依版本下載 WebDriver</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npx webdriver-manager update  --versions.chrome  [chrome版本號]</span><br></pre></td></tr></table></figure>
+<h1 id="運行-Protractor"><a class="header-anchor" href="#運行-Protractor"></a>運行 Protractor</h1>
+<p>運行 Protractor 時使用 --no-webdriver-update 選項</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ng e2e --no-webdriver-update</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://www.npmjs.com/package/webdriver-manager">webdriver-manager NPM</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>Angular</category>
+      </categories>
+      <tags>
+        <tag>Angular</tag>
+        <tag>Protractor</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Win10 家用版安裝 Docker</title>
     <url>/2023/05/05/DockerWin10Home/</url>
     <content><![CDATA[<div class="note danger"><p>⚠️請注意，因 Win10 家用版本身不支援安裝下方功能，開啟後可能發生未知錯誤，僅供學習使用</p>
@@ -169,33 +196,6 @@
       </categories>
       <tags>
         <tag>Docker</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>如何設定 Protractor WebDriver Version</title>
-    <url>/2020/08/31/AngularProtractorWebDriver/</url>
-    <content><![CDATA[<h1 id="安裝-WebDriver"><a class="header-anchor" href="#安裝-WebDriver"></a>安裝 WebDriver</h1>
-<p>先清除目前下載的 WebDriver</p>
-<span id="more"></span>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npx  webdriver-manager clean</span><br></pre></td></tr></table></figure>
-<p>以 chrome 為例從<a href="http://chromedriver.chromium.org/">chromedriver網頁</a></p>
-<p>查詢所需的版本號</p>
-<p>接下來依版本下載 WebDriver</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npx webdriver-manager update  --versions.chrome  [chrome版本號]</span><br></pre></td></tr></table></figure>
-<h1 id="運行-Protractor"><a class="header-anchor" href="#運行-Protractor"></a>運行 Protractor</h1>
-<p>運行 Protractor 時使用 --no-webdriver-update 選項</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ng e2e --no-webdriver-update</span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://www.npmjs.com/package/webdriver-manager">webdriver-manager NPM</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>Angular</category>
-      </categories>
-      <tags>
-        <tag>Angular</tag>
-        <tag>Protractor</tag>
       </tags>
   </entry>
   <entry>
@@ -346,29 +346,6 @@
       </tags>
   </entry>
   <entry>
-    <title>如何將 Base64 編碼轉成檔案</title>
-    <url>/2019/12/09/JsBase64ToFile/</url>
-    <content><![CDATA[<h1 id="Chrome-base64-轉換成檔案"><a class="header-anchor" href="#Chrome-base64-轉換成檔案"></a>Chrome base64 轉換成檔案</h1>
-<p>下方是使用 JavaScript 把 base64 轉換成檔案的方法</p>
-<span id="more"></span>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"> <span class="keyword">function</span> <span class="title function_">downloadFile</span>(<span class="params">base64Str</span>) &#123;</span><br><span class="line">    <span class="comment">// 解碼 base64</span></span><br><span class="line">    <span class="keyword">const</span> byteCharacters = <span class="title function_">atob</span>(base64Str);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 建立 Byte Array</span></span><br><span class="line">    <span class="keyword">const</span> byteNumbers = <span class="keyword">new</span> <span class="title class_">Array</span>(byteCharacters.<span class="property">length</span>);</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; byteCharacters.<span class="property">length</span>; i++) &#123;</span><br><span class="line"> </span><br><span class="line">       byteNumbers[i] = byteCharacters.<span class="title function_">charCodeAt</span>(i);</span><br><span class="line"> </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">const</span> byteArray = <span class="keyword">new</span> <span class="title class_">Uint8Array</span>(byteNumbers);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 建立二進制檔和聲明 MIME Type</span></span><br><span class="line">    <span class="keyword">const</span> blob = <span class="keyword">new</span> <span class="title class_">Blob</span>([byteArray], &#123;<span class="attr">type</span>: <span class="string">&#x27;image/jpg&#x27;</span>&#125;);</span><br><span class="line"> </span><br><span class="line">    <span class="comment">// 下載檔案</span></span><br><span class="line">    <span class="keyword">let</span> link = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&#x27;a&#x27;</span>);</span><br><span class="line"> </span><br><span class="line">    <span class="comment">// 建立檔案物件連結</span></span><br><span class="line">    <span class="keyword">const</span> blobUrl = <span class="variable constant_">URL</span>.<span class="title function_">createObjectURL</span>(blob);</span><br><span class="line"> </span><br><span class="line">    link.<span class="property">href</span> = blobUrl;</span><br><span class="line"> </span><br><span class="line">    link.<span class="property">download</span> = <span class="string">&#x27;file.jpg&#x27;</span>;</span><br><span class="line"> </span><br><span class="line">    link.<span class="title function_">click</span>();</span><br><span class="line"> </span><br><span class="line">    <span class="variable constant_">URL</span>.<span class="title function_">revokeObjectURL</span>(blobUrl);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="IE-10-base64-轉換成檔案"><a class="header-anchor" href="#IE-10-base64-轉換成檔案"></a>IE 10 base64 轉換成檔案</h1>
-<p>如果瀏覽器使用 IE 10 以上版本，可使用 window.navigator.msSaveBlob 作為替代方法</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">downloadFile</span>(<span class="params">base64Str</span>) &#123;</span><br><span class="line">   <span class="comment">// 解碼 base64</span></span><br><span class="line">   <span class="keyword">const</span> byteCharacters = <span class="title function_">atob</span>(base64Str);</span><br><span class="line">	</span><br><span class="line">   <span class="comment">// 建立 Byte Array</span></span><br><span class="line">   <span class="keyword">const</span> byteNumbers = <span class="keyword">new</span> <span class="title class_">Array</span>(byteCharacters.<span class="property">length</span>);</span><br><span class="line">	</span><br><span class="line">   <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; byteCharacters.<span class="property">length</span>; i++) &#123;</span><br><span class="line">      byteNumbers[i] = byteCharacters.<span class="title function_">charCodeAt</span>(i);</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">const</span> byteArray = <span class="keyword">new</span> <span class="title class_">Uint8Array</span>(byteNumbers);</span><br><span class="line"></span><br><span class="line">   <span class="comment">// 建立二進制檔和聲明 MIME Type</span></span><br><span class="line">   <span class="keyword">const</span> blob = <span class="keyword">new</span> <span class="title class_">Blob</span>([byteArray], &#123;<span class="attr">type</span>: <span class="string">&#x27;image/jpg&#x27;</span>&#125;);</span><br><span class="line"> </span><br><span class="line">   <span class="comment">// 下載檔案</span></span><br><span class="line">   <span class="variable language_">window</span>.<span class="property">navigator</span>.<span class="title function_">msSaveBlob</span>(blob, <span class="string">&#x27;file.jpg&#x27;</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/atob">MDN atob</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>Javascript</category>
-      </categories>
-      <tags>
-        <tag>Javascript</tag>
-        <tag>Base64</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>使用 Linux 檔案列表建立 Jenkins 下拉選單</title>
     <url>/2021/10/23/JenkinsDropdown/</url>
     <content><![CDATA[<h1 id="取得檔案列表方法"><a class="header-anchor" href="#取得檔案列表方法"></a>取得檔案列表方法</h1>
@@ -404,6 +381,29 @@
 <div class="note warning"><p>📜 參考資料</p>
 <ol>
 <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/btoa">MDN btoa</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>Javascript</category>
+      </categories>
+      <tags>
+        <tag>Javascript</tag>
+        <tag>Base64</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>如何將 Base64 編碼轉成檔案</title>
+    <url>/2019/12/09/JsBase64ToFile/</url>
+    <content><![CDATA[<h1 id="Chrome-base64-轉換成檔案"><a class="header-anchor" href="#Chrome-base64-轉換成檔案"></a>Chrome base64 轉換成檔案</h1>
+<p>下方是使用 JavaScript 把 base64 轉換成檔案的方法</p>
+<span id="more"></span>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"> <span class="keyword">function</span> <span class="title function_">downloadFile</span>(<span class="params">base64Str</span>) &#123;</span><br><span class="line">    <span class="comment">// 解碼 base64</span></span><br><span class="line">    <span class="keyword">const</span> byteCharacters = <span class="title function_">atob</span>(base64Str);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 建立 Byte Array</span></span><br><span class="line">    <span class="keyword">const</span> byteNumbers = <span class="keyword">new</span> <span class="title class_">Array</span>(byteCharacters.<span class="property">length</span>);</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; byteCharacters.<span class="property">length</span>; i++) &#123;</span><br><span class="line"> </span><br><span class="line">       byteNumbers[i] = byteCharacters.<span class="title function_">charCodeAt</span>(i);</span><br><span class="line"> </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">const</span> byteArray = <span class="keyword">new</span> <span class="title class_">Uint8Array</span>(byteNumbers);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 建立二進制檔和聲明 MIME Type</span></span><br><span class="line">    <span class="keyword">const</span> blob = <span class="keyword">new</span> <span class="title class_">Blob</span>([byteArray], &#123;<span class="attr">type</span>: <span class="string">&#x27;image/jpg&#x27;</span>&#125;);</span><br><span class="line"> </span><br><span class="line">    <span class="comment">// 下載檔案</span></span><br><span class="line">    <span class="keyword">let</span> link = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&#x27;a&#x27;</span>);</span><br><span class="line"> </span><br><span class="line">    <span class="comment">// 建立檔案物件連結</span></span><br><span class="line">    <span class="keyword">const</span> blobUrl = <span class="variable constant_">URL</span>.<span class="title function_">createObjectURL</span>(blob);</span><br><span class="line"> </span><br><span class="line">    link.<span class="property">href</span> = blobUrl;</span><br><span class="line"> </span><br><span class="line">    link.<span class="property">download</span> = <span class="string">&#x27;file.jpg&#x27;</span>;</span><br><span class="line"> </span><br><span class="line">    link.<span class="title function_">click</span>();</span><br><span class="line"> </span><br><span class="line">    <span class="variable constant_">URL</span>.<span class="title function_">revokeObjectURL</span>(blobUrl);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="IE-10-base64-轉換成檔案"><a class="header-anchor" href="#IE-10-base64-轉換成檔案"></a>IE 10 base64 轉換成檔案</h1>
+<p>如果瀏覽器使用 IE 10 以上版本，可使用 window.navigator.msSaveBlob 作為替代方法</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">downloadFile</span>(<span class="params">base64Str</span>) &#123;</span><br><span class="line">   <span class="comment">// 解碼 base64</span></span><br><span class="line">   <span class="keyword">const</span> byteCharacters = <span class="title function_">atob</span>(base64Str);</span><br><span class="line">	</span><br><span class="line">   <span class="comment">// 建立 Byte Array</span></span><br><span class="line">   <span class="keyword">const</span> byteNumbers = <span class="keyword">new</span> <span class="title class_">Array</span>(byteCharacters.<span class="property">length</span>);</span><br><span class="line">	</span><br><span class="line">   <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; byteCharacters.<span class="property">length</span>; i++) &#123;</span><br><span class="line">      byteNumbers[i] = byteCharacters.<span class="title function_">charCodeAt</span>(i);</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">const</span> byteArray = <span class="keyword">new</span> <span class="title class_">Uint8Array</span>(byteNumbers);</span><br><span class="line"></span><br><span class="line">   <span class="comment">// 建立二進制檔和聲明 MIME Type</span></span><br><span class="line">   <span class="keyword">const</span> blob = <span class="keyword">new</span> <span class="title class_">Blob</span>([byteArray], &#123;<span class="attr">type</span>: <span class="string">&#x27;image/jpg&#x27;</span>&#125;);</span><br><span class="line"> </span><br><span class="line">   <span class="comment">// 下載檔案</span></span><br><span class="line">   <span class="variable language_">window</span>.<span class="property">navigator</span>.<span class="title function_">msSaveBlob</span>(blob, <span class="string">&#x27;file.jpg&#x27;</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/atob">MDN atob</a></li>
 </ol>
 </div>]]></content>
       <categories>
@@ -540,16 +540,16 @@
       </tags>
   </entry>
   <entry>
-    <title>Linux IBM i Access Odbc 手動安裝</title>
+    <title>Linux IBM i Access ODBC 手動安裝</title>
     <url>/2021/10/05/LinuxIbmIAccessOdbc/</url>
-    <content><![CDATA[<h1 id="配置-Odbc-元件"><a class="header-anchor" href="#配置-Odbc-元件"></a>配置 Odbc 元件</h1>
-<p>安裝 Linux Odbc 元件</p>
+    <content><![CDATA[<h1 id="配置-ODBC-元件"><a class="header-anchor" href="#配置-ODBC-元件"></a>配置 ODBC 元件</h1>
+<p>安裝 Linux ODBC 元件</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt-get install unixodbc</span><br></pre></td></tr></table></figure>
 <span id="more"></span>
-<h1 id="安裝-Odbc-Driver"><a class="header-anchor" href="#安裝-Odbc-Driver"></a>安裝 Odbc Driver</h1>
-<p>登入<a href="https://www.ibm.com/support/pages/ibm-i-access-client-solutions">IBM網頁</a>下載Linux Odbc Driver並安裝</p>
+<h1 id="安裝-ODBC-Driver"><a class="header-anchor" href="#安裝-ODBC-Driver"></a>安裝 ODBC Driver</h1>
+<p>登入<a href="https://www.ibm.com/support/pages/ibm-i-access-client-solutions">IBM網頁</a>下載 Linux ODBC Driver 並安裝</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo dpkg -i ibm-iaccess-1.1.0.15-1.0.amd64.deb</span><br></pre></td></tr></table></figure>
-<p>查看 Linux Odbc Drivers 設定檔位置</p>
+<p>查看 Linux ODBC Drivers 設定檔位置</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">odbcinst -j</span><br></pre></td></tr></table></figure>
 <p>查看設定檔是否出現 IBM i Access ODBC Driver 的設定</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cat</span> /etc/odbcinst.ini</span><br></pre></td></tr></table></figure>
@@ -564,8 +564,37 @@
       <tags>
         <tag>Linux</tag>
         <tag>Ubuntu</tag>
-        <tag>Odbc</tag>
+        <tag>ODBC</tag>
         <tag>IBM i Access</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Linux MSSQL ODBC 手動安裝</title>
+    <url>/2021/10/05/LinuxMssqlOdbc/</url>
+    <content><![CDATA[<h1 id="配置-Linux-ODBC-元件"><a class="header-anchor" href="#配置-Linux-ODBC-元件"></a>配置 Linux ODBC 元件</h1>
+<p>安裝 Linux ODBC 元件</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt-get install unixodbc</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="安裝-ODBC-Driver"><a class="header-anchor" href="#安裝-ODBC-Driver"></a>安裝 ODBC Driver</h1>
+<p>登入<a href="https://docs.microsoft.com/en-us/sql/connect/odbc/download-odbc-driver-for-sql-server?view=sql-server-ver15">Microsoft網頁</a>下載Odbc Driver並安裝</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo dpkg -i msodbcsql17_17.8.1.1-1_amd64.deb</span><br></pre></td></tr></table></figure>
+<p>查看 Linux ODBC Drivers 設定檔位置</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">odbcinst -j</span><br></pre></td></tr></table></figure>
+<p>查看設定檔是否出現 ODBC Driver 17 for SQL Server 的設定</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cat</span> /etc/odbcinst.ini</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://www.ibm.com/docs/en/db2/11.5?topic=managers-installing-unixodbc-driver-manager">Installing the unixODBC driver manager</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>Ubuntu</tag>
+        <tag>ODBC</tag>
+        <tag>MSSQL</tag>
       </tags>
   </entry>
   <entry>
@@ -655,35 +684,6 @@ sudo iptables -A FORWARD -i eth0 -o eth1 -j ACCEPT -->
       </tags>
   </entry>
   <entry>
-    <title>Linux Mssql Odbc 手動安裝</title>
-    <url>/2021/10/05/LinuxMssqlOdbc/</url>
-    <content><![CDATA[<h1 id="配置-Linux-Odbc-元件"><a class="header-anchor" href="#配置-Linux-Odbc-元件"></a>配置 Linux Odbc 元件</h1>
-<p>安裝 Linux Odbc 元件</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt-get install unixodbc</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="安裝-Odbc-Driver"><a class="header-anchor" href="#安裝-Odbc-Driver"></a>安裝 Odbc Driver</h1>
-<p>登入<a href="https://docs.microsoft.com/en-us/sql/connect/odbc/download-odbc-driver-for-sql-server?view=sql-server-ver15">Microsoft網頁</a>下載Odbc Driver並安裝</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo dpkg -i msodbcsql17_17.8.1.1-1_amd64.deb</span><br></pre></td></tr></table></figure>
-<p>查看 Linux Odbc Drivers 設定檔位置</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">odbcinst -j</span><br></pre></td></tr></table></figure>
-<p>查看設定檔是否出現 ODBC Driver 17 for SQL Server 的設定</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cat</span> /etc/odbcinst.ini</span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://www.ibm.com/docs/en/db2/11.5?topic=managers-installing-unixodbc-driver-manager">Installing the unixODBC driver manager</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-        <tag>Ubuntu</tag>
-        <tag>Odbc</tag>
-        <tag>Mssql</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>使用 SSH 建立通道</title>
     <url>/2023/05/07/LinuxSshTunnel/</url>
     <content><![CDATA[<h1 id="本機特定端口轉發至跳板機"><a class="header-anchor" href="#本機特定端口轉發至跳板機"></a>本機特定端口轉發至跳板機</h1>
@@ -710,33 +710,6 @@ plink -v -x -a -T -C -noagent -ssh -pw "[密碼]" -P 50893 -L [本地端口]:[�
         <tag>Linux</tag>
         <tag>Ubuntu</tag>
         <tag>Ssh</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>在 SQL Server 操作 JSON</title>
-    <url>/2025/01/01/MsSqlJsonString/</url>
-    <content><![CDATA[<h1 id="宣告-JSON-字串"><a class="header-anchor" href="#宣告-JSON-字串"></a>宣告 JSON 字串</h1>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">DECLARE</span> <span class="variable">@json</span> NVARCHAR(MAX);</span><br><span class="line"></span><br><span class="line"><span class="keyword">SET</span> <span class="variable">@json</span> <span class="operator">=</span> <span class="string">&#x27;&#123;&quot;info&quot;: &#123;&quot;address&quot;: [&#123;&quot;town&quot;: &quot;Belgrade&quot;&#125;, &#123;&quot;town&quot;: &quot;Paris&quot;&#125;, &#123;&quot;town&quot;:&quot;Madrid&quot;&#125;]&#125;&#125;&#x27;</span>;</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="JSON-VALUE-擷取純量值字串"><a class="header-anchor" href="#JSON-VALUE-擷取純量值字串"></a>JSON_VALUE 擷取純量值字串</h1>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="built_in">JSON_VALUE</span>(<span class="variable">@json</span>, <span class="string">&#x27;$.info.address[0].town&#x27;</span>);</span><br></pre></td></tr></table></figure>
-<h1 id="JSON-QUERY-擷取物件或陣列字串"><a class="header-anchor" href="#JSON-QUERY-擷取物件或陣列字串"></a>JSON_QUERY 擷取物件或陣列字串</h1>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="built_in">JSON_QUERY</span>(<span class="variable">@json</span>, <span class="string">&#x27;$.info.address&#x27;</span>);</span><br></pre></td></tr></table></figure>
-<h1 id="JSON-MODIFY-變更-JSON-字串中的值"><a class="header-anchor" href="#JSON-MODIFY-變更-JSON-字串中的值"></a>JSON_MODIFY 變更 JSON 字串中的值</h1>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SET</span> <span class="variable">@json</span> <span class="operator">=</span> JSON_MODIFY(<span class="variable">@json</span>, <span class="string">&#x27;$.info.address[1].town&#x27;</span>, <span class="string">&#x27;London&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> modifiedJson <span class="operator">=</span> <span class="variable">@json</span>;</span><br></pre></td></tr></table></figure>
-<h1 id="OPENJSON-集合轉換為資料列集"><a class="header-anchor" href="#OPENJSON-集合轉換為資料列集"></a>OPENJSON 集合轉換為資料列集</h1>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span></span><br><span class="line"><span class="keyword">FROM</span> OPENJSON(<span class="built_in">JSON_QUERY</span>(<span class="variable">@json</span>, <span class="string">&#x27;$.info.address&#x27;</span>)) <span class="keyword">WITH</span> (</span><br><span class="line">    town NVARCHAR(<span class="number">50</span>) <span class="string">&#x27;$.town&#x27;</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://learn.microsoft.com/zh-tw/sql/relational-databases/json/json-data-sql-server?view=sql-server-ver16">SQL Server 中的 JSON 資料</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>MSSQL</category>
-      </categories>
-      <tags>
-        <tag>JSON</tag>
-        <tag>MSSQL</tag>
       </tags>
   </entry>
   <entry>
@@ -797,6 +770,33 @@ plink -v -x -a -T -C -noagent -ssh -pw "[密碼]" -P 50893 -L [本地端口]:[�
       </tags>
   </entry>
   <entry>
+    <title>在 SQL Server 操作 JSON</title>
+    <url>/2025/01/01/MsSqlJsonString/</url>
+    <content><![CDATA[<h1 id="宣告-JSON-字串"><a class="header-anchor" href="#宣告-JSON-字串"></a>宣告 JSON 字串</h1>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">DECLARE</span> <span class="variable">@json</span> NVARCHAR(MAX);</span><br><span class="line"></span><br><span class="line"><span class="keyword">SET</span> <span class="variable">@json</span> <span class="operator">=</span> <span class="string">&#x27;&#123;&quot;info&quot;: &#123;&quot;address&quot;: [&#123;&quot;town&quot;: &quot;Belgrade&quot;&#125;, &#123;&quot;town&quot;: &quot;Paris&quot;&#125;, &#123;&quot;town&quot;:&quot;Madrid&quot;&#125;]&#125;&#125;&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="JSON-VALUE-擷取純量值字串"><a class="header-anchor" href="#JSON-VALUE-擷取純量值字串"></a>JSON_VALUE 擷取純量值字串</h1>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="built_in">JSON_VALUE</span>(<span class="variable">@json</span>, <span class="string">&#x27;$.info.address[0].town&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<h1 id="JSON-QUERY-擷取物件或陣列字串"><a class="header-anchor" href="#JSON-QUERY-擷取物件或陣列字串"></a>JSON_QUERY 擷取物件或陣列字串</h1>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="built_in">JSON_QUERY</span>(<span class="variable">@json</span>, <span class="string">&#x27;$.info.address&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<h1 id="JSON-MODIFY-變更-JSON-字串中的值"><a class="header-anchor" href="#JSON-MODIFY-變更-JSON-字串中的值"></a>JSON_MODIFY 變更 JSON 字串中的值</h1>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SET</span> <span class="variable">@json</span> <span class="operator">=</span> JSON_MODIFY(<span class="variable">@json</span>, <span class="string">&#x27;$.info.address[1].town&#x27;</span>, <span class="string">&#x27;London&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> modifiedJson <span class="operator">=</span> <span class="variable">@json</span>;</span><br></pre></td></tr></table></figure>
+<h1 id="OPENJSON-集合轉換為資料列集"><a class="header-anchor" href="#OPENJSON-集合轉換為資料列集"></a>OPENJSON 集合轉換為資料列集</h1>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span></span><br><span class="line"><span class="keyword">FROM</span> OPENJSON(<span class="built_in">JSON_QUERY</span>(<span class="variable">@json</span>, <span class="string">&#x27;$.info.address&#x27;</span>)) <span class="keyword">WITH</span> (</span><br><span class="line">    town NVARCHAR(<span class="number">50</span>) <span class="string">&#x27;$.town&#x27;</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://learn.microsoft.com/zh-tw/sql/relational-databases/json/json-data-sql-server?view=sql-server-ver16">SQL Server 中的 JSON 資料</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>MSSQL</category>
+      </categories>
+      <tags>
+        <tag>JSON</tag>
+        <tag>MSSQL</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>使用 DMV 查询 SQL 執行性能</title>
     <url>/2025/01/01/MsSqlPerformance/</url>
     <content><![CDATA[<h1 id="查询執行中的-SQL-性能"><a class="header-anchor" href="#查询執行中的-SQL-性能"></a>查询執行中的 SQL 性能</h1>
@@ -828,6 +828,30 @@ plink -v -x -a -T -C -noagent -ssh -pw "[密碼]" -P 50893 -L [本地端口]:[�
       <tags>
         <tag>MSSQL</tag>
         <tag>DMV</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>使用 AddInMemoryCollection 設定 Configuration 進行單元測試</title>
+    <url>/2023/01/21/NetAddInMemoryCollection/</url>
+    <content><![CDATA[<h1 id="設定-appsettings-json-如下"><a class="header-anchor" href="#設定-appsettings-json-如下"></a>設定 appsettings.json 如下</h1>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;Logging&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;LogLevel&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;Default&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Information&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;Microsoft.AspNetCore&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Warning&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="轉換為-Dictionary-string-string"><a class="header-anchor" href="#轉換為-Dictionary-string-string"></a>轉換為 Dictionary&lt;string, string&gt;</h1>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">Dictionary&lt;<span class="built_in">string</span>, <span class="built_in">string</span>&gt; inMemorySettings = <span class="keyword">new</span> Dictionary&lt;<span class="built_in">string</span>, <span class="built_in">string</span>&gt; &#123;</span><br><span class="line">    &#123;<span class="string">&quot;Logging:LogLevel:Default&quot;</span>,  <span class="string">&quot;Information&quot;</span>&#125;,</span><br><span class="line">    &#123;<span class="string">&quot;Logging:LogLevel:Microsoft.AspNetCore&quot;</span>,  <span class="string">&quot;Warning&quot;</span>&#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h1 id="建立-Configuration"><a class="header-anchor" href="#建立-Configuration"></a>建立 Configuration</h1>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">IConfiguration configuration = <span class="keyword">new</span> ConfigurationBuilder()</span><br><span class="line">            .AddInMemoryCollection(inMemorySettings)</span><br><span class="line">            .Build();</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://learn.microsoft.com/en-us/dotnet/api/microsoft.extensions.configuration.memoryconfigurationbuilderextensions.addinmemorycollection?view=dotnet-plat-ext-7.0">MemoryConfigurationBuilderExtensions.AddInMemoryCollection Method</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>.Net</category>
+      </categories>
+      <tags>
+        <tag>.Net</tag>
+        <tag>UnitTest</tag>
+        <tag>IConfiguration</tag>
       </tags>
   </entry>
   <entry>
@@ -863,30 +887,6 @@ plink -v -x -a -T -C -noagent -ssh -pw "[密碼]" -P 50893 -L [本地端口]:[�
       <tags>
         <tag>MSSQL</tag>
         <tag>XML</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>使用 AddInMemoryCollection 設定 Configuration 進行單元測試</title>
-    <url>/2023/01/21/NetAddInMemoryCollection/</url>
-    <content><![CDATA[<h1 id="設定-appsettings-json-如下"><a class="header-anchor" href="#設定-appsettings-json-如下"></a>設定 appsettings.json 如下</h1>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;Logging&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;LogLevel&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;Default&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Information&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;Microsoft.AspNetCore&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Warning&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="轉換為-Dictionary-string-string"><a class="header-anchor" href="#轉換為-Dictionary-string-string"></a>轉換為 Dictionary&lt;string, string&gt;</h1>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">Dictionary&lt;<span class="built_in">string</span>, <span class="built_in">string</span>&gt; inMemorySettings = <span class="keyword">new</span> Dictionary&lt;<span class="built_in">string</span>, <span class="built_in">string</span>&gt; &#123;</span><br><span class="line">    &#123;<span class="string">&quot;Logging:LogLevel:Default&quot;</span>,  <span class="string">&quot;Information&quot;</span>&#125;,</span><br><span class="line">    &#123;<span class="string">&quot;Logging:LogLevel:Microsoft.AspNetCore&quot;</span>,  <span class="string">&quot;Warning&quot;</span>&#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h1 id="建立-Configuration"><a class="header-anchor" href="#建立-Configuration"></a>建立 Configuration</h1>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">IConfiguration configuration = <span class="keyword">new</span> ConfigurationBuilder()</span><br><span class="line">            .AddInMemoryCollection(inMemorySettings)</span><br><span class="line">            .Build();</span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://learn.microsoft.com/en-us/dotnet/api/microsoft.extensions.configuration.memoryconfigurationbuilderextensions.addinmemorycollection?view=dotnet-plat-ext-7.0">MemoryConfigurationBuilderExtensions.AddInMemoryCollection Method</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>.Net</category>
-      </categories>
-      <tags>
-        <tag>.Net</tag>
-        <tag>UnitTest</tag>
-        <tag>IConfiguration</tag>
       </tags>
   </entry>
   <entry>
@@ -987,6 +987,56 @@ dotnet-dump collect --process-id 1902 -->
       </tags>
   </entry>
   <entry>
+    <title>在 Polyglot Notebooks 使用 DataFrame</title>
+    <url>/2024/05/05/NetDataFrame/</url>
+    <content><![CDATA[<h1 id="載入-CSV-資料"><a class="header-anchor" href="#載入-CSV-資料"></a>載入 CSV 資料</h1>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="meta">#r &quot;nuget: Microsoft.Data.Analysis, 0.21.1&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> System.IO;</span><br><span class="line"><span class="keyword">using</span> Microsoft.Data.Analysis;</span><br><span class="line"></span><br><span class="line"><span class="built_in">string</span> csvfile = File.ReadAllText(<span class="string">&quot;test.csv&quot;</span>);</span><br><span class="line">DataFrame df = DataFrame.LoadCsvFromString(csvfile, <span class="string">&#x27;,&#x27;</span>);</span><br><span class="line">Console.WriteLine(df);</span><br></pre></td></tr></table></figure>
+<p>輸出:</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">NAME      </span><br><span class="line">張三        </span><br><span class="line">李四   </span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="取得前-1-筆"><a class="header-anchor" href="#取得前-1-筆"></a>取得前 1 筆</h1>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">DataFrame headRow = df.Head(<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">Console.WriteLine(headRow);</span><br></pre></td></tr></table></figure>
+<p>輸出:</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">NAME      </span><br><span class="line">張三   </span><br></pre></td></tr></table></figure>
+<h1 id="加入新-column"><a class="header-anchor" href="#加入新-column"></a>加入新 column</h1>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">df.Columns.Add(<span class="keyword">new</span> PrimitiveDataFrameColumn&lt;<span class="built_in">int</span>&gt;(<span class="string">&quot;AGE&quot;</span>, <span class="keyword">new</span> List&lt;<span class="built_in">int</span>&gt;&#123;<span class="number">1</span>, <span class="number">1</span>&#125;));</span><br><span class="line"></span><br><span class="line">Console.WriteLine(df);</span><br></pre></td></tr></table></figure>
+<p>輸出:</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">NAME      AGE       </span><br><span class="line">張三        <span class="number">1</span>         </span><br><span class="line">李四        <span class="number">1</span>         </span><br></pre></td></tr></table></figure>
+<h1 id="加入新-row"><a class="header-anchor" href="#加入新-row"></a>加入新 row</h1>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">df.Append(<span class="keyword">new</span> List&lt;KeyValuePair&lt;<span class="built_in">string</span>, <span class="built_in">object</span>&gt;&gt;() &#123;</span><br><span class="line"><span class="keyword">new</span> KeyValuePair&lt;<span class="built_in">string</span>, <span class="built_in">object</span>&gt;(<span class="string">&quot;NAME&quot;</span>, <span class="string">&quot;王五&quot;</span>),</span><br><span class="line"><span class="keyword">new</span> KeyValuePair&lt;<span class="built_in">string</span>, <span class="built_in">object</span>&gt;(<span class="string">&quot;AGE&quot;</span>, <span class="number">3</span>)</span><br><span class="line">&#125;, <span class="literal">true</span>);</span><br><span class="line"></span><br><span class="line">Console.WriteLine(df);</span><br></pre></td></tr></table></figure>
+<p>輸出:</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">NAME      AGE       </span><br><span class="line">張三        <span class="number">1</span>         </span><br><span class="line">李四        <span class="number">1</span>         </span><br><span class="line">王五        <span class="number">3</span>       </span><br></pre></td></tr></table></figure>
+<h1 id="排序資料"><a class="header-anchor" href="#排序資料"></a>排序資料</h1>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">DataFrame orderByData = df.OrderByDescending(<span class="string">&quot;AGE&quot;</span>);</span><br><span class="line">Console.WriteLine(orderByData);</span><br></pre></td></tr></table></figure>
+<p>輸出:</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">NAME      AGE       </span><br><span class="line">王五        <span class="number">3</span>         </span><br><span class="line">李四        <span class="number">1</span>         </span><br><span class="line">張三        <span class="number">1</span>            </span><br></pre></td></tr></table></figure>
+<h1 id="分群資料"><a class="header-anchor" href="#分群資料"></a>分群資料</h1>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">DataFrame groupByData = df.GroupBy(<span class="string">&quot;AGE&quot;</span>).Count();</span><br><span class="line">Console.WriteLine(groupByData);</span><br></pre></td></tr></table></figure>
+<p>輸出:</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">AGE       NAME      </span><br><span class="line"><span class="number">1</span>         <span class="number">2</span>         </span><br><span class="line"><span class="number">3</span>         <span class="number">1</span>         </span><br></pre></td></tr></table></figure>
+<h1 id="篩選資料"><a class="header-anchor" href="#篩選資料"></a>篩選資料</h1>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">DataFrame filterData = df.Filter(df.Columns[<span class="string">&quot;AGE&quot;</span>].ElementwiseGreaterThan(<span class="number">1</span>));</span><br><span class="line">Console.WriteLine(filterData);</span><br></pre></td></tr></table></figure>
+<p>輸出:</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">NAME      AGE       </span><br><span class="line">王五        <span class="number">3</span>            </span><br></pre></td></tr></table></figure>
+<h1 id="合併資料"><a class="header-anchor" href="#合併資料"></a>合併資料</h1>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">DataFrame df1 = DataFrame.LoadCsvFromString(csvfile, <span class="string">&#x27;,&#x27;</span>);</span><br><span class="line">DataFrame mergeData = df1.Merge&lt;<span class="built_in">string</span>&gt;(df, <span class="string">&quot;NAME&quot;</span>, <span class="string">&quot;NAME&quot;</span>);</span><br><span class="line">Console.WriteLine(mergeData);</span><br></pre></td></tr></table></figure>
+<p>輸出:</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">NAME_left  NAME_right AGE        </span><br><span class="line">張三         張三         <span class="number">1</span>          </span><br><span class="line">李四         李四         <span class="number">1</span>          </span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://learn.microsoft.com/en-us/dotnet/api/microsoft.data.analysis.dataframe?view=ml-dotnet-preview&amp;viewFallbackFrom=ml-dotnet">DataFrame Class</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>.Net</category>
+      </categories>
+      <tags>
+        <tag>.Net</tag>
+        <tag>DataFrame</tag>
+        <tag>Polyglot Notebooks</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Http 的 Get 方法傳入 List 參數</title>
     <url>/2023/01/21/NetHttpGetWithList/</url>
     <content><![CDATA[<h1 id="建立類別"><a class="header-anchor" href="#建立類別"></a>建立類別</h1>
@@ -1037,27 +1087,6 @@ dotnet-dump collect --process-id 1902 -->
       </tags>
   </entry>
   <entry>
-    <title>如何運行 Shell 命令</title>
-    <url>/2022/05/22/NetRunShell/</url>
-    <content><![CDATA[<h1 id="運行-Shell-命令"><a class="header-anchor" href="#運行-Shell-命令"></a>運行 Shell 命令</h1>
-<span id="more"></span>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> System.Diagnostics;</span><br><span class="line"></span><br><span class="line"><span class="built_in">string</span> cmd = <span class="string">&quot;echo Hello, World!&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">string</span> fileName = <span class="string">&quot;/bin/bash&quot;</span>;</span><br><span class="line"><span class="built_in">string</span> argument = <span class="string">&quot;-c&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">bool</span> isWin = Environment.OSVersion.Platform.ToString().Contains(<span class="string">&quot;Win&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(isWin)</span><br><span class="line">&#123;</span><br><span class="line">    fileName = <span class="string">&quot;cmd.exe&quot;</span>;</span><br><span class="line">    argument = <span class="string">&quot;/c&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">string</span> escapedArgs = cmd.Replace(<span class="string">&quot;\&quot;&quot;</span>, <span class="string">&quot;\\\&quot;&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> (Process process = <span class="keyword">new</span> Process())</span><br><span class="line">&#123;</span><br><span class="line">    process.StartInfo = <span class="keyword">new</span> ProcessStartInfo</span><br><span class="line">    &#123;</span><br><span class="line">        FileName = <span class="string">&quot;cmd.exe&quot;</span>,</span><br><span class="line">        Arguments = <span class="string">$&quot;<span class="subst">&#123;argument&#125;</span> \&quot;<span class="subst">&#123;escapedArgs&#125;</span>\&quot;&quot;</span>,</span><br><span class="line">        RedirectStandardOutput = <span class="literal">true</span>,</span><br><span class="line">        RedirectStandardError = <span class="literal">true</span>,</span><br><span class="line">        UseShellExecute = <span class="literal">false</span>,</span><br><span class="line">        CreateNoWindow = <span class="literal">true</span>,</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    process.Start();</span><br><span class="line"></span><br><span class="line">    <span class="built_in">string</span> result = process.StandardOutput.ReadToEnd();</span><br><span class="line"></span><br><span class="line">    result.Display();</span><br><span class="line"></span><br><span class="line">    <span class="built_in">string</span> error = process.StandardError.ReadToEnd();</span><br><span class="line"></span><br><span class="line">    error.Display();</span><br><span class="line"></span><br><span class="line">    process.WaitForExit();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://learn.microsoft.com/zh-tw/dotnet/api/system.diagnostics.process?view=net-8.0">Process 類別</a></li>
-</ol>
-</div>
-]]></content>
-      <categories>
-        <category>.Net</category>
-      </categories>
-      <tags>
-        <tag>.Net</tag>
-        <tag>Polyglot Notebooks</tag>
-        <tag>Shell</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>如何在資料存取層進行單元測試</title>
     <url>/2022/05/01/NetRepositoryUnitTest/</url>
     <content><![CDATA[<h1 id="安裝-Sqlite"><a class="header-anchor" href="#安裝-Sqlite"></a>安裝 Sqlite</h1>
@@ -1090,6 +1119,65 @@ dotnet-dump collect --process-id 1902 -->
         <tag>.Net</tag>
         <tag>UnitTest</tag>
         <tag>SQLite</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>如何運行 Shell 命令</title>
+    <url>/2022/05/22/NetRunShell/</url>
+    <content><![CDATA[<h1 id="運行-Shell-命令"><a class="header-anchor" href="#運行-Shell-命令"></a>運行 Shell 命令</h1>
+<span id="more"></span>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> System.Diagnostics;</span><br><span class="line"></span><br><span class="line"><span class="built_in">string</span> cmd = <span class="string">&quot;echo Hello, World!&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">string</span> fileName = <span class="string">&quot;/bin/bash&quot;</span>;</span><br><span class="line"><span class="built_in">string</span> argument = <span class="string">&quot;-c&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">bool</span> isWin = Environment.OSVersion.Platform.ToString().Contains(<span class="string">&quot;Win&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(isWin)</span><br><span class="line">&#123;</span><br><span class="line">    fileName = <span class="string">&quot;cmd.exe&quot;</span>;</span><br><span class="line">    argument = <span class="string">&quot;/c&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">string</span> escapedArgs = cmd.Replace(<span class="string">&quot;\&quot;&quot;</span>, <span class="string">&quot;\\\&quot;&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> (Process process = <span class="keyword">new</span> Process())</span><br><span class="line">&#123;</span><br><span class="line">    process.StartInfo = <span class="keyword">new</span> ProcessStartInfo</span><br><span class="line">    &#123;</span><br><span class="line">        FileName = <span class="string">&quot;cmd.exe&quot;</span>,</span><br><span class="line">        Arguments = <span class="string">$&quot;<span class="subst">&#123;argument&#125;</span> \&quot;<span class="subst">&#123;escapedArgs&#125;</span>\&quot;&quot;</span>,</span><br><span class="line">        RedirectStandardOutput = <span class="literal">true</span>,</span><br><span class="line">        RedirectStandardError = <span class="literal">true</span>,</span><br><span class="line">        UseShellExecute = <span class="literal">false</span>,</span><br><span class="line">        CreateNoWindow = <span class="literal">true</span>,</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    process.Start();</span><br><span class="line"></span><br><span class="line">    <span class="built_in">string</span> result = process.StandardOutput.ReadToEnd();</span><br><span class="line"></span><br><span class="line">    result.Display();</span><br><span class="line"></span><br><span class="line">    <span class="built_in">string</span> error = process.StandardError.ReadToEnd();</span><br><span class="line"></span><br><span class="line">    error.Display();</span><br><span class="line"></span><br><span class="line">    process.WaitForExit();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://learn.microsoft.com/zh-tw/dotnet/api/system.diagnostics.process?view=net-8.0">Process 類別</a></li>
+</ol>
+</div>
+]]></content>
+      <categories>
+        <category>.Net</category>
+      </categories>
+      <tags>
+        <tag>.Net</tag>
+        <tag>Polyglot Notebooks</tag>
+        <tag>Shell</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>在 Polyglot Notebooks 使用 ScottPlot</title>
+    <url>/2024/06/01/NetScottPlot/</url>
+    <content><![CDATA[<h1 id="初始化設定"><a class="header-anchor" href="#初始化設定"></a>初始化設定</h1>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 套件 Microsoft.Data.Analysis 檔案轉 DataFrame 格式</span></span><br><span class="line"><span class="meta">#r &quot;nuget: Microsoft.Data.Analysis, 0.21.1&quot;</span></span><br><span class="line"><span class="comment">// 套件 MathNet.Numerics 進行數學計算</span></span><br><span class="line"><span class="meta">#r &quot;nuget: MathNet.Numerics, 5.0.0&quot;</span></span><br><span class="line"><span class="comment">// 套件 ScottPlot 產生圖片</span></span><br><span class="line"><span class="meta">#r &quot;nuget:ScottPlot, 5.0.*&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> System.IO;</span><br><span class="line"><span class="keyword">using</span> Microsoft.Data.Analysis;</span><br><span class="line"><span class="keyword">using</span> MathNet.Numerics.Distributions;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 設定 ScottPlot 圖片格式</span></span><br><span class="line"><span class="keyword">using</span> Microsoft.DotNet.Interactive.Formatting;</span><br><span class="line">Formatter.Register(<span class="keyword">typeof</span>(ScottPlot.Plot), (p, w) =&gt; </span><br><span class="line">    w.Write(((ScottPlot.Plot)p).GetImageHtml(<span class="number">400</span>, <span class="number">300</span>)), HtmlFormatter.MimeType);</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="載入-CSV-資料"><a class="header-anchor" href="#載入-CSV-資料"></a>載入 CSV 資料</h1>
+<p>可參考這篇 <a href="/2024/05/05/NetDataFrame/" title="在 Polyglot Notebooks 使用 DataFrame">DataFrame</a> 載入 <a href="test.csv">CSV 資料</a></p>
+<h1 id="使用-SignalXY-繪圖"><a class="header-anchor" href="#使用-SignalXY-繪圖"></a>使用 SignalXY 繪圖</h1>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">ScottPlot.Plot myPlot1 = <span class="keyword">new</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 計算資料筆數</span></span><br><span class="line"><span class="built_in">int</span>[] rowIndex = Enumerable.Range(<span class="number">0</span>, (<span class="built_in">int</span>)df.Rows.Count).ToArray();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 載入 Duration 欄</span></span><br><span class="line"><span class="built_in">double</span>[] durationsY = Enumerable.Range(<span class="number">0</span>, (<span class="built_in">int</span>)df.Rows.Count).Select(x =&gt; Convert.ToDouble(df[<span class="string">&quot;Duration&quot;</span>][x])).ToArray();</span><br><span class="line"></span><br><span class="line">ScottPlot.Plottables.SignalXY sigAll1 = myPlot1.Add.SignalXY(rowIndex, durationsY);</span><br><span class="line">sigAll1.LegendText = <span class="string">&quot;Duration&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 載入 Pulse 欄</span></span><br><span class="line"><span class="built_in">double</span>[] pulseY = Enumerable.Range(<span class="number">0</span>, (<span class="built_in">int</span>)df.Rows.Count).Select(x =&gt; Convert.ToDouble(df[<span class="string">&quot;Pulse&quot;</span>][x])).ToArray();</span><br><span class="line"></span><br><span class="line">ScottPlot.Plottables.SignalXY sigAll2 = myPlot1.Add.SignalXY(rowIndex, pulseY);</span><br><span class="line">sigAll2.LegendText = <span class="string">&quot;Pulse&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 載入 Maxpulse 欄</span></span><br><span class="line"><span class="built_in">double</span>[] maxpulseY = Enumerable.Range(<span class="number">0</span>, (<span class="built_in">int</span>)df.Rows.Count).Select(x =&gt; Convert.ToDouble(df[<span class="string">&quot;Maxpulse&quot;</span>][x])).ToArray();</span><br><span class="line"></span><br><span class="line">ScottPlot.Plottables.SignalXY sigAll3 = myPlot1.Add.SignalXY(rowIndex, maxpulseY);</span><br><span class="line">sigAll3.LegendText = <span class="string">&quot;Maxpulse&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 載入 Calories 欄</span></span><br><span class="line"><span class="built_in">double</span>[] caloriesY = Enumerable.Range(<span class="number">0</span>, (<span class="built_in">int</span>)df.Rows.Count).Select(x =&gt; Convert.ToDouble(df[<span class="string">&quot;Calories&quot;</span>][x])).ToArray();</span><br><span class="line"></span><br><span class="line">ScottPlot.Plottables.SignalXY sigAll4 = myPlot1.Add.SignalXY(rowIndex, caloriesY);</span><br><span class="line">sigAll4.LegendText = <span class="string">&quot;Calories&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 設定 Legend 位置</span></span><br><span class="line">myPlot1.Legend.Alignment = ScottPlot.Alignment.UpperRight;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 顯示圖表</span></span><br><span class="line">myPlot1</span><br></pre></td></tr></table></figure>
+<!-- myPlot1.GetImage(400, 300).SaveWebp("SignalXY.webp"); -->
+<p><img src="SignalXY.webp" alt="SignalXY"></p>
+<h1 id="使用-Scatter-繪圖，分析關聯性"><a class="header-anchor" href="#使用-Scatter-繪圖，分析關聯性"></a>使用 Scatter 繪圖，分析關聯性</h1>
+<p>使用「Duration」作為 x 軸，使用「Calories」作為 y 軸</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">ScottPlot.Plot myPlot2 = <span class="keyword">new</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 載入 Scatter</span></span><br><span class="line">ScottPlot.Plottables.Scatter sp1 = myPlot2.Add.Scatter(durationsY, caloriesY);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 移除線條</span></span><br><span class="line">sp1.LineWidth = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 顯示圖表</span></span><br><span class="line">myPlot2</span><br></pre></td></tr></table></figure>
+<p><img src="Scatter1.webp" alt="Scatter1"></p>
+<p>使用「Duration」作為 x 軸，使用「Maxpulse」作為 y 軸</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">ScottPlot.Plot myPlot3 = <span class="keyword">new</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 載入 Scatter</span></span><br><span class="line">ScottPlot.Plottables.Scatter sp2 = myPlot3.Add.Scatter(durationsY, maxpulseY);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 移除線條</span></span><br><span class="line">sp2.LineWidth = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 顯示圖表</span></span><br><span class="line">myPlot3</span><br></pre></td></tr></table></figure>
+<p><img src="Scatter2.webp" alt="Scatter2"></p>
+<h1 id="使用-Bars-繪圖，分析-Duration-頻率"><a class="header-anchor" href="#使用-Bars-繪圖，分析-Duration-頻率"></a>使用 Bars 繪圖，分析 Duration 頻率</h1>
+<p>目前 ScottPlot 5.0 版未實現直方圖，搭配 MathNet.Numerics 做計算</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">ScottPlot.Plot myPlot4 = <span class="keyword">new</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 載入 Duration 欄</span></span><br><span class="line"><span class="built_in">double</span>[] durationsY = Enumerable.Range(<span class="number">0</span>, (<span class="built_in">int</span>)df.Rows.Count).Select(x =&gt; Convert.ToDouble(df[<span class="string">&quot;Duration&quot;</span>][x])).ToArray();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 直方圖分箱數</span></span><br><span class="line"><span class="built_in">int</span> binCount = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 獲取直方圖數據</span></span><br><span class="line"><span class="keyword">var</span> histogram = <span class="keyword">new</span> MathNet.Numerics.Statistics.Histogram(durationsY, binCount);</span><br><span class="line"></span><br><span class="line"><span class="built_in">double</span>[] binEdges = <span class="keyword">new</span> <span class="built_in">double</span>[binCount + <span class="number">1</span>];</span><br><span class="line"><span class="built_in">double</span>[] binCounts = <span class="keyword">new</span> <span class="built_in">double</span>[binCount];</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; binCount; i++)</span><br><span class="line">&#123;</span><br><span class="line">    binEdges[i] = histogram[i].LowerBound;</span><br><span class="line">    binCounts[i] = histogram[i].Count;</span><br><span class="line">&#125;</span><br><span class="line">binEdges[binCount] = histogram[binCount - <span class="number">1</span>].UpperBound;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 設定 Bars</span></span><br><span class="line">ScottPlot.Plottables.BarPlot bar = myPlot4.Add.Bars(binEdges.Take(binCount).ToArray(), binCounts);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 設定 Y 軸刻度</span></span><br><span class="line">myPlot4.Axes.Left.TickGenerator = <span class="keyword">new</span> ScottPlot.TickGenerators.NumericFixedInterval(<span class="number">20</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 設定 Bars 的顏色與寬度</span></span><br><span class="line"><span class="keyword">foreach</span>(<span class="keyword">var</span> item <span class="keyword">in</span> bar.Bars)&#123;</span><br><span class="line">    item.BorderColor = ScottPlot.Color.FromColor(System.Drawing.Color.Blue);</span><br><span class="line">    item.BorderLineWidth = <span class="number">10</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 顯示圖表</span></span><br><span class="line">myPlot4</span><br></pre></td></tr></table></figure>
+<p><img src="Histogram.webp" alt="Win10ProxySetting"></p>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://scottplot.net/quickstart/notebook/">scottplot</a></li>
+<li><a href="https://www.w3schools.com/python/pandas/pandas_plotting.asp">pandas plotting</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>.Net</category>
+      </categories>
+      <tags>
+        <tag>.Net</tag>
+        <tag>Polyglot Notebooks</tag>
+        <tag>ScottPlot</tag>
       </tags>
   </entry>
   <entry>
@@ -1194,8 +1282,8 @@ dotnet-dump collect --process-id 1902 -->
         <category>.Net</category>
       </categories>
       <tags>
-        <tag>XML</tag>
         <tag>.Net</tag>
+        <tag>XML</tag>
       </tags>
   </entry>
   <entry>
@@ -1231,92 +1319,6 @@ dotnet-dump collect --process-id 1902 -->
       <tags>
         <tag>Project</tag>
         <tag>PlantUML</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>在 Polyglot Notebooks 使用 DataFrame</title>
-    <url>/2024/05/05/PolyglotNotebooksDataFrame/</url>
-    <content><![CDATA[<h1 id="載入-CSV-資料"><a class="header-anchor" href="#載入-CSV-資料"></a>載入 CSV 資料</h1>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="meta">#r &quot;nuget: Microsoft.Data.Analysis, 0.21.1&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> System.IO;</span><br><span class="line"><span class="keyword">using</span> Microsoft.Data.Analysis;</span><br><span class="line"></span><br><span class="line"><span class="built_in">string</span> csvfile = File.ReadAllText(<span class="string">&quot;test.csv&quot;</span>);</span><br><span class="line">DataFrame df = DataFrame.LoadCsvFromString(csvfile, <span class="string">&#x27;,&#x27;</span>);</span><br><span class="line">Console.WriteLine(df);</span><br></pre></td></tr></table></figure>
-<p>輸出:</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">NAME      </span><br><span class="line">張三        </span><br><span class="line">李四   </span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="取得前-1-筆"><a class="header-anchor" href="#取得前-1-筆"></a>取得前 1 筆</h1>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">DataFrame headRow = df.Head(<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">Console.WriteLine(headRow);</span><br></pre></td></tr></table></figure>
-<p>輸出:</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">NAME      </span><br><span class="line">張三   </span><br></pre></td></tr></table></figure>
-<h1 id="加入新-column"><a class="header-anchor" href="#加入新-column"></a>加入新 column</h1>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">df.Columns.Add(<span class="keyword">new</span> PrimitiveDataFrameColumn&lt;<span class="built_in">int</span>&gt;(<span class="string">&quot;AGE&quot;</span>, <span class="keyword">new</span> List&lt;<span class="built_in">int</span>&gt;&#123;<span class="number">1</span>, <span class="number">1</span>&#125;));</span><br><span class="line"></span><br><span class="line">Console.WriteLine(df);</span><br></pre></td></tr></table></figure>
-<p>輸出:</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">NAME      AGE       </span><br><span class="line">張三        <span class="number">1</span>         </span><br><span class="line">李四        <span class="number">1</span>         </span><br></pre></td></tr></table></figure>
-<h1 id="加入新-row"><a class="header-anchor" href="#加入新-row"></a>加入新 row</h1>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">df.Append(<span class="keyword">new</span> List&lt;KeyValuePair&lt;<span class="built_in">string</span>, <span class="built_in">object</span>&gt;&gt;() &#123;</span><br><span class="line"><span class="keyword">new</span> KeyValuePair&lt;<span class="built_in">string</span>, <span class="built_in">object</span>&gt;(<span class="string">&quot;NAME&quot;</span>, <span class="string">&quot;王五&quot;</span>),</span><br><span class="line"><span class="keyword">new</span> KeyValuePair&lt;<span class="built_in">string</span>, <span class="built_in">object</span>&gt;(<span class="string">&quot;AGE&quot;</span>, <span class="number">3</span>)</span><br><span class="line">&#125;, <span class="literal">true</span>);</span><br><span class="line"></span><br><span class="line">Console.WriteLine(df);</span><br></pre></td></tr></table></figure>
-<p>輸出:</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">NAME      AGE       </span><br><span class="line">張三        <span class="number">1</span>         </span><br><span class="line">李四        <span class="number">1</span>         </span><br><span class="line">王五        <span class="number">3</span>       </span><br></pre></td></tr></table></figure>
-<h1 id="排序資料"><a class="header-anchor" href="#排序資料"></a>排序資料</h1>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">DataFrame orderByData = df.OrderByDescending(<span class="string">&quot;AGE&quot;</span>);</span><br><span class="line">Console.WriteLine(orderByData);</span><br></pre></td></tr></table></figure>
-<p>輸出:</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">NAME      AGE       </span><br><span class="line">王五        <span class="number">3</span>         </span><br><span class="line">李四        <span class="number">1</span>         </span><br><span class="line">張三        <span class="number">1</span>            </span><br></pre></td></tr></table></figure>
-<h1 id="分群資料"><a class="header-anchor" href="#分群資料"></a>分群資料</h1>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">DataFrame groupByData = df.GroupBy(<span class="string">&quot;AGE&quot;</span>).Count();</span><br><span class="line">Console.WriteLine(groupByData);</span><br></pre></td></tr></table></figure>
-<p>輸出:</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">AGE       NAME      </span><br><span class="line"><span class="number">1</span>         <span class="number">2</span>         </span><br><span class="line"><span class="number">3</span>         <span class="number">1</span>         </span><br></pre></td></tr></table></figure>
-<h1 id="篩選資料"><a class="header-anchor" href="#篩選資料"></a>篩選資料</h1>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">DataFrame filterData = df.Filter(df.Columns[<span class="string">&quot;AGE&quot;</span>].ElementwiseGreaterThan(<span class="number">1</span>));</span><br><span class="line">Console.WriteLine(filterData);</span><br></pre></td></tr></table></figure>
-<p>輸出:</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">NAME      AGE       </span><br><span class="line">王五        <span class="number">3</span>            </span><br></pre></td></tr></table></figure>
-<h1 id="合併資料"><a class="header-anchor" href="#合併資料"></a>合併資料</h1>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">DataFrame df1 = DataFrame.LoadCsvFromString(csvfile, <span class="string">&#x27;,&#x27;</span>);</span><br><span class="line">DataFrame mergeData = df1.Merge&lt;<span class="built_in">string</span>&gt;(df, <span class="string">&quot;NAME&quot;</span>, <span class="string">&quot;NAME&quot;</span>);</span><br><span class="line">Console.WriteLine(mergeData);</span><br></pre></td></tr></table></figure>
-<p>輸出:</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">NAME_left  NAME_right AGE        </span><br><span class="line">張三         張三         <span class="number">1</span>          </span><br><span class="line">李四         李四         <span class="number">1</span>          </span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://learn.microsoft.com/en-us/dotnet/api/microsoft.data.analysis.dataframe?view=ml-dotnet-preview&amp;viewFallbackFrom=ml-dotnet">DataFrame Class</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>Polyglot Notebooks</category>
-      </categories>
-      <tags>
-        <tag>Polyglot Notebooks</tag>
-        <tag>DataFrame</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>在 Polyglot Notebooks 使用 ScottPlot</title>
-    <url>/2024/06/01/PolyglotNotebooksScottPlot/</url>
-    <content><![CDATA[<h1 id="初始化設定"><a class="header-anchor" href="#初始化設定"></a>初始化設定</h1>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 套件 Microsoft.Data.Analysis 檔案轉 DataFrame 格式</span></span><br><span class="line"><span class="meta">#r &quot;nuget: Microsoft.Data.Analysis, 0.21.1&quot;</span></span><br><span class="line"><span class="comment">// 套件 MathNet.Numerics 進行數學計算</span></span><br><span class="line"><span class="meta">#r &quot;nuget: MathNet.Numerics, 5.0.0&quot;</span></span><br><span class="line"><span class="comment">// 套件 ScottPlot 產生圖片</span></span><br><span class="line"><span class="meta">#r &quot;nuget:ScottPlot, 5.0.*&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> System.IO;</span><br><span class="line"><span class="keyword">using</span> Microsoft.Data.Analysis;</span><br><span class="line"><span class="keyword">using</span> MathNet.Numerics.Distributions;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 設定 ScottPlot 圖片格式</span></span><br><span class="line"><span class="keyword">using</span> Microsoft.DotNet.Interactive.Formatting;</span><br><span class="line">Formatter.Register(<span class="keyword">typeof</span>(ScottPlot.Plot), (p, w) =&gt; </span><br><span class="line">    w.Write(((ScottPlot.Plot)p).GetImageHtml(<span class="number">400</span>, <span class="number">300</span>)), HtmlFormatter.MimeType);</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="載入-CSV-資料"><a class="header-anchor" href="#載入-CSV-資料"></a>載入 CSV 資料</h1>
-<p>可參考這篇 <a href="/2024/05/05/PolyglotNotebooksDataFrame/" title="在 Polyglot Notebooks 使用 DataFrame">DataFrame</a> 載入 <a href="test.csv">CSV 資料</a></p>
-<h1 id="使用-SignalXY-繪圖"><a class="header-anchor" href="#使用-SignalXY-繪圖"></a>使用 SignalXY 繪圖</h1>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">ScottPlot.Plot myPlot1 = <span class="keyword">new</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 計算資料筆數</span></span><br><span class="line"><span class="built_in">int</span>[] rowIndex = Enumerable.Range(<span class="number">0</span>, (<span class="built_in">int</span>)df.Rows.Count).ToArray();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 載入 Duration 欄</span></span><br><span class="line"><span class="built_in">double</span>[] durationsY = Enumerable.Range(<span class="number">0</span>, (<span class="built_in">int</span>)df.Rows.Count).Select(x =&gt; Convert.ToDouble(df[<span class="string">&quot;Duration&quot;</span>][x])).ToArray();</span><br><span class="line"></span><br><span class="line">ScottPlot.Plottables.SignalXY sigAll1 = myPlot1.Add.SignalXY(rowIndex, durationsY);</span><br><span class="line">sigAll1.LegendText = <span class="string">&quot;Duration&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 載入 Pulse 欄</span></span><br><span class="line"><span class="built_in">double</span>[] pulseY = Enumerable.Range(<span class="number">0</span>, (<span class="built_in">int</span>)df.Rows.Count).Select(x =&gt; Convert.ToDouble(df[<span class="string">&quot;Pulse&quot;</span>][x])).ToArray();</span><br><span class="line"></span><br><span class="line">ScottPlot.Plottables.SignalXY sigAll2 = myPlot1.Add.SignalXY(rowIndex, pulseY);</span><br><span class="line">sigAll2.LegendText = <span class="string">&quot;Pulse&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 載入 Maxpulse 欄</span></span><br><span class="line"><span class="built_in">double</span>[] maxpulseY = Enumerable.Range(<span class="number">0</span>, (<span class="built_in">int</span>)df.Rows.Count).Select(x =&gt; Convert.ToDouble(df[<span class="string">&quot;Maxpulse&quot;</span>][x])).ToArray();</span><br><span class="line"></span><br><span class="line">ScottPlot.Plottables.SignalXY sigAll3 = myPlot1.Add.SignalXY(rowIndex, maxpulseY);</span><br><span class="line">sigAll3.LegendText = <span class="string">&quot;Maxpulse&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 載入 Calories 欄</span></span><br><span class="line"><span class="built_in">double</span>[] caloriesY = Enumerable.Range(<span class="number">0</span>, (<span class="built_in">int</span>)df.Rows.Count).Select(x =&gt; Convert.ToDouble(df[<span class="string">&quot;Calories&quot;</span>][x])).ToArray();</span><br><span class="line"></span><br><span class="line">ScottPlot.Plottables.SignalXY sigAll4 = myPlot1.Add.SignalXY(rowIndex, caloriesY);</span><br><span class="line">sigAll4.LegendText = <span class="string">&quot;Calories&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 設定 Legend 位置</span></span><br><span class="line">myPlot1.Legend.Alignment = ScottPlot.Alignment.UpperRight;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 顯示圖表</span></span><br><span class="line">myPlot1</span><br></pre></td></tr></table></figure>
-<!-- myPlot1.GetImage(400, 300).SaveWebp("SignalXY.webp"); -->
-<p><img src="SignalXY.webp" alt="SignalXY"></p>
-<h1 id="使用-Scatter-繪圖，分析關聯性"><a class="header-anchor" href="#使用-Scatter-繪圖，分析關聯性"></a>使用 Scatter 繪圖，分析關聯性</h1>
-<p>使用「Duration」作為 x 軸，使用「Calories」作為 y 軸</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">ScottPlot.Plot myPlot2 = <span class="keyword">new</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 載入 Scatter</span></span><br><span class="line">ScottPlot.Plottables.Scatter sp1 = myPlot2.Add.Scatter(durationsY, caloriesY);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 移除線條</span></span><br><span class="line">sp1.LineWidth = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 顯示圖表</span></span><br><span class="line">myPlot2</span><br></pre></td></tr></table></figure>
-<p><img src="Scatter1.webp" alt="Scatter1"></p>
-<p>使用「Duration」作為 x 軸，使用「Maxpulse」作為 y 軸</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">ScottPlot.Plot myPlot3 = <span class="keyword">new</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 載入 Scatter</span></span><br><span class="line">ScottPlot.Plottables.Scatter sp2 = myPlot3.Add.Scatter(durationsY, maxpulseY);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 移除線條</span></span><br><span class="line">sp2.LineWidth = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 顯示圖表</span></span><br><span class="line">myPlot3</span><br></pre></td></tr></table></figure>
-<p><img src="Scatter2.webp" alt="Scatter2"></p>
-<h1 id="使用-Bars-繪圖，分析-Duration-頻率"><a class="header-anchor" href="#使用-Bars-繪圖，分析-Duration-頻率"></a>使用 Bars 繪圖，分析 Duration 頻率</h1>
-<p>目前 ScottPlot 5.0 版未實現直方圖，搭配 MathNet.Numerics 做計算</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">ScottPlot.Plot myPlot4 = <span class="keyword">new</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 載入 Duration 欄</span></span><br><span class="line"><span class="built_in">double</span>[] durationsY = Enumerable.Range(<span class="number">0</span>, (<span class="built_in">int</span>)df.Rows.Count).Select(x =&gt; Convert.ToDouble(df[<span class="string">&quot;Duration&quot;</span>][x])).ToArray();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 直方圖分箱數</span></span><br><span class="line"><span class="built_in">int</span> binCount = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 獲取直方圖數據</span></span><br><span class="line"><span class="keyword">var</span> histogram = <span class="keyword">new</span> MathNet.Numerics.Statistics.Histogram(durationsY, binCount);</span><br><span class="line"></span><br><span class="line"><span class="built_in">double</span>[] binEdges = <span class="keyword">new</span> <span class="built_in">double</span>[binCount + <span class="number">1</span>];</span><br><span class="line"><span class="built_in">double</span>[] binCounts = <span class="keyword">new</span> <span class="built_in">double</span>[binCount];</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; binCount; i++)</span><br><span class="line">&#123;</span><br><span class="line">    binEdges[i] = histogram[i].LowerBound;</span><br><span class="line">    binCounts[i] = histogram[i].Count;</span><br><span class="line">&#125;</span><br><span class="line">binEdges[binCount] = histogram[binCount - <span class="number">1</span>].UpperBound;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 設定 Bars</span></span><br><span class="line">ScottPlot.Plottables.BarPlot bar = myPlot4.Add.Bars(binEdges.Take(binCount).ToArray(), binCounts);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 設定 Y 軸刻度</span></span><br><span class="line">myPlot4.Axes.Left.TickGenerator = <span class="keyword">new</span> ScottPlot.TickGenerators.NumericFixedInterval(<span class="number">20</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 設定 Bars 的顏色與寬度</span></span><br><span class="line"><span class="keyword">foreach</span>(<span class="keyword">var</span> item <span class="keyword">in</span> bar.Bars)&#123;</span><br><span class="line">    item.BorderColor = ScottPlot.Color.FromColor(System.Drawing.Color.Blue);</span><br><span class="line">    item.BorderLineWidth = <span class="number">10</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 顯示圖表</span></span><br><span class="line">myPlot4</span><br></pre></td></tr></table></figure>
-<p><img src="Histogram.webp" alt="Win10ProxySetting"></p>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://scottplot.net/quickstart/notebook/">scottplot</a></li>
-<li><a href="https://www.w3schools.com/python/pandas/pandas_plotting.asp">pandas plotting</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>Polyglot Notebooks</category>
-      </categories>
-      <tags>
-        <tag>Polyglot Notebooks</tag>
-        <tag>ScottPlot</tag>
       </tags>
   </entry>
   <entry>
@@ -1475,6 +1477,7 @@ db.create_all() -->
 <h1 id="停止-Whistle"><a class="header-anchor" href="#停止-Whistle"></a>停止 Whistle</h1>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">w2 stop</span><br></pre></td></tr></table></figure>
 <h1 id="設定-Whistle-為-Proxy-的-Server"><a class="header-anchor" href="#設定-Whistle-為-Proxy-的-Server"></a>設定 Whistle 為 Proxy 的 Server</h1>
+<!-- <img src="/2023/01/20/WhistleProxyInstall/Win10ProxySetting.png" class=""> -->
 <p><img src="Win10ProxySetting.png" alt="Win10ProxySetting"></p>
 <div class="note warning"><p>📜 參考資料</p>
 <ol>
