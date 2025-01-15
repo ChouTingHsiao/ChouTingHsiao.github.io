@@ -8,7 +8,7 @@ sticky: 100
 
 # iptables 介紹
 
-## 封包進入規則
+⭐ 封包進入規則
 
 * ***PREROUTING鏈*** (通常用於DNAT)<br> 處理剛到本機並在路由轉送前的資料包，它會轉換封包中的目標IP位址
 
@@ -22,7 +22,7 @@ sticky: 100
 
 <!--more-->
 
-## 封包處理方式
+⭐ 封包處理方式
 
 * ***DNAT***<br>發生在 natTable 的 PREROUTING 鏈上，用於修改資料包的目標 IP 位址，在剛接收到封包的之後一步，對應的是 inbound 流量
 
@@ -60,12 +60,12 @@ sudo iptables -t nat -A PREROUTING -p tcp --dport [服務端口] -j REDIRECT --t
 
 # 請求轉發至其它主機
 
-建立 DNAT:
+⭐ 建立 DNAT:
 ```bash
 sudo iptables -t nat -A PREROUTING -p tcp -d [服務IP] --dport [服務端口] -j DNAT --to-destination [轉發IP]:[轉發端口]
 ```
 
-回應客戶端(擇一設定)
+⭐ 回應客戶端(擇一設定)
 
 * 建立 SNAT 回應客戶端:
 ```bash
