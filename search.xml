@@ -290,6 +290,33 @@
       </tags>
   </entry>
   <entry>
+    <title>Jenkins 執行備份專案命令</title>
+    <url>/2024/01/01/JenkinsBackupProject/</url>
+    <content><![CDATA[<h1 id="設定執行時間"><a class="header-anchor" href="#設定執行時間"></a>設定執行時間</h1>
+<p>在 Pipeline 取得執行時間</p>
+<figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line">dateNow = <span class="keyword">new</span> Date().format( <span class="string">&#x27;yyyyMMddHHmmss&#x27;</span> )</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="設定專案目錄與備份目錄"><a class="header-anchor" href="#設定專案目錄與備份目錄"></a>設定專案目錄與備份目錄</h1>
+<p>在 Pipeline 定義專案目錄與備份目錄</p>
+<figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line">projectPath = <span class="string">&quot;[專案目錄]&quot;</span></span><br><span class="line">backupPath = <span class="string">&quot;[備份目錄]&quot;</span></span><br></pre></td></tr></table></figure>
+<h1 id="移除三個月以上的備份資料"><a class="header-anchor" href="#移除三個月以上的備份資料"></a>移除三個月以上的備份資料</h1>
+<p>使用 ssh 命令登入 Server 移除三個月以上的備份資料</p>
+<figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line">sh <span class="string">&quot;ssh -p [ssh連接Port] [帳號]@[Server位置] \&quot;find $&#123;backupPath&#125;* -maxdepth 0 -type d -ctime +90 2&gt;/dev/null | sudo xargs -r rm -rf \&quot;&quot;</span></span><br></pre></td></tr></table></figure>
+<h1 id="依執行時間建立備份目錄"><a class="header-anchor" href="#依執行時間建立備份目錄"></a>依執行時間建立備份目錄</h1>
+<p>使用 ssh 命令登入 Server 依執行時間建立備份目錄</p>
+<figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line">sh <span class="string">&quot;ssh -p [ssh連接Port] [帳號]@[Server位置] \&quot;sudo mkdir -p $&#123;backupPath&#125;$&#123;dateNow&#125; \&quot;&quot;</span></span><br></pre></td></tr></table></figure>
+<h1 id="專案複製至備份目錄"><a class="header-anchor" href="#專案複製至備份目錄"></a>專案複製至備份目錄</h1>
+<p>使用 ssh 命令登入 Server 將專案複製至備份目錄</p>
+<figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line">sh <span class="string">&quot;ssh -p [ssh連接Port] [帳號]@[Server位置] \&quot;sudo cp -r $&#123;projectPath&#125;* $&#123;backupPath&#125;$&#123;dateNow&#125;/ \&quot;&quot;</span></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Jenkins</category>
+      </categories>
+      <tags>
+        <tag>Jenkins</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>JSON 格式資料如何拆解成 form 的輸入項</title>
     <url>/2020/03/27/HtmlFormPost/</url>
     <content><![CDATA[<h1 id="拆解-JSON-格式資料"><a class="header-anchor" href="#拆解-JSON-格式資料"></a>拆解 JSON 格式資料</h1>
@@ -319,33 +346,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Jenkins 執行備份專案命令</title>
-    <url>/2024/01/01/JenkinsBackupProject/</url>
-    <content><![CDATA[<h1 id="設定執行時間"><a class="header-anchor" href="#設定執行時間"></a>設定執行時間</h1>
-<p>在 Pipeline 取得執行時間</p>
-<figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line">dateNow = <span class="keyword">new</span> Date().format( <span class="string">&#x27;yyyyMMddHHmmss&#x27;</span> )</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="設定專案目錄與備份目錄"><a class="header-anchor" href="#設定專案目錄與備份目錄"></a>設定專案目錄與備份目錄</h1>
-<p>在 Pipeline 定義專案目錄與備份目錄</p>
-<figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line">projectPath = <span class="string">&quot;[專案目錄]&quot;</span></span><br><span class="line">backupPath = <span class="string">&quot;[備份目錄]&quot;</span></span><br></pre></td></tr></table></figure>
-<h1 id="移除三個月以上的備份資料"><a class="header-anchor" href="#移除三個月以上的備份資料"></a>移除三個月以上的備份資料</h1>
-<p>使用 ssh 命令登入 Server 移除三個月以上的備份資料</p>
-<figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line">sh <span class="string">&quot;ssh -p [ssh連接Port] [帳號]@[Server位置] \&quot;find $&#123;backupPath&#125;* -maxdepth 0 -type d -ctime +90 2&gt;/dev/null | sudo xargs -r rm -rf \&quot;&quot;</span></span><br></pre></td></tr></table></figure>
-<h1 id="依執行時間建立備份目錄"><a class="header-anchor" href="#依執行時間建立備份目錄"></a>依執行時間建立備份目錄</h1>
-<p>使用 ssh 命令登入 Server 依執行時間建立備份目錄</p>
-<figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line">sh <span class="string">&quot;ssh -p [ssh連接Port] [帳號]@[Server位置] \&quot;sudo mkdir -p $&#123;backupPath&#125;$&#123;dateNow&#125; \&quot;&quot;</span></span><br></pre></td></tr></table></figure>
-<h1 id="專案複製至備份目錄"><a class="header-anchor" href="#專案複製至備份目錄"></a>專案複製至備份目錄</h1>
-<p>使用 ssh 命令登入 Server 將專案複製至備份目錄</p>
-<figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line">sh <span class="string">&quot;ssh -p [ssh連接Port] [帳號]@[Server位置] \&quot;sudo cp -r $&#123;projectPath&#125;* $&#123;backupPath&#125;$&#123;dateNow&#125;/ \&quot;&quot;</span></span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Jenkins</category>
-      </categories>
-      <tags>
-        <tag>Jenkins</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>使用 Linux 檔案列表建立 Jenkins 下拉選單</title>
     <url>/2021/10/23/JenkinsDropdown/</url>
     <content><![CDATA[<h1 id="取得檔案列表方法"><a class="header-anchor" href="#取得檔案列表方法"></a>取得檔案列表方法</h1>
@@ -369,29 +369,6 @@
       </tags>
   </entry>
   <entry>
-    <title>如何將 Base64 編碼轉成檔案</title>
-    <url>/2019/12/09/JsBase64ToFile/</url>
-    <content><![CDATA[<h1 id="Chrome-base64-轉換成檔案"><a class="header-anchor" href="#Chrome-base64-轉換成檔案"></a>Chrome base64 轉換成檔案</h1>
-<p>下方是使用 JavaScript 把 base64 轉換成檔案的方法</p>
-<span id="more"></span>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"> <span class="keyword">function</span> <span class="title function_">downloadFile</span>(<span class="params">base64Str</span>) &#123;</span><br><span class="line">    <span class="comment">// 解碼 base64</span></span><br><span class="line">    <span class="keyword">const</span> byteCharacters = <span class="title function_">atob</span>(base64Str);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 建立 Byte Array</span></span><br><span class="line">    <span class="keyword">const</span> byteNumbers = <span class="keyword">new</span> <span class="title class_">Array</span>(byteCharacters.<span class="property">length</span>);</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; byteCharacters.<span class="property">length</span>; i++) &#123;</span><br><span class="line"> </span><br><span class="line">       byteNumbers[i] = byteCharacters.<span class="title function_">charCodeAt</span>(i);</span><br><span class="line"> </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">const</span> byteArray = <span class="keyword">new</span> <span class="title class_">Uint8Array</span>(byteNumbers);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 建立二進制檔和聲明 MIME Type</span></span><br><span class="line">    <span class="keyword">const</span> blob = <span class="keyword">new</span> <span class="title class_">Blob</span>([byteArray], &#123;<span class="attr">type</span>: <span class="string">&#x27;image/jpg&#x27;</span>&#125;);</span><br><span class="line"> </span><br><span class="line">    <span class="comment">// 下載檔案</span></span><br><span class="line">    <span class="keyword">let</span> link = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&#x27;a&#x27;</span>);</span><br><span class="line"> </span><br><span class="line">    <span class="comment">// 建立檔案物件連結</span></span><br><span class="line">    <span class="keyword">const</span> blobUrl = <span class="variable constant_">URL</span>.<span class="title function_">createObjectURL</span>(blob);</span><br><span class="line"> </span><br><span class="line">    link.<span class="property">href</span> = blobUrl;</span><br><span class="line"> </span><br><span class="line">    link.<span class="property">download</span> = <span class="string">&#x27;file.jpg&#x27;</span>;</span><br><span class="line"> </span><br><span class="line">    link.<span class="title function_">click</span>();</span><br><span class="line"> </span><br><span class="line">    <span class="variable constant_">URL</span>.<span class="title function_">revokeObjectURL</span>(blobUrl);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="IE-10-base64-轉換成檔案"><a class="header-anchor" href="#IE-10-base64-轉換成檔案"></a>IE 10 base64 轉換成檔案</h1>
-<p>如果瀏覽器使用 IE 10 以上版本，可使用 window.navigator.msSaveBlob 作為替代方法</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">downloadFile</span>(<span class="params">base64Str</span>) &#123;</span><br><span class="line">   <span class="comment">// 解碼 base64</span></span><br><span class="line">   <span class="keyword">const</span> byteCharacters = <span class="title function_">atob</span>(base64Str);</span><br><span class="line">	</span><br><span class="line">   <span class="comment">// 建立 Byte Array</span></span><br><span class="line">   <span class="keyword">const</span> byteNumbers = <span class="keyword">new</span> <span class="title class_">Array</span>(byteCharacters.<span class="property">length</span>);</span><br><span class="line">	</span><br><span class="line">   <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; byteCharacters.<span class="property">length</span>; i++) &#123;</span><br><span class="line">      byteNumbers[i] = byteCharacters.<span class="title function_">charCodeAt</span>(i);</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">const</span> byteArray = <span class="keyword">new</span> <span class="title class_">Uint8Array</span>(byteNumbers);</span><br><span class="line"></span><br><span class="line">   <span class="comment">// 建立二進制檔和聲明 MIME Type</span></span><br><span class="line">   <span class="keyword">const</span> blob = <span class="keyword">new</span> <span class="title class_">Blob</span>([byteArray], &#123;<span class="attr">type</span>: <span class="string">&#x27;image/jpg&#x27;</span>&#125;);</span><br><span class="line"> </span><br><span class="line">   <span class="comment">// 下載檔案</span></span><br><span class="line">   <span class="variable language_">window</span>.<span class="property">navigator</span>.<span class="title function_">msSaveBlob</span>(blob, <span class="string">&#x27;file.jpg&#x27;</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/atob">MDN atob</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>Javascript</category>
-      </categories>
-      <tags>
-        <tag>Javascript</tag>
-        <tag>Base64</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>如何將檔案轉成 Base64 編碼</title>
     <url>/2019/12/09/JsFileToBase64/</url>
     <content><![CDATA[<h1 id="建立-HTML"><a class="header-anchor" href="#建立-HTML"></a>建立 HTML</h1>
@@ -404,6 +381,29 @@
 <div class="note warning"><p>📜 參考資料</p>
 <ol>
 <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/btoa">MDN btoa</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>Javascript</category>
+      </categories>
+      <tags>
+        <tag>Javascript</tag>
+        <tag>Base64</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>如何將 Base64 編碼轉成檔案</title>
+    <url>/2019/12/09/JsBase64ToFile/</url>
+    <content><![CDATA[<h1 id="Chrome-base64-轉換成檔案"><a class="header-anchor" href="#Chrome-base64-轉換成檔案"></a>Chrome base64 轉換成檔案</h1>
+<p>下方是使用 JavaScript 把 base64 轉換成檔案的方法</p>
+<span id="more"></span>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"> <span class="keyword">function</span> <span class="title function_">downloadFile</span>(<span class="params">base64Str</span>) &#123;</span><br><span class="line">    <span class="comment">// 解碼 base64</span></span><br><span class="line">    <span class="keyword">const</span> byteCharacters = <span class="title function_">atob</span>(base64Str);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 建立 Byte Array</span></span><br><span class="line">    <span class="keyword">const</span> byteNumbers = <span class="keyword">new</span> <span class="title class_">Array</span>(byteCharacters.<span class="property">length</span>);</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; byteCharacters.<span class="property">length</span>; i++) &#123;</span><br><span class="line"> </span><br><span class="line">       byteNumbers[i] = byteCharacters.<span class="title function_">charCodeAt</span>(i);</span><br><span class="line"> </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">const</span> byteArray = <span class="keyword">new</span> <span class="title class_">Uint8Array</span>(byteNumbers);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 建立二進制檔和聲明 MIME Type</span></span><br><span class="line">    <span class="keyword">const</span> blob = <span class="keyword">new</span> <span class="title class_">Blob</span>([byteArray], &#123;<span class="attr">type</span>: <span class="string">&#x27;image/jpg&#x27;</span>&#125;);</span><br><span class="line"> </span><br><span class="line">    <span class="comment">// 下載檔案</span></span><br><span class="line">    <span class="keyword">let</span> link = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&#x27;a&#x27;</span>);</span><br><span class="line"> </span><br><span class="line">    <span class="comment">// 建立檔案物件連結</span></span><br><span class="line">    <span class="keyword">const</span> blobUrl = <span class="variable constant_">URL</span>.<span class="title function_">createObjectURL</span>(blob);</span><br><span class="line"> </span><br><span class="line">    link.<span class="property">href</span> = blobUrl;</span><br><span class="line"> </span><br><span class="line">    link.<span class="property">download</span> = <span class="string">&#x27;file.jpg&#x27;</span>;</span><br><span class="line"> </span><br><span class="line">    link.<span class="title function_">click</span>();</span><br><span class="line"> </span><br><span class="line">    <span class="variable constant_">URL</span>.<span class="title function_">revokeObjectURL</span>(blobUrl);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="IE-10-base64-轉換成檔案"><a class="header-anchor" href="#IE-10-base64-轉換成檔案"></a>IE 10 base64 轉換成檔案</h1>
+<p>如果瀏覽器使用 IE 10 以上版本，可使用 window.navigator.msSaveBlob 作為替代方法</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">downloadFile</span>(<span class="params">base64Str</span>) &#123;</span><br><span class="line">   <span class="comment">// 解碼 base64</span></span><br><span class="line">   <span class="keyword">const</span> byteCharacters = <span class="title function_">atob</span>(base64Str);</span><br><span class="line">	</span><br><span class="line">   <span class="comment">// 建立 Byte Array</span></span><br><span class="line">   <span class="keyword">const</span> byteNumbers = <span class="keyword">new</span> <span class="title class_">Array</span>(byteCharacters.<span class="property">length</span>);</span><br><span class="line">	</span><br><span class="line">   <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; byteCharacters.<span class="property">length</span>; i++) &#123;</span><br><span class="line">      byteNumbers[i] = byteCharacters.<span class="title function_">charCodeAt</span>(i);</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">const</span> byteArray = <span class="keyword">new</span> <span class="title class_">Uint8Array</span>(byteNumbers);</span><br><span class="line"></span><br><span class="line">   <span class="comment">// 建立二進制檔和聲明 MIME Type</span></span><br><span class="line">   <span class="keyword">const</span> blob = <span class="keyword">new</span> <span class="title class_">Blob</span>([byteArray], &#123;<span class="attr">type</span>: <span class="string">&#x27;image/jpg&#x27;</span>&#125;);</span><br><span class="line"> </span><br><span class="line">   <span class="comment">// 下載檔案</span></span><br><span class="line">   <span class="variable language_">window</span>.<span class="property">navigator</span>.<span class="title function_">msSaveBlob</span>(blob, <span class="string">&#x27;file.jpg&#x27;</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/atob">MDN atob</a></li>
 </ol>
 </div>]]></content>
       <categories>
@@ -601,7 +601,7 @@
     <title>使用 NAT 轉發請求</title>
     <url>/2024/07/25/LinuxNatForward/</url>
     <content><![CDATA[<h1 id="iptables-介紹"><a class="header-anchor" href="#iptables-介紹"></a>iptables 介紹</h1>
-<h2 id="封包進入規則"><a class="header-anchor" href="#封包進入規則"></a>封包進入規則</h2>
+<p>⭐ 封包進入規則</p>
 <ul>
 <li>
 <p><em><strong>PREROUTING鏈</strong></em> (通常用於DNAT)<br> 處理剛到本機並在路由轉送前的資料包，它會轉換封包中的目標IP位址</p>
@@ -620,7 +620,7 @@
 </li>
 </ul>
 <span id="more"></span>
-<h2 id="封包處理方式"><a class="header-anchor" href="#封包處理方式"></a>封包處理方式</h2>
+<p>⭐ 封包處理方式</p>
 <ul>
 <li>
 <p><em><strong>DNAT</strong></em><br>發生在 natTable 的 PREROUTING 鏈上，用於修改資料包的目標 IP 位址，在剛接收到封包的之後一步，對應的是 inbound 流量</p>
@@ -647,9 +647,9 @@ sudo iptables -A FORWARD -i eth0 -o eth1 -j ACCEPT -->
 <p>可使用以下設定轉發端口</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo iptables -t nat -A PREROUTING -p tcp --dport [服務端口] -j REDIRECT --to-port [轉發端口]</span><br></pre></td></tr></table></figure>
 <h1 id="請求轉發至其它主機"><a class="header-anchor" href="#請求轉發至其它主機"></a>請求轉發至其它主機</h1>
-<p>建立 DNAT:</p>
+<p>⭐ 建立 DNAT:</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo iptables -t nat -A PREROUTING -p tcp -d [服務IP] --dport [服務端口] -j DNAT --to-destination [轉發IP]:[轉發端口]</span><br></pre></td></tr></table></figure>
-<p>回應客戶端(擇一設定)</p>
+<p>⭐ 回應客戶端(擇一設定)</p>
 <ul>
 <li>建立 SNAT 回應客戶端:</li>
 </ul>
@@ -771,33 +771,6 @@ plink -v -x -a -T -C -noagent -ssh -pw "[密碼]" -P 50893 -L [本地端口]:[�
       </tags>
   </entry>
   <entry>
-    <title>在 SQL Server 操作 JSON</title>
-    <url>/2025/01/01/MsSqlJsonString/</url>
-    <content><![CDATA[<h1 id="宣告-JSON-字串"><a class="header-anchor" href="#宣告-JSON-字串"></a>宣告 JSON 字串</h1>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">DECLARE</span> <span class="variable">@json</span> NVARCHAR(MAX);</span><br><span class="line"></span><br><span class="line"><span class="keyword">SET</span> <span class="variable">@json</span> <span class="operator">=</span> <span class="string">&#x27;&#123;&quot;info&quot;: &#123;&quot;address&quot;: [&#123;&quot;town&quot;: &quot;Belgrade&quot;&#125;, &#123;&quot;town&quot;: &quot;Paris&quot;&#125;, &#123;&quot;town&quot;:&quot;Madrid&quot;&#125;]&#125;&#125;&#x27;</span>;</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="JSON-VALUE-擷取純量值字串"><a class="header-anchor" href="#JSON-VALUE-擷取純量值字串"></a>JSON_VALUE 擷取純量值字串</h1>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="built_in">JSON_VALUE</span>(<span class="variable">@json</span>, <span class="string">&#x27;$.info.address[0].town&#x27;</span>);</span><br></pre></td></tr></table></figure>
-<h1 id="JSON-QUERY-擷取物件或陣列字串"><a class="header-anchor" href="#JSON-QUERY-擷取物件或陣列字串"></a>JSON_QUERY 擷取物件或陣列字串</h1>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="built_in">JSON_QUERY</span>(<span class="variable">@json</span>, <span class="string">&#x27;$.info.address&#x27;</span>);</span><br></pre></td></tr></table></figure>
-<h1 id="JSON-MODIFY-變更-JSON-字串中的值"><a class="header-anchor" href="#JSON-MODIFY-變更-JSON-字串中的值"></a>JSON_MODIFY 變更 JSON 字串中的值</h1>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SET</span> <span class="variable">@json</span> <span class="operator">=</span> JSON_MODIFY(<span class="variable">@json</span>, <span class="string">&#x27;$.info.address[1].town&#x27;</span>, <span class="string">&#x27;London&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> modifiedJson <span class="operator">=</span> <span class="variable">@json</span>;</span><br></pre></td></tr></table></figure>
-<h1 id="OPENJSON-集合轉換為資料列集"><a class="header-anchor" href="#OPENJSON-集合轉換為資料列集"></a>OPENJSON 集合轉換為資料列集</h1>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span></span><br><span class="line"><span class="keyword">FROM</span> OPENJSON(<span class="built_in">JSON_QUERY</span>(<span class="variable">@json</span>, <span class="string">&#x27;$.info.address&#x27;</span>)) <span class="keyword">WITH</span> (</span><br><span class="line">    town NVARCHAR(<span class="number">50</span>) <span class="string">&#x27;$.town&#x27;</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://learn.microsoft.com/zh-tw/sql/relational-databases/json/json-data-sql-server?view=sql-server-ver16">SQL Server 中的 JSON 資料</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>MSSQL</category>
-      </categories>
-      <tags>
-        <tag>JSON</tag>
-        <tag>MSSQL</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>使用 DMV 查询 SQL 執行性能</title>
     <url>/2025/01/01/MsSqlPerformance/</url>
     <content><![CDATA[<h1 id="查询執行中的-SQL-性能"><a class="header-anchor" href="#查询執行中的-SQL-性能"></a>查询執行中的 SQL 性能</h1>
@@ -829,6 +802,33 @@ plink -v -x -a -T -C -noagent -ssh -pw "[密碼]" -P 50893 -L [本地端口]:[�
       <tags>
         <tag>MSSQL</tag>
         <tag>DMV</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>在 SQL Server 操作 JSON</title>
+    <url>/2025/01/01/MsSqlJsonString/</url>
+    <content><![CDATA[<h1 id="宣告-JSON-字串"><a class="header-anchor" href="#宣告-JSON-字串"></a>宣告 JSON 字串</h1>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">DECLARE</span> <span class="variable">@json</span> NVARCHAR(MAX);</span><br><span class="line"></span><br><span class="line"><span class="keyword">SET</span> <span class="variable">@json</span> <span class="operator">=</span> <span class="string">&#x27;&#123;&quot;info&quot;: &#123;&quot;address&quot;: [&#123;&quot;town&quot;: &quot;Belgrade&quot;&#125;, &#123;&quot;town&quot;: &quot;Paris&quot;&#125;, &#123;&quot;town&quot;:&quot;Madrid&quot;&#125;]&#125;&#125;&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="JSON-VALUE-擷取純量值字串"><a class="header-anchor" href="#JSON-VALUE-擷取純量值字串"></a>JSON_VALUE 擷取純量值字串</h1>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="built_in">JSON_VALUE</span>(<span class="variable">@json</span>, <span class="string">&#x27;$.info.address[0].town&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<h1 id="JSON-QUERY-擷取物件或陣列字串"><a class="header-anchor" href="#JSON-QUERY-擷取物件或陣列字串"></a>JSON_QUERY 擷取物件或陣列字串</h1>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="built_in">JSON_QUERY</span>(<span class="variable">@json</span>, <span class="string">&#x27;$.info.address&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<h1 id="JSON-MODIFY-變更-JSON-字串中的值"><a class="header-anchor" href="#JSON-MODIFY-變更-JSON-字串中的值"></a>JSON_MODIFY 變更 JSON 字串中的值</h1>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SET</span> <span class="variable">@json</span> <span class="operator">=</span> JSON_MODIFY(<span class="variable">@json</span>, <span class="string">&#x27;$.info.address[1].town&#x27;</span>, <span class="string">&#x27;London&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> modifiedJson <span class="operator">=</span> <span class="variable">@json</span>;</span><br></pre></td></tr></table></figure>
+<h1 id="OPENJSON-集合轉換為資料列集"><a class="header-anchor" href="#OPENJSON-集合轉換為資料列集"></a>OPENJSON 集合轉換為資料列集</h1>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span></span><br><span class="line"><span class="keyword">FROM</span> OPENJSON(<span class="built_in">JSON_QUERY</span>(<span class="variable">@json</span>, <span class="string">&#x27;$.info.address&#x27;</span>)) <span class="keyword">WITH</span> (</span><br><span class="line">    town NVARCHAR(<span class="number">50</span>) <span class="string">&#x27;$.town&#x27;</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://learn.microsoft.com/zh-tw/sql/relational-databases/json/json-data-sql-server?view=sql-server-ver16">SQL Server 中的 JSON 資料</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>MSSQL</category>
+      </categories>
+      <tags>
+        <tag>JSON</tag>
+        <tag>MSSQL</tag>
       </tags>
   </entry>
   <entry>
@@ -867,30 +867,6 @@ plink -v -x -a -T -C -noagent -ssh -pw "[密碼]" -P 50893 -L [本地端口]:[�
       </tags>
   </entry>
   <entry>
-    <title>使用 AddInMemoryCollection 設定 Configuration 進行單元測試</title>
-    <url>/2023/01/21/NetAddInMemoryCollection/</url>
-    <content><![CDATA[<h1 id="設定-appsettings-json-如下"><a class="header-anchor" href="#設定-appsettings-json-如下"></a>設定 appsettings.json 如下</h1>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;Logging&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;LogLevel&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;Default&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Information&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;Microsoft.AspNetCore&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Warning&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="轉換為-Dictionary-string-string"><a class="header-anchor" href="#轉換為-Dictionary-string-string"></a>轉換為 Dictionary&lt;string, string&gt;</h1>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">Dictionary&lt;<span class="built_in">string</span>, <span class="built_in">string</span>&gt; inMemorySettings = <span class="keyword">new</span> Dictionary&lt;<span class="built_in">string</span>, <span class="built_in">string</span>&gt; &#123;</span><br><span class="line">    &#123;<span class="string">&quot;Logging:LogLevel:Default&quot;</span>,  <span class="string">&quot;Information&quot;</span>&#125;,</span><br><span class="line">    &#123;<span class="string">&quot;Logging:LogLevel:Microsoft.AspNetCore&quot;</span>,  <span class="string">&quot;Warning&quot;</span>&#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h1 id="建立-Configuration"><a class="header-anchor" href="#建立-Configuration"></a>建立 Configuration</h1>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">IConfiguration configuration = <span class="keyword">new</span> ConfigurationBuilder()</span><br><span class="line">            .AddInMemoryCollection(inMemorySettings)</span><br><span class="line">            .Build();</span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://learn.microsoft.com/en-us/dotnet/api/microsoft.extensions.configuration.memoryconfigurationbuilderextensions.addinmemorycollection?view=dotnet-plat-ext-7.0">MemoryConfigurationBuilderExtensions.AddInMemoryCollection Method</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>.Net</category>
-      </categories>
-      <tags>
-        <tag>.Net</tag>
-        <tag>UnitTest</tag>
-        <tag>IConfiguration</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>依字元內碼轉換 Big5 與 Unicode</title>
     <url>/2022/05/22/NetBig5AndUnicode/</url>
     <content><![CDATA[<h1 id="轉換-Big5-字元"><a class="header-anchor" href="#轉換-Big5-字元"></a>轉換 Big5 字元</h1>
@@ -914,6 +890,30 @@ plink -v -x -a -T -C -noagent -ssh -pw "[密碼]" -P 50893 -L [本地端口]:[�
         <tag>Font</tag>
         <tag>Big5</tag>
         <tag>Unicode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>使用 AddInMemoryCollection 設定 Configuration 進行單元測試</title>
+    <url>/2023/01/21/NetAddInMemoryCollection/</url>
+    <content><![CDATA[<h1 id="設定-appsettings-json-如下"><a class="header-anchor" href="#設定-appsettings-json-如下"></a>設定 appsettings.json 如下</h1>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;Logging&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;LogLevel&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;Default&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Information&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;Microsoft.AspNetCore&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Warning&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="轉換為-Dictionary-string-string"><a class="header-anchor" href="#轉換為-Dictionary-string-string"></a>轉換為 Dictionary&lt;string, string&gt;</h1>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">Dictionary&lt;<span class="built_in">string</span>, <span class="built_in">string</span>&gt; inMemorySettings = <span class="keyword">new</span> Dictionary&lt;<span class="built_in">string</span>, <span class="built_in">string</span>&gt; &#123;</span><br><span class="line">    &#123;<span class="string">&quot;Logging:LogLevel:Default&quot;</span>,  <span class="string">&quot;Information&quot;</span>&#125;,</span><br><span class="line">    &#123;<span class="string">&quot;Logging:LogLevel:Microsoft.AspNetCore&quot;</span>,  <span class="string">&quot;Warning&quot;</span>&#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h1 id="建立-Configuration"><a class="header-anchor" href="#建立-Configuration"></a>建立 Configuration</h1>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">IConfiguration configuration = <span class="keyword">new</span> ConfigurationBuilder()</span><br><span class="line">            .AddInMemoryCollection(inMemorySettings)</span><br><span class="line">            .Build();</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://learn.microsoft.com/en-us/dotnet/api/microsoft.extensions.configuration.memoryconfigurationbuilderextensions.addinmemorycollection?view=dotnet-plat-ext-7.0">MemoryConfigurationBuilderExtensions.AddInMemoryCollection Method</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>.Net</category>
+      </categories>
+      <tags>
+        <tag>.Net</tag>
+        <tag>UnitTest</tag>
+        <tag>IConfiguration</tag>
       </tags>
   </entry>
   <entry>
@@ -1323,30 +1323,6 @@ dotnet-dump collect --process-id 1902 -->
       </tags>
   </entry>
   <entry>
-    <title>使用 Flask-Caching 緩存 Flask 呼叫方法產生的資料</title>
-    <url>/2023/07/07/PythonFlaskCaching/</url>
-    <content><![CDATA[<h1 id="安裝套件"><a class="header-anchor" href="#安裝套件"></a>安裝套件</h1>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip install Flask</span><br><span class="line">pip install Flask-Caching</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="建立-address-json-內容如下"><a class="header-anchor" href="#建立-address-json-內容如下"></a>建立 address.json 內容如下</h1>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;Address&quot;</span><span class="punctuation">:</span> <span class="string">&quot;新竹市&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;Zip&quot;</span><span class="punctuation">:</span> <span class="string">&quot;300&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-<h1 id="建立-app-py-內容如下"><a class="header-anchor" href="#建立-app-py-內容如下"></a>建立 <a href="http://app.py">app.py</a> 內容如下</h1>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</span><br><span class="line"><span class="keyword">from</span> flask_caching <span class="keyword">import</span> Cache</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line">config = &#123;</span><br><span class="line">    <span class="string">&quot;DEBUG&quot;</span>: <span class="literal">True</span>,</span><br><span class="line">    <span class="string">&quot;CACHE_TYPE&quot;</span>: <span class="string">&quot;SimpleCache&quot;</span>,</span><br><span class="line">    <span class="string">&quot;CACHE_DEFAULT_TIMEOUT&quot;</span>: <span class="number">3000</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line">app.config.from_mapping(config)</span><br><span class="line">cache = Cache(app)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用裝飾器緩存呼叫方法產生的資料</span></span><br><span class="line"><span class="meta">@cache.memoize(<span class="params">timeout=<span class="number">50</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">LoadAllAddress</span>():</span><br><span class="line">    <span class="comment"># 讀取 address.json</span></span><br><span class="line">    file = <span class="built_in">open</span>(<span class="string">&#x27;address.json&#x27;</span>)</span><br><span class="line">    data = json.load(file)</span><br><span class="line">    <span class="keyword">return</span> data</span><br><span class="line"></span><br><span class="line"><span class="comment"># 刪除緩存</span></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/ClearAddressCache&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">delAddress</span>():</span><br><span class="line">   <span class="comment"># 刪除緩存呼叫方法產生的資料</span></span><br><span class="line">   cache.delete_memoized(LoadAllAddress)</span><br><span class="line">   <span class="keyword">return</span> <span class="string">&quot;Clear Success&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 取得 address.json 的資料</span></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/GetAllAddress&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">AllAddress</span>():</span><br><span class="line">    <span class="keyword">return</span> LoadAllAddress()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    app.run()</span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://flask-caching.readthedocs.io/en/latest/">Flask-Caching</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>Python</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-        <tag>Flask</tag>
-        <tag>Caching</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>使用 Flask-SQLAlchemy 連接 MSSQL 進行 CRUD</title>
     <url>/2023/07/07/PythonFlaskSQLAlchemy/</url>
     <content><![CDATA[<h1 id="安裝套件"><a class="header-anchor" href="#安裝套件"></a>安裝套件</h1>
@@ -1373,6 +1349,30 @@ db.create_all() -->
         <tag>MSSQL</tag>
         <tag>Python</tag>
         <tag>Flask</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>使用 Flask-Caching 緩存 Flask 呼叫方法產生的資料</title>
+    <url>/2023/07/07/PythonFlaskCaching/</url>
+    <content><![CDATA[<h1 id="安裝套件"><a class="header-anchor" href="#安裝套件"></a>安裝套件</h1>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip install Flask</span><br><span class="line">pip install Flask-Caching</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="建立-address-json-內容如下"><a class="header-anchor" href="#建立-address-json-內容如下"></a>建立 address.json 內容如下</h1>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;Address&quot;</span><span class="punctuation">:</span> <span class="string">&quot;新竹市&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;Zip&quot;</span><span class="punctuation">:</span> <span class="string">&quot;300&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<h1 id="建立-app-py-內容如下"><a class="header-anchor" href="#建立-app-py-內容如下"></a>建立 <a href="http://app.py">app.py</a> 內容如下</h1>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</span><br><span class="line"><span class="keyword">from</span> flask_caching <span class="keyword">import</span> Cache</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line">config = &#123;</span><br><span class="line">    <span class="string">&quot;DEBUG&quot;</span>: <span class="literal">True</span>,</span><br><span class="line">    <span class="string">&quot;CACHE_TYPE&quot;</span>: <span class="string">&quot;SimpleCache&quot;</span>,</span><br><span class="line">    <span class="string">&quot;CACHE_DEFAULT_TIMEOUT&quot;</span>: <span class="number">3000</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line">app.config.from_mapping(config)</span><br><span class="line">cache = Cache(app)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用裝飾器緩存呼叫方法產生的資料</span></span><br><span class="line"><span class="meta">@cache.memoize(<span class="params">timeout=<span class="number">50</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">LoadAllAddress</span>():</span><br><span class="line">    <span class="comment"># 讀取 address.json</span></span><br><span class="line">    file = <span class="built_in">open</span>(<span class="string">&#x27;address.json&#x27;</span>)</span><br><span class="line">    data = json.load(file)</span><br><span class="line">    <span class="keyword">return</span> data</span><br><span class="line"></span><br><span class="line"><span class="comment"># 刪除緩存</span></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/ClearAddressCache&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">delAddress</span>():</span><br><span class="line">   <span class="comment"># 刪除緩存呼叫方法產生的資料</span></span><br><span class="line">   cache.delete_memoized(LoadAllAddress)</span><br><span class="line">   <span class="keyword">return</span> <span class="string">&quot;Clear Success&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 取得 address.json 的資料</span></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/GetAllAddress&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">AllAddress</span>():</span><br><span class="line">    <span class="keyword">return</span> LoadAllAddress()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    app.run()</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://flask-caching.readthedocs.io/en/latest/">Flask-Caching</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>Flask</tag>
+        <tag>Caching</tag>
       </tags>
   </entry>
   <entry>
