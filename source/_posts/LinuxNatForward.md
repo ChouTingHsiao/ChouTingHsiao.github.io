@@ -6,18 +6,10 @@ tags: [Linux, Ubuntu, Nat]
 sticky: 100
 ---
 
-# NAT 介紹:
-* ***DNAT***<br>發生在 natTable 的 PREROUTING 鏈上，正好在剛接收到封包的之後一步，對應的是 inbound 流量
+# iptables 介紹
 
-* ***SNAT***<br>發生在 natTable 的 POSTROUTING 鏈上，只允許被使用在靜態 IP，要求您為其提供一個 IP 位址以套用於所有傳出資料包，正好在傳送到網路卡前的最後一步，對應的是 outbound 流量
+## 封包進入規則
 
-* ***Masquerading***<br>只允許被用在動態分配 IP 位址的情況下，允許您為其提供一個接口，該接口上的任何地址，都是應用於所有傳出資料包的地址
-
-* ***Redirection***<br>將流量轉發到本地系統的其他端口，而不是轉發到內部網絡中的其他主機
-
-<!--more-->
-
-# iptables 中的五條鏈:
 * ***PREROUTING鏈*** (通常用於DNAT)<br> 處理剛到本機並在路由轉送前的資料包，它會轉換封包中的目標IP位址
 
 * ***INPUT鏈*** <br> 處理入站資料包
@@ -28,7 +20,19 @@ sticky: 100
 
 * ***POSTROUTING鏈*** (通常用於SNAT)<br> 處理即將離開本機的資料包，它會轉換封包中的來源IP位址
 
-# 確認路由
+<!--more-->
+
+## 封包處理方式
+
+* ***DNAT***<br>發生在 natTable 的 PREROUTING 鏈上，用於修改資料包的目標 IP 位址，在剛接收到封包的之後一步，對應的是 inbound 流量
+
+* ***SNAT***<br>發生在 natTable 的 POSTROUTING 鏈上，要求您為其提供一個靜態 IP 位址以套用於傳出封包，在傳送到網路卡前的最後一步，對應的是 outbound 流量
+
+* ***Masquerading***<br>當配置完成後，發自該接口的封包，其來源 IP 會被替換為該接口的 IP，從而讓回應能正確路由回該接口
+
+* ***Redirection***<br>將流量轉發到本地系統的其他端口，而不是轉發到內部網絡中的其他主機
+
+# 確認路由表
 ```bash
 route -n
 ```
