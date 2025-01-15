@@ -600,23 +600,8 @@
   <entry>
     <title>使用 NAT 轉發請求</title>
     <url>/2024/07/25/LinuxNatForward/</url>
-    <content><![CDATA[<h1 id="NAT-介紹"><a class="header-anchor" href="#NAT-介紹"></a>NAT 介紹:</h1>
-<ul>
-<li>
-<p><em><strong>DNAT</strong></em><br>發生在 natTable 的 PREROUTING 鏈上，正好在剛接收到封包的之後一步，對應的是 inbound 流量</p>
-</li>
-<li>
-<p><em><strong>SNAT</strong></em><br>發生在 natTable 的 POSTROUTING 鏈上，只允許被使用在靜態 IP，要求您為其提供一個 IP 位址以套用於所有傳出資料包，正好在傳送到網路卡前的最後一步，對應的是 outbound 流量</p>
-</li>
-<li>
-<p><em><strong>Masquerading</strong></em><br>只允許被用在動態分配 IP 位址的情況下，允許您為其提供一個接口，該接口上的任何地址，都是應用於所有傳出資料包的地址</p>
-</li>
-<li>
-<p><em><strong>Redirection</strong></em><br>將流量轉發到本地系統的其他端口，而不是轉發到內部網絡中的其他主機</p>
-</li>
-</ul>
-<span id="more"></span>
-<h1 id="iptables-中的五條鏈"><a class="header-anchor" href="#iptables-中的五條鏈"></a>iptables 中的五條鏈:</h1>
+    <content><![CDATA[<h1 id="iptables-介紹"><a class="header-anchor" href="#iptables-介紹"></a>iptables 介紹</h1>
+<h2 id="封包進入規則"><a class="header-anchor" href="#封包進入規則"></a>封包進入規則</h2>
 <ul>
 <li>
 <p><em><strong>PREROUTING鏈</strong></em> (通常用於DNAT)<br> 處理剛到本機並在路由轉送前的資料包，它會轉換封包中的目標IP位址</p>
@@ -634,7 +619,23 @@
 <p><em><strong>POSTROUTING鏈</strong></em> (通常用於SNAT)<br> 處理即將離開本機的資料包，它會轉換封包中的來源IP位址</p>
 </li>
 </ul>
-<h1 id="確認路由"><a class="header-anchor" href="#確認路由"></a>確認路由</h1>
+<span id="more"></span>
+<h2 id="封包處理方式"><a class="header-anchor" href="#封包處理方式"></a>封包處理方式</h2>
+<ul>
+<li>
+<p><em><strong>DNAT</strong></em><br>發生在 natTable 的 PREROUTING 鏈上，用於修改資料包的目標 IP 位址，在剛接收到封包的之後一步，對應的是 inbound 流量</p>
+</li>
+<li>
+<p><em><strong>SNAT</strong></em><br>發生在 natTable 的 POSTROUTING 鏈上，要求您為其提供一個靜態 IP 位址以套用於傳出封包，在傳送到網路卡前的最後一步，對應的是 outbound 流量</p>
+</li>
+<li>
+<p><em><strong>Masquerading</strong></em><br>當配置完成後，發自該接口的封包，其來源 IP 會被替換為該接口的 IP，從而讓回應能正確路由回該接口</p>
+</li>
+<li>
+<p><em><strong>Redirection</strong></em><br>將流量轉發到本地系統的其他端口，而不是轉發到內部網絡中的其他主機</p>
+</li>
+</ul>
+<h1 id="確認路由表"><a class="header-anchor" href="#確認路由表"></a>確認路由表</h1>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">route -n</span><br></pre></td></tr></table></figure>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ip r | grep default</span><br></pre></td></tr></table></figure>
 <h1 id="開啟-Linux-轉發"><a class="header-anchor" href="#開啟-Linux-轉發"></a>開啟 Linux 轉發</h1>

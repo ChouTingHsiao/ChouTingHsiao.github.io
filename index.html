@@ -260,7 +260,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-01-11 06:26:00" itemprop="dateModified" datetime="2025-01-11T06:26:00+00:00">2025-01-11</time>
+      <time title="Modified: 2025-01-15 15:09:09" itemprop="dateModified" datetime="2025-01-15T15:09:09+00:00">2025-01-15</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -284,7 +284,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Word count in article: </span>
-      <span>605</span>
+      <span>600</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
@@ -302,19 +302,23 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="NAT-介紹"><a class="header-anchor" href="#NAT-介紹"></a>NAT 介紹:</h1>
+          <h1 id="iptables-介紹"><a class="header-anchor" href="#iptables-介紹"></a>iptables 介紹</h1>
+<h2 id="封包進入規則"><a class="header-anchor" href="#封包進入規則"></a>封包進入規則</h2>
 <ul>
 <li>
-<p><em><strong>DNAT</strong></em><br>發生在 natTable 的 PREROUTING 鏈上，正好在剛接收到封包的之後一步，對應的是 inbound 流量</p>
+<p><em><strong>PREROUTING鏈</strong></em> (通常用於DNAT)<br> 處理剛到本機並在路由轉送前的資料包，它會轉換封包中的目標IP位址</p>
 </li>
 <li>
-<p><em><strong>SNAT</strong></em><br>發生在 natTable 的 POSTROUTING 鏈上，只允許被使用在靜態 IP，要求您為其提供一個 IP 位址以套用於所有傳出資料包，正好在傳送到網路卡前的最後一步，對應的是 outbound 流量</p>
+<p><em><strong>INPUT鏈</strong></em> <br> 處理入站資料包</p>
 </li>
 <li>
-<p><em><strong>Masquerading</strong></em><br>只允許被用在動態分配 IP 位址的情況下，允許您為其提供一個接口，該接口上的任何地址，都是應用於所有傳出資料包的地址</p>
+<p><em><strong>FORWARD鏈</strong></em> (不包含 NAT)<br> 處理轉送封包</p>
 </li>
 <li>
-<p><em><strong>Redirection</strong></em><br>將流量轉發到本地系統的其他端口，而不是轉發到內部網絡中的其他主機</p>
+<p><em><strong>OUTPUT鏈</strong></em> <br> 處理出站資料包</p>
+</li>
+<li>
+<p><em><strong>POSTROUTING鏈</strong></em> (通常用於SNAT)<br> 處理即將離開本機的資料包，它會轉換封包中的來源IP位址</p>
 </li>
 </ul>
           <!--noindex-->
@@ -386,7 +390,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-01-11 06:26:00" itemprop="dateModified" datetime="2025-01-11T06:26:00+00:00">2025-01-11</time>
+      <time title="Modified: 2025-01-15 15:09:09" itemprop="dateModified" datetime="2025-01-15T15:09:09+00:00">2025-01-15</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -494,7 +498,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-01-11 06:26:00" itemprop="dateModified" datetime="2025-01-11T06:26:00+00:00">2025-01-11</time>
+      <time title="Modified: 2025-01-15 15:09:09" itemprop="dateModified" datetime="2025-01-15T15:09:09+00:00">2025-01-15</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -602,7 +606,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-01-11 06:26:00" itemprop="dateModified" datetime="2025-01-11T06:26:00+00:00">2025-01-11</time>
+      <time title="Modified: 2025-01-15 15:09:09" itemprop="dateModified" datetime="2025-01-15T15:09:09+00:00">2025-01-15</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -710,7 +714,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-01-11 06:26:00" itemprop="dateModified" datetime="2025-01-11T06:26:00+00:00">2025-01-11</time>
+      <time title="Modified: 2025-01-15 15:09:09" itemprop="dateModified" datetime="2025-01-15T15:09:09+00:00">2025-01-15</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
