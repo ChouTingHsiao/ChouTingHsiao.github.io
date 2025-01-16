@@ -19,17 +19,20 @@ SET @x = '<Root>
 
 <!--more-->
 
-# value() 擷取純量值
+# value 擷取純量值
+
 ```sql
 SELECT @x.value('(/Root/row/@id)[1]', 'int');
 ```
 
-# query() 擷取物件或陣列
+# query 擷取物件或陣列
+
 ```sql
 SELECT @x.query('/Root/row');
 ```
 
-# modify() 變更 JSON 字串中的值
+# modify 變更 JSON 字串中的值
+
 ```sql
 SET @x.modify('
   replace value of (/Root/row[1]/name/text())[1]
@@ -39,15 +42,21 @@ SET @x.modify('
 SELECT @x;
 ```
 
-# 集合轉換為資料列集
+# XML 轉換為資料列
 
-## nodes()
+⭐ nodes
+
+直接解析 XML 格式資料
+
 ```sql
 SELECT T.C.query('.')
 FROM @x.nodes('/Root/row') T(c);
 ```
 
-## OPENXML
+⭐ OPENXML
+
+解析 XML 字串資料,需預先定義對應格式
+
 ```sql
 DECLARE @idoc INT, @doc VARCHAR(1000);
 
@@ -71,7 +80,7 @@ FROM OPENXML(@idoc, '/Root/row', 1) WITH (
 EXEC sp_xml_removedocument @idoc;
 ```
 
-# Base64 字串轉換(UTF-16)
+# Base64 轉換(UTF-16)
 
 字串轉 Base64
 
