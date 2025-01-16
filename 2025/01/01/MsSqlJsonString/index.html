@@ -28,7 +28,7 @@
 <meta property="og:description" content="宣告 JSON 字串 123DECLARE @json NVARCHAR(MAX);SET @json &#x3D; &amp;#x27;&amp;#123;&quot;info&quot;: &amp;#123;&quot;address&quot;: [&amp;#123;&quot;town&quot;: &quot;Belgrade&quot;&amp;#125;, &amp;#123;&quot;town&quot;: &quot;Paris&amp;">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2025-01-01T19:00:00.000Z">
-<meta property="article:modified_time" content="2025-01-15T15:22:47.376Z">
+<meta property="article:modified_time" content="2025-01-16T14:28:35.574Z">
 <meta property="article:author" content="Stephen">
 <meta property="article:tag" content="JSON">
 <meta property="article:tag" content="MSSQL">
@@ -142,7 +142,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%A3%E5%91%8A-JSON-%E5%AD%97%E4%B8%B2"><span class="nav-number">1.</span> <span class="nav-text">宣告 JSON 字串</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#JSON-VALUE-%E6%93%B7%E5%8F%96%E7%B4%94%E9%87%8F%E5%80%BC%E5%AD%97%E4%B8%B2"><span class="nav-number">2.</span> <span class="nav-text">JSON_VALUE 擷取純量值字串</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#JSON-QUERY-%E6%93%B7%E5%8F%96%E7%89%A9%E4%BB%B6%E6%88%96%E9%99%A3%E5%88%97%E5%AD%97%E4%B8%B2"><span class="nav-number">3.</span> <span class="nav-text">JSON_QUERY 擷取物件或陣列字串</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#JSON-MODIFY-%E8%AE%8A%E6%9B%B4-JSON-%E5%AD%97%E4%B8%B2%E4%B8%AD%E7%9A%84%E5%80%BC"><span class="nav-number">4.</span> <span class="nav-text">JSON_MODIFY 變更 JSON 字串中的值</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#OPENJSON-%E9%9B%86%E5%90%88%E8%BD%89%E6%8F%9B%E7%82%BA%E8%B3%87%E6%96%99%E5%88%97%E9%9B%86"><span class="nav-number">5.</span> <span class="nav-text">OPENJSON 集合轉換為資料列集</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%A3%E5%91%8A-JSON-%E5%AD%97%E4%B8%B2"><span class="nav-number">1.</span> <span class="nav-text">宣告 JSON 字串</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#JSON-VALUE-%E6%93%B7%E5%8F%96%E7%B4%94%E9%87%8F%E5%80%BC%E5%AD%97%E4%B8%B2"><span class="nav-number">2.</span> <span class="nav-text">JSON_VALUE 擷取純量值字串</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#JSON-QUERY-%E6%93%B7%E5%8F%96%E7%89%A9%E4%BB%B6%E6%88%96%E9%99%A3%E5%88%97%E5%AD%97%E4%B8%B2"><span class="nav-number">3.</span> <span class="nav-text">JSON_QUERY 擷取物件或陣列字串</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#JSON-MODIFY-%E8%AE%8A%E6%9B%B4-JSON-%E5%AD%97%E4%B8%B2%E4%B8%AD%E7%9A%84%E5%80%BC"><span class="nav-number">4.</span> <span class="nav-text">JSON_MODIFY 變更 JSON 字串中的值</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#JSON-%E8%BD%89%E6%8F%9B%E7%82%BA%E8%B3%87%E6%96%99%E5%88%97"><span class="nav-number">5.</span> <span class="nav-text">JSON 轉換為資料列</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -265,7 +265,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-01-15 15:22:47" itemprop="dateModified" datetime="2025-01-15T15:22:47+00:00">2025-01-15</time>
+      <time title="Modified: 2025-01-16 14:28:35" itemprop="dateModified" datetime="2025-01-16T14:28:35+00:00">2025-01-16</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -284,7 +284,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Word count in article: </span>
-      <span>109</span>
+      <span>122</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
@@ -310,7 +310,8 @@
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="built_in">JSON_QUERY</span>(<span class="variable">@json</span>, <span class="string">&#x27;$.info.address&#x27;</span>);</span><br></pre></td></tr></table></figure>
 <h1 id="JSON-MODIFY-變更-JSON-字串中的值"><a class="header-anchor" href="#JSON-MODIFY-變更-JSON-字串中的值"></a>JSON_MODIFY 變更 JSON 字串中的值</h1>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SET</span> <span class="variable">@json</span> <span class="operator">=</span> JSON_MODIFY(<span class="variable">@json</span>, <span class="string">&#x27;$.info.address[1].town&#x27;</span>, <span class="string">&#x27;London&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> modifiedJson <span class="operator">=</span> <span class="variable">@json</span>;</span><br></pre></td></tr></table></figure>
-<h1 id="OPENJSON-集合轉換為資料列集"><a class="header-anchor" href="#OPENJSON-集合轉換為資料列集"></a>OPENJSON 集合轉換為資料列集</h1>
+<h1 id="JSON-轉換為資料列"><a class="header-anchor" href="#JSON-轉換為資料列"></a>JSON 轉換為資料列</h1>
+<p>解析 JSON 字串資料,需預先定義對應格式</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span></span><br><span class="line"><span class="keyword">FROM</span> OPENJSON(<span class="built_in">JSON_QUERY</span>(<span class="variable">@json</span>, <span class="string">&#x27;$.info.address&#x27;</span>)) <span class="keyword">WITH</span> (</span><br><span class="line">    town NVARCHAR(<span class="number">50</span>) <span class="string">&#x27;$.town&#x27;</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
 <div class="note warning"><p>📜 參考資料</p>
 <ol>
@@ -394,7 +395,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">41 mins.</span>
+    <span title="Reading time total">42 mins.</span>
   </span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>

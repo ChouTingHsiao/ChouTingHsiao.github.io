@@ -1,102 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>使用 ADB 命令</title>
-    <url>/2024/05/05/AndroidAdb/</url>
-    <content><![CDATA[<!-- 宿主機: localhost 10.0.2.2 -->
-<h1 id="查看-adb-版本信息"><a class="header-anchor" href="#查看-adb-版本信息"></a>查看 adb 版本信息</h1>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">adb version</span><br></pre></td></tr></table></figure>
-<h1 id="以-root-權限運行"><a class="header-anchor" href="#以-root-權限運行"></a>以 root 權限運行</h1>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">adb root</span><br></pre></td></tr></table></figure>
-<h1 id="查看連接設備"><a class="header-anchor" href="#查看連接設備"></a>查看連接設備</h1>
-<p>查看已連接設備</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">adb devices</span><br></pre></td></tr></table></figure>
-<p>多個設備，可使用 -s 選項指定裝置</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">adb -s [裝置名稱]</span><br></pre></td></tr></table></figure>
-<h1 id="運行-adb-服務"><a class="header-anchor" href="#運行-adb-服務"></a>運行 adb 服務</h1>
-<p>模擬器運行 adb 服務</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">adb -P [模擬器端口] start-server</span><br></pre></td></tr></table></figure>
-<p>模擬器停止 adb 服務</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">adb kill-server</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="應用程式安裝"><a class="header-anchor" href="#應用程式安裝"></a>應用程式安裝</h1>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">adb install [apk路徑]</span><br></pre></td></tr></table></figure>
-<h1 id="文件上傳下載"><a class="header-anchor" href="#文件上傳下載"></a>文件上傳下載</h1>
-<p>從設備拉取文件到本機</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">adb pull [設備上文件位置] [目的地文件位置]</span><br></pre></td></tr></table></figure>
-<p>從本機推送文件到設備</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">adb push [本機上文件位置] [目的地文件位置]</span><br></pre></td></tr></table></figure>
-<h1 id="通訊埠轉發"><a class="header-anchor" href="#通訊埠轉發"></a>通訊埠轉發</h1>
-<p>本機通訊埠的要求轉發至裝置通訊埠</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">adb forward tcp:[本機通訊埠] tcp:[裝置通訊埠]</span><br><span class="line">adb forward --list</span><br></pre></td></tr></table></figure>
-<p>裝置通訊埠的要求轉發至本機通訊埠</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">adb reverse tcp:[裝置通訊埠] tcp:[本機通訊埠]</span><br><span class="line">adb reverse --list</span><br></pre></td></tr></table></figure>
-<h1 id="執行-shell-命令"><a class="header-anchor" href="#執行-shell-命令"></a>執行 shell 命令</h1>
-<p>輸入文字至輸入框</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">adb shell input text <span class="string">&quot;hello,world&quot;</span></span><br></pre></td></tr></table></figure>
-<p>基本命令</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 查看當前路徑</span></span><br><span class="line">adb shell <span class="built_in">pwd</span></span><br><span class="line"><span class="comment"># 列出文件目錄</span></span><br><span class="line">adb shell <span class="built_in">ls</span></span><br><span class="line"><span class="comment"># 創建目錄</span></span><br><span class="line">adb shell <span class="built_in">mkdir</span> [-m][-p] [目錄名稱]</span><br><span class="line"><span class="comment"># 切換目錄</span></span><br><span class="line">adb shell <span class="built_in">cd</span> [目錄名稱]</span><br><span class="line"><span class="comment"># 建立文件</span></span><br><span class="line">adb shell <span class="built_in">touch</span> [文件名稱]</span><br><span class="line"><span class="comment"># 複製文件或目錄</span></span><br><span class="line">adb shell <span class="built_in">cp</span> [<span class="built_in">source</span>] [dest]</span><br><span class="line"><span class="comment"># 移動或重命名文件</span></span><br><span class="line">adb shell <span class="built_in">mv</span> [<span class="built_in">source</span>] [dest]</span><br><span class="line"><span class="comment"># 螢幕截圖</span></span><br><span class="line">adb shell screencap /sdcard/[檔案].png</span><br></pre></td></tr></table></figure>
-<p>網路相關命令</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 連線測試</span></span><br><span class="line">adb shell ping [IP位置]</span><br><span class="line"><span class="comment"># 查詢網卡資訊</span></span><br><span class="line">adb shell ip addr</span><br><span class="line"><span class="comment"># 查詢路由</span></span><br><span class="line">adb shell route -n</span><br><span class="line"><span class="comment"># 查詢 ARP table</span></span><br><span class="line">adb shell ip neighbour</span><br></pre></td></tr></table></figure>
-<p>應用程式管理</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 查看應用安裝路徑</span></span><br><span class="line">adb shell pm path [應用程式名稱]</span><br><span class="line"><span class="comment"># 查看所有應用</span></span><br><span class="line">adb shell pm list packages</span><br><span class="line"><span class="comment"># 查看系統應用</span></span><br><span class="line">adb shell pm list packages -s</span><br><span class="line"><span class="comment"># 查看第三方應用</span></span><br><span class="line">adb shell pm list packages -3</span><br><span class="line"><span class="comment"># 查看包名包含特定字符的應用</span></span><br><span class="line">adb shell pm list packages [特定字符]</span><br><span class="line"><span class="comment"># 卸載應用</span></span><br><span class="line">adb shell pm uninstall -k --user 0 [應用程式名稱]</span><br><span class="line"><span class="comment"># 清除應用空間</span></span><br><span class="line">adb shell pm clear [應用程式名稱]</span><br></pre></td></tr></table></figure>
-<p>使用 dumpsys 查看物件詳細資訊</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 查看應用</span></span><br><span class="line">adb shell dumpsys package [應用程式名稱]</span><br><span class="line"><span class="comment"># 查看手機CPU狀態 </span></span><br><span class="line">adb shell dumpsys cpuinfo</span><br><span class="line"><span class="comment"># 查看內存使用情況 </span></span><br><span class="line">adb shell dumpsys meminfo [應用程式名稱]</span><br><span class="line"><span class="comment"># 顯示磁盤使用信息</span></span><br><span class="line">adb shell dumpsys diskstats</span><br><span class="line"><span class="comment"># 查看電池狀態 </span></span><br><span class="line">adb shell dumpsys battery</span><br><span class="line">adb shell dumpsys batteryproperties</span><br><span class="line"><span class="comment"># 查看推播訊息</span></span><br><span class="line">adb shell dumpsys activity broadcasts</span><br></pre></td></tr></table></figure>
-<p>偵錯應用程式</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 執行應用程式偵錯</span></span><br><span class="line">adb shell am set-debug-app -w --persistent [應用程式名稱]</span><br><span class="line"><span class="comment"># 結束應用程式偵錯</span></span><br><span class="line">adb shell am clear-debug-app</span><br></pre></td></tr></table></figure>
-<h1 id="處理-sqllite"><a class="header-anchor" href="#處理-sqllite"></a>處理 sqllite</h1>
-<p>查詢應用名稱</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">adb shell pm list packages </span><br></pre></td></tr></table></figure>
-<p>使用 sqlite3 執行 SQL 命令</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sqlite3 /data/data/[應用名稱]/databases/[sqlite檔案名稱]</span><br></pre></td></tr></table></figure>
-<p>列出應用 databases 目錄下所有檔案</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">adb exec-out run-as [應用名稱] <span class="built_in">ls</span> databases</span><br></pre></td></tr></table></figure>
-<p>下載 sqlite 檔案</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">adb root</span><br><span class="line">adb pull /data/data/[應用名稱]/databases/[sqlite檔案名稱]</span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://developer.android.com/tools/adb?hl=zh-tw">Android Debug Bridge (adb)</a></li>
-<li><a href="https://developer.android.com/tools/dumpsys?hl=zh-tw">dumpsys</a></li>
-<li><a href="https://developer.android.com/tools/sqlite3?hl=zh-tw">sqlite3</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>Android</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
-        <tag>adb</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Angular Live Reload 在 Ubuntu 沒反應</title>
-    <url>/2020/08/31/AngularLiveReload/</url>
-    <content><![CDATA[<h1 id="確認-inotify-設定"><a class="header-anchor" href="#確認-inotify-設定"></a>確認 inotify 設定</h1>
-<p>在 Linux 上，默認情況下，Listen 使用 inotify 監視目錄中的更改</p>
-<p>Ubuntu 的 inotify 預設限制為8192</p>
-<p>您可以通過執行以下操作獲取目前的 inotify 文件監視限制：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cat</span> /proc/sys/fs/inotify/max_user_watches</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="調整-inotify-設定"><a class="header-anchor" href="#調整-inotify-設定"></a>調整 inotify 設定</h1>
-<p>如果此限制不足以監視目錄中的所有文件，則必須增加該限制以使其正常工作</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo sysctl fs.inotify.max_user_watches=524288 </span><br><span class="line">sudo sysctl -p</span><br></pre></td></tr></table></figure>
-<p>如果想讓自己的限制永久化，請輸入以下命令:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> fs.inotify.max_user_watches=524288 | sudo <span class="built_in">tee</span> -a /etc/sysctl.conf</span><br><span class="line">sudo sysctl -p</span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://askubuntu.com/questions/770374/user-limit-of-inotify-watches-reached-on-ubuntu-16-04">User limit of inotify watches reached on Ubuntu 16.04</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>Angular</category>
-      </categories>
-      <tags>
-        <tag>Angular</tag>
-        <tag>Linux</tag>
-        <tag>Ubuntu</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>如何在 pi 3b+ 上執行 Angular Protractor</title>
     <url>/2019/12/25/AngularProtractorOnPi/</url>
     <content><![CDATA[<h1 id="安裝-WebDriver"><a class="header-anchor" href="#安裝-WebDriver"></a>安裝 WebDriver</h1>
@@ -253,6 +157,102 @@
       </tags>
   </entry>
   <entry>
+    <title>Angular Live Reload 在 Ubuntu 沒反應</title>
+    <url>/2020/08/31/AngularLiveReload/</url>
+    <content><![CDATA[<h1 id="確認-inotify-設定"><a class="header-anchor" href="#確認-inotify-設定"></a>確認 inotify 設定</h1>
+<p>在 Linux 上，默認情況下，Listen 使用 inotify 監視目錄中的更改</p>
+<p>Ubuntu 的 inotify 預設限制為8192</p>
+<p>您可以通過執行以下操作獲取目前的 inotify 文件監視限制：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cat</span> /proc/sys/fs/inotify/max_user_watches</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="調整-inotify-設定"><a class="header-anchor" href="#調整-inotify-設定"></a>調整 inotify 設定</h1>
+<p>如果此限制不足以監視目錄中的所有文件，則必須增加該限制以使其正常工作</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo sysctl fs.inotify.max_user_watches=524288 </span><br><span class="line">sudo sysctl -p</span><br></pre></td></tr></table></figure>
+<p>如果想讓自己的限制永久化，請輸入以下命令:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> fs.inotify.max_user_watches=524288 | sudo <span class="built_in">tee</span> -a /etc/sysctl.conf</span><br><span class="line">sudo sysctl -p</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://askubuntu.com/questions/770374/user-limit-of-inotify-watches-reached-on-ubuntu-16-04">User limit of inotify watches reached on Ubuntu 16.04</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>Angular</category>
+      </categories>
+      <tags>
+        <tag>Angular</tag>
+        <tag>Linux</tag>
+        <tag>Ubuntu</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>使用 ADB 命令</title>
+    <url>/2024/05/05/AndroidAdb/</url>
+    <content><![CDATA[<!-- 宿主機: localhost 10.0.2.2 -->
+<h1 id="查看-adb-版本信息"><a class="header-anchor" href="#查看-adb-版本信息"></a>查看 adb 版本信息</h1>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">adb version</span><br></pre></td></tr></table></figure>
+<h1 id="以-root-權限運行"><a class="header-anchor" href="#以-root-權限運行"></a>以 root 權限運行</h1>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">adb root</span><br></pre></td></tr></table></figure>
+<h1 id="查看連接設備"><a class="header-anchor" href="#查看連接設備"></a>查看連接設備</h1>
+<p>查看已連接設備</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">adb devices</span><br></pre></td></tr></table></figure>
+<p>多個設備，可使用 -s 選項指定裝置</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">adb -s [裝置名稱]</span><br></pre></td></tr></table></figure>
+<h1 id="運行-adb-服務"><a class="header-anchor" href="#運行-adb-服務"></a>運行 adb 服務</h1>
+<p>模擬器運行 adb 服務</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">adb -P [模擬器端口] start-server</span><br></pre></td></tr></table></figure>
+<p>模擬器停止 adb 服務</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">adb kill-server</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="應用程式安裝"><a class="header-anchor" href="#應用程式安裝"></a>應用程式安裝</h1>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">adb install [apk路徑]</span><br></pre></td></tr></table></figure>
+<h1 id="文件上傳下載"><a class="header-anchor" href="#文件上傳下載"></a>文件上傳下載</h1>
+<p>從設備拉取文件到本機</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">adb pull [設備上文件位置] [目的地文件位置]</span><br></pre></td></tr></table></figure>
+<p>從本機推送文件到設備</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">adb push [本機上文件位置] [目的地文件位置]</span><br></pre></td></tr></table></figure>
+<h1 id="通訊埠轉發"><a class="header-anchor" href="#通訊埠轉發"></a>通訊埠轉發</h1>
+<p>本機通訊埠的要求轉發至裝置通訊埠</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">adb forward tcp:[本機通訊埠] tcp:[裝置通訊埠]</span><br><span class="line">adb forward --list</span><br></pre></td></tr></table></figure>
+<p>裝置通訊埠的要求轉發至本機通訊埠</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">adb reverse tcp:[裝置通訊埠] tcp:[本機通訊埠]</span><br><span class="line">adb reverse --list</span><br></pre></td></tr></table></figure>
+<h1 id="執行-shell-命令"><a class="header-anchor" href="#執行-shell-命令"></a>執行 shell 命令</h1>
+<p>輸入文字至輸入框</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">adb shell input text <span class="string">&quot;hello,world&quot;</span></span><br></pre></td></tr></table></figure>
+<p>基本命令</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 查看當前路徑</span></span><br><span class="line">adb shell <span class="built_in">pwd</span></span><br><span class="line"><span class="comment"># 列出文件目錄</span></span><br><span class="line">adb shell <span class="built_in">ls</span></span><br><span class="line"><span class="comment"># 創建目錄</span></span><br><span class="line">adb shell <span class="built_in">mkdir</span> [-m][-p] [目錄名稱]</span><br><span class="line"><span class="comment"># 切換目錄</span></span><br><span class="line">adb shell <span class="built_in">cd</span> [目錄名稱]</span><br><span class="line"><span class="comment"># 建立文件</span></span><br><span class="line">adb shell <span class="built_in">touch</span> [文件名稱]</span><br><span class="line"><span class="comment"># 複製文件或目錄</span></span><br><span class="line">adb shell <span class="built_in">cp</span> [<span class="built_in">source</span>] [dest]</span><br><span class="line"><span class="comment"># 移動或重命名文件</span></span><br><span class="line">adb shell <span class="built_in">mv</span> [<span class="built_in">source</span>] [dest]</span><br><span class="line"><span class="comment"># 螢幕截圖</span></span><br><span class="line">adb shell screencap /sdcard/[檔案].png</span><br></pre></td></tr></table></figure>
+<p>網路相關命令</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 連線測試</span></span><br><span class="line">adb shell ping [IP位置]</span><br><span class="line"><span class="comment"># 查詢網卡資訊</span></span><br><span class="line">adb shell ip addr</span><br><span class="line"><span class="comment"># 查詢路由</span></span><br><span class="line">adb shell route -n</span><br><span class="line"><span class="comment"># 查詢 ARP table</span></span><br><span class="line">adb shell ip neighbour</span><br></pre></td></tr></table></figure>
+<p>應用程式管理</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 查看應用安裝路徑</span></span><br><span class="line">adb shell pm path [應用程式名稱]</span><br><span class="line"><span class="comment"># 查看所有應用</span></span><br><span class="line">adb shell pm list packages</span><br><span class="line"><span class="comment"># 查看系統應用</span></span><br><span class="line">adb shell pm list packages -s</span><br><span class="line"><span class="comment"># 查看第三方應用</span></span><br><span class="line">adb shell pm list packages -3</span><br><span class="line"><span class="comment"># 查看包名包含特定字符的應用</span></span><br><span class="line">adb shell pm list packages [特定字符]</span><br><span class="line"><span class="comment"># 卸載應用</span></span><br><span class="line">adb shell pm uninstall -k --user 0 [應用程式名稱]</span><br><span class="line"><span class="comment"># 清除應用空間</span></span><br><span class="line">adb shell pm clear [應用程式名稱]</span><br></pre></td></tr></table></figure>
+<p>使用 dumpsys 查看物件詳細資訊</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 查看應用</span></span><br><span class="line">adb shell dumpsys package [應用程式名稱]</span><br><span class="line"><span class="comment"># 查看手機CPU狀態 </span></span><br><span class="line">adb shell dumpsys cpuinfo</span><br><span class="line"><span class="comment"># 查看內存使用情況 </span></span><br><span class="line">adb shell dumpsys meminfo [應用程式名稱]</span><br><span class="line"><span class="comment"># 顯示磁盤使用信息</span></span><br><span class="line">adb shell dumpsys diskstats</span><br><span class="line"><span class="comment"># 查看電池狀態 </span></span><br><span class="line">adb shell dumpsys battery</span><br><span class="line">adb shell dumpsys batteryproperties</span><br><span class="line"><span class="comment"># 查看推播訊息</span></span><br><span class="line">adb shell dumpsys activity broadcasts</span><br></pre></td></tr></table></figure>
+<p>偵錯應用程式</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 執行應用程式偵錯</span></span><br><span class="line">adb shell am set-debug-app -w --persistent [應用程式名稱]</span><br><span class="line"><span class="comment"># 結束應用程式偵錯</span></span><br><span class="line">adb shell am clear-debug-app</span><br></pre></td></tr></table></figure>
+<h1 id="處理-sqllite"><a class="header-anchor" href="#處理-sqllite"></a>處理 sqllite</h1>
+<p>查詢應用名稱</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">adb shell pm list packages </span><br></pre></td></tr></table></figure>
+<p>使用 sqlite3 執行 SQL 命令</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sqlite3 /data/data/[應用名稱]/databases/[sqlite檔案名稱]</span><br></pre></td></tr></table></figure>
+<p>列出應用 databases 目錄下所有檔案</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">adb exec-out run-as [應用名稱] <span class="built_in">ls</span> databases</span><br></pre></td></tr></table></figure>
+<p>下載 sqlite 檔案</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">adb root</span><br><span class="line">adb pull /data/data/[應用名稱]/databases/[sqlite檔案名稱]</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://developer.android.com/tools/adb?hl=zh-tw">Android Debug Bridge (adb)</a></li>
+<li><a href="https://developer.android.com/tools/dumpsys?hl=zh-tw">dumpsys</a></li>
+<li><a href="https://developer.android.com/tools/sqlite3?hl=zh-tw">sqlite3</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+        <tag>adb</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>WSL2 設定 Docker In Docker</title>
     <url>/2024/01/01/DockerWsl2DockerInDocker/</url>
     <content><![CDATA[<h1 id="🚀-使用主機的-Docker-Socket"><a class="header-anchor" href="#🚀-使用主機的-Docker-Socket"></a>🚀 使用主機的 Docker Socket</h1>
@@ -287,35 +287,6 @@
       <tags>
         <tag>Docker</tag>
         <tag>Wsl2</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>JSON 格式資料如何拆解成 form 的輸入項</title>
-    <url>/2020/03/27/HtmlFormPost/</url>
-    <content><![CDATA[<h1 id="拆解-JSON-格式資料"><a class="header-anchor" href="#拆解-JSON-格式資料"></a>拆解 JSON 格式資料</h1>
-<p>下方是 JSON 格式資料</p>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">   <span class="attr">&quot;item&quot;</span><span class="punctuation">:</span> <span class="string">&quot;1&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;items&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;1&quot;</span><span class="punctuation">,</span><span class="string">&quot;2&quot;</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="基本物件型別拆解"><a class="header-anchor" href="#基本物件型別拆解"></a>基本物件型別拆解</h1>
-<p>基本物件型別的拆解如下</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">&quot;item&quot;: &quot;1&quot;</span><br><span class="line">可拆解成:</span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;item&quot;</span> <span class="attr">value</span>=<span class="string">&quot;1&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h1 id="陣列型別拆解"><a class="header-anchor" href="#陣列型別拆解"></a>陣列型別拆解</h1>
-<p>陣列部分需依造陣列結構做拆解</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">&quot;items&quot;: [&quot;1&quot;,&quot;2&quot;]</span><br><span class="line">可拆解成:</span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;items[0]&quot;</span> <span class="attr">value</span>=<span class="string">&quot;1&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;items[1]&quot;</span> <span class="attr">value</span>=<span class="string">&quot;2&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h1 id="完整拆解設定"><a class="header-anchor" href="#完整拆解設定"></a>完整拆解設定</h1>
-<p>最後是完整的 HTML form 設定</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">&quot;/api/Test/Post&quot;</span> <span class="attr">method</span>=<span class="string">&quot;post&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;item&quot;</span> <span class="attr">value</span>=<span class="string">&quot;1&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;items[0]&quot;</span> <span class="attr">value</span>=<span class="string">&quot;1&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;items[1]&quot;</span> <span class="attr">value</span>=<span class="string">&quot;2&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">　<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> <span class="attr">value</span>=<span class="string">&quot;送出表單&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://stackoverflow.com/questions/9073690/post-an-array-from-an-html-form-without-javascript">POST an array from an HTML form without javascript</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>Html</category>
-      </categories>
-      <tags>
-        <tag>Html</tag>
-        <tag>JSON</tag>
       </tags>
   </entry>
   <entry>
@@ -415,6 +386,35 @@
       </tags>
   </entry>
   <entry>
+    <title>JSON 格式資料如何拆解成 form 的輸入項</title>
+    <url>/2020/03/27/HtmlFormPost/</url>
+    <content><![CDATA[<h1 id="拆解-JSON-格式資料"><a class="header-anchor" href="#拆解-JSON-格式資料"></a>拆解 JSON 格式資料</h1>
+<p>下方是 JSON 格式資料</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">   <span class="attr">&quot;item&quot;</span><span class="punctuation">:</span> <span class="string">&quot;1&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;items&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;1&quot;</span><span class="punctuation">,</span><span class="string">&quot;2&quot;</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="基本物件型別拆解"><a class="header-anchor" href="#基本物件型別拆解"></a>基本物件型別拆解</h1>
+<p>基本物件型別的拆解如下</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">&quot;item&quot;: &quot;1&quot;</span><br><span class="line">可拆解成:</span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;item&quot;</span> <span class="attr">value</span>=<span class="string">&quot;1&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h1 id="陣列型別拆解"><a class="header-anchor" href="#陣列型別拆解"></a>陣列型別拆解</h1>
+<p>陣列部分需依造陣列結構做拆解</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">&quot;items&quot;: [&quot;1&quot;,&quot;2&quot;]</span><br><span class="line">可拆解成:</span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;items[0]&quot;</span> <span class="attr">value</span>=<span class="string">&quot;1&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;items[1]&quot;</span> <span class="attr">value</span>=<span class="string">&quot;2&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h1 id="完整拆解設定"><a class="header-anchor" href="#完整拆解設定"></a>完整拆解設定</h1>
+<p>最後是完整的 HTML form 設定</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">&quot;/api/Test/Post&quot;</span> <span class="attr">method</span>=<span class="string">&quot;post&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;item&quot;</span> <span class="attr">value</span>=<span class="string">&quot;1&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;items[0]&quot;</span> <span class="attr">value</span>=<span class="string">&quot;1&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;items[1]&quot;</span> <span class="attr">value</span>=<span class="string">&quot;2&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">　<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> <span class="attr">value</span>=<span class="string">&quot;送出表單&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://stackoverflow.com/questions/9073690/post-an-array-from-an-html-form-without-javascript">POST an array from an HTML form without javascript</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>Html</category>
+      </categories>
+      <tags>
+        <tag>Html</tag>
+        <tag>JSON</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>如何判斷 Function 是否存在</title>
     <url>/2019/12/28/JsFunction/</url>
     <content><![CDATA[<h1 id="建立-function"><a class="header-anchor" href="#建立-function"></a>建立 function</h1>
@@ -435,35 +435,6 @@
       <tags>
         <tag>Javascript</tag>
         <tag>Function</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>如何在 Iframe 讀取或寫入字串</title>
-    <url>/2019/12/28/JsIframe/</url>
-    <content><![CDATA[<h1 id="建立-HTML"><a class="header-anchor" href="#建立-HTML"></a>建立 HTML</h1>
-<p>首先在 HTML 建立一個 iframe</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">id</span>=<span class="string">&quot;test&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="操作-iframe"><a class="header-anchor" href="#操作-iframe"></a>操作 iframe</h1>
-<p>用 Javascript 搜尋 iframe 的DOM物件</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> iframe = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;test&#x27;</span>).<span class="property">contentDocument</span>;</span><br></pre></td></tr></table></figure>
-<p>字串寫入 iframe</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">iframe.<span class="title function_">open</span>();</span><br><span class="line"></span><br><span class="line">iframe.<span class="title function_">write</span>(<span class="string">&#x27;&lt;a&gt;test&lt;/a&gt;&#x27;</span>);</span><br><span class="line"></span><br><span class="line">iframe.<span class="title function_">close</span>();</span><br></pre></td></tr></table></figure>
-<p>取得 iframe 字串</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">iframe.<span class="property">body</span>.<span class="property">innerText</span></span><br></pre></td></tr></table></figure>
-<p>URL.createObjectURL 寫入 iframe</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> blobx = <span class="keyword">new</span> <span class="title class_">Blob</span>(</span><br><span class="line">    [<span class="string">&#x27;&lt;base href=&quot;[URL輸入]&quot;&gt;&#x27;</span> + data],</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="attr">type</span>: <span class="string">&#x27;text/html&#x27;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> urlObject = <span class="variable constant_">URL</span>.<span class="title function_">createObjectURL</span>(blobx)</span><br><span class="line"></span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;test&#x27;</span>).<span class="title function_">setAttribute</span>(<span class="string">&#x27;src&#x27;</span>, urlObject)</span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/write">MDN Document write</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>Javascript</category>
-      </categories>
-      <tags>
-        <tag>Javascript</tag>
-        <tag>Iframe</tag>
       </tags>
   </entry>
   <entry>
@@ -517,6 +488,35 @@
       <tags>
         <tag>Javascript</tag>
         <tag>Canvas</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>如何在 Iframe 讀取或寫入字串</title>
+    <url>/2019/12/28/JsIframe/</url>
+    <content><![CDATA[<h1 id="建立-HTML"><a class="header-anchor" href="#建立-HTML"></a>建立 HTML</h1>
+<p>首先在 HTML 建立一個 iframe</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">id</span>=<span class="string">&quot;test&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="操作-iframe"><a class="header-anchor" href="#操作-iframe"></a>操作 iframe</h1>
+<p>用 Javascript 搜尋 iframe 的DOM物件</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> iframe = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;test&#x27;</span>).<span class="property">contentDocument</span>;</span><br></pre></td></tr></table></figure>
+<p>字串寫入 iframe</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">iframe.<span class="title function_">open</span>();</span><br><span class="line"></span><br><span class="line">iframe.<span class="title function_">write</span>(<span class="string">&#x27;&lt;a&gt;test&lt;/a&gt;&#x27;</span>);</span><br><span class="line"></span><br><span class="line">iframe.<span class="title function_">close</span>();</span><br></pre></td></tr></table></figure>
+<p>取得 iframe 字串</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">iframe.<span class="property">body</span>.<span class="property">innerText</span></span><br></pre></td></tr></table></figure>
+<p>URL.createObjectURL 寫入 iframe</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> blobx = <span class="keyword">new</span> <span class="title class_">Blob</span>(</span><br><span class="line">    [<span class="string">&#x27;&lt;base href=&quot;[URL輸入]&quot;&gt;&#x27;</span> + data],</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="attr">type</span>: <span class="string">&#x27;text/html&#x27;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> urlObject = <span class="variable constant_">URL</span>.<span class="title function_">createObjectURL</span>(blobx)</span><br><span class="line"></span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;test&#x27;</span>).<span class="title function_">setAttribute</span>(<span class="string">&#x27;src&#x27;</span>, urlObject)</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/write">MDN Document write</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>Javascript</category>
+      </categories>
+      <tags>
+        <tag>Javascript</tag>
+        <tag>Iframe</tag>
       </tags>
   </entry>
   <entry>
@@ -782,7 +782,8 @@ plink -v -x -a -T -C -noagent -ssh -pw "[密碼]" -P 50893 -L [本地端口]:[�
 <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="built_in">JSON_QUERY</span>(<span class="variable">@json</span>, <span class="string">&#x27;$.info.address&#x27;</span>);</span><br></pre></td></tr></table></figure>
 <h1 id="JSON-MODIFY-變更-JSON-字串中的值"><a class="header-anchor" href="#JSON-MODIFY-變更-JSON-字串中的值"></a>JSON_MODIFY 變更 JSON 字串中的值</h1>
 <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SET</span> <span class="variable">@json</span> <span class="operator">=</span> JSON_MODIFY(<span class="variable">@json</span>, <span class="string">&#x27;$.info.address[1].town&#x27;</span>, <span class="string">&#x27;London&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> modifiedJson <span class="operator">=</span> <span class="variable">@json</span>;</span><br></pre></td></tr></table></figure>
-<h1 id="OPENJSON-集合轉換為資料列集"><a class="header-anchor" href="#OPENJSON-集合轉換為資料列集"></a>OPENJSON 集合轉換為資料列集</h1>
+<h1 id="JSON-轉換為資料列"><a class="header-anchor" href="#JSON-轉換為資料列"></a>JSON 轉換為資料列</h1>
+<p>解析 JSON 字串資料,需預先定義對應格式</p>
 <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span></span><br><span class="line"><span class="keyword">FROM</span> OPENJSON(<span class="built_in">JSON_QUERY</span>(<span class="variable">@json</span>, <span class="string">&#x27;$.info.address&#x27;</span>)) <span class="keyword">WITH</span> (</span><br><span class="line">    town NVARCHAR(<span class="number">50</span>) <span class="string">&#x27;$.town&#x27;</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
 <div class="note warning"><p>📜 參考資料</p>
 <ol>
@@ -837,18 +838,20 @@ plink -v -x -a -T -C -noagent -ssh -pw "[密碼]" -P 50893 -L [本地端口]:[�
     <content><![CDATA[<h1 id="宣告-XML-資料"><a class="header-anchor" href="#宣告-XML-資料"></a>宣告 XML 資料</h1>
 <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">DECLARE</span> <span class="variable">@x</span> XML;</span><br><span class="line"></span><br><span class="line"><span class="keyword">SET</span> <span class="variable">@x</span> <span class="operator">=</span> <span class="string">&#x27;&lt;Root&gt;  </span></span><br><span class="line"><span class="string">    &lt;row id=&quot;1&quot;&gt;&lt;name&gt;Larry&lt;/name&gt;&lt;/row&gt;  </span></span><br><span class="line"><span class="string">    &lt;row id=&quot;2&quot;&gt;&lt;name&gt;moe&lt;/name&gt;&lt;/row&gt;  </span></span><br><span class="line"><span class="string">    &lt;row id=&quot;3&quot; /&gt;  </span></span><br><span class="line"><span class="string">&lt;/Root&gt;&#x27;</span>;</span><br></pre></td></tr></table></figure>
 <span id="more"></span>
-<h1 id="value-擷取純量值"><a class="header-anchor" href="#value-擷取純量值"></a>value() 擷取純量值</h1>
+<h1 id="value-擷取純量值"><a class="header-anchor" href="#value-擷取純量值"></a>value 擷取純量值</h1>
 <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="variable">@x</span>.<span class="keyword">value</span>(<span class="string">&#x27;(/Root/row/@id)[1]&#x27;</span>, <span class="string">&#x27;int&#x27;</span>);</span><br></pre></td></tr></table></figure>
-<h1 id="query-擷取物件或陣列"><a class="header-anchor" href="#query-擷取物件或陣列"></a>query() 擷取物件或陣列</h1>
+<h1 id="query-擷取物件或陣列"><a class="header-anchor" href="#query-擷取物件或陣列"></a>query 擷取物件或陣列</h1>
 <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="variable">@x</span>.query(<span class="string">&#x27;/Root/row&#x27;</span>);</span><br></pre></td></tr></table></figure>
-<h1 id="modify-變更-JSON-字串中的值"><a class="header-anchor" href="#modify-變更-JSON-字串中的值"></a>modify() 變更 JSON 字串中的值</h1>
+<h1 id="modify-變更-JSON-字串中的值"><a class="header-anchor" href="#modify-變更-JSON-字串中的值"></a>modify 變更 JSON 字串中的值</h1>
 <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SET</span> <span class="variable">@x</span>.modify(<span class="string">&#x27;</span></span><br><span class="line"><span class="string">  replace value of (/Root/row[1]/name/text())[1]</span></span><br><span class="line"><span class="string">  with &quot;new Larry&quot;</span></span><br><span class="line"><span class="string">&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> <span class="variable">@x</span>;</span><br></pre></td></tr></table></figure>
-<h1 id="集合轉換為資料列集"><a class="header-anchor" href="#集合轉換為資料列集"></a>集合轉換為資料列集</h1>
-<h2 id="nodes"><a class="header-anchor" href="#nodes"></a>nodes()</h2>
+<h1 id="XML-轉換為資料列"><a class="header-anchor" href="#XML-轉換為資料列"></a>XML 轉換為資料列</h1>
+<p>⭐ nodes</p>
+<p>直接解析 XML 格式資料</p>
 <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> T.C.query(<span class="string">&#x27;.&#x27;</span>)</span><br><span class="line"><span class="keyword">FROM</span> <span class="variable">@x</span>.nodes(<span class="string">&#x27;/Root/row&#x27;</span>) T(c);</span><br></pre></td></tr></table></figure>
-<h2 id="OPENXML"><a class="header-anchor" href="#OPENXML"></a>OPENXML</h2>
+<p>⭐ OPENXML</p>
+<p>解析 XML 字串資料,需預先定義對應格式</p>
 <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">DECLARE</span> <span class="variable">@idoc</span> <span class="type">INT</span>, <span class="variable">@doc</span> <span class="type">VARCHAR</span>(<span class="number">1000</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">SET</span> <span class="variable">@doc</span> <span class="operator">=</span> <span class="string">&#x27;&lt;Root&gt;  </span></span><br><span class="line"><span class="string">    &lt;row id=&quot;1&quot;&gt;&lt;name&gt;Larry&lt;/name&gt;&lt;/row&gt;  </span></span><br><span class="line"><span class="string">    &lt;row id=&quot;2&quot;&gt;&lt;name&gt;moe&lt;/name&gt;&lt;/row&gt;  </span></span><br><span class="line"><span class="string">    &lt;row id=&quot;3&quot; /&gt;  </span></span><br><span class="line"><span class="string">&lt;/Root&gt;&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 載入 XML 文件</span></span><br><span class="line"><span class="keyword">EXEC</span> sp_xml_preparedocument <span class="variable">@idoc</span> OUTPUT, <span class="variable">@doc</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 解析 XML 文件</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span></span><br><span class="line"><span class="keyword">FROM</span> OPENXML(<span class="variable">@idoc</span>, <span class="string">&#x27;/Root/row&#x27;</span>, <span class="number">1</span>) <span class="keyword">WITH</span> (</span><br><span class="line">      id <span class="type">INT</span> <span class="string">&#x27;@id&#x27;</span>,</span><br><span class="line">    name <span class="type">VARCHAR</span>(<span class="number">100</span>) <span class="string">&#x27;name&#x27;</span></span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 清除 XML 文件</span></span><br><span class="line"><span class="keyword">EXEC</span> sp_xml_removedocument <span class="variable">@idoc</span>;</span><br></pre></td></tr></table></figure>
-<h1 id="Base64-字串轉換-UTF-16"><a class="header-anchor" href="#Base64-字串轉換-UTF-16"></a>Base64 字串轉換(UTF-16)</h1>
+<h1 id="Base64-轉換-UTF-16"><a class="header-anchor" href="#Base64-轉換-UTF-16"></a>Base64 轉換(UTF-16)</h1>
 <p>字串轉 Base64</p>
 <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="built_in">CAST</span>(N<span class="string">&#x27;&#x27;</span> <span class="keyword">AS</span> XML).<span class="keyword">value</span>(<span class="string">&#x27;xs:base64Binary(xs:hexBinary(sql:column(&quot;bin&quot;)))&#x27;</span>, <span class="string">&#x27;VARCHAR(MAX)&#x27;</span>)</span><br><span class="line"><span class="keyword">FROM</span> (</span><br><span class="line">	<span class="keyword">SELECT</span> <span class="built_in">CAST</span>(N<span class="string">&#x27;測試&#x27;</span> <span class="keyword">AS</span> <span class="type">VARBINARY</span>(MAX)) <span class="keyword">AS</span> bin</span><br><span class="line">	) <span class="keyword">AS</span> t;</span><br></pre></td></tr></table></figure>
 <p>Base64 轉字串</p>
@@ -1220,6 +1223,37 @@ dotnet-dump collect --process-id 1902 -->
       </tags>
   </entry>
   <entry>
+    <title>如何解析 XML 資料</title>
+    <url>/2024/02/04/NetXmlParse/</url>
+    <content><![CDATA[<h1 id="宣告-XML-資料"><a class="header-anchor" href="#宣告-XML-資料"></a>宣告 XML 資料</h1>
+<p>XML 格式字串如下</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="built_in">string</span> doc = <span class="string">@&quot;&lt;properties&gt;</span></span><br><span class="line"><span class="string">&lt;property key=&#x27;name&#x27;&gt;Test&lt;/property&gt;</span></span><br><span class="line"><span class="string">&lt;property key=&#x27;age&#x27;&gt;10&lt;/property&gt;</span></span><br><span class="line"><span class="string">&lt;/properties&gt;&quot;</span>;</span><br></pre></td></tr></table></figure>
+<h1 id="使用-XDocument-解析-XML"><a class="header-anchor" href="#使用-XDocument-解析-XML"></a>使用 XDocument 解析 XML</h1>
+<h2 id="讀取資料並解析"><a class="header-anchor" href="#讀取資料並解析"></a>讀取資料並解析</h2>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="comment">// XML 字串轉 XDocument</span></span><br><span class="line">XDocument xmlDoc = XDocument.Parse(doc);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 取得 property 列表</span></span><br><span class="line">List&lt;XElement&gt; xmlElements = xmlDoc.Element(<span class="string">&quot;properties&quot;</span>).Elements(<span class="string">&quot;property&quot;</span>).ToList();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 取得第一筆 key 為 name 資料</span></span><br><span class="line"><span class="built_in">string</span> name = xmlElements.Where(x =&gt; x.Attribute(<span class="string">&quot;key&quot;</span>).Value == <span class="string">&quot;name&quot;</span>).FirstOrDefault()?.Value;</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="使用序列化與反序列化方法解析-XML"><a class="header-anchor" href="#使用序列化與反序列化方法解析-XML"></a>使用序列化與反序列化方法解析 XML</h1>
+<h2 id="建立序列化與反序列化方法"><a class="header-anchor" href="#建立序列化與反序列化方法"></a>建立序列化與反序列化方法</h2>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 物件轉 XML 字串</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="built_in">string</span> <span class="title">XmlSerialize</span>&lt;<span class="title">T</span>&gt;(<span class="params">T obj</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">	XmlSerializer xsSubmit = <span class="keyword">new</span> XmlSerializer(<span class="keyword">typeof</span>(T));</span><br><span class="line"></span><br><span class="line">	XmlSerializerNamespaces ns = <span class="keyword">new</span> XmlSerializerNamespaces();</span><br><span class="line">	ns.Add(<span class="built_in">string</span>.Empty, <span class="built_in">string</span>.Empty);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">using</span> (<span class="keyword">var</span> memStm = <span class="keyword">new</span> MemoryStream())</span><br><span class="line">	<span class="keyword">using</span> (<span class="keyword">var</span> xw = XmlWriter.Create(memStm))</span><br><span class="line">	&#123;</span><br><span class="line">		xsSubmit.Serialize(xw, obj, ns);</span><br><span class="line">		<span class="built_in">byte</span>[] utf8 = memStm.ToArray();</span><br><span class="line">		<span class="keyword">return</span> Encoding.UTF8.GetString(utf8);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// XML 字串轉物件</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> T <span class="title">XmlDeSerialize</span>&lt;<span class="title">T</span>&gt;(<span class="params"><span class="built_in">string</span> xmlString</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">	XmlSerializer xsSubmit = <span class="keyword">new</span> XmlSerializer(<span class="keyword">typeof</span>(T));</span><br><span class="line"></span><br><span class="line">	<span class="built_in">byte</span>[] byteArray = Encoding.UTF8.GetBytes(xmlString);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">using</span> (<span class="keyword">var</span> memStm = <span class="keyword">new</span> MemoryStream(byteArray))</span><br><span class="line">	<span class="keyword">using</span> (<span class="keyword">var</span> xr = XmlReader.Create(memStm))</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">object</span> data = xsSubmit.Deserialize(xr);</span><br><span class="line">		<span class="keyword">return</span> (T)data;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="建立類別"><a class="header-anchor" href="#建立類別"></a>建立類別</h2>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">[<span class="meta">XmlRoot(ElementName = <span class="string">&quot;property&quot;</span>)</span>]</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Property</span> &#123;</span><br><span class="line"></span><br><span class="line">  [<span class="meta">XmlAttribute(AttributeName = <span class="string">&quot;key&quot;</span>)</span>]</span><br><span class="line">  <span class="keyword">public</span> <span class="built_in">string</span> Key &#123;</span><br><span class="line">    <span class="keyword">get</span>;</span><br><span class="line">    <span class="keyword">set</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  [<span class="meta">XmlText</span>]</span><br><span class="line">  <span class="keyword">public</span> <span class="built_in">string</span> Text &#123;</span><br><span class="line">    <span class="keyword">get</span>;</span><br><span class="line">    <span class="keyword">set</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">[<span class="meta">XmlRoot(ElementName = <span class="string">&quot;properties&quot;</span>)</span>]</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Properties</span> &#123;</span><br><span class="line"></span><br><span class="line">  [<span class="meta">XmlElement(ElementName = <span class="string">&quot;property&quot;</span>)</span>]</span><br><span class="line">  <span class="keyword">public</span> List &lt; Property &gt; Property &#123;</span><br><span class="line">    <span class="keyword">get</span>;</span><br><span class="line">    <span class="keyword">set</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="讀取資料並解析-v2"><a class="header-anchor" href="#讀取資料並解析-v2"></a>讀取資料並解析</h2>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="comment">// XML 字串轉物件</span></span><br><span class="line">Properties data = XmlDeSerialize&lt;Properties&gt;(doc);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 取得第一筆 key 為 name 資料</span></span><br><span class="line"><span class="built_in">string</span> name = data.Property.Where(x =&gt; x.Key == <span class="string">&quot;name&quot;</span>).FirstOrDefault().Text;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 物件轉 XML 字串</span></span><br><span class="line"><span class="built_in">string</span> xmlFile = XmlSerialize(data);</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://learn.microsoft.com/en-us/dotnet/api/system.xml.linq.xdocument?view=net-8.0">XDocument Class</a></li>
+<li><a href="https://learn.microsoft.com/en-us/dotnet/api/system.xml.serialization.xmlserializer?view=net-8.0">XmlSerializer Class</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>.Net</category>
+      </categories>
+      <tags>
+        <tag>XML</tag>
+        <tag>.Net</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>使用 SqlPackage 備份資料庫</title>
     <url>/2024/07/25/NetSqlPackage/</url>
     <content><![CDATA[<h1 id="安裝-SqlPackage"><a class="header-anchor" href="#安裝-SqlPackage"></a>安裝 SqlPackage</h1>
@@ -1254,37 +1288,6 @@ dotnet-dump collect --process-id 1902 -->
         <tag>MSSQL</tag>
         <tag>.Net</tag>
         <tag>SqlPackage</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>如何解析 XML 資料</title>
-    <url>/2024/02/04/NetXmlParse/</url>
-    <content><![CDATA[<h1 id="宣告-XML-資料"><a class="header-anchor" href="#宣告-XML-資料"></a>宣告 XML 資料</h1>
-<p>XML 格式字串如下</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="built_in">string</span> doc = <span class="string">@&quot;&lt;properties&gt;</span></span><br><span class="line"><span class="string">&lt;property key=&#x27;name&#x27;&gt;Test&lt;/property&gt;</span></span><br><span class="line"><span class="string">&lt;property key=&#x27;age&#x27;&gt;10&lt;/property&gt;</span></span><br><span class="line"><span class="string">&lt;/properties&gt;&quot;</span>;</span><br></pre></td></tr></table></figure>
-<h1 id="使用-XDocument-解析-XML"><a class="header-anchor" href="#使用-XDocument-解析-XML"></a>使用 XDocument 解析 XML</h1>
-<h2 id="讀取資料並解析"><a class="header-anchor" href="#讀取資料並解析"></a>讀取資料並解析</h2>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="comment">// XML 字串轉 XDocument</span></span><br><span class="line">XDocument xmlDoc = XDocument.Parse(doc);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 取得 property 列表</span></span><br><span class="line">List&lt;XElement&gt; xmlElements = xmlDoc.Element(<span class="string">&quot;properties&quot;</span>).Elements(<span class="string">&quot;property&quot;</span>).ToList();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 取得第一筆 key 為 name 資料</span></span><br><span class="line"><span class="built_in">string</span> name = xmlElements.Where(x =&gt; x.Attribute(<span class="string">&quot;key&quot;</span>).Value == <span class="string">&quot;name&quot;</span>).FirstOrDefault()?.Value;</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="使用序列化與反序列化方法解析-XML"><a class="header-anchor" href="#使用序列化與反序列化方法解析-XML"></a>使用序列化與反序列化方法解析 XML</h1>
-<h2 id="建立序列化與反序列化方法"><a class="header-anchor" href="#建立序列化與反序列化方法"></a>建立序列化與反序列化方法</h2>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 物件轉 XML 字串</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="built_in">string</span> <span class="title">XmlSerialize</span>&lt;<span class="title">T</span>&gt;(<span class="params">T obj</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">	XmlSerializer xsSubmit = <span class="keyword">new</span> XmlSerializer(<span class="keyword">typeof</span>(T));</span><br><span class="line"></span><br><span class="line">	XmlSerializerNamespaces ns = <span class="keyword">new</span> XmlSerializerNamespaces();</span><br><span class="line">	ns.Add(<span class="built_in">string</span>.Empty, <span class="built_in">string</span>.Empty);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">using</span> (<span class="keyword">var</span> memStm = <span class="keyword">new</span> MemoryStream())</span><br><span class="line">	<span class="keyword">using</span> (<span class="keyword">var</span> xw = XmlWriter.Create(memStm))</span><br><span class="line">	&#123;</span><br><span class="line">		xsSubmit.Serialize(xw, obj, ns);</span><br><span class="line">		<span class="built_in">byte</span>[] utf8 = memStm.ToArray();</span><br><span class="line">		<span class="keyword">return</span> Encoding.UTF8.GetString(utf8);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// XML 字串轉物件</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> T <span class="title">XmlDeSerialize</span>&lt;<span class="title">T</span>&gt;(<span class="params"><span class="built_in">string</span> xmlString</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">	XmlSerializer xsSubmit = <span class="keyword">new</span> XmlSerializer(<span class="keyword">typeof</span>(T));</span><br><span class="line"></span><br><span class="line">	<span class="built_in">byte</span>[] byteArray = Encoding.UTF8.GetBytes(xmlString);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">using</span> (<span class="keyword">var</span> memStm = <span class="keyword">new</span> MemoryStream(byteArray))</span><br><span class="line">	<span class="keyword">using</span> (<span class="keyword">var</span> xr = XmlReader.Create(memStm))</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">object</span> data = xsSubmit.Deserialize(xr);</span><br><span class="line">		<span class="keyword">return</span> (T)data;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="建立類別"><a class="header-anchor" href="#建立類別"></a>建立類別</h2>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">[<span class="meta">XmlRoot(ElementName = <span class="string">&quot;property&quot;</span>)</span>]</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Property</span> &#123;</span><br><span class="line"></span><br><span class="line">  [<span class="meta">XmlAttribute(AttributeName = <span class="string">&quot;key&quot;</span>)</span>]</span><br><span class="line">  <span class="keyword">public</span> <span class="built_in">string</span> Key &#123;</span><br><span class="line">    <span class="keyword">get</span>;</span><br><span class="line">    <span class="keyword">set</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  [<span class="meta">XmlText</span>]</span><br><span class="line">  <span class="keyword">public</span> <span class="built_in">string</span> Text &#123;</span><br><span class="line">    <span class="keyword">get</span>;</span><br><span class="line">    <span class="keyword">set</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">[<span class="meta">XmlRoot(ElementName = <span class="string">&quot;properties&quot;</span>)</span>]</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Properties</span> &#123;</span><br><span class="line"></span><br><span class="line">  [<span class="meta">XmlElement(ElementName = <span class="string">&quot;property&quot;</span>)</span>]</span><br><span class="line">  <span class="keyword">public</span> List &lt; Property &gt; Property &#123;</span><br><span class="line">    <span class="keyword">get</span>;</span><br><span class="line">    <span class="keyword">set</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="讀取資料並解析-v2"><a class="header-anchor" href="#讀取資料並解析-v2"></a>讀取資料並解析</h2>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="comment">// XML 字串轉物件</span></span><br><span class="line">Properties data = XmlDeSerialize&lt;Properties&gt;(doc);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 取得第一筆 key 為 name 資料</span></span><br><span class="line"><span class="built_in">string</span> name = data.Property.Where(x =&gt; x.Key == <span class="string">&quot;name&quot;</span>).FirstOrDefault().Text;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 物件轉 XML 字串</span></span><br><span class="line"><span class="built_in">string</span> xmlFile = XmlSerialize(data);</span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://learn.microsoft.com/en-us/dotnet/api/system.xml.linq.xdocument?view=net-8.0">XDocument Class</a></li>
-<li><a href="https://learn.microsoft.com/en-us/dotnet/api/system.xml.serialization.xmlserializer?view=net-8.0">XmlSerializer Class</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>.Net</category>
-      </categories>
-      <tags>
-        <tag>XML</tag>
-        <tag>.Net</tag>
       </tags>
   </entry>
   <entry>
@@ -1466,6 +1469,33 @@ db.create_all() -->
       </tags>
   </entry>
   <entry>
+    <title>安裝 Whistle</title>
+    <url>/2023/01/20/WhistleProxyInstall/</url>
+    <content><![CDATA[<h1 id="使用-Node-安裝-Whistle"><a class="header-anchor" href="#使用-Node-安裝-Whistle"></a>使用 Node 安裝 Whistle</h1>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm i -g whistle</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="啟動-Whistle"><a class="header-anchor" href="#啟動-Whistle"></a>啟動 Whistle</h1>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">w2 start</span><br></pre></td></tr></table></figure>
+<h1 id="查看-Whistle-狀態"><a class="header-anchor" href="#查看-Whistle-狀態"></a>查看 Whistle 狀態</h1>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">w2 status</span><br></pre></td></tr></table></figure>
+<h1 id="停止-Whistle"><a class="header-anchor" href="#停止-Whistle"></a>停止 Whistle</h1>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">w2 stop</span><br></pre></td></tr></table></figure>
+<h1 id="設定-Whistle-為-Proxy-的-Server"><a class="header-anchor" href="#設定-Whistle-為-Proxy-的-Server"></a>設定 Whistle 為 Proxy 的 Server</h1>
+<!-- <img src="/2023/01/20/WhistleProxyInstall/Win10ProxySetting.png" class=""> -->
+<p><img src="Win10ProxySetting.png" alt="Win10ProxySetting"></p>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://www.npmjs.com/package/whistle">whistle npm</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>Whistle</category>
+      </categories>
+      <tags>
+        <tag>Whistle</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Whistle 代理規則使用</title>
     <url>/2023/01/20/WhistleProxyRule/</url>
     <content><![CDATA[<h1 id="設定-Dns-代理"><a class="header-anchor" href="#設定-Dns-代理"></a>設定 Dns 代理</h1>
@@ -1521,33 +1551,6 @@ db.create_all() -->
 <div class="note warning"><p>📜 參考資料</p>
 <ol>
 <li><a href="https://wproxy.org/whistle/">whistle</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>Whistle</category>
-      </categories>
-      <tags>
-        <tag>Whistle</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>安裝 Whistle</title>
-    <url>/2023/01/20/WhistleProxyInstall/</url>
-    <content><![CDATA[<h1 id="使用-Node-安裝-Whistle"><a class="header-anchor" href="#使用-Node-安裝-Whistle"></a>使用 Node 安裝 Whistle</h1>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm i -g whistle</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="啟動-Whistle"><a class="header-anchor" href="#啟動-Whistle"></a>啟動 Whistle</h1>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">w2 start</span><br></pre></td></tr></table></figure>
-<h1 id="查看-Whistle-狀態"><a class="header-anchor" href="#查看-Whistle-狀態"></a>查看 Whistle 狀態</h1>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">w2 status</span><br></pre></td></tr></table></figure>
-<h1 id="停止-Whistle"><a class="header-anchor" href="#停止-Whistle"></a>停止 Whistle</h1>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">w2 stop</span><br></pre></td></tr></table></figure>
-<h1 id="設定-Whistle-為-Proxy-的-Server"><a class="header-anchor" href="#設定-Whistle-為-Proxy-的-Server"></a>設定 Whistle 為 Proxy 的 Server</h1>
-<!-- <img src="/2023/01/20/WhistleProxyInstall/Win10ProxySetting.png" class=""> -->
-<p><img src="Win10ProxySetting.png" alt="Win10ProxySetting"></p>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://www.npmjs.com/package/whistle">whistle npm</a></li>
 </ol>
 </div>]]></content>
       <categories>
