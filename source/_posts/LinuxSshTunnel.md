@@ -14,12 +14,12 @@ ssh -p [跳板機端口] -C -f -N -g -L [本地端口]:[遠端服務IP]:[遠端�
 
 # 跳板機轉發至本機特定端口
 ```bash
-ssh -p [跳板機端口] -C -g -R 0.0.0.0:[跳板機端口]:localhost:[本地端口] [帳號]@[跳板機IP]
+ssh -p [跳板機端口] -C -f -N -R 0.0.0.0:[跳板機端口]:localhost:[本地端口] [帳號]@[跳板機IP]
 ```
 
 # 請求轉發至跳板，可搭配 Whistle 做 Socks 代理
 ```bash
-ssh -p [跳板機端口] -D localhost:[本地端口] [帳號]@[跳板機IP]
+ssh -p [跳板機端口] -C -f -N -D localhost:[本地端口] [帳號]@[跳板機IP]
 ```
 
 # ssh 執行選項說明
