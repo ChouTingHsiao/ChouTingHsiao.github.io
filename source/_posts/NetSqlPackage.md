@@ -23,12 +23,12 @@ sqlpackage /Version
 
 匯出資料庫
 ```powershell
-sqlpackage /Action:Export /SourceDatabaseName:"[資料庫名稱]" /SourceServerName:"[服務器]" /TargetFile:"[檔案名稱].bacpac"
+sqlpackage /Action:Export /SourceDatabaseName:"[資料庫名稱]" /SourceServerName:"[服務器]" /SourceUser:"[帳號]" /SourcePassword:"[密碼]" /SourceTrustServerCertificate:True /TargetFile:"[檔案名稱].bacpac"
 ```
 
 匯入資料庫
 ```powershell
-sqlpackage /Action:Import /TargetDatabaseName:"[資料庫名稱]" /TargetServerName:"[服務器]" /SourceFile:"[檔案名稱].bacpac"
+sqlpackage /Action:Import /TargetDatabaseName:"[資料庫名稱]" /TargetServerName:"[服務器]" /SourceUser:"[帳號]" /SourcePassword:"[密碼]" /SourceTrustServerCertificate:True /SourceFile:"[檔案名稱].bacpac"
 ```
 
 # 使用 DACPAC 備份
