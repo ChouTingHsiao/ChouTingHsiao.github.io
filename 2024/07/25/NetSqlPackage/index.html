@@ -28,7 +28,7 @@
 <meta property="og:description" content="安裝 SqlPackage 1dotnet tool install -g microsoft.sqlpackage 查詢版本 1sqlpackage &#x2F;Version">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-07-25T18:00:00.000Z">
-<meta property="article:modified_time" content="2025-02-07T12:25:50.751Z">
+<meta property="article:modified_time" content="2025-02-07T13:38:41.722Z">
 <meta property="article:author" content="Stephen">
 <meta property="article:tag" content="MSSQL">
 <meta property="article:tag" content=".Net">
@@ -266,7 +266,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-02-07 12:25:50" itemprop="dateModified" datetime="2025-02-07T12:25:50+00:00">2025-02-07</time>
+      <time title="Modified: 2025-02-07 13:38:41" itemprop="dateModified" datetime="2025-02-07T13:38:41+00:00">2025-02-07</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -285,7 +285,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Word count in article: </span>
-      <span>352</span>
+      <span>366</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
@@ -310,9 +310,9 @@
 <h1 id="使用-BACPAC-備份"><a class="header-anchor" href="#使用-BACPAC-備份"></a>使用 BACPAC 備份</h1>
 <p>預設包含數據庫結構和數據</p>
 <p>匯出資料庫</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlpackage /Action:Export /SourceDatabaseName:<span class="string">&quot;[資料庫名稱]&quot;</span> /SourceServerName:<span class="string">&quot;[服務器]&quot;</span> /TargetFile:<span class="string">&quot;[檔案名稱].bacpac&quot;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlpackage /Action:Export /SourceDatabaseName:<span class="string">&quot;[資料庫名稱]&quot;</span> /SourceServerName:<span class="string">&quot;[服務器]&quot;</span> /SourceUser:<span class="string">&quot;[帳號]&quot;</span> /SourcePassword:<span class="string">&quot;[密碼]&quot;</span> /SourceTrustServerCertificate:True /TargetFile:<span class="string">&quot;[檔案名稱].bacpac&quot;</span></span><br></pre></td></tr></table></figure>
 <p>匯入資料庫</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlpackage /Action:Import /TargetDatabaseName:<span class="string">&quot;[資料庫名稱]&quot;</span> /TargetServerName:<span class="string">&quot;[服務器]&quot;</span> /SourceFile:<span class="string">&quot;[檔案名稱].bacpac&quot;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlpackage /Action:Import /TargetDatabaseName:<span class="string">&quot;[資料庫名稱]&quot;</span> /TargetServerName:<span class="string">&quot;[服務器]&quot;</span> /SourceUser:<span class="string">&quot;[帳號]&quot;</span> /SourcePassword:<span class="string">&quot;[密碼]&quot;</span> /SourceTrustServerCertificate:True /SourceFile:<span class="string">&quot;[檔案名稱].bacpac&quot;</span></span><br></pre></td></tr></table></figure>
 <h1 id="使用-DACPAC-備份"><a class="header-anchor" href="#使用-DACPAC-備份"></a>使用 DACPAC 備份</h1>
 <p>預設包含數據庫結構，但不包含數據</p>
 <p>匯出資料庫</p>

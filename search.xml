@@ -1233,9 +1233,9 @@ dotnet-dump collect --process-id 1902 -->
 <h1 id="使用-BACPAC-備份"><a class="header-anchor" href="#使用-BACPAC-備份"></a>使用 BACPAC 備份</h1>
 <p>預設包含數據庫結構和數據</p>
 <p>匯出資料庫</p>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">sqlpackage /Action:Export /SourceDatabaseName:<span class="string">&quot;[資料庫名稱]&quot;</span> /SourceServerName:<span class="string">&quot;[服務器]&quot;</span> /TargetFile:<span class="string">&quot;[檔案名稱].bacpac&quot;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">sqlpackage /Action:Export /SourceDatabaseName:<span class="string">&quot;[資料庫名稱]&quot;</span> /SourceServerName:<span class="string">&quot;[服務器]&quot;</span> /SourceUser:<span class="string">&quot;[帳號]&quot;</span> /SourcePassword:<span class="string">&quot;[密碼]&quot;</span> /SourceTrustServerCertificate:True /TargetFile:<span class="string">&quot;[檔案名稱].bacpac&quot;</span></span><br></pre></td></tr></table></figure>
 <p>匯入資料庫</p>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">sqlpackage /Action:Import /TargetDatabaseName:<span class="string">&quot;[資料庫名稱]&quot;</span> /TargetServerName:<span class="string">&quot;[服務器]&quot;</span> /SourceFile:<span class="string">&quot;[檔案名稱].bacpac&quot;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">sqlpackage /Action:Import /TargetDatabaseName:<span class="string">&quot;[資料庫名稱]&quot;</span> /TargetServerName:<span class="string">&quot;[服務器]&quot;</span> /SourceUser:<span class="string">&quot;[帳號]&quot;</span> /SourcePassword:<span class="string">&quot;[密碼]&quot;</span> /SourceTrustServerCertificate:True /SourceFile:<span class="string">&quot;[檔案名稱].bacpac&quot;</span></span><br></pre></td></tr></table></figure>
 <h1 id="使用-DACPAC-備份"><a class="header-anchor" href="#使用-DACPAC-備份"></a>使用 DACPAC 備份</h1>
 <p>預設包含數據庫結構，但不包含數據</p>
 <p>匯出資料庫</p>
