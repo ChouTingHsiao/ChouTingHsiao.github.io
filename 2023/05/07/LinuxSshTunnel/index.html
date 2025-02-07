@@ -28,7 +28,7 @@
 <meta property="og:description" content="本機特定端口轉發至跳板機 1ssh -p [跳板機端口] -C -f -N -g -L [本地端口]:[遠端服務IP]:[遠端服務端口] [帳號]@[跳板機IP]">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-05-07T18:00:00.000Z">
-<meta property="article:modified_time" content="2025-01-16T14:28:35.574Z">
+<meta property="article:modified_time" content="2025-02-07T12:25:50.750Z">
 <meta property="article:author" content="Stephen">
 <meta property="article:tag" content="Linux">
 <meta property="article:tag" content="Ubuntu">
@@ -266,7 +266,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-01-16 14:28:35" itemprop="dateModified" datetime="2025-01-16T14:28:35+00:00">2025-01-16</time>
+      <time title="Modified: 2025-02-07 12:25:50" itemprop="dateModified" datetime="2025-02-07T12:25:50+00:00">2025-02-07</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -285,7 +285,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Word count in article: </span>
-      <span>320</span>
+      <span>324</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
@@ -306,9 +306,9 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -p [跳板機端口] -C -f -N -g -L [本地端口]:[遠端服務IP]:[遠端服務端口] [帳號]@[跳板機IP]</span><br></pre></td></tr></table></figure>
 <span id="more"></span>
 <h1 id="跳板機轉發至本機特定端口"><a class="header-anchor" href="#跳板機轉發至本機特定端口"></a>跳板機轉發至本機特定端口</h1>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -p [跳板機端口] -C -g -R 0.0.0.0:[跳板機端口]:localhost:[本地端口] [帳號]@[跳板機IP]</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -p [跳板機端口] -C -f -N -R 0.0.0.0:[跳板機端口]:localhost:[本地端口] [帳號]@[跳板機IP]</span><br></pre></td></tr></table></figure>
 <h1 id="請求轉發至跳板，可搭配-Whistle-做-Socks-代理"><a class="header-anchor" href="#請求轉發至跳板，可搭配-Whistle-做-Socks-代理"></a>請求轉發至跳板，可搭配 Whistle 做 Socks 代理</h1>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -p [跳板機端口] -D localhost:[本地端口] [帳號]@[跳板機IP]</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -p [跳板機端口] -C -f -N -D localhost:[本地端口] [帳號]@[跳板機IP]</span><br></pre></td></tr></table></figure>
 <h1 id="ssh-執行選項說明"><a class="header-anchor" href="#ssh-執行選項說明"></a>ssh 執行選項說明</h1>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">-L: 指定將本機上的特定端口轉發到遠端主機</span><br><span class="line">-R: 表示使用遠程端口轉發創建ssh隧道</span><br><span class="line">-D: port動態應用級端口轉​​發</span><br><span class="line">-p: 跳板機端口</span><br><span class="line">-C: 使用數據壓縮</span><br><span class="line">-c: cipher_spec選擇用於加密會話的密碼規範</span><br><span class="line">-f: 代表後台運行程序</span><br><span class="line">-F: configfile指定每個用戶的配置文件</span><br><span class="line">-N: 不要執行任何遠端指令</span><br><span class="line">-g: 允許遠程主機連接到本地轉發端口</span><br></pre></td></tr></table></figure>
 <!-- /etc/ssh/sshd_config 加入GatewayPorts 設定，能讓所有人都連到 -->
