@@ -1232,15 +1232,18 @@ dotnet-dump collect --process-id 1902 -->
 <span id="more"></span>
 <h1 id="使用-BACPAC-備份"><a class="header-anchor" href="#使用-BACPAC-備份"></a>使用 BACPAC 備份</h1>
 <p>預設包含數據庫結構和數據</p>
-<p>匯出資料庫</p>
+<h2 id="匯出資料庫"><a class="header-anchor" href="#匯出資料庫"></a>匯出資料庫</h2>
 <figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">sqlpackage /Action:Export /SourceDatabaseName:<span class="string">&quot;[資料庫名稱]&quot;</span> /SourceServerName:<span class="string">&quot;[服務器]&quot;</span> /SourceUser:<span class="string">&quot;[帳號]&quot;</span> /SourcePassword:<span class="string">&quot;[密碼]&quot;</span> /SourceTrustServerCertificate:True /TargetFile:<span class="string">&quot;[檔案名稱].bacpac&quot;</span></span><br></pre></td></tr></table></figure>
-<p>匯入資料庫</p>
+<h2 id="匯入資料庫"><a class="header-anchor" href="#匯入資料庫"></a>匯入資料庫</h2>
 <figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">sqlpackage /Action:Import /TargetDatabaseName:<span class="string">&quot;[資料庫名稱]&quot;</span> /TargetServerName:<span class="string">&quot;[服務器]&quot;</span> /SourceUser:<span class="string">&quot;[帳號]&quot;</span> /SourcePassword:<span class="string">&quot;[密碼]&quot;</span> /SourceTrustServerCertificate:True /SourceFile:<span class="string">&quot;[檔案名稱].bacpac&quot;</span></span><br></pre></td></tr></table></figure>
 <h1 id="使用-DACPAC-備份"><a class="header-anchor" href="#使用-DACPAC-備份"></a>使用 DACPAC 備份</h1>
 <p>預設包含數據庫結構，但不包含數據</p>
-<p>匯出資料庫</p>
+<h2 id="匯出資料庫-v2"><a class="header-anchor" href="#匯出資料庫-v2"></a>匯出資料庫</h2>
+<p>選擇包含所有資料</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">sqlpackage /Action:Extract /SourceDatabaseName:<span class="string">&quot;[資料庫名稱]&quot;</span> /SourceServerName:<span class="string">&quot;[服務器]&quot;</span> /SourceUser:<span class="string">&quot;[帳號]&quot;</span> /SourcePassword:<span class="string">&quot;[密碼]&quot;</span> /SourceTrustServerCertificate:True /TargetFile:<span class="string">&quot;[檔案名稱].dacpac&quot;</span> `</span><br><span class="line">/p:ExtractAllTableData=true</span><br></pre></td></tr></table></figure>
+<p>選擇包含指定表資料</p>
 <figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">sqlpackage /Action:Extract /SourceDatabaseName:<span class="string">&quot;[資料庫名稱]&quot;</span> /SourceServerName:<span class="string">&quot;[服務器]&quot;</span> /SourceUser:<span class="string">&quot;[帳號]&quot;</span> /SourcePassword:<span class="string">&quot;[密碼]&quot;</span> /SourceTrustServerCertificate:True /TargetFile:<span class="string">&quot;[檔案名稱].dacpac&quot;</span> `</span><br><span class="line">/p:TableData=<span class="string">&quot;[額外指定可包含資料的表]&quot;</span></span><br></pre></td></tr></table></figure>
-<p>匯入資料庫</p>
+<h2 id="匯入資料庫-v2"><a class="header-anchor" href="#匯入資料庫-v2"></a>匯入資料庫</h2>
 <figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">sqlpackage /Action:Publish /TargetDatabaseName:<span class="string">&quot;[資料庫名稱]&quot;</span> /TargetServerName:<span class="string">&quot;[服務器]&quot;</span> /TargetUser:<span class="string">&quot;[帳號]&quot;</span> /TargetPassword:<span class="string">&quot;[密碼]&quot;</span> /TargetTrustServerCertificate:True /SourceFile:<span class="string">&quot;[檔案名稱].dacpac&quot;</span> `</span><br><span class="line">/p:ExcludeObjectType=UserDefinedDataTypes `</span><br><span class="line">/p:ExcludeObjectType=UserDefinedTableTypes `</span><br><span class="line">/p:ExcludeObjectType=ClrUserDefinedTypes `</span><br><span class="line">/p:ExcludeObjectType=Users `</span><br><span class="line">/p:ExcludeObjectType=RoleMembership `</span><br><span class="line">/p:AllowIncompatiblePlatform=True </span><br></pre></td></tr></table></figure>
 <h1 id="搜尋額外指定的表"><a class="header-anchor" href="#搜尋額外指定的表"></a>搜尋額外指定的表</h1>
 <p>依資料筆數搜尋可能是主檔的資料表，並產生指令</p>
