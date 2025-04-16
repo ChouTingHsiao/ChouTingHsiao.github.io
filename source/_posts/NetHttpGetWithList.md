@@ -2,7 +2,7 @@
 title: Http 的 Get 方法傳入 List 參數
 date: 2023-01-21 18:10:00
 categories: .Net
-tags: [.Net]
+tags: [.Net, Http]
 ---
 
 # 建立類別

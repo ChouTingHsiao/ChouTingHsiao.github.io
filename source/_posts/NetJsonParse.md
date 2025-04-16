@@ -36,17 +36,20 @@ Class 內容如下
 ```c#
 public class Address
 {
-	public string town { get; set; }
+    [JsonPropertyName("town")]
+    public string Town { get; set; }
 }
 
 public class Info
 {
-	public List<Address> address { get; set; }
+    [JsonPropertyName("address")]
+	public List<Address> Address { get; set; }
 }
 
 public class Request
 {
-	public Info info { get; set; }
+    [JsonPropertyName("info")]
+	public Info Info { get; set; }
 }
 ```
 
