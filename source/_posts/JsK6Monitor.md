@@ -21,6 +21,8 @@ docker run -d -p 8086:8086 \
 	influxdb
 ```
 
+<!--more-->
+
 <!-- 建立完成後，使用初始帳密登入連結 http://localhost:8086/ -->
 
 建立完成後，使用 API 檢查 BUCKET
