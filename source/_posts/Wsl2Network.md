@@ -5,9 +5,7 @@ categories: Wsl2
 tags: [Wsl2]
 ---
 
-# 實作
-
-## 設定 DNS
+# 設定 DNS
 ```bash
 # 刪除原始的 resolv.conf 設定
 sudo rm /etc/resolv.conf
@@ -29,7 +27,7 @@ sudo chattr +i /etc/resolv.conf
 
 <!--more-->
 
-## Powershell 設定 Ububtu 網卡
+# 使用 Powershell 設定 Ububtu 網卡
 ```powershell
 # 搜尋 eth0 網卡 IP 設定
 $ipAddr = wsl -u root /bin/bash -c "ip addr show eth0 | grep 'inet\b'"
@@ -52,25 +50,25 @@ if(!$ipAddr.Contains("192.168.50.2")){
 <!-- sudo ip addr add 192.168.50.2/24 broadcast 192.168.50.255 dev eth0 -->
 <!-- sudo ip route add 0.0.0.0/0 via 192.168.50.1 dev eth0 -->
 
-## Powershell 設定 vEthernet (WSL)
+# 使用 Powershell 設定網路介面 vEthernet (WSL)
 ```powershell
 # 確認是否為自訂的 vEthernet (WSL) 設定
 if(!(Get-NetAdapter 'vEthernet (WSL)' | Get-NetIPAddress).IPAddress.Contains('192.168.50.1')){
-  # 移除 vEthernet (WSL)設定
+  # 移除 vEthernet (WSL) 設定
   Get-NetAdapter 'vEthernet (WSL)' | Get-NetIPAddress | Remove-NetIPAddress -Confirm:$False
   
-  # 加入自訂的 vEthernet (WSL)
+  # 加入自訂的 vEthernet (WSL) 設定
   New-NetIPAddress -IPAddress 192.168.50.1 -PrefixLength 24 -InterfaceAlias 'vEthernet (WSL)'
   
   # 移除 WSLNat 設定
   Get-NetNat | ? Name -Eq WSLNat | Remove-NetNat -Confirm:$False
   
-  # 加入自訂的 WSLNat
+  # 加入自訂的 WSLNat 設定
   New-NetNat -Name WSLNat -InternalIPInterfaceAddressPrefix 192.168.50.0/24;
 }
 ```
 
 {% note warning %}
-參考資料
+📜 參考資料
 1. [知乎-給 WSL2 設置靜態IP地址](https://zhuanlan.zhihu.com/p/380779630)
 {% endnote %}

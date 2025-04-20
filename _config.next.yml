@@ -21,8 +21,8 @@ minify: false
 custom_file_path:
   #head: source/_data/head.njk
   #header: source/_data/header.njk
-  #sidebar: source/_data/sidebar.njk
-  #postMeta: source/_data/post-meta.njk
+  sidebar: source/_data/sidebar.njk
+  postMeta: source/_data/post-meta.njk
   #postBodyEnd: source/_data/post-body-end.njk
   #footer: source/_data/footer.njk
   #bodyEnd: source/_data/body-end.njk
@@ -378,17 +378,17 @@ back2top:
   # Back to top in sidebar.
   sidebar: false
   # Scroll percent label in b2t button.
-  scrollpercent: false
+  scrollpercent: true
 
 # Reading progress bar
 reading_progress:
-  enable: false
+  enable: true
   # Available values: left | right
   start_at: left
   # Available values: top | bottom
   position: top
   reversed: false
-  color: "#37c6c0"
+  color: "#C13A3B"
   height: 3px
 
 # Bookmark Support
@@ -934,3 +934,8 @@ feed:
   icon: icon.png
   autodiscovery: true
   template:
+
+# 加入近期文章設定
+recent_posts_title: 近期文章
+recent_posts_layout: block
+recent_posts: true
