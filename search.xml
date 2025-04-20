@@ -1,6 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Angular Live Reload 在 Ubuntu 沒反應</title>
+    <url>/2020/08/31/AngularLiveReload/</url>
+    <content><![CDATA[<h1 id="確認-inotify-設定"><a class="header-anchor" href="#確認-inotify-設定"></a>確認 inotify 設定</h1>
+<p>在 Linux 上，默認情況下，Listen 使用 inotify 監視目錄中的更改</p>
+<p>Ubuntu 的 inotify 預設限制為8192</p>
+<p>您可以通過執行以下操作獲取目前的 inotify 文件監視限制：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cat</span> /proc/sys/fs/inotify/max_user_watches</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="調整-inotify-設定"><a class="header-anchor" href="#調整-inotify-設定"></a>調整 inotify 設定</h1>
+<p>如果此限制不足以監視目錄中的所有文件，則必須增加該限制以使其正常工作</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo sysctl fs.inotify.max_user_watches=524288 </span><br><span class="line">sudo sysctl -p</span><br></pre></td></tr></table></figure>
+<p>如果想讓自己的限制永久化，請輸入以下命令:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> fs.inotify.max_user_watches=524288 | sudo <span class="built_in">tee</span> -a /etc/sysctl.conf</span><br><span class="line">sudo sysctl -p</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://askubuntu.com/questions/770374/user-limit-of-inotify-watches-reached-on-ubuntu-16-04">User limit of inotify watches reached on Ubuntu 16.04</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>Angular</category>
+      </categories>
+      <tags>
+        <tag>Angular</tag>
+        <tag>Linux</tag>
+        <tag>Ubuntu</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>使用 ADB 命令</title>
     <url>/2024/05/05/AndroidAdb/</url>
     <content><![CDATA[<!-- 宿主機: localhost 10.0.2.2 -->
@@ -69,34 +97,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Angular Live Reload 在 Ubuntu 沒反應</title>
-    <url>/2020/08/31/AngularLiveReload/</url>
-    <content><![CDATA[<h1 id="確認-inotify-設定"><a class="header-anchor" href="#確認-inotify-設定"></a>確認 inotify 設定</h1>
-<p>在 Linux 上，默認情況下，Listen 使用 inotify 監視目錄中的更改</p>
-<p>Ubuntu 的 inotify 預設限制為8192</p>
-<p>您可以通過執行以下操作獲取目前的 inotify 文件監視限制：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cat</span> /proc/sys/fs/inotify/max_user_watches</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="調整-inotify-設定"><a class="header-anchor" href="#調整-inotify-設定"></a>調整 inotify 設定</h1>
-<p>如果此限制不足以監視目錄中的所有文件，則必須增加該限制以使其正常工作</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo sysctl fs.inotify.max_user_watches=524288 </span><br><span class="line">sudo sysctl -p</span><br></pre></td></tr></table></figure>
-<p>如果想讓自己的限制永久化，請輸入以下命令:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> fs.inotify.max_user_watches=524288 | sudo <span class="built_in">tee</span> -a /etc/sysctl.conf</span><br><span class="line">sudo sysctl -p</span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://askubuntu.com/questions/770374/user-limit-of-inotify-watches-reached-on-ubuntu-16-04">User limit of inotify watches reached on Ubuntu 16.04</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>Angular</category>
-      </categories>
-      <tags>
-        <tag>Angular</tag>
-        <tag>Linux</tag>
-        <tag>Ubuntu</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>如何在 pi 3b+ 上執行 Angular Protractor</title>
     <url>/2019/12/25/AngularProtractorOnPi/</url>
     <content><![CDATA[<h1 id="安裝-WebDriver"><a class="header-anchor" href="#安裝-WebDriver"></a>安裝 WebDriver</h1>
@@ -126,33 +126,6 @@
         <tag>Angular</tag>
         <tag>Linux</tag>
         <tag>Pi</tag>
-        <tag>Protractor</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>如何設定 Protractor WebDriver Version</title>
-    <url>/2020/08/31/AngularProtractorWebDriver/</url>
-    <content><![CDATA[<h1 id="安裝-WebDriver"><a class="header-anchor" href="#安裝-WebDriver"></a>安裝 WebDriver</h1>
-<p>先清除目前下載的 WebDriver</p>
-<span id="more"></span>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npx  webdriver-manager clean</span><br></pre></td></tr></table></figure>
-<p>以 chrome 為例從<a href="http://chromedriver.chromium.org/">chromedriver網頁</a></p>
-<p>查詢所需的版本號</p>
-<p>接下來依版本下載 WebDriver</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npx webdriver-manager update  --versions.chrome  [chrome版本號]</span><br></pre></td></tr></table></figure>
-<h1 id="運行-Protractor"><a class="header-anchor" href="#運行-Protractor"></a>運行 Protractor</h1>
-<p>運行 Protractor 時使用 --no-webdriver-update 選項</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ng e2e --no-webdriver-update</span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://www.npmjs.com/package/webdriver-manager">webdriver-manager NPM</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>Angular</category>
-      </categories>
-      <tags>
-        <tag>Angular</tag>
         <tag>Protractor</tag>
       </tags>
   </entry>
@@ -196,6 +169,33 @@
       </categories>
       <tags>
         <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>如何設定 Protractor WebDriver Version</title>
+    <url>/2020/08/31/AngularProtractorWebDriver/</url>
+    <content><![CDATA[<h1 id="安裝-WebDriver"><a class="header-anchor" href="#安裝-WebDriver"></a>安裝 WebDriver</h1>
+<p>先清除目前下載的 WebDriver</p>
+<span id="more"></span>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npx  webdriver-manager clean</span><br></pre></td></tr></table></figure>
+<p>以 chrome 為例從<a href="http://chromedriver.chromium.org/">chromedriver網頁</a></p>
+<p>查詢所需的版本號</p>
+<p>接下來依版本下載 WebDriver</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npx webdriver-manager update  --versions.chrome  [chrome版本號]</span><br></pre></td></tr></table></figure>
+<h1 id="運行-Protractor"><a class="header-anchor" href="#運行-Protractor"></a>運行 Protractor</h1>
+<p>運行 Protractor 時使用 --no-webdriver-update 選項</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ng e2e --no-webdriver-update</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://www.npmjs.com/package/webdriver-manager">webdriver-manager NPM</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>Angular</category>
+      </categories>
+      <tags>
+        <tag>Angular</tag>
+        <tag>Protractor</tag>
       </tags>
   </entry>
   <entry>
@@ -253,6 +253,35 @@
       </tags>
   </entry>
   <entry>
+    <title>JSON 格式資料如何拆解成 form 的輸入項</title>
+    <url>/2020/03/27/HtmlFormPost/</url>
+    <content><![CDATA[<h1 id="拆解-JSON-格式資料"><a class="header-anchor" href="#拆解-JSON-格式資料"></a>拆解 JSON 格式資料</h1>
+<p>下方是 JSON 格式資料</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">   <span class="attr">&quot;item&quot;</span><span class="punctuation">:</span> <span class="string">&quot;1&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;items&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;1&quot;</span><span class="punctuation">,</span><span class="string">&quot;2&quot;</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="基本物件型別拆解"><a class="header-anchor" href="#基本物件型別拆解"></a>基本物件型別拆解</h1>
+<p>基本物件型別的拆解如下</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">&quot;item&quot;: &quot;1&quot;</span><br><span class="line">可拆解成:</span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;item&quot;</span> <span class="attr">value</span>=<span class="string">&quot;1&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h1 id="陣列型別拆解"><a class="header-anchor" href="#陣列型別拆解"></a>陣列型別拆解</h1>
+<p>陣列部分需依造陣列結構做拆解</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">&quot;items&quot;: [&quot;1&quot;,&quot;2&quot;]</span><br><span class="line">可拆解成:</span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;items[0]&quot;</span> <span class="attr">value</span>=<span class="string">&quot;1&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;items[1]&quot;</span> <span class="attr">value</span>=<span class="string">&quot;2&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h1 id="完整拆解設定"><a class="header-anchor" href="#完整拆解設定"></a>完整拆解設定</h1>
+<p>最後是完整的 HTML form 設定</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">&quot;/api/Test/Post&quot;</span> <span class="attr">method</span>=<span class="string">&quot;post&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;item&quot;</span> <span class="attr">value</span>=<span class="string">&quot;1&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;items[0]&quot;</span> <span class="attr">value</span>=<span class="string">&quot;1&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;items[1]&quot;</span> <span class="attr">value</span>=<span class="string">&quot;2&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">　<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> <span class="attr">value</span>=<span class="string">&quot;送出表單&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://stackoverflow.com/questions/9073690/post-an-array-from-an-html-form-without-javascript">POST an array from an HTML form without javascript</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>Html</category>
+      </categories>
+      <tags>
+        <tag>Html</tag>
+        <tag>JSON</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>WSL2 設定 Docker In Docker</title>
     <url>/2024/01/01/DockerWsl2DockerInDocker/</url>
     <content><![CDATA[<h1 id="🚀-使用主機的-Docker-Socket"><a class="header-anchor" href="#🚀-使用主機的-Docker-Socket"></a>🚀 使用主機的 Docker Socket</h1>
@@ -287,35 +316,6 @@
       <tags>
         <tag>Docker</tag>
         <tag>Wsl2</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>JSON 格式資料如何拆解成 form 的輸入項</title>
-    <url>/2020/03/27/HtmlFormPost/</url>
-    <content><![CDATA[<h1 id="拆解-JSON-格式資料"><a class="header-anchor" href="#拆解-JSON-格式資料"></a>拆解 JSON 格式資料</h1>
-<p>下方是 JSON 格式資料</p>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">   <span class="attr">&quot;item&quot;</span><span class="punctuation">:</span> <span class="string">&quot;1&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;items&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;1&quot;</span><span class="punctuation">,</span><span class="string">&quot;2&quot;</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="基本物件型別拆解"><a class="header-anchor" href="#基本物件型別拆解"></a>基本物件型別拆解</h1>
-<p>基本物件型別的拆解如下</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">&quot;item&quot;: &quot;1&quot;</span><br><span class="line">可拆解成:</span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;item&quot;</span> <span class="attr">value</span>=<span class="string">&quot;1&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h1 id="陣列型別拆解"><a class="header-anchor" href="#陣列型別拆解"></a>陣列型別拆解</h1>
-<p>陣列部分需依造陣列結構做拆解</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">&quot;items&quot;: [&quot;1&quot;,&quot;2&quot;]</span><br><span class="line">可拆解成:</span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;items[0]&quot;</span> <span class="attr">value</span>=<span class="string">&quot;1&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;items[1]&quot;</span> <span class="attr">value</span>=<span class="string">&quot;2&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h1 id="完整拆解設定"><a class="header-anchor" href="#完整拆解設定"></a>完整拆解設定</h1>
-<p>最後是完整的 HTML form 設定</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">&quot;/api/Test/Post&quot;</span> <span class="attr">method</span>=<span class="string">&quot;post&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;item&quot;</span> <span class="attr">value</span>=<span class="string">&quot;1&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;items[0]&quot;</span> <span class="attr">value</span>=<span class="string">&quot;1&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;items[1]&quot;</span> <span class="attr">value</span>=<span class="string">&quot;2&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">　<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> <span class="attr">value</span>=<span class="string">&quot;送出表單&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://stackoverflow.com/questions/9073690/post-an-array-from-an-html-form-without-javascript">POST an array from an HTML form without javascript</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>Html</category>
-      </categories>
-      <tags>
-        <tag>Html</tag>
-        <tag>JSON</tag>
       </tags>
   </entry>
   <entry>
@@ -438,6 +438,36 @@
       </tags>
   </entry>
   <entry>
+    <title>如何迭代 Js 物件</title>
+    <url>/2020/03/27/JsIteratorObject/</url>
+    <content><![CDATA[<h1 id="使用-for…in"><a class="header-anchor" href="#使用-for…in"></a>使用 for…in</h1>
+<p>方法格式如下</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (變數 <span class="keyword">in</span> 物件) &#123;...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<p>下方為 Sample Code</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> model = &#123;</span><br><span class="line">    <span class="attr">item</span>: <span class="string">&#x27;1&#x27;</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> filed <span class="keyword">in</span> model) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(model[filed]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="使用-Object-keys"><a class="header-anchor" href="#使用-Object-keys"></a>使用 Object.keys()</h1>
+<p>方法格式如下</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="title class_">Object</span>.<span class="title function_">keys</span>(物件);</span><br></pre></td></tr></table></figure>
+<p>下方為 Sample Code</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> model = &#123;</span><br><span class="line">    <span class="attr">item</span>: <span class="string">&#x27;1&#x27;</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> keys = <span class="title class_">Object</span>.<span class="title function_">keys</span>(model);</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> length = keys.<span class="property">length</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt;= length; i++) &#123;</span><br><span class="line">    <span class="keyword">let</span> key =  keys[i];</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(model[key]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="差異"><a class="header-anchor" href="#差異"></a>差異</h1>
+<p>Object.keys 與 for…in 不同之處</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">for-in 迴圈還會迭代出物件自其原型鏈所繼承來的可列舉屬性</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys">MDN Object keys</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>Javascript</category>
+      </categories>
+      <tags>
+        <tag>Javascript</tag>
+        <tag>Object</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>如何在 Iframe 讀取或寫入字串</title>
     <url>/2019/12/28/JsIframe/</url>
     <content><![CDATA[<h1 id="建立-HTML"><a class="header-anchor" href="#建立-HTML"></a>建立 HTML</h1>
@@ -467,33 +497,116 @@
       </tags>
   </entry>
   <entry>
-    <title>如何迭代 Js 物件</title>
-    <url>/2020/03/27/JsIteratorObject/</url>
-    <content><![CDATA[<h1 id="使用-for…in"><a class="header-anchor" href="#使用-for…in"></a>使用 for…in</h1>
-<p>方法格式如下</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (變數 <span class="keyword">in</span> 物件) &#123;...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<p>下方為 Sample Code</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> model = &#123;</span><br><span class="line">    <span class="attr">item</span>: <span class="string">&#x27;1&#x27;</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> filed <span class="keyword">in</span> model) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(model[filed]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="使用-Object-keys"><a class="header-anchor" href="#使用-Object-keys"></a>使用 Object.keys()</h1>
-<p>方法格式如下</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="title class_">Object</span>.<span class="title function_">keys</span>(物件);</span><br></pre></td></tr></table></figure>
-<p>下方為 Sample Code</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> model = &#123;</span><br><span class="line">    <span class="attr">item</span>: <span class="string">&#x27;1&#x27;</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> keys = <span class="title class_">Object</span>.<span class="title function_">keys</span>(model);</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> length = keys.<span class="property">length</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt;= length; i++) &#123;</span><br><span class="line">    <span class="keyword">let</span> key =  keys[i];</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(model[key]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="差異"><a class="header-anchor" href="#差異"></a>差異</h1>
-<p>Object.keys 與 for…in 不同之處</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">for-in 迴圈還會迭代出物件自其原型鏈所繼承來的可列舉屬性</span><br></pre></td></tr></table></figure>
+    <title>K6 基本壓測</title>
+    <url>/2025/04/02/JsK6LoadingTest/</url>
+    <content><![CDATA[<h1 id="安裝-k6"><a class="header-anchor" href="#安裝-k6"></a>安裝 k6</h1>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 從 Ubuntu 金鑰伺服器下載 k6 軟體倉庫的 GPG 公鑰，並儲存到指定的金鑰環中</span></span><br><span class="line">sudo gpg --no-default-keyring --keyring /usr/share/keyrings/k6-archive-keyring.gpg --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys C5AD17C747E3415A3642D57D77C6C491D6AC1D69</span><br><span class="line"></span><br><span class="line"><span class="comment"># 將 k6 軟體倉庫加入到 APT 的套件來源清單中，並指定其簽名金鑰</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;deb [signed-by=/usr/share/keyrings/k6-archive-keyring.gpg] https://dl.k6.io/deb stable main&quot;</span> | sudo <span class="built_in">tee</span> /etc/apt/sources.list.d/k6.list</span><br><span class="line"></span><br><span class="line"><span class="comment"># 更新 APT</span></span><br><span class="line">sudo apt-get update</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安裝 k6</span></span><br><span class="line">sudo apt-get install k6</span><br></pre></td></tr></table></figure>
+<!-- ```powershell
+ choco install k6 -y
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">&lt;!--more--&gt;</span><br><span class="line"></span><br><span class="line"># 建立檔案 script.js</span><br><span class="line"></span><br><span class="line">```Javascript</span><br><span class="line">import http from &#x27;k6/http&#x27;;</span><br><span class="line">import &#123; sleep &#125; from &#x27;k6&#x27;;</span><br><span class="line"></span><br><span class="line">export default function () &#123;</span><br><span class="line">    let url = &#x27;[目標 API]&#x27;;</span><br><span class="line"></span><br><span class="line">    let payload = JSON.stringify([請求物件]);</span><br><span class="line"></span><br><span class="line">    let params = &#123;</span><br><span class="line">        headers: &#123;</span><br><span class="line">            &#x27;accept&#x27;: &#x27;application/json, text/plain, */*&#x27;,</span><br><span class="line">            &#x27;authorization&#x27;: &#x27;[JWT 認證]&#x27;,</span><br><span class="line">            &#x27;content-type&#x27;: &#x27;application/json&#x27;</span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    let res = http.post(url, payload, params);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<!-- 使用 open api 轉換成 k6 腳本
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker pull openapitools/openapi-generator-cli</span><br><span class="line"></span><br><span class="line">docker run --<span class="built_in">rm</span> -v <span class="variable">$&#123;PWD&#125;</span>:/local openapitools/openapi-generator-cli generate \</span><br><span class="line">    -i /location of json file/swagger.json \</span><br><span class="line">    -g k6 \</span><br><span class="line">    -o /local/k6-<span class="built_in">test</span>/</span><br><span class="line">    --skip-validate-spec</span><br><span class="line">``` --&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 測試情境</span></span><br><span class="line"></span><br><span class="line">迭代測試:</span><br><span class="line">情境: 2 個用戶總共執行 2 次</span><br><span class="line"></span><br><span class="line">```bash</span><br><span class="line">k6 run test.js --vus 2 --iterations 2</span><br></pre></td></tr></table></figure>
+<p>冒煙測試: 確認服務基本可用<br>
+情境: 3 個用戶 1 分內持續執行</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">k6 run test.js --vus 3 --duration 1m</span><br></pre></td></tr></table></figure>
+<p>負載測試: 確認在預測用戶下的執行效能<br>
+情境: 5 分鐘內增加至 100 人，在持續 30 分鐘後，用 5 分鐘內清空人數</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">k6 run test.js --stage <span class="string">&quot;5m:100,30m:100,5m:0&quot;</span></span><br></pre></td></tr></table></figure>
+<p>壓力測試: 確認流量平緩增加執行的效能<br>
+情境: 10 分鐘內增加至 200 人，在持續 30 分鐘後，用 5 分鐘內清空人數</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">k6 run test.js --stage <span class="string">&quot;10m:200,30m:200,5m:0&quot;</span></span><br></pre></td></tr></table></figure>
+<p>峰值測試: 確認流量瞬間湧入執行的效能<br>
+情境: 2 分鐘內增加至 2000 人後，用 1 分鐘內清空人數</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">k6 run test.js --stage <span class="string">&quot;2m:2000,1m:0&quot;</span></span><br></pre></td></tr></table></figure>
+<p>浸泡測試: 確認長時間持續執行的效能<br>
+情境: 5 分鐘內增加至 100 人，在持續 8 小時後，用 5 分鐘內清空人數</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">k6 run test.js --stage <span class="string">&quot;5m:100,8h:100,5m:0&quot;</span></span><br></pre></td></tr></table></figure>
+<p>斷點測試: 確認資源消耗至最大後的效能<br>
+2 小時內，用戶增加至 20000 人</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">k6 run test.js --stage <span class="string">&quot;2h:20000&quot;</span></span><br></pre></td></tr></table></figure>
+<h1 id="結果顯示"><a class="header-anchor" href="#結果顯示"></a>結果顯示</h1>
+<h2 id="JSON-格式"><a class="header-anchor" href="#JSON-格式"></a>JSON 格式</h2>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">k6 run --stage 30s:10 --out json=test-result.json test.js</span><br></pre></td></tr></table></figure>
+<h2 id="儀錶板"><a class="header-anchor" href="#儀錶板"></a>儀錶板</h2>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">K6_WEB_DASHBOARD=<span class="string">&#x27;true&#x27;</span> \</span><br><span class="line">K6_WEB_DASHBOARD_EXPORT=<span class="string">&#x27;html-report.html&#x27;</span> \</span><br><span class="line">k6 run --stage 30s:10 test.js;</span><br></pre></td></tr></table></figure>
+<!-- ```powershell
+$env:K6_WEB_DASHBOARD='true';
+$env:K6_WEB_DASHBOARD_EXPORT='html-report.html';
+k6 run --stage 30s:10 test.js;
+``` -->
+<!-- 只有當測試持續時間大於K6_WEB_DASHBOARD_PERIOD變數設定的聚合週期值的三倍時，報告才包含圖表 -->
 <div class="note warning"><p>📜 參考資料</p>
 <ol>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys">MDN Object keys</a></li>
+<li><a href="https://grafana.com/docs/k6/latest/set-up/install-k6/">安裝K6</a></li>
+<li><a href="https://grafana.com/docs/k6/latest/testing-guides/test-types/">測試情境</a></li>
+<li><a href="https://grafana.com/docs/k6/latest/results-output/web-dashboard/">顯示儀錶板</a></li>
 </ol>
-</div>]]></content>
+</div>
+]]></content>
       <categories>
         <category>Javascript</category>
       </categories>
       <tags>
         <tag>Javascript</tag>
-        <tag>Object</tag>
+        <tag>K6</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>K6 壓測可視化</title>
+    <url>/2025/04/02/JsK6Monitor/</url>
+    <content><![CDATA[<h1 id="安裝-InfluxDB-儲存壓測資料"><a class="header-anchor" href="#安裝-InfluxDB-儲存壓測資料"></a>安裝 InfluxDB 儲存壓測資料</h1>
+<p>使用 Docker 建立 InfluxDB 2.X</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run -d -p 8086:8086 \</span><br><span class="line">	-e DOCKER_INFLUXDB_INIT_MODE=setup \</span><br><span class="line">    -e DOCKER_INFLUXDB_INIT_USERNAME=[初始帳號] \</span><br><span class="line">	-e DOCKER_INFLUXDB_INIT_PASSWORD=[初始密碼] \</span><br><span class="line">	-e DOCKER_INFLUXDB_INIT_ORG=[初始ORG] \</span><br><span class="line">	-e DOCKER_INFLUXDB_INIT_BUCKET=[初始BUCKET] \</span><br><span class="line">    -e DOCKER_INFLUXDB_INIT_RETENTION=1w \</span><br><span class="line">    -e DOCKER_INFLUXDB_INIT_ADMIN_TOKEN=[初始TOKEN] \</span><br><span class="line">	influxdb</span><br></pre></td></tr></table></figure>
+<!-- 建立完成後，使用初始帳密登入連結 http://localhost:8086/ -->
+<p>建立完成後，使用 API 檢查 BUCKET</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl --request GET <span class="string">&quot;http://localhost:8086/api/v2/buckets?name=[初始BUCKET]&quot;</span> \</span><br><span class="line">    --header <span class="string">&quot;Authorization: Token [初始TOKEN]&quot;</span></span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h2 id="匯入資料"><a class="header-anchor" href="#匯入資料"></a>匯入資料</h2>
+<p>InfluxDB 2.X 需另外建置 K6</p>
+<h3 id="安裝-golang"><a class="header-anchor" href="#安裝-golang"></a>安裝 golang</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 加入 golang PPA</span></span><br><span class="line">sudo add-apt-repository ppa:longsleep/golang-backports</span><br><span class="line"></span><br><span class="line"><span class="comment"># 更新 PPA</span></span><br><span class="line">sudo apt update</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安裝 golang</span></span><br><span class="line">sudo apt install golang-go</span><br></pre></td></tr></table></figure>
+<!--
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">choco install golang <span class="literal">-y</span></span><br><span class="line">``` <span class="literal">--</span>&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">### 安裝套件 xk6</span></span><br><span class="line"></span><br><span class="line">```bash</span><br><span class="line"><span class="comment"># 建立工作目錄</span></span><br><span class="line">mkdir go</span><br><span class="line"></span><br><span class="line"><span class="comment"># 前往工作目錄</span></span><br><span class="line"><span class="built_in">cd</span> go</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安裝 xk6</span></span><br><span class="line">go install go.k6.io/xk6/cmd/xk6@latest</span><br></pre></td></tr></table></figure>
+<h3 id="建置-k6-exe"><a class="header-anchor" href="#建置-k6-exe"></a>建置 k6.exe</h3>
+<p>使用語法 xk6 build --with [套件 1] --with [套件 2]</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">bin/xk6 build --with github.com/grafana/xk6-output-influxdb --with github.com/grafana/xk6-dashboard@latest</span><br></pre></td></tr></table></figure>
+<h3 id="執行-k6-壓測"><a class="header-anchor" href="#執行-k6-壓測"></a>執行 k6 壓測</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">K6_INFLUXDB_ORGANIZATION=<span class="string">&quot;[初始ORG]&quot;</span> \</span><br><span class="line">K6_INFLUXDB_BUCKET=<span class="string">&quot;[初始BUCKET]&quot;</span> \</span><br><span class="line">K6_INFLUXDB_TOKEN=<span class="string">&quot;[初始TOKEN]&quot;</span> \</span><br><span class="line">K6_INFLUXDB_ADDR=<span class="string">&quot;http://localhost:8086&quot;</span> \</span><br><span class="line">./k6 run -o xk6-influxdb --vus 3 --duration 1m test.js</span><br></pre></td></tr></table></figure>
+<!--
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="variable">$env:K6_INFLUXDB_ORGANIZATION</span>=<span class="string">&#x27;[初始ORG]&#x27;</span> ;</span><br><span class="line"><span class="variable">$env:K6_INFLUXDB_BUCKET</span>=<span class="string">&#x27;[初始BUCKET]&#x27;</span> ;</span><br><span class="line"><span class="variable">$env:K6_INFLUXDB_TOKEN</span>=<span class="string">&#x27;[初始TOKEN]&#x27;</span> ;</span><br><span class="line">.\k6.exe run <span class="literal">-o</span> xk6<span class="literal">-influxdb</span>=http://localhost:<span class="number">8086</span> <span class="literal">--vus</span> <span class="number">3</span> <span class="literal">--duration</span> <span class="number">1</span>m test.js</span><br><span class="line">``` <span class="literal">--</span>&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">## 查詢資料</span></span><br><span class="line"></span><br><span class="line">安裝 VS Code 套件 [<span class="type">Flux</span>](https://marketplace.visualstudio.com/items?itemName=influxdata.flux)，建立檔案 test.flux 內容如下，使用 F5 執行</span><br><span class="line"></span><br><span class="line">```flux</span><br><span class="line">from(bucket: <span class="string">&quot;k6_test&quot;</span>)</span><br><span class="line">  |&gt; range(<span class="built_in">start</span>: time(v: <span class="string">&quot;2025-04-08&quot;</span>), stop: time(v: <span class="string">&quot;2025-04-09&quot;</span>))</span><br><span class="line">  |&gt; <span class="keyword">filter</span>(fn: (<span class="built_in">r</span>) =&gt; <span class="built_in">r</span>[<span class="string">&quot;_measurement&quot;</span>] == <span class="string">&quot;http_req_duration&quot;</span>)</span><br><span class="line">  |&gt; aggregateWindow(every: duration(v: <span class="string">&quot;7d&quot;</span>), fn: last, createEmpty: false)</span><br><span class="line">  |&gt; yield(name: <span class="string">&quot;last&quot;</span>)</span><br></pre></td></tr></table></figure>
+<h1 id="安裝-Grafana-呈現壓測資料"><a class="header-anchor" href="#安裝-Grafana-呈現壓測資料"></a>安裝 Grafana 呈現壓測資料</h1>
+<p>使用 Docker 建立 Grafana</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run --name=grafana -d -p 3000:3000 \</span><br><span class="line">    -e GF_SECURITY_ADMIN_USER=[初始帳號] \</span><br><span class="line">    -e GF_SECURITY_ADMIN_PASSWORD=[初始密碼] \</span><br><span class="line">    grafana/grafana</span><br></pre></td></tr></table></figure>
+<!-- 建立完成後，使用初始帳密登入連結 http://localhost:3000/ -->
+<!-- 左側點擊 Administration > Users and access > Service Accounts > Add service account -->
+<p>建立 Service Account</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl -X POST http://admin:admin123@localhost:3000/api/serviceaccounts \</span><br><span class="line">  -H <span class="string">&quot;Content-Type: application/json&quot;</span> \</span><br><span class="line">  -d <span class="string">&#x27;&#123;</span></span><br><span class="line"><span class="string">	  &quot;name&quot;: &quot;grafana&quot;,</span></span><br><span class="line"><span class="string">	  &quot;role&quot;: &quot;Admin&quot;,</span></span><br><span class="line"><span class="string">	  &quot;isDisabled&quot;: false</span></span><br><span class="line"><span class="string">	&#125;&#x27;</span></span><br></pre></td></tr></table></figure>
+<p>建立 Service Account Token</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl -X POST http://admin:admin123@localhost:3000/api/serviceaccounts/2/tokens \</span><br><span class="line">  -H <span class="string">&quot;Content-Type: application/json&quot;</span> \</span><br><span class="line">  -d <span class="string">&#x27;&#123;</span></span><br><span class="line"><span class="string">      &quot;name&quot;: &quot;grafana&quot;,</span></span><br><span class="line"><span class="string">      &quot;secondsToLive&quot;: 604800</span></span><br><span class="line"><span class="string">    &#125;&#x27;</span></span><br></pre></td></tr></table></figure>
+<!-- 左側點擊 Connections => Add new connection => 搜尋 influxdb -->
+<p>查詢 datasources</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl -X GET http://localhost:3000/api/datasources/name/influxdb_test \</span><br><span class="line">    -H <span class="string">&quot;Accept: application/json&quot;</span>  \</span><br><span class="line">	-H <span class="string">&quot;Content-Type: application/json&quot;</span>  \</span><br><span class="line">	-H <span class="string">&quot;Authorization: Bearer [Service_Account_Token]&quot;</span></span><br></pre></td></tr></table></figure>
+<p>建立 datasources</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl -X POST http://localhost:3000/api/datasources \</span><br><span class="line">  -H <span class="string">&quot;Content-Type: application/json&quot;</span> \</span><br><span class="line">  -H <span class="string">&quot;Authorization: Bearer [Service_Account_Token]&quot;</span> \</span><br><span class="line">  -d <span class="string">&#x27;&#123;</span></span><br><span class="line"><span class="string">    &quot;name&quot;: &quot;influxdb_test&quot;,</span></span><br><span class="line"><span class="string">    &quot;type&quot;: &quot;influxdb&quot;,</span></span><br><span class="line"><span class="string">    &quot;access&quot;: &quot;proxy&quot;,</span></span><br><span class="line"><span class="string">    &quot;url&quot;: &quot;http://localhost:8086&quot;,</span></span><br><span class="line"><span class="string">    &quot;basicAuth&quot;: false,</span></span><br><span class="line"><span class="string">    &quot;jsonData&quot;: &#123;</span></span><br><span class="line"><span class="string">      &quot;version&quot;: &quot;Flux&quot;,</span></span><br><span class="line"><span class="string">      &quot;organization&quot;: &quot;[初始ORG]&quot;,</span></span><br><span class="line"><span class="string">      &quot;defaultBucket&quot;: &quot;[初始BUCKET]&quot;,</span></span><br><span class="line"><span class="string">      &quot;tlsSkipVerify&quot;: false</span></span><br><span class="line"><span class="string">    &#125;,</span></span><br><span class="line"><span class="string">    &quot;secureJsonData&quot;: &#123;</span></span><br><span class="line"><span class="string">      &quot;token&quot;: &quot;[InfluxDB初始TOKEN]&quot;</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">  &#125;&#x27;</span></span><br></pre></td></tr></table></figure>
+<!-- 左側點擊 Dashboards =>  New dashboard -->
+<p>建立 dashboard</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl -X POST http://localhost:3000/api/dashboards/db \</span><br><span class="line">  -H <span class="string">&quot;Content-Type: application/json&quot;</span> \</span><br><span class="line">  -H <span class="string">&quot;Authorization: Bearer [Service_Account_Token]&quot;</span> \</span><br><span class="line">  -d <span class="string">&#x27;&#123;</span></span><br><span class="line"><span class="string">    &quot;dashboard&quot;: &#123;</span></span><br><span class="line"><span class="string">      &quot;id&quot;: null,</span></span><br><span class="line"><span class="string">      &quot;uid&quot;: null,</span></span><br><span class="line"><span class="string">      &quot;title&quot;: &quot;InfluxDB Flux Demo&quot;,</span></span><br><span class="line"><span class="string">      &quot;timezone&quot;: &quot;browser&quot;,</span></span><br><span class="line"><span class="string">      &quot;schemaVersion&quot;: 38,</span></span><br><span class="line"><span class="string">      &quot;version&quot;: 0,</span></span><br><span class="line"><span class="string">      &quot;refresh&quot;: &quot;30s&quot;,</span></span><br><span class="line"><span class="string">      &quot;panels&quot;: [</span></span><br><span class="line"><span class="string">        &#123;</span></span><br><span class="line"><span class="string">          &quot;type&quot;: &quot;timeseries&quot;,</span></span><br><span class="line"><span class="string">          &quot;title&quot;: &quot;http_req_duration&quot;,</span></span><br><span class="line"><span class="string">          &quot;datasource&quot;: &#123;</span></span><br><span class="line"><span class="string">            &quot;type&quot;: &quot;influxdb&quot;,</span></span><br><span class="line"><span class="string">            &quot;uid&quot;: &quot;eei9mxy3v7egwc&quot;</span></span><br><span class="line"><span class="string">          &#125;,</span></span><br><span class="line"><span class="string">          &quot;targets&quot;: [</span></span><br><span class="line"><span class="string">            &#123;</span></span><br><span class="line"><span class="string">              &quot;refId&quot;: &quot;A&quot;,</span></span><br><span class="line"><span class="string">              &quot;queryType&quot;: &quot;flux&quot;,</span></span><br><span class="line"><span class="string">              &quot;query&quot;: &quot;from(bucket: \&quot;k6_test\&quot;) |&gt; range(start: v.timeRangeStart, stop: v.timeRangeStop) |&gt; filter(fn: (r) =&gt; r[\&quot;_measurement\&quot;] == \&quot;http_req_duration\&quot;) |&gt; aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false) |&gt; yield(name: \&quot;last\&quot;)&quot;</span></span><br><span class="line"><span class="string">            &#125;</span></span><br><span class="line"><span class="string">          ],</span></span><br><span class="line"><span class="string">          &quot;fieldConfig&quot;: &#123;</span></span><br><span class="line"><span class="string">            &quot;defaults&quot;: &#123;&#125;,</span></span><br><span class="line"><span class="string">            &quot;overrides&quot;: []</span></span><br><span class="line"><span class="string">          &#125;,</span></span><br><span class="line"><span class="string">          &quot;gridPos&quot;: &#123;</span></span><br><span class="line"><span class="string">            &quot;h&quot;: 9,</span></span><br><span class="line"><span class="string">            &quot;w&quot;: 12,</span></span><br><span class="line"><span class="string">            &quot;x&quot;: 0,</span></span><br><span class="line"><span class="string">            &quot;y&quot;: 0</span></span><br><span class="line"><span class="string">          &#125;</span></span><br><span class="line"><span class="string">        &#125;</span></span><br><span class="line"><span class="string">      ]</span></span><br><span class="line"><span class="string">    &#125;,</span></span><br><span class="line"><span class="string">    &quot;folderId&quot;: 0,</span></span><br><span class="line"><span class="string">    &quot;overwrite&quot;: true</span></span><br><span class="line"><span class="string">  &#125;&#x27;</span></span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://docs.influxdata.com/influxdb/v2/api/v2/">InfluxDB v2 OSS 文檔</a></li>
+<li><a href="https://grafana.com/docs/grafana/latest/developers/http_api/serviceaccount/">Service account API</a></li>
+<li><a href="https://grafana.com/docs/grafana/latest/developers/http_api/data_source/">Data source API</a></li>
+<li><a href="https://grafana.com/docs/grafana/latest/developers/http_api/dashboard/">Dashboard API</a></li>
+</ol>
+</div>
+]]></content>
+      <categories>
+        <category>Javascript</category>
+      </categories>
+      <tags>
+        <tag>Javascript</tag>
+        <tag>K6</tag>
       </tags>
   </entry>
   <entry>

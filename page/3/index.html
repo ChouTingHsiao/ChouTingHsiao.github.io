@@ -148,7 +148,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">48</span>
+          <span class="site-state-item-count">50</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -159,7 +159,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">53</span>
+        <span class="site-state-item-count">54</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -175,6 +175,16 @@
 	</div>
 	<ul class="links-of-blogroll-list recent-posts-list">
 	        <li class="my-links-of-blogroll-item">
+		    <a href="/2025/04/02/JsK6LoadingTest/" title="K6 基本壓測" target="">
+		    K6 基本壓測
+		    </a>
+		</li>
+	        <li class="my-links-of-blogroll-item">
+		    <a href="/2025/04/02/JsK6Monitor/" title="K6 壓測可視化" target="">
+		    K6 壓測可視化
+		    </a>
+		</li>
+	        <li class="my-links-of-blogroll-item">
 		    <a href="/2025/01/01/MsSqlIndexFragmentation/" title="使用 DMV 查询 Index 碎片化" target="">
 		    使用 DMV 查询 Index 碎片化
 		    </a>
@@ -187,16 +197,6 @@
 	        <li class="my-links-of-blogroll-item">
 		    <a href="/2025/01/01/MsSqlJsonString/" title="在 SQL Server 操作 JSON" target="">
 		    在 SQL Server 操作 JSON
-		    </a>
-		</li>
-	        <li class="my-links-of-blogroll-item">
-		    <a href="/2025/01/01/MsSqlXmlString/" title="在 SQL Server 操作 XML" target="">
-		    在 SQL Server 操作 XML
-		    </a>
-		</li>
-	        <li class="my-links-of-blogroll-item">
-		    <a href="/2024/07/25/LinuxNatForward/" title="使用 NAT 轉發請求" target="">
-		    使用 NAT 轉發請求
 		    </a>
 		</li>
 	</ul>
@@ -212,6 +212,237 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://choutinghsiao.github.io/2024/05/05/NetDataFrame/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Stephen">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Stephen's Note">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Stephen's Note">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/05/05/NetDataFrame/" class="post-title-link" itemprop="url">使用 DataFrame 操作資料</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2024-05-05 11:10:00" itemprop="dateCreated datePublished" datetime="2024-05-05T11:10:00+00:00">2024-05-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2025-04-20 09:16:33" itemprop="dateModified" datetime="2025-04-20T09:16:33+00:00">2025-04-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Net/" itemprop="url" rel="index"><span itemprop="name">.Net</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="Word count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Word count in article: </span>
+      <span>233</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>1 mins.</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="載入-CSV-資料"><a class="header-anchor" href="#載入-CSV-資料"></a>載入 CSV 資料</h1>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#r &quot;nuget: Microsoft.Data.Analysis, 0.21.1&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> System.IO;</span><br><span class="line"><span class="keyword">using</span> Microsoft.Data.Analysis;</span><br><span class="line"></span><br><span class="line"><span class="built_in">string</span> csvfile = File.ReadAllText(<span class="string">&quot;test.csv&quot;</span>);</span><br><span class="line">DataFrame df = DataFrame.LoadCsvFromString(csvfile, <span class="string">&#x27;,&#x27;</span>);</span><br><span class="line">Console.WriteLine(df);</span><br></pre></td></tr></table></figure>
+<p>輸出:</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">NAME      </span><br><span class="line">張三        </span><br><span class="line">李四   </span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2024/05/05/NetDataFrame/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://choutinghsiao.github.io/2024/05/05/AndroidAdb/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Stephen">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Stephen's Note">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Stephen's Note">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/05/05/AndroidAdb/" class="post-title-link" itemprop="url">使用 ADB 命令</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2024-05-05 11:00:00" itemprop="dateCreated datePublished" datetime="2024-05-05T11:00:00+00:00">2024-05-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2025-04-20 09:16:33" itemprop="dateModified" datetime="2025-04-20T09:16:33+00:00">2025-04-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="Word count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Word count in article: </span>
+      <span>749</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>3 mins.</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <!-- 宿主機: localhost 10.0.2.2 -->
+<h1 id="查看-adb-版本信息"><a class="header-anchor" href="#查看-adb-版本信息"></a>查看 adb 版本信息</h1>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb version</span><br></pre></td></tr></table></figure>
+<h1 id="以-root-權限運行"><a class="header-anchor" href="#以-root-權限運行"></a>以 root 權限運行</h1>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb root</span><br></pre></td></tr></table></figure>
+<h1 id="查看連接設備"><a class="header-anchor" href="#查看連接設備"></a>查看連接設備</h1>
+<p>查看已連接設備</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb devices</span><br></pre></td></tr></table></figure>
+<p>多個設備，可使用 -s 選項指定裝置</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb -s [裝置名稱]</span><br></pre></td></tr></table></figure>
+<h1 id="運行-adb-服務"><a class="header-anchor" href="#運行-adb-服務"></a>運行 adb 服務</h1>
+<p>模擬器運行 adb 服務</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb -P [模擬器端口] start-server</span><br></pre></td></tr></table></figure>
+<p>模擬器停止 adb 服務</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb kill-server</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2024/05/05/AndroidAdb/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -257,7 +488,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-04-16 15:49:26" itemprop="dateModified" datetime="2025-04-16T15:49:26+00:00">2025-04-16</time>
+      <time title="Modified: 2025-04-20 09:16:33" itemprop="dateModified" datetime="2025-04-20T09:16:33+00:00">2025-04-20</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -368,7 +599,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-04-16 15:49:26" itemprop="dateModified" datetime="2025-04-16T15:49:26+00:00">2025-04-16</time>
+      <time title="Modified: 2025-04-20 09:16:33" itemprop="dateModified" datetime="2025-04-20T09:16:33+00:00">2025-04-20</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -477,7 +708,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-04-16 15:49:26" itemprop="dateModified" datetime="2025-04-16T15:49:26+00:00">2025-04-16</time>
+      <time title="Modified: 2025-04-20 09:16:33" itemprop="dateModified" datetime="2025-04-20T09:16:33+00:00">2025-04-20</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -545,235 +776,6 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://choutinghsiao.github.io/2024/02/04/PlantUmlSelfHosted/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Stephen">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Stephen's Note">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Stephen's Note">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/02/04/PlantUmlSelfHosted/" class="post-title-link" itemprop="url">自託管 PlantUML 服務</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2024-02-04 18:00:00" itemprop="dateCreated datePublished" datetime="2024-02-04T18:00:00+00:00">2024-02-04</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-04-16 15:49:26" itemprop="dateModified" datetime="2025-04-16T15:49:26+00:00">2025-04-16</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Project/" itemprop="url" rel="index"><span itemprop="name">Project</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="Word count in article">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">Word count in article: </span>
-      <span>234</span>
-    </span>
-    <span class="post-meta-item" title="Reading time">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">Reading time &asymp;</span>
-      <span>1 mins.</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="在-Ubuntu-安裝-openjdk"><a class="header-anchor" href="#在-Ubuntu-安裝-openjdk"></a>在 Ubuntu 安裝 openjdk</h1>
-<p>使用以下 Linxu 指令，安裝 openjdk11</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install openjdk-11-jdk</span><br></pre></td></tr></table></figure>
-<h1 id="下載-PlantUML-的-Jar-檔案"><a class="header-anchor" href="#下載-PlantUML-的-Jar-檔案"></a><a target="_blank" rel="noopener" href="https://plantuml.com/zh/download">下載 PlantUML 的 Jar 檔案</a></h1>
-<p>使用以下 Linxu 指令下載檔案</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -O /[執行路徑]/plantuml.jar https://github.com/plantuml/plantuml/releases/download/v1.2024.0/plantuml-1.2024.0.jar</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2024/02/04/PlantUmlSelfHosted/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://choutinghsiao.github.io/2024/01/01/DockerWsl2DockerInDocker/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Stephen">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Stephen's Note">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Stephen's Note">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/01/01/DockerWsl2DockerInDocker/" class="post-title-link" itemprop="url">WSL2 設定 Docker In Docker</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2024-01-01 16:00:00" itemprop="dateCreated datePublished" datetime="2024-01-01T16:00:00+00:00">2024-01-01</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-04-16 15:49:26" itemprop="dateModified" datetime="2025-04-16T15:49:26+00:00">2025-04-16</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Docker/" itemprop="url" rel="index"><span itemprop="name">Docker</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="Word count in article">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">Word count in article: </span>
-      <span>307</span>
-    </span>
-    <span class="post-meta-item" title="Reading time">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">Reading time &asymp;</span>
-      <span>1 mins.</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="🚀-使用主機的-Docker-Socket"><a class="header-anchor" href="#🚀-使用主機的-Docker-Socket"></a>🚀 使用主機的 Docker Socket</h1>
-<p>建立 daemon.json 設定檔</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /etc/docker/daemon.json</span><br></pre></td></tr></table></figure>
-<p>加入以下設定</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;hosts&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span> <span class="string">&quot;unix:///var/run/docker.sock&quot;</span><span class="punctuation">,</span> <span class="string">&quot;tcp://0.0.0.0:&quot;</span> <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;tls&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-<p>執行命令時掛載 docker.sock</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -v /var/run/docker.sock:/var/run/docker.sock -ti [Docker 映像檔]</span><br></pre></td></tr></table></figure>
-<p>透過 Curl 執行 Docker Socket 建立 Containers</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -XPOST --unix-socket /var/run/docker.sock -d <span class="string">&#x27;&#123;&quot;Image&quot;:&quot;[Docker 映像檔]&quot;&#125;&#x27;</span> -H <span class="string">&#x27;Content-Type: application/json&#x27;</span> http://localhost/containers/create</span><br></pre></td></tr></table></figure>
-<p>透過 Curl 執行 Docker Socket 啟動 Containers</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -XPOST --unix-socket /var/run/docker.sock http://localhost/containers/[容器編號]/start</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2024/01/01/DockerWsl2DockerInDocker/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <a class="extend prev" rel="prev" title="Previous page" aria-label="Previous page" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" title="Next page" aria-label="Next page" href="/page/4/"><i class="fa fa-angle-right"></i></a>
   </nav>
@@ -797,13 +799,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="Word count total">12k</span>
+    <span title="Word count total">13k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">44 mins.</span>
+    <span title="Reading time total">49 mins.</span>
   </span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
