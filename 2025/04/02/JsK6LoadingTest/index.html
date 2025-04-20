@@ -20,15 +20,15 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"choutinghsiao.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.23.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/js/config.js" defer></script>
 
-    <meta name="description" content="安裝 k6 1234567891011# 從 Ubuntu 金鑰伺服器下載 k6 軟體倉庫的 GPG 公鑰，並儲存到指定的金鑰環中sudo gpg --no-default-keyring --keyring &#x2F;usr&#x2F;share&#x2F;keyrings&#x2F;k6-archive-keyring.gpg --keyserver hkp:&#x2F;&#x2F;keyserver.ubuntu.com:80 --recv-key">
+    <meta name="description" content="安裝 k6  1234567891011# 從 Ubuntu 金鑰伺服器下載 k6 軟體倉庫的 GPG 公鑰，並儲存到指定的金鑰環中sudo gpg --no-default-keyring --keyring &#x2F;usr&#x2F;share&#x2F;keyrings&#x2F;k6-archive-keyring.gpg --keyserver hkp:&#x2F;&#x2F;keyserver.ubuntu.com:80 --recv-ke">
 <meta property="og:type" content="article">
 <meta property="og:title" content="K6 基本壓測">
 <meta property="og:url" content="https://choutinghsiao.github.io/2025/04/02/JsK6LoadingTest/index.html">
 <meta property="og:site_name" content="Stephen&#39;s Note">
-<meta property="og:description" content="安裝 k6 1234567891011# 從 Ubuntu 金鑰伺服器下載 k6 軟體倉庫的 GPG 公鑰，並儲存到指定的金鑰環中sudo gpg --no-default-keyring --keyring &#x2F;usr&#x2F;share&#x2F;keyrings&#x2F;k6-archive-keyring.gpg --keyserver hkp:&#x2F;&#x2F;keyserver.ubuntu.com:80 --recv-key">
+<meta property="og:description" content="安裝 k6  1234567891011# 從 Ubuntu 金鑰伺服器下載 k6 軟體倉庫的 GPG 公鑰，並儲存到指定的金鑰環中sudo gpg --no-default-keyring --keyring &#x2F;usr&#x2F;share&#x2F;keyrings&#x2F;k6-archive-keyring.gpg --keyserver hkp:&#x2F;&#x2F;keyserver.ubuntu.com:80 --recv-ke">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2025-04-02T17:00:00.000Z">
-<meta property="article:modified_time" content="2025-04-20T09:39:37.147Z">
+<meta property="article:modified_time" content="2025-04-20T09:45:18.661Z">
 <meta property="article:author" content="Stephen">
 <meta property="article:tag" content="Javascript">
 <meta property="article:tag" content="K6">
@@ -160,7 +160,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%9D-k6"><span class="nav-number">1.</span> <span class="nav-text">安裝 k6</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%9D-k6"><span class="nav-number">1.</span> <span class="nav-text">安裝 k6</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BB%BA%E7%AB%8B%E6%AA%94%E6%A1%88-script-js"><span class="nav-number">2.</span> <span class="nav-text">建立檔案 script.js</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B8%AC%E8%A9%A6%E6%83%85%E5%A2%83"><span class="nav-number">3.</span> <span class="nav-text">測試情境</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%B5%90%E6%9E%9C%E9%A1%AF%E7%A4%BA"><span class="nav-number">4.</span> <span class="nav-text">結果顯示</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#JSON-%E6%A0%BC%E5%BC%8F"><span class="nav-number">4.1.</span> <span class="nav-text">JSON 格式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%84%80%E9%8C%B6%E6%9D%BF"><span class="nav-number">4.2.</span> <span class="nav-text">儀錶板</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -283,7 +283,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-04-20 09:39:37" itemprop="dateModified" datetime="2025-04-20T09:39:37+00:00">2025-04-20</time>
+      <time title="Modified: 2025-04-20 09:45:18" itemprop="dateModified" datetime="2025-04-20T09:45:18+00:00">2025-04-20</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -302,7 +302,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Word count in article: </span>
-      <span>617</span>
+      <span>614</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
@@ -320,14 +320,25 @@
     
     
     <div class="post-body" itemprop="articleBody"><h1 id="安裝-k6"><a class="header-anchor" href="#安裝-k6"></a>安裝 k6</h1>
+<!-- choco install k6 -y -->
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 從 Ubuntu 金鑰伺服器下載 k6 軟體倉庫的 GPG 公鑰，並儲存到指定的金鑰環中</span></span><br><span class="line">sudo gpg --no-default-keyring --keyring /usr/share/keyrings/k6-archive-keyring.gpg --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys C5AD17C747E3415A3642D57D77C6C491D6AC1D69</span><br><span class="line"></span><br><span class="line"><span class="comment"># 將 k6 軟體倉庫加入到 APT 的套件來源清單中，並指定其簽名金鑰</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;deb [signed-by=/usr/share/keyrings/k6-archive-keyring.gpg] https://dl.k6.io/deb stable main&quot;</span> | sudo <span class="built_in">tee</span> /etc/apt/sources.list.d/k6.list</span><br><span class="line"></span><br><span class="line"><span class="comment"># 更新 APT</span></span><br><span class="line">sudo apt-get update</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安裝 k6</span></span><br><span class="line">sudo apt-get install k6</span><br></pre></td></tr></table></figure>
 <span id="more"></span>
-<!-- ```powershell
- choco install k6 -y
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"># 建立檔案 script.js</span><br><span class="line"></span><br><span class="line">```Javascript</span><br><span class="line">import http from &#x27;k6/http&#x27;;</span><br><span class="line">import &#123; sleep &#125; from &#x27;k6&#x27;;</span><br><span class="line"></span><br><span class="line">export default function () &#123;</span><br><span class="line">    let url = &#x27;[目標 API]&#x27;;</span><br><span class="line"></span><br><span class="line">    let payload = JSON.stringify([請求物件]);</span><br><span class="line"></span><br><span class="line">    let params = &#123;</span><br><span class="line">        headers: &#123;</span><br><span class="line">            &#x27;accept&#x27;: &#x27;application/json, text/plain, */*&#x27;,</span><br><span class="line">            &#x27;authorization&#x27;: &#x27;[JWT 認證]&#x27;,</span><br><span class="line">            &#x27;content-type&#x27;: &#x27;application/json&#x27;</span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    let res = http.post(url, payload, params);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<!-- 使用 open api 轉換成 k6 腳本
+<h1 id="建立檔案-script-js"><a class="header-anchor" href="#建立檔案-script-js"></a>建立檔案 script.js</h1>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> http <span class="keyword">from</span> <span class="string">&#x27;k6/http&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; sleep &#125; <span class="keyword">from</span> <span class="string">&#x27;k6&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> url = <span class="string">&#x27;[目標 API]&#x27;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> payload = <span class="title class_">JSON</span>.<span class="title function_">stringify</span>([請求物件]);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> params = &#123;</span><br><span class="line">        <span class="attr">headers</span>: &#123;</span><br><span class="line">            <span class="string">&#x27;accept&#x27;</span>: <span class="string">&#x27;application/json, text/plain, */*&#x27;</span>,</span><br><span class="line">            <span class="string">&#x27;authorization&#x27;</span>: <span class="string">&#x27;[JWT 認證]&#x27;</span>,</span><br><span class="line">            <span class="string">&#x27;content-type&#x27;</span>: <span class="string">&#x27;application/json&#x27;</span></span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> res = http.<span class="title function_">post</span>(url, payload, params);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<!-- 
+使用 open api 轉換成 k6 腳本
+docker pull openapitools/openapi-generator-cli
 
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">docker pull openapitools/openapi-generator-cli</span><br><span class="line"></span><br><span class="line">docker run --<span class="built_in">rm</span> -v <span class="variable">$&#123;PWD&#125;</span>:/local openapitools/openapi-generator-cli generate \</span><br><span class="line">    -i /location of json file/swagger.json \</span><br><span class="line">    -g k6 \</span><br><span class="line">    -o /local/k6-<span class="built_in">test</span>/</span><br><span class="line">    --skip-validate-spec</span><br><span class="line">``` --&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 測試情境</span></span><br><span class="line"></span><br><span class="line">迭代測試:</span><br><span class="line">情境: 2 個用戶總共執行 2 次</span><br><span class="line"></span><br><span class="line">```bash</span><br><span class="line">k6 run test.js --vus 2 --iterations 2</span><br></pre></td></tr></table></figure>
+docker run --rm -v ${PWD}:/local openapitools/openapi-generator-cli generate \
+    -i /location of json file/swagger.json \
+    -g k6 \
+    -o /local/k6-test/
+    --skip-validate-spec
+-->
+<h1 id="測試情境"><a class="header-anchor" href="#測試情境"></a>測試情境</h1>
+<p>迭代測試:<br>
+情境: 2 個用戶總共執行 2 次</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">k6 run test.js --vus 2 --iterations 2</span><br></pre></td></tr></table></figure>
 <p>冒煙測試: 確認服務基本可用<br>
 情境: 3 個用戶 1 分內持續執行</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">k6 run test.js --vus 3 --duration 1m</span><br></pre></td></tr></table></figure>
@@ -351,11 +362,11 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">k6 run --stage 30s:10 --out json=test-result.json test.js</span><br></pre></td></tr></table></figure>
 <h2 id="儀錶板"><a class="header-anchor" href="#儀錶板"></a>儀錶板</h2>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">K6_WEB_DASHBOARD=<span class="string">&#x27;true&#x27;</span> \</span><br><span class="line">K6_WEB_DASHBOARD_EXPORT=<span class="string">&#x27;html-report.html&#x27;</span> \</span><br><span class="line">k6 run --stage 30s:10 test.js;</span><br></pre></td></tr></table></figure>
-<!-- ```powershell
+<!--
 $env:K6_WEB_DASHBOARD='true';
 $env:K6_WEB_DASHBOARD_EXPORT='html-report.html';
 k6 run --stage 30s:10 test.js;
-``` -->
+-->
 <!-- 只有當測試持續時間大於K6_WEB_DASHBOARD_PERIOD變數設定的聚合週期值的三倍時，報告才包含圖表 -->
 <div class="note warning"><p>📜 參考資料</p>
 <ol>
