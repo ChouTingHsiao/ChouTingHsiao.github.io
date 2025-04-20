@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
 <meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.0.0">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.3.0">
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
@@ -15,10 +15,10 @@
 
 
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"choutinghsiao.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.18.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"choutinghsiao.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.23.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/js/config.js" defer></script>
 
     <meta property="og:type" content="website">
 <meta property="og:title" content="Stephen&#39;s Note">
@@ -32,7 +32,6 @@
 <link rel="canonical" href="https://choutinghsiao.github.io/">
 
 
-
 <script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":true,"isPost":false,"lang":"en","comments":"","permalink":"","path":"index.html","title":""}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
@@ -41,6 +40,25 @@
 
 
 
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+
+
+
+
+
+  
 
 
 
@@ -96,25 +114,25 @@
 
 
   <div class="search-pop-overlay">
-    <div class="popup search-popup"><div class="search-header">
-  <span class="search-icon">
-    <i class="fa fa-search"></i>
-  </span>
-  <div class="search-input-container">
-    <input autocomplete="off" autocapitalize="off" maxlength="80"
-           placeholder="Searching..." spellcheck="false"
-           type="search" class="search-input">
-  </div>
-  <span class="popup-btn-close" role="button">
-    <i class="fa fa-times-circle"></i>
-  </span>
-</div>
-<div class="search-result-container no-result">
-  <div class="search-result-icon">
-    <i class="fa fa-spinner fa-pulse fa-5x"></i>
-  </div>
-</div>
-
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="Searching..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -260,7 +278,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-04-20 09:26:48" itemprop="dateModified" datetime="2025-04-20T09:26:48+00:00">2025-04-20</time>
+      <time title="Modified: 2025-04-20 09:39:37" itemprop="dateModified" datetime="2025-04-20T09:39:37+00:00">2025-04-20</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -390,7 +408,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-04-20 09:26:48" itemprop="dateModified" datetime="2025-04-20T09:26:48+00:00">2025-04-20</time>
+      <time title="Modified: 2025-04-20 09:39:37" itemprop="dateModified" datetime="2025-04-20T09:39:37+00:00">2025-04-20</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -429,49 +447,14 @@
     <div class="post-body" itemprop="articleBody">
           <h1 id="安裝-k6"><a class="header-anchor" href="#安裝-k6"></a>安裝 k6</h1>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 從 Ubuntu 金鑰伺服器下載 k6 軟體倉庫的 GPG 公鑰，並儲存到指定的金鑰環中</span></span><br><span class="line">sudo gpg --no-default-keyring --keyring /usr/share/keyrings/k6-archive-keyring.gpg --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys C5AD17C747E3415A3642D57D77C6C491D6AC1D69</span><br><span class="line"></span><br><span class="line"><span class="comment"># 將 k6 軟體倉庫加入到 APT 的套件來源清單中，並指定其簽名金鑰</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;deb [signed-by=/usr/share/keyrings/k6-archive-keyring.gpg] https://dl.k6.io/deb stable main&quot;</span> | sudo <span class="built_in">tee</span> /etc/apt/sources.list.d/k6.list</span><br><span class="line"></span><br><span class="line"><span class="comment"># 更新 APT</span></span><br><span class="line">sudo apt-get update</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安裝 k6</span></span><br><span class="line">sudo apt-get install k6</span><br></pre></td></tr></table></figure>
-<!-- ```powershell
- choco install k6 -y
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;!--more--&gt;</span><br><span class="line"></span><br><span class="line"># 建立檔案 script.js</span><br><span class="line"></span><br><span class="line">```Javascript</span><br><span class="line">import http from &#x27;k6/http&#x27;;</span><br><span class="line">import &#123; sleep &#125; from &#x27;k6&#x27;;</span><br><span class="line"></span><br><span class="line">export default function () &#123;</span><br><span class="line">    let url = &#x27;[目標 API]&#x27;;</span><br><span class="line"></span><br><span class="line">    let payload = JSON.stringify([請求物件]);</span><br><span class="line"></span><br><span class="line">    let params = &#123;</span><br><span class="line">        headers: &#123;</span><br><span class="line">            &#x27;accept&#x27;: &#x27;application/json, text/plain, */*&#x27;,</span><br><span class="line">            &#x27;authorization&#x27;: &#x27;[JWT 認證]&#x27;,</span><br><span class="line">            &#x27;content-type&#x27;: &#x27;application/json&#x27;</span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    let res = http.post(url, payload, params);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<!-- 使用 open api 轉換成 k6 腳本
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">docker pull openapitools/openapi-generator-cli</span><br><span class="line"></span><br><span class="line">docker run --<span class="built_in">rm</span> -v <span class="variable">$&#123;PWD&#125;</span>:/local openapitools/openapi-generator-cli generate \</span><br><span class="line">    -i /location of json file/swagger.json \</span><br><span class="line">    -g k6 \</span><br><span class="line">    -o /local/k6-<span class="built_in">test</span>/</span><br><span class="line">    --skip-validate-spec</span><br><span class="line">``` --&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 測試情境</span></span><br><span class="line"></span><br><span class="line">迭代測試:</span><br><span class="line">情境: 2 個用戶總共執行 2 次</span><br><span class="line"></span><br><span class="line">```bash</span><br><span class="line">k6 run test.js --vus 2 --iterations 2</span><br></pre></td></tr></table></figure>
-<p>冒煙測試: 確認服務基本可用<br>
-情境: 3 個用戶 1 分內持續執行</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">k6 run test.js --vus 3 --duration 1m</span><br></pre></td></tr></table></figure>
-<p>負載測試: 確認在預測用戶下的執行效能<br>
-情境: 5 分鐘內增加至 100 人，在持續 30 分鐘後，用 5 分鐘內清空人數</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">k6 run test.js --stage <span class="string">&quot;5m:100,30m:100,5m:0&quot;</span></span><br></pre></td></tr></table></figure>
-<p>壓力測試: 確認流量平緩增加執行的效能<br>
-情境: 10 分鐘內增加至 200 人，在持續 30 分鐘後，用 5 分鐘內清空人數</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">k6 run test.js --stage <span class="string">&quot;10m:200,30m:200,5m:0&quot;</span></span><br></pre></td></tr></table></figure>
-<p>峰值測試: 確認流量瞬間湧入執行的效能<br>
-情境: 2 分鐘內增加至 2000 人後，用 1 分鐘內清空人數</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">k6 run test.js --stage <span class="string">&quot;2m:2000,1m:0&quot;</span></span><br></pre></td></tr></table></figure>
-<p>浸泡測試: 確認長時間持續執行的效能<br>
-情境: 5 分鐘內增加至 100 人，在持續 8 小時後，用 5 分鐘內清空人數</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">k6 run test.js --stage <span class="string">&quot;5m:100,8h:100,5m:0&quot;</span></span><br></pre></td></tr></table></figure>
-<p>斷點測試: 確認資源消耗至最大後的效能<br>
-2 小時內，用戶增加至 20000 人</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">k6 run test.js --stage <span class="string">&quot;2h:20000&quot;</span></span><br></pre></td></tr></table></figure>
-<h1 id="結果顯示"><a class="header-anchor" href="#結果顯示"></a>結果顯示</h1>
-<h2 id="JSON-格式"><a class="header-anchor" href="#JSON-格式"></a>JSON 格式</h2>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">k6 run --stage 30s:10 --out json=test-result.json test.js</span><br></pre></td></tr></table></figure>
-<h2 id="儀錶板"><a class="header-anchor" href="#儀錶板"></a>儀錶板</h2>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">K6_WEB_DASHBOARD=<span class="string">&#x27;true&#x27;</span> \</span><br><span class="line">K6_WEB_DASHBOARD_EXPORT=<span class="string">&#x27;html-report.html&#x27;</span> \</span><br><span class="line">k6 run --stage 30s:10 test.js;</span><br></pre></td></tr></table></figure>
-<!-- ```powershell
-$env:K6_WEB_DASHBOARD='true';
-$env:K6_WEB_DASHBOARD_EXPORT='html-report.html';
-k6 run --stage 30s:10 test.js;
-``` -->
-<!-- 只有當測試持續時間大於K6_WEB_DASHBOARD_PERIOD變數設定的聚合週期值的三倍時，報告才包含圖表 -->
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a target="_blank" rel="noopener" href="https://grafana.com/docs/k6/latest/set-up/install-k6/">安裝K6</a></li>
-<li><a target="_blank" rel="noopener" href="https://grafana.com/docs/k6/latest/testing-guides/test-types/">測試情境</a></li>
-<li><a target="_blank" rel="noopener" href="https://grafana.com/docs/k6/latest/results-output/web-dashboard/">顯示儀錶板</a></li>
-</ol>
-</div>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2025/04/02/JsK6LoadingTest/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -533,7 +516,7 @@ k6 run --stage 30s:10 test.js;
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-04-20 09:26:48" itemprop="dateModified" datetime="2025-04-20T09:26:48+00:00">2025-04-20</time>
+      <time title="Modified: 2025-04-20 09:39:37" itemprop="dateModified" datetime="2025-04-20T09:39:37+00:00">2025-04-20</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -552,7 +535,7 @@ k6 run --stage 30s:10 test.js;
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Word count in article: </span>
-      <span>681</span>
+      <span>682</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
@@ -573,9 +556,6 @@ k6 run --stage 30s:10 test.js;
           <h1 id="安裝-InfluxDB-儲存壓測資料"><a class="header-anchor" href="#安裝-InfluxDB-儲存壓測資料"></a>安裝 InfluxDB 儲存壓測資料</h1>
 <p>使用 Docker 建立 InfluxDB 2.X</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -p 8086:8086 \</span><br><span class="line">	-e DOCKER_INFLUXDB_INIT_MODE=setup \</span><br><span class="line">    -e DOCKER_INFLUXDB_INIT_USERNAME=[初始帳號] \</span><br><span class="line">	-e DOCKER_INFLUXDB_INIT_PASSWORD=[初始密碼] \</span><br><span class="line">	-e DOCKER_INFLUXDB_INIT_ORG=[初始ORG] \</span><br><span class="line">	-e DOCKER_INFLUXDB_INIT_BUCKET=[初始BUCKET] \</span><br><span class="line">    -e DOCKER_INFLUXDB_INIT_RETENTION=1w \</span><br><span class="line">    -e DOCKER_INFLUXDB_INIT_ADMIN_TOKEN=[初始TOKEN] \</span><br><span class="line">	influxdb</span><br></pre></td></tr></table></figure>
-<!-- 建立完成後，使用初始帳密登入連結 http://localhost:8086/ -->
-<p>建立完成後，使用 API 檢查 BUCKET</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl --request GET <span class="string">&quot;http://localhost:8086/api/v2/buckets?name=[初始BUCKET]&quot;</span> \</span><br><span class="line">    --header <span class="string">&quot;Authorization: Token [初始TOKEN]&quot;</span></span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2025/04/02/JsK6Monitor/#more" rel="contents">
@@ -645,7 +625,7 @@ k6 run --stage 30s:10 test.js;
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-04-20 09:26:48" itemprop="dateModified" datetime="2025-04-20T09:26:48+00:00">2025-04-20</time>
+      <time title="Modified: 2025-04-20 09:39:37" itemprop="dateModified" datetime="2025-04-20T09:39:37+00:00">2025-04-20</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -753,7 +733,7 @@ k6 run --stage 30s:10 test.js;
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-04-20 09:26:48" itemprop="dateModified" datetime="2025-04-20T09:26:48+00:00">2025-04-20</time>
+      <time title="Modified: 2025-04-20 09:39:37" itemprop="dateModified" datetime="2025-04-20T09:39:37+00:00">2025-04-20</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -856,6 +836,12 @@ k6 run --stage 30s:10 test.js;
   </footer>
 
   
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
   <div class="back-to-top" role="button" aria-label="Back to top">
     <i class="fa fa-arrow-up fa-lg"></i>
     <span>0%</span>
@@ -867,26 +853,6 @@ k6 run --stage 30s:10 test.js;
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
 </noscript>
-
-
-  
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
-<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
-<script src="/js/third-party/search/local-search.js"></script>
-
-
-
-
-
-
-
-  
-
-
-
-
 
 </body>
 </html>

