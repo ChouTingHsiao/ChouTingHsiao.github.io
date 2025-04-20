@@ -1,34 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Angular Live Reload 在 Ubuntu 沒反應</title>
-    <url>/2020/08/31/AngularLiveReload/</url>
-    <content><![CDATA[<h1 id="確認-inotify-設定"><a class="header-anchor" href="#確認-inotify-設定"></a>確認 inotify 設定</h1>
-<p>在 Linux 上，默認情況下，Listen 使用 inotify 監視目錄中的更改</p>
-<p>Ubuntu 的 inotify 預設限制為8192</p>
-<p>您可以通過執行以下操作獲取目前的 inotify 文件監視限制：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cat</span> /proc/sys/fs/inotify/max_user_watches</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="調整-inotify-設定"><a class="header-anchor" href="#調整-inotify-設定"></a>調整 inotify 設定</h1>
-<p>如果此限制不足以監視目錄中的所有文件，則必須增加該限制以使其正常工作</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo sysctl fs.inotify.max_user_watches=524288 </span><br><span class="line">sudo sysctl -p</span><br></pre></td></tr></table></figure>
-<p>如果想讓自己的限制永久化，請輸入以下命令:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> fs.inotify.max_user_watches=524288 | sudo <span class="built_in">tee</span> -a /etc/sysctl.conf</span><br><span class="line">sudo sysctl -p</span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://askubuntu.com/questions/770374/user-limit-of-inotify-watches-reached-on-ubuntu-16-04">User limit of inotify watches reached on Ubuntu 16.04</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>Angular</category>
-      </categories>
-      <tags>
-        <tag>Angular</tag>
-        <tag>Linux</tag>
-        <tag>Ubuntu</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>使用 ADB 命令</title>
     <url>/2024/05/05/AndroidAdb/</url>
     <content><![CDATA[<!-- 宿主機: localhost 10.0.2.2 -->
@@ -97,6 +69,61 @@
       </tags>
   </entry>
   <entry>
+    <title>Angular Live Reload 在 Ubuntu 沒反應</title>
+    <url>/2020/08/31/AngularLiveReload/</url>
+    <content><![CDATA[<h1 id="確認-inotify-設定"><a class="header-anchor" href="#確認-inotify-設定"></a>確認 inotify 設定</h1>
+<p>在 Linux 上，默認情況下，Listen 使用 inotify 監視目錄中的更改</p>
+<p>Ubuntu 的 inotify 預設限制為8192</p>
+<p>您可以通過執行以下操作獲取目前的 inotify 文件監視限制：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cat</span> /proc/sys/fs/inotify/max_user_watches</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="調整-inotify-設定"><a class="header-anchor" href="#調整-inotify-設定"></a>調整 inotify 設定</h1>
+<p>如果此限制不足以監視目錄中的所有文件，則必須增加該限制以使其正常工作</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo sysctl fs.inotify.max_user_watches=524288 </span><br><span class="line">sudo sysctl -p</span><br></pre></td></tr></table></figure>
+<p>如果想讓自己的限制永久化，請輸入以下命令:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> fs.inotify.max_user_watches=524288 | sudo <span class="built_in">tee</span> -a /etc/sysctl.conf</span><br><span class="line">sudo sysctl -p</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://askubuntu.com/questions/770374/user-limit-of-inotify-watches-reached-on-ubuntu-16-04">User limit of inotify watches reached on Ubuntu 16.04</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>Angular</category>
+      </categories>
+      <tags>
+        <tag>Angular</tag>
+        <tag>Linux</tag>
+        <tag>Ubuntu</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>如何設定 Protractor WebDriver Version</title>
+    <url>/2020/08/31/AngularProtractorWebDriver/</url>
+    <content><![CDATA[<h1 id="安裝-WebDriver"><a class="header-anchor" href="#安裝-WebDriver"></a>安裝 WebDriver</h1>
+<p>先清除目前下載的 WebDriver</p>
+<span id="more"></span>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npx  webdriver-manager clean</span><br></pre></td></tr></table></figure>
+<p>以 chrome 為例從<a href="http://chromedriver.chromium.org/">chromedriver網頁</a></p>
+<p>查詢所需的版本號</p>
+<p>接下來依版本下載 WebDriver</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npx webdriver-manager update  --versions.chrome  [chrome版本號]</span><br></pre></td></tr></table></figure>
+<h1 id="運行-Protractor"><a class="header-anchor" href="#運行-Protractor"></a>運行 Protractor</h1>
+<p>運行 Protractor 時使用 --no-webdriver-update 選項</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ng e2e --no-webdriver-update</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://www.npmjs.com/package/webdriver-manager">webdriver-manager NPM</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>Angular</category>
+      </categories>
+      <tags>
+        <tag>Angular</tag>
+        <tag>Protractor</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>如何在 pi 3b+ 上執行 Angular Protractor</title>
     <url>/2019/12/25/AngularProtractorOnPi/</url>
     <content><![CDATA[<h1 id="安裝-WebDriver"><a class="header-anchor" href="#安裝-WebDriver"></a>安裝 WebDriver</h1>
@@ -125,8 +152,8 @@
       <tags>
         <tag>Angular</tag>
         <tag>Linux</tag>
-        <tag>Pi</tag>
         <tag>Protractor</tag>
+        <tag>Pi</tag>
       </tags>
   </entry>
   <entry>
@@ -169,33 +196,6 @@
       </categories>
       <tags>
         <tag>Docker</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>如何設定 Protractor WebDriver Version</title>
-    <url>/2020/08/31/AngularProtractorWebDriver/</url>
-    <content><![CDATA[<h1 id="安裝-WebDriver"><a class="header-anchor" href="#安裝-WebDriver"></a>安裝 WebDriver</h1>
-<p>先清除目前下載的 WebDriver</p>
-<span id="more"></span>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npx  webdriver-manager clean</span><br></pre></td></tr></table></figure>
-<p>以 chrome 為例從<a href="http://chromedriver.chromium.org/">chromedriver網頁</a></p>
-<p>查詢所需的版本號</p>
-<p>接下來依版本下載 WebDriver</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npx webdriver-manager update  --versions.chrome  [chrome版本號]</span><br></pre></td></tr></table></figure>
-<h1 id="運行-Protractor"><a class="header-anchor" href="#運行-Protractor"></a>運行 Protractor</h1>
-<p>運行 Protractor 時使用 --no-webdriver-update 選項</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ng e2e --no-webdriver-update</span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://www.npmjs.com/package/webdriver-manager">webdriver-manager NPM</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>Angular</category>
-      </categories>
-      <tags>
-        <tag>Angular</tag>
-        <tag>Protractor</tag>
       </tags>
   </entry>
   <entry>
@@ -253,35 +253,6 @@
       </tags>
   </entry>
   <entry>
-    <title>JSON 格式資料如何拆解成 form 的輸入項</title>
-    <url>/2020/03/27/HtmlFormPost/</url>
-    <content><![CDATA[<h1 id="拆解-JSON-格式資料"><a class="header-anchor" href="#拆解-JSON-格式資料"></a>拆解 JSON 格式資料</h1>
-<p>下方是 JSON 格式資料</p>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">   <span class="attr">&quot;item&quot;</span><span class="punctuation">:</span> <span class="string">&quot;1&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;items&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;1&quot;</span><span class="punctuation">,</span><span class="string">&quot;2&quot;</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="基本物件型別拆解"><a class="header-anchor" href="#基本物件型別拆解"></a>基本物件型別拆解</h1>
-<p>基本物件型別的拆解如下</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">&quot;item&quot;: &quot;1&quot;</span><br><span class="line">可拆解成:</span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;item&quot;</span> <span class="attr">value</span>=<span class="string">&quot;1&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h1 id="陣列型別拆解"><a class="header-anchor" href="#陣列型別拆解"></a>陣列型別拆解</h1>
-<p>陣列部分需依造陣列結構做拆解</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">&quot;items&quot;: [&quot;1&quot;,&quot;2&quot;]</span><br><span class="line">可拆解成:</span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;items[0]&quot;</span> <span class="attr">value</span>=<span class="string">&quot;1&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;items[1]&quot;</span> <span class="attr">value</span>=<span class="string">&quot;2&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h1 id="完整拆解設定"><a class="header-anchor" href="#完整拆解設定"></a>完整拆解設定</h1>
-<p>最後是完整的 HTML form 設定</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">&quot;/api/Test/Post&quot;</span> <span class="attr">method</span>=<span class="string">&quot;post&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;item&quot;</span> <span class="attr">value</span>=<span class="string">&quot;1&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;items[0]&quot;</span> <span class="attr">value</span>=<span class="string">&quot;1&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;items[1]&quot;</span> <span class="attr">value</span>=<span class="string">&quot;2&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">　<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> <span class="attr">value</span>=<span class="string">&quot;送出表單&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://stackoverflow.com/questions/9073690/post-an-array-from-an-html-form-without-javascript">POST an array from an HTML form without javascript</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>Html</category>
-      </categories>
-      <tags>
-        <tag>Html</tag>
-        <tag>JSON</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>WSL2 設定 Docker In Docker</title>
     <url>/2024/01/01/DockerWsl2DockerInDocker/</url>
     <content><![CDATA[<h1 id="🚀-使用主機的-Docker-Socket"><a class="header-anchor" href="#🚀-使用主機的-Docker-Socket"></a>🚀 使用主機的 Docker Socket</h1>
@@ -316,6 +287,35 @@
       <tags>
         <tag>Docker</tag>
         <tag>Wsl2</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JSON 格式資料如何拆解成 form 的輸入項</title>
+    <url>/2020/03/27/HtmlFormPost/</url>
+    <content><![CDATA[<h1 id="拆解-JSON-格式資料"><a class="header-anchor" href="#拆解-JSON-格式資料"></a>拆解 JSON 格式資料</h1>
+<p>下方是 JSON 格式資料</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">   <span class="attr">&quot;item&quot;</span><span class="punctuation">:</span> <span class="string">&quot;1&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;items&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;1&quot;</span><span class="punctuation">,</span><span class="string">&quot;2&quot;</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="基本物件型別拆解"><a class="header-anchor" href="#基本物件型別拆解"></a>基本物件型別拆解</h1>
+<p>基本物件型別的拆解如下</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">&quot;item&quot;: &quot;1&quot;</span><br><span class="line">可拆解成:</span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;item&quot;</span> <span class="attr">value</span>=<span class="string">&quot;1&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h1 id="陣列型別拆解"><a class="header-anchor" href="#陣列型別拆解"></a>陣列型別拆解</h1>
+<p>陣列部分需依造陣列結構做拆解</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">&quot;items&quot;: [&quot;1&quot;,&quot;2&quot;]</span><br><span class="line">可拆解成:</span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;items[0]&quot;</span> <span class="attr">value</span>=<span class="string">&quot;1&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;items[1]&quot;</span> <span class="attr">value</span>=<span class="string">&quot;2&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h1 id="完整拆解設定"><a class="header-anchor" href="#完整拆解設定"></a>完整拆解設定</h1>
+<p>最後是完整的 HTML form 設定</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">&quot;/api/Test/Post&quot;</span> <span class="attr">method</span>=<span class="string">&quot;post&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;item&quot;</span> <span class="attr">value</span>=<span class="string">&quot;1&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;items[0]&quot;</span> <span class="attr">value</span>=<span class="string">&quot;1&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;items[1]&quot;</span> <span class="attr">value</span>=<span class="string">&quot;2&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">　<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> <span class="attr">value</span>=<span class="string">&quot;送出表單&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://stackoverflow.com/questions/9073690/post-an-array-from-an-html-form-without-javascript">POST an array from an HTML form without javascript</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>Html</category>
+      </categories>
+      <tags>
+        <tag>Html</tag>
+        <tag>JSON</tag>
       </tags>
   </entry>
   <entry>
@@ -438,6 +438,35 @@
       </tags>
   </entry>
   <entry>
+    <title>如何在 Iframe 讀取或寫入字串</title>
+    <url>/2019/12/28/JsIframe/</url>
+    <content><![CDATA[<h1 id="建立-HTML"><a class="header-anchor" href="#建立-HTML"></a>建立 HTML</h1>
+<p>首先在 HTML 建立一個 iframe</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">id</span>=<span class="string">&quot;test&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="操作-iframe"><a class="header-anchor" href="#操作-iframe"></a>操作 iframe</h1>
+<p>用 Javascript 搜尋 iframe 的DOM物件</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> iframe = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;test&#x27;</span>).<span class="property">contentDocument</span>;</span><br></pre></td></tr></table></figure>
+<p>字串寫入 iframe</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">iframe.<span class="title function_">open</span>();</span><br><span class="line"></span><br><span class="line">iframe.<span class="title function_">write</span>(<span class="string">&#x27;&lt;a&gt;test&lt;/a&gt;&#x27;</span>);</span><br><span class="line"></span><br><span class="line">iframe.<span class="title function_">close</span>();</span><br></pre></td></tr></table></figure>
+<p>取得 iframe 字串</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">iframe.<span class="property">body</span>.<span class="property">innerText</span></span><br></pre></td></tr></table></figure>
+<p>URL.createObjectURL 寫入 iframe</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> blobx = <span class="keyword">new</span> <span class="title class_">Blob</span>(</span><br><span class="line">    [<span class="string">&#x27;&lt;base href=&quot;[URL輸入]&quot;&gt;&#x27;</span> + data],</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="attr">type</span>: <span class="string">&#x27;text/html&#x27;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> urlObject = <span class="variable constant_">URL</span>.<span class="title function_">createObjectURL</span>(blobx)</span><br><span class="line"></span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;test&#x27;</span>).<span class="title function_">setAttribute</span>(<span class="string">&#x27;src&#x27;</span>, urlObject)</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/write">MDN Document write</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>Javascript</category>
+      </categories>
+      <tags>
+        <tag>Javascript</tag>
+        <tag>Iframe</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>如何迭代 Js 物件</title>
     <url>/2020/03/27/JsIteratorObject/</url>
     <content><![CDATA[<h1 id="使用-for…in"><a class="header-anchor" href="#使用-for…in"></a>使用 for…in</h1>
@@ -465,35 +494,6 @@
       <tags>
         <tag>Javascript</tag>
         <tag>Object</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>如何在 Iframe 讀取或寫入字串</title>
-    <url>/2019/12/28/JsIframe/</url>
-    <content><![CDATA[<h1 id="建立-HTML"><a class="header-anchor" href="#建立-HTML"></a>建立 HTML</h1>
-<p>首先在 HTML 建立一個 iframe</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">id</span>=<span class="string">&quot;test&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="操作-iframe"><a class="header-anchor" href="#操作-iframe"></a>操作 iframe</h1>
-<p>用 Javascript 搜尋 iframe 的DOM物件</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> iframe = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;test&#x27;</span>).<span class="property">contentDocument</span>;</span><br></pre></td></tr></table></figure>
-<p>字串寫入 iframe</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">iframe.<span class="title function_">open</span>();</span><br><span class="line"></span><br><span class="line">iframe.<span class="title function_">write</span>(<span class="string">&#x27;&lt;a&gt;test&lt;/a&gt;&#x27;</span>);</span><br><span class="line"></span><br><span class="line">iframe.<span class="title function_">close</span>();</span><br></pre></td></tr></table></figure>
-<p>取得 iframe 字串</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">iframe.<span class="property">body</span>.<span class="property">innerText</span></span><br></pre></td></tr></table></figure>
-<p>URL.createObjectURL 寫入 iframe</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> blobx = <span class="keyword">new</span> <span class="title class_">Blob</span>(</span><br><span class="line">    [<span class="string">&#x27;&lt;base href=&quot;[URL輸入]&quot;&gt;&#x27;</span> + data],</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="attr">type</span>: <span class="string">&#x27;text/html&#x27;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> urlObject = <span class="variable constant_">URL</span>.<span class="title function_">createObjectURL</span>(blobx)</span><br><span class="line"></span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;test&#x27;</span>).<span class="title function_">setAttribute</span>(<span class="string">&#x27;src&#x27;</span>, urlObject)</span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/write">MDN Document write</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>Javascript</category>
-      </categories>
-      <tags>
-        <tag>Javascript</tag>
-        <tag>Iframe</tag>
       </tags>
   </entry>
   <entry>
@@ -682,35 +682,6 @@ k6 run --stage 30s:10 test.js;
       </tags>
   </entry>
   <entry>
-    <title>Linux MSSQL ODBC 手動安裝</title>
-    <url>/2021/10/05/LinuxMssqlOdbc/</url>
-    <content><![CDATA[<h1 id="配置-Linux-ODBC-元件"><a class="header-anchor" href="#配置-Linux-ODBC-元件"></a>配置 Linux ODBC 元件</h1>
-<p>安裝 Linux ODBC 元件</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt-get install unixodbc</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="安裝-ODBC-Driver"><a class="header-anchor" href="#安裝-ODBC-Driver"></a>安裝 ODBC Driver</h1>
-<p>登入<a href="https://docs.microsoft.com/en-us/sql/connect/odbc/download-odbc-driver-for-sql-server?view=sql-server-ver15">Microsoft網頁</a>下載Odbc Driver並安裝</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo dpkg -i msodbcsql17_17.8.1.1-1_amd64.deb</span><br></pre></td></tr></table></figure>
-<p>查看 Linux ODBC Drivers 設定檔位置</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">odbcinst -j</span><br></pre></td></tr></table></figure>
-<p>查看設定檔是否出現 ODBC Driver 17 for SQL Server 的設定</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cat</span> /etc/odbcinst.ini</span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://www.ibm.com/docs/en/db2/11.5?topic=managers-installing-unixodbc-driver-manager">Installing the unixODBC driver manager</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-        <tag>Ubuntu</tag>
-        <tag>ODBC</tag>
-        <tag>MSSQL</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>使用 NAT 轉發請求</title>
     <url>/2024/07/25/LinuxNatForward/</url>
     <content><![CDATA[<h1 id="iptables-介紹"><a class="header-anchor" href="#iptables-介紹"></a>iptables 介紹</h1>
@@ -798,6 +769,35 @@ sudo iptables -A FORWARD -i eth0 -o eth1 -j ACCEPT -->
       </tags>
   </entry>
   <entry>
+    <title>Linux MSSQL ODBC 手動安裝</title>
+    <url>/2021/10/05/LinuxMssqlOdbc/</url>
+    <content><![CDATA[<h1 id="配置-Linux-ODBC-元件"><a class="header-anchor" href="#配置-Linux-ODBC-元件"></a>配置 Linux ODBC 元件</h1>
+<p>安裝 Linux ODBC 元件</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt-get install unixodbc</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="安裝-ODBC-Driver"><a class="header-anchor" href="#安裝-ODBC-Driver"></a>安裝 ODBC Driver</h1>
+<p>登入<a href="https://docs.microsoft.com/en-us/sql/connect/odbc/download-odbc-driver-for-sql-server?view=sql-server-ver15">Microsoft網頁</a>下載Odbc Driver並安裝</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo dpkg -i msodbcsql17_17.8.1.1-1_amd64.deb</span><br></pre></td></tr></table></figure>
+<p>查看 Linux ODBC Drivers 設定檔位置</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">odbcinst -j</span><br></pre></td></tr></table></figure>
+<p>查看設定檔是否出現 ODBC Driver 17 for SQL Server 的設定</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cat</span> /etc/odbcinst.ini</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://www.ibm.com/docs/en/db2/11.5?topic=managers-installing-unixodbc-driver-manager">Installing the unixODBC driver manager</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>Ubuntu</tag>
+        <tag>ODBC</tag>
+        <tag>MSSQL</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>使用 SSH 建立通道</title>
     <url>/2023/05/07/LinuxSshTunnel/</url>
     <content><![CDATA[<h1 id="本機特定端口轉發至跳板機"><a class="header-anchor" href="#本機特定端口轉發至跳板機"></a>本機特定端口轉發至跳板機</h1>
@@ -824,6 +824,34 @@ plink -v -x -a -T -C -noagent -ssh -pw "[密碼]" -P 50893 -L [本地端口]:[�
         <tag>Linux</tag>
         <tag>Ubuntu</tag>
         <tag>Ssh</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>在 SQL Server 操作 JSON</title>
+    <url>/2025/01/01/MsSqlJsonString/</url>
+    <content><![CDATA[<h1 id="宣告-JSON-字串"><a class="header-anchor" href="#宣告-JSON-字串"></a>宣告 JSON 字串</h1>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">DECLARE</span> <span class="variable">@json</span> NVARCHAR(MAX);</span><br><span class="line"></span><br><span class="line"><span class="keyword">SET</span> <span class="variable">@json</span> <span class="operator">=</span> <span class="string">&#x27;&#123;&quot;info&quot;: &#123;&quot;address&quot;: [&#123;&quot;town&quot;: &quot;Belgrade&quot;&#125;, &#123;&quot;town&quot;: &quot;Paris&quot;&#125;, &#123;&quot;town&quot;:&quot;Madrid&quot;&#125;]&#125;&#125;&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="JSON-VALUE-擷取純量值字串"><a class="header-anchor" href="#JSON-VALUE-擷取純量值字串"></a>JSON_VALUE 擷取純量值字串</h1>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="built_in">JSON_VALUE</span>(<span class="variable">@json</span>, <span class="string">&#x27;$.info.address[0].town&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<h1 id="JSON-QUERY-擷取物件或陣列字串"><a class="header-anchor" href="#JSON-QUERY-擷取物件或陣列字串"></a>JSON_QUERY 擷取物件或陣列字串</h1>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="built_in">JSON_QUERY</span>(<span class="variable">@json</span>, <span class="string">&#x27;$.info.address&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<h1 id="JSON-MODIFY-變更-JSON-字串中的值"><a class="header-anchor" href="#JSON-MODIFY-變更-JSON-字串中的值"></a>JSON_MODIFY 變更 JSON 字串中的值</h1>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SET</span> <span class="variable">@json</span> <span class="operator">=</span> JSON_MODIFY(<span class="variable">@json</span>, <span class="string">&#x27;$.info.address[1].town&#x27;</span>, <span class="string">&#x27;London&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> modifiedJson <span class="operator">=</span> <span class="variable">@json</span>;</span><br></pre></td></tr></table></figure>
+<h1 id="JSON-轉換為資料列"><a class="header-anchor" href="#JSON-轉換為資料列"></a>JSON 轉換為資料列</h1>
+<p>解析 JSON 字串資料,需預先定義對應格式</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span></span><br><span class="line"><span class="keyword">FROM</span> OPENJSON(<span class="built_in">JSON_QUERY</span>(<span class="variable">@json</span>, <span class="string">&#x27;$.info.address&#x27;</span>)) <span class="keyword">WITH</span> (</span><br><span class="line">    town NVARCHAR(<span class="number">50</span>) <span class="string">&#x27;$.town&#x27;</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://learn.microsoft.com/zh-tw/sql/relational-databases/json/json-data-sql-server?view=sql-server-ver16">SQL Server 中的 JSON 資料</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>MSSQL</category>
+      </categories>
+      <tags>
+        <tag>JSON</tag>
+        <tag>MSSQL</tag>
       </tags>
   </entry>
   <entry>
@@ -881,34 +909,6 @@ plink -v -x -a -T -C -noagent -ssh -pw "[密碼]" -P 50893 -L [本地端口]:[�
       <tags>
         <tag>MSSQL</tag>
         <tag>DMV</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>在 SQL Server 操作 JSON</title>
-    <url>/2025/01/01/MsSqlJsonString/</url>
-    <content><![CDATA[<h1 id="宣告-JSON-字串"><a class="header-anchor" href="#宣告-JSON-字串"></a>宣告 JSON 字串</h1>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">DECLARE</span> <span class="variable">@json</span> NVARCHAR(MAX);</span><br><span class="line"></span><br><span class="line"><span class="keyword">SET</span> <span class="variable">@json</span> <span class="operator">=</span> <span class="string">&#x27;&#123;&quot;info&quot;: &#123;&quot;address&quot;: [&#123;&quot;town&quot;: &quot;Belgrade&quot;&#125;, &#123;&quot;town&quot;: &quot;Paris&quot;&#125;, &#123;&quot;town&quot;:&quot;Madrid&quot;&#125;]&#125;&#125;&#x27;</span>;</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="JSON-VALUE-擷取純量值字串"><a class="header-anchor" href="#JSON-VALUE-擷取純量值字串"></a>JSON_VALUE 擷取純量值字串</h1>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="built_in">JSON_VALUE</span>(<span class="variable">@json</span>, <span class="string">&#x27;$.info.address[0].town&#x27;</span>);</span><br></pre></td></tr></table></figure>
-<h1 id="JSON-QUERY-擷取物件或陣列字串"><a class="header-anchor" href="#JSON-QUERY-擷取物件或陣列字串"></a>JSON_QUERY 擷取物件或陣列字串</h1>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="built_in">JSON_QUERY</span>(<span class="variable">@json</span>, <span class="string">&#x27;$.info.address&#x27;</span>);</span><br></pre></td></tr></table></figure>
-<h1 id="JSON-MODIFY-變更-JSON-字串中的值"><a class="header-anchor" href="#JSON-MODIFY-變更-JSON-字串中的值"></a>JSON_MODIFY 變更 JSON 字串中的值</h1>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SET</span> <span class="variable">@json</span> <span class="operator">=</span> JSON_MODIFY(<span class="variable">@json</span>, <span class="string">&#x27;$.info.address[1].town&#x27;</span>, <span class="string">&#x27;London&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> modifiedJson <span class="operator">=</span> <span class="variable">@json</span>;</span><br></pre></td></tr></table></figure>
-<h1 id="JSON-轉換為資料列"><a class="header-anchor" href="#JSON-轉換為資料列"></a>JSON 轉換為資料列</h1>
-<p>解析 JSON 字串資料,需預先定義對應格式</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span></span><br><span class="line"><span class="keyword">FROM</span> OPENJSON(<span class="built_in">JSON_QUERY</span>(<span class="variable">@json</span>, <span class="string">&#x27;$.info.address&#x27;</span>)) <span class="keyword">WITH</span> (</span><br><span class="line">    town NVARCHAR(<span class="number">50</span>) <span class="string">&#x27;$.town&#x27;</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://learn.microsoft.com/zh-tw/sql/relational-databases/json/json-data-sql-server?view=sql-server-ver16">SQL Server 中的 JSON 資料</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>MSSQL</category>
-      </categories>
-      <tags>
-        <tag>JSON</tag>
-        <tag>MSSQL</tag>
       </tags>
   </entry>
   <entry>
@@ -1154,6 +1154,29 @@ dotnet-dump collect --process-id 1902 -->
       </tags>
   </entry>
   <entry>
+    <title>Http 的 Get 方法傳入 List 參數</title>
+    <url>/2023/01/21/NetHttpGetWithList/</url>
+    <content><![CDATA[<h1 id="建立類別"><a class="header-anchor" href="#建立類別"></a>建立類別</h1>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">User</span> &#123;</span><br><span class="line">  </span><br><span class="line">	<span class="keyword">public</span> <span class="built_in">string</span> Name &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> <span class="built_in">int</span> Age &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="建立-HttpGet-方法"><a class="header-anchor" href="#建立-HttpGet-方法"></a>建立 HttpGet 方法</h1>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">[<span class="meta">ApiController</span>]</span><br><span class="line">[<span class="meta">Route(<span class="string">&quot;[controller]&quot;</span>)</span>]</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">UserController</span> : <span class="title">ControllerBase</span></span><br><span class="line">&#123;</span><br><span class="line">  [<span class="meta">HttpGet</span>]</span><br><span class="line">  <span class="function"><span class="keyword">public</span> List&lt;User&gt; <span class="title">Get</span>(<span class="params">[FromQuery] List&lt;User&gt; user</span>)</span></span><br><span class="line">  &#123;</span><br><span class="line">      <span class="keyword">return</span> user;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="組合-Request-的-Url"><a class="header-anchor" href="#組合-Request-的-Url"></a>組合 Request 的 Url</h1>
+<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line">https://example.com/User?user[0].Name=&#x27;張三&#x27;&amp;user[0].Age=10&amp;user[1].Name=&#x27;李四&#x27;&amp;user[1].Age=20</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://stackoverflow.com/questions/3061273/send-an-array-with-an-http-get">Send an Array with an HTTP Get</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>.Net</category>
+      </categories>
+      <tags>
+        <tag>.Net</tag>
+        <tag>Http</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>使用 Expression Trees 把 List&lt;T&gt; 轉成 CSV 字串</title>
     <url>/2024/05/01/NetExpressionListToCsv/</url>
     <content><![CDATA[<h1 id="宣告類別"><a class="header-anchor" href="#宣告類別"></a>宣告類別</h1>
@@ -1179,29 +1202,6 @@ dotnet-dump collect --process-id 1902 -->
       <tags>
         <tag>.Net</tag>
         <tag>Expression</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Http 的 Get 方法傳入 List 參數</title>
-    <url>/2023/01/21/NetHttpGetWithList/</url>
-    <content><![CDATA[<h1 id="建立類別"><a class="header-anchor" href="#建立類別"></a>建立類別</h1>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">User</span> &#123;</span><br><span class="line">  </span><br><span class="line">	<span class="keyword">public</span> <span class="built_in">string</span> Name &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> <span class="built_in">int</span> Age &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="建立-HttpGet-方法"><a class="header-anchor" href="#建立-HttpGet-方法"></a>建立 HttpGet 方法</h1>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">[<span class="meta">ApiController</span>]</span><br><span class="line">[<span class="meta">Route(<span class="string">&quot;[controller]&quot;</span>)</span>]</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">UserController</span> : <span class="title">ControllerBase</span></span><br><span class="line">&#123;</span><br><span class="line">  [<span class="meta">HttpGet</span>]</span><br><span class="line">  <span class="function"><span class="keyword">public</span> List&lt;User&gt; <span class="title">Get</span>(<span class="params">[FromQuery] List&lt;User&gt; user</span>)</span></span><br><span class="line">  &#123;</span><br><span class="line">      <span class="keyword">return</span> user;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="組合-Request-的-Url"><a class="header-anchor" href="#組合-Request-的-Url"></a>組合 Request 的 Url</h1>
-<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line">https://example.com/User?user[0].Name=&#x27;張三&#x27;&amp;user[0].Age=10&amp;user[1].Name=&#x27;李四&#x27;&amp;user[1].Age=20</span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://stackoverflow.com/questions/3061273/send-an-array-with-an-http-get">Send an Array with an HTTP Get</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>.Net</category>
-      </categories>
-      <tags>
-        <tag>.Net</tag>
-        <tag>Http</tag>
       </tags>
   </entry>
   <entry>
@@ -1256,6 +1256,27 @@ dotnet-dump collect --process-id 1902 -->
       </tags>
   </entry>
   <entry>
+    <title>如何運行 Shell 命令</title>
+    <url>/2022/05/22/NetRunShell/</url>
+    <content><![CDATA[<h1 id="運行-Shell-命令"><a class="header-anchor" href="#運行-Shell-命令"></a>運行 Shell 命令</h1>
+<span id="more"></span>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> System.Diagnostics;</span><br><span class="line"></span><br><span class="line"><span class="built_in">string</span> cmd = <span class="string">&quot;echo Hello, World!&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">string</span> fileName = <span class="string">&quot;/bin/bash&quot;</span>;</span><br><span class="line"><span class="built_in">string</span> argument = <span class="string">&quot;-c&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">bool</span> isWin = Environment.OSVersion.Platform.ToString().Contains(<span class="string">&quot;Win&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(isWin)</span><br><span class="line">&#123;</span><br><span class="line">    fileName = <span class="string">&quot;cmd.exe&quot;</span>;</span><br><span class="line">    argument = <span class="string">&quot;/c&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">string</span> escapedArgs = cmd.Replace(<span class="string">&quot;\&quot;&quot;</span>, <span class="string">&quot;\\\&quot;&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> (Process process = <span class="keyword">new</span> Process())</span><br><span class="line">&#123;</span><br><span class="line">    process.StartInfo = <span class="keyword">new</span> ProcessStartInfo</span><br><span class="line">    &#123;</span><br><span class="line">        FileName = <span class="string">&quot;cmd.exe&quot;</span>,</span><br><span class="line">        Arguments = <span class="string">$&quot;<span class="subst">&#123;argument&#125;</span> \&quot;<span class="subst">&#123;escapedArgs&#125;</span>\&quot;&quot;</span>,</span><br><span class="line">        RedirectStandardOutput = <span class="literal">true</span>,</span><br><span class="line">        RedirectStandardError = <span class="literal">true</span>,</span><br><span class="line">        UseShellExecute = <span class="literal">false</span>,</span><br><span class="line">        CreateNoWindow = <span class="literal">true</span>,</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    process.Start();</span><br><span class="line"></span><br><span class="line">    <span class="built_in">string</span> result = process.StandardOutput.ReadToEnd();</span><br><span class="line"></span><br><span class="line">    result.Display();</span><br><span class="line"></span><br><span class="line">    <span class="built_in">string</span> error = process.StandardError.ReadToEnd();</span><br><span class="line"></span><br><span class="line">    error.Display();</span><br><span class="line"></span><br><span class="line">    process.WaitForExit();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://learn.microsoft.com/zh-tw/dotnet/api/system.diagnostics.process?view=net-8.0">Process 類別</a></li>
+</ol>
+</div>
+]]></content>
+      <categories>
+        <category>.Net</category>
+      </categories>
+      <tags>
+        <tag>.Net</tag>
+        <tag>Polyglot Notebooks</tag>
+        <tag>Shell</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>如何在資料存取層進行單元測試</title>
     <url>/2022/05/01/NetRepositoryUnitTest/</url>
     <content><![CDATA[<h1 id="安裝-Sqlite"><a class="header-anchor" href="#安裝-Sqlite"></a>安裝 Sqlite</h1>
@@ -1288,27 +1309,6 @@ dotnet-dump collect --process-id 1902 -->
         <tag>.Net</tag>
         <tag>UnitTest</tag>
         <tag>SQLite</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>如何運行 Shell 命令</title>
-    <url>/2022/05/22/NetRunShell/</url>
-    <content><![CDATA[<h1 id="運行-Shell-命令"><a class="header-anchor" href="#運行-Shell-命令"></a>運行 Shell 命令</h1>
-<span id="more"></span>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> System.Diagnostics;</span><br><span class="line"></span><br><span class="line"><span class="built_in">string</span> cmd = <span class="string">&quot;echo Hello, World!&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">string</span> fileName = <span class="string">&quot;/bin/bash&quot;</span>;</span><br><span class="line"><span class="built_in">string</span> argument = <span class="string">&quot;-c&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">bool</span> isWin = Environment.OSVersion.Platform.ToString().Contains(<span class="string">&quot;Win&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(isWin)</span><br><span class="line">&#123;</span><br><span class="line">    fileName = <span class="string">&quot;cmd.exe&quot;</span>;</span><br><span class="line">    argument = <span class="string">&quot;/c&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">string</span> escapedArgs = cmd.Replace(<span class="string">&quot;\&quot;&quot;</span>, <span class="string">&quot;\\\&quot;&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> (Process process = <span class="keyword">new</span> Process())</span><br><span class="line">&#123;</span><br><span class="line">    process.StartInfo = <span class="keyword">new</span> ProcessStartInfo</span><br><span class="line">    &#123;</span><br><span class="line">        FileName = <span class="string">&quot;cmd.exe&quot;</span>,</span><br><span class="line">        Arguments = <span class="string">$&quot;<span class="subst">&#123;argument&#125;</span> \&quot;<span class="subst">&#123;escapedArgs&#125;</span>\&quot;&quot;</span>,</span><br><span class="line">        RedirectStandardOutput = <span class="literal">true</span>,</span><br><span class="line">        RedirectStandardError = <span class="literal">true</span>,</span><br><span class="line">        UseShellExecute = <span class="literal">false</span>,</span><br><span class="line">        CreateNoWindow = <span class="literal">true</span>,</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    process.Start();</span><br><span class="line"></span><br><span class="line">    <span class="built_in">string</span> result = process.StandardOutput.ReadToEnd();</span><br><span class="line"></span><br><span class="line">    result.Display();</span><br><span class="line"></span><br><span class="line">    <span class="built_in">string</span> error = process.StandardError.ReadToEnd();</span><br><span class="line"></span><br><span class="line">    error.Display();</span><br><span class="line"></span><br><span class="line">    process.WaitForExit();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://learn.microsoft.com/zh-tw/dotnet/api/system.diagnostics.process?view=net-8.0">Process 類別</a></li>
-</ol>
-</div>
-]]></content>
-      <categories>
-        <category>.Net</category>
-      </categories>
-      <tags>
-        <tag>.Net</tag>
-        <tag>Polyglot Notebooks</tag>
-        <tag>Shell</tag>
       </tags>
   </entry>
   <entry>
