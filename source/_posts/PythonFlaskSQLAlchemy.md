@@ -5,10 +5,7 @@ categories: Python
 tags: [Python, Flask, MSSQL]
 ---
 
-# 實作
-
-## 安裝套件
-
+# 安裝套件
 ```bash
 pip install Flask
 pip install flask-sqlalchemy
@@ -17,7 +14,7 @@ pip install pymssql
 
 <!--more-->
 
-## 建立 app.py 內容如下
+# 建立 app.py 內容如下
 
 ```python
 from flask import Flask,request,jsonify
@@ -113,7 +110,7 @@ flask shell
 from app import db, AddressMap
 db.create_all() -->
 
-## 使用Curl呼叫API
+# 使用Curl呼叫API
 
 ```bash
 # 建立資料
@@ -145,6 +142,6 @@ curl --location 'http://127.0.0.1:5000/Address/Delete' \
 ```
 
 {% note warning %}
-參考資料
+📜 參考資料
 1. [Flask-SQLAlchemy](https://flask-sqlalchemy.palletsprojects.com/en/3.0.x/)
 {% endnote %}

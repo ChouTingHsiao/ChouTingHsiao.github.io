@@ -1,13 +1,11 @@
 ---
-title: 使用 AddInMemoryCollection 設定 Configuration
+title: 使用 AddInMemoryCollection 設定 Configuration 進行單元測試
 date: 2023-01-21 18:00:00
 categories: .Net
-tags: [.Net, IConfiguration]
+tags: [.Net, UnitTest, IConfiguration]
 ---
 
-# 實作
-
-## appsettings.json 設定如下
+# 設定 appsettings.json 如下
 ```json
 {
   "Logging": {
@@ -21,7 +19,7 @@ tags: [.Net, IConfiguration]
 
 <!--more-->
 
-## 轉換為 Dictionary<string, string>
+# 轉換為 Dictionary<string, string>
 ```c#
 Dictionary<string, string> inMemorySettings = new Dictionary<string, string> {
     {"Logging:LogLevel:Default",  "Information"},
@@ -29,7 +27,7 @@ Dictionary<string, string> inMemorySettings = new Dictionary<string, string> {
 };
 ```
 
-## 建立 Configuration
+# 建立 Configuration
 ```c#
 IConfiguration configuration = new ConfigurationBuilder()
             .AddInMemoryCollection(inMemorySettings)
@@ -37,6 +35,6 @@ IConfiguration configuration = new ConfigurationBuilder()
 ```
 
 {% note warning %}
-參考資料
+📜 參考資料
 1. [MemoryConfigurationBuilderExtensions.AddInMemoryCollection Method](https://learn.microsoft.com/en-us/dotnet/api/microsoft.extensions.configuration.memoryconfigurationbuilderextensions.addinmemorycollection?view=dotnet-plat-ext-7.0)
 {% endnote %}

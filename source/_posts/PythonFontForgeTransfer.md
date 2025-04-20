@@ -1,13 +1,13 @@
 ---
-title: FontForge 使用 Python Script 進行字型檔轉換
+title: 使用 Python Script 進行 FontForge 字型檔轉換
 date: 2021-10-23 17:00:00
-categories: FontForge
-tags: [Python, Font, Woff]
+categories: Python
+tags: [Python, FontForge, Font]
 ---
 
-# 實作
+# 建立 font.py 檔案
 
-建立 font.py 檔案
+使用 python 操作 fontforge 轉換字型檔
 
 <!--more-->
 
@@ -63,13 +63,13 @@ def main():
 # 執行 main 函數
 main()	
 ```
-
+# 執行 Python Script
 使用 FontForge 執行 Python Script
 ```bash
 fontforge -script font.py [FontFilePath]
 ```
 
 {% note warning %}
-參考資料
+📜 參考資料
 1. [Python Scripting](https://fontforge.org/docs/scripting/python.html)
 {% endnote %}
