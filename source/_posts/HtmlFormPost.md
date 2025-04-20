@@ -1,12 +1,12 @@
 ---
-title: Json 格式資料如何拆解成 form 的輸入項
+title: JSON 格式資料如何拆解成 form 的輸入項
 date: 2020-03-27 20:43:06
 categories: Html
-tags: [Html, Json]
+tags: [Html, JSON]
 ---
 
-# 實作
-下方是 Json 格式資料
+# 拆解 JSON 格式資料
+下方是 JSON 格式資料
 ```json
 {
    "item": "1",
@@ -16,6 +16,7 @@ tags: [Html, Json]
 
 <!--more-->
 
+# 基本物件型別拆解
 基本物件型別的拆解如下
 ```html
 "item": "1"
@@ -23,6 +24,7 @@ tags: [Html, Json]
 <input type="text" name="item" value="1"><br>
 ```
 
+# 陣列型別拆解
 陣列部分需依造陣列結構做拆解
 ```html
 "items": ["1","2"]
@@ -31,6 +33,7 @@ tags: [Html, Json]
 <input type="text" name="items[1]" value="2">
 ```
 
+# 完整拆解設定
 最後是完整的 HTML form 設定
 ```html
 <form action="/api/Test/Post" method="post">
@@ -42,6 +45,6 @@ tags: [Html, Json]
 ```
 
 {% note warning %}
-參考資料
+📜 參考資料
 1. [POST an array from an HTML form without javascript](https://stackoverflow.com/questions/9073690/post-an-array-from-an-html-form-without-javascript)
 {% endnote %}

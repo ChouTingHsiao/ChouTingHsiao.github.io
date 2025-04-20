@@ -5,10 +5,7 @@ categories: Python
 tags: [Python, Flask, Caching]
 ---
 
-# 實作
-
-## 安裝套件
-
+# 安裝套件
 ```bash
 pip install Flask
 pip install Flask-Caching
@@ -16,8 +13,7 @@ pip install Flask-Caching
 
 <!--more-->
 
-## 建立 address.json 內容如下
-
+# 建立 address.json 內容如下
 ```json
 {
     "Address": "新竹市",
@@ -25,8 +21,7 @@ pip install Flask-Caching
 }
 ```
 
-## 建立 app.py 內容如下
-
+# 建立 app.py 內容如下
 ```python
 from flask import Flask
 from flask_caching import Cache
@@ -67,6 +62,6 @@ if __name__ == '__main__':
 ```
 
 {% note warning %}
-參考資料
+📜 參考資料
 1. [Flask-Caching](https://flask-caching.readthedocs.io/en/latest/)
 {% endnote %}

@@ -5,21 +5,49 @@ categories: .Net
 tags: [.Net, Linux, lldb]
 ---
 
-# 實作
+# 查詢服務資訊
 
-## 使用 apport 解壓縮核心傾印檔案
+使用 journalctl 查詢服務 Log
+```bash
+journalctl -r --identifier=[服務的identifier] --since "2 minute ago"
+journalctl -r -u [服務名稱] --since "2 day ago"
+```
+
+# 取得系統產生的傾印檔案
 
 安裝 apport
 ```bash
 sudo apt install apport
 ```
 
-解壓縮核心傾印檔案
+進入目錄 `/var/crash` 搜尋核心傾印檔案，之後使用 apport 解壓縮
 ```bash
-apport-unpack [systemGeneratedCrashReportPath].crash [yourNewUnpackDirectoryHere]
+apport-unpack [核心傾印檔案].crash [解壓縮目錄]
 ```
 
 <!--more-->
+
+# 使用 ProcDump 產生傾印檔案
+
+安裝 ProcDump
+```bash
+sudo apt install procdump
+```
+
+產生傾印檔案至服務工作目錄
+```bash
+sudo procdump [服務PID]
+```
+
+當目標進程 CPU 或記憶體使用量達到特定臨界值或低於限制值時
+```bash
+sudo procdump -c [CPU使用率] -m [記憶體使用MB數] [服務PID]
+```
+
+當目標進程收到特定訊號時
+```bash
+sudo procdump -sig [Linux 信號] [服務PID]
+```
 
 <!-- cd [yourNewUnpackDirectoryHere]/
 sudo apt install gdb
@@ -41,7 +69,7 @@ gdb `cat ExecutablePath` CoreDump
 dotnet-dump ps
 dotnet-dump collect --process-id 1902 -->
 
-## 安裝 Dotnet 工具
+# 安裝相關 Dotnet 工具加強 lldb 偵錯
 
 安裝 dotnet-symbol 導出傾印檔案的符號
 ```bash
@@ -59,7 +87,7 @@ dotnet tool install -g dotnet-sos
 dotnet-sos install
 ```
 
-## 使用 lldb 偵錯
+# 使用 lldb 偵錯
 
 安裝 lldb
 ```bash
@@ -76,31 +104,41 @@ lldb --core ~/dumps/dotnet/CoreDump
 setsymbolserver -directory ~/dumps/symbols
 ```
 
+<!-- plugin load /usr/share/dotnet/shared/Microsoft.NETCore.App/2.1.0/libsosplugin.so -->
+
 在 lldb 中常用命令
 ```bash
+語法資訊: help
+附加至進程: process attach -p [PID]
+建立中斷點: bpmd [dll檔案] [命名空間].[class名稱].[方法]
+列出中斷點: bpmd -list
+程序繼續: process continue
+程序暫停: process interrupt
 執行緒清單: clrthreads
 切換執行序: thread select [thread]
+執行緒池資訊: threadpool
+列印所有緒線程棧: eestack
 線程棧清單: clrstack
-所有託管堆物件: dso
-託管堆狀態: dumpheap -stat
-尋找託管堆的位址: dumpheap -mt [address]
+顯示IP方法資訊: ip2md [IP]
+顯示MethodDesc資訊: dumpmd [MethodDesc]
+執行緒鎖定資訊: syncblk
+顯示GC狀態: eeheap -gc
+顯示GC世代: dumpgen [gen0、gen1、gen2、loh、poh]
+檢查GC堆積毀損狀態: verifyheap
+列印所有託管堆物件(dso): dumpstackobjects
+託管堆狀態: dumpheap -stat -min [資料Byte]
+尋找託管堆的位址: dumpheap -mt [MT]
 程序最近都拋了什麼異常: dumpheap -type Exception
-異常狀況資訊: pe
-異常的詳細信息: pe [address]
-分析物件位置: dumpobj [address]
-分析陣列位置: dumparray [address]
-GC狀態:  eeheap -gc
-```
-
-## 安裝 ProcDump
-
-當目標進程 CPU 或記憶體使用量達到特定臨界值或低於限制值時，您可以使用 ProcDump 來擷取記憶體傾印檔案。
-```bash
-sudo apt install procdump
+異常狀況資訊(pe): printexception
+異常的詳細信息: printexception [address]
+分析物件位置(do): dumpobj [address]
+檢查物件毀損狀態: verifyobj
+分析陣列位置(da): dumparray [address]
 ```
 
 {% note warning %}
-參考資料
-1. [重現損毀問題並進行疑難排解](https://learn.microsoft.com/zh-tw/troubleshoot/developer/webapps/aspnetcore/practice-troubleshoot-linux/lab-1-1-reproduce-troubleshoot)
-2. [SOS debugging extension](https://learn.microsoft.com/en-us/dotnet/core/diagnostics/sos-debugging-extension)
+📜 參考資料
+1. [ProcDump for Linux](https://github.com/Sysinternals/ProcDump-for-Linux)
+2. [重現損毀問題並進行疑難排解](https://learn.microsoft.com/zh-tw/troubleshoot/developer/webapps/aspnetcore/practice-troubleshoot-linux/lab-1-1-reproduce-troubleshoot)
+3. [SOS debugging extension](https://learn.microsoft.com/en-us/dotnet/core/diagnostics/sos-debugging-extension)
 {% endnote %}
