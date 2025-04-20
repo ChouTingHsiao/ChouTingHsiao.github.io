@@ -7,6 +7,8 @@ tags: [Javascript, K6]
 
 # 安裝 k6
 
+<!-- choco install k6 -y -->
+
 ```bash
 # 從 Ubuntu 金鑰伺服器下載 k6 軟體倉庫的 GPG 公鑰，並儲存到指定的金鑰環中
 sudo gpg --no-default-keyring --keyring /usr/share/keyrings/k6-archive-keyring.gpg --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys C5AD17C747E3415A3642D57D77C6C491D6AC1D69
@@ -22,10 +24,6 @@ sudo apt-get install k6
 ```
 
 <!--more-->
-
-<!-- ```powershell
- choco install k6 -y
-``` -->
 
 # 建立檔案 script.js
 
@@ -50,9 +48,8 @@ export default function () {
 }
 ```
 
-<!-- 使用 open api 轉換成 k6 腳本
-
-```bash
+<!-- 
+使用 open api 轉換成 k6 腳本
 docker pull openapitools/openapi-generator-cli
 
 docker run --rm -v ${PWD}:/local openapitools/openapi-generator-cli generate \
@@ -60,7 +57,7 @@ docker run --rm -v ${PWD}:/local openapitools/openapi-generator-cli generate \
     -g k6 \
     -o /local/k6-test/
     --skip-validate-spec
-``` -->
+-->
 
 # 測試情境
 
@@ -129,11 +126,11 @@ K6_WEB_DASHBOARD_EXPORT='html-report.html' \
 k6 run --stage 30s:10 test.js;
 ```
 
-<!-- ```powershell
+<!--
 $env:K6_WEB_DASHBOARD='true';
 $env:K6_WEB_DASHBOARD_EXPORT='html-report.html';
 k6 run --stage 30s:10 test.js;
-``` -->
+-->
 
 <!-- 只有當測試持續時間大於K6_WEB_DASHBOARD_PERIOD變數設定的聚合週期值的三倍時，報告才包含圖表 -->
 

@@ -32,8 +32,6 @@ curl --request GET "http://localhost:8086/api/v2/buckets?name=[初始BUCKET]" \
     --header "Authorization: Token [初始TOKEN]"
 ```
 
-<!--more-->
-
 ## 匯入資料
 
 InfluxDB 2.X 需另外建置 K6
@@ -51,10 +49,7 @@ sudo apt update
 sudo apt install golang-go
 ```
 
-<!--
-```powershell
-choco install golang -y
-``` -->
+<!-- choco install golang -y  -->
 
 ### 安裝套件 xk6
 
@@ -88,12 +83,11 @@ K6_INFLUXDB_ADDR="http://localhost:8086" \
 ```
 
 <!--
-```powershell
 $env:K6_INFLUXDB_ORGANIZATION='[初始ORG]' ;
 $env:K6_INFLUXDB_BUCKET='[初始BUCKET]' ;
 $env:K6_INFLUXDB_TOKEN='[初始TOKEN]' ;
 .\k6.exe run -o xk6-influxdb=http://localhost:8086 --vus 3 --duration 1m test.js
-``` -->
+-->
 
 ## 查詢資料
 
