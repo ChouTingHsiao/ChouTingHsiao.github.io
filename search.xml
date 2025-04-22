@@ -69,34 +69,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Angular Live Reload 在 Ubuntu 沒反應</title>
-    <url>/2020/08/31/AngularLiveReload/</url>
-    <content><![CDATA[<h1 id="確認-inotify-設定"><a class="header-anchor" href="#確認-inotify-設定"></a>確認 inotify 設定</h1>
-<p>在 Linux 上，默認情況下，Listen 使用 inotify 監視目錄中的更改</p>
-<p>Ubuntu 的 inotify 預設限制為8192</p>
-<p>您可以通過執行以下操作獲取目前的 inotify 文件監視限制：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cat</span> /proc/sys/fs/inotify/max_user_watches</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="調整-inotify-設定"><a class="header-anchor" href="#調整-inotify-設定"></a>調整 inotify 設定</h1>
-<p>如果此限制不足以監視目錄中的所有文件，則必須增加該限制以使其正常工作</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo sysctl fs.inotify.max_user_watches=524288 </span><br><span class="line">sudo sysctl -p</span><br></pre></td></tr></table></figure>
-<p>如果想讓自己的限制永久化，請輸入以下命令:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> fs.inotify.max_user_watches=524288 | sudo <span class="built_in">tee</span> -a /etc/sysctl.conf</span><br><span class="line">sudo sysctl -p</span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://askubuntu.com/questions/770374/user-limit-of-inotify-watches-reached-on-ubuntu-16-04">User limit of inotify watches reached on Ubuntu 16.04</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>Angular</category>
-      </categories>
-      <tags>
-        <tag>Angular</tag>
-        <tag>Linux</tag>
-        <tag>Ubuntu</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>如何在 pi 3b+ 上執行 Angular Protractor</title>
     <url>/2019/12/25/AngularProtractorOnPi/</url>
     <content><![CDATA[<h1 id="安裝-WebDriver"><a class="header-anchor" href="#安裝-WebDriver"></a>安裝 WebDriver</h1>
@@ -130,22 +102,22 @@
       </tags>
   </entry>
   <entry>
-    <title>如何設定 Protractor WebDriver Version</title>
-    <url>/2020/08/31/AngularProtractorWebDriver/</url>
-    <content><![CDATA[<h1 id="安裝-WebDriver"><a class="header-anchor" href="#安裝-WebDriver"></a>安裝 WebDriver</h1>
-<p>先清除目前下載的 WebDriver</p>
+    <title>Angular Live Reload 在 Ubuntu 沒反應</title>
+    <url>/2020/08/31/AngularLiveReload/</url>
+    <content><![CDATA[<h1 id="確認-inotify-設定"><a class="header-anchor" href="#確認-inotify-設定"></a>確認 inotify 設定</h1>
+<p>在 Linux 上，默認情況下，Listen 使用 inotify 監視目錄中的更改</p>
+<p>Ubuntu 的 inotify 預設限制為8192</p>
+<p>您可以通過執行以下操作獲取目前的 inotify 文件監視限制：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cat</span> /proc/sys/fs/inotify/max_user_watches</span><br></pre></td></tr></table></figure>
 <span id="more"></span>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npx  webdriver-manager clean</span><br></pre></td></tr></table></figure>
-<p>以 chrome 為例從<a href="http://chromedriver.chromium.org/">chromedriver網頁</a></p>
-<p>查詢所需的版本號</p>
-<p>接下來依版本下載 WebDriver</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npx webdriver-manager update  --versions.chrome  [chrome版本號]</span><br></pre></td></tr></table></figure>
-<h1 id="運行-Protractor"><a class="header-anchor" href="#運行-Protractor"></a>運行 Protractor</h1>
-<p>運行 Protractor 時使用 --no-webdriver-update 選項</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ng e2e --no-webdriver-update</span><br></pre></td></tr></table></figure>
+<h1 id="調整-inotify-設定"><a class="header-anchor" href="#調整-inotify-設定"></a>調整 inotify 設定</h1>
+<p>如果此限制不足以監視目錄中的所有文件，則必須增加該限制以使其正常工作</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo sysctl fs.inotify.max_user_watches=524288 </span><br><span class="line">sudo sysctl -p</span><br></pre></td></tr></table></figure>
+<p>如果想讓自己的限制永久化，請輸入以下命令:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> fs.inotify.max_user_watches=524288 | sudo <span class="built_in">tee</span> -a /etc/sysctl.conf</span><br><span class="line">sudo sysctl -p</span><br></pre></td></tr></table></figure>
 <div class="note warning"><p>📜 參考資料</p>
 <ol>
-<li><a href="https://www.npmjs.com/package/webdriver-manager">webdriver-manager NPM</a></li>
+<li><a href="https://askubuntu.com/questions/770374/user-limit-of-inotify-watches-reached-on-ubuntu-16-04">User limit of inotify watches reached on Ubuntu 16.04</a></li>
 </ol>
 </div>]]></content>
       <categories>
@@ -153,7 +125,8 @@
       </categories>
       <tags>
         <tag>Angular</tag>
-        <tag>Protractor</tag>
+        <tag>Linux</tag>
+        <tag>Ubuntu</tag>
       </tags>
   </entry>
   <entry>
@@ -196,6 +169,33 @@
       </categories>
       <tags>
         <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>如何設定 Protractor WebDriver Version</title>
+    <url>/2020/08/31/AngularProtractorWebDriver/</url>
+    <content><![CDATA[<h1 id="安裝-WebDriver"><a class="header-anchor" href="#安裝-WebDriver"></a>安裝 WebDriver</h1>
+<p>先清除目前下載的 WebDriver</p>
+<span id="more"></span>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npx  webdriver-manager clean</span><br></pre></td></tr></table></figure>
+<p>以 chrome 為例從<a href="http://chromedriver.chromium.org/">chromedriver網頁</a></p>
+<p>查詢所需的版本號</p>
+<p>接下來依版本下載 WebDriver</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npx webdriver-manager update  --versions.chrome  [chrome版本號]</span><br></pre></td></tr></table></figure>
+<h1 id="運行-Protractor"><a class="header-anchor" href="#運行-Protractor"></a>運行 Protractor</h1>
+<p>運行 Protractor 時使用 --no-webdriver-update 選項</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ng e2e --no-webdriver-update</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://www.npmjs.com/package/webdriver-manager">webdriver-manager NPM</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>Angular</category>
+      </categories>
+      <tags>
+        <tag>Angular</tag>
+        <tag>Protractor</tag>
       </tags>
   </entry>
   <entry>
@@ -253,6 +253,35 @@
       </tags>
   </entry>
   <entry>
+    <title>JSON 格式資料如何拆解成 form 的輸入項</title>
+    <url>/2020/03/27/HtmlFormPost/</url>
+    <content><![CDATA[<h1 id="拆解-JSON-格式資料"><a class="header-anchor" href="#拆解-JSON-格式資料"></a>拆解 JSON 格式資料</h1>
+<p>下方是 JSON 格式資料</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">   <span class="attr">&quot;item&quot;</span><span class="punctuation">:</span> <span class="string">&quot;1&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;items&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;1&quot;</span><span class="punctuation">,</span><span class="string">&quot;2&quot;</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="基本物件型別拆解"><a class="header-anchor" href="#基本物件型別拆解"></a>基本物件型別拆解</h1>
+<p>基本物件型別的拆解如下</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">&quot;item&quot;: &quot;1&quot;</span><br><span class="line">可拆解成:</span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;item&quot;</span> <span class="attr">value</span>=<span class="string">&quot;1&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h1 id="陣列型別拆解"><a class="header-anchor" href="#陣列型別拆解"></a>陣列型別拆解</h1>
+<p>陣列部分需依造陣列結構做拆解</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">&quot;items&quot;: [&quot;1&quot;,&quot;2&quot;]</span><br><span class="line">可拆解成:</span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;items[0]&quot;</span> <span class="attr">value</span>=<span class="string">&quot;1&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;items[1]&quot;</span> <span class="attr">value</span>=<span class="string">&quot;2&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h1 id="完整拆解設定"><a class="header-anchor" href="#完整拆解設定"></a>完整拆解設定</h1>
+<p>最後是完整的 HTML form 設定</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">&quot;/api/Test/Post&quot;</span> <span class="attr">method</span>=<span class="string">&quot;post&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;item&quot;</span> <span class="attr">value</span>=<span class="string">&quot;1&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;items[0]&quot;</span> <span class="attr">value</span>=<span class="string">&quot;1&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;items[1]&quot;</span> <span class="attr">value</span>=<span class="string">&quot;2&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">　<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> <span class="attr">value</span>=<span class="string">&quot;送出表單&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://stackoverflow.com/questions/9073690/post-an-array-from-an-html-form-without-javascript">POST an array from an HTML form without javascript</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>Html</category>
+      </categories>
+      <tags>
+        <tag>Html</tag>
+        <tag>JSON</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>WSL2 設定 Docker In Docker</title>
     <url>/2024/01/01/DockerWsl2DockerInDocker/</url>
     <content><![CDATA[<h1 id="🚀-使用主機的-Docker-Socket"><a class="header-anchor" href="#🚀-使用主機的-Docker-Socket"></a>🚀 使用主機的 Docker Socket</h1>
@@ -287,35 +316,6 @@
       <tags>
         <tag>Docker</tag>
         <tag>Wsl2</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>JSON 格式資料如何拆解成 form 的輸入項</title>
-    <url>/2020/03/27/HtmlFormPost/</url>
-    <content><![CDATA[<h1 id="拆解-JSON-格式資料"><a class="header-anchor" href="#拆解-JSON-格式資料"></a>拆解 JSON 格式資料</h1>
-<p>下方是 JSON 格式資料</p>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">   <span class="attr">&quot;item&quot;</span><span class="punctuation">:</span> <span class="string">&quot;1&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;items&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;1&quot;</span><span class="punctuation">,</span><span class="string">&quot;2&quot;</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="基本物件型別拆解"><a class="header-anchor" href="#基本物件型別拆解"></a>基本物件型別拆解</h1>
-<p>基本物件型別的拆解如下</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">&quot;item&quot;: &quot;1&quot;</span><br><span class="line">可拆解成:</span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;item&quot;</span> <span class="attr">value</span>=<span class="string">&quot;1&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h1 id="陣列型別拆解"><a class="header-anchor" href="#陣列型別拆解"></a>陣列型別拆解</h1>
-<p>陣列部分需依造陣列結構做拆解</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">&quot;items&quot;: [&quot;1&quot;,&quot;2&quot;]</span><br><span class="line">可拆解成:</span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;items[0]&quot;</span> <span class="attr">value</span>=<span class="string">&quot;1&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;items[1]&quot;</span> <span class="attr">value</span>=<span class="string">&quot;2&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h1 id="完整拆解設定"><a class="header-anchor" href="#完整拆解設定"></a>完整拆解設定</h1>
-<p>最後是完整的 HTML form 設定</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">&quot;/api/Test/Post&quot;</span> <span class="attr">method</span>=<span class="string">&quot;post&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;item&quot;</span> <span class="attr">value</span>=<span class="string">&quot;1&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;items[0]&quot;</span> <span class="attr">value</span>=<span class="string">&quot;1&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;items[1]&quot;</span> <span class="attr">value</span>=<span class="string">&quot;2&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">　<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> <span class="attr">value</span>=<span class="string">&quot;送出表單&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://stackoverflow.com/questions/9073690/post-an-array-from-an-html-form-without-javascript">POST an array from an HTML form without javascript</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>Html</category>
-      </categories>
-      <tags>
-        <tag>Html</tag>
-        <tag>JSON</tag>
       </tags>
   </entry>
   <entry>
@@ -369,29 +369,6 @@
       </tags>
   </entry>
   <entry>
-    <title>如何將檔案轉成 Base64 編碼</title>
-    <url>/2019/12/09/JsFileToBase64/</url>
-    <content><![CDATA[<h1 id="建立-HTML"><a class="header-anchor" href="#建立-HTML"></a>建立 HTML</h1>
-<p>首先在 HTML 建立一個 File Upload 與一個顯示結果的 div</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;file&quot;</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;result&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="綁定事件"><a class="header-anchor" href="#綁定事件"></a>綁定事件</h1>
-<p>接下來為 File Upload 綁定事件</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;input&#x27;</span>).<span class="title function_">addEventListener</span>(<span class="string">&#x27;change&#x27;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line"></span><br><span class="line">       <span class="comment">// 建立 FileReader 去讀取 File Upload 的內容</span></span><br><span class="line"></span><br><span class="line">       <span class="keyword">let</span> reader = <span class="keyword">new</span> <span class="title class_">FileReader</span>();</span><br><span class="line"></span><br><span class="line">       <span class="comment">// 設定初始化事件</span></span><br><span class="line"></span><br><span class="line">       reader.<span class="property">onload</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line"></span><br><span class="line">           <span class="keyword">let</span> arrayBuffer = <span class="variable language_">this</span>.<span class="property">result</span>;</span><br><span class="line"></span><br><span class="line">           <span class="keyword">let</span> base64 = <span class="title function_">btoa</span>(</span><br><span class="line">               <span class="keyword">new</span> <span class="title class_">Uint8Array</span>(arrayBuffer)</span><br><span class="line">                   .<span class="title function_">reduce</span>(<span class="function">(<span class="params">data, byte</span>) =&gt;</span> data + <span class="title class_">String</span>.<span class="title function_">fromCharCode</span>(byte), <span class="string">&#x27;&#x27;</span>)</span><br><span class="line">           );</span><br><span class="line">       </span><br><span class="line">         <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;#result&#x27;</span>).<span class="property">innerHTML</span> = arrayBuffer + <span class="string">&#x27;  &#x27;</span> + arrayBuffer.<span class="property">byteLength</span>;    </span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">      <span class="comment">// 開始讀取</span></span><br><span class="line"></span><br><span class="line">      reader.<span class="title function_">readAsArrayBuffer</span>(<span class="variable language_">this</span>.<span class="property">files</span>[<span class="number">0</span>]);</span><br><span class="line"></span><br><span class="line">   &#125;, <span class="literal">false</span>);</span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/btoa">MDN btoa</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>Javascript</category>
-      </categories>
-      <tags>
-        <tag>Javascript</tag>
-        <tag>Base64</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>如何將 Base64 編碼轉成檔案</title>
     <url>/2019/12/09/JsBase64ToFile/</url>
     <content><![CDATA[<h1 id="Chrome-base64-轉換成檔案"><a class="header-anchor" href="#Chrome-base64-轉換成檔案"></a>Chrome base64 轉換成檔案</h1>
@@ -404,6 +381,29 @@
 <div class="note warning"><p>📜 參考資料</p>
 <ol>
 <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/atob">MDN atob</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>Javascript</category>
+      </categories>
+      <tags>
+        <tag>Javascript</tag>
+        <tag>Base64</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>如何將檔案轉成 Base64 編碼</title>
+    <url>/2019/12/09/JsFileToBase64/</url>
+    <content><![CDATA[<h1 id="建立-HTML"><a class="header-anchor" href="#建立-HTML"></a>建立 HTML</h1>
+<p>首先在 HTML 建立一個 File Upload 與一個顯示結果的 div</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;file&quot;</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;result&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="綁定事件"><a class="header-anchor" href="#綁定事件"></a>綁定事件</h1>
+<p>接下來為 File Upload 綁定事件</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;input&#x27;</span>).<span class="title function_">addEventListener</span>(<span class="string">&#x27;change&#x27;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line"></span><br><span class="line">       <span class="comment">// 建立 FileReader 去讀取 File Upload 的內容</span></span><br><span class="line"></span><br><span class="line">       <span class="keyword">let</span> reader = <span class="keyword">new</span> <span class="title class_">FileReader</span>();</span><br><span class="line"></span><br><span class="line">       <span class="comment">// 設定初始化事件</span></span><br><span class="line"></span><br><span class="line">       reader.<span class="property">onload</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line"></span><br><span class="line">           <span class="keyword">let</span> arrayBuffer = <span class="variable language_">this</span>.<span class="property">result</span>;</span><br><span class="line"></span><br><span class="line">           <span class="keyword">let</span> base64 = <span class="title function_">btoa</span>(</span><br><span class="line">               <span class="keyword">new</span> <span class="title class_">Uint8Array</span>(arrayBuffer)</span><br><span class="line">                   .<span class="title function_">reduce</span>(<span class="function">(<span class="params">data, byte</span>) =&gt;</span> data + <span class="title class_">String</span>.<span class="title function_">fromCharCode</span>(byte), <span class="string">&#x27;&#x27;</span>)</span><br><span class="line">           );</span><br><span class="line">       </span><br><span class="line">         <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;#result&#x27;</span>).<span class="property">innerHTML</span> = arrayBuffer + <span class="string">&#x27;  &#x27;</span> + arrayBuffer.<span class="property">byteLength</span>;    </span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">      <span class="comment">// 開始讀取</span></span><br><span class="line"></span><br><span class="line">      reader.<span class="title function_">readAsArrayBuffer</span>(<span class="variable language_">this</span>.<span class="property">files</span>[<span class="number">0</span>]);</span><br><span class="line"></span><br><span class="line">   &#125;, <span class="literal">false</span>);</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/btoa">MDN btoa</a></li>
 </ol>
 </div>]]></content>
       <categories>
@@ -464,36 +464,6 @@
       <tags>
         <tag>Javascript</tag>
         <tag>Iframe</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>如何迭代 Js 物件</title>
-    <url>/2020/03/27/JsIteratorObject/</url>
-    <content><![CDATA[<h1 id="使用-for…in"><a class="header-anchor" href="#使用-for…in"></a>使用 for…in</h1>
-<p>方法格式如下</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (變數 <span class="keyword">in</span> 物件) &#123;...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<p>下方為 Sample Code</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> model = &#123;</span><br><span class="line">    <span class="attr">item</span>: <span class="string">&#x27;1&#x27;</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> filed <span class="keyword">in</span> model) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(model[filed]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="使用-Object-keys"><a class="header-anchor" href="#使用-Object-keys"></a>使用 Object.keys()</h1>
-<p>方法格式如下</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="title class_">Object</span>.<span class="title function_">keys</span>(物件);</span><br></pre></td></tr></table></figure>
-<p>下方為 Sample Code</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> model = &#123;</span><br><span class="line">    <span class="attr">item</span>: <span class="string">&#x27;1&#x27;</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> keys = <span class="title class_">Object</span>.<span class="title function_">keys</span>(model);</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> length = keys.<span class="property">length</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt;= length; i++) &#123;</span><br><span class="line">    <span class="keyword">let</span> key =  keys[i];</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(model[key]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="差異"><a class="header-anchor" href="#差異"></a>差異</h1>
-<p>Object.keys 與 for…in 不同之處</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">for-in 迴圈還會迭代出物件自其原型鏈所繼承來的可列舉屬性</span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys">MDN Object keys</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>Javascript</category>
-      </categories>
-      <tags>
-        <tag>Javascript</tag>
-        <tag>Object</tag>
       </tags>
   </entry>
   <entry>
@@ -562,6 +532,36 @@ k6 run --stage 30s:10 test.js;
       <tags>
         <tag>Javascript</tag>
         <tag>K6</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>如何迭代 Js 物件</title>
+    <url>/2020/03/27/JsIteratorObject/</url>
+    <content><![CDATA[<h1 id="使用-for…in"><a class="header-anchor" href="#使用-for…in"></a>使用 for…in</h1>
+<p>方法格式如下</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (變數 <span class="keyword">in</span> 物件) &#123;...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<p>下方為 Sample Code</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> model = &#123;</span><br><span class="line">    <span class="attr">item</span>: <span class="string">&#x27;1&#x27;</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> filed <span class="keyword">in</span> model) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(model[filed]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="使用-Object-keys"><a class="header-anchor" href="#使用-Object-keys"></a>使用 Object.keys()</h1>
+<p>方法格式如下</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="title class_">Object</span>.<span class="title function_">keys</span>(物件);</span><br></pre></td></tr></table></figure>
+<p>下方為 Sample Code</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> model = &#123;</span><br><span class="line">    <span class="attr">item</span>: <span class="string">&#x27;1&#x27;</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> keys = <span class="title class_">Object</span>.<span class="title function_">keys</span>(model);</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> length = keys.<span class="property">length</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt;= length; i++) &#123;</span><br><span class="line">    <span class="keyword">let</span> key =  keys[i];</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(model[key]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="差異"><a class="header-anchor" href="#差異"></a>差異</h1>
+<p>Object.keys 與 for…in 不同之處</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">for-in 迴圈還會迭代出物件自其原型鏈所繼承來的可列舉屬性</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys">MDN Object keys</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>Javascript</category>
+      </categories>
+      <tags>
+        <tag>Javascript</tag>
+        <tag>Object</tag>
       </tags>
   </entry>
   <entry>
@@ -1129,6 +1129,34 @@ dotnet-dump collect --process-id 1902 -->
       </tags>
   </entry>
   <entry>
+    <title>使用 Expression Trees 把 List&lt;T&gt; 轉成 CSV 字串</title>
+    <url>/2024/05/01/NetExpressionListToCsv/</url>
+    <content><![CDATA[<h1 id="宣告類別"><a class="header-anchor" href="#宣告類別"></a>宣告類別</h1>
+<p>類別內容如下</p>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">User</span> &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">string</span> Name &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">int</span> Age &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>List 內容如下</p>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line">List&lt;User&gt; users = <span class="keyword">new</span> List&lt;User&gt;&#123;</span><br><span class="line">    <span class="keyword">new</span> User &#123;</span><br><span class="line">        Name = <span class="string">&quot;Test1&quot;</span>,</span><br><span class="line">        Age = <span class="number">10</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="keyword">new</span> User &#123;</span><br><span class="line">        Name = <span class="string">&quot;Test2&quot;</span>,</span><br><span class="line">        Age = <span class="number">20</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="產生-Expression-表達式"><a class="header-anchor" href="#產生-Expression-表達式"></a>產生 Expression 表達式</h1>
+<p>建立轉換方法</p>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> System.Reflection;</span><br><span class="line"><span class="keyword">using</span> System.Linq.Expressions;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="title">List</span>&lt;<span class="title">string</span>&gt; <span class="title">selectToCsv</span>&lt;<span class="title">T</span>&gt;(<span class="params"><span class="keyword">this</span> List&lt;T&gt; list, <span class="built_in">string</span> delimiter</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    Type source = <span class="keyword">typeof</span>(T);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 取得類別欄位</span></span><br><span class="line">    PropertyInfo[] prop = source.GetProperties();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 類別使用 t 表達 </span></span><br><span class="line">    ParameterExpression t = Expression.Parameter(source, <span class="string">&quot;t&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 取得轉成字串方法</span></span><br><span class="line">    MethodInfo toString = <span class="keyword">typeof</span>(<span class="built_in">object</span>).GetMethod(<span class="string">&quot;ToString&quot;</span>);</span><br><span class="line"></span><br><span class="line">    List&lt;ConditionalExpression&gt; parameters = <span class="keyword">new</span> List&lt;ConditionalExpression&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">foreach</span> (PropertyInfo p <span class="keyword">in</span> prop)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// 類別欄位使用 t.Name, t.Age 表達</span></span><br><span class="line">        MemberExpression propertyValue = Expression.PropertyOrField(t, p.Name);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 非字串型別欄位進行字串轉換 t.Name.ToString(), t.Age.ToString()</span></span><br><span class="line">        MethodCallExpression propertyToString = Expression.Call(propertyValue, toString);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// NULL 值</span></span><br><span class="line">        ConstantExpression constantNull = Expression.Constant(<span class="literal">null</span>, <span class="keyword">typeof</span>(<span class="built_in">object</span>));</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 非字串型別欄位需進行字串轉換後，在做 NULL 判斷</span></span><br><span class="line">        BinaryExpression isNull = Expression.Equal(propertyToString, constantNull);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (p.PropertyType == <span class="keyword">typeof</span>(<span class="built_in">string</span>))</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// 字串型別欄位直接進行 NULL 判斷</span></span><br><span class="line">            isNull = Expression.Equal(propertyValue, constantNull);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 空字串值</span></span><br><span class="line">        ConstantExpression constantEmpty = Expression.Constant(<span class="built_in">string</span>.Empty, <span class="keyword">typeof</span>(<span class="built_in">string</span>));</span><br><span class="line"></span><br><span class="line">        <span class="comment">// IIF 判斷 t.Name == null ? &quot;&quot; : t.Name.ToString()</span></span><br><span class="line">        ConditionalExpression ternary = Expression.Condition(isNull, constantEmpty, propertyToString);</span><br><span class="line"></span><br><span class="line">        parameters.Add(ternary);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 取得 Format 方法</span></span><br><span class="line">    MethodInfo formatMethod = <span class="keyword">typeof</span>(<span class="built_in">string</span>).GetMethod(<span class="string">&quot;Format&quot;</span>, BindingFlags.Static | BindingFlags.Public, <span class="literal">null</span>, <span class="keyword">new</span>[] &#123; <span class="keyword">typeof</span>(<span class="built_in">string</span>), <span class="keyword">typeof</span>(<span class="built_in">object</span>[]) &#125;, <span class="literal">null</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 產生類別欄位序號模板清單 [ &#123;0&#125;, &#123;1&#125; ]</span></span><br><span class="line">    List&lt;<span class="built_in">string</span>&gt; formatStrings = Enumerable.Range(<span class="number">0</span>, prop.Length).Select(count =&gt; <span class="string">$&quot;&#123;&#123;<span class="subst">&#123;count&#125;</span>&#125;&#125;&quot;</span>).ToList();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 使用符號 | 串聯成字串 &quot;&#123;0&#125;|&#123;1&#125;&quot;</span></span><br><span class="line">    ConstantExpression formatConstantExpression = Expression.Constant(<span class="built_in">string</span>.Join(delimiter, formatStrings));</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 產生類別欄位轉換陣列</span></span><br><span class="line">    NewArrayExpression formatObjsExpression = Expression.NewArrayInit(<span class="keyword">typeof</span>(<span class="built_in">string</span>), parameters);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 產生 lambda 表達式</span></span><br><span class="line">    Expression&lt;Func&lt;T, <span class="built_in">string</span>&gt;&gt; lambda = (Expression&lt;Func&lt;T, <span class="built_in">string</span>&gt;&gt;)Expression.Lambda(Expression.Call(formatMethod, formatConstantExpression, formatObjsExpression), t);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// t =&gt; Format(&quot;&#123;0&#125;|&#123;1&#125;&quot;, new [] &#123;IIF((t.Name == null), &quot;&quot;, t.Name.ToString()), IIF((t.Age.ToString() == null), &quot;&quot;, t.Age.ToString())&#125;)</span></span><br><span class="line"></span><br><span class="line">    IQueryable&lt;T&gt; queryable = list.AsQueryable();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> queryable.Select(lambda).ToList();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="使用方法"><a class="header-anchor" href="#使用方法"></a>使用方法</h1>
+<p>執行方法轉換出 CSV 列表</p>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line">List&lt;<span class="built_in">string</span>&gt; csvList = users.selectToCsv(<span class="string">&quot;|&quot;</span>);</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://learn.microsoft.com/en-us/dotnet/csharp/advanced-topics/expression-trees/">Expression Trees</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>.Net</category>
+      </categories>
+      <tags>
+        <tag>.Net</tag>
+        <tag>Expression</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>使用 DataFrame 操作資料</title>
     <url>/2024/05/05/NetDataFrame/</url>
     <content><![CDATA[<h1 id="載入-CSV-資料"><a class="header-anchor" href="#載入-CSV-資料"></a>載入 CSV 資料</h1>
@@ -1176,34 +1204,6 @@ dotnet-dump collect --process-id 1902 -->
         <tag>.Net</tag>
         <tag>DataFrame</tag>
         <tag>Polyglot Notebooks</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>使用 Expression Trees 把 List&lt;T&gt; 轉成 CSV 字串</title>
-    <url>/2024/05/01/NetExpressionListToCsv/</url>
-    <content><![CDATA[<h1 id="宣告類別"><a class="header-anchor" href="#宣告類別"></a>宣告類別</h1>
-<p>類別內容如下</p>
-<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">User</span> &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">string</span> Name &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">int</span> Age &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>List 內容如下</p>
-<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line">List&lt;User&gt; users = <span class="keyword">new</span> List&lt;User&gt;&#123;</span><br><span class="line">    <span class="keyword">new</span> User &#123;</span><br><span class="line">        Name = <span class="string">&quot;Test1&quot;</span>,</span><br><span class="line">        Age = <span class="number">10</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="keyword">new</span> User &#123;</span><br><span class="line">        Name = <span class="string">&quot;Test2&quot;</span>,</span><br><span class="line">        Age = <span class="number">20</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="產生-Expression-表達式"><a class="header-anchor" href="#產生-Expression-表達式"></a>產生 Expression 表達式</h1>
-<p>建立轉換方法</p>
-<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> System.Reflection;</span><br><span class="line"><span class="keyword">using</span> System.Linq.Expressions;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="title">List</span>&lt;<span class="title">string</span>&gt; <span class="title">selectToCsv</span>&lt;<span class="title">T</span>&gt;(<span class="params"><span class="keyword">this</span> List&lt;T&gt; list, <span class="built_in">string</span> delimiter</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    Type source = <span class="keyword">typeof</span>(T);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 取得類別欄位</span></span><br><span class="line">    PropertyInfo[] prop = source.GetProperties();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 類別使用 t 表達 </span></span><br><span class="line">    ParameterExpression t = Expression.Parameter(source, <span class="string">&quot;t&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 取得轉成字串方法</span></span><br><span class="line">    MethodInfo toString = <span class="keyword">typeof</span>(<span class="built_in">object</span>).GetMethod(<span class="string">&quot;ToString&quot;</span>);</span><br><span class="line"></span><br><span class="line">    List&lt;ConditionalExpression&gt; parameters = <span class="keyword">new</span> List&lt;ConditionalExpression&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">foreach</span> (PropertyInfo p <span class="keyword">in</span> prop)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// 類別欄位使用 t.Name, t.Age 表達</span></span><br><span class="line">        MemberExpression propertyValue = Expression.PropertyOrField(t, p.Name);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 非字串型別欄位進行字串轉換 t.Name.ToString(), t.Age.ToString()</span></span><br><span class="line">        MethodCallExpression propertyToString = Expression.Call(propertyValue, toString);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// NULL 值</span></span><br><span class="line">        ConstantExpression constantNull = Expression.Constant(<span class="literal">null</span>, <span class="keyword">typeof</span>(<span class="built_in">object</span>));</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 非字串型別欄位需進行字串轉換後，在做 NULL 判斷</span></span><br><span class="line">        BinaryExpression isNull = Expression.Equal(propertyToString, constantNull);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (p.PropertyType == <span class="keyword">typeof</span>(<span class="built_in">string</span>))</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// 字串型別欄位直接進行 NULL 判斷</span></span><br><span class="line">            isNull = Expression.Equal(propertyValue, constantNull);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 空字串值</span></span><br><span class="line">        ConstantExpression constantEmpty = Expression.Constant(<span class="built_in">string</span>.Empty, <span class="keyword">typeof</span>(<span class="built_in">string</span>));</span><br><span class="line"></span><br><span class="line">        <span class="comment">// IIF 判斷 t.Name == null ? &quot;&quot; : t.Name.ToString()</span></span><br><span class="line">        ConditionalExpression ternary = Expression.Condition(isNull, constantEmpty, propertyToString);</span><br><span class="line"></span><br><span class="line">        parameters.Add(ternary);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 取得 Format 方法</span></span><br><span class="line">    MethodInfo formatMethod = <span class="keyword">typeof</span>(<span class="built_in">string</span>).GetMethod(<span class="string">&quot;Format&quot;</span>, BindingFlags.Static | BindingFlags.Public, <span class="literal">null</span>, <span class="keyword">new</span>[] &#123; <span class="keyword">typeof</span>(<span class="built_in">string</span>), <span class="keyword">typeof</span>(<span class="built_in">object</span>[]) &#125;, <span class="literal">null</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 產生類別欄位序號模板清單 [ &#123;0&#125;, &#123;1&#125; ]</span></span><br><span class="line">    List&lt;<span class="built_in">string</span>&gt; formatStrings = Enumerable.Range(<span class="number">0</span>, prop.Length).Select(count =&gt; <span class="string">$&quot;&#123;&#123;<span class="subst">&#123;count&#125;</span>&#125;&#125;&quot;</span>).ToList();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 使用符號 | 串聯成字串 &quot;&#123;0&#125;|&#123;1&#125;&quot;</span></span><br><span class="line">    ConstantExpression formatConstantExpression = Expression.Constant(<span class="built_in">string</span>.Join(delimiter, formatStrings));</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 產生類別欄位轉換陣列</span></span><br><span class="line">    NewArrayExpression formatObjsExpression = Expression.NewArrayInit(<span class="keyword">typeof</span>(<span class="built_in">string</span>), parameters);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 產生 lambda 表達式</span></span><br><span class="line">    Expression&lt;Func&lt;T, <span class="built_in">string</span>&gt;&gt; lambda = (Expression&lt;Func&lt;T, <span class="built_in">string</span>&gt;&gt;)Expression.Lambda(Expression.Call(formatMethod, formatConstantExpression, formatObjsExpression), t);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// t =&gt; Format(&quot;&#123;0&#125;|&#123;1&#125;&quot;, new [] &#123;IIF((t.Name == null), &quot;&quot;, t.Name.ToString()), IIF((t.Age.ToString() == null), &quot;&quot;, t.Age.ToString())&#125;)</span></span><br><span class="line"></span><br><span class="line">    IQueryable&lt;T&gt; queryable = list.AsQueryable();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> queryable.Select(lambda).ToList();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="使用方法"><a class="header-anchor" href="#使用方法"></a>使用方法</h1>
-<p>執行方法轉換出 CSV 列表</p>
-<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line">List&lt;<span class="built_in">string</span>&gt; csvList = users.selectToCsv(<span class="string">&quot;|&quot;</span>);</span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://learn.microsoft.com/en-us/dotnet/csharp/advanced-topics/expression-trees/">Expression Trees</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>.Net</category>
-      </categories>
-      <tags>
-        <tag>.Net</tag>
-        <tag>Expression</tag>
       </tags>
   </entry>
   <entry>
@@ -1258,29 +1258,6 @@ dotnet-dump collect --process-id 1902 -->
       </tags>
   </entry>
   <entry>
-    <title>將方法轉換成 Emit 的方式執行</title>
-    <url>/2024/05/01/NetMethodToEmit/</url>
-    <content><![CDATA[<h1 id="原始方法"><a class="header-anchor" href="#原始方法"></a>原始方法</h1>
-<p>方法宣告如下</p>
-<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="built_in">string</span> <span class="title">Hello</span>(<span class="params"><span class="built_in">string</span> name</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">$&quot;Hello <span class="subst">&#123;name&#125;</span>&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="使用-Emit-執行"><a class="header-anchor" href="#使用-Emit-執行"></a>使用 Emit 執行</h1>
-<p>方法轉換成 Emit</p>
-<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> System.Reflection;</span><br><span class="line"><span class="keyword">using</span> System.Reflection.Emit;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 建立動態方法，方法名稱為 &quot;Hello&quot;，回傳型別為 string，參數1型別為 string，true 表示可以存取非公開成員</span></span><br><span class="line">DynamicMethod helloMethod = <span class="keyword">new</span> DynamicMethod(<span class="string">&quot;Hello&quot;</span>, <span class="keyword">typeof</span>(<span class="built_in">string</span>), <span class="keyword">new</span>[] &#123; <span class="keyword">typeof</span>(<span class="built_in">string</span>)&#125;, <span class="literal">true</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 產生 IL Code </span></span><br><span class="line">ILGenerator ilGenerator = helloMethod.GetILGenerator();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 輸出字串常值 &quot;Hello &quot; 到堆疊</span></span><br><span class="line">ilGenerator.Emit(OpCodes.Ldstr, <span class="string">&quot;Hello &quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 載入第一個參數（傳入的 string）到堆疊</span></span><br><span class="line">ilGenerator.Emit(OpCodes.Ldarg_0);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 取得 Concat 方法</span></span><br><span class="line">MethodInfo concatMethod = <span class="keyword">typeof</span>(<span class="built_in">string</span>).GetMethod(<span class="string">&quot;Concat&quot;</span>, <span class="keyword">new</span>[] &#123; <span class="keyword">typeof</span>(<span class="built_in">string</span>), <span class="keyword">typeof</span>(<span class="built_in">string</span>) &#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 將堆疊上的兩個字串相加</span></span><br><span class="line">ilGenerator.Emit(OpCodes.Call, concatMethod);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 回傳合併後的結果</span></span><br><span class="line">ilGenerator.Emit(OpCodes.Ret);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 將動態方法轉換為委派，並呼叫</span></span><br><span class="line">Func&lt;<span class="built_in">string</span>, <span class="built_in">string</span>&gt; func = (Func&lt;<span class="built_in">string</span>, <span class="built_in">string</span>&gt;)helloMethod.CreateDelegate(<span class="keyword">typeof</span>(Func&lt;<span class="built_in">string</span>, <span class="built_in">string</span>&gt;));</span><br><span class="line"></span><br><span class="line"><span class="comment">// 呼叫方法</span></span><br><span class="line"><span class="built_in">string</span> result = func(<span class="string">&quot;World&quot;</span>);</span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://learn.microsoft.com/en-us/dotnet/api/system.reflection.emit?view=net-9.0">System.Reflection.Emit Namespace</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>.Net</category>
-      </categories>
-      <tags>
-        <tag>.Net</tag>
-        <tag>Emit</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>如何在資料存取層進行單元測試</title>
     <url>/2022/05/01/NetRepositoryUnitTest/</url>
     <content><![CDATA[<h1 id="安裝-Sqlite"><a class="header-anchor" href="#安裝-Sqlite"></a>安裝 Sqlite</h1>
@@ -1313,6 +1290,29 @@ dotnet-dump collect --process-id 1902 -->
         <tag>.Net</tag>
         <tag>UnitTest</tag>
         <tag>SQLite</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>將方法轉換成 Emit 的方式執行</title>
+    <url>/2024/05/01/NetMethodToEmit/</url>
+    <content><![CDATA[<h1 id="原始方法"><a class="header-anchor" href="#原始方法"></a>原始方法</h1>
+<p>方法宣告如下</p>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="built_in">string</span> <span class="title">Hello</span>(<span class="params"><span class="built_in">string</span> name</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">$&quot;Hello <span class="subst">&#123;name&#125;</span>&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="使用-Emit-執行"><a class="header-anchor" href="#使用-Emit-執行"></a>使用 Emit 執行</h1>
+<p>方法轉換成 Emit</p>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> System.Reflection;</span><br><span class="line"><span class="keyword">using</span> System.Reflection.Emit;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 建立動態方法，方法名稱為 &quot;Hello&quot;，回傳型別為 string，參數1型別為 string，true 表示可以存取非公開成員</span></span><br><span class="line">DynamicMethod helloMethod = <span class="keyword">new</span> DynamicMethod(<span class="string">&quot;Hello&quot;</span>, <span class="keyword">typeof</span>(<span class="built_in">string</span>), <span class="keyword">new</span>[] &#123; <span class="keyword">typeof</span>(<span class="built_in">string</span>)&#125;, <span class="literal">true</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 產生 IL Code </span></span><br><span class="line">ILGenerator ilGenerator = helloMethod.GetILGenerator();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 輸出字串常值 &quot;Hello &quot; 到堆疊</span></span><br><span class="line">ilGenerator.Emit(OpCodes.Ldstr, <span class="string">&quot;Hello &quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 載入第一個參數（傳入的 string）到堆疊</span></span><br><span class="line">ilGenerator.Emit(OpCodes.Ldarg_0);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 取得 Concat 方法</span></span><br><span class="line">MethodInfo concatMethod = <span class="keyword">typeof</span>(<span class="built_in">string</span>).GetMethod(<span class="string">&quot;Concat&quot;</span>, <span class="keyword">new</span>[] &#123; <span class="keyword">typeof</span>(<span class="built_in">string</span>), <span class="keyword">typeof</span>(<span class="built_in">string</span>) &#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 將堆疊上的兩個字串相加</span></span><br><span class="line">ilGenerator.Emit(OpCodes.Call, concatMethod);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 回傳合併後的結果</span></span><br><span class="line">ilGenerator.Emit(OpCodes.Ret);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 將動態方法轉換為委派，並呼叫</span></span><br><span class="line">Func&lt;<span class="built_in">string</span>, <span class="built_in">string</span>&gt; func = (Func&lt;<span class="built_in">string</span>, <span class="built_in">string</span>&gt;)helloMethod.CreateDelegate(<span class="keyword">typeof</span>(Func&lt;<span class="built_in">string</span>, <span class="built_in">string</span>&gt;));</span><br><span class="line"></span><br><span class="line"><span class="comment">// 呼叫方法</span></span><br><span class="line"><span class="built_in">string</span> result = func(<span class="string">&quot;World&quot;</span>);</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://learn.microsoft.com/en-us/dotnet/api/system.reflection.emit?view=net-9.0">System.Reflection.Emit Namespace</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>.Net</category>
+      </categories>
+      <tags>
+        <tag>.Net</tag>
+        <tag>Emit</tag>
       </tags>
   </entry>
   <entry>
@@ -1413,6 +1413,37 @@ dotnet-dump collect --process-id 1902 -->
       </tags>
   </entry>
   <entry>
+    <title>如何解析 XML 資料</title>
+    <url>/2024/02/04/NetXmlParse/</url>
+    <content><![CDATA[<h1 id="宣告-XML-資料"><a class="header-anchor" href="#宣告-XML-資料"></a>宣告 XML 資料</h1>
+<p>XML 格式字串如下</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="built_in">string</span> doc = <span class="string">@&quot;&lt;properties&gt;</span></span><br><span class="line"><span class="string">&lt;property key=&#x27;name&#x27;&gt;Test&lt;/property&gt;</span></span><br><span class="line"><span class="string">&lt;property key=&#x27;age&#x27;&gt;10&lt;/property&gt;</span></span><br><span class="line"><span class="string">&lt;/properties&gt;&quot;</span>;</span><br></pre></td></tr></table></figure>
+<h1 id="使用-XDocument-解析-XML"><a class="header-anchor" href="#使用-XDocument-解析-XML"></a>使用 XDocument 解析 XML</h1>
+<h2 id="讀取資料並解析"><a class="header-anchor" href="#讀取資料並解析"></a>讀取資料並解析</h2>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="comment">// XML 字串轉 XDocument</span></span><br><span class="line">XDocument xmlDoc = XDocument.Parse(doc);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 取得 property 列表</span></span><br><span class="line">List&lt;XElement&gt; xmlElements = xmlDoc.Element(<span class="string">&quot;properties&quot;</span>).Elements(<span class="string">&quot;property&quot;</span>).ToList();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 取得第一筆 key 為 name 資料</span></span><br><span class="line"><span class="built_in">string</span> name = xmlElements.Where(x =&gt; x.Attribute(<span class="string">&quot;key&quot;</span>).Value == <span class="string">&quot;name&quot;</span>).FirstOrDefault()?.Value;</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="使用序列化與反序列化方法解析-XML"><a class="header-anchor" href="#使用序列化與反序列化方法解析-XML"></a>使用序列化與反序列化方法解析 XML</h1>
+<h2 id="建立序列化與反序列化方法"><a class="header-anchor" href="#建立序列化與反序列化方法"></a>建立序列化與反序列化方法</h2>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 物件轉 XML 字串</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="built_in">string</span> <span class="title">XmlSerialize</span>&lt;<span class="title">T</span>&gt;(<span class="params">T obj</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">	XmlSerializer xsSubmit = <span class="keyword">new</span> XmlSerializer(<span class="keyword">typeof</span>(T));</span><br><span class="line"></span><br><span class="line">	XmlSerializerNamespaces ns = <span class="keyword">new</span> XmlSerializerNamespaces();</span><br><span class="line">	ns.Add(<span class="built_in">string</span>.Empty, <span class="built_in">string</span>.Empty);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">using</span> (<span class="keyword">var</span> memStm = <span class="keyword">new</span> MemoryStream())</span><br><span class="line">	<span class="keyword">using</span> (<span class="keyword">var</span> xw = XmlWriter.Create(memStm))</span><br><span class="line">	&#123;</span><br><span class="line">		xsSubmit.Serialize(xw, obj, ns);</span><br><span class="line">		<span class="built_in">byte</span>[] utf8 = memStm.ToArray();</span><br><span class="line">		<span class="keyword">return</span> Encoding.UTF8.GetString(utf8);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// XML 字串轉物件</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> T <span class="title">XmlDeSerialize</span>&lt;<span class="title">T</span>&gt;(<span class="params"><span class="built_in">string</span> xmlString</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">	XmlSerializer xsSubmit = <span class="keyword">new</span> XmlSerializer(<span class="keyword">typeof</span>(T));</span><br><span class="line"></span><br><span class="line">	<span class="built_in">byte</span>[] byteArray = Encoding.UTF8.GetBytes(xmlString);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">using</span> (<span class="keyword">var</span> memStm = <span class="keyword">new</span> MemoryStream(byteArray))</span><br><span class="line">	<span class="keyword">using</span> (<span class="keyword">var</span> xr = XmlReader.Create(memStm))</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">object</span> data = xsSubmit.Deserialize(xr);</span><br><span class="line">		<span class="keyword">return</span> (T)data;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="建立類別"><a class="header-anchor" href="#建立類別"></a>建立類別</h2>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">[<span class="meta">XmlRoot(ElementName = <span class="string">&quot;property&quot;</span>)</span>]</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Property</span> &#123;</span><br><span class="line"></span><br><span class="line">  [<span class="meta">XmlAttribute(AttributeName = <span class="string">&quot;key&quot;</span>)</span>]</span><br><span class="line">  <span class="keyword">public</span> <span class="built_in">string</span> Key &#123;</span><br><span class="line">    <span class="keyword">get</span>;</span><br><span class="line">    <span class="keyword">set</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  [<span class="meta">XmlText</span>]</span><br><span class="line">  <span class="keyword">public</span> <span class="built_in">string</span> Text &#123;</span><br><span class="line">    <span class="keyword">get</span>;</span><br><span class="line">    <span class="keyword">set</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">[<span class="meta">XmlRoot(ElementName = <span class="string">&quot;properties&quot;</span>)</span>]</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Properties</span> &#123;</span><br><span class="line"></span><br><span class="line">  [<span class="meta">XmlElement(ElementName = <span class="string">&quot;property&quot;</span>)</span>]</span><br><span class="line">  <span class="keyword">public</span> List &lt; Property &gt; Property &#123;</span><br><span class="line">    <span class="keyword">get</span>;</span><br><span class="line">    <span class="keyword">set</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="讀取資料並解析-v2"><a class="header-anchor" href="#讀取資料並解析-v2"></a>讀取資料並解析</h2>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="comment">// XML 字串轉物件</span></span><br><span class="line">Properties data = XmlDeSerialize&lt;Properties&gt;(doc);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 取得第一筆 key 為 name 資料</span></span><br><span class="line"><span class="built_in">string</span> name = data.Property.Where(x =&gt; x.Key == <span class="string">&quot;name&quot;</span>).FirstOrDefault().Text;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 物件轉 XML 字串</span></span><br><span class="line"><span class="built_in">string</span> xmlFile = XmlSerialize(data);</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://learn.microsoft.com/en-us/dotnet/api/system.xml.linq.xdocument?view=net-8.0">XDocument Class</a></li>
+<li><a href="https://learn.microsoft.com/en-us/dotnet/api/system.xml.serialization.xmlserializer?view=net-8.0">XmlSerializer Class</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>.Net</category>
+      </categories>
+      <tags>
+        <tag>XML</tag>
+        <tag>.Net</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>使用 SqlPackage 備份資料庫</title>
     <url>/2024/07/25/NetSqlPackage/</url>
     <content><![CDATA[<h1 id="安裝-SqlPackage"><a class="header-anchor" href="#安裝-SqlPackage"></a>安裝 SqlPackage</h1>
@@ -1450,37 +1481,6 @@ dotnet-dump collect --process-id 1902 -->
         <tag>MSSQL</tag>
         <tag>.Net</tag>
         <tag>SqlPackage</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>如何解析 XML 資料</title>
-    <url>/2024/02/04/NetXmlParse/</url>
-    <content><![CDATA[<h1 id="宣告-XML-資料"><a class="header-anchor" href="#宣告-XML-資料"></a>宣告 XML 資料</h1>
-<p>XML 格式字串如下</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="built_in">string</span> doc = <span class="string">@&quot;&lt;properties&gt;</span></span><br><span class="line"><span class="string">&lt;property key=&#x27;name&#x27;&gt;Test&lt;/property&gt;</span></span><br><span class="line"><span class="string">&lt;property key=&#x27;age&#x27;&gt;10&lt;/property&gt;</span></span><br><span class="line"><span class="string">&lt;/properties&gt;&quot;</span>;</span><br></pre></td></tr></table></figure>
-<h1 id="使用-XDocument-解析-XML"><a class="header-anchor" href="#使用-XDocument-解析-XML"></a>使用 XDocument 解析 XML</h1>
-<h2 id="讀取資料並解析"><a class="header-anchor" href="#讀取資料並解析"></a>讀取資料並解析</h2>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="comment">// XML 字串轉 XDocument</span></span><br><span class="line">XDocument xmlDoc = XDocument.Parse(doc);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 取得 property 列表</span></span><br><span class="line">List&lt;XElement&gt; xmlElements = xmlDoc.Element(<span class="string">&quot;properties&quot;</span>).Elements(<span class="string">&quot;property&quot;</span>).ToList();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 取得第一筆 key 為 name 資料</span></span><br><span class="line"><span class="built_in">string</span> name = xmlElements.Where(x =&gt; x.Attribute(<span class="string">&quot;key&quot;</span>).Value == <span class="string">&quot;name&quot;</span>).FirstOrDefault()?.Value;</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="使用序列化與反序列化方法解析-XML"><a class="header-anchor" href="#使用序列化與反序列化方法解析-XML"></a>使用序列化與反序列化方法解析 XML</h1>
-<h2 id="建立序列化與反序列化方法"><a class="header-anchor" href="#建立序列化與反序列化方法"></a>建立序列化與反序列化方法</h2>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 物件轉 XML 字串</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="built_in">string</span> <span class="title">XmlSerialize</span>&lt;<span class="title">T</span>&gt;(<span class="params">T obj</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">	XmlSerializer xsSubmit = <span class="keyword">new</span> XmlSerializer(<span class="keyword">typeof</span>(T));</span><br><span class="line"></span><br><span class="line">	XmlSerializerNamespaces ns = <span class="keyword">new</span> XmlSerializerNamespaces();</span><br><span class="line">	ns.Add(<span class="built_in">string</span>.Empty, <span class="built_in">string</span>.Empty);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">using</span> (<span class="keyword">var</span> memStm = <span class="keyword">new</span> MemoryStream())</span><br><span class="line">	<span class="keyword">using</span> (<span class="keyword">var</span> xw = XmlWriter.Create(memStm))</span><br><span class="line">	&#123;</span><br><span class="line">		xsSubmit.Serialize(xw, obj, ns);</span><br><span class="line">		<span class="built_in">byte</span>[] utf8 = memStm.ToArray();</span><br><span class="line">		<span class="keyword">return</span> Encoding.UTF8.GetString(utf8);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// XML 字串轉物件</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> T <span class="title">XmlDeSerialize</span>&lt;<span class="title">T</span>&gt;(<span class="params"><span class="built_in">string</span> xmlString</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">	XmlSerializer xsSubmit = <span class="keyword">new</span> XmlSerializer(<span class="keyword">typeof</span>(T));</span><br><span class="line"></span><br><span class="line">	<span class="built_in">byte</span>[] byteArray = Encoding.UTF8.GetBytes(xmlString);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">using</span> (<span class="keyword">var</span> memStm = <span class="keyword">new</span> MemoryStream(byteArray))</span><br><span class="line">	<span class="keyword">using</span> (<span class="keyword">var</span> xr = XmlReader.Create(memStm))</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">object</span> data = xsSubmit.Deserialize(xr);</span><br><span class="line">		<span class="keyword">return</span> (T)data;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="建立類別"><a class="header-anchor" href="#建立類別"></a>建立類別</h2>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">[<span class="meta">XmlRoot(ElementName = <span class="string">&quot;property&quot;</span>)</span>]</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Property</span> &#123;</span><br><span class="line"></span><br><span class="line">  [<span class="meta">XmlAttribute(AttributeName = <span class="string">&quot;key&quot;</span>)</span>]</span><br><span class="line">  <span class="keyword">public</span> <span class="built_in">string</span> Key &#123;</span><br><span class="line">    <span class="keyword">get</span>;</span><br><span class="line">    <span class="keyword">set</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  [<span class="meta">XmlText</span>]</span><br><span class="line">  <span class="keyword">public</span> <span class="built_in">string</span> Text &#123;</span><br><span class="line">    <span class="keyword">get</span>;</span><br><span class="line">    <span class="keyword">set</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">[<span class="meta">XmlRoot(ElementName = <span class="string">&quot;properties&quot;</span>)</span>]</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Properties</span> &#123;</span><br><span class="line"></span><br><span class="line">  [<span class="meta">XmlElement(ElementName = <span class="string">&quot;property&quot;</span>)</span>]</span><br><span class="line">  <span class="keyword">public</span> List &lt; Property &gt; Property &#123;</span><br><span class="line">    <span class="keyword">get</span>;</span><br><span class="line">    <span class="keyword">set</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="讀取資料並解析-v2"><a class="header-anchor" href="#讀取資料並解析-v2"></a>讀取資料並解析</h2>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="comment">// XML 字串轉物件</span></span><br><span class="line">Properties data = XmlDeSerialize&lt;Properties&gt;(doc);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 取得第一筆 key 為 name 資料</span></span><br><span class="line"><span class="built_in">string</span> name = data.Property.Where(x =&gt; x.Key == <span class="string">&quot;name&quot;</span>).FirstOrDefault().Text;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 物件轉 XML 字串</span></span><br><span class="line"><span class="built_in">string</span> xmlFile = XmlSerialize(data);</span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://learn.microsoft.com/en-us/dotnet/api/system.xml.linq.xdocument?view=net-8.0">XDocument Class</a></li>
-<li><a href="https://learn.microsoft.com/en-us/dotnet/api/system.xml.serialization.xmlserializer?view=net-8.0">XmlSerializer Class</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>.Net</category>
-      </categories>
-      <tags>
-        <tag>XML</tag>
-        <tag>.Net</tag>
       </tags>
   </entry>
   <entry>
@@ -1596,6 +1596,33 @@ db.create_all() -->
       </tags>
   </entry>
   <entry>
+    <title>安裝 Whistle</title>
+    <url>/2023/01/20/WhistleProxyInstall/</url>
+    <content><![CDATA[<h1 id="使用-Node-安裝-Whistle"><a class="header-anchor" href="#使用-Node-安裝-Whistle"></a>使用 Node 安裝 Whistle</h1>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm i -g whistle</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="啟動-Whistle"><a class="header-anchor" href="#啟動-Whistle"></a>啟動 Whistle</h1>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">w2 start</span><br></pre></td></tr></table></figure>
+<h1 id="查看-Whistle-狀態"><a class="header-anchor" href="#查看-Whistle-狀態"></a>查看 Whistle 狀態</h1>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">w2 status</span><br></pre></td></tr></table></figure>
+<h1 id="停止-Whistle"><a class="header-anchor" href="#停止-Whistle"></a>停止 Whistle</h1>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">w2 stop</span><br></pre></td></tr></table></figure>
+<h1 id="設定-Whistle-為-Proxy-的-Server"><a class="header-anchor" href="#設定-Whistle-為-Proxy-的-Server"></a>設定 Whistle 為 Proxy 的 Server</h1>
+<!-- <img src="/2023/01/20/WhistleProxyInstall/Win10ProxySetting.png" class=""> -->
+<p><img src="Win10ProxySetting.png" alt="Win10ProxySetting"></p>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://www.npmjs.com/package/whistle">whistle npm</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>Whistle</category>
+      </categories>
+      <tags>
+        <tag>Whistle</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Metasploit 基本使用</title>
     <url>/2024/06/01/SecurityMetasploit/</url>
     <content><![CDATA[<!-- 設定檔位置: ~/.msf4 -->
@@ -1662,54 +1689,6 @@ db.create_all() -->
       </tags>
   </entry>
   <entry>
-    <title>安裝 Whistle</title>
-    <url>/2023/01/20/WhistleProxyInstall/</url>
-    <content><![CDATA[<h1 id="使用-Node-安裝-Whistle"><a class="header-anchor" href="#使用-Node-安裝-Whistle"></a>使用 Node 安裝 Whistle</h1>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm i -g whistle</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="啟動-Whistle"><a class="header-anchor" href="#啟動-Whistle"></a>啟動 Whistle</h1>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">w2 start</span><br></pre></td></tr></table></figure>
-<h1 id="查看-Whistle-狀態"><a class="header-anchor" href="#查看-Whistle-狀態"></a>查看 Whistle 狀態</h1>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">w2 status</span><br></pre></td></tr></table></figure>
-<h1 id="停止-Whistle"><a class="header-anchor" href="#停止-Whistle"></a>停止 Whistle</h1>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">w2 stop</span><br></pre></td></tr></table></figure>
-<h1 id="設定-Whistle-為-Proxy-的-Server"><a class="header-anchor" href="#設定-Whistle-為-Proxy-的-Server"></a>設定 Whistle 為 Proxy 的 Server</h1>
-<!-- <img src="/2023/01/20/WhistleProxyInstall/Win10ProxySetting.png" class=""> -->
-<p><img src="Win10ProxySetting.png" alt="Win10ProxySetting"></p>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://www.npmjs.com/package/whistle">whistle npm</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>Whistle</category>
-      </categories>
-      <tags>
-        <tag>Whistle</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>WSL2 移動至其它硬碟</title>
-    <url>/2023/05/05/Wsl2Disk/</url>
-    <content><![CDATA[<h1 id="列出已安裝的-Linux-發行版"><a class="header-anchor" href="#列出已安裝的-Linux-發行版"></a>列出已安裝的 Linux 發行版</h1>
-<p>執行下方命令</p>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">wsl <span class="literal">-l</span> <span class="literal">-v</span></span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="遷移-WSL2-至磁碟機-D"><a class="header-anchor" href="#遷移-WSL2-至磁碟機-D"></a>遷移 WSL2 至磁碟機 D</h1>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 導出已安裝的 Linux 發行版壓縮檔</span></span><br><span class="line">wsl <span class="literal">--export</span> <span class="string">&quot;Ubuntu-22.04&quot;</span> d:\ubuntu.tar</span><br><span class="line"></span><br><span class="line"><span class="comment"># 移除 WSL</span></span><br><span class="line">wsl <span class="literal">--unregister</span> <span class="string">&quot;Ubuntu-22.04&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 建立解壓縮的目錄</span></span><br><span class="line">mkdir d:\Ubuntu</span><br><span class="line"></span><br><span class="line"><span class="comment"># Linux 發行版壓縮檔解壓縮至新目錄後加入 WSL</span></span><br><span class="line">wsl <span class="literal">--import</span> <span class="string">&quot;Ubuntu-22.04&quot;</span> d:\ubuntu d:\ubuntu.tar</span><br><span class="line"></span><br><span class="line"><span class="comment"># 刪除 Linux 發行版壓縮檔</span></span><br><span class="line"><span class="built_in">del</span> d:\ubuntu.tar</span><br><span class="line"></span><br><span class="line"><span class="comment"># 因重新建立 WSL 會以 root 為預設帳戶，需重新設定預設帳戶</span></span><br><span class="line">ubuntu2204.exe config <span class="literal">--default-user</span> ubuntu</span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://learn.microsoft.com/zh-tw/windows/wsl/use-custom-distro">匯入任何要與 WSL 搭配使用的 Linux 發行版本</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>Wsl2</category>
-      </categories>
-      <tags>
-        <tag>Wsl2</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Whistle 代理規則使用</title>
     <url>/2023/01/20/WhistleProxyRule/</url>
     <content><![CDATA[<h1 id="設定-Dns-代理"><a class="header-anchor" href="#設定-Dns-代理"></a>設定 Dns 代理</h1>
@@ -1772,6 +1751,27 @@ db.create_all() -->
       </categories>
       <tags>
         <tag>Whistle</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>WSL2 移動至其它硬碟</title>
+    <url>/2023/05/05/Wsl2Disk/</url>
+    <content><![CDATA[<h1 id="列出已安裝的-Linux-發行版"><a class="header-anchor" href="#列出已安裝的-Linux-發行版"></a>列出已安裝的 Linux 發行版</h1>
+<p>執行下方命令</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">wsl <span class="literal">-l</span> <span class="literal">-v</span></span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="遷移-WSL2-至磁碟機-D"><a class="header-anchor" href="#遷移-WSL2-至磁碟機-D"></a>遷移 WSL2 至磁碟機 D</h1>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 導出已安裝的 Linux 發行版壓縮檔</span></span><br><span class="line">wsl <span class="literal">--export</span> <span class="string">&quot;Ubuntu-22.04&quot;</span> d:\ubuntu.tar</span><br><span class="line"></span><br><span class="line"><span class="comment"># 移除 WSL</span></span><br><span class="line">wsl <span class="literal">--unregister</span> <span class="string">&quot;Ubuntu-22.04&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 建立解壓縮的目錄</span></span><br><span class="line">mkdir d:\Ubuntu</span><br><span class="line"></span><br><span class="line"><span class="comment"># Linux 發行版壓縮檔解壓縮至新目錄後加入 WSL</span></span><br><span class="line">wsl <span class="literal">--import</span> <span class="string">&quot;Ubuntu-22.04&quot;</span> d:\ubuntu d:\ubuntu.tar</span><br><span class="line"></span><br><span class="line"><span class="comment"># 刪除 Linux 發行版壓縮檔</span></span><br><span class="line"><span class="built_in">del</span> d:\ubuntu.tar</span><br><span class="line"></span><br><span class="line"><span class="comment"># 因重新建立 WSL 會以 root 為預設帳戶，需重新設定預設帳戶</span></span><br><span class="line">ubuntu2204.exe config <span class="literal">--default-user</span> ubuntu</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://learn.microsoft.com/zh-tw/windows/wsl/use-custom-distro">匯入任何要與 WSL 搭配使用的 Linux 發行版本</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>Wsl2</category>
+      </categories>
+      <tags>
+        <tag>Wsl2</tag>
       </tags>
   </entry>
   <entry>
