@@ -11,14 +11,14 @@ tags: [Javascript, K6]
 
 ```bash
 docker run -d -p 8086:8086 \
-	-e DOCKER_INFLUXDB_INIT_MODE=setup \
+  -e DOCKER_INFLUXDB_INIT_MODE=setup \
   -e DOCKER_INFLUXDB_INIT_USERNAME=[初始帳號] \
-	-e DOCKER_INFLUXDB_INIT_PASSWORD=[初始密碼] \
-	-e DOCKER_INFLUXDB_INIT_ORG=[初始ORG] \
-	-e DOCKER_INFLUXDB_INIT_BUCKET=[初始BUCKET] \
+  -e DOCKER_INFLUXDB_INIT_PASSWORD=[初始密碼] \
+  -e DOCKER_INFLUXDB_INIT_ORG=[初始ORG] \
+  -e DOCKER_INFLUXDB_INIT_BUCKET=[初始BUCKET] \
   -e DOCKER_INFLUXDB_INIT_RETENTION=1w \
   -e DOCKER_INFLUXDB_INIT_ADMIN_TOKEN=[初始TOKEN] \
-	influxdb
+  influxdb
 ```
 
 <!--more-->
@@ -111,9 +111,9 @@ from(bucket: "k6_test")
 
 ```bash
 docker run --name=grafana -d -p 3000:3000 \
-    -e GF_SECURITY_ADMIN_USER=[初始帳號] \
-    -e GF_SECURITY_ADMIN_PASSWORD=[初始密碼] \
-    grafana/grafana
+  -e GF_SECURITY_ADMIN_USER=[初始帳號] \
+  -e GF_SECURITY_ADMIN_PASSWORD=[初始密碼] \
+  grafana/grafana
 ```
 
 <!-- 建立完成後，使用初始帳密登入連結 http://localhost:3000/ -->
