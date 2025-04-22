@@ -346,29 +346,6 @@
       </tags>
   </entry>
   <entry>
-    <title>如何將 Base64 編碼轉成檔案</title>
-    <url>/2019/12/09/JsBase64ToFile/</url>
-    <content><![CDATA[<h1 id="Chrome-base64-轉換成檔案"><a class="header-anchor" href="#Chrome-base64-轉換成檔案"></a>Chrome base64 轉換成檔案</h1>
-<p>下方是使用 JavaScript 把 base64 轉換成檔案的方法</p>
-<span id="more"></span>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"> <span class="keyword">function</span> <span class="title function_">downloadFile</span>(<span class="params">base64Str</span>) &#123;</span><br><span class="line">    <span class="comment">// 解碼 base64</span></span><br><span class="line">    <span class="keyword">const</span> byteCharacters = <span class="title function_">atob</span>(base64Str);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 建立 Byte Array</span></span><br><span class="line">    <span class="keyword">const</span> byteNumbers = <span class="keyword">new</span> <span class="title class_">Array</span>(byteCharacters.<span class="property">length</span>);</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; byteCharacters.<span class="property">length</span>; i++) &#123;</span><br><span class="line"> </span><br><span class="line">       byteNumbers[i] = byteCharacters.<span class="title function_">charCodeAt</span>(i);</span><br><span class="line"> </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">const</span> byteArray = <span class="keyword">new</span> <span class="title class_">Uint8Array</span>(byteNumbers);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 建立二進制檔和聲明 MIME Type</span></span><br><span class="line">    <span class="keyword">const</span> blob = <span class="keyword">new</span> <span class="title class_">Blob</span>([byteArray], &#123;<span class="attr">type</span>: <span class="string">&#x27;image/jpg&#x27;</span>&#125;);</span><br><span class="line"> </span><br><span class="line">    <span class="comment">// 下載檔案</span></span><br><span class="line">    <span class="keyword">let</span> link = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&#x27;a&#x27;</span>);</span><br><span class="line"> </span><br><span class="line">    <span class="comment">// 建立檔案物件連結</span></span><br><span class="line">    <span class="keyword">const</span> blobUrl = <span class="variable constant_">URL</span>.<span class="title function_">createObjectURL</span>(blob);</span><br><span class="line"> </span><br><span class="line">    link.<span class="property">href</span> = blobUrl;</span><br><span class="line"> </span><br><span class="line">    link.<span class="property">download</span> = <span class="string">&#x27;file.jpg&#x27;</span>;</span><br><span class="line"> </span><br><span class="line">    link.<span class="title function_">click</span>();</span><br><span class="line"> </span><br><span class="line">    <span class="variable constant_">URL</span>.<span class="title function_">revokeObjectURL</span>(blobUrl);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="IE-10-base64-轉換成檔案"><a class="header-anchor" href="#IE-10-base64-轉換成檔案"></a>IE 10 base64 轉換成檔案</h1>
-<p>如果瀏覽器使用 IE 10 以上版本，可使用 window.navigator.msSaveBlob 作為替代方法</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">downloadFile</span>(<span class="params">base64Str</span>) &#123;</span><br><span class="line">   <span class="comment">// 解碼 base64</span></span><br><span class="line">   <span class="keyword">const</span> byteCharacters = <span class="title function_">atob</span>(base64Str);</span><br><span class="line">	</span><br><span class="line">   <span class="comment">// 建立 Byte Array</span></span><br><span class="line">   <span class="keyword">const</span> byteNumbers = <span class="keyword">new</span> <span class="title class_">Array</span>(byteCharacters.<span class="property">length</span>);</span><br><span class="line">	</span><br><span class="line">   <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; byteCharacters.<span class="property">length</span>; i++) &#123;</span><br><span class="line">      byteNumbers[i] = byteCharacters.<span class="title function_">charCodeAt</span>(i);</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">const</span> byteArray = <span class="keyword">new</span> <span class="title class_">Uint8Array</span>(byteNumbers);</span><br><span class="line"></span><br><span class="line">   <span class="comment">// 建立二進制檔和聲明 MIME Type</span></span><br><span class="line">   <span class="keyword">const</span> blob = <span class="keyword">new</span> <span class="title class_">Blob</span>([byteArray], &#123;<span class="attr">type</span>: <span class="string">&#x27;image/jpg&#x27;</span>&#125;);</span><br><span class="line"> </span><br><span class="line">   <span class="comment">// 下載檔案</span></span><br><span class="line">   <span class="variable language_">window</span>.<span class="property">navigator</span>.<span class="title function_">msSaveBlob</span>(blob, <span class="string">&#x27;file.jpg&#x27;</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/atob">MDN atob</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>Javascript</category>
-      </categories>
-      <tags>
-        <tag>Javascript</tag>
-        <tag>Base64</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>使用 Linux 檔案列表建立 Jenkins 下拉選單</title>
     <url>/2021/10/23/JenkinsDropdown/</url>
     <content><![CDATA[<h1 id="取得檔案列表方法"><a class="header-anchor" href="#取得檔案列表方法"></a>取得檔案列表方法</h1>
@@ -392,6 +369,29 @@
       </tags>
   </entry>
   <entry>
+    <title>如何將 Base64 編碼轉成檔案</title>
+    <url>/2019/12/09/JsBase64ToFile/</url>
+    <content><![CDATA[<h1 id="Chrome-base64-轉換成檔案"><a class="header-anchor" href="#Chrome-base64-轉換成檔案"></a>Chrome base64 轉換成檔案</h1>
+<p>下方是使用 JavaScript 把 base64 轉換成檔案的方法</p>
+<span id="more"></span>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"> <span class="keyword">function</span> <span class="title function_">downloadFile</span>(<span class="params">base64Str</span>) &#123;</span><br><span class="line">    <span class="comment">// 解碼 base64</span></span><br><span class="line">    <span class="keyword">const</span> byteCharacters = <span class="title function_">atob</span>(base64Str);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 建立 Byte Array</span></span><br><span class="line">    <span class="keyword">const</span> byteNumbers = <span class="keyword">new</span> <span class="title class_">Array</span>(byteCharacters.<span class="property">length</span>);</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; byteCharacters.<span class="property">length</span>; i++) &#123;</span><br><span class="line"> </span><br><span class="line">       byteNumbers[i] = byteCharacters.<span class="title function_">charCodeAt</span>(i);</span><br><span class="line"> </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">const</span> byteArray = <span class="keyword">new</span> <span class="title class_">Uint8Array</span>(byteNumbers);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 建立二進制檔和聲明 MIME Type</span></span><br><span class="line">    <span class="keyword">const</span> blob = <span class="keyword">new</span> <span class="title class_">Blob</span>([byteArray], &#123;<span class="attr">type</span>: <span class="string">&#x27;image/jpg&#x27;</span>&#125;);</span><br><span class="line"> </span><br><span class="line">    <span class="comment">// 下載檔案</span></span><br><span class="line">    <span class="keyword">let</span> link = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&#x27;a&#x27;</span>);</span><br><span class="line"> </span><br><span class="line">    <span class="comment">// 建立檔案物件連結</span></span><br><span class="line">    <span class="keyword">const</span> blobUrl = <span class="variable constant_">URL</span>.<span class="title function_">createObjectURL</span>(blob);</span><br><span class="line"> </span><br><span class="line">    link.<span class="property">href</span> = blobUrl;</span><br><span class="line"> </span><br><span class="line">    link.<span class="property">download</span> = <span class="string">&#x27;file.jpg&#x27;</span>;</span><br><span class="line"> </span><br><span class="line">    link.<span class="title function_">click</span>();</span><br><span class="line"> </span><br><span class="line">    <span class="variable constant_">URL</span>.<span class="title function_">revokeObjectURL</span>(blobUrl);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="IE-10-base64-轉換成檔案"><a class="header-anchor" href="#IE-10-base64-轉換成檔案"></a>IE 10 base64 轉換成檔案</h1>
+<p>如果瀏覽器使用 IE 10 以上版本，可使用 window.navigator.msSaveBlob 作為替代方法</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">downloadFile</span>(<span class="params">base64Str</span>) &#123;</span><br><span class="line">   <span class="comment">// 解碼 base64</span></span><br><span class="line">   <span class="keyword">const</span> byteCharacters = <span class="title function_">atob</span>(base64Str);</span><br><span class="line">	</span><br><span class="line">   <span class="comment">// 建立 Byte Array</span></span><br><span class="line">   <span class="keyword">const</span> byteNumbers = <span class="keyword">new</span> <span class="title class_">Array</span>(byteCharacters.<span class="property">length</span>);</span><br><span class="line">	</span><br><span class="line">   <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; byteCharacters.<span class="property">length</span>; i++) &#123;</span><br><span class="line">      byteNumbers[i] = byteCharacters.<span class="title function_">charCodeAt</span>(i);</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">const</span> byteArray = <span class="keyword">new</span> <span class="title class_">Uint8Array</span>(byteNumbers);</span><br><span class="line"></span><br><span class="line">   <span class="comment">// 建立二進制檔和聲明 MIME Type</span></span><br><span class="line">   <span class="keyword">const</span> blob = <span class="keyword">new</span> <span class="title class_">Blob</span>([byteArray], &#123;<span class="attr">type</span>: <span class="string">&#x27;image/jpg&#x27;</span>&#125;);</span><br><span class="line"> </span><br><span class="line">   <span class="comment">// 下載檔案</span></span><br><span class="line">   <span class="variable language_">window</span>.<span class="property">navigator</span>.<span class="title function_">msSaveBlob</span>(blob, <span class="string">&#x27;file.jpg&#x27;</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/atob">MDN atob</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>Javascript</category>
+      </categories>
+      <tags>
+        <tag>Javascript</tag>
+        <tag>Base64</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>如何將檔案轉成 Base64 編碼</title>
     <url>/2019/12/09/JsFileToBase64/</url>
     <content><![CDATA[<h1 id="建立-HTML"><a class="header-anchor" href="#建立-HTML"></a>建立 HTML</h1>
@@ -412,29 +412,6 @@
       <tags>
         <tag>Javascript</tag>
         <tag>Base64</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>如何判斷 Function 是否存在</title>
-    <url>/2019/12/28/JsFunction/</url>
-    <content><![CDATA[<h1 id="建立-function"><a class="header-anchor" href="#建立-function"></a>建立 function</h1>
-<p>建立一個名稱為 TEST 的 function</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">TEST</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;call function TEST&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="判斷-function-是否存在"><a class="header-anchor" href="#判斷-function-是否存在"></a>判斷 function 是否存在</h1>
-<p>判斷 function 是否存在 Window 變數中，並執行</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> funcName = <span class="string">&#x27;TEST&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="title function_">typeof</span>(<span class="variable language_">window</span>[<span class="title class_">FuncName</span>]) === <span class="string">&#x27;function&#x27;</span>) &#123;</span><br><span class="line">    <span class="comment">// 執行方法</span></span><br><span class="line">    <span class="variable language_">window</span>[<span class="title class_">FuncName</span>]();</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;此方法不存在&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof">MDN typeof</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>Javascript</category>
-      </categories>
-      <tags>
-        <tag>Javascript</tag>
-        <tag>Function</tag>
       </tags>
   </entry>
   <entry>
@@ -464,6 +441,29 @@
       <tags>
         <tag>Javascript</tag>
         <tag>Iframe</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>如何判斷 Function 是否存在</title>
+    <url>/2019/12/28/JsFunction/</url>
+    <content><![CDATA[<h1 id="建立-function"><a class="header-anchor" href="#建立-function"></a>建立 function</h1>
+<p>建立一個名稱為 TEST 的 function</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">TEST</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;call function TEST&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="判斷-function-是否存在"><a class="header-anchor" href="#判斷-function-是否存在"></a>判斷 function 是否存在</h1>
+<p>判斷 function 是否存在 Window 變數中，並執行</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> funcName = <span class="string">&#x27;TEST&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="title function_">typeof</span>(<span class="variable language_">window</span>[<span class="title class_">FuncName</span>]) === <span class="string">&#x27;function&#x27;</span>) &#123;</span><br><span class="line">    <span class="comment">// 執行方法</span></span><br><span class="line">    <span class="variable language_">window</span>[<span class="title class_">FuncName</span>]();</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;此方法不存在&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof">MDN typeof</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>Javascript</category>
+      </categories>
+      <tags>
+        <tag>Javascript</tag>
+        <tag>Function</tag>
       </tags>
   </entry>
   <entry>
@@ -569,7 +569,7 @@ k6 run --stage 30s:10 test.js;
     <url>/2025/04/02/JsK6Monitor/</url>
     <content><![CDATA[<h1 id="安裝-InfluxDB-儲存壓測資料"><a class="header-anchor" href="#安裝-InfluxDB-儲存壓測資料"></a>安裝 InfluxDB 儲存壓測資料</h1>
 <p>使用 Docker 建立 InfluxDB 2.X</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run -d -p 8086:8086 \</span><br><span class="line">	-e DOCKER_INFLUXDB_INIT_MODE=setup \</span><br><span class="line">    -e DOCKER_INFLUXDB_INIT_USERNAME=[初始帳號] \</span><br><span class="line">	-e DOCKER_INFLUXDB_INIT_PASSWORD=[初始密碼] \</span><br><span class="line">	-e DOCKER_INFLUXDB_INIT_ORG=[初始ORG] \</span><br><span class="line">	-e DOCKER_INFLUXDB_INIT_BUCKET=[初始BUCKET] \</span><br><span class="line">    -e DOCKER_INFLUXDB_INIT_RETENTION=1w \</span><br><span class="line">    -e DOCKER_INFLUXDB_INIT_ADMIN_TOKEN=[初始TOKEN] \</span><br><span class="line">	influxdb</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run -d -p 8086:8086 \</span><br><span class="line">	-e DOCKER_INFLUXDB_INIT_MODE=setup \</span><br><span class="line">  -e DOCKER_INFLUXDB_INIT_USERNAME=[初始帳號] \</span><br><span class="line">	-e DOCKER_INFLUXDB_INIT_PASSWORD=[初始密碼] \</span><br><span class="line">	-e DOCKER_INFLUXDB_INIT_ORG=[初始ORG] \</span><br><span class="line">	-e DOCKER_INFLUXDB_INIT_BUCKET=[初始BUCKET] \</span><br><span class="line">  -e DOCKER_INFLUXDB_INIT_RETENTION=1w \</span><br><span class="line">  -e DOCKER_INFLUXDB_INIT_ADMIN_TOKEN=[初始TOKEN] \</span><br><span class="line">	influxdb</span><br></pre></td></tr></table></figure>
 <span id="more"></span>
 <!-- 建立完成後，使用初始帳密登入連結 http://localhost:8086/ -->
 <p>建立完成後，使用 API 檢查 BUCKET</p>
@@ -596,21 +596,26 @@ $env:K6_INFLUXDB_TOKEN='[初始TOKEN]' ;
 <p>安裝 VS Code 套件 <a href="https://marketplace.visualstudio.com/items?itemName=influxdata.flux">Flux</a>，建立檔案 test.flux 內容如下，使用 F5 執行</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">from(bucket: &quot;k6_test&quot;)</span><br><span class="line">  |&gt; range(start: time(v: &quot;2025-04-08&quot;), stop: time(v: &quot;2025-04-09&quot;))</span><br><span class="line">  |&gt; filter(fn: (r) =&gt; r[&quot;_measurement&quot;] == &quot;http_req_duration&quot;)</span><br><span class="line">  |&gt; aggregateWindow(every: duration(v: &quot;7d&quot;), fn: last, createEmpty: false)</span><br><span class="line">  |&gt; yield(name: &quot;last&quot;)</span><br></pre></td></tr></table></figure>
 <h1 id="安裝-Grafana-呈現壓測資料"><a class="header-anchor" href="#安裝-Grafana-呈現壓測資料"></a>安裝 Grafana 呈現壓測資料</h1>
+<p>透過 Grafana 儀表板呈現 InfluxDB 資料</p>
+<h2 id="安裝-Grafana"><a class="header-anchor" href="#安裝-Grafana"></a>安裝 Grafana</h2>
 <p>使用 Docker 建立 Grafana</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run --name=grafana -d -p 3000:3000 \</span><br><span class="line">    -e GF_SECURITY_ADMIN_USER=[初始帳號] \</span><br><span class="line">    -e GF_SECURITY_ADMIN_PASSWORD=[初始密碼] \</span><br><span class="line">    grafana/grafana</span><br></pre></td></tr></table></figure>
 <!-- 建立完成後，使用初始帳密登入連結 http://localhost:3000/ -->
 <!-- 左側點擊 Administration > Users and access > Service Accounts > Add service account -->
+<h2 id="取得-Token"><a class="header-anchor" href="#取得-Token"></a>取得 Token</h2>
 <p>建立 Service Account</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl -X POST http://admin:admin123@localhost:3000/api/serviceaccounts \</span><br><span class="line">  -H <span class="string">&quot;Content-Type: application/json&quot;</span> \</span><br><span class="line">  -d <span class="string">&#x27;&#123;</span></span><br><span class="line"><span class="string">	  &quot;name&quot;: &quot;grafana&quot;,</span></span><br><span class="line"><span class="string">	  &quot;role&quot;: &quot;Admin&quot;,</span></span><br><span class="line"><span class="string">	  &quot;isDisabled&quot;: false</span></span><br><span class="line"><span class="string">	&#125;&#x27;</span></span><br></pre></td></tr></table></figure>
-<p>建立 Service Account Token</p>
+<p>建立 Service Account Token，使用此 Token 呼叫特權 API</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl -X POST http://admin:admin123@localhost:3000/api/serviceaccounts/2/tokens \</span><br><span class="line">  -H <span class="string">&quot;Content-Type: application/json&quot;</span> \</span><br><span class="line">  -d <span class="string">&#x27;&#123;</span></span><br><span class="line"><span class="string">      &quot;name&quot;: &quot;grafana&quot;,</span></span><br><span class="line"><span class="string">      &quot;secondsToLive&quot;: 604800</span></span><br><span class="line"><span class="string">    &#125;&#x27;</span></span><br></pre></td></tr></table></figure>
 <!-- 左側點擊 Connections => Add new connection => 搜尋 influxdb -->
-<p>查詢 datasources</p>
+<h2 id="資料來源"><a class="header-anchor" href="#資料來源"></a>資料來源</h2>
+<p>透過 API 查詢資料來源</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl -X GET http://localhost:3000/api/datasources/name/influxdb_test \</span><br><span class="line">    -H <span class="string">&quot;Accept: application/json&quot;</span>  \</span><br><span class="line">	-H <span class="string">&quot;Content-Type: application/json&quot;</span>  \</span><br><span class="line">	-H <span class="string">&quot;Authorization: Bearer [Service_Account_Token]&quot;</span></span><br></pre></td></tr></table></figure>
-<p>建立 datasources</p>
+<p>透過 API 建立資料來源</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl -X POST http://localhost:3000/api/datasources \</span><br><span class="line">  -H <span class="string">&quot;Content-Type: application/json&quot;</span> \</span><br><span class="line">  -H <span class="string">&quot;Authorization: Bearer [Service_Account_Token]&quot;</span> \</span><br><span class="line">  -d <span class="string">&#x27;&#123;</span></span><br><span class="line"><span class="string">    &quot;name&quot;: &quot;influxdb_test&quot;,</span></span><br><span class="line"><span class="string">    &quot;type&quot;: &quot;influxdb&quot;,</span></span><br><span class="line"><span class="string">    &quot;access&quot;: &quot;proxy&quot;,</span></span><br><span class="line"><span class="string">    &quot;url&quot;: &quot;http://localhost:8086&quot;,</span></span><br><span class="line"><span class="string">    &quot;basicAuth&quot;: false,</span></span><br><span class="line"><span class="string">    &quot;jsonData&quot;: &#123;</span></span><br><span class="line"><span class="string">      &quot;version&quot;: &quot;Flux&quot;,</span></span><br><span class="line"><span class="string">      &quot;organization&quot;: &quot;[初始ORG]&quot;,</span></span><br><span class="line"><span class="string">      &quot;defaultBucket&quot;: &quot;[初始BUCKET]&quot;,</span></span><br><span class="line"><span class="string">      &quot;tlsSkipVerify&quot;: false</span></span><br><span class="line"><span class="string">    &#125;,</span></span><br><span class="line"><span class="string">    &quot;secureJsonData&quot;: &#123;</span></span><br><span class="line"><span class="string">      &quot;token&quot;: &quot;[InfluxDB初始TOKEN]&quot;</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">  &#125;&#x27;</span></span><br></pre></td></tr></table></figure>
 <!-- 左側點擊 Dashboards =>  New dashboard -->
-<p>建立 dashboard</p>
+<h2 id="儀表板"><a class="header-anchor" href="#儀表板"></a>儀表板</h2>
+<p>透過 API 建立儀表板</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl -X POST http://localhost:3000/api/dashboards/db \</span><br><span class="line">  -H <span class="string">&quot;Content-Type: application/json&quot;</span> \</span><br><span class="line">  -H <span class="string">&quot;Authorization: Bearer [Service_Account_Token]&quot;</span> \</span><br><span class="line">  -d <span class="string">&#x27;&#123;</span></span><br><span class="line"><span class="string">    &quot;dashboard&quot;: &#123;</span></span><br><span class="line"><span class="string">      &quot;id&quot;: null,</span></span><br><span class="line"><span class="string">      &quot;uid&quot;: null,</span></span><br><span class="line"><span class="string">      &quot;title&quot;: &quot;InfluxDB Flux Demo&quot;,</span></span><br><span class="line"><span class="string">      &quot;timezone&quot;: &quot;browser&quot;,</span></span><br><span class="line"><span class="string">      &quot;schemaVersion&quot;: 38,</span></span><br><span class="line"><span class="string">      &quot;version&quot;: 0,</span></span><br><span class="line"><span class="string">      &quot;refresh&quot;: &quot;30s&quot;,</span></span><br><span class="line"><span class="string">      &quot;panels&quot;: [</span></span><br><span class="line"><span class="string">        &#123;</span></span><br><span class="line"><span class="string">          &quot;type&quot;: &quot;timeseries&quot;,</span></span><br><span class="line"><span class="string">          &quot;title&quot;: &quot;http_req_duration&quot;,</span></span><br><span class="line"><span class="string">          &quot;datasource&quot;: &#123;</span></span><br><span class="line"><span class="string">            &quot;type&quot;: &quot;influxdb&quot;,</span></span><br><span class="line"><span class="string">            &quot;uid&quot;: &quot;eei9mxy3v7egwc&quot;</span></span><br><span class="line"><span class="string">          &#125;,</span></span><br><span class="line"><span class="string">          &quot;targets&quot;: [</span></span><br><span class="line"><span class="string">            &#123;</span></span><br><span class="line"><span class="string">              &quot;refId&quot;: &quot;A&quot;,</span></span><br><span class="line"><span class="string">              &quot;queryType&quot;: &quot;flux&quot;,</span></span><br><span class="line"><span class="string">              &quot;query&quot;: &quot;from(bucket: \&quot;k6_test\&quot;) |&gt; range(start: v.timeRangeStart, stop: v.timeRangeStop) |&gt; filter(fn: (r) =&gt; r[\&quot;_measurement\&quot;] == \&quot;http_req_duration\&quot;) |&gt; aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false) |&gt; yield(name: \&quot;last\&quot;)&quot;</span></span><br><span class="line"><span class="string">            &#125;</span></span><br><span class="line"><span class="string">          ],</span></span><br><span class="line"><span class="string">          &quot;fieldConfig&quot;: &#123;</span></span><br><span class="line"><span class="string">            &quot;defaults&quot;: &#123;&#125;,</span></span><br><span class="line"><span class="string">            &quot;overrides&quot;: []</span></span><br><span class="line"><span class="string">          &#125;,</span></span><br><span class="line"><span class="string">          &quot;gridPos&quot;: &#123;</span></span><br><span class="line"><span class="string">            &quot;h&quot;: 9,</span></span><br><span class="line"><span class="string">            &quot;w&quot;: 12,</span></span><br><span class="line"><span class="string">            &quot;x&quot;: 0,</span></span><br><span class="line"><span class="string">            &quot;y&quot;: 0</span></span><br><span class="line"><span class="string">          &#125;</span></span><br><span class="line"><span class="string">        &#125;</span></span><br><span class="line"><span class="string">      ]</span></span><br><span class="line"><span class="string">    &#125;,</span></span><br><span class="line"><span class="string">    &quot;folderId&quot;: 0,</span></span><br><span class="line"><span class="string">    &quot;overwrite&quot;: true</span></span><br><span class="line"><span class="string">  &#125;&#x27;</span></span><br></pre></td></tr></table></figure>
 <div class="note warning"><p>📜 參考資料</p>
 <ol>
@@ -1053,56 +1058,6 @@ plink -v -x -a -T -C -noagent -ssh -pw "[密碼]" -P 50893 -L [本地端口]:[�
       </tags>
   </entry>
   <entry>
-    <title>使用 DataFrame 操作資料</title>
-    <url>/2024/05/05/NetDataFrame/</url>
-    <content><![CDATA[<h1 id="載入-CSV-資料"><a class="header-anchor" href="#載入-CSV-資料"></a>載入 CSV 資料</h1>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="meta">#r &quot;nuget: Microsoft.Data.Analysis, 0.21.1&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> System.IO;</span><br><span class="line"><span class="keyword">using</span> Microsoft.Data.Analysis;</span><br><span class="line"></span><br><span class="line"><span class="built_in">string</span> csvfile = File.ReadAllText(<span class="string">&quot;test.csv&quot;</span>);</span><br><span class="line">DataFrame df = DataFrame.LoadCsvFromString(csvfile, <span class="string">&#x27;,&#x27;</span>);</span><br><span class="line">Console.WriteLine(df);</span><br></pre></td></tr></table></figure>
-<p>輸出:</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">NAME      </span><br><span class="line">張三        </span><br><span class="line">李四   </span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="取得前-1-筆"><a class="header-anchor" href="#取得前-1-筆"></a>取得前 1 筆</h1>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">DataFrame headRow = df.Head(<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">Console.WriteLine(headRow);</span><br></pre></td></tr></table></figure>
-<p>輸出:</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">NAME      </span><br><span class="line">張三   </span><br></pre></td></tr></table></figure>
-<h1 id="加入新-column"><a class="header-anchor" href="#加入新-column"></a>加入新 column</h1>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">df.Columns.Add(<span class="keyword">new</span> PrimitiveDataFrameColumn&lt;<span class="built_in">int</span>&gt;(<span class="string">&quot;AGE&quot;</span>, <span class="keyword">new</span> List&lt;<span class="built_in">int</span>&gt;&#123;<span class="number">1</span>, <span class="number">1</span>&#125;));</span><br><span class="line"></span><br><span class="line">Console.WriteLine(df);</span><br></pre></td></tr></table></figure>
-<p>輸出:</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">NAME      AGE       </span><br><span class="line">張三        <span class="number">1</span>         </span><br><span class="line">李四        <span class="number">1</span>         </span><br></pre></td></tr></table></figure>
-<h1 id="加入新-row"><a class="header-anchor" href="#加入新-row"></a>加入新 row</h1>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">df.Append(<span class="keyword">new</span> List&lt;KeyValuePair&lt;<span class="built_in">string</span>, <span class="built_in">object</span>&gt;&gt;() &#123;</span><br><span class="line"><span class="keyword">new</span> KeyValuePair&lt;<span class="built_in">string</span>, <span class="built_in">object</span>&gt;(<span class="string">&quot;NAME&quot;</span>, <span class="string">&quot;王五&quot;</span>),</span><br><span class="line"><span class="keyword">new</span> KeyValuePair&lt;<span class="built_in">string</span>, <span class="built_in">object</span>&gt;(<span class="string">&quot;AGE&quot;</span>, <span class="number">3</span>)</span><br><span class="line">&#125;, <span class="literal">true</span>);</span><br><span class="line"></span><br><span class="line">Console.WriteLine(df);</span><br></pre></td></tr></table></figure>
-<p>輸出:</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">NAME      AGE       </span><br><span class="line">張三        <span class="number">1</span>         </span><br><span class="line">李四        <span class="number">1</span>         </span><br><span class="line">王五        <span class="number">3</span>       </span><br></pre></td></tr></table></figure>
-<h1 id="排序資料"><a class="header-anchor" href="#排序資料"></a>排序資料</h1>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">DataFrame orderByData = df.OrderByDescending(<span class="string">&quot;AGE&quot;</span>);</span><br><span class="line">Console.WriteLine(orderByData);</span><br></pre></td></tr></table></figure>
-<p>輸出:</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">NAME      AGE       </span><br><span class="line">王五        <span class="number">3</span>         </span><br><span class="line">李四        <span class="number">1</span>         </span><br><span class="line">張三        <span class="number">1</span>            </span><br></pre></td></tr></table></figure>
-<h1 id="分群資料"><a class="header-anchor" href="#分群資料"></a>分群資料</h1>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">DataFrame groupByData = df.GroupBy(<span class="string">&quot;AGE&quot;</span>).Count();</span><br><span class="line">Console.WriteLine(groupByData);</span><br></pre></td></tr></table></figure>
-<p>輸出:</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">AGE       NAME      </span><br><span class="line"><span class="number">1</span>         <span class="number">2</span>         </span><br><span class="line"><span class="number">3</span>         <span class="number">1</span>         </span><br></pre></td></tr></table></figure>
-<h1 id="篩選資料"><a class="header-anchor" href="#篩選資料"></a>篩選資料</h1>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">DataFrame filterData = df.Filter(df.Columns[<span class="string">&quot;AGE&quot;</span>].ElementwiseGreaterThan(<span class="number">1</span>));</span><br><span class="line">Console.WriteLine(filterData);</span><br></pre></td></tr></table></figure>
-<p>輸出:</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">NAME      AGE       </span><br><span class="line">王五        <span class="number">3</span>            </span><br></pre></td></tr></table></figure>
-<h1 id="合併資料"><a class="header-anchor" href="#合併資料"></a>合併資料</h1>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">DataFrame df1 = DataFrame.LoadCsvFromString(csvfile, <span class="string">&#x27;,&#x27;</span>);</span><br><span class="line">DataFrame mergeData = df1.Merge&lt;<span class="built_in">string</span>&gt;(df, <span class="string">&quot;NAME&quot;</span>, <span class="string">&quot;NAME&quot;</span>);</span><br><span class="line">Console.WriteLine(mergeData);</span><br></pre></td></tr></table></figure>
-<p>輸出:</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">NAME_left  NAME_right AGE        </span><br><span class="line">張三         張三         <span class="number">1</span>          </span><br><span class="line">李四         李四         <span class="number">1</span>          </span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://learn.microsoft.com/en-us/dotnet/api/microsoft.data.analysis.dataframe?view=ml-dotnet-preview&amp;viewFallbackFrom=ml-dotnet">DataFrame Class</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>.Net</category>
-      </categories>
-      <tags>
-        <tag>.Net</tag>
-        <tag>DataFrame</tag>
-        <tag>Polyglot Notebooks</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>使用 lldb 分析 Dotnet 核心傾印檔案</title>
     <url>/2023/05/07/NetCoreDump/</url>
     <content><![CDATA[<h1 id="查詢服務資訊"><a class="header-anchor" href="#查詢服務資訊"></a>查詢服務資訊</h1>
@@ -1171,6 +1126,56 @@ dotnet-dump collect --process-id 1902 -->
         <tag>Linux</tag>
         <tag>.Net</tag>
         <tag>lldb</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>使用 DataFrame 操作資料</title>
+    <url>/2024/05/05/NetDataFrame/</url>
+    <content><![CDATA[<h1 id="載入-CSV-資料"><a class="header-anchor" href="#載入-CSV-資料"></a>載入 CSV 資料</h1>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="meta">#r &quot;nuget: Microsoft.Data.Analysis, 0.21.1&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> System.IO;</span><br><span class="line"><span class="keyword">using</span> Microsoft.Data.Analysis;</span><br><span class="line"></span><br><span class="line"><span class="built_in">string</span> csvfile = File.ReadAllText(<span class="string">&quot;test.csv&quot;</span>);</span><br><span class="line">DataFrame df = DataFrame.LoadCsvFromString(csvfile, <span class="string">&#x27;,&#x27;</span>);</span><br><span class="line">Console.WriteLine(df);</span><br></pre></td></tr></table></figure>
+<p>輸出:</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">NAME      </span><br><span class="line">張三        </span><br><span class="line">李四   </span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="取得前-1-筆"><a class="header-anchor" href="#取得前-1-筆"></a>取得前 1 筆</h1>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">DataFrame headRow = df.Head(<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">Console.WriteLine(headRow);</span><br></pre></td></tr></table></figure>
+<p>輸出:</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">NAME      </span><br><span class="line">張三   </span><br></pre></td></tr></table></figure>
+<h1 id="加入新-column"><a class="header-anchor" href="#加入新-column"></a>加入新 column</h1>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">df.Columns.Add(<span class="keyword">new</span> PrimitiveDataFrameColumn&lt;<span class="built_in">int</span>&gt;(<span class="string">&quot;AGE&quot;</span>, <span class="keyword">new</span> List&lt;<span class="built_in">int</span>&gt;&#123;<span class="number">1</span>, <span class="number">1</span>&#125;));</span><br><span class="line"></span><br><span class="line">Console.WriteLine(df);</span><br></pre></td></tr></table></figure>
+<p>輸出:</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">NAME      AGE       </span><br><span class="line">張三        <span class="number">1</span>         </span><br><span class="line">李四        <span class="number">1</span>         </span><br></pre></td></tr></table></figure>
+<h1 id="加入新-row"><a class="header-anchor" href="#加入新-row"></a>加入新 row</h1>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">df.Append(<span class="keyword">new</span> List&lt;KeyValuePair&lt;<span class="built_in">string</span>, <span class="built_in">object</span>&gt;&gt;() &#123;</span><br><span class="line"><span class="keyword">new</span> KeyValuePair&lt;<span class="built_in">string</span>, <span class="built_in">object</span>&gt;(<span class="string">&quot;NAME&quot;</span>, <span class="string">&quot;王五&quot;</span>),</span><br><span class="line"><span class="keyword">new</span> KeyValuePair&lt;<span class="built_in">string</span>, <span class="built_in">object</span>&gt;(<span class="string">&quot;AGE&quot;</span>, <span class="number">3</span>)</span><br><span class="line">&#125;, <span class="literal">true</span>);</span><br><span class="line"></span><br><span class="line">Console.WriteLine(df);</span><br></pre></td></tr></table></figure>
+<p>輸出:</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">NAME      AGE       </span><br><span class="line">張三        <span class="number">1</span>         </span><br><span class="line">李四        <span class="number">1</span>         </span><br><span class="line">王五        <span class="number">3</span>       </span><br></pre></td></tr></table></figure>
+<h1 id="排序資料"><a class="header-anchor" href="#排序資料"></a>排序資料</h1>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">DataFrame orderByData = df.OrderByDescending(<span class="string">&quot;AGE&quot;</span>);</span><br><span class="line">Console.WriteLine(orderByData);</span><br></pre></td></tr></table></figure>
+<p>輸出:</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">NAME      AGE       </span><br><span class="line">王五        <span class="number">3</span>         </span><br><span class="line">李四        <span class="number">1</span>         </span><br><span class="line">張三        <span class="number">1</span>            </span><br></pre></td></tr></table></figure>
+<h1 id="分群資料"><a class="header-anchor" href="#分群資料"></a>分群資料</h1>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">DataFrame groupByData = df.GroupBy(<span class="string">&quot;AGE&quot;</span>).Count();</span><br><span class="line">Console.WriteLine(groupByData);</span><br></pre></td></tr></table></figure>
+<p>輸出:</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">AGE       NAME      </span><br><span class="line"><span class="number">1</span>         <span class="number">2</span>         </span><br><span class="line"><span class="number">3</span>         <span class="number">1</span>         </span><br></pre></td></tr></table></figure>
+<h1 id="篩選資料"><a class="header-anchor" href="#篩選資料"></a>篩選資料</h1>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">DataFrame filterData = df.Filter(df.Columns[<span class="string">&quot;AGE&quot;</span>].ElementwiseGreaterThan(<span class="number">1</span>));</span><br><span class="line">Console.WriteLine(filterData);</span><br></pre></td></tr></table></figure>
+<p>輸出:</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">NAME      AGE       </span><br><span class="line">王五        <span class="number">3</span>            </span><br></pre></td></tr></table></figure>
+<h1 id="合併資料"><a class="header-anchor" href="#合併資料"></a>合併資料</h1>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">DataFrame df1 = DataFrame.LoadCsvFromString(csvfile, <span class="string">&#x27;,&#x27;</span>);</span><br><span class="line">DataFrame mergeData = df1.Merge&lt;<span class="built_in">string</span>&gt;(df, <span class="string">&quot;NAME&quot;</span>, <span class="string">&quot;NAME&quot;</span>);</span><br><span class="line">Console.WriteLine(mergeData);</span><br></pre></td></tr></table></figure>
+<p>輸出:</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">NAME_left  NAME_right AGE        </span><br><span class="line">張三         張三         <span class="number">1</span>          </span><br><span class="line">李四         李四         <span class="number">1</span>          </span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://learn.microsoft.com/en-us/dotnet/api/microsoft.data.analysis.dataframe?view=ml-dotnet-preview&amp;viewFallbackFrom=ml-dotnet">DataFrame Class</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>.Net</category>
+      </categories>
+      <tags>
+        <tag>.Net</tag>
+        <tag>DataFrame</tag>
+        <tag>Polyglot Notebooks</tag>
       </tags>
   </entry>
   <entry>

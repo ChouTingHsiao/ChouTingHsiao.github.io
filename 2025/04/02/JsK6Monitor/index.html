@@ -20,15 +20,15 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"choutinghsiao.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.23.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/js/config.js" defer></script>
 
-    <meta name="description" content="安裝 InfluxDB 儲存壓測資料 使用 Docker 建立 InfluxDB 2.X 123456789docker run -d -p 8086:8086 \	-e DOCKER_INFLUXDB_INIT_MODE&#x3D;setup \    -e DOCKER_INFLUXDB_INIT_USERNAME&#x3D;[初始帳號] \	-e DOCKER_INFLUXDB_INIT_PASSWORD&#x3D;[初">
+    <meta name="description" content="安裝 InfluxDB 儲存壓測資料 使用 Docker 建立 InfluxDB 2.X 123456789docker run -d -p 8086:8086 \	-e DOCKER_INFLUXDB_INIT_MODE&#x3D;setup \  -e DOCKER_INFLUXDB_INIT_USERNAME&#x3D;[初始帳號] \	-e DOCKER_INFLUXDB_INIT_PASSWORD&#x3D;[初始密">
 <meta property="og:type" content="article">
 <meta property="og:title" content="K6 壓測可視化">
 <meta property="og:url" content="https://choutinghsiao.github.io/2025/04/02/JsK6Monitor/index.html">
 <meta property="og:site_name" content="Stephen&#39;s Note">
-<meta property="og:description" content="安裝 InfluxDB 儲存壓測資料 使用 Docker 建立 InfluxDB 2.X 123456789docker run -d -p 8086:8086 \	-e DOCKER_INFLUXDB_INIT_MODE&#x3D;setup \    -e DOCKER_INFLUXDB_INIT_USERNAME&#x3D;[初始帳號] \	-e DOCKER_INFLUXDB_INIT_PASSWORD&#x3D;[初">
+<meta property="og:description" content="安裝 InfluxDB 儲存壓測資料 使用 Docker 建立 InfluxDB 2.X 123456789docker run -d -p 8086:8086 \	-e DOCKER_INFLUXDB_INIT_MODE&#x3D;setup \  -e DOCKER_INFLUXDB_INIT_USERNAME&#x3D;[初始帳號] \	-e DOCKER_INFLUXDB_INIT_PASSWORD&#x3D;[初始密">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2025-04-02T17:00:00.000Z">
-<meta property="article:modified_time" content="2025-04-20T09:45:18.661Z">
+<meta property="article:published_time" content="2025-04-02T18:00:00.000Z">
+<meta property="article:modified_time" content="2025-04-22T14:41:48.426Z">
 <meta property="article:author" content="Stephen">
 <meta property="article:tag" content="Javascript">
 <meta property="article:tag" content="K6">
@@ -160,7 +160,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%9D-InfluxDB-%E5%84%B2%E5%AD%98%E5%A3%93%E6%B8%AC%E8%B3%87%E6%96%99"><span class="nav-number">1.</span> <span class="nav-text">安裝 InfluxDB 儲存壓測資料</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8C%AF%E5%85%A5%E8%B3%87%E6%96%99"><span class="nav-number">1.1.</span> <span class="nav-text">匯入資料</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%9D-golang"><span class="nav-number">1.1.1.</span> <span class="nav-text">安裝 golang</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%9D%E5%A5%97%E4%BB%B6-xk6"><span class="nav-number">1.1.2.</span> <span class="nav-text">安裝套件 xk6</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BB%BA%E7%BD%AE-k6-exe"><span class="nav-number">1.1.3.</span> <span class="nav-text">建置 k6.exe</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%B7%E8%A1%8C-k6-%E5%A3%93%E6%B8%AC"><span class="nav-number">1.1.4.</span> <span class="nav-text">執行 k6 壓測</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E8%A9%A2%E8%B3%87%E6%96%99"><span class="nav-number">1.2.</span> <span class="nav-text">查詢資料</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%9D-Grafana-%E5%91%88%E7%8F%BE%E5%A3%93%E6%B8%AC%E8%B3%87%E6%96%99"><span class="nav-number">2.</span> <span class="nav-text">安裝 Grafana 呈現壓測資料</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%9D-InfluxDB-%E5%84%B2%E5%AD%98%E5%A3%93%E6%B8%AC%E8%B3%87%E6%96%99"><span class="nav-number">1.</span> <span class="nav-text">安裝 InfluxDB 儲存壓測資料</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8C%AF%E5%85%A5%E8%B3%87%E6%96%99"><span class="nav-number">1.1.</span> <span class="nav-text">匯入資料</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%9D-golang"><span class="nav-number">1.1.1.</span> <span class="nav-text">安裝 golang</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%9D%E5%A5%97%E4%BB%B6-xk6"><span class="nav-number">1.1.2.</span> <span class="nav-text">安裝套件 xk6</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BB%BA%E7%BD%AE-k6-exe"><span class="nav-number">1.1.3.</span> <span class="nav-text">建置 k6.exe</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%B7%E8%A1%8C-k6-%E5%A3%93%E6%B8%AC"><span class="nav-number">1.1.4.</span> <span class="nav-text">執行 k6 壓測</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E8%A9%A2%E8%B3%87%E6%96%99"><span class="nav-number">1.2.</span> <span class="nav-text">查詢資料</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%9D-Grafana-%E5%91%88%E7%8F%BE%E5%A3%93%E6%B8%AC%E8%B3%87%E6%96%99"><span class="nav-number">2.</span> <span class="nav-text">安裝 Grafana 呈現壓測資料</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%9D-Grafana"><span class="nav-number">2.1.</span> <span class="nav-text">安裝 Grafana</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%96%E5%BE%97-Token"><span class="nav-number">2.2.</span> <span class="nav-text">取得 Token</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B3%87%E6%96%99%E4%BE%86%E6%BA%90"><span class="nav-number">2.3.</span> <span class="nav-text">資料來源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%84%80%E8%A1%A8%E6%9D%BF"><span class="nav-number">2.4.</span> <span class="nav-text">儀表板</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -200,13 +200,13 @@
 	</div>
 	<ul class="links-of-blogroll-list recent-posts-list">
 	        <li class="my-links-of-blogroll-item">
-		    <a href="/2025/04/02/JsK6LoadingTest/" title="K6 基本壓測" target="">
-		    K6 基本壓測
+		    <a href="/2025/04/02/JsK6Monitor/" title="K6 壓測可視化" target="">
+		    K6 壓測可視化
 		    </a>
 		</li>
 	        <li class="my-links-of-blogroll-item">
-		    <a href="/2025/04/02/JsK6Monitor/" title="K6 壓測可視化" target="">
-		    K6 壓測可視化
+		    <a href="/2025/04/02/JsK6LoadingTest/" title="K6 基本壓測" target="">
+		    K6 基本壓測
 		    </a>
 		</li>
 	        <li class="my-links-of-blogroll-item">
@@ -276,14 +276,14 @@
       </span>
       <span class="post-meta-item-text">Posted on</span>
 
-      <time title="Created: 2025-04-02 17:00:00" itemprop="dateCreated datePublished" datetime="2025-04-02T17:00:00+00:00">2025-04-02</time>
+      <time title="Created: 2025-04-02 18:00:00" itemprop="dateCreated datePublished" datetime="2025-04-02T18:00:00+00:00">2025-04-02</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-04-20 09:45:18" itemprop="dateModified" datetime="2025-04-20T09:45:18+00:00">2025-04-20</time>
+      <time title="Modified: 2025-04-22 14:41:48" itemprop="dateModified" datetime="2025-04-22T14:41:48+00:00">2025-04-22</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -302,14 +302,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Word count in article: </span>
-      <span>679</span>
+      <span>729</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">Reading time &asymp;</span>
-      <span>2 mins.</span>
+      <span>3 mins.</span>
     </span>
 </div>
 
@@ -321,7 +321,7 @@
     
     <div class="post-body" itemprop="articleBody"><h1 id="安裝-InfluxDB-儲存壓測資料"><a class="header-anchor" href="#安裝-InfluxDB-儲存壓測資料"></a>安裝 InfluxDB 儲存壓測資料</h1>
 <p>使用 Docker 建立 InfluxDB 2.X</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -p 8086:8086 \</span><br><span class="line">	-e DOCKER_INFLUXDB_INIT_MODE=setup \</span><br><span class="line">    -e DOCKER_INFLUXDB_INIT_USERNAME=[初始帳號] \</span><br><span class="line">	-e DOCKER_INFLUXDB_INIT_PASSWORD=[初始密碼] \</span><br><span class="line">	-e DOCKER_INFLUXDB_INIT_ORG=[初始ORG] \</span><br><span class="line">	-e DOCKER_INFLUXDB_INIT_BUCKET=[初始BUCKET] \</span><br><span class="line">    -e DOCKER_INFLUXDB_INIT_RETENTION=1w \</span><br><span class="line">    -e DOCKER_INFLUXDB_INIT_ADMIN_TOKEN=[初始TOKEN] \</span><br><span class="line">	influxdb</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -p 8086:8086 \</span><br><span class="line">	-e DOCKER_INFLUXDB_INIT_MODE=setup \</span><br><span class="line">  -e DOCKER_INFLUXDB_INIT_USERNAME=[初始帳號] \</span><br><span class="line">	-e DOCKER_INFLUXDB_INIT_PASSWORD=[初始密碼] \</span><br><span class="line">	-e DOCKER_INFLUXDB_INIT_ORG=[初始ORG] \</span><br><span class="line">	-e DOCKER_INFLUXDB_INIT_BUCKET=[初始BUCKET] \</span><br><span class="line">  -e DOCKER_INFLUXDB_INIT_RETENTION=1w \</span><br><span class="line">  -e DOCKER_INFLUXDB_INIT_ADMIN_TOKEN=[初始TOKEN] \</span><br><span class="line">	influxdb</span><br></pre></td></tr></table></figure>
 <span id="more"></span>
 <!-- 建立完成後，使用初始帳密登入連結 http://localhost:8086/ -->
 <p>建立完成後，使用 API 檢查 BUCKET</p>
@@ -348,21 +348,26 @@ $env:K6_INFLUXDB_TOKEN='[初始TOKEN]' ;
 <p>安裝 VS Code 套件 <a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=influxdata.flux">Flux</a>，建立檔案 test.flux 內容如下，使用 F5 執行</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">from(bucket: &quot;k6_test&quot;)</span><br><span class="line">  |&gt; range(start: time(v: &quot;2025-04-08&quot;), stop: time(v: &quot;2025-04-09&quot;))</span><br><span class="line">  |&gt; filter(fn: (r) =&gt; r[&quot;_measurement&quot;] == &quot;http_req_duration&quot;)</span><br><span class="line">  |&gt; aggregateWindow(every: duration(v: &quot;7d&quot;), fn: last, createEmpty: false)</span><br><span class="line">  |&gt; yield(name: &quot;last&quot;)</span><br></pre></td></tr></table></figure>
 <h1 id="安裝-Grafana-呈現壓測資料"><a class="header-anchor" href="#安裝-Grafana-呈現壓測資料"></a>安裝 Grafana 呈現壓測資料</h1>
+<p>透過 Grafana 儀表板呈現 InfluxDB 資料</p>
+<h2 id="安裝-Grafana"><a class="header-anchor" href="#安裝-Grafana"></a>安裝 Grafana</h2>
 <p>使用 Docker 建立 Grafana</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docker run --name=grafana -d -p 3000:3000 \</span><br><span class="line">    -e GF_SECURITY_ADMIN_USER=[初始帳號] \</span><br><span class="line">    -e GF_SECURITY_ADMIN_PASSWORD=[初始密碼] \</span><br><span class="line">    grafana/grafana</span><br></pre></td></tr></table></figure>
 <!-- 建立完成後，使用初始帳密登入連結 http://localhost:3000/ -->
 <!-- 左側點擊 Administration > Users and access > Service Accounts > Add service account -->
+<h2 id="取得-Token"><a class="header-anchor" href="#取得-Token"></a>取得 Token</h2>
 <p>建立 Service Account</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">curl -X POST http://admin:admin123@localhost:3000/api/serviceaccounts \</span><br><span class="line">  -H <span class="string">&quot;Content-Type: application/json&quot;</span> \</span><br><span class="line">  -d <span class="string">&#x27;&#123;</span></span><br><span class="line"><span class="string">	  &quot;name&quot;: &quot;grafana&quot;,</span></span><br><span class="line"><span class="string">	  &quot;role&quot;: &quot;Admin&quot;,</span></span><br><span class="line"><span class="string">	  &quot;isDisabled&quot;: false</span></span><br><span class="line"><span class="string">	&#125;&#x27;</span></span><br></pre></td></tr></table></figure>
-<p>建立 Service Account Token</p>
+<p>建立 Service Account Token，使用此 Token 呼叫特權 API</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">curl -X POST http://admin:admin123@localhost:3000/api/serviceaccounts/2/tokens \</span><br><span class="line">  -H <span class="string">&quot;Content-Type: application/json&quot;</span> \</span><br><span class="line">  -d <span class="string">&#x27;&#123;</span></span><br><span class="line"><span class="string">      &quot;name&quot;: &quot;grafana&quot;,</span></span><br><span class="line"><span class="string">      &quot;secondsToLive&quot;: 604800</span></span><br><span class="line"><span class="string">    &#125;&#x27;</span></span><br></pre></td></tr></table></figure>
 <!-- 左側點擊 Connections => Add new connection => 搜尋 influxdb -->
-<p>查詢 datasources</p>
+<h2 id="資料來源"><a class="header-anchor" href="#資料來源"></a>資料來源</h2>
+<p>透過 API 查詢資料來源</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">curl -X GET http://localhost:3000/api/datasources/name/influxdb_test \</span><br><span class="line">    -H <span class="string">&quot;Accept: application/json&quot;</span>  \</span><br><span class="line">	-H <span class="string">&quot;Content-Type: application/json&quot;</span>  \</span><br><span class="line">	-H <span class="string">&quot;Authorization: Bearer [Service_Account_Token]&quot;</span></span><br></pre></td></tr></table></figure>
-<p>建立 datasources</p>
+<p>透過 API 建立資料來源</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">curl -X POST http://localhost:3000/api/datasources \</span><br><span class="line">  -H <span class="string">&quot;Content-Type: application/json&quot;</span> \</span><br><span class="line">  -H <span class="string">&quot;Authorization: Bearer [Service_Account_Token]&quot;</span> \</span><br><span class="line">  -d <span class="string">&#x27;&#123;</span></span><br><span class="line"><span class="string">    &quot;name&quot;: &quot;influxdb_test&quot;,</span></span><br><span class="line"><span class="string">    &quot;type&quot;: &quot;influxdb&quot;,</span></span><br><span class="line"><span class="string">    &quot;access&quot;: &quot;proxy&quot;,</span></span><br><span class="line"><span class="string">    &quot;url&quot;: &quot;http://localhost:8086&quot;,</span></span><br><span class="line"><span class="string">    &quot;basicAuth&quot;: false,</span></span><br><span class="line"><span class="string">    &quot;jsonData&quot;: &#123;</span></span><br><span class="line"><span class="string">      &quot;version&quot;: &quot;Flux&quot;,</span></span><br><span class="line"><span class="string">      &quot;organization&quot;: &quot;[初始ORG]&quot;,</span></span><br><span class="line"><span class="string">      &quot;defaultBucket&quot;: &quot;[初始BUCKET]&quot;,</span></span><br><span class="line"><span class="string">      &quot;tlsSkipVerify&quot;: false</span></span><br><span class="line"><span class="string">    &#125;,</span></span><br><span class="line"><span class="string">    &quot;secureJsonData&quot;: &#123;</span></span><br><span class="line"><span class="string">      &quot;token&quot;: &quot;[InfluxDB初始TOKEN]&quot;</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">  &#125;&#x27;</span></span><br></pre></td></tr></table></figure>
 <!-- 左側點擊 Dashboards =>  New dashboard -->
-<p>建立 dashboard</p>
+<h2 id="儀表板"><a class="header-anchor" href="#儀表板"></a>儀表板</h2>
+<p>透過 API 建立儀表板</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">curl -X POST http://localhost:3000/api/dashboards/db \</span><br><span class="line">  -H <span class="string">&quot;Content-Type: application/json&quot;</span> \</span><br><span class="line">  -H <span class="string">&quot;Authorization: Bearer [Service_Account_Token]&quot;</span> \</span><br><span class="line">  -d <span class="string">&#x27;&#123;</span></span><br><span class="line"><span class="string">    &quot;dashboard&quot;: &#123;</span></span><br><span class="line"><span class="string">      &quot;id&quot;: null,</span></span><br><span class="line"><span class="string">      &quot;uid&quot;: null,</span></span><br><span class="line"><span class="string">      &quot;title&quot;: &quot;InfluxDB Flux Demo&quot;,</span></span><br><span class="line"><span class="string">      &quot;timezone&quot;: &quot;browser&quot;,</span></span><br><span class="line"><span class="string">      &quot;schemaVersion&quot;: 38,</span></span><br><span class="line"><span class="string">      &quot;version&quot;: 0,</span></span><br><span class="line"><span class="string">      &quot;refresh&quot;: &quot;30s&quot;,</span></span><br><span class="line"><span class="string">      &quot;panels&quot;: [</span></span><br><span class="line"><span class="string">        &#123;</span></span><br><span class="line"><span class="string">          &quot;type&quot;: &quot;timeseries&quot;,</span></span><br><span class="line"><span class="string">          &quot;title&quot;: &quot;http_req_duration&quot;,</span></span><br><span class="line"><span class="string">          &quot;datasource&quot;: &#123;</span></span><br><span class="line"><span class="string">            &quot;type&quot;: &quot;influxdb&quot;,</span></span><br><span class="line"><span class="string">            &quot;uid&quot;: &quot;eei9mxy3v7egwc&quot;</span></span><br><span class="line"><span class="string">          &#125;,</span></span><br><span class="line"><span class="string">          &quot;targets&quot;: [</span></span><br><span class="line"><span class="string">            &#123;</span></span><br><span class="line"><span class="string">              &quot;refId&quot;: &quot;A&quot;,</span></span><br><span class="line"><span class="string">              &quot;queryType&quot;: &quot;flux&quot;,</span></span><br><span class="line"><span class="string">              &quot;query&quot;: &quot;from(bucket: \&quot;k6_test\&quot;) |&gt; range(start: v.timeRangeStart, stop: v.timeRangeStop) |&gt; filter(fn: (r) =&gt; r[\&quot;_measurement\&quot;] == \&quot;http_req_duration\&quot;) |&gt; aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false) |&gt; yield(name: \&quot;last\&quot;)&quot;</span></span><br><span class="line"><span class="string">            &#125;</span></span><br><span class="line"><span class="string">          ],</span></span><br><span class="line"><span class="string">          &quot;fieldConfig&quot;: &#123;</span></span><br><span class="line"><span class="string">            &quot;defaults&quot;: &#123;&#125;,</span></span><br><span class="line"><span class="string">            &quot;overrides&quot;: []</span></span><br><span class="line"><span class="string">          &#125;,</span></span><br><span class="line"><span class="string">          &quot;gridPos&quot;: &#123;</span></span><br><span class="line"><span class="string">            &quot;h&quot;: 9,</span></span><br><span class="line"><span class="string">            &quot;w&quot;: 12,</span></span><br><span class="line"><span class="string">            &quot;x&quot;: 0,</span></span><br><span class="line"><span class="string">            &quot;y&quot;: 0</span></span><br><span class="line"><span class="string">          &#125;</span></span><br><span class="line"><span class="string">        &#125;</span></span><br><span class="line"><span class="string">      ]</span></span><br><span class="line"><span class="string">    &#125;,</span></span><br><span class="line"><span class="string">    &quot;folderId&quot;: 0,</span></span><br><span class="line"><span class="string">    &quot;overwrite&quot;: true</span></span><br><span class="line"><span class="string">  &#125;&#x27;</span></span><br></pre></td></tr></table></figure>
 <div class="note warning"><p>📜 參考資料</p>
 <ol>
@@ -406,14 +411,11 @@ $env:K6_INFLUXDB_TOKEN='[初始TOKEN]' ;
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2025/01/01/MsSqlIndexFragmentation/" rel="prev" title="使用 DMV 查询 Index 碎片化">
-                  <i class="fa fa-angle-left"></i> 使用 DMV 查询 Index 碎片化
+                <a href="/2025/04/02/JsK6LoadingTest/" rel="prev" title="K6 基本壓測">
+                  <i class="fa fa-angle-left"></i> K6 基本壓測
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2025/04/02/JsK6LoadingTest/" rel="next" title="K6 基本壓測">
-                  K6 基本壓測 <i class="fa fa-angle-right"></i>
-                </a>
             </div>
           </div>
     </footer>
