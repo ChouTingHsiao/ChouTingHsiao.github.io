@@ -1,6 +1,6 @@
 ---
 title: K6 壓測可視化
-date: 2025-04-02 17:00:00
+date: 2025-04-02 18:00:00
 categories: Javascript
 tags: [Javascript, K6]
 ---
@@ -12,12 +12,12 @@ tags: [Javascript, K6]
 ```bash
 docker run -d -p 8086:8086 \
 	-e DOCKER_INFLUXDB_INIT_MODE=setup \
-    -e DOCKER_INFLUXDB_INIT_USERNAME=[初始帳號] \
+  -e DOCKER_INFLUXDB_INIT_USERNAME=[初始帳號] \
 	-e DOCKER_INFLUXDB_INIT_PASSWORD=[初始密碼] \
 	-e DOCKER_INFLUXDB_INIT_ORG=[初始ORG] \
 	-e DOCKER_INFLUXDB_INIT_BUCKET=[初始BUCKET] \
-    -e DOCKER_INFLUXDB_INIT_RETENTION=1w \
-    -e DOCKER_INFLUXDB_INIT_ADMIN_TOKEN=[初始TOKEN] \
+  -e DOCKER_INFLUXDB_INIT_RETENTION=1w \
+  -e DOCKER_INFLUXDB_INIT_ADMIN_TOKEN=[初始TOKEN] \
 	influxdb
 ```
 
@@ -103,6 +103,10 @@ from(bucket: "k6_test")
 
 # 安裝 Grafana 呈現壓測資料
 
+透過 Grafana 儀表板呈現 InfluxDB 資料
+
+## 安裝 Grafana
+
 使用 Docker 建立 Grafana
 
 ```bash
@@ -116,6 +120,8 @@ docker run --name=grafana -d -p 3000:3000 \
 
 <!-- 左側點擊 Administration > Users and access > Service Accounts > Add service account -->
 
+## 取得 Token
+
 建立 Service Account
 
 ```bash
@@ -128,7 +134,7 @@ curl -X POST http://admin:admin123@localhost:3000/api/serviceaccounts \
 	}'
 ```
 
-建立 Service Account Token
+建立 Service Account Token，使用此 Token 呼叫特權 API
 
 ```bash
 curl -X POST http://admin:admin123@localhost:3000/api/serviceaccounts/2/tokens \
@@ -141,7 +147,9 @@ curl -X POST http://admin:admin123@localhost:3000/api/serviceaccounts/2/tokens \
 
 <!-- 左側點擊 Connections => Add new connection => 搜尋 influxdb -->
 
-查詢 datasources
+## 資料來源
+
+透過 API 查詢資料來源
 
 ```bash
 curl -X GET http://localhost:3000/api/datasources/name/influxdb_test \
@@ -150,7 +158,7 @@ curl -X GET http://localhost:3000/api/datasources/name/influxdb_test \
 	-H "Authorization: Bearer [Service_Account_Token]"
 ```
 
-建立 datasources
+透過 API 建立資料來源
 
 ```bash
 curl -X POST http://localhost:3000/api/datasources \
@@ -176,7 +184,9 @@ curl -X POST http://localhost:3000/api/datasources \
 
 <!-- 左側點擊 Dashboards =>  New dashboard -->
 
-建立 dashboard
+## 儀表板
+
+透過 API 建立儀表板
 
 ```bash
 curl -X POST http://localhost:3000/api/dashboards/db \
