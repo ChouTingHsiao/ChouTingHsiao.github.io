@@ -97,6 +97,33 @@
       </tags>
   </entry>
   <entry>
+    <title>如何設定 Protractor WebDriver Version</title>
+    <url>/2020/08/31/AngularProtractorWebDriver/</url>
+    <content><![CDATA[<h1 id="安裝-WebDriver"><a class="header-anchor" href="#安裝-WebDriver"></a>安裝 WebDriver</h1>
+<p>先清除目前下載的 WebDriver</p>
+<span id="more"></span>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npx  webdriver-manager clean</span><br></pre></td></tr></table></figure>
+<p>以 chrome 為例從<a href="http://chromedriver.chromium.org/">chromedriver網頁</a></p>
+<p>查詢所需的版本號</p>
+<p>接下來依版本下載 WebDriver</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npx webdriver-manager update  --versions.chrome  [chrome版本號]</span><br></pre></td></tr></table></figure>
+<h1 id="運行-Protractor"><a class="header-anchor" href="#運行-Protractor"></a>運行 Protractor</h1>
+<p>運行 Protractor 時使用 --no-webdriver-update 選項</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ng e2e --no-webdriver-update</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://www.npmjs.com/package/webdriver-manager">webdriver-manager NPM</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>Angular</category>
+      </categories>
+      <tags>
+        <tag>Angular</tag>
+        <tag>Protractor</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>如何在 pi 3b+ 上執行 Angular Protractor</title>
     <url>/2019/12/25/AngularProtractorOnPi/</url>
     <content><![CDATA[<h1 id="安裝-WebDriver"><a class="header-anchor" href="#安裝-WebDriver"></a>安裝 WebDriver</h1>
@@ -125,35 +152,8 @@
       <tags>
         <tag>Angular</tag>
         <tag>Linux</tag>
+        <tag>Protractor</tag>
         <tag>Pi</tag>
-        <tag>Protractor</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>如何設定 Protractor WebDriver Version</title>
-    <url>/2020/08/31/AngularProtractorWebDriver/</url>
-    <content><![CDATA[<h1 id="安裝-WebDriver"><a class="header-anchor" href="#安裝-WebDriver"></a>安裝 WebDriver</h1>
-<p>先清除目前下載的 WebDriver</p>
-<span id="more"></span>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npx  webdriver-manager clean</span><br></pre></td></tr></table></figure>
-<p>以 chrome 為例從<a href="http://chromedriver.chromium.org/">chromedriver網頁</a></p>
-<p>查詢所需的版本號</p>
-<p>接下來依版本下載 WebDriver</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npx webdriver-manager update  --versions.chrome  [chrome版本號]</span><br></pre></td></tr></table></figure>
-<h1 id="運行-Protractor"><a class="header-anchor" href="#運行-Protractor"></a>運行 Protractor</h1>
-<p>運行 Protractor 時使用 --no-webdriver-update 選項</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ng e2e --no-webdriver-update</span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://www.npmjs.com/package/webdriver-manager">webdriver-manager NPM</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>Angular</category>
-      </categories>
-      <tags>
-        <tag>Angular</tag>
-        <tag>Protractor</tag>
       </tags>
   </entry>
   <entry>
@@ -497,6 +497,74 @@
       </tags>
   </entry>
   <entry>
+    <title>K6 基本壓測</title>
+    <url>/2025/04/02/JsK6LoadingTest/</url>
+    <content><![CDATA[<h1 id="安裝-k6"><a class="header-anchor" href="#安裝-k6"></a>安裝 k6</h1>
+<!-- choco install k6 -y -->
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 從 Ubuntu 金鑰伺服器下載 k6 軟體倉庫的 GPG 公鑰，並儲存到指定的金鑰環中</span></span><br><span class="line">sudo gpg --no-default-keyring --keyring /usr/share/keyrings/k6-archive-keyring.gpg --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys C5AD17C747E3415A3642D57D77C6C491D6AC1D69</span><br><span class="line"></span><br><span class="line"><span class="comment"># 將 k6 軟體倉庫加入到 APT 的套件來源清單中，並指定其簽名金鑰</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;deb [signed-by=/usr/share/keyrings/k6-archive-keyring.gpg] https://dl.k6.io/deb stable main&quot;</span> | sudo <span class="built_in">tee</span> /etc/apt/sources.list.d/k6.list</span><br><span class="line"></span><br><span class="line"><span class="comment"># 更新 APT</span></span><br><span class="line">sudo apt-get update</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安裝 k6</span></span><br><span class="line">sudo apt-get install k6</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="建立檔案-script-js"><a class="header-anchor" href="#建立檔案-script-js"></a>建立檔案 script.js</h1>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> http <span class="keyword">from</span> <span class="string">&#x27;k6/http&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; sleep &#125; <span class="keyword">from</span> <span class="string">&#x27;k6&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> url = <span class="string">&#x27;[目標 API]&#x27;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> payload = <span class="title class_">JSON</span>.<span class="title function_">stringify</span>([請求物件]);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> params = &#123;</span><br><span class="line">        <span class="attr">headers</span>: &#123;</span><br><span class="line">            <span class="string">&#x27;accept&#x27;</span>: <span class="string">&#x27;application/json, text/plain, */*&#x27;</span>,</span><br><span class="line">            <span class="string">&#x27;authorization&#x27;</span>: <span class="string">&#x27;[JWT 認證]&#x27;</span>,</span><br><span class="line">            <span class="string">&#x27;content-type&#x27;</span>: <span class="string">&#x27;application/json&#x27;</span></span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> res = http.<span class="title function_">post</span>(url, payload, params);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<!-- 
+使用 open api 轉換成 k6 腳本
+docker pull openapitools/openapi-generator-cli
+
+docker run --rm -v ${PWD}:/local openapitools/openapi-generator-cli generate \
+    -i /location of json file/swagger.json \
+    -g k6 \
+    -o /local/k6-test/
+    --skip-validate-spec
+-->
+<h1 id="測試情境"><a class="header-anchor" href="#測試情境"></a>測試情境</h1>
+<p>迭代測試:<br>
+情境: 2 個用戶總共執行 2 次</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">k6 run test.js --vus 2 --iterations 2</span><br></pre></td></tr></table></figure>
+<p>冒煙測試: 確認服務基本可用<br>
+情境: 3 個用戶 1 分內持續執行</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">k6 run test.js --vus 3 --duration 1m</span><br></pre></td></tr></table></figure>
+<p>負載測試: 確認在預測用戶下的執行效能<br>
+情境: 5 分鐘內增加至 100 人，在持續 30 分鐘後，用 5 分鐘內清空人數</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">k6 run test.js --stage <span class="string">&quot;5m:100,30m:100,5m:0&quot;</span></span><br></pre></td></tr></table></figure>
+<p>壓力測試: 確認流量平緩增加執行的效能<br>
+情境: 10 分鐘內增加至 200 人，在持續 30 分鐘後，用 5 分鐘內清空人數</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">k6 run test.js --stage <span class="string">&quot;10m:200,30m:200,5m:0&quot;</span></span><br></pre></td></tr></table></figure>
+<p>峰值測試: 確認流量瞬間湧入執行的效能<br>
+情境: 2 分鐘內增加至 2000 人後，用 1 分鐘內清空人數</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">k6 run test.js --stage <span class="string">&quot;2m:2000,1m:0&quot;</span></span><br></pre></td></tr></table></figure>
+<p>浸泡測試: 確認長時間持續執行的效能<br>
+情境: 5 分鐘內增加至 100 人，在持續 8 小時後，用 5 分鐘內清空人數</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">k6 run test.js --stage <span class="string">&quot;5m:100,8h:100,5m:0&quot;</span></span><br></pre></td></tr></table></figure>
+<p>斷點測試: 確認資源消耗至最大後的效能<br>
+2 小時內，用戶增加至 20000 人</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">k6 run test.js --stage <span class="string">&quot;2h:20000&quot;</span></span><br></pre></td></tr></table></figure>
+<h1 id="結果顯示"><a class="header-anchor" href="#結果顯示"></a>結果顯示</h1>
+<h2 id="JSON-格式"><a class="header-anchor" href="#JSON-格式"></a>JSON 格式</h2>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">k6 run --stage 30s:10 --out json=test-result.json test.js</span><br></pre></td></tr></table></figure>
+<h2 id="儀錶板"><a class="header-anchor" href="#儀錶板"></a>儀錶板</h2>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">K6_WEB_DASHBOARD=<span class="string">&#x27;true&#x27;</span> \</span><br><span class="line">K6_WEB_DASHBOARD_EXPORT=<span class="string">&#x27;html-report.html&#x27;</span> \</span><br><span class="line">k6 run --stage 30s:10 test.js;</span><br></pre></td></tr></table></figure>
+<!--
+$env:K6_WEB_DASHBOARD='true';
+$env:K6_WEB_DASHBOARD_EXPORT='html-report.html';
+k6 run --stage 30s:10 test.js;
+-->
+<!-- 只有當測試持續時間大於K6_WEB_DASHBOARD_PERIOD變數設定的聚合週期值的三倍時，報告才包含圖表 -->
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://grafana.com/docs/k6/latest/set-up/install-k6/">安裝K6</a></li>
+<li><a href="https://grafana.com/docs/k6/latest/testing-guides/test-types/">測試情境</a></li>
+<li><a href="https://grafana.com/docs/k6/latest/results-output/web-dashboard/">顯示儀錶板</a></li>
+</ol>
+</div>
+]]></content>
+      <categories>
+        <category>Javascript</category>
+      </categories>
+      <tags>
+        <tag>Javascript</tag>
+        <tag>K6</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>K6 壓測可視化</title>
     <url>/2025/04/02/JsK6Monitor/</url>
     <content><![CDATA[<h1 id="安裝-InfluxDB-儲存壓測資料"><a class="header-anchor" href="#安裝-InfluxDB-儲存壓測資料"></a>安裝 InfluxDB 儲存壓測資料</h1>
@@ -567,74 +635,6 @@ $env:K6_INFLUXDB_TOKEN='[初始TOKEN]' ;
       </tags>
   </entry>
   <entry>
-    <title>K6 基本壓測</title>
-    <url>/2025/04/02/JsK6LoadingTest/</url>
-    <content><![CDATA[<h1 id="安裝-k6"><a class="header-anchor" href="#安裝-k6"></a>安裝 k6</h1>
-<!-- choco install k6 -y -->
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 從 Ubuntu 金鑰伺服器下載 k6 軟體倉庫的 GPG 公鑰，並儲存到指定的金鑰環中</span></span><br><span class="line">sudo gpg --no-default-keyring --keyring /usr/share/keyrings/k6-archive-keyring.gpg --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys C5AD17C747E3415A3642D57D77C6C491D6AC1D69</span><br><span class="line"></span><br><span class="line"><span class="comment"># 將 k6 軟體倉庫加入到 APT 的套件來源清單中，並指定其簽名金鑰</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;deb [signed-by=/usr/share/keyrings/k6-archive-keyring.gpg] https://dl.k6.io/deb stable main&quot;</span> | sudo <span class="built_in">tee</span> /etc/apt/sources.list.d/k6.list</span><br><span class="line"></span><br><span class="line"><span class="comment"># 更新 APT</span></span><br><span class="line">sudo apt-get update</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安裝 k6</span></span><br><span class="line">sudo apt-get install k6</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="建立檔案-script-js"><a class="header-anchor" href="#建立檔案-script-js"></a>建立檔案 script.js</h1>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> http <span class="keyword">from</span> <span class="string">&#x27;k6/http&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; sleep &#125; <span class="keyword">from</span> <span class="string">&#x27;k6&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> url = <span class="string">&#x27;[目標 API]&#x27;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> payload = <span class="title class_">JSON</span>.<span class="title function_">stringify</span>([請求物件]);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> params = &#123;</span><br><span class="line">        <span class="attr">headers</span>: &#123;</span><br><span class="line">            <span class="string">&#x27;accept&#x27;</span>: <span class="string">&#x27;application/json, text/plain, */*&#x27;</span>,</span><br><span class="line">            <span class="string">&#x27;authorization&#x27;</span>: <span class="string">&#x27;[JWT 認證]&#x27;</span>,</span><br><span class="line">            <span class="string">&#x27;content-type&#x27;</span>: <span class="string">&#x27;application/json&#x27;</span></span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> res = http.<span class="title function_">post</span>(url, payload, params);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<!-- 
-使用 open api 轉換成 k6 腳本
-docker pull openapitools/openapi-generator-cli
-
-docker run --rm -v ${PWD}:/local openapitools/openapi-generator-cli generate \
-    -i /location of json file/swagger.json \
-    -g k6 \
-    -o /local/k6-test/
-    --skip-validate-spec
--->
-<h1 id="測試情境"><a class="header-anchor" href="#測試情境"></a>測試情境</h1>
-<p>迭代測試:<br>
-情境: 2 個用戶總共執行 2 次</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">k6 run test.js --vus 2 --iterations 2</span><br></pre></td></tr></table></figure>
-<p>冒煙測試: 確認服務基本可用<br>
-情境: 3 個用戶 1 分內持續執行</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">k6 run test.js --vus 3 --duration 1m</span><br></pre></td></tr></table></figure>
-<p>負載測試: 確認在預測用戶下的執行效能<br>
-情境: 5 分鐘內增加至 100 人，在持續 30 分鐘後，用 5 分鐘內清空人數</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">k6 run test.js --stage <span class="string">&quot;5m:100,30m:100,5m:0&quot;</span></span><br></pre></td></tr></table></figure>
-<p>壓力測試: 確認流量平緩增加執行的效能<br>
-情境: 10 分鐘內增加至 200 人，在持續 30 分鐘後，用 5 分鐘內清空人數</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">k6 run test.js --stage <span class="string">&quot;10m:200,30m:200,5m:0&quot;</span></span><br></pre></td></tr></table></figure>
-<p>峰值測試: 確認流量瞬間湧入執行的效能<br>
-情境: 2 分鐘內增加至 2000 人後，用 1 分鐘內清空人數</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">k6 run test.js --stage <span class="string">&quot;2m:2000,1m:0&quot;</span></span><br></pre></td></tr></table></figure>
-<p>浸泡測試: 確認長時間持續執行的效能<br>
-情境: 5 分鐘內增加至 100 人，在持續 8 小時後，用 5 分鐘內清空人數</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">k6 run test.js --stage <span class="string">&quot;5m:100,8h:100,5m:0&quot;</span></span><br></pre></td></tr></table></figure>
-<p>斷點測試: 確認資源消耗至最大後的效能<br>
-2 小時內，用戶增加至 20000 人</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">k6 run test.js --stage <span class="string">&quot;2h:20000&quot;</span></span><br></pre></td></tr></table></figure>
-<h1 id="結果顯示"><a class="header-anchor" href="#結果顯示"></a>結果顯示</h1>
-<h2 id="JSON-格式"><a class="header-anchor" href="#JSON-格式"></a>JSON 格式</h2>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">k6 run --stage 30s:10 --out json=test-result.json test.js</span><br></pre></td></tr></table></figure>
-<h2 id="儀錶板"><a class="header-anchor" href="#儀錶板"></a>儀錶板</h2>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">K6_WEB_DASHBOARD=<span class="string">&#x27;true&#x27;</span> \</span><br><span class="line">K6_WEB_DASHBOARD_EXPORT=<span class="string">&#x27;html-report.html&#x27;</span> \</span><br><span class="line">k6 run --stage 30s:10 test.js;</span><br></pre></td></tr></table></figure>
-<!--
-$env:K6_WEB_DASHBOARD='true';
-$env:K6_WEB_DASHBOARD_EXPORT='html-report.html';
-k6 run --stage 30s:10 test.js;
--->
-<!-- 只有當測試持續時間大於K6_WEB_DASHBOARD_PERIOD變數設定的聚合週期值的三倍時，報告才包含圖表 -->
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://grafana.com/docs/k6/latest/set-up/install-k6/">安裝K6</a></li>
-<li><a href="https://grafana.com/docs/k6/latest/testing-guides/test-types/">測試情境</a></li>
-<li><a href="https://grafana.com/docs/k6/latest/results-output/web-dashboard/">顯示儀錶板</a></li>
-</ol>
-</div>
-]]></content>
-      <categories>
-        <category>Javascript</category>
-      </categories>
-      <tags>
-        <tag>Javascript</tag>
-        <tag>K6</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>如何將圖片壓縮並下載檔案</title>
     <url>/2019/12/25/JsPictureCompress/</url>
     <content><![CDATA[<h1 id="建立-HTML"><a class="header-anchor" href="#建立-HTML"></a>建立 HTML</h1>
@@ -678,35 +678,6 @@ k6 run --stage 30s:10 test.js;
       </tags>
   </entry>
   <entry>
-    <title>Linux IBM i Access ODBC 手動安裝</title>
-    <url>/2021/10/05/LinuxIbmIAccessOdbc/</url>
-    <content><![CDATA[<h1 id="配置-ODBC-元件"><a class="header-anchor" href="#配置-ODBC-元件"></a>配置 ODBC 元件</h1>
-<p>安裝 Linux ODBC 元件</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt-get install unixodbc</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="安裝-ODBC-Driver"><a class="header-anchor" href="#安裝-ODBC-Driver"></a>安裝 ODBC Driver</h1>
-<p>登入<a href="https://www.ibm.com/support/pages/ibm-i-access-client-solutions">IBM網頁</a>下載 Linux ODBC Driver 並安裝</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo dpkg -i ibm-iaccess-1.1.0.15-1.0.amd64.deb</span><br></pre></td></tr></table></figure>
-<p>查看 Linux ODBC Drivers 設定檔位置</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">odbcinst -j</span><br></pre></td></tr></table></figure>
-<p>查看設定檔是否出現 IBM i Access ODBC Driver 的設定</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cat</span> /etc/odbcinst.ini</span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://www.ibm.com/docs/en/db2/11.5?topic=managers-installing-unixodbc-driver-manager">Installing the unixODBC driver manager</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-        <tag>Ubuntu</tag>
-        <tag>ODBC</tag>
-        <tag>IBM i Access</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Linux MSSQL ODBC 手動安裝</title>
     <url>/2021/10/05/LinuxMssqlOdbc/</url>
     <content><![CDATA[<h1 id="配置-Linux-ODBC-元件"><a class="header-anchor" href="#配置-Linux-ODBC-元件"></a>配置 Linux ODBC 元件</h1>
@@ -733,6 +704,35 @@ k6 run --stage 30s:10 test.js;
         <tag>Ubuntu</tag>
         <tag>ODBC</tag>
         <tag>MSSQL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Linux IBM i Access ODBC 手動安裝</title>
+    <url>/2021/10/05/LinuxIbmIAccessOdbc/</url>
+    <content><![CDATA[<h1 id="配置-ODBC-元件"><a class="header-anchor" href="#配置-ODBC-元件"></a>配置 ODBC 元件</h1>
+<p>安裝 Linux ODBC 元件</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt-get install unixodbc</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="安裝-ODBC-Driver"><a class="header-anchor" href="#安裝-ODBC-Driver"></a>安裝 ODBC Driver</h1>
+<p>登入<a href="https://www.ibm.com/support/pages/ibm-i-access-client-solutions">IBM網頁</a>下載 Linux ODBC Driver 並安裝</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo dpkg -i ibm-iaccess-1.1.0.15-1.0.amd64.deb</span><br></pre></td></tr></table></figure>
+<p>查看 Linux ODBC Drivers 設定檔位置</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">odbcinst -j</span><br></pre></td></tr></table></figure>
+<p>查看設定檔是否出現 IBM i Access ODBC Driver 的設定</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cat</span> /etc/odbcinst.ini</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://www.ibm.com/docs/en/db2/11.5?topic=managers-installing-unixodbc-driver-manager">Installing the unixODBC driver manager</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>Ubuntu</tag>
+        <tag>ODBC</tag>
+        <tag>IBM i Access</tag>
       </tags>
   </entry>
   <entry>
@@ -1008,30 +1008,6 @@ plink -v -x -a -T -C -noagent -ssh -pw "[密碼]" -P 50893 -L [本地端口]:[�
       </tags>
   </entry>
   <entry>
-    <title>使用 AddInMemoryCollection 設定 Configuration 進行單元測試</title>
-    <url>/2023/01/21/NetAddInMemoryCollection/</url>
-    <content><![CDATA[<h1 id="設定-appsettings-json-如下"><a class="header-anchor" href="#設定-appsettings-json-如下"></a>設定 appsettings.json 如下</h1>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;Logging&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;LogLevel&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;Default&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Information&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;Microsoft.AspNetCore&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Warning&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="轉換為-Dictionary-string-string"><a class="header-anchor" href="#轉換為-Dictionary-string-string"></a>轉換為 Dictionary&lt;string, string&gt;</h1>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">Dictionary&lt;<span class="built_in">string</span>, <span class="built_in">string</span>&gt; inMemorySettings = <span class="keyword">new</span> Dictionary&lt;<span class="built_in">string</span>, <span class="built_in">string</span>&gt; &#123;</span><br><span class="line">    &#123;<span class="string">&quot;Logging:LogLevel:Default&quot;</span>,  <span class="string">&quot;Information&quot;</span>&#125;,</span><br><span class="line">    &#123;<span class="string">&quot;Logging:LogLevel:Microsoft.AspNetCore&quot;</span>,  <span class="string">&quot;Warning&quot;</span>&#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h1 id="建立-Configuration"><a class="header-anchor" href="#建立-Configuration"></a>建立 Configuration</h1>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">IConfiguration configuration = <span class="keyword">new</span> ConfigurationBuilder()</span><br><span class="line">            .AddInMemoryCollection(inMemorySettings)</span><br><span class="line">            .Build();</span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://learn.microsoft.com/en-us/dotnet/api/microsoft.extensions.configuration.memoryconfigurationbuilderextensions.addinmemorycollection?view=dotnet-plat-ext-7.0">MemoryConfigurationBuilderExtensions.AddInMemoryCollection Method</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>.Net</category>
-      </categories>
-      <tags>
-        <tag>.Net</tag>
-        <tag>UnitTest</tag>
-        <tag>IConfiguration</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>依字元內碼轉換 Big5 與 Unicode</title>
     <url>/2022/05/22/NetBig5AndUnicode/</url>
     <content><![CDATA[<h1 id="轉換-Big5-字元"><a class="header-anchor" href="#轉換-Big5-字元"></a>轉換 Big5 字元</h1>
@@ -1129,41 +1105,473 @@ dotnet-dump collect --process-id 1902 -->
       </tags>
   </entry>
   <entry>
+    <title>使用 AddInMemoryCollection 設定 Configuration 進行單元測試</title>
+    <url>/2023/01/21/NetAddInMemoryCollection/</url>
+    <content><![CDATA[<h1 id="設定-appsettings-json-如下"><a class="header-anchor" href="#設定-appsettings-json-如下"></a>設定 appsettings.json 如下</h1>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;Logging&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;LogLevel&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;Default&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Information&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;Microsoft.AspNetCore&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Warning&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="轉換為-Dictionary-string-string"><a class="header-anchor" href="#轉換為-Dictionary-string-string"></a>轉換為 Dictionary&lt;string, string&gt;</h1>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">Dictionary&lt;<span class="built_in">string</span>, <span class="built_in">string</span>&gt; inMemorySettings = <span class="keyword">new</span> Dictionary&lt;<span class="built_in">string</span>, <span class="built_in">string</span>&gt; &#123;</span><br><span class="line">    &#123;<span class="string">&quot;Logging:LogLevel:Default&quot;</span>,  <span class="string">&quot;Information&quot;</span>&#125;,</span><br><span class="line">    &#123;<span class="string">&quot;Logging:LogLevel:Microsoft.AspNetCore&quot;</span>,  <span class="string">&quot;Warning&quot;</span>&#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h1 id="建立-Configuration"><a class="header-anchor" href="#建立-Configuration"></a>建立 Configuration</h1>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">IConfiguration configuration = <span class="keyword">new</span> ConfigurationBuilder()</span><br><span class="line">            .AddInMemoryCollection(inMemorySettings)</span><br><span class="line">            .Build();</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://learn.microsoft.com/en-us/dotnet/api/microsoft.extensions.configuration.memoryconfigurationbuilderextensions.addinmemorycollection?view=dotnet-plat-ext-7.0">MemoryConfigurationBuilderExtensions.AddInMemoryCollection Method</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>.Net</category>
+      </categories>
+      <tags>
+        <tag>.Net</tag>
+        <tag>UnitTest</tag>
+        <tag>IConfiguration</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>使用 DataFrame 操作資料</title>
     <url>/2024/05/05/NetDataFrame/</url>
-    <content><![CDATA[<h1 id="載入-CSV-資料"><a class="header-anchor" href="#載入-CSV-資料"></a>載入 CSV 資料</h1>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="meta">#r &quot;nuget: Microsoft.Data.Analysis, 0.21.1&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> System.IO;</span><br><span class="line"><span class="keyword">using</span> Microsoft.Data.Analysis;</span><br><span class="line"></span><br><span class="line"><span class="built_in">string</span> csvfile = File.ReadAllText(<span class="string">&quot;test.csv&quot;</span>);</span><br><span class="line">DataFrame df = DataFrame.LoadCsvFromString(csvfile, <span class="string">&#x27;,&#x27;</span>);</span><br><span class="line">Console.WriteLine(df);</span><br></pre></td></tr></table></figure>
-<p>輸出:</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">NAME      </span><br><span class="line">張三        </span><br><span class="line">李四   </span><br></pre></td></tr></table></figure>
+    <content><![CDATA[<h1 id="套件安裝"><a class="header-anchor" href="#套件安裝"></a>套件安裝</h1>
+<p>安裝套件 Microsoft.Data.Analysis</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="meta">#r &quot;nuget: Microsoft.Data.Analysis, 0.21.1&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> System.IO;</span><br><span class="line"><span class="keyword">using</span> Microsoft.Data.Analysis;</span><br></pre></td></tr></table></figure>
 <span id="more"></span>
-<h1 id="取得前-1-筆"><a class="header-anchor" href="#取得前-1-筆"></a>取得前 1 筆</h1>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">DataFrame headRow = df.Head(<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">Console.WriteLine(headRow);</span><br></pre></td></tr></table></figure>
+<h1 id="載入-CSV-資料"><a class="header-anchor" href="#載入-CSV-資料"></a>載入 CSV 資料</h1>
+<p>使用 LoadCsvFromString</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="built_in">string</span> csvfile = File.ReadAllText(<span class="string">&quot;test.csv&quot;</span>);</span><br><span class="line">DataFrame df = DataFrame.LoadCsvFromString(csvfile, <span class="string">&#x27;,&#x27;</span>);</span><br><span class="line">df.Display();</span><br></pre></td></tr></table></figure>
+<h1 id="建立測試資料"><a class="header-anchor" href="#建立測試資料"></a>建立測試資料</h1>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">Int32DataFrameColumn id = <span class="keyword">new</span> Int32DataFrameColumn(<span class="string">&quot;ID&quot;</span>, <span class="keyword">new</span> <span class="built_in">int</span>[] &#123; <span class="number">1</span>, <span class="number">2</span> &#125;);</span><br><span class="line">StringDataFrameColumn name = <span class="keyword">new</span> StringDataFrameColumn(<span class="string">&quot;Name&quot;</span>, <span class="keyword">new</span> <span class="built_in">string</span>[] &#123; <span class="string">&quot;張三&quot;</span>, <span class="string">&quot;李四&quot;</span> &#125;);</span><br><span class="line">Int32DataFrameColumn age = <span class="keyword">new</span> Int32DataFrameColumn(<span class="string">&quot;Age&quot;</span>, <span class="keyword">new</span> <span class="built_in">int</span>?[] &#123; <span class="number">25</span>, <span class="literal">null</span> &#125;);</span><br><span class="line"></span><br><span class="line">DataFrame df = <span class="keyword">new</span> DataFrame();</span><br><span class="line">df.Columns.Add(id);</span><br><span class="line">df.Columns.Add(name);</span><br><span class="line">df.Columns.Add(age);</span><br><span class="line"></span><br><span class="line">df.Display();</span><br></pre></td></tr></table></figure>
 <p>輸出:</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">NAME      </span><br><span class="line">張三   </span><br></pre></td></tr></table></figure>
-<h1 id="加入新-column"><a class="header-anchor" href="#加入新-column"></a>加入新 column</h1>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">df.Columns.Add(<span class="keyword">new</span> PrimitiveDataFrameColumn&lt;<span class="built_in">int</span>&gt;(<span class="string">&quot;AGE&quot;</span>, <span class="keyword">new</span> List&lt;<span class="built_in">int</span>&gt;&#123;<span class="number">1</span>, <span class="number">1</span>&#125;));</span><br><span class="line"></span><br><span class="line">Console.WriteLine(df);</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>index</th>
+<th>ID</th>
+<th>Name</th>
+<th>Age</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>張三</td>
+<td>25</td>
+</tr>
+<tr>
+<td>1</td>
+<td>2</td>
+<td>李四</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h1 id="加入新欄位"><a class="header-anchor" href="#加入新欄位"></a>加入新欄位</h1>
+<p>加入欄位 Height</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">df.Columns.Add(<span class="keyword">new</span> PrimitiveDataFrameColumn&lt;<span class="built_in">int</span>&gt;(<span class="string">&quot;Height&quot;</span>, <span class="keyword">new</span> List&lt;<span class="built_in">int</span>&gt;&#123;<span class="number">180</span>, <span class="number">179</span>&#125;));</span><br><span class="line"></span><br><span class="line">df.Display();</span><br></pre></td></tr></table></figure>
 <p>輸出:</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">NAME      AGE       </span><br><span class="line">張三        <span class="number">1</span>         </span><br><span class="line">李四        <span class="number">1</span>         </span><br></pre></td></tr></table></figure>
-<h1 id="加入新-row"><a class="header-anchor" href="#加入新-row"></a>加入新 row</h1>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">df.Append(<span class="keyword">new</span> List&lt;KeyValuePair&lt;<span class="built_in">string</span>, <span class="built_in">object</span>&gt;&gt;() &#123;</span><br><span class="line"><span class="keyword">new</span> KeyValuePair&lt;<span class="built_in">string</span>, <span class="built_in">object</span>&gt;(<span class="string">&quot;NAME&quot;</span>, <span class="string">&quot;王五&quot;</span>),</span><br><span class="line"><span class="keyword">new</span> KeyValuePair&lt;<span class="built_in">string</span>, <span class="built_in">object</span>&gt;(<span class="string">&quot;AGE&quot;</span>, <span class="number">3</span>)</span><br><span class="line">&#125;, <span class="literal">true</span>);</span><br><span class="line"></span><br><span class="line">Console.WriteLine(df);</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>index</th>
+<th>ID</th>
+<th>Name</th>
+<th>Age</th>
+<th>Height</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>張三</td>
+<td>25</td>
+<td>180</td>
+</tr>
+<tr>
+<td>1</td>
+<td>2</td>
+<td>李四</td>
+<td></td>
+<td>179</td>
+</tr>
+</tbody>
+</table>
+<h1 id="顯示欄位資訊"><a class="header-anchor" href="#顯示欄位資訊"></a>顯示欄位資訊</h1>
+<p>了解欄位類型與資料筆數統計</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">df.Info().Display();</span><br></pre></td></tr></table></figure>
 <p>輸出:</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">NAME      AGE       </span><br><span class="line">張三        <span class="number">1</span>         </span><br><span class="line">李四        <span class="number">1</span>         </span><br><span class="line">王五        <span class="number">3</span>       </span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>index</th>
+<th>Info</th>
+<th>ID</th>
+<th>Name</th>
+<th>Age</th>
+<th>Height</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>DataType</td>
+<td>System.Int32</td>
+<td>System.String</td>
+<td>System.Int32</td>
+<td>System.Int32</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Length(excluding null values)</td>
+<td>2</td>
+<td>2</td>
+<td>1</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+<h1 id="回傳統計摘要"><a class="header-anchor" href="#回傳統計摘要"></a>回傳統計摘要</h1>
+<p>統計相關值，此欄為數值欄位限定</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">df.Description().Display();</span><br></pre></td></tr></table></figure>
+<p>輸出:</p>
+<table>
+<thead>
+<tr>
+<th>index</th>
+<th>Description</th>
+<th>ID</th>
+<th>Age</th>
+<th>Height</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Length (excluding null values)</td>
+<td>2</td>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Max</td>
+<td>2</td>
+<td>25</td>
+<td>180</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Min</td>
+<td>1</td>
+<td>25</td>
+<td>179</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Mean</td>
+<td>1.5</td>
+<td>12.5</td>
+<td>179.5</td>
+</tr>
+</tbody>
+</table>
+<h1 id="回傳前-N-筆資料"><a class="header-anchor" href="#回傳前-N-筆資料"></a>回傳前 N 筆資料</h1>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">df.Head(<span class="number">1</span>).Display();</span><br></pre></td></tr></table></figure>
+<p>輸出:</p>
+<table>
+<thead>
+<tr>
+<th>index</th>
+<th>ID</th>
+<th>Name</th>
+<th>Age</th>
+<th>Height</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>張三</td>
+<td>25</td>
+<td>180</td>
+</tr>
+</tbody>
+</table>
+<h1 id="回傳後-N-筆資料"><a class="header-anchor" href="#回傳後-N-筆資料"></a>回傳後 N 筆資料</h1>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">df.Tail(<span class="number">1</span>).Display();</span><br></pre></td></tr></table></figure>
+<p>輸出:</p>
+<table>
+<thead>
+<tr>
+<th>index</th>
+<th>ID</th>
+<th>Name</th>
+<th>Age</th>
+<th>Height</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>2</td>
+<td>李四</td>
+<td></td>
+<td>179</td>
+</tr>
+</tbody>
+</table>
+<h1 id="加入新資料"><a class="header-anchor" href="#加入新資料"></a>加入新資料</h1>
+<p>填入每一欄對應資料</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">df.Append(<span class="keyword">new</span> List&lt;KeyValuePair&lt;<span class="built_in">string</span>, <span class="built_in">object</span>&gt;&gt;() &#123;</span><br><span class="line">    <span class="keyword">new</span> KeyValuePair&lt;<span class="built_in">string</span>, <span class="built_in">object</span>&gt;(<span class="string">&quot;ID&quot;</span>, <span class="number">3</span>),</span><br><span class="line">    <span class="keyword">new</span> KeyValuePair&lt;<span class="built_in">string</span>, <span class="built_in">object</span>&gt;(<span class="string">&quot;Name&quot;</span>, <span class="string">&quot;王五&quot;</span>),</span><br><span class="line">    <span class="keyword">new</span> KeyValuePair&lt;<span class="built_in">string</span>, <span class="built_in">object</span>&gt;(<span class="string">&quot;Age&quot;</span>, <span class="number">20</span>),</span><br><span class="line">    <span class="keyword">new</span> KeyValuePair&lt;<span class="built_in">string</span>, <span class="built_in">object</span>&gt;(<span class="string">&quot;Height&quot;</span>, <span class="number">170</span>)</span><br><span class="line">&#125;, <span class="literal">true</span>);</span><br><span class="line"></span><br><span class="line">df.Display();</span><br></pre></td></tr></table></figure>
+<p>輸出:</p>
+<table>
+<thead>
+<tr>
+<th>index</th>
+<th>ID</th>
+<th>Name</th>
+<th>Age</th>
+<th>Height</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>張三</td>
+<td>25</td>
+<td>180</td>
+</tr>
+<tr>
+<td>1</td>
+<td>2</td>
+<td>李四</td>
+<td><null></td>
+<td>179</td>
+</tr>
+<tr>
+<td>2</td>
+<td>3</td>
+<td>王五</td>
+<td>20</td>
+<td>170</td>
+</tr>
+</tbody>
+</table>
+<h1 id="缺失值處理"><a class="header-anchor" href="#缺失值處理"></a>缺失值處理</h1>
+<p>針對表格中的缺失欄位做處理</p>
+<ol>
+<li>排除有空值的欄位</li>
+</ol>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">DataFrame dropNullData = df.DropNulls();</span><br><span class="line">dropNullData.Display();</span><br></pre></td></tr></table></figure>
+<p>輸出:</p>
+<table>
+<thead>
+<tr>
+<th>index</th>
+<th>ID</th>
+<th>Name</th>
+<th>Age</th>
+<th>Height</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>張三</td>
+<td>25</td>
+<td>180</td>
+</tr>
+<tr>
+<td>1</td>
+<td>3</td>
+<td>王五</td>
+<td>20</td>
+<td>170</td>
+</tr>
+</tbody>
+</table>
+<ol start="2">
+<li>缺失值填充</li>
+</ol>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">df.Columns[<span class="string">&quot;Age&quot;</span>] = df.Columns[<span class="string">&quot;Age&quot;</span>].FillNulls(<span class="number">0</span>);</span><br><span class="line">df.Display();</span><br></pre></td></tr></table></figure>
+<p>輸出:</p>
+<table>
+<thead>
+<tr>
+<th>index</th>
+<th>ID</th>
+<th>Name</th>
+<th>Age</th>
+<th>Height</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>張三</td>
+<td>25</td>
+<td>180</td>
+</tr>
+<tr>
+<td>1</td>
+<td>2</td>
+<td>李四</td>
+<td>0</td>
+<td>179</td>
+</tr>
+<tr>
+<td>2</td>
+<td>3</td>
+<td>王五</td>
+<td>20</td>
+<td>170</td>
+</tr>
+</tbody>
+</table>
 <h1 id="排序資料"><a class="header-anchor" href="#排序資料"></a>排序資料</h1>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">DataFrame orderByData = df.OrderByDescending(<span class="string">&quot;AGE&quot;</span>);</span><br><span class="line">Console.WriteLine(orderByData);</span><br></pre></td></tr></table></figure>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">DataFrame orderByData = df.OrderByDescending(<span class="string">&quot;Age&quot;</span>);</span><br><span class="line">orderByData.Display();</span><br></pre></td></tr></table></figure>
 <p>輸出:</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">NAME      AGE       </span><br><span class="line">王五        <span class="number">3</span>         </span><br><span class="line">李四        <span class="number">1</span>         </span><br><span class="line">張三        <span class="number">1</span>            </span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>index</th>
+<th>ID</th>
+<th>Name</th>
+<th>Age</th>
+<th>Height</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>張三</td>
+<td>25</td>
+<td>180</td>
+</tr>
+<tr>
+<td>1</td>
+<td>3</td>
+<td>王五</td>
+<td>20</td>
+<td>170</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2</td>
+<td>李四</td>
+<td>0</td>
+<td>179</td>
+</tr>
+</tbody>
+</table>
 <h1 id="分群資料"><a class="header-anchor" href="#分群資料"></a>分群資料</h1>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">DataFrame groupByData = df.GroupBy(<span class="string">&quot;AGE&quot;</span>).Count();</span><br><span class="line">Console.WriteLine(groupByData);</span><br></pre></td></tr></table></figure>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">DataFrame groupByData = df.GroupBy(<span class="string">&quot;Age&quot;</span>).Count();</span><br><span class="line">groupByData.Display();</span><br></pre></td></tr></table></figure>
 <p>輸出:</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">AGE       NAME      </span><br><span class="line"><span class="number">1</span>         <span class="number">2</span>         </span><br><span class="line"><span class="number">3</span>         <span class="number">1</span>         </span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>index</th>
+<th>Age</th>
+<th>ID</th>
+<th>Name</th>
+<th>Height</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>25</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>2</td>
+<td>20</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
 <h1 id="篩選資料"><a class="header-anchor" href="#篩選資料"></a>篩選資料</h1>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">DataFrame filterData = df.Filter(df.Columns[<span class="string">&quot;AGE&quot;</span>].ElementwiseGreaterThan(<span class="number">1</span>));</span><br><span class="line">Console.WriteLine(filterData);</span><br></pre></td></tr></table></figure>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">DataFrame filterData = df.Filter(df.Columns[<span class="string">&quot;Age&quot;</span>].ElementwiseGreaterThan(<span class="number">1</span>));</span><br><span class="line">filterData.Display();</span><br></pre></td></tr></table></figure>
 <p>輸出:</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">NAME      AGE       </span><br><span class="line">王五        <span class="number">3</span>            </span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>index</th>
+<th>ID</th>
+<th>Name</th>
+<th>Age</th>
+<th>Height</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>張三</td>
+<td>25</td>
+<td>180</td>
+</tr>
+<tr>
+<td>1</td>
+<td>3</td>
+<td>王五</td>
+<td>20</td>
+<td>170</td>
+</tr>
+</tbody>
+</table>
 <h1 id="合併資料"><a class="header-anchor" href="#合併資料"></a>合併資料</h1>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">DataFrame df1 = DataFrame.LoadCsvFromString(csvfile, <span class="string">&#x27;,&#x27;</span>);</span><br><span class="line">DataFrame mergeData = df1.Merge&lt;<span class="built_in">string</span>&gt;(df, <span class="string">&quot;NAME&quot;</span>, <span class="string">&quot;NAME&quot;</span>);</span><br><span class="line">Console.WriteLine(mergeData);</span><br></pre></td></tr></table></figure>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 建立新的列表</span></span><br><span class="line">Int32DataFrameColumn idWeight = <span class="keyword">new</span> Int32DataFrameColumn(<span class="string">&quot;ID&quot;</span>, <span class="keyword">new</span> <span class="built_in">int</span>[] &#123; <span class="number">1</span>, <span class="number">2</span> &#125;);</span><br><span class="line">Int32DataFrameColumn weight = <span class="keyword">new</span> Int32DataFrameColumn(<span class="string">&quot;Weight&quot;</span>, <span class="keyword">new</span> <span class="built_in">int</span>?[] &#123; <span class="number">60</span>, <span class="number">90</span> &#125;);</span><br><span class="line"></span><br><span class="line">DataFrame dfWeight = <span class="keyword">new</span> DataFrame();</span><br><span class="line">dfWeight.Columns.Add(idWeight);</span><br><span class="line">dfWeight.Columns.Add(weight);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用 ID 做 Merge</span></span><br><span class="line">DataFrame mergeData = dfWeight.Merge&lt;<span class="built_in">int</span>&gt;(df, <span class="string">&quot;ID&quot;</span>, <span class="string">&quot;ID&quot;</span>);</span><br><span class="line">mergeData.Display();</span><br></pre></td></tr></table></figure>
 <p>輸出:</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">NAME_left  NAME_right AGE        </span><br><span class="line">張三         張三         <span class="number">1</span>          </span><br><span class="line">李四         李四         <span class="number">1</span>          </span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>index</th>
+<th>ID_left</th>
+<th>Weight</th>
+<th>ID_right</th>
+<th>Name</th>
+<th>Age</th>
+<th>Height</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>60</td>
+<td>1</td>
+<td>張三</td>
+<td>25</td>
+<td>180</td>
+</tr>
+<tr>
+<td>1</td>
+<td>2</td>
+<td>90</td>
+<td>2</td>
+<td>李四</td>
+<td>0</td>
+<td>179</td>
+</tr>
+</tbody>
+</table>
 <div class="note warning"><p>📜 參考資料</p>
 <ol>
 <li><a href="https://learn.microsoft.com/en-us/dotnet/api/microsoft.data.analysis.dataframe?view=ml-dotnet-preview&amp;viewFallbackFrom=ml-dotnet">DataFrame Class</a></li>
@@ -1207,29 +1615,6 @@ dotnet-dump collect --process-id 1902 -->
       </tags>
   </entry>
   <entry>
-    <title>Http 的 Get 方法傳入 List 參數</title>
-    <url>/2023/01/21/NetHttpGetWithList/</url>
-    <content><![CDATA[<h1 id="建立類別"><a class="header-anchor" href="#建立類別"></a>建立類別</h1>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">User</span> &#123;</span><br><span class="line">  </span><br><span class="line">	<span class="keyword">public</span> <span class="built_in">string</span> Name &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> <span class="built_in">int</span> Age &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="建立-HttpGet-方法"><a class="header-anchor" href="#建立-HttpGet-方法"></a>建立 HttpGet 方法</h1>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">[<span class="meta">ApiController</span>]</span><br><span class="line">[<span class="meta">Route(<span class="string">&quot;[controller]&quot;</span>)</span>]</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">UserController</span> : <span class="title">ControllerBase</span></span><br><span class="line">&#123;</span><br><span class="line">  [<span class="meta">HttpGet</span>]</span><br><span class="line">  <span class="function"><span class="keyword">public</span> List&lt;User&gt; <span class="title">Get</span>(<span class="params">[FromQuery] List&lt;User&gt; user</span>)</span></span><br><span class="line">  &#123;</span><br><span class="line">      <span class="keyword">return</span> user;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="組合-Request-的-Url"><a class="header-anchor" href="#組合-Request-的-Url"></a>組合 Request 的 Url</h1>
-<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line">https://example.com/User?user[0].Name=&#x27;張三&#x27;&amp;user[0].Age=10&amp;user[1].Name=&#x27;李四&#x27;&amp;user[1].Age=20</span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://stackoverflow.com/questions/3061273/send-an-array-with-an-http-get">Send an Array with an HTTP Get</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>.Net</category>
-      </categories>
-      <tags>
-        <tag>.Net</tag>
-        <tag>Http</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>如何解析 JSON 資料</title>
     <url>/2023/05/07/NetJsonParse/</url>
     <content><![CDATA[<h1 id="建立-JSON-檔案"><a class="header-anchor" href="#建立-JSON-檔案"></a>建立 JSON 檔案</h1>
@@ -1255,6 +1640,29 @@ dotnet-dump collect --process-id 1902 -->
         <tag>JSON</tag>
         <tag>.Net</tag>
         <tag>Polyglot Notebooks</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Http 的 Get 方法傳入 List 參數</title>
+    <url>/2023/01/21/NetHttpGetWithList/</url>
+    <content><![CDATA[<h1 id="建立類別"><a class="header-anchor" href="#建立類別"></a>建立類別</h1>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">User</span> &#123;</span><br><span class="line">  </span><br><span class="line">	<span class="keyword">public</span> <span class="built_in">string</span> Name &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> <span class="built_in">int</span> Age &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="建立-HttpGet-方法"><a class="header-anchor" href="#建立-HttpGet-方法"></a>建立 HttpGet 方法</h1>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">[<span class="meta">ApiController</span>]</span><br><span class="line">[<span class="meta">Route(<span class="string">&quot;[controller]&quot;</span>)</span>]</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">UserController</span> : <span class="title">ControllerBase</span></span><br><span class="line">&#123;</span><br><span class="line">  [<span class="meta">HttpGet</span>]</span><br><span class="line">  <span class="function"><span class="keyword">public</span> List&lt;User&gt; <span class="title">Get</span>(<span class="params">[FromQuery] List&lt;User&gt; user</span>)</span></span><br><span class="line">  &#123;</span><br><span class="line">      <span class="keyword">return</span> user;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="組合-Request-的-Url"><a class="header-anchor" href="#組合-Request-的-Url"></a>組合 Request 的 Url</h1>
+<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line">https://example.com/User?user[0].Name=&#x27;張三&#x27;&amp;user[0].Age=10&amp;user[1].Name=&#x27;李四&#x27;&amp;user[1].Age=20</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://stackoverflow.com/questions/3061273/send-an-array-with-an-http-get">Send an Array with an HTTP Get</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>.Net</category>
+      </categories>
+      <tags>
+        <tag>.Net</tag>
+        <tag>Http</tag>
       </tags>
   </entry>
   <entry>
