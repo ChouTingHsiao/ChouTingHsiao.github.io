@@ -166,7 +166,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">50</span>
+          <span class="site-state-item-count">54</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -177,7 +177,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">57</span>
+        <span class="site-state-item-count">58</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -275,7 +275,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-05-05 15:14:11" itemprop="dateModified" datetime="2025-05-05T15:14:11+00:00">2025-05-05</time>
+      <time title="Modified: 2025-05-05 15:33:39" itemprop="dateModified" datetime="2025-05-05T15:33:39+00:00">2025-05-05</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -348,7 +348,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://choutinghsiao.github.io/2021/10/23/PythonFontForgeTransfer/">
+    <link itemprop="mainEntityOfPage" href="https://choutinghsiao.github.io/2022/01/01/ToolFFmpegHlsDownload/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -366,7 +366,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/10/23/PythonFontForgeTransfer/" class="post-title-link" itemprop="url">使用 Python Script 進行 FontForge 字型檔轉換</a>
+          <a href="/2022/01/01/ToolFFmpegHlsDownload/" class="post-title-link" itemprop="url">使用 FFmpeg 下載 HLS 影片</a>
         </h2>
 
         <div class="post-meta-container">
@@ -377,14 +377,14 @@
       </span>
       <span class="post-meta-item-text">Posted on</span>
 
-      <time title="Created: 2021-10-23 17:00:00" itemprop="dateCreated datePublished" datetime="2021-10-23T17:00:00+00:00">2021-10-23</time>
+      <time title="Created: 2022-01-01 15:00:00" itemprop="dateCreated datePublished" datetime="2022-01-01T15:00:00+00:00">2022-01-01</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-05-05 15:14:11" itemprop="dateModified" datetime="2025-05-05T15:14:11+00:00">2025-05-05</time>
+      <time title="Modified: 2025-05-05 15:33:39" itemprop="dateModified" datetime="2025-05-05T15:33:39+00:00">2025-05-05</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -392,7 +392,7 @@
       </span>
       <span class="post-meta-item-text">In</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
+          <a href="/categories/Tool/" itemprop="url" rel="index"><span itemprop="name">Tool</span></a>
         </span>
     </span>
 
@@ -403,14 +403,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Word count in article: </span>
-      <span>211</span>
+      <span>415</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">Reading time &asymp;</span>
-      <span>1 mins.</span>
+      <span>2 mins.</span>
     </span>
 </div>
 
@@ -421,11 +421,37 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="建立-font-py-檔案"><a class="header-anchor" href="#建立-font-py-檔案"></a>建立 <a target="_blank" rel="noopener" href="http://font.py">font.py</a> 檔案</h1>
-<p>使用 python 操作 fontforge 轉換字型檔</p>
+          <div class="note danger"><p>⚠️請注意，本範例僅供學習參考，使用者須遵守各平台使用規範與相關法令，產生之行為與後果由使用者自行負責</p>
+</div>
+<h1 id="下載檔案"><a class="header-anchor" href="#下載檔案"></a>下載檔案</h1>
+<p>使用 FFmpeg 下載檔案，並轉換成 MP4 格式，如果需要驗證 Cookie，可使用 headers 選項</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -headers <span class="string">&quot;Cookie: [Cookie替換]&quot;</span> -i <span class="string">&quot;[m3u8網址]&quot;</span> -c copy -bsf:a aac_adtstoasc [輸出影片].mp4</span><br></pre></td></tr></table></figure>
+<p>參數解析</p>
+<table>
+<thead>
+<tr>
+<th>參數</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-headers &quot;Cookie: [Cookie替換]&quot;</code></td>
+<td>傳送 HTTP 標頭，通常用於需要驗證或存取受限的 m3u8 資源</td>
+</tr>
+<tr>
+<td><code>-i &quot;[m3u8網址]&quot;</code></td>
+<td>指定輸入來源為 m3u8 串流清單的網址</td>
+</tr>
+<tr>
+<td><code>-bsf:a aac_adtstoasc</code></td>
+<td>對音訊流（AAC）應用位元流過濾器（bitstream filter），將 ADTS 格式轉換為適合 MP4 容器的格式 (通常 m3u8 使用 ADTS 格式)</td>
+</tr>
+</tbody>
+</table>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2021/10/23/PythonFontForgeTransfer/#more" rel="contents">
+              <a class="btn" href="/2022/01/01/ToolFFmpegHlsDownload/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -456,7 +482,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://choutinghsiao.github.io/2021/10/23/JenkinsDropdown/">
+    <link itemprop="mainEntityOfPage" href="https://choutinghsiao.github.io/2022/01/01/ToolFFmpegHlsSegment/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -474,7 +500,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/10/23/JenkinsDropdown/" class="post-title-link" itemprop="url">使用 Linux 檔案列表建立 Jenkins 下拉選單</a>
+          <a href="/2022/01/01/ToolFFmpegHlsSegment/" class="post-title-link" itemprop="url">使用 FFmpeg 產生 HLS 視頻</a>
         </h2>
 
         <div class="post-meta-container">
@@ -485,14 +511,14 @@
       </span>
       <span class="post-meta-item-text">Posted on</span>
 
-      <time title="Created: 2021-10-23 16:00:00" itemprop="dateCreated datePublished" datetime="2021-10-23T16:00:00+00:00">2021-10-23</time>
+      <time title="Created: 2022-01-01 14:00:00" itemprop="dateCreated datePublished" datetime="2022-01-01T14:00:00+00:00">2022-01-01</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-05-05 15:14:11" itemprop="dateModified" datetime="2025-05-05T15:14:11+00:00">2025-05-05</time>
+      <time title="Modified: 2025-05-05 15:33:39" itemprop="dateModified" datetime="2025-05-05T15:33:39+00:00">2025-05-05</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -500,7 +526,7 @@
       </span>
       <span class="post-meta-item-text">In</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Jenkins/" itemprop="url" rel="index"><span itemprop="name">Jenkins</span></a>
+          <a href="/categories/Tool/" itemprop="url" rel="index"><span itemprop="name">Tool</span></a>
         </span>
     </span>
 
@@ -511,7 +537,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Word count in article: </span>
-      <span>150</span>
+      <span>368</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
@@ -529,12 +555,49 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="取得檔案列表方法"><a class="header-anchor" href="#取得檔案列表方法"></a>取得檔案列表方法</h1>
-<p>使用以下 Linxu 指令，將預設目錄每個檔案使用一列的方式逐一列出</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ls</span> -1 /home/ubuntu</span><br></pre></td></tr></table></figure>
+          <h1 id="產生視頻"><a class="header-anchor" href="#產生視頻"></a>產生視頻</h1>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i [輸入影片].mp4 \</span><br><span class="line">  -c:v libx264 -c:a aac \</span><br><span class="line">  -hls_time 10 \</span><br><span class="line">  -hls_list_size 0 \</span><br><span class="line">  -hls_segment_filename <span class="string">&quot;segment_%03d.ts&quot;</span> \</span><br><span class="line">  -f hls playlist.m3u8</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th><strong>參數</strong></th>
+<th><strong>說明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-c:v libx264</code></td>
+<td>設定視頻編解碼器為 <code>libx264</code>（H.264 編解碼器），適用於 HLS 串流</td>
+</tr>
+<tr>
+<td><code>-c:a aac</code></td>
+<td>設定音頻編解碼器為 <code>aac</code>，適用於 HLS 串流</td>
+</tr>
+<tr>
+<td><code>-hls_time 10</code></td>
+<td>設定每個 HLS 分段的時長（單位：秒），此處為 10 秒，表示將影片分割成每 10 秒一個片段</td>
+</tr>
+<tr>
+<td><code>-hls_list_size 0</code></td>
+<td>設定播放清單的大小， <code>0</code> 表示清單包含所有的段，不會移除任何片段，若設為正整數，則只保留最新的 <code>N</code> 段</td>
+</tr>
+<tr>
+<td><code>-hls_segment_filename &quot;segment_%03d.ts&quot;</code></td>
+<td>設定每個 HLS 分段檔案的命名規則， <code>%03d</code> 會生成從 <code>001</code> 開始遞增的檔名</td>
+</tr>
+<tr>
+<td><code>-f hls</code></td>
+<td>指定輸出格式為 HLS</td>
+</tr>
+<tr>
+<td><code>playlist.m3u8</code></td>
+<td>指定輸出的 M3U8 播放清單檔案名稱，此檔案將包含 HLS 影片分段的播放清單</td>
+</tr>
+</tbody>
+</table>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2021/10/23/JenkinsDropdown/#more" rel="contents">
+              <a class="btn" href="/2022/01/01/ToolFFmpegHlsSegment/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -565,7 +628,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://choutinghsiao.github.io/2021/10/05/LinuxIbmIAccessOdbc/">
+    <link itemprop="mainEntityOfPage" href="https://choutinghsiao.github.io/2022/01/01/ToolFFmpegVideoEdit/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -583,7 +646,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/10/05/LinuxIbmIAccessOdbc/" class="post-title-link" itemprop="url">Linux IBM i Access ODBC 手動安裝</a>
+          <a href="/2022/01/01/ToolFFmpegVideoEdit/" class="post-title-link" itemprop="url">使用 FFmpeg 剪接影片</a>
         </h2>
 
         <div class="post-meta-container">
@@ -594,14 +657,14 @@
       </span>
       <span class="post-meta-item-text">Posted on</span>
 
-      <time title="Created: 2021-10-05 22:00:00" itemprop="dateCreated datePublished" datetime="2021-10-05T22:00:00+00:00">2021-10-05</time>
+      <time title="Created: 2022-01-01 13:00:00" itemprop="dateCreated datePublished" datetime="2022-01-01T13:00:00+00:00">2022-01-01</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-05-05 15:14:11" itemprop="dateModified" datetime="2025-05-05T15:14:11+00:00">2025-05-05</time>
+      <time title="Modified: 2025-05-05 15:33:39" itemprop="dateModified" datetime="2025-05-05T15:33:39+00:00">2025-05-05</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -609,7 +672,7 @@
       </span>
       <span class="post-meta-item-text">In</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
+          <a href="/categories/Tool/" itemprop="url" rel="index"><span itemprop="name">Tool</span></a>
         </span>
     </span>
 
@@ -620,14 +683,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Word count in article: </span>
-      <span>92</span>
+      <span>510</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">Reading time &asymp;</span>
-      <span>1 mins.</span>
+      <span>2 mins.</span>
     </span>
 </div>
 
@@ -638,12 +701,11 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="配置-ODBC-元件"><a class="header-anchor" href="#配置-ODBC-元件"></a>配置 ODBC 元件</h1>
-<p>安裝 Linux ODBC 元件</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install unixodbc</span><br></pre></td></tr></table></figure>
+          <h1 id="查詢版本"><a class="header-anchor" href="#查詢版本"></a>查詢版本</h1>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -version</span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2021/10/05/LinuxIbmIAccessOdbc/#more" rel="contents">
+              <a class="btn" href="/2022/01/01/ToolFFmpegVideoEdit/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -674,7 +736,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://choutinghsiao.github.io/2021/10/05/LinuxMssqlOdbc/">
+    <link itemprop="mainEntityOfPage" href="https://choutinghsiao.github.io/2022/01/01/MsSqlIndexMissing/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -692,7 +754,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/10/05/LinuxMssqlOdbc/" class="post-title-link" itemprop="url">Linux MSSQL ODBC 手動安裝</a>
+          <a href="/2022/01/01/MsSqlIndexMissing/" class="post-title-link" itemprop="url">使用 DMV 查询缺失 Index 建議</a>
         </h2>
 
         <div class="post-meta-container">
@@ -703,14 +765,14 @@
       </span>
       <span class="post-meta-item-text">Posted on</span>
 
-      <time title="Created: 2021-10-05 22:00:00" itemprop="dateCreated datePublished" datetime="2021-10-05T22:00:00+00:00">2021-10-05</time>
+      <time title="Created: 2022-01-01 12:00:00" itemprop="dateCreated datePublished" datetime="2022-01-01T12:00:00+00:00">2022-01-01</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-05-05 15:14:11" itemprop="dateModified" datetime="2025-05-05T15:14:11+00:00">2025-05-05</time>
+      <time title="Modified: 2025-05-05 15:33:39" itemprop="dateModified" datetime="2025-05-05T15:33:39+00:00">2025-05-05</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -718,7 +780,7 @@
       </span>
       <span class="post-meta-item-text">In</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
+          <a href="/categories/MSSQL/" itemprop="url" rel="index"><span itemprop="name">MSSQL</span></a>
         </span>
     </span>
 
@@ -729,7 +791,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Word count in article: </span>
-      <span>90</span>
+      <span>320</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
@@ -747,12 +809,11 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="配置-Linux-ODBC-元件"><a class="header-anchor" href="#配置-Linux-ODBC-元件"></a>配置 Linux ODBC 元件</h1>
-<p>安裝 Linux ODBC 元件</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install unixodbc</span><br></pre></td></tr></table></figure>
+          <h1 id="查詢缺失-Index-建議"><a class="header-anchor" href="#查詢缺失-Index-建議"></a>查詢缺失 Index 建議</h1>
+<p>使用 sys.dm_db_missing_index_group_stats 查詢缺失 Index 建議</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2021/10/05/LinuxMssqlOdbc/#more" rel="contents">
+              <a class="btn" href="/2022/01/01/MsSqlIndexMissing/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -776,7 +837,7 @@
 
 
   <nav class="pagination">
-    <a class="extend prev" rel="prev" title="Previous page" aria-label="Previous page" href="/page/7/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" title="Next page" aria-label="Next page" href="/page/9/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" title="Previous page" aria-label="Previous page" href="/page/7/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" title="Next page" aria-label="Next page" href="/page/9/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 </div>
@@ -798,13 +859,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="Word count total">14k</span>
+    <span title="Word count total">15k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">50 mins.</span>
+    <span title="Reading time total">56 mins.</span>
   </span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
