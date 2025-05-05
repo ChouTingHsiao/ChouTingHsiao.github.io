@@ -1,8 +1,8 @@
 ---
 title: Whistle 代理規則使用
 date: 2023-01-20 16:10:00
-categories: Whistle
-tags: [Whistle]
+categories: Tool
+tags: [Tool, Whistle]
 ---
 
 # 設定 Dns 代理

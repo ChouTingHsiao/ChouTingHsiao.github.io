@@ -1,8 +1,8 @@
 ---
 title: WSL2 移動至其它硬碟
 date: 2023-05-05 00:10:00
-categories: Wsl2
-tags: [Wsl2]
+categories: Linux
+tags: [Linux, Wsl2]
 ---
 
 # 列出已安裝的 Linux 發行版

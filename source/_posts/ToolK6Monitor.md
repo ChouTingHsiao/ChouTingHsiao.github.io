@@ -1,8 +1,8 @@
 ---
 title: K6 壓測可視化
 date: 2025-04-02 18:00:00
-categories: Javascript
-tags: [Javascript, K6]
+categories: Tool
+tags: [Tool, K6, InfluxDB, Grafana]
 ---
 
 # 安裝 InfluxDB 儲存壓測資料

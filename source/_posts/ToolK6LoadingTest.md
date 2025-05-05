@@ -1,8 +1,8 @@
 ---
 title: K6 基本壓測
 date: 2025-04-02 17:00:00
-categories: Javascript
-tags: [Javascript, K6]
+categories: Tool
+tags: [Tool, K6]
 ---
 
 # 安裝 k6

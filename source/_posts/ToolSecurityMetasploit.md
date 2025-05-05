@@ -1,8 +1,8 @@
 ---
 title: Metasploit 基本使用
 date: 2024-06-01 20:10:00
-categories: Security
-tags: [Security, Metasploit, Nmap]
+categories: Tool
+tags: [Tool, Security, Metasploit, Nmap]
 ---
 
 <!-- 設定檔位置: ~/.msf4 -->

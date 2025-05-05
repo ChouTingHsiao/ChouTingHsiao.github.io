@@ -1,8 +1,8 @@
 ---
 title: WSL2 設定固定 IP
 date: 2023-04-29 21:00:00
-categories: Wsl2
-tags: [Wsl2]
+categories: Linux
+tags: [Linux, Wsl2]
 ---
 
 # 設定 DNS

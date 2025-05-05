@@ -1,8 +1,8 @@
 ---
 title: 使用 SqlPackage 備份資料庫
 date: 2024-07-25 18:00:00
-categories: .Net
-tags: [.Net, SqlPackage, MSSQL]
+categories: Tool
+tags: [Tool, .Net, SqlPackage, MSSQL]
 ---
 
 # 安裝 SqlPackage

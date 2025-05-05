@@ -1,8 +1,8 @@
 ---
 title: 安裝 Whistle
 date: 2023-01-20 16:00:00
-categories: Whistle
-tags: [Whistle]
+categories: Tool
+tags: [Tool, Whistle]
 ---
 
 # 使用 Node 安裝 Whistle
