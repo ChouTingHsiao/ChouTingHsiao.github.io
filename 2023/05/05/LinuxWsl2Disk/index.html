@@ -20,28 +20,28 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"choutinghsiao.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.23.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/js/config.js" defer></script>
 
-    <meta name="description" content="安裝 k6  1234567891011# 從 Ubuntu 金鑰伺服器下載 k6 軟體倉庫的 GPG 公鑰，並儲存到指定的金鑰環中sudo gpg --no-default-keyring --keyring &#x2F;usr&#x2F;share&#x2F;keyrings&#x2F;k6-archive-keyring.gpg --keyserver hkp:&#x2F;&#x2F;keyserver.ubuntu.com:80 --recv-ke">
+    <meta name="description" content="列出已安裝的 Linux 發行版 執行下方命令 1wsl -l -v">
 <meta property="og:type" content="article">
-<meta property="og:title" content="K6 基本壓測">
-<meta property="og:url" content="https://choutinghsiao.github.io/2025/04/02/JsK6LoadingTest/index.html">
+<meta property="og:title" content="WSL2 移動至其它硬碟">
+<meta property="og:url" content="https://choutinghsiao.github.io/2023/05/05/LinuxWsl2Disk/index.html">
 <meta property="og:site_name" content="Stephen&#39;s Note">
-<meta property="og:description" content="安裝 k6  1234567891011# 從 Ubuntu 金鑰伺服器下載 k6 軟體倉庫的 GPG 公鑰，並儲存到指定的金鑰環中sudo gpg --no-default-keyring --keyring &#x2F;usr&#x2F;share&#x2F;keyrings&#x2F;k6-archive-keyring.gpg --keyserver hkp:&#x2F;&#x2F;keyserver.ubuntu.com:80 --recv-ke">
+<meta property="og:description" content="列出已安裝的 Linux 發行版 執行下方命令 1wsl -l -v">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2025-04-02T17:00:00.000Z">
-<meta property="article:modified_time" content="2025-04-26T10:03:53.038Z">
+<meta property="article:published_time" content="2023-05-05T00:10:00.000Z">
+<meta property="article:modified_time" content="2025-05-05T15:14:11.471Z">
 <meta property="article:author" content="Stephen">
-<meta property="article:tag" content="Javascript">
-<meta property="article:tag" content="K6">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="Wsl2">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://choutinghsiao.github.io/2025/04/02/JsK6LoadingTest/">
+<link rel="canonical" href="https://choutinghsiao.github.io/2023/05/05/LinuxWsl2Disk/">
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://choutinghsiao.github.io/2025/04/02/JsK6LoadingTest/","path":"2025/04/02/JsK6LoadingTest/","title":"K6 基本壓測"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://choutinghsiao.github.io/2023/05/05/LinuxWsl2Disk/","path":"2023/05/05/LinuxWsl2Disk/","title":"WSL2 移動至其它硬碟"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>K6 基本壓測 | Stephen's Note</title>
+<title>WSL2 移動至其它硬碟 | Stephen's Note</title>
   
 
 
@@ -160,7 +160,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%9D-k6"><span class="nav-number">1.</span> <span class="nav-text">安裝 k6</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BB%BA%E7%AB%8B%E6%AA%94%E6%A1%88-script-js"><span class="nav-number">2.</span> <span class="nav-text">建立檔案 script.js</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B8%AC%E8%A9%A6%E6%83%85%E5%A2%83"><span class="nav-number">3.</span> <span class="nav-text">測試情境</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%B5%90%E6%9E%9C%E9%A1%AF%E7%A4%BA"><span class="nav-number">4.</span> <span class="nav-text">結果顯示</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#JSON-%E6%A0%BC%E5%BC%8F"><span class="nav-number">4.1.</span> <span class="nav-text">JSON 格式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%84%80%E9%8C%B6%E6%9D%BF"><span class="nav-number">4.2.</span> <span class="nav-text">儀錶板</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%97%E5%87%BA%E5%B7%B2%E5%AE%89%E8%A3%9D%E7%9A%84-Linux-%E7%99%BC%E8%A1%8C%E7%89%88"><span class="nav-number">1.</span> <span class="nav-text">列出已安裝的 Linux 發行版</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%81%B7%E7%A7%BB-WSL2-%E8%87%B3%E7%A3%81%E7%A2%9F%E6%A9%9F-D"><span class="nav-number">2.</span> <span class="nav-text">遷移 WSL2 至磁碟機 D</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -179,12 +179,12 @@
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-count">12</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">54</span>
+        <span class="site-state-item-count">57</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -200,12 +200,12 @@
 	</div>
 	<ul class="links-of-blogroll-list recent-posts-list">
 	        <li class="my-links-of-blogroll-item">
-		    <a href="/2025/04/02/JsK6Monitor/" title="K6 壓測可視化" target="">
+		    <a href="/2025/04/02/ToolK6Monitor/" title="K6 壓測可視化" target="">
 		    K6 壓測可視化
 		    </a>
 		</li>
 	        <li class="my-links-of-blogroll-item">
-		    <a href="/2025/04/02/JsK6LoadingTest/" title="K6 基本壓測" target="">
+		    <a href="/2025/04/02/ToolK6LoadingTest/" title="K6 基本壓測" target="">
 		    K6 基本壓測
 		    </a>
 		</li>
@@ -247,7 +247,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://choutinghsiao.github.io/2025/04/02/JsK6LoadingTest/">
+    <link itemprop="mainEntityOfPage" href="https://choutinghsiao.github.io/2023/05/05/LinuxWsl2Disk/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -260,12 +260,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="K6 基本壓測 | Stephen's Note">
+      <meta itemprop="name" content="WSL2 移動至其它硬碟 | Stephen's Note">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          K6 基本壓測
+          WSL2 移動至其它硬碟
         </h1>
 
         <div class="post-meta-container">
@@ -276,14 +276,14 @@
       </span>
       <span class="post-meta-item-text">Posted on</span>
 
-      <time title="Created: 2025-04-02 17:00:00" itemprop="dateCreated datePublished" datetime="2025-04-02T17:00:00+00:00">2025-04-02</time>
+      <time title="Created: 2023-05-05 00:10:00" itemprop="dateCreated datePublished" datetime="2023-05-05T00:10:00+00:00">2023-05-05</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-04-26 10:03:53" itemprop="dateModified" datetime="2025-04-26T10:03:53+00:00">2025-04-26</time>
+      <time title="Modified: 2025-05-05 15:14:11" itemprop="dateModified" datetime="2025-05-05T15:14:11+00:00">2025-05-05</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -291,7 +291,7 @@
       </span>
       <span class="post-meta-item-text">In</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Javascript/" itemprop="url" rel="index"><span itemprop="name">Javascript</span></a>
+          <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
         </span>
     </span>
 
@@ -302,14 +302,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Word count in article: </span>
-      <span>614</span>
+      <span>159</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">Reading time &asymp;</span>
-      <span>2 mins.</span>
+      <span>1 mins.</span>
     </span>
 </div>
 
@@ -319,63 +319,17 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><h1 id="安裝-k6"><a class="header-anchor" href="#安裝-k6"></a>安裝 k6</h1>
-<!-- choco install k6 -y -->
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 從 Ubuntu 金鑰伺服器下載 k6 軟體倉庫的 GPG 公鑰，並儲存到指定的金鑰環中</span></span><br><span class="line">sudo gpg --no-default-keyring --keyring /usr/share/keyrings/k6-archive-keyring.gpg --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys C5AD17C747E3415A3642D57D77C6C491D6AC1D69</span><br><span class="line"></span><br><span class="line"><span class="comment"># 將 k6 軟體倉庫加入到 APT 的套件來源清單中，並指定其簽名金鑰</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;deb [signed-by=/usr/share/keyrings/k6-archive-keyring.gpg] https://dl.k6.io/deb stable main&quot;</span> | sudo <span class="built_in">tee</span> /etc/apt/sources.list.d/k6.list</span><br><span class="line"></span><br><span class="line"><span class="comment"># 更新 APT</span></span><br><span class="line">sudo apt-get update</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安裝 k6</span></span><br><span class="line">sudo apt-get install k6</span><br></pre></td></tr></table></figure>
+    <div class="post-body" itemprop="articleBody"><h1 id="列出已安裝的-Linux-發行版"><a class="header-anchor" href="#列出已安裝的-Linux-發行版"></a>列出已安裝的 Linux 發行版</h1>
+<p>執行下方命令</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wsl <span class="literal">-l</span> <span class="literal">-v</span></span><br></pre></td></tr></table></figure>
 <span id="more"></span>
-<h1 id="建立檔案-script-js"><a class="header-anchor" href="#建立檔案-script-js"></a>建立檔案 script.js</h1>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> http <span class="keyword">from</span> <span class="string">&#x27;k6/http&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; sleep &#125; <span class="keyword">from</span> <span class="string">&#x27;k6&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> url = <span class="string">&#x27;[目標 API]&#x27;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> payload = <span class="title class_">JSON</span>.<span class="title function_">stringify</span>([請求物件]);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> params = &#123;</span><br><span class="line">        <span class="attr">headers</span>: &#123;</span><br><span class="line">            <span class="string">&#x27;accept&#x27;</span>: <span class="string">&#x27;application/json, text/plain, */*&#x27;</span>,</span><br><span class="line">            <span class="string">&#x27;authorization&#x27;</span>: <span class="string">&#x27;[JWT 認證]&#x27;</span>,</span><br><span class="line">            <span class="string">&#x27;content-type&#x27;</span>: <span class="string">&#x27;application/json&#x27;</span></span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> res = http.<span class="title function_">post</span>(url, payload, params);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<!-- 
-使用 open api 轉換成 k6 腳本
-docker pull openapitools/openapi-generator-cli
-
-docker run --rm -v ${PWD}:/local openapitools/openapi-generator-cli generate \
-    -i /location of json file/swagger.json \
-    -g k6 \
-    -o /local/k6-test/
-    --skip-validate-spec
--->
-<h1 id="測試情境"><a class="header-anchor" href="#測試情境"></a>測試情境</h1>
-<p>迭代測試:<br>
-情境: 2 個用戶總共執行 2 次</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">k6 run test.js --vus 2 --iterations 2</span><br></pre></td></tr></table></figure>
-<p>冒煙測試: 確認服務基本可用<br>
-情境: 3 個用戶 1 分內持續執行</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">k6 run test.js --vus 3 --duration 1m</span><br></pre></td></tr></table></figure>
-<p>負載測試: 確認在預測用戶下的執行效能<br>
-情境: 5 分鐘內增加至 100 人，在持續 30 分鐘後，用 5 分鐘內清空人數</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">k6 run test.js --stage <span class="string">&quot;5m:100,30m:100,5m:0&quot;</span></span><br></pre></td></tr></table></figure>
-<p>壓力測試: 確認流量平緩增加執行的效能<br>
-情境: 10 分鐘內增加至 200 人，在持續 30 分鐘後，用 5 分鐘內清空人數</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">k6 run test.js --stage <span class="string">&quot;10m:200,30m:200,5m:0&quot;</span></span><br></pre></td></tr></table></figure>
-<p>峰值測試: 確認流量瞬間湧入執行的效能<br>
-情境: 2 分鐘內增加至 2000 人後，用 1 分鐘內清空人數</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">k6 run test.js --stage <span class="string">&quot;2m:2000,1m:0&quot;</span></span><br></pre></td></tr></table></figure>
-<p>浸泡測試: 確認長時間持續執行的效能<br>
-情境: 5 分鐘內增加至 100 人，在持續 8 小時後，用 5 分鐘內清空人數</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">k6 run test.js --stage <span class="string">&quot;5m:100,8h:100,5m:0&quot;</span></span><br></pre></td></tr></table></figure>
-<p>斷點測試: 確認資源消耗至最大後的效能<br>
-2 小時內，用戶增加至 20000 人</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">k6 run test.js --stage <span class="string">&quot;2h:20000&quot;</span></span><br></pre></td></tr></table></figure>
-<h1 id="結果顯示"><a class="header-anchor" href="#結果顯示"></a>結果顯示</h1>
-<h2 id="JSON-格式"><a class="header-anchor" href="#JSON-格式"></a>JSON 格式</h2>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">k6 run --stage 30s:10 --out json=test-result.json test.js</span><br></pre></td></tr></table></figure>
-<h2 id="儀錶板"><a class="header-anchor" href="#儀錶板"></a>儀錶板</h2>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">K6_WEB_DASHBOARD=<span class="string">&#x27;true&#x27;</span> \</span><br><span class="line">K6_WEB_DASHBOARD_EXPORT=<span class="string">&#x27;html-report.html&#x27;</span> \</span><br><span class="line">k6 run --stage 30s:10 test.js;</span><br></pre></td></tr></table></figure>
-<!--
-$env:K6_WEB_DASHBOARD='true';
-$env:K6_WEB_DASHBOARD_EXPORT='html-report.html';
-k6 run --stage 30s:10 test.js;
--->
-<!-- 只有當測試持續時間大於K6_WEB_DASHBOARD_PERIOD變數設定的聚合週期值的三倍時，報告才包含圖表 -->
+<h1 id="遷移-WSL2-至磁碟機-D"><a class="header-anchor" href="#遷移-WSL2-至磁碟機-D"></a>遷移 WSL2 至磁碟機 D</h1>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 導出已安裝的 Linux 發行版壓縮檔</span></span><br><span class="line">wsl <span class="literal">--export</span> <span class="string">&quot;Ubuntu-22.04&quot;</span> d:\ubuntu.tar</span><br><span class="line"></span><br><span class="line"><span class="comment"># 移除 WSL</span></span><br><span class="line">wsl <span class="literal">--unregister</span> <span class="string">&quot;Ubuntu-22.04&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 建立解壓縮的目錄</span></span><br><span class="line">mkdir d:\Ubuntu</span><br><span class="line"></span><br><span class="line"><span class="comment"># Linux 發行版壓縮檔解壓縮至新目錄後加入 WSL</span></span><br><span class="line">wsl <span class="literal">--import</span> <span class="string">&quot;Ubuntu-22.04&quot;</span> d:\ubuntu d:\ubuntu.tar</span><br><span class="line"></span><br><span class="line"><span class="comment"># 刪除 Linux 發行版壓縮檔</span></span><br><span class="line"><span class="built_in">del</span> d:\ubuntu.tar</span><br><span class="line"></span><br><span class="line"><span class="comment"># 因重新建立 WSL 會以 root 為預設帳戶，需重新設定預設帳戶</span></span><br><span class="line">ubuntu2204.exe config <span class="literal">--default-user</span> ubuntu</span><br></pre></td></tr></table></figure>
 <div class="note warning"><p>📜 參考資料</p>
 <ol>
-<li><a target="_blank" rel="noopener" href="https://grafana.com/docs/k6/latest/set-up/install-k6/">安裝K6</a></li>
-<li><a target="_blank" rel="noopener" href="https://grafana.com/docs/k6/latest/testing-guides/test-types/">測試情境</a></li>
-<li><a target="_blank" rel="noopener" href="https://grafana.com/docs/k6/latest/results-output/web-dashboard/">顯示儀錶板</a></li>
+<li><a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-tw/windows/wsl/use-custom-distro">匯入任何要與 WSL 搭配使用的 Linux 發行版本</a></li>
 </ol>
 </div>
-
     </div>
 
     
@@ -392,7 +346,7 @@ k6 run --stage 30s:10 test.js;
   </li>
   <li class="post-copyright-link">
       <strong>Post link: </strong>
-      <a href="https://choutinghsiao.github.io/2025/04/02/JsK6LoadingTest/" title="K6 基本壓測">https://choutinghsiao.github.io/2025/04/02/JsK6LoadingTest/</a>
+      <a href="https://choutinghsiao.github.io/2023/05/05/LinuxWsl2Disk/" title="WSL2 移動至其它硬碟">https://choutinghsiao.github.io/2023/05/05/LinuxWsl2Disk/</a>
   </li>
   <li class="post-copyright-license">
       <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
@@ -401,21 +355,21 @@ k6 run --stage 30s:10 test.js;
 </div>
 
           <div class="post-tags">
-              <a href="/tags/Javascript/" rel="tag"># Javascript</a>
-              <a href="/tags/K6/" rel="tag"># K6</a>
+              <a href="/tags/Linux/" rel="tag"># Linux</a>
+              <a href="/tags/Wsl2/" rel="tag"># Wsl2</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2025/01/01/MsSqlIndexFragmentation/" rel="prev" title="使用 DMV 查询 Index 碎片化">
-                  <i class="fa fa-angle-left"></i> 使用 DMV 查询 Index 碎片化
+                <a href="/2023/04/29/DockerWsl2/" rel="prev" title="WSL2 開放 Docker 外部連線">
+                  <i class="fa fa-angle-left"></i> WSL2 開放 Docker 外部連線
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2025/04/02/JsK6Monitor/" rel="next" title="K6 壓測可視化">
-                  K6 壓測可視化 <i class="fa fa-angle-right"></i>
+                <a href="/2023/05/05/DockerWin10Home/" rel="next" title="Win10 家用版安裝 Docker">
+                  Win10 家用版安裝 Docker <i class="fa fa-angle-right"></i>
                 </a>
             </div>
           </div>
