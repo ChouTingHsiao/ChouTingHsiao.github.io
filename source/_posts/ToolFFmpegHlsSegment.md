@@ -1,11 +1,11 @@
 ---
-title: 使用 FFmpeg 產生 HLS 視頻
+title: 使用 FFmpeg 產生 HLS 影片
 date: 2022-01-01 14:00:00
 categories: Tool
 tags: [Tool, FFmpeg]
 ---
 
-# 產生視頻
+# 產生影片
 
 ```bash
 ffmpeg -i [輸入影片].mp4 \
@@ -57,7 +57,7 @@ http-server -p 8080 --cors
 <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
 ```
 
-播放分割好的視頻
+播放分割好的影片
 
 ```js
     const video = document.getElementById('video');
