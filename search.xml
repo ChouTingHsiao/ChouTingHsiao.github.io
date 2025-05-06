@@ -130,36 +130,9 @@
       </tags>
   </entry>
   <entry>
-    <title>如何設定 Protractor WebDriver Version</title>
-    <url>/2020/08/31/AngularProtractorWebDriver/</url>
-    <content><![CDATA[<h1 id="安裝-WebDriver"><a class="header-anchor" href="#安裝-WebDriver"></a>安裝 WebDriver</h1>
-<p>先清除目前下載的 WebDriver</p>
-<span id="more"></span>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npx  webdriver-manager clean</span><br></pre></td></tr></table></figure>
-<p>以 chrome 為例從<a href="http://chromedriver.chromium.org/">chromedriver網頁</a></p>
-<p>查詢所需的版本號</p>
-<p>接下來依版本下載 WebDriver</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npx webdriver-manager update  --versions.chrome  [chrome版本號]</span><br></pre></td></tr></table></figure>
-<h1 id="運行-Protractor"><a class="header-anchor" href="#運行-Protractor"></a>運行 Protractor</h1>
-<p>運行 Protractor 時使用 --no-webdriver-update 選項</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ng e2e --no-webdriver-update</span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://www.npmjs.com/package/webdriver-manager">webdriver-manager NPM</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>Angular</category>
-      </categories>
-      <tags>
-        <tag>Angular</tag>
-        <tag>Protractor</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Win10 家用版安裝 Docker</title>
     <url>/2023/05/05/DockerWin10Home/</url>
-    <content><![CDATA[<div class="note danger"><p>⚠️請注意，因 Win10 家用版本身不支援安裝下方功能，開啟後可能發生未知錯誤，僅供學習使用，產生之行為與後果由使用者自行負責</p>
+    <content><![CDATA[<div class="note danger"><p>⚠️ 請注意，因 Win10 家用版本身不支援安裝下方功能，開啟後可能發生未知錯誤，僅供學習使用，產生之行為與後果由使用者自行負責</p>
 </div>
 <span id="more"></span>
 <h1 id="安裝-Hyper-V-功能"><a class="header-anchor" href="#安裝-Hyper-V-功能"></a>安裝 Hyper-V 功能</h1>
@@ -196,6 +169,33 @@
       </categories>
       <tags>
         <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>如何設定 Protractor WebDriver Version</title>
+    <url>/2020/08/31/AngularProtractorWebDriver/</url>
+    <content><![CDATA[<h1 id="安裝-WebDriver"><a class="header-anchor" href="#安裝-WebDriver"></a>安裝 WebDriver</h1>
+<p>先清除目前下載的 WebDriver</p>
+<span id="more"></span>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npx  webdriver-manager clean</span><br></pre></td></tr></table></figure>
+<p>以 chrome 為例從<a href="http://chromedriver.chromium.org/">chromedriver網頁</a></p>
+<p>查詢所需的版本號</p>
+<p>接下來依版本下載 WebDriver</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npx webdriver-manager update  --versions.chrome  [chrome版本號]</span><br></pre></td></tr></table></figure>
+<h1 id="運行-Protractor"><a class="header-anchor" href="#運行-Protractor"></a>運行 Protractor</h1>
+<p>運行 Protractor 時使用 --no-webdriver-update 選項</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ng e2e --no-webdriver-update</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://www.npmjs.com/package/webdriver-manager">webdriver-manager NPM</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>Angular</category>
+      </categories>
+      <tags>
+        <tag>Angular</tag>
+        <tag>Protractor</tag>
       </tags>
   </entry>
   <entry>
@@ -319,6 +319,29 @@
       </tags>
   </entry>
   <entry>
+    <title>使用 Linux 檔案列表建立 Jenkins 下拉選單</title>
+    <url>/2021/10/23/JenkinsDropdown/</url>
+    <content><![CDATA[<h1 id="取得檔案列表方法"><a class="header-anchor" href="#取得檔案列表方法"></a>取得檔案列表方法</h1>
+<p>使用以下 Linxu 指令，將預設目錄每個檔案使用一列的方式逐一列出</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">ls</span> -1 /home/ubuntu</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<p>在 Pipeline 執行 Linxu 指令，把結果存入變數</p>
+<figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> fileInFolder = sh(<span class="attr">script:</span> <span class="string">&quot;ls -1 /home/ubuntu&quot;</span>, <span class="attr">returnStdout:</span> <span class="literal">true</span>).trim();</span><br></pre></td></tr></table></figure>
+<h1 id="定義-Dialog"><a class="header-anchor" href="#定義-Dialog"></a>定義 Dialog</h1>
+<p>在 Pipeline 定義 Dialog ，把 parameters -&gt; choice -&gt; choices 定義替換為上方變數 fileInFolder</p>
+<figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> dialogMessage = <span class="string">&quot;Release $&#123;JOB_NAME&#125; now?&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> confirmDialog =</span><br><span class="line">    input <span class="attr">message:</span> dialogMessage,</span><br><span class="line">    <span class="symbol">parameters:</span> [choice(<span class="attr">name:</span> <span class="string">&#x27;action&#x27;</span>, <span class="attr">choices:</span> fileInFolder, <span class="attr">description:</span> <span class="string">&#x27;&#x27;</span>)],</span><br><span class="line">    <span class="symbol">submitterParameter:</span> <span class="string">&#x27;releaseApprover&#x27;</span></span><br></pre></td></tr></table></figure>
+<p>取得用戶選取參數，使用變數 confirmDialog -&gt; parameters -&gt; choice -&gt; name的定義</p>
+<figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line">confirmDialog.action</span><br></pre></td></tr></table></figure>
+<p>取得點擊確認的用戶，使用變數 confirmDialog -&gt; submitterParameter的定義</p>
+<figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line">confirmDialog.releaseApprover</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Jenkins</category>
+      </categories>
+      <tags>
+        <tag>Jenkins</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Jenkins 執行備份專案命令</title>
     <url>/2024/01/01/JenkinsBackupProject/</url>
     <content><![CDATA[<h1 id="設定執行時間"><a class="header-anchor" href="#設定執行時間"></a>設定執行時間</h1>
@@ -338,29 +361,6 @@
 <p>使用 ssh 命令登入 Server 將專案複製至備份目錄</p>
 <figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line">sh <span class="string">&quot;ssh -p [ssh連接Port] [帳號]@[Server位置] \&quot;sudo cp -r $&#123;projectPath&#125;* $&#123;backupPath&#125;$&#123;dateNow&#125;/ \&quot;&quot;</span></span><br></pre></td></tr></table></figure>
 ]]></content>
-      <categories>
-        <category>Jenkins</category>
-      </categories>
-      <tags>
-        <tag>Jenkins</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>使用 Linux 檔案列表建立 Jenkins 下拉選單</title>
-    <url>/2021/10/23/JenkinsDropdown/</url>
-    <content><![CDATA[<h1 id="取得檔案列表方法"><a class="header-anchor" href="#取得檔案列表方法"></a>取得檔案列表方法</h1>
-<p>使用以下 Linxu 指令，將預設目錄每個檔案使用一列的方式逐一列出</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">ls</span> -1 /home/ubuntu</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<p>在 Pipeline 執行 Linxu 指令，把結果存入變數</p>
-<figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> fileInFolder = sh(<span class="attr">script:</span> <span class="string">&quot;ls -1 /home/ubuntu&quot;</span>, <span class="attr">returnStdout:</span> <span class="literal">true</span>).trim();</span><br></pre></td></tr></table></figure>
-<h1 id="定義-Dialog"><a class="header-anchor" href="#定義-Dialog"></a>定義 Dialog</h1>
-<p>在 Pipeline 定義 Dialog ，把 parameters -&gt; choice -&gt; choices 定義替換為上方變數 fileInFolder</p>
-<figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> dialogMessage = <span class="string">&quot;Release $&#123;JOB_NAME&#125; now?&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> confirmDialog =</span><br><span class="line">    input <span class="attr">message:</span> dialogMessage,</span><br><span class="line">    <span class="symbol">parameters:</span> [choice(<span class="attr">name:</span> <span class="string">&#x27;action&#x27;</span>, <span class="attr">choices:</span> fileInFolder, <span class="attr">description:</span> <span class="string">&#x27;&#x27;</span>)],</span><br><span class="line">    <span class="symbol">submitterParameter:</span> <span class="string">&#x27;releaseApprover&#x27;</span></span><br></pre></td></tr></table></figure>
-<p>取得用戶選取參數，使用變數 confirmDialog -&gt; parameters -&gt; choice -&gt; name的定義</p>
-<figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line">confirmDialog.action</span><br></pre></td></tr></table></figure>
-<p>取得點擊確認的用戶，使用變數 confirmDialog -&gt; submitterParameter的定義</p>
-<figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line">confirmDialog.releaseApprover</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>Jenkins</category>
       </categories>
@@ -1623,34 +1623,6 @@ dotnet-dump collect --process-id 1902 -->
       </tags>
   </entry>
   <entry>
-    <title>如何解析 JSON 資料</title>
-    <url>/2023/05/07/NetJsonParse/</url>
-    <content><![CDATA[<h1 id="建立-JSON-檔案"><a class="header-anchor" href="#建立-JSON-檔案"></a>建立 JSON 檔案</h1>
-<p>建立檔案 Request.json 內容如下</p>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;info&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;address&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">            <span class="punctuation">&#123;</span></span><br><span class="line">                <span class="attr">&quot;town&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Belgrade&quot;</span></span><br><span class="line">            <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="punctuation">&#123;</span></span><br><span class="line">                <span class="attr">&quot;town&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Paris&quot;</span></span><br><span class="line">            <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="punctuation">&#123;</span></span><br><span class="line">                <span class="attr">&quot;town&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Madrid&quot;</span></span><br><span class="line">            <span class="punctuation">&#125;</span></span><br><span class="line">        <span class="punctuation">]</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="建立-Class-對應"><a class="header-anchor" href="#建立-Class-對應"></a>建立 Class 對應</h1>
-<p>Class 內容如下</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Address</span></span><br><span class="line">&#123;</span><br><span class="line">    [<span class="meta">JsonPropertyName(<span class="string">&quot;town&quot;</span>)</span>]</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">string</span> Town &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Info</span></span><br><span class="line">&#123;</span><br><span class="line">    [<span class="meta">JsonPropertyName(<span class="string">&quot;address&quot;</span>)</span>]</span><br><span class="line">	<span class="keyword">public</span> List&lt;Address&gt; Address &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Request</span></span><br><span class="line">&#123;</span><br><span class="line">    [<span class="meta">JsonPropertyName(<span class="string">&quot;info&quot;</span>)</span>]</span><br><span class="line">	<span class="keyword">public</span> Info Info &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="讀取資料並解析"><a class="header-anchor" href="#讀取資料並解析"></a>讀取資料並解析</h1>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!import Request.cs</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> System.Text.Json;</span><br><span class="line"><span class="keyword">using</span> System.IO;</span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> (StreamReader r = <span class="keyword">new</span> StreamReader(<span class="string">@&quot;.\Request.json&quot;</span>))</span><br><span class="line">&#123;</span><br><span class="line">	<span class="comment">// 讀取整個檔案</span></span><br><span class="line">	<span class="built_in">string</span> jsonString = r.ReadToEnd();</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 還原序列化成 Request 類別</span></span><br><span class="line">	Request req = JsonSerializer.Deserialize&lt;Request&gt;(jsonString);</span><br><span class="line"></span><br><span class="line">	req.Display();</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 序列化 Request 類別成 JSON 字串</span></span><br><span class="line">	<span class="built_in">string</span> reqString = JsonSerializer.Serialize&lt;Request&gt;(req);</span><br><span class="line"></span><br><span class="line">    reqString.Display();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://learn.microsoft.com/zh-tw/dotnet/standard/serialization/system-text-json/how-to">如何寫入 .NET 物件成為 JSON (序列化)</a></li>
-<li><a href="https://learn.microsoft.com/zh-tw/dotnet/standard/serialization/system-text-json/deserialization">如何將 JSON 讀取為 .NET 物件 (還原序列化)</a></li>
-</ol>
-</div>
-]]></content>
-      <categories>
-        <category>.Net</category>
-      </categories>
-      <tags>
-        <tag>JSON</tag>
-        <tag>.Net</tag>
-        <tag>Polyglot Notebooks</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>將方法轉換成 Emit 的方式執行</title>
     <url>/2024/05/01/NetMethodToEmit/</url>
     <content><![CDATA[<h1 id="原始方法"><a class="header-anchor" href="#原始方法"></a>原始方法</h1>
@@ -1727,6 +1699,34 @@ dotnet-dump collect --process-id 1902 -->
         <tag>.Net</tag>
         <tag>Polyglot Notebooks</tag>
         <tag>Shell</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>如何解析 JSON 資料</title>
+    <url>/2023/05/07/NetJsonParse/</url>
+    <content><![CDATA[<h1 id="建立-JSON-檔案"><a class="header-anchor" href="#建立-JSON-檔案"></a>建立 JSON 檔案</h1>
+<p>建立檔案 Request.json 內容如下</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;info&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;address&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">            <span class="punctuation">&#123;</span></span><br><span class="line">                <span class="attr">&quot;town&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Belgrade&quot;</span></span><br><span class="line">            <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="punctuation">&#123;</span></span><br><span class="line">                <span class="attr">&quot;town&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Paris&quot;</span></span><br><span class="line">            <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="punctuation">&#123;</span></span><br><span class="line">                <span class="attr">&quot;town&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Madrid&quot;</span></span><br><span class="line">            <span class="punctuation">&#125;</span></span><br><span class="line">        <span class="punctuation">]</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="建立-Class-對應"><a class="header-anchor" href="#建立-Class-對應"></a>建立 Class 對應</h1>
+<p>Class 內容如下</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Address</span></span><br><span class="line">&#123;</span><br><span class="line">    [<span class="meta">JsonPropertyName(<span class="string">&quot;town&quot;</span>)</span>]</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">string</span> Town &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Info</span></span><br><span class="line">&#123;</span><br><span class="line">    [<span class="meta">JsonPropertyName(<span class="string">&quot;address&quot;</span>)</span>]</span><br><span class="line">	<span class="keyword">public</span> List&lt;Address&gt; Address &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Request</span></span><br><span class="line">&#123;</span><br><span class="line">    [<span class="meta">JsonPropertyName(<span class="string">&quot;info&quot;</span>)</span>]</span><br><span class="line">	<span class="keyword">public</span> Info Info &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="讀取資料並解析"><a class="header-anchor" href="#讀取資料並解析"></a>讀取資料並解析</h1>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!import Request.cs</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> System.Text.Json;</span><br><span class="line"><span class="keyword">using</span> System.IO;</span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> (StreamReader r = <span class="keyword">new</span> StreamReader(<span class="string">@&quot;.\Request.json&quot;</span>))</span><br><span class="line">&#123;</span><br><span class="line">	<span class="comment">// 讀取整個檔案</span></span><br><span class="line">	<span class="built_in">string</span> jsonString = r.ReadToEnd();</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 還原序列化成 Request 類別</span></span><br><span class="line">	Request req = JsonSerializer.Deserialize&lt;Request&gt;(jsonString);</span><br><span class="line"></span><br><span class="line">	req.Display();</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 序列化 Request 類別成 JSON 字串</span></span><br><span class="line">	<span class="built_in">string</span> reqString = JsonSerializer.Serialize&lt;Request&gt;(req);</span><br><span class="line"></span><br><span class="line">    reqString.Display();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://learn.microsoft.com/zh-tw/dotnet/standard/serialization/system-text-json/how-to">如何寫入 .NET 物件成為 JSON (序列化)</a></li>
+<li><a href="https://learn.microsoft.com/zh-tw/dotnet/standard/serialization/system-text-json/deserialization">如何將 JSON 讀取為 .NET 物件 (還原序列化)</a></li>
+</ol>
+</div>
+]]></content>
+      <categories>
+        <category>.Net</category>
+      </categories>
+      <tags>
+        <tag>JSON</tag>
+        <tag>.Net</tag>
+        <tag>Polyglot Notebooks</tag>
       </tags>
   </entry>
   <entry>
