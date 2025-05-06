@@ -69,6 +69,34 @@
       </tags>
   </entry>
   <entry>
+    <title>Angular Live Reload 在 Ubuntu 沒反應</title>
+    <url>/2020/08/31/AngularLiveReload/</url>
+    <content><![CDATA[<h1 id="確認-inotify-設定"><a class="header-anchor" href="#確認-inotify-設定"></a>確認 inotify 設定</h1>
+<p>在 Linux 上，默認情況下，Listen 使用 inotify 監視目錄中的更改</p>
+<p>Ubuntu 的 inotify 預設限制為8192</p>
+<p>您可以通過執行以下操作獲取目前的 inotify 文件監視限制：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cat</span> /proc/sys/fs/inotify/max_user_watches</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="調整-inotify-設定"><a class="header-anchor" href="#調整-inotify-設定"></a>調整 inotify 設定</h1>
+<p>如果此限制不足以監視目錄中的所有文件，則必須增加該限制以使其正常工作</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo sysctl fs.inotify.max_user_watches=524288 </span><br><span class="line">sudo sysctl -p</span><br></pre></td></tr></table></figure>
+<p>如果想讓自己的限制永久化，請輸入以下命令:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> fs.inotify.max_user_watches=524288 | sudo <span class="built_in">tee</span> -a /etc/sysctl.conf</span><br><span class="line">sudo sysctl -p</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://askubuntu.com/questions/770374/user-limit-of-inotify-watches-reached-on-ubuntu-16-04">User limit of inotify watches reached on Ubuntu 16.04</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>Angular</category>
+      </categories>
+      <tags>
+        <tag>Angular</tag>
+        <tag>Linux</tag>
+        <tag>Ubuntu</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>如何在 pi 3b+ 上執行 Angular Protractor</title>
     <url>/2019/12/25/AngularProtractorOnPi/</url>
     <content><![CDATA[<h1 id="安裝-WebDriver"><a class="header-anchor" href="#安裝-WebDriver"></a>安裝 WebDriver</h1>
@@ -129,31 +157,45 @@
       </tags>
   </entry>
   <entry>
-    <title>Angular Live Reload 在 Ubuntu 沒反應</title>
-    <url>/2020/08/31/AngularLiveReload/</url>
-    <content><![CDATA[<h1 id="確認-inotify-設定"><a class="header-anchor" href="#確認-inotify-設定"></a>確認 inotify 設定</h1>
-<p>在 Linux 上，默認情況下，Listen 使用 inotify 監視目錄中的更改</p>
-<p>Ubuntu 的 inotify 預設限制為8192</p>
-<p>您可以通過執行以下操作獲取目前的 inotify 文件監視限制：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cat</span> /proc/sys/fs/inotify/max_user_watches</span><br></pre></td></tr></table></figure>
+    <title>Win10 家用版安裝 Docker</title>
+    <url>/2023/05/05/DockerWin10Home/</url>
+    <content><![CDATA[<div class="note danger"><p>⚠️請注意，因 Win10 家用版本身不支援安裝下方功能，開啟後可能發生未知錯誤，僅供學習使用，產生之行為與後果由使用者自行負責</p>
+</div>
 <span id="more"></span>
-<h1 id="調整-inotify-設定"><a class="header-anchor" href="#調整-inotify-設定"></a>調整 inotify 設定</h1>
-<p>如果此限制不足以監視目錄中的所有文件，則必須增加該限制以使其正常工作</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo sysctl fs.inotify.max_user_watches=524288 </span><br><span class="line">sudo sysctl -p</span><br></pre></td></tr></table></figure>
-<p>如果想讓自己的限制永久化，請輸入以下命令:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> fs.inotify.max_user_watches=524288 | sudo <span class="built_in">tee</span> -a /etc/sysctl.conf</span><br><span class="line">sudo sysctl -p</span><br></pre></td></tr></table></figure>
+<h1 id="安裝-Hyper-V-功能"><a class="header-anchor" href="#安裝-Hyper-V-功能"></a>安裝 Hyper-V 功能</h1>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 將批處理檔案所在的目錄設定為工作目錄</span></span><br><span class="line"><span class="built_in">pushd</span> <span class="string">&quot;%~dp0&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 尋找符合檔案名的所有檔案名，匯出文字檔</span></span><br><span class="line"><span class="built_in">dir</span> /b %SystemRoot%\servicing\Packages\*Hyper<span class="literal">-V</span>*.mum &gt;hyper<span class="literal">-v</span>.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 加入套件</span></span><br><span class="line"><span class="keyword">for</span> /f %%i <span class="keyword">in</span> (<span class="string">&#x27;findstr /i . hyper-v.txt 2^&gt;nul&#x27;</span>) <span class="keyword">do</span> dism /online /norestart /<span class="built_in">add-package</span>:<span class="string">&quot;%SystemRoot%\servicing\Packages\%%i&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 移除文字檔</span></span><br><span class="line"><span class="built_in">del</span> hyper<span class="literal">-v</span>.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安裝容器套件</span></span><br><span class="line">Dism /online /<span class="built_in">enable-feature</span> /featurename:Microsoft<span class="literal">-Hyper-V-All</span> /LimitAccess /ALL</span><br></pre></td></tr></table></figure>
+<p>以上方代碼建立 .bat 執行文件，並使用管理者權限執行</p>
+<h1 id="安裝容器功能"><a class="header-anchor" href="#安裝容器功能"></a>安裝容器功能</h1>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 將批處理檔案所在的目錄設定為工作目錄</span></span><br><span class="line"><span class="built_in">pushd</span> <span class="string">&quot;%~dp0&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 尋找符合檔案名的所有檔案名，匯出文字檔</span></span><br><span class="line"><span class="built_in">dir</span> /b %SystemRoot%\servicing\Packages\*containers*.mum &gt;containers.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 加入套件</span></span><br><span class="line"><span class="keyword">for</span> /f %%i <span class="keyword">in</span> (<span class="string">&#x27;findstr /i . containers.txt 2^&gt;nul&#x27;</span>) <span class="keyword">do</span> dism /online /norestart /<span class="built_in">add-package</span>:<span class="string">&quot;%SystemRoot%\servicing\Packages\%%i&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 移除文字檔</span></span><br><span class="line"><span class="built_in">del</span> containers.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安裝容器套件</span></span><br><span class="line">Dism /online /<span class="built_in">enable-feature</span> /featurename:containers /LimitAccess /ALL</span><br></pre></td></tr></table></figure>
+<p>以上方代碼建立 .bat 執行文件，並使用管理者權限執行</p>
+<div class="note danger"><p>⚠️請注意，下方 Docker 應用只支援以 Ｗindows 為基底的 Image</p>
+</div>
+<h1 id="使用-Scoop-安裝-Docker"><a class="header-anchor" href="#使用-Scoop-安裝-Docker"></a>使用 Scoop 安裝 Docker</h1>
+<p>執行下方命令安裝</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">scoop install docker</span><br></pre></td></tr></table></figure>
+<!-- Invoke-WebRequest -UseBasicParsing "https://raw.githubusercontent.com/microsoft/Windows-Containers/Main/helpful_tools/Install-DockerCE/install-docker-ce.ps1" -o install-docker-ce.ps1
+.\install-docker-ce.ps1 -->
+<h1 id="調整安裝空間"><a class="header-anchor" href="#調整安裝空間"></a>調整安裝空間</h1>
+<p>複製 Docker 資料至磁碟機 D ，節省磁碟機 C 的空間</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Copy-Item</span> <span class="string">&#x27;C:\ProgramData\docker&#x27;</span> <span class="literal">-Destination</span> <span class="string">&#x27;d:\\docker&#x27;</span></span><br></pre></td></tr></table></figure>
+<p>建立 ‘C:\ProgramData\docker\config\daemon.json’</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;hosts&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span> <span class="string">&quot;npipe://&quot;</span><span class="punctuation">,</span> <span class="string">&quot;tcp://0.0.0.0:&quot;</span> <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;tls&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;data-root&quot;</span><span class="punctuation">:</span> <span class="string">&quot;d:\\docker&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;dns&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;8.8.8.8&quot;</span><span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<h1 id="執行-Docker"><a class="header-anchor" href="#執行-Docker"></a>執行 Docker</h1>
+<p>執行下方命令註冊 Ｗindows 服務</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">dockerd <span class="literal">--register-service</span> ; <span class="built_in">Start-Service</span> docker ; <span class="keyword">exit</span></span><br></pre></td></tr></table></figure>
+<!-- dockerd --register-service -G docker-users --config-file C:dockerdaemon.json -->
 <div class="note warning"><p>📜 參考資料</p>
 <ol>
-<li><a href="https://askubuntu.com/questions/770374/user-limit-of-inotify-watches-reached-on-ubuntu-16-04">User limit of inotify watches reached on Ubuntu 16.04</a></li>
+<li><a href="https://scoop.sh/#/apps?q=docker&amp;s=0&amp;d=1&amp;o=true">Scoop Docker</a></li>
+<li><a href="https://learn.microsoft.com/zh-tw/virtualization/windowscontainers/manage-containers/container-base-images">Windows Base Image</a></li>
 </ol>
-</div>]]></content>
+</div>
+]]></content>
       <categories>
-        <category>Angular</category>
+        <category>Docker</category>
       </categories>
       <tags>
-        <tag>Angular</tag>
-        <tag>Linux</tag>
-        <tag>Ubuntu</tag>
+        <tag>Docker</tag>
       </tags>
   </entry>
   <entry>
@@ -208,48 +250,6 @@
       <tags>
         <tag>Docker</tag>
         <tag>Wsl2</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Win10 家用版安裝 Docker</title>
-    <url>/2023/05/05/DockerWin10Home/</url>
-    <content><![CDATA[<div class="note danger"><p>⚠️請注意，因 Win10 家用版本身不支援安裝下方功能，開啟後可能發生未知錯誤，僅供學習使用，產生之行為與後果由使用者自行負責</p>
-</div>
-<span id="more"></span>
-<h1 id="安裝-Hyper-V-功能"><a class="header-anchor" href="#安裝-Hyper-V-功能"></a>安裝 Hyper-V 功能</h1>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 將批處理檔案所在的目錄設定為工作目錄</span></span><br><span class="line"><span class="built_in">pushd</span> <span class="string">&quot;%~dp0&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 尋找符合檔案名的所有檔案名，匯出文字檔</span></span><br><span class="line"><span class="built_in">dir</span> /b %SystemRoot%\servicing\Packages\*Hyper<span class="literal">-V</span>*.mum &gt;hyper<span class="literal">-v</span>.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 加入套件</span></span><br><span class="line"><span class="keyword">for</span> /f %%i <span class="keyword">in</span> (<span class="string">&#x27;findstr /i . hyper-v.txt 2^&gt;nul&#x27;</span>) <span class="keyword">do</span> dism /online /norestart /<span class="built_in">add-package</span>:<span class="string">&quot;%SystemRoot%\servicing\Packages\%%i&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 移除文字檔</span></span><br><span class="line"><span class="built_in">del</span> hyper<span class="literal">-v</span>.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安裝容器套件</span></span><br><span class="line">Dism /online /<span class="built_in">enable-feature</span> /featurename:Microsoft<span class="literal">-Hyper-V-All</span> /LimitAccess /ALL</span><br></pre></td></tr></table></figure>
-<p>以上方代碼建立 .bat 執行文件，並使用管理者權限執行</p>
-<h1 id="安裝容器功能"><a class="header-anchor" href="#安裝容器功能"></a>安裝容器功能</h1>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 將批處理檔案所在的目錄設定為工作目錄</span></span><br><span class="line"><span class="built_in">pushd</span> <span class="string">&quot;%~dp0&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 尋找符合檔案名的所有檔案名，匯出文字檔</span></span><br><span class="line"><span class="built_in">dir</span> /b %SystemRoot%\servicing\Packages\*containers*.mum &gt;containers.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 加入套件</span></span><br><span class="line"><span class="keyword">for</span> /f %%i <span class="keyword">in</span> (<span class="string">&#x27;findstr /i . containers.txt 2^&gt;nul&#x27;</span>) <span class="keyword">do</span> dism /online /norestart /<span class="built_in">add-package</span>:<span class="string">&quot;%SystemRoot%\servicing\Packages\%%i&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 移除文字檔</span></span><br><span class="line"><span class="built_in">del</span> containers.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安裝容器套件</span></span><br><span class="line">Dism /online /<span class="built_in">enable-feature</span> /featurename:containers /LimitAccess /ALL</span><br></pre></td></tr></table></figure>
-<p>以上方代碼建立 .bat 執行文件，並使用管理者權限執行</p>
-<div class="note danger"><p>⚠️請注意，下方 Docker 應用只支援以 Ｗindows 為基底的 Image</p>
-</div>
-<h1 id="使用-Scoop-安裝-Docker"><a class="header-anchor" href="#使用-Scoop-安裝-Docker"></a>使用 Scoop 安裝 Docker</h1>
-<p>執行下方命令安裝</p>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">scoop install docker</span><br></pre></td></tr></table></figure>
-<!-- Invoke-WebRequest -UseBasicParsing "https://raw.githubusercontent.com/microsoft/Windows-Containers/Main/helpful_tools/Install-DockerCE/install-docker-ce.ps1" -o install-docker-ce.ps1
-.\install-docker-ce.ps1 -->
-<h1 id="調整安裝空間"><a class="header-anchor" href="#調整安裝空間"></a>調整安裝空間</h1>
-<p>複製 Docker 資料至磁碟機 D ，節省磁碟機 C 的空間</p>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Copy-Item</span> <span class="string">&#x27;C:\ProgramData\docker&#x27;</span> <span class="literal">-Destination</span> <span class="string">&#x27;d:\\docker&#x27;</span></span><br></pre></td></tr></table></figure>
-<p>建立 ‘C:\ProgramData\docker\config\daemon.json’</p>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;hosts&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span> <span class="string">&quot;npipe://&quot;</span><span class="punctuation">,</span> <span class="string">&quot;tcp://0.0.0.0:&quot;</span> <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;tls&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;data-root&quot;</span><span class="punctuation">:</span> <span class="string">&quot;d:\\docker&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;dns&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;8.8.8.8&quot;</span><span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-<h1 id="執行-Docker"><a class="header-anchor" href="#執行-Docker"></a>執行 Docker</h1>
-<p>執行下方命令註冊 Ｗindows 服務</p>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">dockerd <span class="literal">--register-service</span> ; <span class="built_in">Start-Service</span> docker ; <span class="keyword">exit</span></span><br></pre></td></tr></table></figure>
-<!-- dockerd --register-service -G docker-users --config-file C:dockerdaemon.json -->
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://scoop.sh/#/apps?q=docker&amp;s=0&amp;d=1&amp;o=true">Scoop Docker</a></li>
-<li><a href="https://learn.microsoft.com/zh-tw/virtualization/windowscontainers/manage-containers/container-base-images">Windows Base Image</a></li>
-</ol>
-</div>
-]]></content>
-      <categories>
-        <category>Docker</category>
-      </categories>
-      <tags>
-        <tag>Docker</tag>
       </tags>
   </entry>
   <entry>
@@ -598,35 +598,6 @@
       </tags>
   </entry>
   <entry>
-    <title>使用 SSH 建立通道</title>
-    <url>/2023/05/07/LinuxSshTunnel/</url>
-    <content><![CDATA[<h1 id="本機特定端口轉發至跳板機"><a class="header-anchor" href="#本機特定端口轉發至跳板機"></a>本機特定端口轉發至跳板機</h1>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh -p [跳板機端口] -C -f -N -g -L [本地端口]:[遠端服務IP]:[遠端服務端口] [帳號]@[跳板機IP]</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="跳板機轉發至本機特定端口"><a class="header-anchor" href="#跳板機轉發至本機特定端口"></a>跳板機轉發至本機特定端口</h1>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh -p [跳板機端口] -C -f -N -R 0.0.0.0:[跳板機端口]:localhost:[本地端口] [帳號]@[跳板機IP]</span><br></pre></td></tr></table></figure>
-<h1 id="請求轉發至跳板，可搭配-Whistle-做-Socks-代理"><a class="header-anchor" href="#請求轉發至跳板，可搭配-Whistle-做-Socks-代理"></a>請求轉發至跳板，可搭配 Whistle 做 Socks 代理</h1>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh -p [跳板機端口] -C -f -N -D localhost:[本地端口] [帳號]@[跳板機IP]</span><br></pre></td></tr></table></figure>
-<h1 id="ssh-執行選項說明"><a class="header-anchor" href="#ssh-執行選項說明"></a>ssh 執行選項說明</h1>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">-L: 指定將本機上的特定端口轉發到遠端主機</span><br><span class="line">-R: 表示使用遠程端口轉發創建ssh隧道</span><br><span class="line">-D: port動態應用級端口轉​​發</span><br><span class="line">-p: 跳板機端口</span><br><span class="line">-C: 使用數據壓縮</span><br><span class="line">-c: cipher_spec選擇用於加密會話的密碼規範</span><br><span class="line">-f: 代表後台運行程序</span><br><span class="line">-F: configfile指定每個用戶的配置文件</span><br><span class="line">-N: 不要執行任何遠端指令</span><br><span class="line">-g: 允許遠程主機連接到本地轉發端口</span><br></pre></td></tr></table></figure>
-<!-- /etc/ssh/sshd_config 加入GatewayPorts 設定，能讓所有人都連到 -->
-<!-- scoop install putty
-plink -v -x -a -T -C -noagent -ssh -pw "[密碼]" -P 50893 -L [本地端口]:[遠端服務IP]:[遠端服務端口] [帳號]@[跳板機IP] -->
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://www.ssh.com/academy/ssh/command">SSH Command - Usage, Options, Configuration</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-        <tag>Ubuntu</tag>
-        <tag>Ssh</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>使用 NAT 轉發請求</title>
     <url>/2024/07/25/LinuxNatForward/</url>
     <content><![CDATA[<h1 id="iptables-介紹"><a class="header-anchor" href="#iptables-介紹"></a>iptables 介紹</h1>
@@ -714,6 +685,57 @@ sudo iptables -A FORWARD -i eth0 -o eth1 -j ACCEPT -->
       </tags>
   </entry>
   <entry>
+    <title>使用 SSH 建立通道</title>
+    <url>/2023/05/07/LinuxSshTunnel/</url>
+    <content><![CDATA[<h1 id="本機特定端口轉發至跳板機"><a class="header-anchor" href="#本機特定端口轉發至跳板機"></a>本機特定端口轉發至跳板機</h1>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh -p [跳板機端口] -C -f -N -g -L [本地端口]:[遠端服務IP]:[遠端服務端口] [帳號]@[跳板機IP]</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="跳板機轉發至本機特定端口"><a class="header-anchor" href="#跳板機轉發至本機特定端口"></a>跳板機轉發至本機特定端口</h1>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh -p [跳板機端口] -C -f -N -R 0.0.0.0:[跳板機端口]:localhost:[本地端口] [帳號]@[跳板機IP]</span><br></pre></td></tr></table></figure>
+<h1 id="請求轉發至跳板，可搭配-Whistle-做-Socks-代理"><a class="header-anchor" href="#請求轉發至跳板，可搭配-Whistle-做-Socks-代理"></a>請求轉發至跳板，可搭配 Whistle 做 Socks 代理</h1>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh -p [跳板機端口] -C -f -N -D localhost:[本地端口] [帳號]@[跳板機IP]</span><br></pre></td></tr></table></figure>
+<h1 id="ssh-執行選項說明"><a class="header-anchor" href="#ssh-執行選項說明"></a>ssh 執行選項說明</h1>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">-L: 指定將本機上的特定端口轉發到遠端主機</span><br><span class="line">-R: 表示使用遠程端口轉發創建ssh隧道</span><br><span class="line">-D: port動態應用級端口轉​​發</span><br><span class="line">-p: 跳板機端口</span><br><span class="line">-C: 使用數據壓縮</span><br><span class="line">-c: cipher_spec選擇用於加密會話的密碼規範</span><br><span class="line">-f: 代表後台運行程序</span><br><span class="line">-F: configfile指定每個用戶的配置文件</span><br><span class="line">-N: 不要執行任何遠端指令</span><br><span class="line">-g: 允許遠程主機連接到本地轉發端口</span><br></pre></td></tr></table></figure>
+<!-- /etc/ssh/sshd_config 加入GatewayPorts 設定，能讓所有人都連到 -->
+<!-- scoop install putty
+plink -v -x -a -T -C -noagent -ssh -pw "[密碼]" -P 50893 -L [本地端口]:[遠端服務IP]:[遠端服務端口] [帳號]@[跳板機IP] -->
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://www.ssh.com/academy/ssh/command">SSH Command - Usage, Options, Configuration</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>Ubuntu</tag>
+        <tag>Ssh</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>WSL2 移動至其它硬碟</title>
+    <url>/2023/05/05/LinuxWsl2Disk/</url>
+    <content><![CDATA[<h1 id="列出已安裝的-Linux-發行版"><a class="header-anchor" href="#列出已安裝的-Linux-發行版"></a>列出已安裝的 Linux 發行版</h1>
+<p>執行下方命令</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">wsl <span class="literal">-l</span> <span class="literal">-v</span></span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="遷移-WSL2-至磁碟機-D"><a class="header-anchor" href="#遷移-WSL2-至磁碟機-D"></a>遷移 WSL2 至磁碟機 D</h1>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 導出已安裝的 Linux 發行版壓縮檔</span></span><br><span class="line">wsl <span class="literal">--export</span> <span class="string">&quot;Ubuntu-22.04&quot;</span> d:\ubuntu.tar</span><br><span class="line"></span><br><span class="line"><span class="comment"># 移除 WSL</span></span><br><span class="line">wsl <span class="literal">--unregister</span> <span class="string">&quot;Ubuntu-22.04&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 建立解壓縮的目錄</span></span><br><span class="line">mkdir d:\Ubuntu</span><br><span class="line"></span><br><span class="line"><span class="comment"># Linux 發行版壓縮檔解壓縮至新目錄後加入 WSL</span></span><br><span class="line">wsl <span class="literal">--import</span> <span class="string">&quot;Ubuntu-22.04&quot;</span> d:\ubuntu d:\ubuntu.tar</span><br><span class="line"></span><br><span class="line"><span class="comment"># 刪除 Linux 發行版壓縮檔</span></span><br><span class="line"><span class="built_in">del</span> d:\ubuntu.tar</span><br><span class="line"></span><br><span class="line"><span class="comment"># 因重新建立 WSL 會以 root 為預設帳戶，需重新設定預設帳戶</span></span><br><span class="line">ubuntu2204.exe config <span class="literal">--default-user</span> ubuntu</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://learn.microsoft.com/zh-tw/windows/wsl/use-custom-distro">匯入任何要與 WSL 搭配使用的 Linux 發行版本</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>Wsl2</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>WSL2 設定固定 IP</title>
     <url>/2023/04/29/LinuxWsl2Network/</url>
     <content><![CDATA[<h1 id="設定-DNS"><a class="header-anchor" href="#設定-DNS"></a>設定 DNS</h1>
@@ -729,28 +751,6 @@ sudo iptables -A FORWARD -i eth0 -o eth1 -j ACCEPT -->
 <div class="note warning"><p>📜 參考資料</p>
 <ol>
 <li><a href="https://zhuanlan.zhihu.com/p/380779630">知乎-給 WSL2 設置靜態IP地址</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-        <tag>Wsl2</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>WSL2 移動至其它硬碟</title>
-    <url>/2023/05/05/LinuxWsl2Disk/</url>
-    <content><![CDATA[<h1 id="列出已安裝的-Linux-發行版"><a class="header-anchor" href="#列出已安裝的-Linux-發行版"></a>列出已安裝的 Linux 發行版</h1>
-<p>執行下方命令</p>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">wsl <span class="literal">-l</span> <span class="literal">-v</span></span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="遷移-WSL2-至磁碟機-D"><a class="header-anchor" href="#遷移-WSL2-至磁碟機-D"></a>遷移 WSL2 至磁碟機 D</h1>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 導出已安裝的 Linux 發行版壓縮檔</span></span><br><span class="line">wsl <span class="literal">--export</span> <span class="string">&quot;Ubuntu-22.04&quot;</span> d:\ubuntu.tar</span><br><span class="line"></span><br><span class="line"><span class="comment"># 移除 WSL</span></span><br><span class="line">wsl <span class="literal">--unregister</span> <span class="string">&quot;Ubuntu-22.04&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 建立解壓縮的目錄</span></span><br><span class="line">mkdir d:\Ubuntu</span><br><span class="line"></span><br><span class="line"><span class="comment"># Linux 發行版壓縮檔解壓縮至新目錄後加入 WSL</span></span><br><span class="line">wsl <span class="literal">--import</span> <span class="string">&quot;Ubuntu-22.04&quot;</span> d:\ubuntu d:\ubuntu.tar</span><br><span class="line"></span><br><span class="line"><span class="comment"># 刪除 Linux 發行版壓縮檔</span></span><br><span class="line"><span class="built_in">del</span> d:\ubuntu.tar</span><br><span class="line"></span><br><span class="line"><span class="comment"># 因重新建立 WSL 會以 root 為預設帳戶，需重新設定預設帳戶</span></span><br><span class="line">ubuntu2204.exe config <span class="literal">--default-user</span> ubuntu</span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://learn.microsoft.com/zh-tw/windows/wsl/use-custom-distro">匯入任何要與 WSL 搭配使用的 Linux 發行版本</a></li>
 </ol>
 </div>]]></content>
       <categories>
@@ -894,6 +894,34 @@ sudo iptables -A FORWARD -i eth0 -o eth1 -j ACCEPT -->
       </tags>
   </entry>
   <entry>
+    <title>在 SQL Server 操作 JSON</title>
+    <url>/2025/01/01/MsSqlJsonString/</url>
+    <content><![CDATA[<h1 id="宣告-JSON-字串"><a class="header-anchor" href="#宣告-JSON-字串"></a>宣告 JSON 字串</h1>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">DECLARE</span> <span class="variable">@json</span> NVARCHAR(MAX);</span><br><span class="line"></span><br><span class="line"><span class="keyword">SET</span> <span class="variable">@json</span> <span class="operator">=</span> <span class="string">&#x27;&#123;&quot;info&quot;: &#123;&quot;address&quot;: [&#123;&quot;town&quot;: &quot;Belgrade&quot;&#125;, &#123;&quot;town&quot;: &quot;Paris&quot;&#125;, &#123;&quot;town&quot;:&quot;Madrid&quot;&#125;]&#125;&#125;&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="JSON-VALUE-擷取純量值字串"><a class="header-anchor" href="#JSON-VALUE-擷取純量值字串"></a>JSON_VALUE 擷取純量值字串</h1>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="built_in">JSON_VALUE</span>(<span class="variable">@json</span>, <span class="string">&#x27;$.info.address[0].town&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<h1 id="JSON-QUERY-擷取物件或陣列字串"><a class="header-anchor" href="#JSON-QUERY-擷取物件或陣列字串"></a>JSON_QUERY 擷取物件或陣列字串</h1>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="built_in">JSON_QUERY</span>(<span class="variable">@json</span>, <span class="string">&#x27;$.info.address&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<h1 id="JSON-MODIFY-變更-JSON-字串中的值"><a class="header-anchor" href="#JSON-MODIFY-變更-JSON-字串中的值"></a>JSON_MODIFY 變更 JSON 字串中的值</h1>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SET</span> <span class="variable">@json</span> <span class="operator">=</span> JSON_MODIFY(<span class="variable">@json</span>, <span class="string">&#x27;$.info.address[1].town&#x27;</span>, <span class="string">&#x27;London&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> modifiedJson <span class="operator">=</span> <span class="variable">@json</span>;</span><br></pre></td></tr></table></figure>
+<h1 id="JSON-轉換為資料列"><a class="header-anchor" href="#JSON-轉換為資料列"></a>JSON 轉換為資料列</h1>
+<p>解析 JSON 字串資料,需預先定義對應格式</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span></span><br><span class="line"><span class="keyword">FROM</span> OPENJSON(<span class="built_in">JSON_QUERY</span>(<span class="variable">@json</span>, <span class="string">&#x27;$.info.address&#x27;</span>)) <span class="keyword">WITH</span> (</span><br><span class="line">    town NVARCHAR(<span class="number">50</span>) <span class="string">&#x27;$.town&#x27;</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://learn.microsoft.com/zh-tw/sql/relational-databases/json/json-data-sql-server?view=sql-server-ver16">SQL Server 中的 JSON 資料</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>MSSQL</category>
+      </categories>
+      <tags>
+        <tag>JSON</tag>
+        <tag>MSSQL</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>使用 DMV 查询 SQL 執行性能</title>
     <url>/2025/01/01/MsSqlPerformance/</url>
     <content><![CDATA[<h1 id="查询執行中的-SQL-性能"><a class="header-anchor" href="#查询執行中的-SQL-性能"></a>查询執行中的 SQL 性能</h1>
@@ -925,58 +953,6 @@ sudo iptables -A FORWARD -i eth0 -o eth1 -j ACCEPT -->
       <tags>
         <tag>MSSQL</tag>
         <tag>DMV</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>在 SQL Server 操作 JSON</title>
-    <url>/2025/01/01/MsSqlJsonString/</url>
-    <content><![CDATA[<h1 id="宣告-JSON-字串"><a class="header-anchor" href="#宣告-JSON-字串"></a>宣告 JSON 字串</h1>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">DECLARE</span> <span class="variable">@json</span> NVARCHAR(MAX);</span><br><span class="line"></span><br><span class="line"><span class="keyword">SET</span> <span class="variable">@json</span> <span class="operator">=</span> <span class="string">&#x27;&#123;&quot;info&quot;: &#123;&quot;address&quot;: [&#123;&quot;town&quot;: &quot;Belgrade&quot;&#125;, &#123;&quot;town&quot;: &quot;Paris&quot;&#125;, &#123;&quot;town&quot;:&quot;Madrid&quot;&#125;]&#125;&#125;&#x27;</span>;</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="JSON-VALUE-擷取純量值字串"><a class="header-anchor" href="#JSON-VALUE-擷取純量值字串"></a>JSON_VALUE 擷取純量值字串</h1>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="built_in">JSON_VALUE</span>(<span class="variable">@json</span>, <span class="string">&#x27;$.info.address[0].town&#x27;</span>);</span><br></pre></td></tr></table></figure>
-<h1 id="JSON-QUERY-擷取物件或陣列字串"><a class="header-anchor" href="#JSON-QUERY-擷取物件或陣列字串"></a>JSON_QUERY 擷取物件或陣列字串</h1>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="built_in">JSON_QUERY</span>(<span class="variable">@json</span>, <span class="string">&#x27;$.info.address&#x27;</span>);</span><br></pre></td></tr></table></figure>
-<h1 id="JSON-MODIFY-變更-JSON-字串中的值"><a class="header-anchor" href="#JSON-MODIFY-變更-JSON-字串中的值"></a>JSON_MODIFY 變更 JSON 字串中的值</h1>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SET</span> <span class="variable">@json</span> <span class="operator">=</span> JSON_MODIFY(<span class="variable">@json</span>, <span class="string">&#x27;$.info.address[1].town&#x27;</span>, <span class="string">&#x27;London&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> modifiedJson <span class="operator">=</span> <span class="variable">@json</span>;</span><br></pre></td></tr></table></figure>
-<h1 id="JSON-轉換為資料列"><a class="header-anchor" href="#JSON-轉換為資料列"></a>JSON 轉換為資料列</h1>
-<p>解析 JSON 字串資料,需預先定義對應格式</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span></span><br><span class="line"><span class="keyword">FROM</span> OPENJSON(<span class="built_in">JSON_QUERY</span>(<span class="variable">@json</span>, <span class="string">&#x27;$.info.address&#x27;</span>)) <span class="keyword">WITH</span> (</span><br><span class="line">    town NVARCHAR(<span class="number">50</span>) <span class="string">&#x27;$.town&#x27;</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://learn.microsoft.com/zh-tw/sql/relational-databases/json/json-data-sql-server?view=sql-server-ver16">SQL Server 中的 JSON 資料</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>MSSQL</category>
-      </categories>
-      <tags>
-        <tag>JSON</tag>
-        <tag>MSSQL</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>使用 AddInMemoryCollection 設定 Configuration 進行單元測試</title>
-    <url>/2023/01/21/NetAddInMemoryCollection/</url>
-    <content><![CDATA[<h1 id="設定-appsettings-json-如下"><a class="header-anchor" href="#設定-appsettings-json-如下"></a>設定 appsettings.json 如下</h1>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;Logging&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;LogLevel&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;Default&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Information&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;Microsoft.AspNetCore&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Warning&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="轉換為-Dictionary-string-string"><a class="header-anchor" href="#轉換為-Dictionary-string-string"></a>轉換為 Dictionary&lt;string, string&gt;</h1>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">Dictionary&lt;<span class="built_in">string</span>, <span class="built_in">string</span>&gt; inMemorySettings = <span class="keyword">new</span> Dictionary&lt;<span class="built_in">string</span>, <span class="built_in">string</span>&gt; &#123;</span><br><span class="line">    &#123;<span class="string">&quot;Logging:LogLevel:Default&quot;</span>,  <span class="string">&quot;Information&quot;</span>&#125;,</span><br><span class="line">    &#123;<span class="string">&quot;Logging:LogLevel:Microsoft.AspNetCore&quot;</span>,  <span class="string">&quot;Warning&quot;</span>&#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h1 id="建立-Configuration"><a class="header-anchor" href="#建立-Configuration"></a>建立 Configuration</h1>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">IConfiguration configuration = <span class="keyword">new</span> ConfigurationBuilder()</span><br><span class="line">            .AddInMemoryCollection(inMemorySettings)</span><br><span class="line">            .Build();</span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://learn.microsoft.com/en-us/dotnet/api/microsoft.extensions.configuration.memoryconfigurationbuilderextensions.addinmemorycollection?view=dotnet-plat-ext-7.0">MemoryConfigurationBuilderExtensions.AddInMemoryCollection Method</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>.Net</category>
-      </categories>
-      <tags>
-        <tag>.Net</tag>
-        <tag>UnitTest</tag>
-        <tag>IConfiguration</tag>
       </tags>
   </entry>
   <entry>
@@ -1014,6 +990,30 @@ sudo iptables -A FORWARD -i eth0 -o eth1 -j ACCEPT -->
       <tags>
         <tag>MSSQL</tag>
         <tag>XML</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>使用 AddInMemoryCollection 設定 Configuration 進行單元測試</title>
+    <url>/2023/01/21/NetAddInMemoryCollection/</url>
+    <content><![CDATA[<h1 id="設定-appsettings-json-如下"><a class="header-anchor" href="#設定-appsettings-json-如下"></a>設定 appsettings.json 如下</h1>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;Logging&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;LogLevel&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;Default&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Information&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;Microsoft.AspNetCore&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Warning&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="轉換為-Dictionary-string-string"><a class="header-anchor" href="#轉換為-Dictionary-string-string"></a>轉換為 Dictionary&lt;string, string&gt;</h1>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">Dictionary&lt;<span class="built_in">string</span>, <span class="built_in">string</span>&gt; inMemorySettings = <span class="keyword">new</span> Dictionary&lt;<span class="built_in">string</span>, <span class="built_in">string</span>&gt; &#123;</span><br><span class="line">    &#123;<span class="string">&quot;Logging:LogLevel:Default&quot;</span>,  <span class="string">&quot;Information&quot;</span>&#125;,</span><br><span class="line">    &#123;<span class="string">&quot;Logging:LogLevel:Microsoft.AspNetCore&quot;</span>,  <span class="string">&quot;Warning&quot;</span>&#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h1 id="建立-Configuration"><a class="header-anchor" href="#建立-Configuration"></a>建立 Configuration</h1>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">IConfiguration configuration = <span class="keyword">new</span> ConfigurationBuilder()</span><br><span class="line">            .AddInMemoryCollection(inMemorySettings)</span><br><span class="line">            .Build();</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://learn.microsoft.com/en-us/dotnet/api/microsoft.extensions.configuration.memoryconfigurationbuilderextensions.addinmemorycollection?view=dotnet-plat-ext-7.0">MemoryConfigurationBuilderExtensions.AddInMemoryCollection Method</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>.Net</category>
+      </categories>
+      <tags>
+        <tag>.Net</tag>
+        <tag>UnitTest</tag>
+        <tag>IConfiguration</tag>
       </tags>
   </entry>
   <entry>
@@ -1572,6 +1572,57 @@ dotnet-dump collect --process-id 1902 -->
       </tags>
   </entry>
   <entry>
+    <title>使用 Expression Trees 把 List&lt;T&gt; 轉成 CSV 字串</title>
+    <url>/2024/05/01/NetExpressionListToCsv/</url>
+    <content><![CDATA[<h1 id="宣告類別"><a class="header-anchor" href="#宣告類別"></a>宣告類別</h1>
+<p>類別內容如下</p>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">User</span> &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">string</span> Name &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">int</span> Age &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>List 內容如下</p>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line">List&lt;User&gt; users = <span class="keyword">new</span> List&lt;User&gt;&#123;</span><br><span class="line">    <span class="keyword">new</span> User &#123;</span><br><span class="line">        Name = <span class="string">&quot;Test1&quot;</span>,</span><br><span class="line">        Age = <span class="number">10</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="keyword">new</span> User &#123;</span><br><span class="line">        Name = <span class="string">&quot;Test2&quot;</span>,</span><br><span class="line">        Age = <span class="number">20</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="產生-Expression-表達式"><a class="header-anchor" href="#產生-Expression-表達式"></a>產生 Expression 表達式</h1>
+<p>建立轉換方法</p>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> System.Reflection;</span><br><span class="line"><span class="keyword">using</span> System.Linq.Expressions;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="title">List</span>&lt;<span class="title">string</span>&gt; <span class="title">selectToCsv</span>&lt;<span class="title">T</span>&gt;(<span class="params"><span class="keyword">this</span> List&lt;T&gt; list, <span class="built_in">string</span> delimiter</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    Type source = <span class="keyword">typeof</span>(T);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 取得類別欄位</span></span><br><span class="line">    PropertyInfo[] prop = source.GetProperties();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 類別使用 t 表達 </span></span><br><span class="line">    ParameterExpression t = Expression.Parameter(source, <span class="string">&quot;t&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 取得轉成字串方法</span></span><br><span class="line">    MethodInfo toString = <span class="keyword">typeof</span>(<span class="built_in">object</span>).GetMethod(<span class="string">&quot;ToString&quot;</span>);</span><br><span class="line"></span><br><span class="line">    List&lt;ConditionalExpression&gt; parameters = <span class="keyword">new</span> List&lt;ConditionalExpression&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">foreach</span> (PropertyInfo p <span class="keyword">in</span> prop)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// 類別欄位使用 t.Name, t.Age 表達</span></span><br><span class="line">        MemberExpression propertyValue = Expression.PropertyOrField(t, p.Name);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 非字串型別欄位進行字串轉換 t.Name.ToString(), t.Age.ToString()</span></span><br><span class="line">        MethodCallExpression propertyToString = Expression.Call(propertyValue, toString);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// NULL 值</span></span><br><span class="line">        ConstantExpression constantNull = Expression.Constant(<span class="literal">null</span>, <span class="keyword">typeof</span>(<span class="built_in">object</span>));</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 非字串型別欄位需進行字串轉換後，在做 NULL 判斷</span></span><br><span class="line">        BinaryExpression isNull = Expression.Equal(propertyToString, constantNull);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (p.PropertyType == <span class="keyword">typeof</span>(<span class="built_in">string</span>))</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// 字串型別欄位直接進行 NULL 判斷</span></span><br><span class="line">            isNull = Expression.Equal(propertyValue, constantNull);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 空字串值</span></span><br><span class="line">        ConstantExpression constantEmpty = Expression.Constant(<span class="built_in">string</span>.Empty, <span class="keyword">typeof</span>(<span class="built_in">string</span>));</span><br><span class="line"></span><br><span class="line">        <span class="comment">// IIF 判斷 t.Name == null ? &quot;&quot; : t.Name.ToString()</span></span><br><span class="line">        ConditionalExpression ternary = Expression.Condition(isNull, constantEmpty, propertyToString);</span><br><span class="line"></span><br><span class="line">        parameters.Add(ternary);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 取得 Format 方法</span></span><br><span class="line">    MethodInfo formatMethod = <span class="keyword">typeof</span>(<span class="built_in">string</span>).GetMethod(<span class="string">&quot;Format&quot;</span>, BindingFlags.Static | BindingFlags.Public, <span class="literal">null</span>, <span class="keyword">new</span>[] &#123; <span class="keyword">typeof</span>(<span class="built_in">string</span>), <span class="keyword">typeof</span>(<span class="built_in">object</span>[]) &#125;, <span class="literal">null</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 產生類別欄位序號模板清單 [ &#123;0&#125;, &#123;1&#125; ]</span></span><br><span class="line">    List&lt;<span class="built_in">string</span>&gt; formatStrings = Enumerable.Range(<span class="number">0</span>, prop.Length).Select(count =&gt; <span class="string">$&quot;&#123;&#123;<span class="subst">&#123;count&#125;</span>&#125;&#125;&quot;</span>).ToList();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 使用符號 | 串聯成字串 &quot;&#123;0&#125;|&#123;1&#125;&quot;</span></span><br><span class="line">    ConstantExpression formatConstantExpression = Expression.Constant(<span class="built_in">string</span>.Join(delimiter, formatStrings));</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 產生類別欄位轉換陣列</span></span><br><span class="line">    NewArrayExpression formatObjsExpression = Expression.NewArrayInit(<span class="keyword">typeof</span>(<span class="built_in">string</span>), parameters);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 產生 lambda 表達式</span></span><br><span class="line">    Expression&lt;Func&lt;T, <span class="built_in">string</span>&gt;&gt; lambda = (Expression&lt;Func&lt;T, <span class="built_in">string</span>&gt;&gt;)Expression.Lambda(Expression.Call(formatMethod, formatConstantExpression, formatObjsExpression), t);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// t =&gt; Format(&quot;&#123;0&#125;|&#123;1&#125;&quot;, new [] &#123;IIF((t.Name == null), &quot;&quot;, t.Name.ToString()), IIF((t.Age.ToString() == null), &quot;&quot;, t.Age.ToString())&#125;)</span></span><br><span class="line"></span><br><span class="line">    IQueryable&lt;T&gt; queryable = list.AsQueryable();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> queryable.Select(lambda).ToList();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="使用方法"><a class="header-anchor" href="#使用方法"></a>使用方法</h1>
+<p>執行方法轉換出 CSV 列表</p>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line">List&lt;<span class="built_in">string</span>&gt; csvList = users.selectToCsv(<span class="string">&quot;|&quot;</span>);</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://learn.microsoft.com/en-us/dotnet/csharp/advanced-topics/expression-trees/">Expression Trees</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>.Net</category>
+      </categories>
+      <tags>
+        <tag>.Net</tag>
+        <tag>Expression</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Http 的 Get 方法傳入 List 參數</title>
+    <url>/2023/01/21/NetHttpGetWithList/</url>
+    <content><![CDATA[<h1 id="建立類別"><a class="header-anchor" href="#建立類別"></a>建立類別</h1>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">User</span> &#123;</span><br><span class="line">  </span><br><span class="line">	<span class="keyword">public</span> <span class="built_in">string</span> Name &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> <span class="built_in">int</span> Age &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="建立-HttpGet-方法"><a class="header-anchor" href="#建立-HttpGet-方法"></a>建立 HttpGet 方法</h1>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">[<span class="meta">ApiController</span>]</span><br><span class="line">[<span class="meta">Route(<span class="string">&quot;[controller]&quot;</span>)</span>]</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">UserController</span> : <span class="title">ControllerBase</span></span><br><span class="line">&#123;</span><br><span class="line">  [<span class="meta">HttpGet</span>]</span><br><span class="line">  <span class="function"><span class="keyword">public</span> List&lt;User&gt; <span class="title">Get</span>(<span class="params">[FromQuery] List&lt;User&gt; user</span>)</span></span><br><span class="line">  &#123;</span><br><span class="line">      <span class="keyword">return</span> user;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="組合-Request-的-Url"><a class="header-anchor" href="#組合-Request-的-Url"></a>組合 Request 的 Url</h1>
+<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line">https://example.com/User?user[0].Name=&#x27;張三&#x27;&amp;user[0].Age=10&amp;user[1].Name=&#x27;李四&#x27;&amp;user[1].Age=20</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://stackoverflow.com/questions/3061273/send-an-array-with-an-http-get">Send an Array with an HTTP Get</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>.Net</category>
+      </categories>
+      <tags>
+        <tag>.Net</tag>
+        <tag>Http</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>如何解析 JSON 資料</title>
     <url>/2023/05/07/NetJsonParse/</url>
     <content><![CDATA[<h1 id="建立-JSON-檔案"><a class="header-anchor" href="#建立-JSON-檔案"></a>建立 JSON 檔案</h1>
@@ -1600,29 +1651,6 @@ dotnet-dump collect --process-id 1902 -->
       </tags>
   </entry>
   <entry>
-    <title>Http 的 Get 方法傳入 List 參數</title>
-    <url>/2023/01/21/NetHttpGetWithList/</url>
-    <content><![CDATA[<h1 id="建立類別"><a class="header-anchor" href="#建立類別"></a>建立類別</h1>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">User</span> &#123;</span><br><span class="line">  </span><br><span class="line">	<span class="keyword">public</span> <span class="built_in">string</span> Name &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> <span class="built_in">int</span> Age &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="建立-HttpGet-方法"><a class="header-anchor" href="#建立-HttpGet-方法"></a>建立 HttpGet 方法</h1>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">[<span class="meta">ApiController</span>]</span><br><span class="line">[<span class="meta">Route(<span class="string">&quot;[controller]&quot;</span>)</span>]</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">UserController</span> : <span class="title">ControllerBase</span></span><br><span class="line">&#123;</span><br><span class="line">  [<span class="meta">HttpGet</span>]</span><br><span class="line">  <span class="function"><span class="keyword">public</span> List&lt;User&gt; <span class="title">Get</span>(<span class="params">[FromQuery] List&lt;User&gt; user</span>)</span></span><br><span class="line">  &#123;</span><br><span class="line">      <span class="keyword">return</span> user;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="組合-Request-的-Url"><a class="header-anchor" href="#組合-Request-的-Url"></a>組合 Request 的 Url</h1>
-<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line">https://example.com/User?user[0].Name=&#x27;張三&#x27;&amp;user[0].Age=10&amp;user[1].Name=&#x27;李四&#x27;&amp;user[1].Age=20</span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://stackoverflow.com/questions/3061273/send-an-array-with-an-http-get">Send an Array with an HTTP Get</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>.Net</category>
-      </categories>
-      <tags>
-        <tag>.Net</tag>
-        <tag>Http</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>將方法轉換成 Emit 的方式執行</title>
     <url>/2024/05/01/NetMethodToEmit/</url>
     <content><![CDATA[<h1 id="原始方法"><a class="header-anchor" href="#原始方法"></a>原始方法</h1>
@@ -1643,34 +1671,6 @@ dotnet-dump collect --process-id 1902 -->
       <tags>
         <tag>.Net</tag>
         <tag>Emit</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>使用 Expression Trees 把 List&lt;T&gt; 轉成 CSV 字串</title>
-    <url>/2024/05/01/NetExpressionListToCsv/</url>
-    <content><![CDATA[<h1 id="宣告類別"><a class="header-anchor" href="#宣告類別"></a>宣告類別</h1>
-<p>類別內容如下</p>
-<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">User</span> &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">string</span> Name &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">int</span> Age &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>List 內容如下</p>
-<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line">List&lt;User&gt; users = <span class="keyword">new</span> List&lt;User&gt;&#123;</span><br><span class="line">    <span class="keyword">new</span> User &#123;</span><br><span class="line">        Name = <span class="string">&quot;Test1&quot;</span>,</span><br><span class="line">        Age = <span class="number">10</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="keyword">new</span> User &#123;</span><br><span class="line">        Name = <span class="string">&quot;Test2&quot;</span>,</span><br><span class="line">        Age = <span class="number">20</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="產生-Expression-表達式"><a class="header-anchor" href="#產生-Expression-表達式"></a>產生 Expression 表達式</h1>
-<p>建立轉換方法</p>
-<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> System.Reflection;</span><br><span class="line"><span class="keyword">using</span> System.Linq.Expressions;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="title">List</span>&lt;<span class="title">string</span>&gt; <span class="title">selectToCsv</span>&lt;<span class="title">T</span>&gt;(<span class="params"><span class="keyword">this</span> List&lt;T&gt; list, <span class="built_in">string</span> delimiter</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    Type source = <span class="keyword">typeof</span>(T);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 取得類別欄位</span></span><br><span class="line">    PropertyInfo[] prop = source.GetProperties();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 類別使用 t 表達 </span></span><br><span class="line">    ParameterExpression t = Expression.Parameter(source, <span class="string">&quot;t&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 取得轉成字串方法</span></span><br><span class="line">    MethodInfo toString = <span class="keyword">typeof</span>(<span class="built_in">object</span>).GetMethod(<span class="string">&quot;ToString&quot;</span>);</span><br><span class="line"></span><br><span class="line">    List&lt;ConditionalExpression&gt; parameters = <span class="keyword">new</span> List&lt;ConditionalExpression&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">foreach</span> (PropertyInfo p <span class="keyword">in</span> prop)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// 類別欄位使用 t.Name, t.Age 表達</span></span><br><span class="line">        MemberExpression propertyValue = Expression.PropertyOrField(t, p.Name);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 非字串型別欄位進行字串轉換 t.Name.ToString(), t.Age.ToString()</span></span><br><span class="line">        MethodCallExpression propertyToString = Expression.Call(propertyValue, toString);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// NULL 值</span></span><br><span class="line">        ConstantExpression constantNull = Expression.Constant(<span class="literal">null</span>, <span class="keyword">typeof</span>(<span class="built_in">object</span>));</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 非字串型別欄位需進行字串轉換後，在做 NULL 判斷</span></span><br><span class="line">        BinaryExpression isNull = Expression.Equal(propertyToString, constantNull);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (p.PropertyType == <span class="keyword">typeof</span>(<span class="built_in">string</span>))</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// 字串型別欄位直接進行 NULL 判斷</span></span><br><span class="line">            isNull = Expression.Equal(propertyValue, constantNull);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 空字串值</span></span><br><span class="line">        ConstantExpression constantEmpty = Expression.Constant(<span class="built_in">string</span>.Empty, <span class="keyword">typeof</span>(<span class="built_in">string</span>));</span><br><span class="line"></span><br><span class="line">        <span class="comment">// IIF 判斷 t.Name == null ? &quot;&quot; : t.Name.ToString()</span></span><br><span class="line">        ConditionalExpression ternary = Expression.Condition(isNull, constantEmpty, propertyToString);</span><br><span class="line"></span><br><span class="line">        parameters.Add(ternary);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 取得 Format 方法</span></span><br><span class="line">    MethodInfo formatMethod = <span class="keyword">typeof</span>(<span class="built_in">string</span>).GetMethod(<span class="string">&quot;Format&quot;</span>, BindingFlags.Static | BindingFlags.Public, <span class="literal">null</span>, <span class="keyword">new</span>[] &#123; <span class="keyword">typeof</span>(<span class="built_in">string</span>), <span class="keyword">typeof</span>(<span class="built_in">object</span>[]) &#125;, <span class="literal">null</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 產生類別欄位序號模板清單 [ &#123;0&#125;, &#123;1&#125; ]</span></span><br><span class="line">    List&lt;<span class="built_in">string</span>&gt; formatStrings = Enumerable.Range(<span class="number">0</span>, prop.Length).Select(count =&gt; <span class="string">$&quot;&#123;&#123;<span class="subst">&#123;count&#125;</span>&#125;&#125;&quot;</span>).ToList();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 使用符號 | 串聯成字串 &quot;&#123;0&#125;|&#123;1&#125;&quot;</span></span><br><span class="line">    ConstantExpression formatConstantExpression = Expression.Constant(<span class="built_in">string</span>.Join(delimiter, formatStrings));</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 產生類別欄位轉換陣列</span></span><br><span class="line">    NewArrayExpression formatObjsExpression = Expression.NewArrayInit(<span class="keyword">typeof</span>(<span class="built_in">string</span>), parameters);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 產生 lambda 表達式</span></span><br><span class="line">    Expression&lt;Func&lt;T, <span class="built_in">string</span>&gt;&gt; lambda = (Expression&lt;Func&lt;T, <span class="built_in">string</span>&gt;&gt;)Expression.Lambda(Expression.Call(formatMethod, formatConstantExpression, formatObjsExpression), t);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// t =&gt; Format(&quot;&#123;0&#125;|&#123;1&#125;&quot;, new [] &#123;IIF((t.Name == null), &quot;&quot;, t.Name.ToString()), IIF((t.Age.ToString() == null), &quot;&quot;, t.Age.ToString())&#125;)</span></span><br><span class="line"></span><br><span class="line">    IQueryable&lt;T&gt; queryable = list.AsQueryable();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> queryable.Select(lambda).ToList();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="使用方法"><a class="header-anchor" href="#使用方法"></a>使用方法</h1>
-<p>執行方法轉換出 CSV 列表</p>
-<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line">List&lt;<span class="built_in">string</span>&gt; csvList = users.selectToCsv(<span class="string">&quot;|&quot;</span>);</span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://learn.microsoft.com/en-us/dotnet/csharp/advanced-topics/expression-trees/">Expression Trees</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>.Net</category>
-      </categories>
-      <tags>
-        <tag>.Net</tag>
-        <tag>Expression</tag>
       </tags>
   </entry>
   <entry>
@@ -1832,8 +1832,8 @@ dotnet-dump collect --process-id 1902 -->
         <category>.Net</category>
       </categories>
       <tags>
-        <tag>.Net</tag>
         <tag>XML</tag>
+        <tag>.Net</tag>
       </tags>
   </entry>
   <entry>
@@ -1896,6 +1896,35 @@ dotnet-dump collect --process-id 1902 -->
       </tags>
   </entry>
   <entry>
+    <title>使用 Flask-SQLAlchemy 連接 MSSQL 進行 CRUD</title>
+    <url>/2023/07/07/PythonFlaskSQLAlchemy/</url>
+    <content><![CDATA[<h1 id="安裝套件"><a class="header-anchor" href="#安裝套件"></a>安裝套件</h1>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip install Flask</span><br><span class="line">pip install flask-sqlalchemy</span><br><span class="line">pip install pymssql</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="建立-app-py-內容如下"><a class="header-anchor" href="#建立-app-py-內容如下"></a>建立 <a href="http://app.py">app.py</a> 內容如下</h1>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask,request,jsonify</span><br><span class="line"><span class="keyword">from</span> urllib <span class="keyword">import</span> parse</span><br><span class="line"><span class="keyword">from</span> flask_sqlalchemy <span class="keyword">import</span> SQLAlchemy</span><br><span class="line"></span><br><span class="line">config = &#123;</span><br><span class="line">    <span class="string">&quot;SQLALCHEMY_TRACK_MODIFICATIONS&quot;</span>: <span class="literal">True</span>,</span><br><span class="line">    <span class="string">&quot;SQLALCHEMY_DATABASE_URI&quot;</span>: <span class="string">&quot;mssql+pymssql://[使用者帳號]:%s@[服務器IP]:[端口]/[資料庫名稱]?charset=utf8&quot;</span>% parse.quote(<span class="string">&#x27;[使用者密碼]&#x27;</span>),</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line">app.config.from_mapping(config)</span><br><span class="line">db = SQLAlchemy(app)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 建立資料表對應類別</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">AddressMap</span>(db.Model):</span><br><span class="line">    <span class="comment"># 資料表名稱</span></span><br><span class="line">    __tablename__ = <span class="string">&#x27;AddressMap&#x27;</span></span><br><span class="line">    <span class="comment"># 唯一識別碼</span></span><br><span class="line">    <span class="built_in">id</span> = db.Column(db.Integer, primary_key=<span class="literal">True</span>, autoincrement=<span class="literal">True</span>)</span><br><span class="line">    <span class="comment"># 地址</span></span><br><span class="line">    address = db.Column(db.String(<span class="number">200</span>, collation=<span class="string">&quot;Chinese_Taiwan_Stroke_CI_AS&quot;</span>), unique=<span class="literal">True</span>, nullable=<span class="literal">False</span>)</span><br><span class="line">    <span class="comment"># 郵區</span></span><br><span class="line">    <span class="built_in">zip</span> = db.Column(db.String(<span class="number">6</span>), unique=<span class="literal">False</span>, nullable=<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, address, <span class="built_in">zip</span></span>):</span><br><span class="line">        self.address = address</span><br><span class="line">        self.<span class="built_in">zip</span> = <span class="built_in">zip</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">serialize</span>(<span class="params">self</span>):</span><br><span class="line">       <span class="keyword">return</span> &#123;</span><br><span class="line">           <span class="string">&#x27;Id&#x27;</span> : self.<span class="built_in">id</span>,</span><br><span class="line">           <span class="string">&#x27;Address&#x27;</span> : self.address,</span><br><span class="line">           <span class="string">&#x27;Zip&#x27;</span> : self.<span class="built_in">zip</span></span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__repr__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&#x27;&lt;AddressMap %r&gt;&#x27;</span> % self.address</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.before_first_request</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">create_table</span>():</span><br><span class="line">    db.create_all()</span><br><span class="line"> </span><br><span class="line"><span class="comment"># 建立資料</span></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/Address/Create&#x27;</span> , methods = [<span class="string">&#x27;POST&#x27;</span>]</span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">Create</span>():</span><br><span class="line">    data = request.json</span><br><span class="line">    address = data[<span class="string">&#x27;Address&#x27;</span>]</span><br><span class="line">    <span class="built_in">zip</span> = data[<span class="string">&#x27;Zip&#x27;</span>]</span><br><span class="line">    addressMap = AddressMap(address=address, <span class="built_in">zip</span>=<span class="built_in">zip</span>)</span><br><span class="line">    db.session.add(addressMap)</span><br><span class="line">    db.session.commit()</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;Create Success&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 取得資料</span></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/Address/GetAll&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">AllAddress</span>():</span><br><span class="line">    all_address = AddressMap.query.<span class="built_in">all</span>()</span><br><span class="line">    addressList = <span class="built_in">list</span>(<span class="built_in">map</span>(<span class="keyword">lambda</span> x: x.serialize(), all_address))</span><br><span class="line">    <span class="keyword">return</span> jsonify(result=addressList)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 更新資料</span></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/Address/Update&#x27;</span> , methods = [<span class="string">&#x27;POST&#x27;</span>]</span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">Update</span>():</span><br><span class="line">    data = request.json</span><br><span class="line">    <span class="built_in">id</span> = data[<span class="string">&#x27;Id&#x27;</span>]</span><br><span class="line">    address = AddressMap.query.filter_by(<span class="built_in">id</span>=<span class="built_in">id</span>).first()</span><br><span class="line">    <span class="keyword">if</span> address:</span><br><span class="line">        address.verified = <span class="literal">True</span></span><br><span class="line">        address.address = data[<span class="string">&#x27;Address&#x27;</span>]</span><br><span class="line">        address.<span class="built_in">zip</span> = data[<span class="string">&#x27;Zip&#x27;</span>]</span><br><span class="line">        db.session.commit()</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;Update Success&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 刪除資料</span></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/Address/Delete&#x27;</span> , methods = [<span class="string">&#x27;POST&#x27;</span>]</span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">Delete</span>():</span><br><span class="line">    data = request.json</span><br><span class="line">    <span class="built_in">id</span> = data[<span class="string">&#x27;Id&#x27;</span>]</span><br><span class="line">    address = AddressMap.query.filter_by(<span class="built_in">id</span>=<span class="built_in">id</span>).first()</span><br><span class="line">    <span class="keyword">if</span> address:</span><br><span class="line">        db.session.delete(address)</span><br><span class="line">        db.session.commit()</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;Delete Success&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    app.run()</span><br></pre></td></tr></table></figure>
+<!-- export FLASK_APP=app
+flask shell
+from app import db, AddressMap
+db.create_all() -->
+<h1 id="使用Curl呼叫API"><a class="header-anchor" href="#使用Curl呼叫API"></a>使用Curl呼叫API</h1>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 建立資料</span></span><br><span class="line">curl --location <span class="string">&#x27;http://127.0.0.1:5000/Address/Create&#x27;</span> \</span><br><span class="line">--header <span class="string">&#x27;Content-Type: application/json&#x27;</span> \</span><br><span class="line">--data <span class="string">&#x27;&#123;</span></span><br><span class="line"><span class="string">    &quot;Address&quot; : &quot;新竹市&quot;,</span></span><br><span class="line"><span class="string">    &quot;Zip&quot; : &quot;300&quot;</span></span><br><span class="line"><span class="string">&#125;&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 取得資料</span></span><br><span class="line">curl --location <span class="string">&#x27;http://127.0.0.1:5000/Address/GetAll&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 更新資料</span></span><br><span class="line">curl --location <span class="string">&#x27;http://127.0.0.1:5000/Address/Update&#x27;</span> \</span><br><span class="line">--header <span class="string">&#x27;Content-Type: application/json&#x27;</span> \</span><br><span class="line">--data <span class="string">&#x27;&#123;</span></span><br><span class="line"><span class="string">    &quot;Id&quot; : 1,</span></span><br><span class="line"><span class="string">    &quot;Address&quot; : &quot;新竹市&quot;,</span></span><br><span class="line"><span class="string">    &quot;Zip&quot; : &quot;999&quot;</span></span><br><span class="line"><span class="string">&#125;&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 刪除資料</span></span><br><span class="line">curl --location <span class="string">&#x27;http://127.0.0.1:5000/Address/Delete&#x27;</span> \</span><br><span class="line">--header <span class="string">&#x27;Content-Type: application/json&#x27;</span> \</span><br><span class="line">--data <span class="string">&#x27;&#123;</span></span><br><span class="line"><span class="string">    &quot;Id&quot; : 1</span></span><br><span class="line"><span class="string">&#125;&#x27;</span></span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://flask-sqlalchemy.palletsprojects.com/en/3.0.x/">Flask-SQLAlchemy</a></li>
+</ol>
+</div>
+]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>MSSQL</tag>
+        <tag>Python</tag>
+        <tag>Flask</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>使用 Python Script 進行 FontForge 字型檔轉換</title>
     <url>/2021/10/23/PythonFontForgeTransfer/</url>
     <content><![CDATA[<h1 id="建立-font-py-檔案"><a class="header-anchor" href="#建立-font-py-檔案"></a>建立 <a href="http://font.py">font.py</a> 檔案</h1>
@@ -1920,9 +1949,60 @@ dotnet-dump collect --process-id 1902 -->
       </tags>
   </entry>
   <entry>
-    <title>使用 FFmpeg 產生 HLS 視頻</title>
+    <title>使用 FFmpeg 下載 HLS 影片</title>
+    <url>/2022/01/01/ToolFFmpegHlsDownload/</url>
+    <content><![CDATA[<div class="note danger"><p>⚠️ 請注意，本範例僅供學習參考，請遵守各平台影片使用規範與相關法令，產生之行為與後果將由使用者自行負責</p>
+</div>
+<h1 id="下載檔案"><a class="header-anchor" href="#下載檔案"></a>下載檔案</h1>
+<p>使用 FFmpeg 下載檔案，並轉換成 MP4 格式，如果需要驗證 Cookie，可使用 headers 選項</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ffmpeg -headers <span class="string">&quot;Cookie: [Cookie替換]&quot;</span> -i <span class="string">&quot;[m3u8網址]&quot;</span> -c copy -bsf:a aac_adtstoasc [輸出影片].mp4</span><br></pre></td></tr></table></figure>
+<p>參數解析</p>
+<table>
+<thead>
+<tr>
+<th>參數</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="mkd-table"><code>-headers &quot;Cookie: [Cookie替換]&quot;</code></span></td>
+<td>傳送 HTTP 標頭，通常用於需要驗證或存取受限的 m3u8 資源</td>
+</tr>
+<tr>
+<td><code>-i &quot;[m3u8網址]&quot;</code></td>
+<td>指定輸入來源為 m3u8 串流清單的網址</td>
+</tr>
+<tr>
+<td><code>-bsf:a aac_adtstoasc</code></td>
+<td>對音訊流（AAC）應用位元流過濾器（bitstream filter），將 ADTS 格式轉換為適合 MP4 的格式 (通常 m3u8 使用 ADTS 格式)</td>
+</tr>
+</tbody>
+</table>
+<span id="more"></span>
+<h1 id="搜尋影片清單"><a class="header-anchor" href="#搜尋影片清單"></a>搜尋影片清單</h1>
+<p>但通常影片都會切割成好幾個段落，所以須要在 Chrome DevTools 的 Network 分頁中，搜尋 .m3u8 相關的檔案，並找到如下格式檔案</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">#EXTM3U</span><br><span class="line">#EXT-X-VERSION:3</span><br><span class="line">#EXT-X-TARGETDURATION:4</span><br><span class="line">#EXT-X-MEDIA-SEQUENCE:0</span><br><span class="line">#EXTINF:2.000000,</span><br><span class="line">0000.ts</span><br><span class="line">...</span><br><span class="line">#EXTINF:2.000000,</span><br><span class="line">0003.ts</span><br><span class="line">#EXT-X-ENDLIST</span><br></pre></td></tr></table></figure>
+<h1 id="下載影片清單"><a class="header-anchor" href="#下載影片清單"></a>下載影片清單</h1>
+<p>因檔案通常會有很多，可使用下方腳本下載影片清單</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 設定在 Chrome DevTools 找到的清單</span></span><br><span class="line">BASE_URL=<span class="string">&quot;[網址]&quot;</span></span><br><span class="line">M3U8_URL=<span class="string">&quot;<span class="variable">$BASE_URL</span>/[檔案].m3u8&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用 curl 下載 m3u8</span></span><br><span class="line">curl -s <span class="string">&quot;<span class="variable">$M3U8_URL</span>&quot;</span> -o [檔案].m3u8</span><br><span class="line"></span><br><span class="line"><span class="comment"># 擷取 ts 檔案名稱</span></span><br><span class="line">grep <span class="string">&#x27;\.ts&#x27;</span> [檔案].m3u8 &gt; ts_list.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 建立目錄</span></span><br><span class="line"><span class="built_in">mkdir</span> -p ts_files</span><br><span class="line"></span><br><span class="line"><span class="comment"># 下載每個 ts 檔案至 ts_files</span></span><br><span class="line"><span class="built_in">cd</span> ts_files</span><br><span class="line"><span class="keyword">while</span> <span class="built_in">read</span> -r line; <span class="keyword">do</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;Downloading <span class="variable">$line</span>&quot;</span></span><br><span class="line">    curl -O <span class="string">&quot;<span class="variable">$BASE_URL</span>/<span class="variable">$line</span>&quot;</span></span><br><span class="line"><span class="keyword">done</span> &lt; ../ts_list.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 合併為 ts 檔案</span></span><br><span class="line"><span class="built_in">cd</span> ..</span><br><span class="line"><span class="built_in">cat</span> ts_files/*.ts &gt; merged.ts</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用 FFmpeg 轉換為 MP4</span></span><br><span class="line">ffmpeg -i merged.ts -c copy -bsf:a aac_adtstoasc output.mp4</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://www.ffmpeg.org/documentation.html">ffmpeg 文件</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>Tool</category>
+      </categories>
+      <tags>
+        <tag>Tool</tag>
+        <tag>FFmpeg</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>使用 FFmpeg 產生 HLS 影片</title>
     <url>/2022/01/01/ToolFFmpegHlsSegment/</url>
-    <content><![CDATA[<h1 id="產生視頻"><a class="header-anchor" href="#產生視頻"></a>產生視頻</h1>
+    <content><![CDATA[<h1 id="產生影片"><a class="header-anchor" href="#產生影片"></a>產生影片</h1>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ffmpeg -i [輸入影片].mp4 \</span><br><span class="line">  -c:v libx264 -c:a aac \</span><br><span class="line">  -hls_time 10 \</span><br><span class="line">  -hls_list_size 0 \</span><br><span class="line">  -hls_segment_filename <span class="string">&quot;segment_%03d.ts&quot;</span> \</span><br><span class="line">  -f hls playlist.m3u8</span><br></pre></td></tr></table></figure>
 <table>
 <thead>
@@ -1973,7 +2053,7 @@ dotnet-dump collect --process-id 1902 -->
 <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">video</span> <span class="attr">id</span>=<span class="string">&quot;video&quot;</span> <span class="attr">controls</span> <span class="attr">width</span>=<span class="string">&quot;640&quot;</span> <span class="attr">height</span>=<span class="string">&quot;360&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">video</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>引用 hls.js CDN</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;https://cdn.jsdelivr.net/npm/hls.js@latest&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>播放分割好的視頻</p>
+<p>播放分割好的影片</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> video = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;video&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> videoSrc = <span class="string">&#x27;http://localhost:8080/playlist.m3u8&#x27;</span>; <span class="comment">// 根據實際路徑調整</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="title class_">Hls</span>.<span class="title function_">isSupported</span>()) &#123;</span><br><span class="line">    <span class="keyword">const</span> hls = <span class="keyword">new</span> <span class="title class_">Hls</span>();</span><br><span class="line">    hls.<span class="title function_">loadSource</span>(videoSrc);</span><br><span class="line">    hls.<span class="title function_">attachMedia</span>(video);</span><br><span class="line">    hls.<span class="title function_">on</span>(<span class="title class_">Hls</span>.<span class="property">Events</span>.<span class="property">MANIFEST_PARSED</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">        video.<span class="title function_">play</span>();</span><br><span class="line">    &#125;);</span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (video.<span class="title function_">canPlayType</span>(<span class="string">&#x27;application/vnd.apple.mpegurl&#x27;</span>)) &#123;</span><br><span class="line">    <span class="comment">// Safari 原生支援 HLS</span></span><br><span class="line">    video.<span class="property">src</span> = videoSrc;</span><br><span class="line">    video.<span class="title function_">addEventListener</span>(<span class="string">&#x27;loadedmetadata&#x27;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    video.<span class="title function_">play</span>();</span><br><span class="line">    &#125;);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="title function_">alert</span>(<span class="string">&quot;您的瀏覽器不支援 HLS&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <div class="note warning"><p>📜 參考資料</p>
 <ol>
@@ -1986,154 +2066,6 @@ dotnet-dump collect --process-id 1902 -->
       <tags>
         <tag>Tool</tag>
         <tag>FFmpeg</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>使用 Flask-SQLAlchemy 連接 MSSQL 進行 CRUD</title>
-    <url>/2023/07/07/PythonFlaskSQLAlchemy/</url>
-    <content><![CDATA[<h1 id="安裝套件"><a class="header-anchor" href="#安裝套件"></a>安裝套件</h1>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip install Flask</span><br><span class="line">pip install flask-sqlalchemy</span><br><span class="line">pip install pymssql</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="建立-app-py-內容如下"><a class="header-anchor" href="#建立-app-py-內容如下"></a>建立 <a href="http://app.py">app.py</a> 內容如下</h1>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask,request,jsonify</span><br><span class="line"><span class="keyword">from</span> urllib <span class="keyword">import</span> parse</span><br><span class="line"><span class="keyword">from</span> flask_sqlalchemy <span class="keyword">import</span> SQLAlchemy</span><br><span class="line"></span><br><span class="line">config = &#123;</span><br><span class="line">    <span class="string">&quot;SQLALCHEMY_TRACK_MODIFICATIONS&quot;</span>: <span class="literal">True</span>,</span><br><span class="line">    <span class="string">&quot;SQLALCHEMY_DATABASE_URI&quot;</span>: <span class="string">&quot;mssql+pymssql://[使用者帳號]:%s@[服務器IP]:[端口]/[資料庫名稱]?charset=utf8&quot;</span>% parse.quote(<span class="string">&#x27;[使用者密碼]&#x27;</span>),</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line">app.config.from_mapping(config)</span><br><span class="line">db = SQLAlchemy(app)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 建立資料表對應類別</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">AddressMap</span>(db.Model):</span><br><span class="line">    <span class="comment"># 資料表名稱</span></span><br><span class="line">    __tablename__ = <span class="string">&#x27;AddressMap&#x27;</span></span><br><span class="line">    <span class="comment"># 唯一識別碼</span></span><br><span class="line">    <span class="built_in">id</span> = db.Column(db.Integer, primary_key=<span class="literal">True</span>, autoincrement=<span class="literal">True</span>)</span><br><span class="line">    <span class="comment"># 地址</span></span><br><span class="line">    address = db.Column(db.String(<span class="number">200</span>, collation=<span class="string">&quot;Chinese_Taiwan_Stroke_CI_AS&quot;</span>), unique=<span class="literal">True</span>, nullable=<span class="literal">False</span>)</span><br><span class="line">    <span class="comment"># 郵區</span></span><br><span class="line">    <span class="built_in">zip</span> = db.Column(db.String(<span class="number">6</span>), unique=<span class="literal">False</span>, nullable=<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, address, <span class="built_in">zip</span></span>):</span><br><span class="line">        self.address = address</span><br><span class="line">        self.<span class="built_in">zip</span> = <span class="built_in">zip</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">serialize</span>(<span class="params">self</span>):</span><br><span class="line">       <span class="keyword">return</span> &#123;</span><br><span class="line">           <span class="string">&#x27;Id&#x27;</span> : self.<span class="built_in">id</span>,</span><br><span class="line">           <span class="string">&#x27;Address&#x27;</span> : self.address,</span><br><span class="line">           <span class="string">&#x27;Zip&#x27;</span> : self.<span class="built_in">zip</span></span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__repr__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&#x27;&lt;AddressMap %r&gt;&#x27;</span> % self.address</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.before_first_request</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">create_table</span>():</span><br><span class="line">    db.create_all()</span><br><span class="line"> </span><br><span class="line"><span class="comment"># 建立資料</span></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/Address/Create&#x27;</span> , methods = [<span class="string">&#x27;POST&#x27;</span>]</span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">Create</span>():</span><br><span class="line">    data = request.json</span><br><span class="line">    address = data[<span class="string">&#x27;Address&#x27;</span>]</span><br><span class="line">    <span class="built_in">zip</span> = data[<span class="string">&#x27;Zip&#x27;</span>]</span><br><span class="line">    addressMap = AddressMap(address=address, <span class="built_in">zip</span>=<span class="built_in">zip</span>)</span><br><span class="line">    db.session.add(addressMap)</span><br><span class="line">    db.session.commit()</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;Create Success&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 取得資料</span></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/Address/GetAll&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">AllAddress</span>():</span><br><span class="line">    all_address = AddressMap.query.<span class="built_in">all</span>()</span><br><span class="line">    addressList = <span class="built_in">list</span>(<span class="built_in">map</span>(<span class="keyword">lambda</span> x: x.serialize(), all_address))</span><br><span class="line">    <span class="keyword">return</span> jsonify(result=addressList)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 更新資料</span></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/Address/Update&#x27;</span> , methods = [<span class="string">&#x27;POST&#x27;</span>]</span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">Update</span>():</span><br><span class="line">    data = request.json</span><br><span class="line">    <span class="built_in">id</span> = data[<span class="string">&#x27;Id&#x27;</span>]</span><br><span class="line">    address = AddressMap.query.filter_by(<span class="built_in">id</span>=<span class="built_in">id</span>).first()</span><br><span class="line">    <span class="keyword">if</span> address:</span><br><span class="line">        address.verified = <span class="literal">True</span></span><br><span class="line">        address.address = data[<span class="string">&#x27;Address&#x27;</span>]</span><br><span class="line">        address.<span class="built_in">zip</span> = data[<span class="string">&#x27;Zip&#x27;</span>]</span><br><span class="line">        db.session.commit()</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;Update Success&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 刪除資料</span></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/Address/Delete&#x27;</span> , methods = [<span class="string">&#x27;POST&#x27;</span>]</span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">Delete</span>():</span><br><span class="line">    data = request.json</span><br><span class="line">    <span class="built_in">id</span> = data[<span class="string">&#x27;Id&#x27;</span>]</span><br><span class="line">    address = AddressMap.query.filter_by(<span class="built_in">id</span>=<span class="built_in">id</span>).first()</span><br><span class="line">    <span class="keyword">if</span> address:</span><br><span class="line">        db.session.delete(address)</span><br><span class="line">        db.session.commit()</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;Delete Success&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    app.run()</span><br></pre></td></tr></table></figure>
-<!-- export FLASK_APP=app
-flask shell
-from app import db, AddressMap
-db.create_all() -->
-<h1 id="使用Curl呼叫API"><a class="header-anchor" href="#使用Curl呼叫API"></a>使用Curl呼叫API</h1>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 建立資料</span></span><br><span class="line">curl --location <span class="string">&#x27;http://127.0.0.1:5000/Address/Create&#x27;</span> \</span><br><span class="line">--header <span class="string">&#x27;Content-Type: application/json&#x27;</span> \</span><br><span class="line">--data <span class="string">&#x27;&#123;</span></span><br><span class="line"><span class="string">    &quot;Address&quot; : &quot;新竹市&quot;,</span></span><br><span class="line"><span class="string">    &quot;Zip&quot; : &quot;300&quot;</span></span><br><span class="line"><span class="string">&#125;&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 取得資料</span></span><br><span class="line">curl --location <span class="string">&#x27;http://127.0.0.1:5000/Address/GetAll&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 更新資料</span></span><br><span class="line">curl --location <span class="string">&#x27;http://127.0.0.1:5000/Address/Update&#x27;</span> \</span><br><span class="line">--header <span class="string">&#x27;Content-Type: application/json&#x27;</span> \</span><br><span class="line">--data <span class="string">&#x27;&#123;</span></span><br><span class="line"><span class="string">    &quot;Id&quot; : 1,</span></span><br><span class="line"><span class="string">    &quot;Address&quot; : &quot;新竹市&quot;,</span></span><br><span class="line"><span class="string">    &quot;Zip&quot; : &quot;999&quot;</span></span><br><span class="line"><span class="string">&#125;&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 刪除資料</span></span><br><span class="line">curl --location <span class="string">&#x27;http://127.0.0.1:5000/Address/Delete&#x27;</span> \</span><br><span class="line">--header <span class="string">&#x27;Content-Type: application/json&#x27;</span> \</span><br><span class="line">--data <span class="string">&#x27;&#123;</span></span><br><span class="line"><span class="string">    &quot;Id&quot; : 1</span></span><br><span class="line"><span class="string">&#125;&#x27;</span></span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://flask-sqlalchemy.palletsprojects.com/en/3.0.x/">Flask-SQLAlchemy</a></li>
-</ol>
-</div>
-]]></content>
-      <categories>
-        <category>Python</category>
-      </categories>
-      <tags>
-        <tag>MSSQL</tag>
-        <tag>Python</tag>
-        <tag>Flask</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>使用 FFmpeg 下載 HLS 影片</title>
-    <url>/2022/01/01/ToolFFmpegHlsDownload/</url>
-    <content><![CDATA[<div class="note danger"><p>⚠️請注意，本範例僅供學習參考，使用者須遵守各平台使用規範與相關法令，產生之行為與後果由使用者自行負責</p>
-</div>
-<h1 id="下載檔案"><a class="header-anchor" href="#下載檔案"></a>下載檔案</h1>
-<p>使用 FFmpeg 下載檔案，並轉換成 MP4 格式，如果需要驗證 Cookie，可使用 headers 選項</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ffmpeg -headers <span class="string">&quot;Cookie: [Cookie替換]&quot;</span> -i <span class="string">&quot;[m3u8網址]&quot;</span> -c copy -bsf:a aac_adtstoasc [輸出影片].mp4</span><br></pre></td></tr></table></figure>
-<p>參數解析</p>
-<table>
-<thead>
-<tr>
-<th>參數</th>
-<th>說明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>-headers &quot;Cookie: [Cookie替換]&quot;</code></td>
-<td>傳送 HTTP 標頭，通常用於需要驗證或存取受限的 m3u8 資源</td>
-</tr>
-<tr>
-<td><code>-i &quot;[m3u8網址]&quot;</code></td>
-<td>指定輸入來源為 m3u8 串流清單的網址</td>
-</tr>
-<tr>
-<td><code>-bsf:a aac_adtstoasc</code></td>
-<td>對音訊流（AAC）應用位元流過濾器（bitstream filter），將 ADTS 格式轉換為適合 MP4 容器的格式 (通常 m3u8 使用 ADTS 格式)</td>
-</tr>
-</tbody>
-</table>
-<span id="more"></span>
-<h1 id="搜尋影片清單"><a class="header-anchor" href="#搜尋影片清單"></a>搜尋影片清單</h1>
-<p>但通常影片都會切割成好幾個段落，所以須要在 Chrome DevTools 的 Network 分頁中，搜尋 .m3u8 相關的檔案，並找到如下格式檔案</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">#EXTM3U</span><br><span class="line">#EXT-X-VERSION:3</span><br><span class="line">#EXT-X-TARGETDURATION:4</span><br><span class="line">#EXT-X-MEDIA-SEQUENCE:0</span><br><span class="line">#EXTINF:2.000000,</span><br><span class="line">0000.ts</span><br><span class="line">...</span><br><span class="line">#EXTINF:2.000000,</span><br><span class="line">0003.ts</span><br><span class="line">#EXT-X-ENDLIST</span><br></pre></td></tr></table></figure>
-<h1 id="下載影片清單"><a class="header-anchor" href="#下載影片清單"></a>下載影片清單</h1>
-<p>因檔案通常會有很多，可使用下方腳本下載影片清單</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 設定在 Chrome DevTools 找到的清單</span></span><br><span class="line">BASE_URL=<span class="string">&quot;[網址]&quot;</span></span><br><span class="line">M3U8_URL=<span class="string">&quot;<span class="variable">$BASE_URL</span>/[檔案].m3u8&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用 curl 下載 m3u8</span></span><br><span class="line">curl -s <span class="string">&quot;<span class="variable">$M3U8_URL</span>&quot;</span> -o [檔案].m3u8</span><br><span class="line"></span><br><span class="line"><span class="comment"># 擷取 ts 檔案名稱</span></span><br><span class="line">grep <span class="string">&#x27;\.ts&#x27;</span> [檔案].m3u8 &gt; ts_list.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 建立目錄</span></span><br><span class="line"><span class="built_in">mkdir</span> -p ts_files</span><br><span class="line"></span><br><span class="line"><span class="comment"># 下載每個 ts 檔案至 ts_files</span></span><br><span class="line"><span class="built_in">cd</span> ts_files</span><br><span class="line"><span class="keyword">while</span> <span class="built_in">read</span> -r line; <span class="keyword">do</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;Downloading <span class="variable">$line</span>&quot;</span></span><br><span class="line">    curl -O <span class="string">&quot;<span class="variable">$BASE_URL</span>/<span class="variable">$line</span>&quot;</span></span><br><span class="line"><span class="keyword">done</span> &lt; ../ts_list.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 合併為 ts 檔案</span></span><br><span class="line"><span class="built_in">cd</span> ..</span><br><span class="line"><span class="built_in">cat</span> ts_files/*.ts &gt; merged.ts</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用 FFmpeg 轉換為 MP4</span></span><br><span class="line">ffmpeg -i merged.ts -c copy -bsf:a aac_adtstoasc output.mp4</span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://www.ffmpeg.org/documentation.html">ffmpeg 文件</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>Tool</category>
-      </categories>
-      <tags>
-        <tag>Tool</tag>
-        <tag>FFmpeg</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>K6 基本壓測</title>
-    <url>/2025/04/02/ToolK6LoadingTest/</url>
-    <content><![CDATA[<h1 id="安裝-k6"><a class="header-anchor" href="#安裝-k6"></a>安裝 k6</h1>
-<!-- choco install k6 -y -->
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 從 Ubuntu 金鑰伺服器下載 k6 軟體倉庫的 GPG 公鑰，並儲存到指定的金鑰環中</span></span><br><span class="line">sudo gpg --no-default-keyring --keyring /usr/share/keyrings/k6-archive-keyring.gpg --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys C5AD17C747E3415A3642D57D77C6C491D6AC1D69</span><br><span class="line"></span><br><span class="line"><span class="comment"># 將 k6 軟體倉庫加入到 APT 的套件來源清單中，並指定其簽名金鑰</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;deb [signed-by=/usr/share/keyrings/k6-archive-keyring.gpg] https://dl.k6.io/deb stable main&quot;</span> | sudo <span class="built_in">tee</span> /etc/apt/sources.list.d/k6.list</span><br><span class="line"></span><br><span class="line"><span class="comment"># 更新 APT</span></span><br><span class="line">sudo apt-get update</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安裝 k6</span></span><br><span class="line">sudo apt-get install k6</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="建立檔案-script-js"><a class="header-anchor" href="#建立檔案-script-js"></a>建立檔案 script.js</h1>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> http <span class="keyword">from</span> <span class="string">&#x27;k6/http&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; sleep &#125; <span class="keyword">from</span> <span class="string">&#x27;k6&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> url = <span class="string">&#x27;[目標 API]&#x27;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> payload = <span class="title class_">JSON</span>.<span class="title function_">stringify</span>([請求物件]);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> params = &#123;</span><br><span class="line">        <span class="attr">headers</span>: &#123;</span><br><span class="line">            <span class="string">&#x27;accept&#x27;</span>: <span class="string">&#x27;application/json, text/plain, */*&#x27;</span>,</span><br><span class="line">            <span class="string">&#x27;authorization&#x27;</span>: <span class="string">&#x27;[JWT 認證]&#x27;</span>,</span><br><span class="line">            <span class="string">&#x27;content-type&#x27;</span>: <span class="string">&#x27;application/json&#x27;</span></span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> res = http.<span class="title function_">post</span>(url, payload, params);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<!-- 
-使用 open api 轉換成 k6 腳本
-docker pull openapitools/openapi-generator-cli
-
-docker run --rm -v ${PWD}:/local openapitools/openapi-generator-cli generate \
-    -i /location of json file/swagger.json \
-    -g k6 \
-    -o /local/k6-test/
-    --skip-validate-spec
--->
-<h1 id="測試情境"><a class="header-anchor" href="#測試情境"></a>測試情境</h1>
-<p>迭代測試:<br>
-情境: 2 個用戶總共執行 2 次</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">k6 run test.js --vus 2 --iterations 2</span><br></pre></td></tr></table></figure>
-<p>冒煙測試: 確認服務基本可用<br>
-情境: 3 個用戶 1 分內持續執行</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">k6 run test.js --vus 3 --duration 1m</span><br></pre></td></tr></table></figure>
-<p>負載測試: 確認在預測用戶下的執行效能<br>
-情境: 5 分鐘內增加至 100 人，在持續 30 分鐘後，用 5 分鐘內清空人數</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">k6 run test.js --stage <span class="string">&quot;5m:100,30m:100,5m:0&quot;</span></span><br></pre></td></tr></table></figure>
-<p>壓力測試: 確認流量平緩增加執行的效能<br>
-情境: 10 分鐘內增加至 200 人，在持續 30 分鐘後，用 5 分鐘內清空人數</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">k6 run test.js --stage <span class="string">&quot;10m:200,30m:200,5m:0&quot;</span></span><br></pre></td></tr></table></figure>
-<p>峰值測試: 確認流量瞬間湧入執行的效能<br>
-情境: 2 分鐘內增加至 2000 人後，用 1 分鐘內清空人數</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">k6 run test.js --stage <span class="string">&quot;2m:2000,1m:0&quot;</span></span><br></pre></td></tr></table></figure>
-<p>浸泡測試: 確認長時間持續執行的效能<br>
-情境: 5 分鐘內增加至 100 人，在持續 8 小時後，用 5 分鐘內清空人數</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">k6 run test.js --stage <span class="string">&quot;5m:100,8h:100,5m:0&quot;</span></span><br></pre></td></tr></table></figure>
-<p>斷點測試: 確認資源消耗至最大後的效能<br>
-2 小時內，用戶增加至 20000 人</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">k6 run test.js --stage <span class="string">&quot;2h:20000&quot;</span></span><br></pre></td></tr></table></figure>
-<h1 id="結果顯示"><a class="header-anchor" href="#結果顯示"></a>結果顯示</h1>
-<h2 id="JSON-格式"><a class="header-anchor" href="#JSON-格式"></a>JSON 格式</h2>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">k6 run --stage 30s:10 --out json=test-result.json test.js</span><br></pre></td></tr></table></figure>
-<h2 id="儀錶板"><a class="header-anchor" href="#儀錶板"></a>儀錶板</h2>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">K6_WEB_DASHBOARD=<span class="string">&#x27;true&#x27;</span> \</span><br><span class="line">K6_WEB_DASHBOARD_EXPORT=<span class="string">&#x27;html-report.html&#x27;</span> \</span><br><span class="line">k6 run --stage 30s:10 test.js;</span><br></pre></td></tr></table></figure>
-<!--
-$env:K6_WEB_DASHBOARD='true';
-$env:K6_WEB_DASHBOARD_EXPORT='html-report.html';
-k6 run --stage 30s:10 test.js;
--->
-<!-- 只有當測試持續時間大於K6_WEB_DASHBOARD_PERIOD變數設定的聚合週期值的三倍時，報告才包含圖表 -->
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://grafana.com/docs/k6/latest/set-up/install-k6/">安裝K6</a></li>
-<li><a href="https://grafana.com/docs/k6/latest/testing-guides/test-types/">測試情境</a></li>
-<li><a href="https://grafana.com/docs/k6/latest/results-output/web-dashboard/">顯示儀錶板</a></li>
-</ol>
-</div>
-]]></content>
-      <categories>
-        <category>Tool</category>
-      </categories>
-      <tags>
-        <tag>Tool</tag>
-        <tag>K6</tag>
       </tags>
   </entry>
   <entry>
@@ -2307,6 +2239,74 @@ k6 run --stage 30s:10 test.js;
       </tags>
   </entry>
   <entry>
+    <title>K6 基本壓測</title>
+    <url>/2025/04/02/ToolK6LoadingTest/</url>
+    <content><![CDATA[<h1 id="安裝-k6"><a class="header-anchor" href="#安裝-k6"></a>安裝 k6</h1>
+<!-- choco install k6 -y -->
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 從 Ubuntu 金鑰伺服器下載 k6 軟體倉庫的 GPG 公鑰，並儲存到指定的金鑰環中</span></span><br><span class="line">sudo gpg --no-default-keyring --keyring /usr/share/keyrings/k6-archive-keyring.gpg --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys C5AD17C747E3415A3642D57D77C6C491D6AC1D69</span><br><span class="line"></span><br><span class="line"><span class="comment"># 將 k6 軟體倉庫加入到 APT 的套件來源清單中，並指定其簽名金鑰</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;deb [signed-by=/usr/share/keyrings/k6-archive-keyring.gpg] https://dl.k6.io/deb stable main&quot;</span> | sudo <span class="built_in">tee</span> /etc/apt/sources.list.d/k6.list</span><br><span class="line"></span><br><span class="line"><span class="comment"># 更新 APT</span></span><br><span class="line">sudo apt-get update</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安裝 k6</span></span><br><span class="line">sudo apt-get install k6</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="建立檔案-script-js"><a class="header-anchor" href="#建立檔案-script-js"></a>建立檔案 script.js</h1>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> http <span class="keyword">from</span> <span class="string">&#x27;k6/http&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; sleep &#125; <span class="keyword">from</span> <span class="string">&#x27;k6&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> url = <span class="string">&#x27;[目標 API]&#x27;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> payload = <span class="title class_">JSON</span>.<span class="title function_">stringify</span>([請求物件]);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> params = &#123;</span><br><span class="line">        <span class="attr">headers</span>: &#123;</span><br><span class="line">            <span class="string">&#x27;accept&#x27;</span>: <span class="string">&#x27;application/json, text/plain, */*&#x27;</span>,</span><br><span class="line">            <span class="string">&#x27;authorization&#x27;</span>: <span class="string">&#x27;[JWT 認證]&#x27;</span>,</span><br><span class="line">            <span class="string">&#x27;content-type&#x27;</span>: <span class="string">&#x27;application/json&#x27;</span></span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> res = http.<span class="title function_">post</span>(url, payload, params);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<!-- 
+使用 open api 轉換成 k6 腳本
+docker pull openapitools/openapi-generator-cli
+
+docker run --rm -v ${PWD}:/local openapitools/openapi-generator-cli generate \
+    -i /location of json file/swagger.json \
+    -g k6 \
+    -o /local/k6-test/
+    --skip-validate-spec
+-->
+<h1 id="測試情境"><a class="header-anchor" href="#測試情境"></a>測試情境</h1>
+<p>迭代測試:<br>
+情境: 2 個用戶總共執行 2 次</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">k6 run test.js --vus 2 --iterations 2</span><br></pre></td></tr></table></figure>
+<p>冒煙測試: 確認服務基本可用<br>
+情境: 3 個用戶 1 分內持續執行</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">k6 run test.js --vus 3 --duration 1m</span><br></pre></td></tr></table></figure>
+<p>負載測試: 確認在預測用戶下的執行效能<br>
+情境: 5 分鐘內增加至 100 人，在持續 30 分鐘後，用 5 分鐘內清空人數</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">k6 run test.js --stage <span class="string">&quot;5m:100,30m:100,5m:0&quot;</span></span><br></pre></td></tr></table></figure>
+<p>壓力測試: 確認流量平緩增加執行的效能<br>
+情境: 10 分鐘內增加至 200 人，在持續 30 分鐘後，用 5 分鐘內清空人數</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">k6 run test.js --stage <span class="string">&quot;10m:200,30m:200,5m:0&quot;</span></span><br></pre></td></tr></table></figure>
+<p>峰值測試: 確認流量瞬間湧入執行的效能<br>
+情境: 2 分鐘內增加至 2000 人後，用 1 分鐘內清空人數</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">k6 run test.js --stage <span class="string">&quot;2m:2000,1m:0&quot;</span></span><br></pre></td></tr></table></figure>
+<p>浸泡測試: 確認長時間持續執行的效能<br>
+情境: 5 分鐘內增加至 100 人，在持續 8 小時後，用 5 分鐘內清空人數</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">k6 run test.js --stage <span class="string">&quot;5m:100,8h:100,5m:0&quot;</span></span><br></pre></td></tr></table></figure>
+<p>斷點測試: 確認資源消耗至最大後的效能<br>
+2 小時內，用戶增加至 20000 人</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">k6 run test.js --stage <span class="string">&quot;2h:20000&quot;</span></span><br></pre></td></tr></table></figure>
+<h1 id="結果顯示"><a class="header-anchor" href="#結果顯示"></a>結果顯示</h1>
+<h2 id="JSON-格式"><a class="header-anchor" href="#JSON-格式"></a>JSON 格式</h2>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">k6 run --stage 30s:10 --out json=test-result.json test.js</span><br></pre></td></tr></table></figure>
+<h2 id="儀錶板"><a class="header-anchor" href="#儀錶板"></a>儀錶板</h2>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">K6_WEB_DASHBOARD=<span class="string">&#x27;true&#x27;</span> \</span><br><span class="line">K6_WEB_DASHBOARD_EXPORT=<span class="string">&#x27;html-report.html&#x27;</span> \</span><br><span class="line">k6 run --stage 30s:10 test.js;</span><br></pre></td></tr></table></figure>
+<!--
+$env:K6_WEB_DASHBOARD='true';
+$env:K6_WEB_DASHBOARD_EXPORT='html-report.html';
+k6 run --stage 30s:10 test.js;
+-->
+<!-- 只有當測試持續時間大於K6_WEB_DASHBOARD_PERIOD變數設定的聚合週期值的三倍時，報告才包含圖表 -->
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://grafana.com/docs/k6/latest/set-up/install-k6/">安裝K6</a></li>
+<li><a href="https://grafana.com/docs/k6/latest/testing-guides/test-types/">測試情境</a></li>
+<li><a href="https://grafana.com/docs/k6/latest/results-output/web-dashboard/">顯示儀錶板</a></li>
+</ol>
+</div>
+]]></content>
+      <categories>
+        <category>Tool</category>
+      </categories>
+      <tags>
+        <tag>Tool</tag>
+        <tag>K6</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>K6 壓測可視化</title>
     <url>/2025/04/02/ToolK6Monitor/</url>
     <content><![CDATA[<h1 id="安裝-InfluxDB-儲存壓測資料"><a class="header-anchor" href="#安裝-InfluxDB-儲存壓測資料"></a>安裝 InfluxDB 儲存壓測資料</h1>
@@ -2446,34 +2446,6 @@ $env:K6_INFLUXDB_TOKEN='[初始TOKEN]' ;
       </tags>
   </entry>
   <entry>
-    <title>安裝 Whistle</title>
-    <url>/2023/01/20/ToolWhistleProxyInstall/</url>
-    <content><![CDATA[<h1 id="使用-Node-安裝-Whistle"><a class="header-anchor" href="#使用-Node-安裝-Whistle"></a>使用 Node 安裝 Whistle</h1>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm i -g whistle</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="啟動-Whistle"><a class="header-anchor" href="#啟動-Whistle"></a>啟動 Whistle</h1>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">w2 start</span><br></pre></td></tr></table></figure>
-<h1 id="查看-Whistle-狀態"><a class="header-anchor" href="#查看-Whistle-狀態"></a>查看 Whistle 狀態</h1>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">w2 status</span><br></pre></td></tr></table></figure>
-<h1 id="停止-Whistle"><a class="header-anchor" href="#停止-Whistle"></a>停止 Whistle</h1>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">w2 stop</span><br></pre></td></tr></table></figure>
-<h1 id="設定-Whistle-為-Proxy-的-Server"><a class="header-anchor" href="#設定-Whistle-為-Proxy-的-Server"></a>設定 Whistle 為 Proxy 的 Server</h1>
-<!-- <img src="/2023/01/20/ToolWhistleProxyInstall/Win10ProxySetting.png" class=""> -->
-<p><img src="Win10ProxySetting.png" alt="Win10ProxySetting"></p>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://www.npmjs.com/package/whistle">whistle npm</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>Tool</category>
-      </categories>
-      <tags>
-        <tag>Tool</tag>
-        <tag>Whistle</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>使用 SqlPackage 備份資料庫</title>
     <url>/2024/07/25/ToolSqlPackage/</url>
     <content><![CDATA[<h1 id="安裝-SqlPackage"><a class="header-anchor" href="#安裝-SqlPackage"></a>安裝 SqlPackage</h1>
@@ -2512,6 +2484,34 @@ $env:K6_INFLUXDB_TOKEN='[初始TOKEN]' ;
         <tag>.Net</tag>
         <tag>Tool</tag>
         <tag>SqlPackage</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>安裝 Whistle</title>
+    <url>/2023/01/20/ToolWhistleProxyInstall/</url>
+    <content><![CDATA[<h1 id="使用-Node-安裝-Whistle"><a class="header-anchor" href="#使用-Node-安裝-Whistle"></a>使用 Node 安裝 Whistle</h1>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm i -g whistle</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="啟動-Whistle"><a class="header-anchor" href="#啟動-Whistle"></a>啟動 Whistle</h1>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">w2 start</span><br></pre></td></tr></table></figure>
+<h1 id="查看-Whistle-狀態"><a class="header-anchor" href="#查看-Whistle-狀態"></a>查看 Whistle 狀態</h1>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">w2 status</span><br></pre></td></tr></table></figure>
+<h1 id="停止-Whistle"><a class="header-anchor" href="#停止-Whistle"></a>停止 Whistle</h1>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">w2 stop</span><br></pre></td></tr></table></figure>
+<h1 id="設定-Whistle-為-Proxy-的-Server"><a class="header-anchor" href="#設定-Whistle-為-Proxy-的-Server"></a>設定 Whistle 為 Proxy 的 Server</h1>
+<!-- <img src="/2023/01/20/ToolWhistleProxyInstall/Win10ProxySetting.png" class=""> -->
+<p><img src="Win10ProxySetting.png" alt="Win10ProxySetting"></p>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://www.npmjs.com/package/whistle">whistle npm</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>Tool</category>
+      </categories>
+      <tags>
+        <tag>Tool</tag>
+        <tag>Whistle</tag>
       </tags>
   </entry>
   <entry>

@@ -1215,7 +1215,7 @@ pre code {
     vertical-align: middle;
   }
   .links-of-author a::before {
-    background: #52ff45;
+    background: #16ff00;
     display: inline-block;
     margin-right: 3px;
     transform: translateY(-2px);
@@ -2861,4 +2861,8 @@ header.header {
   .comments {
     padding: 10px 12px;
   }
+}
+.mkd-table {
+  display: inline-block;
+  width: 300px;
 }

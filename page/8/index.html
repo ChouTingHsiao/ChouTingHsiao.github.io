@@ -275,7 +275,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-05-05 15:33:39" itemprop="dateModified" datetime="2025-05-05T15:33:39+00:00">2025-05-05</time>
+      <time title="Modified: 2025-05-06 15:16:41" itemprop="dateModified" datetime="2025-05-06T15:16:41+00:00">2025-05-06</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -384,7 +384,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-05-05 15:33:39" itemprop="dateModified" datetime="2025-05-05T15:33:39+00:00">2025-05-05</time>
+      <time title="Modified: 2025-05-06 15:16:41" itemprop="dateModified" datetime="2025-05-06T15:16:41+00:00">2025-05-06</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -403,7 +403,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Word count in article: </span>
-      <span>415</span>
+      <span>418</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
@@ -421,7 +421,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <div class="note danger"><p>⚠️請注意，本範例僅供學習參考，使用者須遵守各平台使用規範與相關法令，產生之行為與後果由使用者自行負責</p>
+          <div class="note danger"><p>⚠️ 請注意，本範例僅供學習參考，請遵守各平台影片使用規範與相關法令，產生之行為與後果將由使用者自行負責</p>
 </div>
 <h1 id="下載檔案"><a class="header-anchor" href="#下載檔案"></a>下載檔案</h1>
 <p>使用 FFmpeg 下載檔案，並轉換成 MP4 格式，如果需要驗證 Cookie，可使用 headers 選項</p>
@@ -436,7 +436,7 @@
 </thead>
 <tbody>
 <tr>
-<td><code>-headers &quot;Cookie: [Cookie替換]&quot;</code></td>
+<td><span class="mkd-table"><code>-headers &quot;Cookie: [Cookie替換]&quot;</code></span></td>
 <td>傳送 HTTP 標頭，通常用於需要驗證或存取受限的 m3u8 資源</td>
 </tr>
 <tr>
@@ -445,7 +445,7 @@
 </tr>
 <tr>
 <td><code>-bsf:a aac_adtstoasc</code></td>
-<td>對音訊流（AAC）應用位元流過濾器（bitstream filter），將 ADTS 格式轉換為適合 MP4 容器的格式 (通常 m3u8 使用 ADTS 格式)</td>
+<td>對音訊流（AAC）應用位元流過濾器（bitstream filter），將 ADTS 格式轉換為適合 MP4 的格式 (通常 m3u8 使用 ADTS 格式)</td>
 </tr>
 </tbody>
 </table>
@@ -500,7 +500,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/01/01/ToolFFmpegHlsSegment/" class="post-title-link" itemprop="url">使用 FFmpeg 產生 HLS 視頻</a>
+          <a href="/2022/01/01/ToolFFmpegHlsSegment/" class="post-title-link" itemprop="url">使用 FFmpeg 產生 HLS 影片</a>
         </h2>
 
         <div class="post-meta-container">
@@ -518,7 +518,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-05-05 15:33:39" itemprop="dateModified" datetime="2025-05-05T15:33:39+00:00">2025-05-05</time>
+      <time title="Modified: 2025-05-06 15:16:41" itemprop="dateModified" datetime="2025-05-06T15:16:41+00:00">2025-05-06</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -555,7 +555,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="產生視頻"><a class="header-anchor" href="#產生視頻"></a>產生視頻</h1>
+          <h1 id="產生影片"><a class="header-anchor" href="#產生影片"></a>產生影片</h1>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i [輸入影片].mp4 \</span><br><span class="line">  -c:v libx264 -c:a aac \</span><br><span class="line">  -hls_time 10 \</span><br><span class="line">  -hls_list_size 0 \</span><br><span class="line">  -hls_segment_filename <span class="string">&quot;segment_%03d.ts&quot;</span> \</span><br><span class="line">  -f hls playlist.m3u8</span><br></pre></td></tr></table></figure>
 <table>
 <thead>
@@ -664,7 +664,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-05-05 15:33:39" itemprop="dateModified" datetime="2025-05-05T15:33:39+00:00">2025-05-05</time>
+      <time title="Modified: 2025-05-06 15:16:41" itemprop="dateModified" datetime="2025-05-06T15:16:41+00:00">2025-05-06</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -772,7 +772,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-05-05 15:33:39" itemprop="dateModified" datetime="2025-05-05T15:33:39+00:00">2025-05-05</time>
+      <time title="Modified: 2025-05-06 15:16:41" itemprop="dateModified" datetime="2025-05-06T15:16:41+00:00">2025-05-06</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">

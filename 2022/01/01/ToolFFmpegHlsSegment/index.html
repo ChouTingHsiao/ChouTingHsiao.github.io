@@ -20,15 +20,15 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"choutinghsiao.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.23.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/js/config.js" defer></script>
 
-    <meta name="description" content="產生視頻 123456ffmpeg -i [輸入影片].mp4 \  -c:v libx264 -c:a aac \  -hls_time 10 \  -hls_list_size 0 \  -hls_segment_filename &quot;segment_%03d.ts&quot; \  -f hls playlist.m3u8    參數 說明     -c:v libx264 設定視頻">
+    <meta name="description" content="產生影片 123456ffmpeg -i [輸入影片].mp4 \  -c:v libx264 -c:a aac \  -hls_time 10 \  -hls_list_size 0 \  -hls_segment_filename &quot;segment_%03d.ts&quot; \  -f hls playlist.m3u8    參數 說明     -c:v libx264 設定視頻">
 <meta property="og:type" content="article">
-<meta property="og:title" content="使用 FFmpeg 產生 HLS 視頻">
+<meta property="og:title" content="使用 FFmpeg 產生 HLS 影片">
 <meta property="og:url" content="https://choutinghsiao.github.io/2022/01/01/ToolFFmpegHlsSegment/index.html">
 <meta property="og:site_name" content="Stephen&#39;s Note">
-<meta property="og:description" content="產生視頻 123456ffmpeg -i [輸入影片].mp4 \  -c:v libx264 -c:a aac \  -hls_time 10 \  -hls_list_size 0 \  -hls_segment_filename &quot;segment_%03d.ts&quot; \  -f hls playlist.m3u8    參數 說明     -c:v libx264 設定視頻">
+<meta property="og:description" content="產生影片 123456ffmpeg -i [輸入影片].mp4 \  -c:v libx264 -c:a aac \  -hls_time 10 \  -hls_list_size 0 \  -hls_segment_filename &quot;segment_%03d.ts&quot; \  -f hls playlist.m3u8    參數 說明     -c:v libx264 設定視頻">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-01-01T14:00:00.000Z">
-<meta property="article:modified_time" content="2025-05-05T15:33:39.311Z">
+<meta property="article:modified_time" content="2025-05-06T15:16:41.792Z">
 <meta property="article:author" content="Stephen">
 <meta property="article:tag" content="Tool">
 <meta property="article:tag" content="FFmpeg">
@@ -38,10 +38,10 @@
 <link rel="canonical" href="https://choutinghsiao.github.io/2022/01/01/ToolFFmpegHlsSegment/">
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://choutinghsiao.github.io/2022/01/01/ToolFFmpegHlsSegment/","path":"2022/01/01/ToolFFmpegHlsSegment/","title":"使用 FFmpeg 產生 HLS 視頻"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://choutinghsiao.github.io/2022/01/01/ToolFFmpegHlsSegment/","path":"2022/01/01/ToolFFmpegHlsSegment/","title":"使用 FFmpeg 產生 HLS 影片"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>使用 FFmpeg 產生 HLS 視頻 | Stephen's Note</title>
+<title>使用 FFmpeg 產生 HLS 影片 | Stephen's Note</title>
   
 
 
@@ -160,7 +160,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%94%A2%E7%94%9F%E8%A6%96%E9%A0%BB"><span class="nav-number">1.</span> <span class="nav-text">產生視頻</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A8%A1%E6%93%AC-http-%E6%9C%8D%E5%8B%99"><span class="nav-number">2.</span> <span class="nav-text">模擬 http 服務</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-hls-js"><span class="nav-number">3.</span> <span class="nav-text">使用 hls.js</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%94%A2%E7%94%9F%E5%BD%B1%E7%89%87"><span class="nav-number">1.</span> <span class="nav-text">產生影片</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A8%A1%E6%93%AC-http-%E6%9C%8D%E5%8B%99"><span class="nav-number">2.</span> <span class="nav-text">模擬 http 服務</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-hls-js"><span class="nav-number">3.</span> <span class="nav-text">使用 hls.js</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -260,12 +260,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="使用 FFmpeg 產生 HLS 視頻 | Stephen's Note">
+      <meta itemprop="name" content="使用 FFmpeg 產生 HLS 影片 | Stephen's Note">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          使用 FFmpeg 產生 HLS 視頻
+          使用 FFmpeg 產生 HLS 影片
         </h1>
 
         <div class="post-meta-container">
@@ -283,7 +283,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-05-05 15:33:39" itemprop="dateModified" datetime="2025-05-05T15:33:39+00:00">2025-05-05</time>
+      <time title="Modified: 2025-05-06 15:16:41" itemprop="dateModified" datetime="2025-05-06T15:16:41+00:00">2025-05-06</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -319,7 +319,7 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><h1 id="產生視頻"><a class="header-anchor" href="#產生視頻"></a>產生視頻</h1>
+    <div class="post-body" itemprop="articleBody"><h1 id="產生影片"><a class="header-anchor" href="#產生影片"></a>產生影片</h1>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i [輸入影片].mp4 \</span><br><span class="line">  -c:v libx264 -c:a aac \</span><br><span class="line">  -hls_time 10 \</span><br><span class="line">  -hls_list_size 0 \</span><br><span class="line">  -hls_segment_filename <span class="string">&quot;segment_%03d.ts&quot;</span> \</span><br><span class="line">  -f hls playlist.m3u8</span><br></pre></td></tr></table></figure>
 <table>
 <thead>
@@ -370,7 +370,7 @@
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">video</span> <span class="attr">id</span>=<span class="string">&quot;video&quot;</span> <span class="attr">controls</span> <span class="attr">width</span>=<span class="string">&quot;640&quot;</span> <span class="attr">height</span>=<span class="string">&quot;360&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">video</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>引用 hls.js CDN</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;https://cdn.jsdelivr.net/npm/hls.js@latest&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>播放分割好的視頻</p>
+<p>播放分割好的影片</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> video = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;video&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> videoSrc = <span class="string">&#x27;http://localhost:8080/playlist.m3u8&#x27;</span>; <span class="comment">// 根據實際路徑調整</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="title class_">Hls</span>.<span class="title function_">isSupported</span>()) &#123;</span><br><span class="line">    <span class="keyword">const</span> hls = <span class="keyword">new</span> <span class="title class_">Hls</span>();</span><br><span class="line">    hls.<span class="title function_">loadSource</span>(videoSrc);</span><br><span class="line">    hls.<span class="title function_">attachMedia</span>(video);</span><br><span class="line">    hls.<span class="title function_">on</span>(<span class="title class_">Hls</span>.<span class="property">Events</span>.<span class="property">MANIFEST_PARSED</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">        video.<span class="title function_">play</span>();</span><br><span class="line">    &#125;);</span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (video.<span class="title function_">canPlayType</span>(<span class="string">&#x27;application/vnd.apple.mpegurl&#x27;</span>)) &#123;</span><br><span class="line">    <span class="comment">// Safari 原生支援 HLS</span></span><br><span class="line">    video.<span class="property">src</span> = videoSrc;</span><br><span class="line">    video.<span class="title function_">addEventListener</span>(<span class="string">&#x27;loadedmetadata&#x27;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    video.<span class="title function_">play</span>();</span><br><span class="line">    &#125;);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="title function_">alert</span>(<span class="string">&quot;您的瀏覽器不支援 HLS&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <div class="note warning"><p>📜 參考資料</p>
 <ol>
@@ -393,7 +393,7 @@
   </li>
   <li class="post-copyright-link">
       <strong>Post link: </strong>
-      <a href="https://choutinghsiao.github.io/2022/01/01/ToolFFmpegHlsSegment/" title="使用 FFmpeg 產生 HLS 視頻">https://choutinghsiao.github.io/2022/01/01/ToolFFmpegHlsSegment/</a>
+      <a href="https://choutinghsiao.github.io/2022/01/01/ToolFFmpegHlsSegment/" title="使用 FFmpeg 產生 HLS 影片">https://choutinghsiao.github.io/2022/01/01/ToolFFmpegHlsSegment/</a>
   </li>
   <li class="post-copyright-license">
       <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
