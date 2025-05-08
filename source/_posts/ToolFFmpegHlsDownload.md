@@ -46,30 +46,35 @@ ffmpeg -headers "Cookie: [Cookie替換]" -i "[m3u8網址]" -c copy -bsf:a aac_ad
 
 # 下載影片清單
 
+{% note info %}
+可參考這篇 {% post_link ToolFFmpegHlsSegment FFmpegHlsSegment %} 產生 HLS 影片模擬
+{% endnote %}
+
 因檔案通常會有很多，可使用下方腳本下載影片清單
 
 ```bash
 #!/bin/bash
 
 # 設定在 Chrome DevTools 找到的清單
-BASE_URL="[網址]"
-M3U8_URL="$BASE_URL/[檔案].m3u8"
+BASE_URL="http://127.0.0.1:8080"
+M3U8_URL="$BASE_URL/playlist.m3u8"
 
 # 使用 curl 下載 m3u8
-curl -s "$M3U8_URL" -o [檔案].m3u8
+curl -s "$M3U8_URL" -o playlist.m3u8
 
 # 擷取 ts 檔案名稱
-grep '\.ts' [檔案].m3u8 > ts_list.txt
+grep '\.ts' playlist.m3u8 > ts_list.txt
 
 # 建立目錄
 mkdir -p ts_files
 
 # 下載每個 ts 檔案至 ts_files
 cd ts_files
-while read -r line; do
-    echo "Downloading $line"
-    curl -O "$BASE_URL/$line"
-done < ../ts_list.txt
+cat ../ts_list.txt | xargs -n 1 -P 3 -I {} bash -c '
+    echo "Downloading $1"
+    curl -O "$0/$1"
+    sleep 1
+' "$BASE_URL" {}
 
 # 合併為 ts 檔案
 cd ..
