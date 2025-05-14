@@ -28,7 +28,7 @@
 <meta property="og:description" content="建立 JSON 檔案 建立檔案 Request.json 內容如下 123456789101112131415&#123;    &quot;info&quot;: &#123;        &quot;address&quot;: [            &#123;                &quot;town&quot;: &quot;Belgrade&quot;">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-05-07T00:00:00.000Z">
-<meta property="article:modified_time" content="2025-05-08T15:10:21.012Z">
+<meta property="article:modified_time" content="2025-05-14T14:56:27.088Z">
 <meta property="article:author" content="Stephen">
 <meta property="article:tag" content="JSON">
 <meta property="article:tag" content=".Net">
@@ -174,7 +174,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">54</span>
+          <span class="site-state-item-count">56</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -185,7 +185,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">58</span>
+        <span class="site-state-item-count">60</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -284,7 +284,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-05-08 15:10:21" itemprop="dateModified" datetime="2025-05-08T15:10:21+00:00">2025-05-08</time>
+      <time title="Modified: 2025-05-14 14:56:27" itemprop="dateModified" datetime="2025-05-14T14:56:27+00:00">2025-05-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -303,7 +303,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Word count in article: </span>
-      <span>163</span>
+      <span>170</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
@@ -325,10 +325,10 @@
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;info&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;address&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">            <span class="punctuation">&#123;</span></span><br><span class="line">                <span class="attr">&quot;town&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Belgrade&quot;</span></span><br><span class="line">            <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="punctuation">&#123;</span></span><br><span class="line">                <span class="attr">&quot;town&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Paris&quot;</span></span><br><span class="line">            <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="punctuation">&#123;</span></span><br><span class="line">                <span class="attr">&quot;town&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Madrid&quot;</span></span><br><span class="line">            <span class="punctuation">&#125;</span></span><br><span class="line">        <span class="punctuation">]</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
 <span id="more"></span>
 <h1 id="建立-Class-對應"><a class="header-anchor" href="#建立-Class-對應"></a>建立 Class 對應</h1>
-<p>Class 內容如下</p>
+<p>建立檔案 Request.cs 內容如下</p>
 <figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Address</span></span><br><span class="line">&#123;</span><br><span class="line">    [<span class="meta">JsonPropertyName(<span class="string">&quot;town&quot;</span>)</span>]</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">string</span> Town &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Info</span></span><br><span class="line">&#123;</span><br><span class="line">    [<span class="meta">JsonPropertyName(<span class="string">&quot;address&quot;</span>)</span>]</span><br><span class="line">	<span class="keyword">public</span> List&lt;Address&gt; Address &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Request</span></span><br><span class="line">&#123;</span><br><span class="line">    [<span class="meta">JsonPropertyName(<span class="string">&quot;info&quot;</span>)</span>]</span><br><span class="line">	<span class="keyword">public</span> Info Info &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h1 id="讀取資料並解析"><a class="header-anchor" href="#讀取資料並解析"></a>讀取資料並解析</h1>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!import Request.cs</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> System.Text.Json;</span><br><span class="line"><span class="keyword">using</span> System.IO;</span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> (StreamReader r = <span class="keyword">new</span> StreamReader(<span class="string">@&quot;.\Request.json&quot;</span>))</span><br><span class="line">&#123;</span><br><span class="line">	<span class="comment">// 讀取整個檔案</span></span><br><span class="line">	<span class="built_in">string</span> jsonString = r.ReadToEnd();</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 還原序列化成 Request 類別</span></span><br><span class="line">	Request req = JsonSerializer.Deserialize&lt;Request&gt;(jsonString);</span><br><span class="line"></span><br><span class="line">	req.Display();</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 序列化 Request 類別成 JSON 字串</span></span><br><span class="line">	<span class="built_in">string</span> reqString = JsonSerializer.Serialize&lt;Request&gt;(req);</span><br><span class="line"></span><br><span class="line">    reqString.Display();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 引用 Request.cs</span></span><br><span class="line"><span class="meta">#!import Request.cs</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> System.Text.Json;</span><br><span class="line"><span class="keyword">using</span> System.IO;</span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> (StreamReader r = <span class="keyword">new</span> StreamReader(<span class="string">@&quot;.\Request.json&quot;</span>))</span><br><span class="line">&#123;</span><br><span class="line">	<span class="comment">// 讀取整個檔案</span></span><br><span class="line">	<span class="built_in">string</span> jsonString = r.ReadToEnd();</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 還原序列化成 Request 類別</span></span><br><span class="line">	Request req = JsonSerializer.Deserialize&lt;Request&gt;(jsonString);</span><br><span class="line"></span><br><span class="line">	req.Display();</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 序列化 Request 類別成 JSON 字串</span></span><br><span class="line">	<span class="built_in">string</span> reqString = JsonSerializer.Serialize&lt;Request&gt;(req);</span><br><span class="line"></span><br><span class="line">    reqString.Display();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <div class="note warning"><p>📜 參考資料</p>
 <ol>
 <li><a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-tw/dotnet/standard/serialization/system-text-json/how-to">如何寫入 .NET 物件成為 JSON (序列化)</a></li>
@@ -414,7 +414,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">56 mins.</span>
+    <span title="Reading time total">58 mins.</span>
   </span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>

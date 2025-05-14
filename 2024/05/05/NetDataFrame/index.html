@@ -20,15 +20,15 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"choutinghsiao.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.23.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/js/config.js" defer></script>
 
-    <meta name="description" content="套件安裝 安裝套件 Microsoft.Data.Analysis 1234#r &quot;nuget: Microsoft.Data.Analysis, 0.21.1&quot;using System.IO;using Microsoft.Data.Analysis;">
+    <meta name="description" content="套件安裝 安裝套件 12&#x2F;&#x2F; 套件 Microsoft.Data.Analysis 檔案轉 DataFrame 格式#r &quot;nuget: Microsoft.Data.Analysis, 0.21.1&quot; 引用套件 12using System.IO;using Microsoft.Data.Analysis;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用 DataFrame 操作資料">
 <meta property="og:url" content="https://choutinghsiao.github.io/2024/05/05/NetDataFrame/index.html">
 <meta property="og:site_name" content="Stephen&#39;s Note">
-<meta property="og:description" content="套件安裝 安裝套件 Microsoft.Data.Analysis 1234#r &quot;nuget: Microsoft.Data.Analysis, 0.21.1&quot;using System.IO;using Microsoft.Data.Analysis;">
+<meta property="og:description" content="套件安裝 安裝套件 12&#x2F;&#x2F; 套件 Microsoft.Data.Analysis 檔案轉 DataFrame 格式#r &quot;nuget: Microsoft.Data.Analysis, 0.21.1&quot; 引用套件 12using System.IO;using Microsoft.Data.Analysis;">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-05-05T11:10:00.000Z">
-<meta property="article:modified_time" content="2025-05-08T15:10:21.012Z">
+<meta property="article:modified_time" content="2025-05-14T14:56:27.087Z">
 <meta property="article:author" content="Stephen">
 <meta property="article:tag" content=".Net">
 <meta property="article:tag" content="DataFrame">
@@ -174,7 +174,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">54</span>
+          <span class="site-state-item-count">56</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -185,7 +185,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">58</span>
+        <span class="site-state-item-count">60</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -284,7 +284,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-05-08 15:10:21" itemprop="dateModified" datetime="2025-05-08T15:10:21+00:00">2025-05-08</time>
+      <time title="Modified: 2025-05-14 14:56:27" itemprop="dateModified" datetime="2025-05-14T14:56:27+00:00">2025-05-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -303,7 +303,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Word count in article: </span>
-      <span>632</span>
+      <span>645</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
@@ -321,8 +321,10 @@
     
     
     <div class="post-body" itemprop="articleBody"><h1 id="套件安裝"><a class="header-anchor" href="#套件安裝"></a>套件安裝</h1>
-<p>安裝套件 Microsoft.Data.Analysis</p>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#r &quot;nuget: Microsoft.Data.Analysis, 0.21.1&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> System.IO;</span><br><span class="line"><span class="keyword">using</span> Microsoft.Data.Analysis;</span><br></pre></td></tr></table></figure>
+<p>安裝套件</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 套件 Microsoft.Data.Analysis 檔案轉 DataFrame 格式</span></span><br><span class="line"><span class="meta">#r &quot;nuget: Microsoft.Data.Analysis, 0.21.1&quot;</span></span><br></pre></td></tr></table></figure>
+<p>引用套件</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System.IO;</span><br><span class="line"><span class="keyword">using</span> Microsoft.Data.Analysis;</span><br></pre></td></tr></table></figure>
 <span id="more"></span>
 <h1 id="載入-CSV-資料"><a class="header-anchor" href="#載入-CSV-資料"></a>載入 CSV 資料</h1>
 <p>使用 LoadCsvFromString</p>
@@ -844,7 +846,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">56 mins.</span>
+    <span title="Reading time total">58 mins.</span>
   </span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>

