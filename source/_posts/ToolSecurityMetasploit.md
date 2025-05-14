@@ -5,6 +5,10 @@ categories: Tool
 tags: [Tool, Security, Metasploit, Nmap]
 ---
 
+{% note danger %}
+⚠️ 請注意，本範例僅供學習參考，請遵守相關法令，產生之行為與後果將由使用者自行負責
+{% endnote %}
+
 <!-- 設定檔位置: ~/.msf4 -->
 
 # 開啟 Metasploit Console
@@ -21,6 +25,9 @@ msfconsole
 # 初始化資料庫
 # 資料庫設定: /home/[user]/.msf4/database.yml
 msfdb init
+
+# 重新設定
+msfdb reinit
 
 # 建立資料庫連線
 msfdb start
@@ -87,6 +94,9 @@ show nops
 
 # 顯示所有可用的編碼器，用於對 payload 進行編碼躲避檢測
 show encoders
+
+# 用於繞過防毒軟體或安全防護機制的技術
+show evasion
 
 # 顯示所有可用的後滲透模組，用於取得會話後，在目標系統上進一步執行操作
 show post
