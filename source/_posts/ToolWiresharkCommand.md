@@ -67,7 +67,7 @@ tshark -r https_traffic.pcapng -o tls.keylog_file:"C:\path\to\sslkeys.log"
 解析 HTTP Body，存入變數 hex
 ```powershell
 $hex = tshark -r https_traffic.pcapng `
-			  -Y 'http.request.method == "[HTTP的方法]" && http.request.uri == \"[URL連結]\"' `
+              -Y 'http.request.method == "[HTTP的方法]" && http.request.uri == \"[URL連結]\"' `
               -T fields -e http.file_data `
               -o tls.keylog_file:"C:\path\to\sslkeys.log"
 ```
