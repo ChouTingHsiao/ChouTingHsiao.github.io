@@ -63,7 +63,9 @@ def main():
 # 執行 main 函數
 main()	
 ```
+
 # 執行 Python Script
+
 使用 FontForge 執行 Python Script
 ```bash
 fontforge -script font.py [FontFilePath]

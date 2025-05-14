@@ -8,7 +8,6 @@ tags: [.Net, Emit]
 # 原始方法
 
 方法宣告如下
-
 ```csharp
 public string Hello(string name)
 {
@@ -21,7 +20,6 @@ public string Hello(string name)
 # 使用 Emit 執行
 
 方法轉換成 Emit
-
 ```csharp
 using System;
 using System.Reflection;

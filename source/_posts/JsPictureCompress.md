@@ -6,8 +6,8 @@ tags: [Javascript, Canvas]
 ---
 
 # 建立 HTML
-首先在 HTML 建立一個 File Upload 與一個 canvas
 
+首先在 HTML 建立一個 File Upload 與一個 canvas
 ```html
 <input type="file" />
 <canvas id="canvas"  width="800" height="600"></canvas>
@@ -16,8 +16,8 @@ tags: [Javascript, Canvas]
 <!--more-->
 
 # 綁定事件
-接下來為 File Upload 綁定事件
 
+接下來為 File Upload 綁定事件
 ```javascript
 document.querySelector('input').addEventListener('change', function () {
     // 取得第一個檔案

@@ -33,6 +33,7 @@ sticky: 100
 * ***Redirection***<br>將封包轉發到本地系統的其他端口，而不是轉發到內部網絡中的其他主機
 
 # 確認路由表
+
 ```bash
 route -n
 ```
@@ -42,6 +43,7 @@ ip r | grep default
 ```
 
 # 開啟 Linux 轉發
+
 ```bash
 sudo sysctl -w net.ipv4.ip_forward=1
 ```

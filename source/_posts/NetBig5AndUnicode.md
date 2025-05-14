@@ -6,8 +6,8 @@ tags: [.Net, Linux, Font, Big5, Unicode]
 ---
 
 # 轉換 Big5 字元
-Big5 依傳入內碼轉成字元
 
+Big5 依傳入內碼轉成字元
 ```C#
 // 建立兩位元陣列
 byte[] big5Bytes = new byte[2];
@@ -31,8 +31,8 @@ string result = big5.GetString(big5Bytes);
 <!--more-->
 
 # 轉換 Unicode 字元
-Unicode 依傳入內碼轉成字元，與 Big5 轉換的方法雷同，只需調整內碼放置的順序
 
+Unicode 依傳入內碼轉成字元，與 Big5 轉換的方法雷同，只需調整內碼放置的順序
 ```C#
 // 建立兩位元陣列
 byte[] unicodeBytes = new byte[2];

@@ -6,8 +6,8 @@ tags: [.Net, UnitTest, NSubstitute]
 ---
 
 # 安裝 NSubstitute
-安裝 Nuget 的 NSubstitute 套件
 
+安裝 Nuget 的 NSubstitute 套件
 ```powershell
 Install-Package NSubstitute
 ```
@@ -32,6 +32,7 @@ Repository -->> Service: 2. Return Table Data
 {% endplantuml %}
 
 # 建立模擬物件
+
 建立 Repository 的模擬物件
 ```C#
 Repository mockRepository = Substitute.For<Repository>();
@@ -45,6 +46,7 @@ mockRepository
 ```
 
 # 注入模擬物件
+
 把 Repository 的模擬物件注入 Service
 ```C#
 Service service = new Service(mockRepository);
@@ -58,6 +60,7 @@ Assert.That(result.Name, Is.EqualTo("張三"));
 ```
 
 # 驗證模擬物件
+
 依傳入參數做回傳
 ```C#
 mockRepository

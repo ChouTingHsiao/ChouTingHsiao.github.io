@@ -6,8 +6,8 @@ tags: [Javascript, Base64]
 ---
 
 # 建立 HTML
-首先在 HTML 建立一個 File Upload 與一個顯示結果的 div
 
+首先在 HTML 建立一個 File Upload 與一個顯示結果的 div
 ```html
 <input type="file" />
 
@@ -19,7 +19,6 @@ tags: [Javascript, Base64]
 # 綁定事件
 
 接下來為 File Upload 綁定事件
-
 ```javascript
  document.querySelector('input').addEventListener('change', function () {
 

@@ -12,7 +12,6 @@ tags: [Tool, FFmpeg]
 # 下載檔案
 
 使用 FFmpeg 下載檔案，並轉換成 MP4 格式，如果需要驗證 Cookie，可使用 headers 選項
-
 ```bash
 ffmpeg -headers "Cookie: [Cookie替換]" -i "[m3u8網址]" -c copy -bsf:a aac_adtstoasc [輸出影片].mp4
 ```
@@ -30,7 +29,6 @@ ffmpeg -headers "Cookie: [Cookie替換]" -i "[m3u8網址]" -c copy -bsf:a aac_ad
 # 搜尋影片清單
 
 但通常影片都會切割成好幾個段落，所以須要在 Chrome DevTools 的 Network 分頁中，搜尋 .m3u8 相關的檔案，並找到如下格式檔案
-
 ```text
 #EXTM3U
 #EXT-X-VERSION:3
@@ -51,7 +49,6 @@ ffmpeg -headers "Cookie: [Cookie替換]" -i "[m3u8網址]" -c copy -bsf:a aac_ad
 {% endnote %}
 
 因檔案通常會有很多，可使用下方腳本下載影片清單
-
 ```bash
 #!/bin/bash
 

@@ -6,6 +6,7 @@ tags: [Jenkins]
 ---
 
 # 取得檔案列表方法
+
 使用以下 Linxu 指令，將預設目錄每個檔案使用一列的方式逐一列出
 ```bash
 ls -1 /home/ubuntu
@@ -19,6 +20,7 @@ def fileInFolder = sh(script: "ls -1 /home/ubuntu", returnStdout: true).trim();
 ```
 
 # 定義 Dialog
+
 在 Pipeline 定義 Dialog ，把 parameters -> choice -> choices 定義替換為上方變數 fileInFolder
 ```groovy
 def dialogMessage = "Release ${JOB_NAME} now?"

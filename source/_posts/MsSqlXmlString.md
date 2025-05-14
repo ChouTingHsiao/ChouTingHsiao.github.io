@@ -47,7 +47,6 @@ SELECT @x;
 ⭐ nodes
 
 直接解析 XML 格式資料
-
 ```sql
 SELECT T.C.query('.')
 FROM @x.nodes('/Root/row') T(c);
@@ -56,7 +55,6 @@ FROM @x.nodes('/Root/row') T(c);
 ⭐ OPENXML
 
 解析 XML 字串資料,需預先定義對應格式
-
 ```sql
 DECLARE @idoc INT, @doc VARCHAR(1000);
 
@@ -83,7 +81,6 @@ EXEC sp_xml_removedocument @idoc;
 # Base64 轉換(UTF-16)
 
 字串轉 Base64
-
 ```sql
 SELECT CAST(N'' AS XML).value('xs:base64Binary(xs:hexBinary(sql:column("bin")))', 'VARCHAR(MAX)')
 FROM (
@@ -92,7 +89,6 @@ FROM (
 ```
 
 Base64 轉字串
-
 ```sql
 SELECT CAST(CAST(N'' AS XML).value('xs:base64Binary("LG5mig==")', 'VARBINARY(MAX)') AS NVARCHAR(MAX))
 ```

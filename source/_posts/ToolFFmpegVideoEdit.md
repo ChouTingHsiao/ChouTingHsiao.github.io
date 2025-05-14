@@ -45,14 +45,12 @@ ffmpeg -i [輸入影片].mp4 -vf "drawtext=text='[浮水印文字]':fontcolor=wh
 # 合併影片
 
 建立 filelist.txt 內容如下
-
 ```text
 file '[輸入影片1].mp4'
 file '[輸入影片2].mp4'
 ```
 
 合併 filelist.txt 中的檔案，變一支影片
-
 ```bash
 ffmpeg -f concat -safe 0 -i filelist.txt -c copy [輸出影片].mp4
 ```

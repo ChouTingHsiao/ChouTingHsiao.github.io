@@ -5,6 +5,7 @@ categories: Javascript
 tags: [Javascript, Base64]
 ---
 # Chrome base64 轉換成檔案
+
 下方是使用 JavaScript 把 base64 轉換成檔案的方法
 
 <!--more-->
@@ -44,6 +45,7 @@ tags: [Javascript, Base64]
 ```
 
 # IE 10 base64 轉換成檔案
+
 如果瀏覽器使用 IE 10 以上版本，可使用 window.navigator.msSaveBlob 作為替代方法
 ```javascript
 function downloadFile(base64Str) {

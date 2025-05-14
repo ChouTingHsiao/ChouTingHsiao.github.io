@@ -6,6 +6,7 @@ tags: [Python, Flask, MSSQL]
 ---
 
 # 安裝套件
+
 ```bash
 pip install Flask
 pip install flask-sqlalchemy

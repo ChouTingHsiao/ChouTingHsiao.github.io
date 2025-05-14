@@ -6,26 +6,26 @@ tags: [Angular, Protractor]
 ---
 
 # 安裝 WebDriver
+
 先清除目前下載的 WebDriver
-
-<!--more-->
-
 ```bash 
  npx  webdriver-manager clean
 ```
- 
+
+<!--more-->
+
 以 chrome 為例從[chromedriver網頁](http://chromedriver.chromium.org/)
  
 查詢所需的版本號
  
 接下來依版本下載 WebDriver
- 
 ```bash
 npx webdriver-manager update  --versions.chrome  [chrome版本號]
 ```
+
 # 運行 Protractor
-運行 Protractor 時使用 --no-webdriver-update 選項
- 
+
+運行 Protractor 時使用 --no-webdriver-update 選項 
 ```bash
  ng e2e --no-webdriver-update
 ```

@@ -6,6 +6,7 @@ tags: [Javascript, Object]
 ---
 
 # 使用 for...in
+
 方法格式如下
 ```javascript
 for (變數 in 物件) {...
@@ -26,6 +27,7 @@ for (let filed in model) {
 ```
 
 # 使用 Object.keys()
+
 方法格式如下
 ```javascript
 Object.keys(物件);
@@ -48,8 +50,9 @@ for (let i = 0; i <= length; i++) {
 ```
 
 # 差異
+
 Object.keys 與 for...in 不同之處
-```
+```text
 for-in 迴圈還會迭代出物件自其原型鏈所繼承來的可列舉屬性
 ```
 

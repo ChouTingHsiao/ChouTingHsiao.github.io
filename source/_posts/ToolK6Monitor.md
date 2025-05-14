@@ -8,7 +8,6 @@ tags: [Tool, K6, InfluxDB, Grafana]
 # 安裝 InfluxDB 儲存壓測資料
 
 使用 Docker 建立 InfluxDB 2.X
-
 ```bash
 docker run -d -p 8086:8086 \
   -e DOCKER_INFLUXDB_INIT_MODE=setup \
@@ -26,7 +25,6 @@ docker run -d -p 8086:8086 \
 <!-- 建立完成後，使用初始帳密登入連結 http://localhost:8086/ -->
 
 建立完成後，使用 API 檢查 BUCKET
-
 ```bash
 curl --request GET "http://localhost:8086/api/v2/buckets?name=[初始BUCKET]" \
     --header "Authorization: Token [初始TOKEN]"
@@ -67,7 +65,6 @@ go install go.k6.io/xk6/cmd/xk6@latest
 ### 建置 k6.exe
 
 使用語法 xk6 build --with [套件 1] --with [套件 2]
-
 ```bash
 bin/xk6 build --with github.com/grafana/xk6-output-influxdb --with github.com/grafana/xk6-dashboard@latest
 ```
@@ -92,7 +89,6 @@ $env:K6_INFLUXDB_TOKEN='[初始TOKEN]' ;
 ## 查詢資料
 
 安裝 VS Code 套件 [Flux](https://marketplace.visualstudio.com/items?itemName=influxdata.flux)，建立檔案 test.flux 內容如下，使用 F5 執行
-
 ```flux
 from(bucket: "k6_test")
   |> range(start: time(v: "2025-04-08"), stop: time(v: "2025-04-09"))
@@ -108,7 +104,6 @@ from(bucket: "k6_test")
 ## 安裝 Grafana
 
 使用 Docker 建立 Grafana
-
 ```bash
 docker run --name=grafana -d -p 3000:3000 \
   -e GF_SECURITY_ADMIN_USER=[初始帳號] \
@@ -123,7 +118,6 @@ docker run --name=grafana -d -p 3000:3000 \
 ## 取得 Token
 
 建立 Service Account
-
 ```bash
 curl -X POST http://admin:admin123@localhost:3000/api/serviceaccounts \
   -H "Content-Type: application/json" \
@@ -135,7 +129,6 @@ curl -X POST http://admin:admin123@localhost:3000/api/serviceaccounts \
 ```
 
 建立 Service Account Token，使用此 Token 呼叫特權 API
-
 ```bash
 curl -X POST http://admin:admin123@localhost:3000/api/serviceaccounts/2/tokens \
   -H "Content-Type: application/json" \
@@ -150,7 +143,6 @@ curl -X POST http://admin:admin123@localhost:3000/api/serviceaccounts/2/tokens \
 ## 資料來源
 
 透過 API 查詢資料來源
-
 ```bash
 curl -X GET http://localhost:3000/api/datasources/name/influxdb_test \
     -H "Accept: application/json"  \
@@ -159,7 +151,6 @@ curl -X GET http://localhost:3000/api/datasources/name/influxdb_test \
 ```
 
 透過 API 建立資料來源
-
 ```bash
 curl -X POST http://localhost:3000/api/datasources \
   -H "Content-Type: application/json" \
@@ -187,7 +178,6 @@ curl -X POST http://localhost:3000/api/datasources \
 ## 儀表板
 
 透過 API 建立儀表板
-
 ```bash
 curl -X POST http://localhost:3000/api/dashboards/db \
   -H "Content-Type: application/json" \

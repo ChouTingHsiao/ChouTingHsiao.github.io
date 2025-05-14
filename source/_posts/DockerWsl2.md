@@ -49,11 +49,13 @@ sudo systemctl restart docker.service
 <!--more-->
 
 # 🚀 確認 docker 連線 *:2375是否存在
+
 ```bash
 ss -peanut | grep :2375
 ```
 
 # 🚀 使用 Chocolatey 安裝 Docker CLI
+
 ```powershell
 choco install docker-cli
 ```
@@ -114,6 +116,7 @@ docker -H $wslip ps
 <!-- docker run --rm hello-world -->
 
 # 🚀 登入 wsl 自動啟動 Docker
+
 修改/etc/profile
 ```bash
 sudo nano /etc/profile

@@ -6,12 +6,14 @@ tags: [Project, PlantUML]
 ---
 
 # 在 Ubuntu 安裝 openjdk
+
 使用以下 Linxu 指令，安裝 openjdk11
 ```bash
 sudo apt install openjdk-11-jdk
 ```
 
 # [下載 PlantUML 的 Jar 檔案](https://plantuml.com/zh/download)
+
 使用以下 Linxu 指令下載檔案
 ```bash
 wget -O /[執行路徑]/plantuml.jar https://github.com/plantuml/plantuml/releases/download/v1.2024.0/plantuml-1.2024.0.jar
@@ -20,6 +22,7 @@ wget -O /[執行路徑]/plantuml.jar https://github.com/plantuml/plantuml/releas
 <!--more-->
 
 # 建立 PlantUML 服務
+
 使用以下 Linxu 指令建立 PlantUML 服務
 ```bash
 sudo nano /etc/systemd/system/plantuml.service
@@ -57,7 +60,6 @@ systemctl start plantuml
 # 設定 Visual Studio Code
 
 安裝 [PlantUML support for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=jebbs.plantuml) 套件，並在設定檔設定 plantuml.server 參數
-
 ```json
 "plantuml.server": "https://[Domain]/plantuml"
 ```

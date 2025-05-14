@@ -7,11 +7,14 @@ tags: [.Net, DataFrame, Polyglot Notebooks]
 
 # 套件安裝
 
-安裝套件 Microsoft.Data.Analysis
-
+安裝套件
 ```c#
+// 套件 Microsoft.Data.Analysis 檔案轉 DataFrame 格式
 #r "nuget: Microsoft.Data.Analysis, 0.21.1"
+```
 
+引用套件
+```c#
 using System.IO;
 using Microsoft.Data.Analysis;
 ```
@@ -52,7 +55,6 @@ df.Display();
 # 加入新欄位
 
 加入欄位 Height
-
 ```c#
 df.Columns.Add(new PrimitiveDataFrameColumn<int>("Height", new List<int>{180, 179}));
 
@@ -68,7 +70,6 @@ df.Display();
 # 顯示欄位資訊
 
 了解欄位類型與資料筆數統計
-
 ```c#
  df.Info().Display();
 ```
@@ -82,7 +83,6 @@ df.Display();
 # 回傳統計摘要
 
 統計相關值，此欄為數值欄位限定
-
 ```c#
 df.Description().Display();
 ```
@@ -107,6 +107,7 @@ df.Head(1).Display();
 |   0   |  1   | 張三  | 25  |  180   |
 
 # 回傳後 N 筆資料
+
 ```c#
 df.Tail(1).Display();
 ```
@@ -119,7 +120,6 @@ df.Tail(1).Display();
 # 加入新資料
 
 填入每一欄對應資料
-
 ```c#
 df.Append(new List<KeyValuePair<string, object>>() {
     new KeyValuePair<string, object>("ID", 3),
@@ -143,7 +143,6 @@ df.Display();
 針對表格中的缺失欄位做處理
 
 1. 排除有空值的欄位
-
 ```c#
 DataFrame dropNullData = df.DropNulls();
 dropNullData.Display();
@@ -156,7 +155,6 @@ dropNullData.Display();
 |   1   | 3  | 王五 | 20    |  170   |
 
 2. 缺失值填充
-
 ```c#
 df.Columns["Age"] = df.Columns["Age"].FillNulls(0);
 df.Display();
@@ -170,6 +168,7 @@ df.Display();
 |   2   | 3  | 王五 | 20     | 170    |
 
 # 排序資料
+
 ```c#
 DataFrame orderByData = df.OrderByDescending("Age");
 orderByData.Display();
@@ -183,6 +182,7 @@ orderByData.Display();
 |   2   | 2  | 李四 | 0      | 179    |
 
 # 分群資料
+
 ```c#
 DataFrame groupByData = df.GroupBy("Age").Count();
 groupByData.Display();
@@ -196,6 +196,7 @@ groupByData.Display();
 |   2   |  20 |   1  |   1    |   1    |
 
 # 篩選資料
+
 ```c#
 DataFrame filterData = df.Filter(df.Columns["Age"].ElementwiseGreaterThan(1));
 filterData.Display();
@@ -208,6 +209,7 @@ filterData.Display();
 |   1   | 3  | 王五 | 20    |  170   |
 
 # 合併資料
+
 ```c#
 // 建立新的列表
 Int32DataFrameColumn idWeight = new Int32DataFrameColumn("ID", new int[] { 1, 2 });

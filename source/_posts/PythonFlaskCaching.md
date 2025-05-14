@@ -6,6 +6,7 @@ tags: [Python, Flask, Caching]
 ---
 
 # 安裝套件
+
 ```bash
 pip install Flask
 pip install Flask-Caching
@@ -14,6 +15,7 @@ pip install Flask-Caching
 <!--more-->
 
 # 建立 address.json 內容如下
+
 ```json
 {
     "Address": "新竹市",
@@ -22,6 +24,7 @@ pip install Flask-Caching
 ```
 
 # 建立 app.py 內容如下
+
 ```python
 from flask import Flask
 from flask_caching import Cache

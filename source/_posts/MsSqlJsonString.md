@@ -38,7 +38,6 @@ SELECT modifiedJson = @json;
 # JSON 轉換為資料列
 
 解析 JSON 字串資料,需預先定義對應格式
-
 ```sql
 SELECT *
 FROM OPENJSON(JSON_QUERY(@json, '$.info.address')) WITH (

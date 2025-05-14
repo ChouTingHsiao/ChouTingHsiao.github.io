@@ -6,6 +6,7 @@ tags: [Tool, Whistle]
 ---
 
 # 使用 Node 安裝 Whistle
+
 ```bash
 npm i -g whistle
 ```
@@ -13,21 +14,25 @@ npm i -g whistle
 <!--more-->
 
 # 啟動 Whistle
+
 ```bash
 w2 start
 ```
 
 # 查看 Whistle 狀態
+
 ```bash
 w2 status
 ```
 
 # 停止 Whistle
+
 ```bash
 w2 stop
 ```
 
 # 設定 Whistle 為 Proxy 的 Server
+
 <!-- {% asset_img Win10ProxySetting.png %} -->
 ![Win10ProxySetting](Win10ProxySetting.png)
 

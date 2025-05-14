@@ -8,7 +8,6 @@ tags: [.Net, JSON, Polyglot Notebooks]
 # 建立 JSON 檔案
 
 建立檔案 Request.json 內容如下
-
 ```json
 {
     "info": {
@@ -31,8 +30,7 @@ tags: [.Net, JSON, Polyglot Notebooks]
 
 # 建立 Class 對應
 
-Class 內容如下
-
+建立檔案 Request.cs 內容如下
 ```c#
 public class Address
 {
@@ -56,6 +54,7 @@ public class Request
 # 讀取資料並解析
 
 ```c#
+// 引用 Request.cs
 #!import Request.cs
 
 using System.Text.Json;

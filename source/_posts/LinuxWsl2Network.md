@@ -6,6 +6,7 @@ tags: [Linux, Wsl2]
 ---
 
 # 設定 DNS
+
 ```bash
 # 刪除原始的 resolv.conf 設定
 sudo rm /etc/resolv.conf
@@ -28,6 +29,7 @@ sudo chattr +i /etc/resolv.conf
 <!--more-->
 
 # 使用 Powershell 設定 Ububtu 網卡
+
 ```powershell
 # 搜尋 eth0 網卡 IP 設定
 $ipAddr = wsl -u root /bin/bash -c "ip addr show eth0 | grep 'inet\b'"
@@ -51,6 +53,7 @@ if(!$ipAddr.Contains("192.168.50.2")){
 <!-- sudo ip route add 0.0.0.0/0 via 192.168.50.1 dev eth0 -->
 
 # 使用 Powershell 設定網路介面 vEthernet (WSL)
+
 ```powershell
 # 確認是否為自訂的 vEthernet (WSL) 設定
 if(!(Get-NetAdapter 'vEthernet (WSL)' | Get-NetIPAddress).IPAddress.Contains('192.168.50.1')){

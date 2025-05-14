@@ -63,49 +63,42 @@ docker run --rm -v ${PWD}:/local openapitools/openapi-generator-cli generate \
 
 迭代測試:
 情境: 2 個用戶總共執行 2 次
-
 ```bash
 k6 run test.js --vus 2 --iterations 2
 ```
 
 冒煙測試: 確認服務基本可用
 情境: 3 個用戶 1 分內持續執行
-
 ```bash
 k6 run test.js --vus 3 --duration 1m
 ```
 
 負載測試: 確認在預測用戶下的執行效能
 情境: 5 分鐘內增加至 100 人，在持續 30 分鐘後，用 5 分鐘內清空人數
-
 ```bash
 k6 run test.js --stage "5m:100,30m:100,5m:0"
 ```
 
 壓力測試: 確認流量平緩增加執行的效能
 情境: 10 分鐘內增加至 200 人，在持續 30 分鐘後，用 5 分鐘內清空人數
-
 ```bash
 k6 run test.js --stage "10m:200,30m:200,5m:0"
 ```
 
 峰值測試: 確認流量瞬間湧入執行的效能
 情境: 2 分鐘內增加至 2000 人後，用 1 分鐘內清空人數
-
 ```bash
 k6 run test.js --stage "2m:2000,1m:0"
 ```
 
 浸泡測試: 確認長時間持續執行的效能
 情境: 5 分鐘內增加至 100 人，在持續 8 小時後，用 5 分鐘內清空人數
-
 ```bash
 k6 run test.js --stage "5m:100,8h:100,5m:0"
 ```
 
 斷點測試: 確認資源消耗至最大後的效能
 2 小時內，用戶增加至 20000 人
-
 ```bash
 k6 run test.js --stage "2h:20000"
 ```

@@ -6,11 +6,13 @@ tags: [Tool, .Net, SqlPackage, MSSQL]
 ---
 
 # 安裝 SqlPackage
+
 ```powershell
 dotnet tool install -g microsoft.sqlpackage
 ```
 
 # 查詢版本
+
 ```powershell
 sqlpackage /Version
 ```
@@ -22,11 +24,13 @@ sqlpackage /Version
 預設包含數據庫結構和數據
 
 ## 匯出資料庫
+
 ```powershell
 sqlpackage /Action:Export /SourceDatabaseName:"[資料庫名稱]" /SourceServerName:"[服務器]" /SourceUser:"[帳號]" /SourcePassword:"[密碼]" /SourceTrustServerCertificate:True /TargetFile:"[檔案名稱].bacpac"
 ```
 
 ## 匯入資料庫
+
 ```powershell
 sqlpackage /Action:Import /TargetDatabaseName:"[資料庫名稱]" /TargetServerName:"[服務器]" /SourceUser:"[帳號]" /SourcePassword:"[密碼]" /SourceTrustServerCertificate:True /SourceFile:"[檔案名稱].bacpac"
 ```
@@ -38,20 +42,19 @@ sqlpackage /Action:Import /TargetDatabaseName:"[資料庫名稱]" /TargetServerN
 ## 匯出資料庫
 
 選擇包含所有資料
-
 ```powershell
 sqlpackage /Action:Extract /SourceDatabaseName:"[資料庫名稱]" /SourceServerName:"[服務器]" /SourceUser:"[帳號]" /SourcePassword:"[密碼]" /SourceTrustServerCertificate:True /TargetFile:"[檔案名稱].dacpac" `
 /p:ExtractAllTableData=true
 ```
 
 選擇包含指定表資料
-
 ```powershell
 sqlpackage /Action:Extract /SourceDatabaseName:"[資料庫名稱]" /SourceServerName:"[服務器]" /SourceUser:"[帳號]" /SourcePassword:"[密碼]" /SourceTrustServerCertificate:True /TargetFile:"[檔案名稱].dacpac" `
 /p:TableData="[額外指定可包含資料的表]"
 ```
 
 ## 匯入資料庫
+
 ```powershell
 sqlpackage /Action:Publish /TargetDatabaseName:"[資料庫名稱]" /TargetServerName:"[服務器]" /TargetUser:"[帳號]" /TargetPassword:"[密碼]" /TargetTrustServerCertificate:True /SourceFile:"[檔案名稱].dacpac" `
 /p:ExcludeObjectType=UserDefinedDataTypes `
@@ -65,7 +68,6 @@ sqlpackage /Action:Publish /TargetDatabaseName:"[資料庫名稱]" /TargetServer
 # 搜尋額外指定的表
 
 依資料筆數搜尋可能是主檔的資料表，並產生指令
-
 ```sql
 SELECT '/p:TableData="[' + s.Name + '].[' + t.NAME + ']" `' [Package]
 	,t.NAME [TableName]

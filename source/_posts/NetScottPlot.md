@@ -23,8 +23,10 @@ using Microsoft.Data.Analysis;
 using ScottPlot;
 using ScottPlot.Plottables;
 using ScottPlot.Statistics;
+```
 
-// 設定 ScottPlot 圖片格式
+設定 ScottPlot 圖片格式
+```c#
 using Microsoft.DotNet.Interactive.Formatting;
 Formatter.Register(typeof(ScottPlot.Plot), (p, w) => 
     w.Write(((ScottPlot.Plot)p).GetPngHtml(400, 300)), HtmlFormatter.MimeType);
@@ -47,6 +49,8 @@ public static double[] GetColumn(this DataFrame df, string column)
 ```
 
 # 使用 SignalXY 繪圖
+
+分析各分類分佈狀態
 ```c#
 Plot myPlot = new();
 
@@ -88,9 +92,9 @@ myPlot
 
 ![SignalXY](SignalXY.webp)
 
-# 使用 Scatter 繪圖，分析關聯性
+# 使用 Scatter 繪圖
 
-使用「Duration」作為 x 軸，使用「Calories」作為 y 軸
+使用「Duration」作為 x 軸，使用「Calories」作為 y 軸，分析兩者關聯性
 ```c#
 Plot myPlot = new();
 
@@ -106,7 +110,7 @@ myPlot
 
 ![Scatter1](Scatter1.webp)
 
-使用「Duration」作為 x 軸，使用「Maxpulse」作為 y 軸
+使用「Duration」作為 x 軸，使用「Maxpulse」作為 y 軸，分析兩者關聯性
 ```c#
 Plot myPlot = new();
 
@@ -122,9 +126,9 @@ myPlot
 
 ![Scatter2](Scatter2.webp)
 
-# 使用 Bars 繪圖，分析 Duration 頻率
+# 使用 Bars 繪圖
 
-分析 Duration 資料分佈狀態
+繪製 Duration 資料分佈狀態，分析 Duration 頻率
 ```c#
 Plot myPlot = new();
 

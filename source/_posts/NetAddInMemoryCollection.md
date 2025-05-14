@@ -6,6 +6,7 @@ tags: [.Net, UnitTest, IConfiguration]
 ---
 
 # 設定 appsettings.json 如下
+
 ```json
 {
   "Logging": {
@@ -20,6 +21,7 @@ tags: [.Net, UnitTest, IConfiguration]
 <!--more-->
 
 # 轉換為 Dictionary<string, string>
+
 ```c#
 Dictionary<string, string> inMemorySettings = new Dictionary<string, string> {
     {"Logging:LogLevel:Default",  "Information"},
@@ -28,6 +30,7 @@ Dictionary<string, string> inMemorySettings = new Dictionary<string, string> {
 ```
 
 # 建立 Configuration
+
 ```c#
 IConfiguration configuration = new ConfigurationBuilder()
             .AddInMemoryCollection(inMemorySettings)

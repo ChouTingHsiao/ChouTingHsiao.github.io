@@ -8,11 +8,13 @@ tags: [Android, adb]
 <!-- 宿主機: localhost 10.0.2.2 -->
 
 # 查看 adb 版本信息
+
 ```bash
 adb version
 ```
 
 # 以 root 權限運行
+
 ```bash
 adb root
 ```
@@ -158,6 +160,7 @@ adb shell am clear-debug-app
 ```
 
 # 處理 sqllite
+
 查詢應用名稱
 ```bash
 adb shell pm list packages 

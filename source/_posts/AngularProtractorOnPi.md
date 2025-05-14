@@ -6,6 +6,7 @@ tags: [Angular, Linux, Pi, Protractor]
 ---
 
 # 安裝 WebDriver
+
 首先依照硬體架構從[launchpad.net](https://launchpad.net/ubuntu/trusty/+package/chromium-chromedriver)
 
 下載 Chromium 瀏覽器專用的 WebDriver
@@ -26,6 +27,7 @@ wget http://launchpadlibrarian.net/361669488/chromium-chromedriver_65.0.3325.181
 ```
 
 # 設定 protractor
+
 接下來更改 protractor.conf.js 的設定，加入下方設定
 ```
 chromeDriver: '/usr/lib/chromium-browser/chromedriver'

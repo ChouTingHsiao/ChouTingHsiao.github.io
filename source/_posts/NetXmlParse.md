@@ -2,7 +2,7 @@
 title: 如何解析 XML 資料
 date: 2024-02-04 18:00:00
 categories: .Net
-tags: [.Net, XML]
+tags: [.Net, XML, Polyglot Notebooks]
 ---
 
 # 宣告 XML 資料
@@ -18,6 +18,7 @@ string doc = @"<properties>
 # 使用 XDocument 解析 XML
 
 ## 讀取資料並解析
+
 ```c#
 // XML 字串轉 XDocument
 XDocument xmlDoc = XDocument.Parse(doc);
@@ -34,6 +35,7 @@ string name = xmlElements.Where(x => x.Attribute("key").Value == "name").FirstOr
 # 使用序列化與反序列化方法解析 XML
 
 ## 建立序列化與反序列化方法
+
 ```c#
 // 物件轉 XML 字串
 public static string XmlSerialize<T>(T obj)
@@ -69,6 +71,7 @@ public static T XmlDeSerialize<T>(string xmlString)
 ```
 
 ## 建立類別
+
 ```c#
 [XmlRoot(ElementName = "property")]
 public class Property {
@@ -98,6 +101,7 @@ public class Properties {
 ```
 
 ## 讀取資料並解析
+
 ```c#
 // XML 字串轉物件
 Properties data = XmlDeSerialize<Properties>(doc);

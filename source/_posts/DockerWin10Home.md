@@ -60,7 +60,6 @@ Dism /online /enable-feature /featurename:containers /LimitAccess /ALL
 # 使用 Scoop 安裝 Docker
 
 執行下方命令安裝
-
 ```powershell
 scoop install docker
 ```
@@ -71,13 +70,11 @@ scoop install docker
 # 調整安裝空間
 
 複製 Docker 資料至磁碟機 D ，節省磁碟機 C 的空間
-
 ```powershell
 Copy-Item 'C:\ProgramData\docker' -Destination 'd:\\docker'
 ```
 
 建立 'C:\ProgramData\docker\config\daemon.json'
-
 ```json
 {
   "hosts": [ "npipe://", "tcp://0.0.0.0:" ],
@@ -90,7 +87,6 @@ Copy-Item 'C:\ProgramData\docker' -Destination 'd:\\docker'
 # 執行 Docker
 
 執行下方命令註冊 Ｗindows 服務
-
 ```powershell
 dockerd --register-service ; Start-Service docker ; exit
 ```

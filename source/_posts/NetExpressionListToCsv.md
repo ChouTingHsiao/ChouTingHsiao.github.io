@@ -8,7 +8,6 @@ tags: [.Net, Expression]
 # 宣告類別
 
 類別內容如下
-
 ```csharp
 public class User {
     
@@ -19,7 +18,6 @@ public class User {
 ```
 
 List 內容如下
-
 ```csharp
 List<User> users = new List<User>{
     new User {
@@ -38,7 +36,6 @@ List<User> users = new List<User>{
 # 產生 Expression 表達式
 
 建立轉換方法
-
 ```csharp
 using System;
 using System.Reflection;
@@ -114,7 +111,6 @@ public static List<string> selectToCsv<T>(this List<T> list, string delimiter)
 # 使用方法
 
 執行方法轉換出 CSV 列表
-
 ```csharp
 List<string> csvList = users.selectToCsv("|");
 ```

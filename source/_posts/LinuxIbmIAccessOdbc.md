@@ -6,6 +6,7 @@ tags: [Linux, Ubuntu, ODBC, IBM i Access]
 ---
 
 # 配置 ODBC 元件
+
 安裝 Linux ODBC 元件
 ```bash
 sudo apt-get install unixodbc
@@ -14,6 +15,7 @@ sudo apt-get install unixodbc
 <!--more-->
 
 # 安裝 ODBC Driver
+
 登入[IBM網頁](https://www.ibm.com/support/pages/ibm-i-access-client-solutions)下載 Linux ODBC Driver 並安裝
 ```bash
 sudo dpkg -i ibm-iaccess-1.1.0.15-1.0.amd64.deb

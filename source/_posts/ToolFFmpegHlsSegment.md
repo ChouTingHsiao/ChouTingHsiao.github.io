@@ -32,13 +32,11 @@ ffmpeg -i [輸入影片].mp4 \
 # 模擬 http 服務
 
 安裝 npm 套件 http-server
-
 ```bash
 npm install -g http-server
 ```
 
 使用 8080 啟動服務
-
 ```bash
 http-server -p 8080 --cors
 ```
@@ -46,19 +44,16 @@ http-server -p 8080 --cors
 # 使用 hls.js
 
 在網頁建立 video 標籤
-
 ```html
 <video id="video" controls width="640" height="360"></video>
 ```
 
 引用 hls.js CDN
-
 ```html
 <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
 ```
 
 播放分割好的影片
-
 ```js
     const video = document.getElementById('video');
     const videoSrc = 'http://localhost:8080/playlist.m3u8'; // 根據實際路徑調整
