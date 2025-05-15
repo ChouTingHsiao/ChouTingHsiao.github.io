@@ -2,7 +2,7 @@
 title: 使用 lldb 分析 Dotnet 核心傾印檔案
 date: 2023-05-07 18:00:00
 categories: .Net
-tags: [.Net, Linux, lldb]
+tags: [.Net, Linux, LLDB]
 ---
 
 # 查詢服務資訊

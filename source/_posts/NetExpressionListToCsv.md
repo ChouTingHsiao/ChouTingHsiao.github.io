@@ -2,7 +2,7 @@
 title: 使用 Expression Trees 把 List<T> 轉成 CSV 字串
 date: 2024-05-01 18:00:00
 categories: .Net
-tags: [.Net, Expression]
+tags: [.Net, Expression, Polyglot Notebooks]
 ---
 
 # 宣告類別

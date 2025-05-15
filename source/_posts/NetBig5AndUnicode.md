@@ -2,7 +2,7 @@
 title: 依字元內碼轉換 Big5 與 Unicode
 date: 2022-05-22 14:00:00
 categories: .Net
-tags: [.Net, Linux, Font, Big5, Unicode]
+tags: [.Net, Font, Big5, Unicode, Polyglot Notebooks]
 ---
 
 # 轉換 Big5 字元

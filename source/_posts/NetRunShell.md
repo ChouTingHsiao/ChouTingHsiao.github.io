@@ -7,6 +7,8 @@ tags: [.Net, Shell, Polyglot Notebooks]
 
 # 運行 Shell 命令
 
+透過 Process 執行命令 
+
 <!--more-->
 
 ```c#
@@ -14,6 +16,7 @@ using System.Diagnostics;
 
 string cmd = "echo Hello, World!";
 
+// linux 使用 bash
 string fileName = "/bin/bash";
 string argument = "-c";
 
@@ -21,6 +24,7 @@ bool isWin = Environment.OSVersion.Platform.ToString().Contains("Win");
 
 if(isWin)
 {
+    // windows 使用 cmd
     fileName = "cmd.exe";
     argument = "/c";
 }

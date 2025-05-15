@@ -8,6 +8,9 @@ tags: [Javascript, Regex]
 # 使用 Regex 群組
 
 群組方法用法如下
+
+<!--more-->
+
 ```javascript
 // 建立規則
 var myRegexp = /(?<群組名稱>.*)Test/g;
@@ -18,8 +21,6 @@ var match =  myRegexp.exec('123Test');
 // 取得執行結果 output: 123
 console.log(match.groups.群組名稱);
 ```
-
-<!--more-->
 
 {% note warning %}
 📜 參考資料

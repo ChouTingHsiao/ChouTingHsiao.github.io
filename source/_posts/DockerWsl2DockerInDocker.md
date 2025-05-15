@@ -2,7 +2,7 @@
 title: WSL2 設定 Docker In Docker
 date: 2024-01-01 16:00:00
 categories: Docker
-tags: [Docker, Wsl2]
+tags: [Docker, WSL2]
 ---
 
 # 🚀 使用主機的 Docker Socket

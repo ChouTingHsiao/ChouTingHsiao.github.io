@@ -1,8 +1,8 @@
 ---
-title: 如何解析 XML 資料
+title: .Net 如何解析 XML 資料
 date: 2024-02-04 18:00:00
 categories: .Net
-tags: [.Net, XML, Polyglot Notebooks]
+tags: [.Net, XML]
 ---
 
 # 宣告 XML 資料

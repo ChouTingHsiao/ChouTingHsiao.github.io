@@ -2,7 +2,7 @@
 title: 網頁自訂字型
 date: 2021-10-23 18:00:00
 categories: HTML
-tags: [HTML, CSS, FontForge, Font]
+tags: [HTML, CSS, Font, FontForge]
 ---
 
 # 產生字型檔

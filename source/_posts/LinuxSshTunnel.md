@@ -2,7 +2,7 @@
 title: 使用 SSH 建立通道
 date: 2023-05-07 18:00:00
 categories: Linux
-tags: [Linux, Ubuntu, Ssh]
+tags: [Linux, Ubuntu, SSH]
 ---
 
 # 本機特定端口轉發至跳板機

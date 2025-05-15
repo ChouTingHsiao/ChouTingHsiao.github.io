@@ -1,5 +1,5 @@
 ---
-title: 如何解析 JSON 資料
+title: .Net 如何解析 JSON 資料
 date: 2023-05-07 00:00:00
 categories: .Net
 tags: [.Net, JSON, Polyglot Notebooks]
@@ -32,6 +32,8 @@ tags: [.Net, JSON, Polyglot Notebooks]
 
 建立檔案 Request.cs 內容如下
 ```c#
+using System.Text.Json.Serialization;
+
 public class Address
 {
     [JsonPropertyName("town")]

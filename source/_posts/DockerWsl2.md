@@ -2,7 +2,7 @@
 title: WSL2 開放 Docker 外部連線
 date: 2023-04-29 21:00:00
 categories: Docker
-tags: [Docker, Wsl2]
+tags: [Docker, WSL2]
 ---
 
 # 🚀 開放外部連線至 Docker，有兩種方式可擇一設定

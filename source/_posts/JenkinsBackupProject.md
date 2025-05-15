@@ -2,7 +2,7 @@
 title: Jenkins 執行備份專案命令
 date: 2024-01-01 16:00:00
 categories: Jenkins
-tags: [Jenkins]
+tags: [Jenkins, SSH]
 ---
 
 # 設定執行時間

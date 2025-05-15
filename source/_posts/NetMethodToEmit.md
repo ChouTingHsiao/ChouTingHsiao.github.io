@@ -2,7 +2,7 @@
 title: 將方法轉換成 Emit 的方式執行
 date: 2024-05-01 18:00:00
 categories: .Net
-tags: [.Net, Emit]
+tags: [.Net, Emit, Polyglot Notebooks]
 ---
 
 # 原始方法
