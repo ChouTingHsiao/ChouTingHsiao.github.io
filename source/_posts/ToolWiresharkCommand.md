@@ -12,6 +12,8 @@ tshark 是 Wireshark 的命令行界面，因此需安裝 Wireshark
 scoop install extras/wireshark
 ```
 
+安裝完成後，移動至 Wireshark 安裝目錄下點擊 npcap-installer.exe 進行 npcap 安裝
+
 <!--more-->
 
 # 查詢版本
