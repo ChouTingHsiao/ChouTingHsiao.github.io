@@ -22,6 +22,12 @@ sudo bash -c 'echo "nameserver 8.8.4.4" >> /etc/resolv.conf'
 sudo bash -c 'echo "[network]" > /etc/wsl.conf'
 sudo bash -c 'echo "generateResolvConf = false" >> /etc/wsl.conf'
 
+sudo bash -c 'echo "[user]" > /etc/wsl.conf'
+sudo bash -c 'echo "default = [預設登入帳戶]" >> /etc/wsl.conf'
+
+sudo bash -c 'echo "[boot]" > /etc/wsl.conf'
+sudo bash -c 'echo "systemd = true" >> /etc/wsl.conf'
+
 # 鎖定 resolv.conf 設定
 sudo chattr +i /etc/resolv.conf
 ```
@@ -55,13 +61,16 @@ if(!$ipAddr.Contains("192.168.50.2")){
 # 使用 Powershell 設定網路介面 vEthernet (WSL)
 
 ```powershell
+
+$adapter = Get-NetAdapter -Name *WSL* | Select-Object -ExpandProperty Name
+
 # 確認是否為自訂的 vEthernet (WSL) 設定
-if(!(Get-NetAdapter 'vEthernet (WSL)' | Get-NetIPAddress).IPAddress.Contains('192.168.50.1')){
+if(!(Get-NetAdapter $adapter | Get-NetIPAddress).IPAddress.Contains('192.168.50.1')){
   # 移除 vEthernet (WSL) 設定
-  Get-NetAdapter 'vEthernet (WSL)' | Get-NetIPAddress | Remove-NetIPAddress -Confirm:$False
+  Get-NetAdapter $adapter | Get-NetIPAddress | Remove-NetIPAddress -Confirm:$False
   
   # 加入自訂的 vEthernet (WSL) 設定
-  New-NetIPAddress -IPAddress 192.168.50.1 -PrefixLength 24 -InterfaceAlias 'vEthernet (WSL)'
+  New-NetIPAddress -IPAddress 192.168.50.1 -PrefixLength 24 -InterfaceAlias $adapter
   
   # 移除 WSLNat 設定
   Get-NetNat | ? Name -Eq WSLNat | Remove-NetNat -Confirm:$False

@@ -37,6 +37,8 @@ ExecStart=
 ExecStart=/usr/bin/dockerd -H fd:// -H tcp://127.0.0.1:2375
 ```
 
+建立 '/etc/systemd/system/docker.service.d/docker.conf'
+
 重啟服務
 ```bash
 sudo systemctl daemon-reload
