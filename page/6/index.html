@@ -275,7 +275,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-05-20 14:32:51" itemprop="dateModified" datetime="2025-05-20T14:32:51+00:00">2025-05-20</time>
+      <time title="Modified: 2025-12-17 15:22:09" itemprop="dateModified" datetime="2025-12-17T15:22:09+00:00">2025-12-17</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -294,14 +294,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Word count in article: </span>
-      <span>409</span>
+      <span>416</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">Reading time &asymp;</span>
-      <span>1 mins.</span>
+      <span>2 mins.</span>
     </span>
 </div>
 
@@ -320,6 +320,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl edit docker.service</span><br></pre></td></tr></table></figure>
 <p>服務指令結尾加入參數 [-H tcp://127.0.0.1:2375]</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[Service]</span><br><span class="line">ExecStart=</span><br><span class="line">ExecStart=/usr/bin/dockerd -H fd:// -H tcp://127.0.0.1:2375</span><br></pre></td></tr></table></figure>
+<p>建立 ‘/etc/systemd/system/docker.service.d/docker.conf’</p>
 <p>重啟服務</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl daemon-reload</span><br><span class="line">sudo systemctl restart docker.service</span><br></pre></td></tr></table></figure></div></div></div>
           <!--noindex-->
@@ -391,7 +392,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-05-20 14:32:51" itemprop="dateModified" datetime="2025-05-20T14:32:51+00:00">2025-05-20</time>
+      <time title="Modified: 2025-12-17 15:22:09" itemprop="dateModified" datetime="2025-12-17T15:22:09+00:00">2025-12-17</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -410,7 +411,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Word count in article: </span>
-      <span>354</span>
+      <span>395</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
@@ -429,7 +430,7 @@
     
     <div class="post-body" itemprop="articleBody">
           <h1 id="設定-DNS"><a class="header-anchor" href="#設定-DNS"></a>設定 DNS</h1>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 刪除原始的 resolv.conf 設定</span></span><br><span class="line">sudo <span class="built_in">rm</span> /etc/resolv.conf</span><br><span class="line"></span><br><span class="line"><span class="comment"># 建立 resolv.conf 設定，加入自訂 DNS</span></span><br><span class="line">sudo bash -c <span class="string">&#x27;echo &quot;nameserver 192.168.50.1&quot; &gt; /etc/resolv.conf&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 加入 Google 的 DNS 加速</span></span><br><span class="line">sudo bash -c <span class="string">&#x27;echo &quot;nameserver 8.8.8.8&quot; &gt;&gt; /etc/resolv.conf&#x27;</span></span><br><span class="line">sudo bash -c <span class="string">&#x27;echo &quot;nameserver 8.8.4.4&quot; &gt;&gt; /etc/resolv.conf&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 設定 /etc/wsl.conf</span></span><br><span class="line">sudo bash -c <span class="string">&#x27;echo &quot;[network]&quot; &gt; /etc/wsl.conf&#x27;</span></span><br><span class="line">sudo bash -c <span class="string">&#x27;echo &quot;generateResolvConf = false&quot; &gt;&gt; /etc/wsl.conf&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 鎖定 resolv.conf 設定</span></span><br><span class="line">sudo chattr +i /etc/resolv.conf</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 刪除原始的 resolv.conf 設定</span></span><br><span class="line">sudo <span class="built_in">rm</span> /etc/resolv.conf</span><br><span class="line"></span><br><span class="line"><span class="comment"># 建立 resolv.conf 設定，加入自訂 DNS</span></span><br><span class="line">sudo bash -c <span class="string">&#x27;echo &quot;nameserver 192.168.50.1&quot; &gt; /etc/resolv.conf&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 加入 Google 的 DNS 加速</span></span><br><span class="line">sudo bash -c <span class="string">&#x27;echo &quot;nameserver 8.8.8.8&quot; &gt;&gt; /etc/resolv.conf&#x27;</span></span><br><span class="line">sudo bash -c <span class="string">&#x27;echo &quot;nameserver 8.8.4.4&quot; &gt;&gt; /etc/resolv.conf&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 設定 /etc/wsl.conf</span></span><br><span class="line">sudo bash -c <span class="string">&#x27;echo &quot;[network]&quot; &gt; /etc/wsl.conf&#x27;</span></span><br><span class="line">sudo bash -c <span class="string">&#x27;echo &quot;generateResolvConf = false&quot; &gt;&gt; /etc/wsl.conf&#x27;</span></span><br><span class="line"></span><br><span class="line">sudo bash -c <span class="string">&#x27;echo &quot;[user]&quot; &gt; /etc/wsl.conf&#x27;</span></span><br><span class="line">sudo bash -c <span class="string">&#x27;echo &quot;default = [預設登入帳戶]&quot; &gt;&gt; /etc/wsl.conf&#x27;</span></span><br><span class="line"></span><br><span class="line">sudo bash -c <span class="string">&#x27;echo &quot;[boot]&quot; &gt; /etc/wsl.conf&#x27;</span></span><br><span class="line">sudo bash -c <span class="string">&#x27;echo &quot;systemd = true&quot; &gt;&gt; /etc/wsl.conf&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 鎖定 resolv.conf 設定</span></span><br><span class="line">sudo chattr +i /etc/resolv.conf</span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2023/04/29/LinuxWsl2Network/#more" rel="contents">
@@ -499,7 +500,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-05-20 14:32:51" itemprop="dateModified" datetime="2025-05-20T14:32:51+00:00">2025-05-20</time>
+      <time title="Modified: 2025-12-17 15:22:09" itemprop="dateModified" datetime="2025-12-17T15:22:09+00:00">2025-12-17</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -607,7 +608,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-05-20 14:32:51" itemprop="dateModified" datetime="2025-05-20T14:32:51+00:00">2025-05-20</time>
+      <time title="Modified: 2025-12-17 15:22:09" itemprop="dateModified" datetime="2025-12-17T15:22:09+00:00">2025-12-17</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -715,7 +716,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-05-20 14:32:51" itemprop="dateModified" datetime="2025-05-20T14:32:51+00:00">2025-05-20</time>
+      <time title="Modified: 2025-12-17 15:22:09" itemprop="dateModified" datetime="2025-12-17T15:22:09+00:00">2025-12-17</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -811,7 +812,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">58 mins.</span>
+    <span title="Reading time total">59 mins.</span>
   </span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
