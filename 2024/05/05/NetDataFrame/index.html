@@ -20,18 +20,17 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"choutinghsiao.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.23.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/js/config.js" defer></script>
 
-    <meta name="description" content="套件安裝 安裝套件 12&#x2F;&#x2F; 套件 Microsoft.Data.Analysis 檔案轉 DataFrame 格式#r &quot;nuget: Microsoft.Data.Analysis, 0.21.1&quot; 引用套件 12using System.IO;using Microsoft.Data.Analysis;">
+    <meta name="description" content="套件安裝 12# 套件 Microsoft.Data.Analysis 檔案轉 DataFrame 格式dotnet add package Microsoft.Data.Analysis --version 0.23.0">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用 DataFrame 操作資料">
 <meta property="og:url" content="https://choutinghsiao.github.io/2024/05/05/NetDataFrame/index.html">
 <meta property="og:site_name" content="Stephen&#39;s Note">
-<meta property="og:description" content="套件安裝 安裝套件 12&#x2F;&#x2F; 套件 Microsoft.Data.Analysis 檔案轉 DataFrame 格式#r &quot;nuget: Microsoft.Data.Analysis, 0.21.1&quot; 引用套件 12using System.IO;using Microsoft.Data.Analysis;">
+<meta property="og:description" content="套件安裝 12# 套件 Microsoft.Data.Analysis 檔案轉 DataFrame 格式dotnet add package Microsoft.Data.Analysis --version 0.23.0">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-05-05T11:10:00.000Z">
-<meta property="article:modified_time" content="2025-12-17T15:22:09.958Z">
+<meta property="article:modified_time" content="2026-04-29T14:18:38.323Z">
 <meta property="article:author" content="Stephen">
 <meta property="article:tag" content=".Net">
-<meta property="article:tag" content="Polyglot Notebooks">
 <meta property="article:tag" content="DataFrame">
 <meta name="twitter:card" content="summary">
 
@@ -161,7 +160,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A5%97%E4%BB%B6%E5%AE%89%E8%A3%9D"><span class="nav-number">1.</span> <span class="nav-text">套件安裝</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BC%89%E5%85%A5-CSV-%E8%B3%87%E6%96%99"><span class="nav-number">2.</span> <span class="nav-text">載入 CSV 資料</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BB%BA%E7%AB%8B%E6%B8%AC%E8%A9%A6%E8%B3%87%E6%96%99"><span class="nav-number">3.</span> <span class="nav-text">建立測試資料</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8A%A0%E5%85%A5%E6%96%B0%E6%AC%84%E4%BD%8D"><span class="nav-number">4.</span> <span class="nav-text">加入新欄位</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A1%AF%E7%A4%BA%E6%AC%84%E4%BD%8D%E8%B3%87%E8%A8%8A"><span class="nav-number">5.</span> <span class="nav-text">顯示欄位資訊</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%9E%E5%82%B3%E7%B5%B1%E8%A8%88%E6%91%98%E8%A6%81"><span class="nav-number">6.</span> <span class="nav-text">回傳統計摘要</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%9E%E5%82%B3%E5%89%8D-N-%E7%AD%86%E8%B3%87%E6%96%99"><span class="nav-number">7.</span> <span class="nav-text">回傳前 N 筆資料</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%9E%E5%82%B3%E5%BE%8C-N-%E7%AD%86%E8%B3%87%E6%96%99"><span class="nav-number">8.</span> <span class="nav-text">回傳後 N 筆資料</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8A%A0%E5%85%A5%E6%96%B0%E8%B3%87%E6%96%99"><span class="nav-number">9.</span> <span class="nav-text">加入新資料</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BC%BA%E5%A4%B1%E5%80%BC%E8%99%95%E7%90%86"><span class="nav-number">10.</span> <span class="nav-text">缺失值處理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8E%92%E5%BA%8F%E8%B3%87%E6%96%99"><span class="nav-number">11.</span> <span class="nav-text">排序資料</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%86%E7%BE%A4%E8%B3%87%E6%96%99"><span class="nav-number">12.</span> <span class="nav-text">分群資料</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AF%A9%E9%81%B8%E8%B3%87%E6%96%99"><span class="nav-number">13.</span> <span class="nav-text">篩選資料</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%90%88%E4%BD%B5%E8%B3%87%E6%96%99"><span class="nav-number">14.</span> <span class="nav-text">合併資料</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A5%97%E4%BB%B6%E5%AE%89%E8%A3%9D"><span class="nav-number">1.</span> <span class="nav-text">套件安裝</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%95%E7%94%A8%E5%8F%83%E8%80%83"><span class="nav-number">2.</span> <span class="nav-text">引用參考</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BC%89%E5%85%A5-CSV-%E8%B3%87%E6%96%99"><span class="nav-number">3.</span> <span class="nav-text">載入 CSV 資料</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BB%BA%E7%AB%8B%E6%B8%AC%E8%A9%A6%E8%B3%87%E6%96%99"><span class="nav-number">4.</span> <span class="nav-text">建立測試資料</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8A%A0%E5%85%A5%E6%96%B0%E6%AC%84%E4%BD%8D"><span class="nav-number">5.</span> <span class="nav-text">加入新欄位</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A1%AF%E7%A4%BA%E6%AC%84%E4%BD%8D%E8%B3%87%E8%A8%8A"><span class="nav-number">6.</span> <span class="nav-text">顯示欄位資訊</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%9E%E5%82%B3%E7%B5%B1%E8%A8%88%E6%91%98%E8%A6%81"><span class="nav-number">7.</span> <span class="nav-text">回傳統計摘要</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%9E%E5%82%B3%E5%89%8D-N-%E7%AD%86%E8%B3%87%E6%96%99"><span class="nav-number">8.</span> <span class="nav-text">回傳前 N 筆資料</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%9E%E5%82%B3%E5%BE%8C-N-%E7%AD%86%E8%B3%87%E6%96%99"><span class="nav-number">9.</span> <span class="nav-text">回傳後 N 筆資料</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8A%A0%E5%85%A5%E6%96%B0%E8%B3%87%E6%96%99"><span class="nav-number">10.</span> <span class="nav-text">加入新資料</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BC%BA%E5%A4%B1%E5%80%BC%E8%99%95%E7%90%86"><span class="nav-number">11.</span> <span class="nav-text">缺失值處理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8E%92%E5%BA%8F%E8%B3%87%E6%96%99"><span class="nav-number">12.</span> <span class="nav-text">排序資料</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%86%E7%BE%A4%E8%B3%87%E6%96%99"><span class="nav-number">13.</span> <span class="nav-text">分群資料</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AF%A9%E9%81%B8%E8%B3%87%E6%96%99"><span class="nav-number">14.</span> <span class="nav-text">篩選資料</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%90%88%E4%BD%B5%E8%B3%87%E6%96%99"><span class="nav-number">15.</span> <span class="nav-text">合併資料</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -284,7 +283,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-12-17 15:22:09" itemprop="dateModified" datetime="2025-12-17T15:22:09+00:00">2025-12-17</time>
+      <time title="Modified: 2026-04-29 14:18:38" itemprop="dateModified" datetime="2026-04-29T14:18:38+00:00">2026-04-29</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -303,7 +302,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Word count in article: </span>
-      <span>645</span>
+      <span>653</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
@@ -321,16 +320,15 @@
     
     
     <div class="post-body" itemprop="articleBody"><h1 id="套件安裝"><a class="header-anchor" href="#套件安裝"></a>套件安裝</h1>
-<p>安裝套件</p>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 套件 Microsoft.Data.Analysis 檔案轉 DataFrame 格式</span></span><br><span class="line"><span class="meta">#r &quot;nuget: Microsoft.Data.Analysis, 0.21.1&quot;</span></span><br></pre></td></tr></table></figure>
-<p>引用套件</p>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System.IO;</span><br><span class="line"><span class="keyword">using</span> Microsoft.Data.Analysis;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 套件 Microsoft.Data.Analysis 檔案轉 DataFrame 格式</span></span><br><span class="line">dotnet add package Microsoft.Data.Analysis --version 0.23.0</span><br></pre></td></tr></table></figure>
 <span id="more"></span>
+<h1 id="引用參考"><a class="header-anchor" href="#引用參考"></a>引用參考</h1>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System.IO;</span><br><span class="line"><span class="keyword">using</span> Microsoft.Data.Analysis;</span><br></pre></td></tr></table></figure>
 <h1 id="載入-CSV-資料"><a class="header-anchor" href="#載入-CSV-資料"></a>載入 CSV 資料</h1>
 <p>使用 LoadCsvFromString</p>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">string</span> csvfile = File.ReadAllText(<span class="string">&quot;test.csv&quot;</span>);</span><br><span class="line">DataFrame df = DataFrame.LoadCsvFromString(csvfile, <span class="string">&#x27;,&#x27;</span>);</span><br><span class="line">df.Display();</span><br></pre></td></tr></table></figure>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">string</span> csvfile = File.ReadAllText(<span class="string">&quot;test.csv&quot;</span>);</span><br><span class="line">DataFrame df = DataFrame.LoadCsvFromString(csvfile, <span class="string">&#x27;,&#x27;</span>);</span><br><span class="line">Console.WriteLine(df);</span><br></pre></td></tr></table></figure>
 <h1 id="建立測試資料"><a class="header-anchor" href="#建立測試資料"></a>建立測試資料</h1>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Int32DataFrameColumn id = <span class="keyword">new</span> Int32DataFrameColumn(<span class="string">&quot;ID&quot;</span>, <span class="keyword">new</span> <span class="built_in">int</span>[] &#123; <span class="number">1</span>, <span class="number">2</span> &#125;);</span><br><span class="line">StringDataFrameColumn name = <span class="keyword">new</span> StringDataFrameColumn(<span class="string">&quot;Name&quot;</span>, <span class="keyword">new</span> <span class="built_in">string</span>[] &#123; <span class="string">&quot;張三&quot;</span>, <span class="string">&quot;李四&quot;</span> &#125;);</span><br><span class="line">Int32DataFrameColumn age = <span class="keyword">new</span> Int32DataFrameColumn(<span class="string">&quot;Age&quot;</span>, <span class="keyword">new</span> <span class="built_in">int</span>?[] &#123; <span class="number">25</span>, <span class="literal">null</span> &#125;);</span><br><span class="line"></span><br><span class="line">DataFrame df = <span class="keyword">new</span> DataFrame();</span><br><span class="line">df.Columns.Add(id);</span><br><span class="line">df.Columns.Add(name);</span><br><span class="line">df.Columns.Add(age);</span><br><span class="line"></span><br><span class="line">df.Display();</span><br></pre></td></tr></table></figure>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Int32DataFrameColumn id = <span class="keyword">new</span> Int32DataFrameColumn(<span class="string">&quot;ID&quot;</span>, <span class="keyword">new</span> <span class="built_in">int</span>[] &#123; <span class="number">1</span>, <span class="number">2</span> &#125;);</span><br><span class="line">StringDataFrameColumn name = <span class="keyword">new</span> StringDataFrameColumn(<span class="string">&quot;Name&quot;</span>, <span class="keyword">new</span> <span class="built_in">string</span>[] &#123; <span class="string">&quot;張三&quot;</span>, <span class="string">&quot;李四&quot;</span> &#125;);</span><br><span class="line">Int32DataFrameColumn age = <span class="keyword">new</span> Int32DataFrameColumn(<span class="string">&quot;Age&quot;</span>, <span class="keyword">new</span> <span class="built_in">int</span>?[] &#123; <span class="number">25</span>, <span class="literal">null</span> &#125;);</span><br><span class="line"></span><br><span class="line">DataFrame df = <span class="keyword">new</span> DataFrame();</span><br><span class="line">df.Columns.Add(id);</span><br><span class="line">df.Columns.Add(name);</span><br><span class="line">df.Columns.Add(age);</span><br><span class="line"></span><br><span class="line">Console.WriteLine(df);</span><br></pre></td></tr></table></figure>
 <p>輸出:</p>
 <table>
 <thead>
@@ -358,7 +356,7 @@
 </table>
 <h1 id="加入新欄位"><a class="header-anchor" href="#加入新欄位"></a>加入新欄位</h1>
 <p>加入欄位 Height</p>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">df.Columns.Add(<span class="keyword">new</span> PrimitiveDataFrameColumn&lt;<span class="built_in">int</span>&gt;(<span class="string">&quot;Height&quot;</span>, <span class="keyword">new</span> List&lt;<span class="built_in">int</span>&gt;&#123;<span class="number">180</span>, <span class="number">179</span>&#125;));</span><br><span class="line"></span><br><span class="line">df.Display();</span><br></pre></td></tr></table></figure>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">df.Columns.Add(<span class="keyword">new</span> PrimitiveDataFrameColumn&lt;<span class="built_in">int</span>&gt;(<span class="string">&quot;Height&quot;</span>, <span class="keyword">new</span> List&lt;<span class="built_in">int</span>&gt;&#123;<span class="number">180</span>, <span class="number">179</span>&#125;));</span><br><span class="line"></span><br><span class="line">Console.WriteLine(df);</span><br></pre></td></tr></table></figure>
 <p>輸出:</p>
 <table>
 <thead>
@@ -389,7 +387,7 @@
 </table>
 <h1 id="顯示欄位資訊"><a class="header-anchor" href="#顯示欄位資訊"></a>顯示欄位資訊</h1>
 <p>了解欄位類型與資料筆數統計</p>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.Info().Display();</span><br></pre></td></tr></table></figure>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Console.WriteLine(df.Info());</span><br></pre></td></tr></table></figure>
 <p>輸出:</p>
 <table>
 <thead>
@@ -423,7 +421,7 @@
 </table>
 <h1 id="回傳統計摘要"><a class="header-anchor" href="#回傳統計摘要"></a>回傳統計摘要</h1>
 <p>統計相關值，此欄為數值欄位限定</p>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.Description().Display();</span><br></pre></td></tr></table></figure>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Console.WriteLine(df.Info());</span><br></pre></td></tr></table></figure>
 <p>輸出:</p>
 <table>
 <thead>
@@ -467,7 +465,7 @@
 </tbody>
 </table>
 <h1 id="回傳前-N-筆資料"><a class="header-anchor" href="#回傳前-N-筆資料"></a>回傳前 N 筆資料</h1>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.Head(<span class="number">1</span>).Display();</span><br></pre></td></tr></table></figure>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Console.WriteLine(df.Head(<span class="number">1</span>));</span><br></pre></td></tr></table></figure>
 <p>輸出:</p>
 <table>
 <thead>
@@ -490,7 +488,7 @@
 </tbody>
 </table>
 <h1 id="回傳後-N-筆資料"><a class="header-anchor" href="#回傳後-N-筆資料"></a>回傳後 N 筆資料</h1>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.Tail(<span class="number">1</span>).Display();</span><br></pre></td></tr></table></figure>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Console.WriteLine(df.Tail(<span class="number">1</span>));</span><br></pre></td></tr></table></figure>
 <p>輸出:</p>
 <table>
 <thead>
@@ -514,7 +512,7 @@
 </table>
 <h1 id="加入新資料"><a class="header-anchor" href="#加入新資料"></a>加入新資料</h1>
 <p>填入每一欄對應資料</p>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">df.Append(<span class="keyword">new</span> List&lt;KeyValuePair&lt;<span class="built_in">string</span>, <span class="built_in">object</span>&gt;&gt;() &#123;</span><br><span class="line">    <span class="keyword">new</span> KeyValuePair&lt;<span class="built_in">string</span>, <span class="built_in">object</span>&gt;(<span class="string">&quot;ID&quot;</span>, <span class="number">3</span>),</span><br><span class="line">    <span class="keyword">new</span> KeyValuePair&lt;<span class="built_in">string</span>, <span class="built_in">object</span>&gt;(<span class="string">&quot;Name&quot;</span>, <span class="string">&quot;王五&quot;</span>),</span><br><span class="line">    <span class="keyword">new</span> KeyValuePair&lt;<span class="built_in">string</span>, <span class="built_in">object</span>&gt;(<span class="string">&quot;Age&quot;</span>, <span class="number">20</span>),</span><br><span class="line">    <span class="keyword">new</span> KeyValuePair&lt;<span class="built_in">string</span>, <span class="built_in">object</span>&gt;(<span class="string">&quot;Height&quot;</span>, <span class="number">170</span>)</span><br><span class="line">&#125;, <span class="literal">true</span>);</span><br><span class="line"></span><br><span class="line">df.Display();</span><br></pre></td></tr></table></figure>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">df.Append(<span class="keyword">new</span> List&lt;KeyValuePair&lt;<span class="built_in">string</span>, <span class="built_in">object</span>&gt;&gt;() &#123;</span><br><span class="line">    <span class="keyword">new</span> KeyValuePair&lt;<span class="built_in">string</span>, <span class="built_in">object</span>&gt;(<span class="string">&quot;ID&quot;</span>, <span class="number">3</span>),</span><br><span class="line">    <span class="keyword">new</span> KeyValuePair&lt;<span class="built_in">string</span>, <span class="built_in">object</span>&gt;(<span class="string">&quot;Name&quot;</span>, <span class="string">&quot;王五&quot;</span>),</span><br><span class="line">    <span class="keyword">new</span> KeyValuePair&lt;<span class="built_in">string</span>, <span class="built_in">object</span>&gt;(<span class="string">&quot;Age&quot;</span>, <span class="number">20</span>),</span><br><span class="line">    <span class="keyword">new</span> KeyValuePair&lt;<span class="built_in">string</span>, <span class="built_in">object</span>&gt;(<span class="string">&quot;Height&quot;</span>, <span class="number">170</span>)</span><br><span class="line">&#125;, <span class="literal">true</span>);</span><br><span class="line"></span><br><span class="line">Console.WriteLine(df);</span><br></pre></td></tr></table></figure>
 <p>輸出:</p>
 <table>
 <thead>
@@ -555,7 +553,7 @@
 <ol>
 <li>排除有空值的欄位</li>
 </ol>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">DataFrame dropNullData = df.DropNulls();</span><br><span class="line">dropNullData.Display();</span><br></pre></td></tr></table></figure>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">DataFrame dropNullData = df.DropNulls();</span><br><span class="line">Console.WriteLine(dropNullData);</span><br></pre></td></tr></table></figure>
 <p>輸出:</p>
 <table>
 <thead>
@@ -587,7 +585,7 @@
 <ol start="2">
 <li>缺失值填充</li>
 </ol>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df.Columns[<span class="string">&quot;Age&quot;</span>] = df.Columns[<span class="string">&quot;Age&quot;</span>].FillNulls(<span class="number">0</span>);</span><br><span class="line">df.Display();</span><br></pre></td></tr></table></figure>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df.Columns[<span class="string">&quot;Age&quot;</span>] = df.Columns[<span class="string">&quot;Age&quot;</span>].FillNulls(<span class="number">0</span>);</span><br><span class="line">Console.WriteLine(df);</span><br></pre></td></tr></table></figure>
 <p>輸出:</p>
 <table>
 <thead>
@@ -624,7 +622,7 @@
 </tbody>
 </table>
 <h1 id="排序資料"><a class="header-anchor" href="#排序資料"></a>排序資料</h1>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">DataFrame orderByData = df.OrderByDescending(<span class="string">&quot;Age&quot;</span>);</span><br><span class="line">orderByData.Display();</span><br></pre></td></tr></table></figure>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">DataFrame orderByData = df.OrderByDescending(<span class="string">&quot;Age&quot;</span>);</span><br><span class="line">Console.WriteLine(orderByData);</span><br></pre></td></tr></table></figure>
 <p>輸出:</p>
 <table>
 <thead>
@@ -661,7 +659,7 @@
 </tbody>
 </table>
 <h1 id="分群資料"><a class="header-anchor" href="#分群資料"></a>分群資料</h1>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">DataFrame groupByData = df.GroupBy(<span class="string">&quot;Age&quot;</span>).Count();</span><br><span class="line">groupByData.Display();</span><br></pre></td></tr></table></figure>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">DataFrame groupByData = df.GroupBy(<span class="string">&quot;Age&quot;</span>).Count();</span><br><span class="line">Console.WriteLine(groupByData);</span><br></pre></td></tr></table></figure>
 <p>輸出:</p>
 <table>
 <thead>
@@ -698,7 +696,7 @@
 </tbody>
 </table>
 <h1 id="篩選資料"><a class="header-anchor" href="#篩選資料"></a>篩選資料</h1>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">DataFrame filterData = df.Filter(df.Columns[<span class="string">&quot;Age&quot;</span>].ElementwiseGreaterThan(<span class="number">1</span>));</span><br><span class="line">filterData.Display();</span><br></pre></td></tr></table></figure>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">DataFrame filterData = df.Filter(df.Columns[<span class="string">&quot;Age&quot;</span>].ElementwiseGreaterThan(<span class="number">1</span>));</span><br><span class="line">Console.WriteLine(filterData);</span><br></pre></td></tr></table></figure>
 <p>輸出:</p>
 <table>
 <thead>
@@ -728,7 +726,7 @@
 </tbody>
 </table>
 <h1 id="合併資料"><a class="header-anchor" href="#合併資料"></a>合併資料</h1>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 建立新的列表</span></span><br><span class="line">Int32DataFrameColumn idWeight = <span class="keyword">new</span> Int32DataFrameColumn(<span class="string">&quot;ID&quot;</span>, <span class="keyword">new</span> <span class="built_in">int</span>[] &#123; <span class="number">1</span>, <span class="number">2</span> &#125;);</span><br><span class="line">Int32DataFrameColumn weight = <span class="keyword">new</span> Int32DataFrameColumn(<span class="string">&quot;Weight&quot;</span>, <span class="keyword">new</span> <span class="built_in">int</span>?[] &#123; <span class="number">60</span>, <span class="number">90</span> &#125;);</span><br><span class="line"></span><br><span class="line">DataFrame dfWeight = <span class="keyword">new</span> DataFrame();</span><br><span class="line">dfWeight.Columns.Add(idWeight);</span><br><span class="line">dfWeight.Columns.Add(weight);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用 ID 做 Merge</span></span><br><span class="line">DataFrame mergeData = dfWeight.Merge&lt;<span class="built_in">int</span>&gt;(df, <span class="string">&quot;ID&quot;</span>, <span class="string">&quot;ID&quot;</span>);</span><br><span class="line">mergeData.Display();</span><br></pre></td></tr></table></figure>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 建立新的列表</span></span><br><span class="line">Int32DataFrameColumn idWeight = <span class="keyword">new</span> Int32DataFrameColumn(<span class="string">&quot;ID&quot;</span>, <span class="keyword">new</span> <span class="built_in">int</span>[] &#123; <span class="number">1</span>, <span class="number">2</span> &#125;);</span><br><span class="line">Int32DataFrameColumn weight = <span class="keyword">new</span> Int32DataFrameColumn(<span class="string">&quot;Weight&quot;</span>, <span class="keyword">new</span> <span class="built_in">int</span>?[] &#123; <span class="number">60</span>, <span class="number">90</span> &#125;);</span><br><span class="line"></span><br><span class="line">DataFrame dfWeight = <span class="keyword">new</span> DataFrame();</span><br><span class="line">dfWeight.Columns.Add(idWeight);</span><br><span class="line">dfWeight.Columns.Add(weight);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用 ID 做 Merge</span></span><br><span class="line">DataFrame mergeData = dfWeight.Merge&lt;<span class="built_in">int</span>&gt;(df, <span class="string">&quot;ID&quot;</span>, <span class="string">&quot;ID&quot;</span>);</span><br><span class="line">Console.WriteLine(mergeData);</span><br></pre></td></tr></table></figure>
 <p>輸出:</p>
 <table>
 <thead>
@@ -768,6 +766,7 @@
 <li><a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/dotnet/api/microsoft.data.analysis.dataframe?view=ml-dotnet-preview&amp;viewFallbackFrom=ml-dotnet">DataFrame Class</a></li>
 </ol>
 </div>
+
     </div>
 
     
@@ -794,7 +793,6 @@
 
           <div class="post-tags">
               <a href="/tags/Net/" rel="tag"># .Net</a>
-              <a href="/tags/Polyglot-Notebooks/" rel="tag"># Polyglot Notebooks</a>
               <a href="/tags/DataFrame/" rel="tag"># DataFrame</a>
           </div>
 
@@ -829,7 +827,7 @@
 
   <div class="copyright">
     &copy; 
-    <span itemprop="copyrightYear">2025</span>
+    <span itemprop="copyrightYear">2026</span>
     <span class="with-love">
       <i class="fa fa-heart"></i>
     </span>

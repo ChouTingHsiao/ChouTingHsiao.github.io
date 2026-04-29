@@ -20,21 +20,20 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"choutinghsiao.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.23.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/js/config.js" defer></script>
 
-    <meta name="description" content="轉換 Big5 字元 Big5 依傳入內碼轉成字元 1234567891011121314151617&#x2F;&#x2F; 建立兩位元陣列byte[] big5Bytes &#x3D; new byte[2];&#x2F;&#x2F; big5 數字 0 內碼為 A2AFstring big5Code &#x3D; &quot;A2AF&quot;;&#x2F;&#x2F; 內碼前兩字轉為16進制big5Bytes[0] &#x3D; (byte)Convert.ToInt32(b">
+    <meta name="description" content="安裝套件 1dotnet add package System.Text.Encoding.CodePages">
 <meta property="og:type" content="article">
 <meta property="og:title" content="依字元內碼轉換 Big5 與 Unicode">
 <meta property="og:url" content="https://choutinghsiao.github.io/2022/05/22/NetBig5AndUnicode/index.html">
 <meta property="og:site_name" content="Stephen&#39;s Note">
-<meta property="og:description" content="轉換 Big5 字元 Big5 依傳入內碼轉成字元 1234567891011121314151617&#x2F;&#x2F; 建立兩位元陣列byte[] big5Bytes &#x3D; new byte[2];&#x2F;&#x2F; big5 數字 0 內碼為 A2AFstring big5Code &#x3D; &quot;A2AF&quot;;&#x2F;&#x2F; 內碼前兩字轉為16進制big5Bytes[0] &#x3D; (byte)Convert.ToInt32(b">
+<meta property="og:description" content="安裝套件 1dotnet add package System.Text.Encoding.CodePages">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-05-22T14:00:00.000Z">
-<meta property="article:modified_time" content="2025-12-17T15:22:09.957Z">
+<meta property="article:modified_time" content="2026-04-29T14:18:38.323Z">
 <meta property="article:author" content="Stephen">
 <meta property="article:tag" content="Font">
 <meta property="article:tag" content=".Net">
 <meta property="article:tag" content="Big5">
 <meta property="article:tag" content="Unicode">
-<meta property="article:tag" content="Polyglot Notebooks">
 <meta name="twitter:card" content="summary">
 
 
@@ -163,7 +162,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BD%89%E6%8F%9B-Big5-%E5%AD%97%E5%85%83"><span class="nav-number">1.</span> <span class="nav-text">轉換 Big5 字元</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BD%89%E6%8F%9B-Unicode-%E5%AD%97%E5%85%83"><span class="nav-number">2.</span> <span class="nav-text">轉換 Unicode 字元</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%9D%E5%A5%97%E4%BB%B6"><span class="nav-number">1.</span> <span class="nav-text">安裝套件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%95%E7%94%A8%E5%8F%83%E8%80%83"><span class="nav-number">2.</span> <span class="nav-text">引用參考</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A8%BB%E5%86%8A%E5%A5%97%E4%BB%B6"><span class="nav-number">3.</span> <span class="nav-text">註冊套件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BD%89%E6%8F%9B-Big5-%E5%AD%97%E5%85%83"><span class="nav-number">4.</span> <span class="nav-text">轉換 Big5 字元</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BD%89%E6%8F%9B-Unicode-%E5%AD%97%E5%85%83"><span class="nav-number">5.</span> <span class="nav-text">轉換 Unicode 字元</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -286,7 +285,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-12-17 15:22:09" itemprop="dateModified" datetime="2025-12-17T15:22:09+00:00">2025-12-17</time>
+      <time title="Modified: 2026-04-29 14:18:38" itemprop="dateModified" datetime="2026-04-29T14:18:38+00:00">2026-04-29</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -305,7 +304,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Word count in article: </span>
-      <span>213</span>
+      <span>242</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
@@ -322,18 +321,25 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><h1 id="轉換-Big5-字元"><a class="header-anchor" href="#轉換-Big5-字元"></a>轉換 Big5 字元</h1>
-<p>Big5 依傳入內碼轉成字元</p>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 建立兩位元陣列</span></span><br><span class="line"><span class="built_in">byte</span>[] big5Bytes = <span class="keyword">new</span> <span class="built_in">byte</span>[<span class="number">2</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// big5 數字 0 內碼為 A2AF</span></span><br><span class="line"><span class="built_in">string</span> big5Code = <span class="string">&quot;A2AF&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 內碼前兩字轉為16進制</span></span><br><span class="line">big5Bytes[<span class="number">0</span>] = (<span class="built_in">byte</span>)Convert.ToInt32(big5Code.Substring(<span class="number">0</span>, <span class="number">2</span>), <span class="number">16</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 內碼後兩字轉為16進制</span></span><br><span class="line">big5Bytes[<span class="number">1</span>] = (<span class="built_in">byte</span>)Convert.ToInt32(big5Code.Substring(<span class="number">2</span>, <span class="number">2</span>), <span class="number">16</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 建立 big5 編碼</span></span><br><span class="line">Encoding big5 = Encoding.GetEncoding(<span class="number">950</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 轉成字串</span></span><br><span class="line"><span class="built_in">string</span> result = big5.GetString(big5Bytes);</span><br></pre></td></tr></table></figure>
+    <div class="post-body" itemprop="articleBody"><h1 id="安裝套件"><a class="header-anchor" href="#安裝套件"></a>安裝套件</h1>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dotnet add package System.Text.Encoding.CodePages</span><br></pre></td></tr></table></figure>
 <span id="more"></span>
+<h1 id="引用參考"><a class="header-anchor" href="#引用參考"></a>引用參考</h1>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> System.Text;</span><br></pre></td></tr></table></figure>
+<h1 id="註冊套件"><a class="header-anchor" href="#註冊套件"></a>註冊套件</h1>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);</span><br></pre></td></tr></table></figure>
+<h1 id="轉換-Big5-字元"><a class="header-anchor" href="#轉換-Big5-字元"></a>轉換 Big5 字元</h1>
+<p>Big5 依傳入內碼轉成字元</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 建立兩位元陣列</span></span><br><span class="line"><span class="built_in">byte</span>[] big5Bytes = <span class="keyword">new</span> <span class="built_in">byte</span>[<span class="number">2</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// big5 數字 0 內碼為 A2AF</span></span><br><span class="line"><span class="built_in">string</span> big5Code = <span class="string">&quot;A2AF&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 內碼前兩字轉為16進制</span></span><br><span class="line">big5Bytes[<span class="number">0</span>] = (<span class="built_in">byte</span>)Convert.ToInt32(big5Code.Substring(<span class="number">0</span>, <span class="number">2</span>), <span class="number">16</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 內碼後兩字轉為16進制</span></span><br><span class="line">big5Bytes[<span class="number">1</span>] = (<span class="built_in">byte</span>)Convert.ToInt32(big5Code.Substring(<span class="number">2</span>, <span class="number">2</span>), <span class="number">16</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 建立 big5 編碼</span></span><br><span class="line">Encoding big5 = Encoding.GetEncoding(<span class="number">950</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 轉成字串</span></span><br><span class="line"><span class="built_in">string</span> result = big5.GetString(big5Bytes);</span><br><span class="line"></span><br><span class="line">Console.WriteLine(result);</span><br></pre></td></tr></table></figure>
 <h1 id="轉換-Unicode-字元"><a class="header-anchor" href="#轉換-Unicode-字元"></a>轉換 Unicode 字元</h1>
 <p>Unicode 依傳入內碼轉成字元，與 Big5 轉換的方法雷同，只需調整內碼放置的順序</p>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 建立兩位元陣列</span></span><br><span class="line"><span class="built_in">byte</span>[] unicodeBytes = <span class="keyword">new</span> <span class="built_in">byte</span>[<span class="number">2</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// Unicode 數字 0 內碼為 FF10</span></span><br><span class="line"><span class="built_in">string</span> unicodeCode = <span class="string">&quot;FF10&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 內碼後兩字轉為16進制</span></span><br><span class="line">unicodeBytes[<span class="number">0</span>] = Convert.ToByte(unicodeCode.Substring(<span class="number">2</span>, <span class="number">2</span>), <span class="number">16</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 內碼前兩字轉為16進制</span></span><br><span class="line">unicodeBytes[<span class="number">1</span>] = Convert.ToByte(unicodeCode.Substring(<span class="number">0</span>, <span class="number">2</span>), <span class="number">16</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 建立 Unicode 編碼</span></span><br><span class="line">Encoding unicode = Encoding.Unicode;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 轉成字串</span></span><br><span class="line"><span class="built_in">string</span> result = unicode.GetString(unicodeBytes);</span><br></pre></td></tr></table></figure>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 建立兩位元陣列</span></span><br><span class="line"><span class="built_in">byte</span>[] unicodeBytes = <span class="keyword">new</span> <span class="built_in">byte</span>[<span class="number">2</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// Unicode 數字 0 內碼為 FF10</span></span><br><span class="line"><span class="built_in">string</span> unicodeCode = <span class="string">&quot;FF10&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 內碼後兩字轉為16進制</span></span><br><span class="line">unicodeBytes[<span class="number">0</span>] = Convert.ToByte(unicodeCode.Substring(<span class="number">2</span>, <span class="number">2</span>), <span class="number">16</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 內碼前兩字轉為16進制</span></span><br><span class="line">unicodeBytes[<span class="number">1</span>] = Convert.ToByte(unicodeCode.Substring(<span class="number">0</span>, <span class="number">2</span>), <span class="number">16</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 建立 Unicode 編碼</span></span><br><span class="line">Encoding unicode = Encoding.Unicode;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 轉成字串</span></span><br><span class="line"><span class="built_in">string</span> result = unicode.GetString(unicodeBytes);</span><br><span class="line"></span><br><span class="line">Console.WriteLine(result);</span><br></pre></td></tr></table></figure>
 <div class="note warning"><p>📜 參考資料</p>
 <ol>
 <li><a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/dotnet/api/system.text.encoding.getstring?view=net-8.0">Encoding.GetString Method</a></li>
 </ol>
 </div>
+
     </div>
 
     
@@ -363,7 +369,6 @@
               <a href="/tags/Net/" rel="tag"># .Net</a>
               <a href="/tags/Big5/" rel="tag"># Big5</a>
               <a href="/tags/Unicode/" rel="tag"># Unicode</a>
-              <a href="/tags/Polyglot-Notebooks/" rel="tag"># Polyglot Notebooks</a>
           </div>
 
         
@@ -397,7 +402,7 @@
 
   <div class="copyright">
     &copy; 
-    <span itemprop="copyrightYear">2025</span>
+    <span itemprop="copyrightYear">2026</span>
     <span class="with-love">
       <i class="fa fa-heart"></i>
     </span>

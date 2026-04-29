@@ -275,7 +275,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-12-17 15:22:09" itemprop="dateModified" datetime="2025-12-17T15:22:09+00:00">2025-12-17</time>
+      <time title="Modified: 2026-04-29 14:18:38" itemprop="dateModified" datetime="2026-04-29T14:18:38+00:00">2026-04-29</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -383,7 +383,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-12-17 15:22:09" itemprop="dateModified" datetime="2025-12-17T15:22:09+00:00">2025-12-17</time>
+      <time title="Modified: 2026-04-29 14:18:38" itemprop="dateModified" datetime="2026-04-29T14:18:38+00:00">2026-04-29</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -491,7 +491,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-12-17 15:22:09" itemprop="dateModified" datetime="2025-12-17T15:22:09+00:00">2025-12-17</time>
+      <time title="Modified: 2026-04-29 14:18:38" itemprop="dateModified" datetime="2026-04-29T14:18:38+00:00">2026-04-29</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -510,7 +510,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Word count in article: </span>
-      <span>213</span>
+      <span>242</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
@@ -528,9 +528,8 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="轉換-Big5-字元"><a class="header-anchor" href="#轉換-Big5-字元"></a>轉換 Big5 字元</h1>
-<p>Big5 依傳入內碼轉成字元</p>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 建立兩位元陣列</span></span><br><span class="line"><span class="built_in">byte</span>[] big5Bytes = <span class="keyword">new</span> <span class="built_in">byte</span>[<span class="number">2</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// big5 數字 0 內碼為 A2AF</span></span><br><span class="line"><span class="built_in">string</span> big5Code = <span class="string">&quot;A2AF&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 內碼前兩字轉為16進制</span></span><br><span class="line">big5Bytes[<span class="number">0</span>] = (<span class="built_in">byte</span>)Convert.ToInt32(big5Code.Substring(<span class="number">0</span>, <span class="number">2</span>), <span class="number">16</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 內碼後兩字轉為16進制</span></span><br><span class="line">big5Bytes[<span class="number">1</span>] = (<span class="built_in">byte</span>)Convert.ToInt32(big5Code.Substring(<span class="number">2</span>, <span class="number">2</span>), <span class="number">16</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 建立 big5 編碼</span></span><br><span class="line">Encoding big5 = Encoding.GetEncoding(<span class="number">950</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 轉成字串</span></span><br><span class="line"><span class="built_in">string</span> result = big5.GetString(big5Bytes);</span><br></pre></td></tr></table></figure>
+          <h1 id="安裝套件"><a class="header-anchor" href="#安裝套件"></a>安裝套件</h1>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dotnet add package System.Text.Encoding.CodePages</span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2022/05/22/NetBig5AndUnicode/#more" rel="contents">
@@ -600,7 +599,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-12-17 15:22:09" itemprop="dateModified" datetime="2025-12-17T15:22:09+00:00">2025-12-17</time>
+      <time title="Modified: 2026-04-29 14:18:38" itemprop="dateModified" datetime="2026-04-29T14:18:38+00:00">2026-04-29</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -619,7 +618,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Word count in article: </span>
-      <span>92</span>
+      <span>99</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
@@ -637,8 +636,8 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="運行-Shell-命令"><a class="header-anchor" href="#運行-Shell-命令"></a>運行 Shell 命令</h1>
-<p>透過 Process 執行命令</p>
+          <h1 id="引用參考"><a class="header-anchor" href="#引用參考"></a>引用參考</h1>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System.Diagnostics;</span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2022/05/22/NetRunShell/#more" rel="contents">
@@ -708,7 +707,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-12-17 15:22:09" itemprop="dateModified" datetime="2025-12-17T15:22:09+00:00">2025-12-17</time>
+      <time title="Modified: 2026-04-29 14:18:38" itemprop="dateModified" datetime="2026-04-29T14:18:38+00:00">2026-04-29</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -785,7 +784,7 @@
 
   <div class="copyright">
     &copy; 
-    <span itemprop="copyrightYear">2025</span>
+    <span itemprop="copyrightYear">2026</span>
     <span class="with-love">
       <i class="fa fa-heart"></i>
     </span>

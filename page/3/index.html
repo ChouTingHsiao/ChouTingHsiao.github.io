@@ -275,7 +275,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-12-17 15:22:09" itemprop="dateModified" datetime="2025-12-17T15:22:09+00:00">2025-12-17</time>
+      <time title="Modified: 2026-04-29 14:18:38" itemprop="dateModified" datetime="2026-04-29T14:18:38+00:00">2026-04-29</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -294,7 +294,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Word count in article: </span>
-      <span>645</span>
+      <span>653</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
@@ -313,10 +313,7 @@
     
     <div class="post-body" itemprop="articleBody">
           <h1 id="套件安裝"><a class="header-anchor" href="#套件安裝"></a>套件安裝</h1>
-<p>安裝套件</p>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 套件 Microsoft.Data.Analysis 檔案轉 DataFrame 格式</span></span><br><span class="line"><span class="meta">#r &quot;nuget: Microsoft.Data.Analysis, 0.21.1&quot;</span></span><br></pre></td></tr></table></figure>
-<p>引用套件</p>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System.IO;</span><br><span class="line"><span class="keyword">using</span> Microsoft.Data.Analysis;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 套件 Microsoft.Data.Analysis 檔案轉 DataFrame 格式</span></span><br><span class="line">dotnet add package Microsoft.Data.Analysis --version 0.23.0</span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2024/05/05/NetDataFrame/#more" rel="contents">
@@ -386,7 +383,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-12-17 15:22:09" itemprop="dateModified" datetime="2025-12-17T15:22:09+00:00">2025-12-17</time>
+      <time title="Modified: 2026-04-29 14:18:38" itemprop="dateModified" datetime="2026-04-29T14:18:38+00:00">2026-04-29</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -507,7 +504,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-12-17 15:22:09" itemprop="dateModified" datetime="2025-12-17T15:22:09+00:00">2025-12-17</time>
+      <time title="Modified: 2026-04-29 14:18:38" itemprop="dateModified" datetime="2026-04-29T14:18:38+00:00">2026-04-29</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -526,7 +523,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Word count in article: </span>
-      <span>391</span>
+      <span>395</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
@@ -548,7 +545,7 @@
 <p>類別內容如下</p>
 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">User</span> &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">string</span> Name &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">int</span> Age &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>List 內容如下</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">List&lt;User&gt; users = <span class="keyword">new</span> List&lt;User&gt;&#123;</span><br><span class="line">    <span class="keyword">new</span> User &#123;</span><br><span class="line">        Name = <span class="string">&quot;Test1&quot;</span>,</span><br><span class="line">        Age = <span class="number">10</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="keyword">new</span> User &#123;</span><br><span class="line">        Name = <span class="string">&quot;Test2&quot;</span>,</span><br><span class="line">        Age = <span class="number">20</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">List&lt;User&gt; users = <span class="keyword">new</span> List&lt;User&gt; &#123;</span><br><span class="line">    <span class="keyword">new</span> User &#123;</span><br><span class="line">        Name = <span class="string">&quot;Test1&quot;</span>,</span><br><span class="line">        Age = <span class="number">10</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="keyword">new</span> User &#123;</span><br><span class="line">        Name = <span class="string">&quot;Test2&quot;</span>,</span><br><span class="line">        Age = <span class="number">20</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2024/05/01/NetExpressionListToCsv/#more" rel="contents">
@@ -618,7 +615,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-12-17 15:22:09" itemprop="dateModified" datetime="2025-12-17T15:22:09+00:00">2025-12-17</time>
+      <time title="Modified: 2026-04-29 14:18:38" itemprop="dateModified" datetime="2026-04-29T14:18:38+00:00">2026-04-29</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -727,7 +724,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-12-17 15:22:09" itemprop="dateModified" datetime="2025-12-17T15:22:09+00:00">2025-12-17</time>
+      <time title="Modified: 2026-04-29 14:18:38" itemprop="dateModified" datetime="2026-04-29T14:18:38+00:00">2026-04-29</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -807,7 +804,7 @@
 
   <div class="copyright">
     &copy; 
-    <span itemprop="copyrightYear">2025</span>
+    <span itemprop="copyrightYear">2026</span>
     <span class="with-love">
       <i class="fa fa-heart"></i>
     </span>
