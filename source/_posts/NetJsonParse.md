@@ -2,7 +2,7 @@
 title: .Net 如何解析 JSON 資料
 date: 2023-05-07 00:00:00
 categories: .Net
-tags: [.Net, JSON, Polyglot Notebooks]
+tags: [.Net, JSON]
 ---
 
 # 建立 JSON 檔案
@@ -31,7 +31,7 @@ tags: [.Net, JSON, Polyglot Notebooks]
 # 建立 Class 對應
 
 建立檔案 Request.cs 內容如下
-```c#
+```csharp
 using System.Text.Json.Serialization;
 
 public class Address
@@ -43,39 +43,36 @@ public class Address
 public class Info
 {
     [JsonPropertyName("address")]
-	public List<Address> Address { get; set; }
+    public List<Address> Address { get; set; }
 }
 
 public class Request
 {
     [JsonPropertyName("info")]
-	public Info Info { get; set; }
+    public Info Info { get; set; }
 }
 ```
 
 # 讀取資料並解析
 
-```c#
-// 引用 Request.cs
-#!import Request.cs
-
+```csharp
 using System.Text.Json;
 using System.IO;
 
 using (StreamReader r = new StreamReader(@".\Request.json"))
 {
-	// 讀取整個檔案
-	string jsonString = r.ReadToEnd();
+    // 讀取整個檔案
+    string jsonString = r.ReadToEnd();
 
-	// 還原序列化成 Request 類別
-	Request req = JsonSerializer.Deserialize<Request>(jsonString);
+    // 還原序列化成 Request 類別
+    Request req = JsonSerializer.Deserialize<Request>(jsonString);
 
-	req.Display();
+    Console.WriteLine(req);
 
-	// 序列化 Request 類別成 JSON 字串
-	string reqString = JsonSerializer.Serialize<Request>(req);
+    // 序列化 Request 類別成 JSON 字串
+    string reqString = JsonSerializer.Serialize<Request>(req);
 
-    reqString.Display();
+    Console.WriteLine(reqString);
 }
 ```
 

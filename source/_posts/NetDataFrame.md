@@ -2,38 +2,38 @@
 title: 使用 DataFrame 操作資料
 date: 2024-05-05 11:10:00
 categories: .Net
-tags: [.Net, DataFrame, Polyglot Notebooks]
+tags: [.Net, DataFrame]
 ---
 
 # 套件安裝
 
-安裝套件
-```c#
-// 套件 Microsoft.Data.Analysis 檔案轉 DataFrame 格式
-#r "nuget: Microsoft.Data.Analysis, 0.21.1"
-```
-
-引用套件
-```c#
-using System.IO;
-using Microsoft.Data.Analysis;
+```bash
+# 套件 Microsoft.Data.Analysis 檔案轉 DataFrame 格式
+dotnet add package Microsoft.Data.Analysis --version 0.23.0
 ```
 
 <!--more-->
 
+# 引用參考
+
+```csharp
+using System.IO;
+using Microsoft.Data.Analysis;
+```
+
 # 載入 CSV 資料
 
-使用 LoadCsvFromString 
+使用 LoadCsvFromString
 
-```c#
+```csharp
 string csvfile = File.ReadAllText("test.csv");
 DataFrame df = DataFrame.LoadCsvFromString(csvfile, ',');
-df.Display();
+Console.WriteLine(df);
 ```
 
 # 建立測試資料
 
-```c#
+```csharp
 Int32DataFrameColumn id = new Int32DataFrameColumn("ID", new int[] { 1, 2 });
 StringDataFrameColumn name = new StringDataFrameColumn("Name", new string[] { "張三", "李四" });
 Int32DataFrameColumn age = new Int32DataFrameColumn("Age", new int?[] { 25, null });
@@ -43,7 +43,7 @@ df.Columns.Add(id);
 df.Columns.Add(name);
 df.Columns.Add(age);
 
-df.Display();
+Console.WriteLine(df);
 ```
 
 輸出:
@@ -55,10 +55,10 @@ df.Display();
 # 加入新欄位
 
 加入欄位 Height
-```c#
+```csharp
 df.Columns.Add(new PrimitiveDataFrameColumn<int>("Height", new List<int>{180, 179}));
 
-df.Display();
+Console.WriteLine(df);
 ```
 
 輸出:
@@ -70,8 +70,8 @@ df.Display();
 # 顯示欄位資訊
 
 了解欄位類型與資料筆數統計
-```c#
- df.Info().Display();
+```csharp
+Console.WriteLine(df.Info());
 ```
 
 輸出:
@@ -83,8 +83,8 @@ df.Display();
 # 回傳統計摘要
 
 統計相關值，此欄為數值欄位限定
-```c#
-df.Description().Display();
+```csharp
+Console.WriteLine(df.Info());
 ```
 
 輸出:
@@ -97,8 +97,8 @@ df.Description().Display();
 
 # 回傳前 N 筆資料
 
-```c#
-df.Head(1).Display();
+```csharp
+Console.WriteLine(df.Head(1));
 ```
 
 輸出:
@@ -108,8 +108,8 @@ df.Head(1).Display();
 
 # 回傳後 N 筆資料
 
-```c#
-df.Tail(1).Display();
+```csharp
+Console.WriteLine(df.Tail(1));
 ```
 
 輸出:
@@ -120,7 +120,7 @@ df.Tail(1).Display();
 # 加入新資料
 
 填入每一欄對應資料
-```c#
+```csharp
 df.Append(new List<KeyValuePair<string, object>>() {
     new KeyValuePair<string, object>("ID", 3),
     new KeyValuePair<string, object>("Name", "王五"),
@@ -128,7 +128,7 @@ df.Append(new List<KeyValuePair<string, object>>() {
     new KeyValuePair<string, object>("Height", 170)
 }, true);
 
-df.Display();
+Console.WriteLine(df);
 ```
 
 輸出:
@@ -143,9 +143,9 @@ df.Display();
 針對表格中的缺失欄位做處理
 
 1. 排除有空值的欄位
-```c#
+```csharp
 DataFrame dropNullData = df.DropNulls();
-dropNullData.Display();
+Console.WriteLine(dropNullData);
 ```
 
 輸出:
@@ -155,9 +155,9 @@ dropNullData.Display();
 |   1   | 3  | 王五 | 20    |  170   |
 
 2. 缺失值填充
-```c#
+```csharp
 df.Columns["Age"] = df.Columns["Age"].FillNulls(0);
-df.Display();
+Console.WriteLine(df);
 ```
 
 輸出:
@@ -169,9 +169,9 @@ df.Display();
 
 # 排序資料
 
-```c#
+```csharp
 DataFrame orderByData = df.OrderByDescending("Age");
-orderByData.Display();
+Console.WriteLine(orderByData);
 ```
 
 輸出:
@@ -183,9 +183,9 @@ orderByData.Display();
 
 # 分群資料
 
-```c#
+```csharp
 DataFrame groupByData = df.GroupBy("Age").Count();
-groupByData.Display();
+Console.WriteLine(groupByData);
 ```
 
 輸出:
@@ -197,9 +197,9 @@ groupByData.Display();
 
 # 篩選資料
 
-```c#
+```csharp
 DataFrame filterData = df.Filter(df.Columns["Age"].ElementwiseGreaterThan(1));
-filterData.Display();
+Console.WriteLine(filterData);
 ```
 
 輸出:
@@ -210,7 +210,7 @@ filterData.Display();
 
 # 合併資料
 
-```c#
+```csharp
 // 建立新的列表
 Int32DataFrameColumn idWeight = new Int32DataFrameColumn("ID", new int[] { 1, 2 });
 Int32DataFrameColumn weight = new Int32DataFrameColumn("Weight", new int?[] { 60, 90 });
@@ -221,7 +221,7 @@ dfWeight.Columns.Add(weight);
 
 // 使用 ID 做 Merge
 DataFrame mergeData = dfWeight.Merge<int>(df, "ID", "ID");
-mergeData.Display();
+Console.WriteLine(mergeData);
 ```
 
 輸出:

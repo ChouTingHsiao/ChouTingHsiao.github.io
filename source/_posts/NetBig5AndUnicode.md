@@ -2,13 +2,34 @@
 title: 依字元內碼轉換 Big5 與 Unicode
 date: 2022-05-22 14:00:00
 categories: .Net
-tags: [.Net, Font, Big5, Unicode, Polyglot Notebooks]
+tags: [.Net, Font, Big5, Unicode]
 ---
+
+# 安裝套件
+
+```bash
+dotnet add package System.Text.Encoding.CodePages
+```
+
+<!--more-->
+
+# 引用參考
+
+```csharp
+using System;
+using System.Text;
+```
+
+# 註冊套件
+
+```csharp
+Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+```
 
 # 轉換 Big5 字元
 
 Big5 依傳入內碼轉成字元
-```C#
+```csharp
 // 建立兩位元陣列
 byte[] big5Bytes = new byte[2];
 
@@ -26,14 +47,14 @@ Encoding big5 = Encoding.GetEncoding(950);
 
 // 轉成字串
 string result = big5.GetString(big5Bytes);
-```
 
-<!--more-->
+Console.WriteLine(result);
+```
 
 # 轉換 Unicode 字元
 
 Unicode 依傳入內碼轉成字元，與 Big5 轉換的方法雷同，只需調整內碼放置的順序
-```C#
+```csharp
 // 建立兩位元陣列
 byte[] unicodeBytes = new byte[2];
 
@@ -51,6 +72,8 @@ Encoding unicode = Encoding.Unicode;
 
 // 轉成字串
 string result = unicode.GetString(unicodeBytes);
+
+Console.WriteLine(result);
 ```
 
 {% note warning %}

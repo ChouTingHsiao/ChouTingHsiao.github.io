@@ -2,18 +2,21 @@
 title: 如何運行 Shell 命令
 date: 2022-05-22 00:00:00
 categories: .Net
-tags: [.Net, Shell, Polyglot Notebooks]
+tags: [.Net, Shell]
 ---
 
-# 運行 Shell 命令
+# 引用參考
 
-透過 Process 執行命令 
+```csharp
+using System.Diagnostics;
+```
 
 <!--more-->
 
-```c#
-using System.Diagnostics;
+# 運行 Shell 命令
 
+透過 Process 執行命令
+```csharp
 string cmd = "echo Hello, World!";
 
 // linux 使用 bash
@@ -47,11 +50,11 @@ using (Process process = new Process())
 
     string result = process.StandardOutput.ReadToEnd();
 
-    result.Display();
+    Console.WriteLine(result);
 
     string error = process.StandardError.ReadToEnd();
 
-    error.Display();
+    Console.WriteLine(error);
 
     process.WaitForExit();
 }
